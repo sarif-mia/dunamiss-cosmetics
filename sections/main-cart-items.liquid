@@ -840,7 +840,10 @@
                       </label>
                     </terms-conditions>
                   {% endif %}
-                  {% comment %} <button
+                  {% if settings.goEnable and settings.mid != blank %}
+                  {% render 'gokwik-checkout' %}
+                {% else %}
+                  <button
                     type="submit"
                     id="checkout"
                     class="btn-checkout cart__checkout-button button w-full btn-primary"
@@ -853,8 +856,8 @@
                     <span id="cart-live-region-text" aria-live="polite" role="status">
                       {{ 'general.page_cart.checkout' | t }}
                     </span>
-                  </button> {% endcomment %}
-                  {% render 'gokwik-checkout' %}
+                  </button>
+                {% endif %}
                 </div>
                 {%- if additional_checkout_buttons -%}
                   <div class="cart__dynamic-checkout-buttons mt-10 additional-checkout-buttons">

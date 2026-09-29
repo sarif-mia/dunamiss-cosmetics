@@ -6,7 +6,7 @@
   {% assign env = 'sandbox.pdp' %}
 {% endif %}
 
-{% if settings.goEnable %}
+{% if settings.goEnable and settings.mid != blank %}
   <script>
     window.gaTag = {ga4: "{{ settings.ga4Gokwik }}"}
     window.merchantInfo  = {
@@ -86,7 +86,7 @@
 {% endif %}
 
 <style>
-  {% if settings.goEnable %}
+  {% if settings.goEnable and settings.mid != blank %}
   .gokwik-checkout {
     width: 100%;
     display: flex;

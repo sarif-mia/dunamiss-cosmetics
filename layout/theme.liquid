@@ -63,9 +63,6 @@
     {% if request.page_type == 'index' %}
       {{ 'home-spacing.css' | asset_url | stylesheet_tag }}
     {% endif %}
-    {% if request.design_mode %}
-      {{ 'design-mode.css' | asset_url | stylesheet_tag: preload: true }}
-    {% endif %}
     {% style %}
       {% for scheme in settings.color_schemes -%}
         {% # theme-check-disable UndefinedObject %}
@@ -235,7 +232,9 @@
       render 'preload-page'
       sections 'header-group'
     -%}
-    {% render 'kwikpass-add-button' %}
+    {% if settings.goEnable and settings.mid != blank %}
+      {% render 'kwikpass-add-button' %}
+    {% endif %}
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
@@ -251,7 +250,9 @@
     {%- render 'sprite-svg' -%}
     {%- render 'content-bottom' -%}
     {% render 'whatsapp-button' %}
-    {% render 'kwikpass' %}
+    {% if settings.goEnable and settings.mid != blank %}
+      {% render 'kwikpass' %}
+    {% endif %}
 
 {% if template.name =='page' %}
 <h1 style="display:none">{{page.title}}</h1>

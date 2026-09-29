@@ -10,25 +10,6 @@
 
 {
   "settings_schema": {
-    "purchase_code": {
-      "name": "Purchase code",
-      "info": "Do not forget to click to Save button!",
-      "how_to_get": {
-        "content": "[Where is my purchase code?](https:\/\/help.market.envato.com\/hc\/en-us\/articles\/202822600-Where-Is-My-Purchase-Code-)"
-      },
-      "buy_now": {
-        "content": "[Buy Glozin license!](xx)"
-      },
-      "purchase_code_action": {
-        "label": "Purchase action",
-        "active": {
-          "label": "Activate purchase code"
-        },
-        "remove": {
-          "label": "Remove purchase code"
-        }
-      }
-    },
     "logo_favicon": {
       "name": "Logo and favicon",
       "settings": {

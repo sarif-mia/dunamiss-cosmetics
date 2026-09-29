@@ -1,5 +1,5 @@
 
-{% if settings.goBuynowEnable %}
+{% if settings.goEnable and settings.mid != blank and settings.goBuynowEnable %}
   <button type="button" class="disabled" disabled onclick="onBuyNowClick(this)" id="gokwik-buy-now">
     {% comment %}GoKwik uses the first element child as its loading indicator.{% endcomment %}
     <div style="display:none" class="addloadr" id="btn-loader">

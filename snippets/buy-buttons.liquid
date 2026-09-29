@@ -304,7 +304,7 @@
                 </terms-conditions>
                 {%- endif -%}
                 <div class="btn-checkout-dynamic buy-now-compact {% if settings.show_check_box_in_quick_view and type == 'quickview' %} disabled {% elsif  settings.show_checkbox_in_product_page  and type == 'single' or type == 'main_product' %}    disabled{% endif %}">
-                  {% if settings.goBuynowEnable %}
+                  {% if settings.goEnable and settings.mid != blank and settings.goBuynowEnable %}
                     {% render 'gokwik-buy-now' %}
                   {% else %}
                     {{ form | payment_button }}

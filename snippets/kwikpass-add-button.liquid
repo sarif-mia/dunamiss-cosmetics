@@ -2,8 +2,8 @@
 <script>
   window.merchantInfo = {
     ...window.merchantInfo,
-    mid: "19g6im04yivee",
-    environment: "production",
+    mid: {{ settings.mid | json }},
+    environment: {{ settings.envType | json }},
     integrationType: 'PLUGIN',
     type: "merchantInfo",
   }

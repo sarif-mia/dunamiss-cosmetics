@@ -8,44 +8,6 @@
     "theme_support_url": "https://support.nextsky.co"
   },
   {
-    "name": "t:settings_schema.purchase_code.name",
-    "settings": [
-      {
-        "type": "paragraph",
-        "content": "t:settings_schema.purchase_code.info"
-      },
-      {
-        "type": "textarea",
-        "id": "purchase_code",
-        "label": "t:settings_schema.purchase_code.name"
-      },
-      {
-        "type": "paragraph",
-        "content": "t:settings_schema.purchase_code.how_to_get.content"
-      },
-      {
-        "type": "paragraph",
-        "content": "t:settings_schema.purchase_code.buy_now.content"
-      },
-      {
-        "type": "select",
-        "id": "purchase_code_action",
-        "label": "t:settings_schema.purchase_code.purchase_code_action.label",
-        "default": "active",
-        "options": [
-          {
-            "value": "active",
-            "label": "t:settings_schema.purchase_code.purchase_code_action.active.label"
-          },
-          {
-            "value": "remove",
-            "label": "t:settings_schema.purchase_code.purchase_code_action.remove.label"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "name": "t:settings_schema.logo_favicon.name",
     "settings": [
       {

@@ -26,9 +26,6 @@
     {{ content_for_header }}
     {% render 'font-variables' %}
     {{ 'template-giftcard.s.min.css' | asset_url | stylesheet_tag }}
-    {% if request.design_mode %}
-      {{ 'design-mode.css' | asset_url | stylesheet_tag: preload: true }}
-    {% endif %}
   </head>
 
   <body class="gradient gift-card">
