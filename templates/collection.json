@@ -1,0 +1,138 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-heading",
+      "blocks": {
+        "breadcrumb_MJHLQb": {
+          "type": "breadcrumb",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "breadcrumb_MJHLQb"
+      ],
+      "custom_css": [
+        ".overlay-bg {margin-top: 10px;}"
+      ],
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "alignment": "center",
+        "background_image": "{{ collection.image }}",
+        "show_collection_image": false,
+        "overlay_opacity": 0,
+        "height": "adapt",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "subcollection": {
+      "type": "subcollection-list",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "heading": "",
+        "description": "",
+        "header_size": "medium",
+        "header_alignment": "left",
+        "image_ratio": "adapt",
+        "custom_ratio": "",
+        "items_per_row": 6,
+        "column_gap": 30,
+        "collection_information_position": "below_image",
+        "design": "default",
+        "text_alignment": "left",
+        "show_product_count": false,
+        "font_size": 14,
+        "font_weight": "heading_weight",
+        "information_spacing": 12,
+        "rounded_image": false,
+        "image_custom_width": false,
+        "image_width": 200,
+        "show_arrow": true,
+        "carousel_pagination": "show_dots_on_mobile",
+        "infinite": false,
+        "autoplay": false,
+        "autorotate_speed": 5,
+        "reveal": false,
+        "items_per_row_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-collection-product",
+      "blocks": {
+        "categories_LYDr6p": {
+          "type": "categories",
+          "settings": {
+            "title": "Products Category",
+            "menu": "catagories"
+          }
+        },
+        "filter_giBtHK": {
+          "type": "filter",
+          "disabled": true,
+          "settings": {}
+        },
+        "popular_product_Xwjqcf": {
+          "type": "popular_product",
+          "settings": {
+            "title": "Featured product",
+            "collection": "skin-care",
+            "items_to_show": 2
+          }
+        },
+        "image_banner_UUJxtT": {
+          "type": "image_banner",
+          "settings": {
+            "image": "shopify://shop_images/4DD72BF1-EE6E-45CC-9248-2544CE31D47F.jpg",
+            "url": "shopify://collections/all",
+            "open_link": false
+          }
+        }
+      },
+      "block_order": [
+        "categories_LYDr6p",
+        "filter_giBtHK",
+        "popular_product_Xwjqcf",
+        "image_banner_UUJxtT"
+      ],
+      "settings": {
+        "section_width": "fluid_container",
+        "enable_filtering": true,
+        "show_filter_counts": true,
+        "default_filter": "open_all",
+        "filter_layout": "drawer",
+        "vertical_posion": "left",
+        "number_products_per_page": true,
+        "sorting": true,
+        "grid_list": true,
+        "items_to_show": 10,
+        "items_per_row": 4,
+        "column_gap": 30,
+        "pagination": "infinit_scrolling",
+        "button_show_more": "Load more",
+        "promotion_link": "shopify://collections",
+        "promotion_postion": 6,
+        "items_per_row_mobile": "2",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "subcollection",
+    "main"
+  ]
+}

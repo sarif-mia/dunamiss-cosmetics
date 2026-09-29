@@ -1,0 +1,920 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow_8KKtNU": {
+      "type": "slideshow",
+      "blocks": {
+        "slider_item_nGbcNg": {
+          "type": "slider_item",
+          "settings": {
+            "image": "shopify://shop_images/Lip_Glow_Oil_Banner_1920x700_863a92fb-1e05-40e5-b826-df5f6d3ca096.png",
+            "image_mobile": "shopify://shop_images/Lip_Oil_Mobile_Banner_1080x1800_fbdbaaa4-123b-489b-9866-b561c887faae.png",
+            "slide_link": "shopify://collections/lip-oil",
+            "overlay_opacity": 0,
+            "slider_effect": "effect_fadeinup",
+            "subheading": "",
+            "heading": "",
+            "description": "",
+            "first_button_label": "",
+            "first_button_link": "shopify://collections/lip-oil",
+            "first_button_style": true,
+            "second_button_label": "",
+            "second_button_link": "",
+            "second_button_style": false,
+            "content_alignment": "left",
+            "content_position": "middle-left",
+            "content_width": "fluid_container",
+            "content_max_width": 100,
+            "content_padding_block": 50,
+            "content_padding_inline": 50,
+            "show_content_background": false,
+            "content_background": "#ffffff",
+            "content_box_opacity": 100,
+            "content_alignment_mobile": "center"
+          }
+        },
+        "slider_item_mrKBXF": {
+          "type": "slider_item",
+          "settings": {
+            "image": "shopify://shop_images/Satin_Banner_1920x700_fdd5386f-34bd-4904-b3bf-b837aa07a4dd.png",
+            "image_mobile": "shopify://shop_images/Satin_Mobile_Banner_1080x1800_8d34cc9e-a922-44a2-b534-26fa064dbff4.png",
+            "slide_link": "shopify://collections/satin-lipstick",
+            "overlay_opacity": 0,
+            "slider_effect": "effect_fadeinup",
+            "subheading": "",
+            "heading": "",
+            "description": "",
+            "first_button_label": "",
+            "first_button_link": "shopify://collections/satin-lipstick",
+            "first_button_style": false,
+            "second_button_label": "",
+            "second_button_link": "",
+            "second_button_style": false,
+            "content_alignment": "left",
+            "content_position": "middle-left",
+            "content_width": "fluid_container",
+            "content_max_width": 100,
+            "content_padding_block": 50,
+            "content_padding_inline": 50,
+            "show_content_background": false,
+            "content_background": "#ffffff",
+            "content_box_opacity": 100,
+            "content_alignment_mobile": "center"
+          }
+        },
+        "slider_item_T4Ur8T": {
+          "type": "slider_item",
+          "settings": {
+            "image": "shopify://shop_images/Lip_Gloss_Banner_1920x700_67a269a7-639d-4fba-9f8e-b88fed2b9094.png",
+            "image_mobile": "shopify://shop_images/Lip_Gloss_Mobile_Banner_1080x1800_778f5ea0-5a5a-41af-8cf3-30379c132e6a.png",
+            "slide_link": "shopify://collections/lip-gloss",
+            "overlay_opacity": 0,
+            "slider_effect": "effect_fadeinup",
+            "subheading": "",
+            "heading": "",
+            "description": "",
+            "first_button_label": "",
+            "first_button_link": "shopify://collections/lip-gloss",
+            "first_button_style": true,
+            "second_button_label": "",
+            "second_button_link": "",
+            "second_button_style": false,
+            "content_alignment": "left",
+            "content_position": "middle-left",
+            "content_width": "fluid_container",
+            "content_max_width": 100,
+            "content_padding_block": 50,
+            "content_padding_inline": 50,
+            "show_content_background": false,
+            "content_background": "#ffffff",
+            "content_box_opacity": 100,
+            "content_alignment_mobile": "center"
+          }
+        },
+        "slider_item_effLRM": {
+          "type": "slider_item",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/GLIMMER_DEXTOP_BENNER_DESKTOP.webp",
+            "image_mobile": "shopify://shop_images/GLIMMER_DEXTOP_BENNER.webp",
+            "slide_link": "shopify://collections/glimmer-lip-balm",
+            "overlay_opacity": 0,
+            "slider_effect": "effect_fadeinup",
+            "subheading": "",
+            "heading": "",
+            "description": "",
+            "first_button_label": "",
+            "first_button_link": "shopify://collections/eye-care",
+            "first_button_style": true,
+            "second_button_label": "",
+            "second_button_link": "",
+            "second_button_style": false,
+            "content_alignment": "left",
+            "content_position": "middle-left",
+            "content_width": "fluid_container",
+            "content_max_width": 100,
+            "content_padding_block": 50,
+            "content_padding_inline": 50,
+            "show_content_background": false,
+            "content_background": "#ffffff",
+            "content_box_opacity": 100,
+            "content_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slider_item_nGbcNg",
+        "slider_item_mrKBXF",
+        "slider_item_T4Ur8T",
+        "slider_item_effLRM"
+      ],
+      "custom_css": [
+        ".fs-big {line-height: 1;}",
+        ".stretch_width .h-full_screen {--height-bar: 40px; --height-header: 110px;}",
+        "@media (min-width: 992px) {.stretch_width .h-full_screen {min-height: calc( 100vh - var(--height-header, 70px) - var(--height-topbar, 0px) - 200px - var(--height-bar, 0px) - var(--bs-gutter-x) ); }}"
+      ],
+      "settings": {
+        "section_width": "fluid_container",
+        "align_desktop_content": true,
+        "slide_height": "adapt",
+        "desktop_height": 600,
+        "mobile_height": 490,
+        "color_scheme": "scheme-36517af9-283f-4bf1-be7d-5eaf120ebeb6",
+        "subheading_font_size": 12,
+        "subheading_font_weight": "heading_weight",
+        "subheading_spacing_bottom": 20,
+        "heading_font_size": 90,
+        "heading_font_weight": "heading_weight",
+        "heading_uppercase": false,
+        "heading_spacing_bottom": 40,
+        "des_font_size": 16,
+        "des_font_weight": "body_weight",
+        "des_spacing_bottom": 15,
+        "show_arrow": true,
+        "carousel_pagination": "show_dots",
+        "pagination_position": "center",
+        "autoplay": false,
+        "autorotate_speed": 6,
+        "content_below_image": false,
+        "padding_top": 0,
+        "padding_bottom": 24,
+        "reset_spacing": true
+      }
+    },
+    "collection_list_GxyQj4": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_zyxtzy": {
+          "type": "collection",
+          "settings": {
+            "collection": "lip-gloss",
+            "collection_image": "shopify://shop_images/LIP_LUSTER_WEBSITE_PAGE.jpg",
+            "collection_title": "LIP GLOSS"
+          }
+        },
+        "collection_Czrpdi": {
+          "type": "collection",
+          "settings": {
+            "collection": "satin-lipstick",
+            "collection_image": "shopify://shop_images/SATIN_LIPSTICK_WEBSITE_PAGE.jpg",
+            "collection_title": "SATIN LIPSTICK"
+          }
+        },
+        "collection_edEPNq": {
+          "type": "collection",
+          "settings": {
+            "collection": "lip-oil",
+            "collection_image": "shopify://shop_images/LIP_OIL_WEBSITE_PAGE.jpg",
+            "collection_title": "LIP OIL"
+          }
+        },
+        "collection_3YKjR3": {
+          "type": "collection",
+          "settings": {
+            "collection": "glimmer-lip-balm",
+            "collection_image": "shopify://shop_images/GLIMMER_LIP_BALM_WEBSITE_PAGE.jpg",
+            "collection_title": "GLIMMER LIP BALM"
+          }
+        },
+        "collection_wPnYEN": {
+          "type": "collection",
+          "settings": {
+            "collection": "eye-care",
+            "collection_image": "shopify://shop_images/EYE_CARE_WEBSITE_PAGE.jpg",
+            "collection_title": "EYE CARE"
+          }
+        },
+        "collection_cbaX9i": {
+          "type": "collection",
+          "settings": {
+            "collection": "nail-paints",
+            "collection_image": "shopify://shop_images/NAIL_PAINT_WEBSITE_PAGE.jpg",
+            "collection_title": "NAIL PAINTS"
+          }
+        },
+        "collection_arfUbc": {
+          "type": "collection",
+          "settings": {
+            "collection": "skin-care",
+            "collection_image": "shopify://shop_images/SKIN_CARE_WEBSITE_PAGE.jpg",
+            "collection_title": "SKIN CARE"
+          }
+        }
+      },
+      "block_order": [
+        "collection_zyxtzy",
+        "collection_Czrpdi",
+        "collection_edEPNq",
+        "collection_3YKjR3",
+        "collection_wPnYEN",
+        "collection_cbaX9i",
+        "collection_arfUbc"
+      ],
+      "custom_css": [
+        "@media (max-width: 576px) {.h3 {font-size: 18px; }}"
+      ],
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "scheme-3dcafa25-94c8-4464-83df-4132c6dca730",
+        "heading": "Shop By Collection",
+        "description": "",
+        "show_view_all_button": true,
+        "header_size": "small",
+        "header_alignment": "left",
+        "display_mode": "carousel",
+        "image_ratio": "adapt",
+        "custom_ratio": "",
+        "items_per_row": 5,
+        "column_gap": 10,
+        "collection_information_position": "overlay_image",
+        "design": "morden",
+        "text_alignment": "left",
+        "show_product_count": false,
+        "show_icon": false,
+        "show_description": false,
+        "font_size": 14,
+        "font_weight": "heading_weight",
+        "information_spacing": 14,
+        "rounded_image": false,
+        "image_custom_width": true,
+        "image_width": 300,
+        "show_arrow": true,
+        "carousel_pagination": "show_dots_on_mobile",
+        "infinite": true,
+        "autoplay": true,
+        "autorotate_speed": 3,
+        "reveal": false,
+        "items_per_row_mobile": 2,
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "reset_spacing": true
+      }
+    },
+    "products_carousel_Kmy9VX": {
+      "type": "products-carousel",
+      "custom_css": [
+        "@media (max-width: 576px) {.h3 {font-size: 18px; }}"
+      ],
+      "name": "t:sections.products-carousel.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "default",
+        "heading": "Just Dropped",
+        "description": "",
+        "show_view_all_button": true,
+        "header_size": "small",
+        "header_alignment": "left",
+        "collection": "new-arrivals",
+        "items_to_show": 8,
+        "items_per_row": 4,
+        "column_gap": 30,
+        "show_banner": false,
+        "sticky_banner": false,
+        "banner_width": 30,
+        "position": "left",
+        "banner_link": "",
+        "banner_type": "image",
+        "video_url": "",
+        "video_autoplay": false,
+        "show_arrow": true,
+        "carousel_pagination": "disable",
+        "infinite": false,
+        "autoplay": false,
+        "autorotate_speed": 5,
+        "reveal": false,
+        "items_per_row_mobile": 2,
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "reset_spacing": true
+      }
+    },
+    "lookbook_image_cDBj3Y": {
+      "type": "lookbook-image",
+      "blocks": {
+        "lookbook_item_xg6rAc": {
+          "type": "lookbook_item",
+          "settings": {
+            "lookbook_image": "shopify://shop_images/Almond_Oil.svg",
+            "product__1": "",
+            "offset_top__1": 12,
+            "offset_left__1": 32,
+            "product__2": "",
+            "offset_top__2": 1,
+            "offset_left__2": 43,
+            "product__3": "",
+            "offset_top__3": 10,
+            "offset_left__3": 40,
+            "product__4": "",
+            "offset_top__4": 60,
+            "offset_left__4": 70,
+            "product__5": "",
+            "offset_top__5": 1,
+            "offset_left__5": 4
+          }
+        },
+        "lookbook_item_YtDfGd": {
+          "type": "lookbook_item",
+          "settings": {
+            "lookbook_image": "shopify://shop_images/Hyaluronic_Acid.svg",
+            "product__1": "",
+            "offset_top__1": 12,
+            "offset_left__1": 32,
+            "product__2": "",
+            "offset_top__2": 1,
+            "offset_left__2": 43,
+            "product__3": "",
+            "offset_top__3": 10,
+            "offset_left__3": 40,
+            "product__4": "",
+            "offset_top__4": 60,
+            "offset_left__4": 70,
+            "product__5": "",
+            "offset_top__5": 1,
+            "offset_left__5": 4
+          }
+        },
+        "lookbook_item_4tAzFF": {
+          "type": "lookbook_item",
+          "settings": {
+            "lookbook_image": "shopify://shop_images/Babassu_Oil.svg",
+            "product__1": "",
+            "offset_top__1": 12,
+            "offset_left__1": 32,
+            "product__2": "",
+            "offset_top__2": 1,
+            "offset_left__2": 43,
+            "product__3": "",
+            "offset_top__3": 10,
+            "offset_left__3": 40,
+            "product__4": "",
+            "offset_top__4": 60,
+            "offset_left__4": 70,
+            "product__5": "",
+            "offset_top__5": 1,
+            "offset_left__5": 4
+          }
+        },
+        "lookbook_item_8RAYYC": {
+          "type": "lookbook_item",
+          "settings": {
+            "lookbook_image": "shopify://shop_images/Peptides.svg",
+            "product__1": "",
+            "offset_top__1": 12,
+            "offset_left__1": 32,
+            "product__2": "",
+            "offset_top__2": 1,
+            "offset_left__2": 43,
+            "product__3": "",
+            "offset_top__3": 10,
+            "offset_left__3": 40,
+            "product__4": "",
+            "offset_top__4": 60,
+            "offset_left__4": 70,
+            "product__5": "",
+            "offset_top__5": 1,
+            "offset_left__5": 4
+          }
+        },
+        "lookbook_item_WdC9tN": {
+          "type": "lookbook_item",
+          "settings": {
+            "lookbook_image": "shopify://shop_images/CASTOR_OIL.svg",
+            "product__1": "",
+            "offset_top__1": 12,
+            "offset_left__1": 32,
+            "product__2": "",
+            "offset_top__2": 1,
+            "offset_left__2": 43,
+            "product__3": "",
+            "offset_top__3": 10,
+            "offset_left__3": 40,
+            "product__4": "",
+            "offset_top__4": 60,
+            "offset_left__4": 70,
+            "product__5": "",
+            "offset_top__5": 1,
+            "offset_left__5": 4
+          }
+        },
+        "lookbook_item_jWzDpn": {
+          "type": "lookbook_item",
+          "settings": {
+            "lookbook_image": "shopify://shop_images/Jojoba_Oil_1.svg",
+            "product__1": "",
+            "offset_top__1": 12,
+            "offset_left__1": 32,
+            "product__2": "",
+            "offset_top__2": 1,
+            "offset_left__2": 43,
+            "product__3": "",
+            "offset_top__3": 10,
+            "offset_left__3": 40,
+            "product__4": "",
+            "offset_top__4": 60,
+            "offset_left__4": 70,
+            "product__5": "",
+            "offset_top__5": 1,
+            "offset_left__5": 4
+          }
+        },
+        "lookbook_item_Jkxtgt": {
+          "type": "lookbook_item",
+          "settings": {
+            "lookbook_image": "shopify://shop_images/Kojic_Acid.svg",
+            "product__1": "",
+            "offset_top__1": 12,
+            "offset_left__1": 32,
+            "product__2": "",
+            "offset_top__2": 1,
+            "offset_left__2": 43,
+            "product__3": "",
+            "offset_top__3": 10,
+            "offset_left__3": 40,
+            "product__4": "",
+            "offset_top__4": 60,
+            "offset_left__4": 70,
+            "product__5": "",
+            "offset_top__5": 1,
+            "offset_left__5": 4
+          }
+        },
+        "lookbook_item_JULaqW": {
+          "type": "lookbook_item",
+          "settings": {
+            "lookbook_image": "shopify://shop_images/4._Shea_Butter.svg",
+            "product__1": "",
+            "offset_top__1": 12,
+            "offset_left__1": 32,
+            "product__2": "",
+            "offset_top__2": 1,
+            "offset_left__2": 43,
+            "product__3": "",
+            "offset_top__3": 10,
+            "offset_left__3": 40,
+            "product__4": "",
+            "offset_top__4": 60,
+            "offset_left__4": 70,
+            "product__5": "",
+            "offset_top__5": 1,
+            "offset_left__5": 4
+          }
+        },
+        "lookbook_item_Pr9NTf": {
+          "type": "lookbook_item",
+          "settings": {
+            "lookbook_image": "shopify://shop_images/Vitamin_E.svg",
+            "product__1": "",
+            "offset_top__1": 12,
+            "offset_left__1": 32,
+            "product__2": "",
+            "offset_top__2": 1,
+            "offset_left__2": 43,
+            "product__3": "",
+            "offset_top__3": 10,
+            "offset_left__3": 40,
+            "product__4": "",
+            "offset_top__4": 60,
+            "offset_left__4": 70,
+            "product__5": "",
+            "offset_top__5": 1,
+            "offset_left__5": 4
+          }
+        }
+      },
+      "block_order": [
+        "lookbook_item_xg6rAc",
+        "lookbook_item_YtDfGd",
+        "lookbook_item_4tAzFF",
+        "lookbook_item_8RAYYC",
+        "lookbook_item_WdC9tN",
+        "lookbook_item_jWzDpn",
+        "lookbook_item_Jkxtgt",
+        "lookbook_item_JULaqW",
+        "lookbook_item_Pr9NTf"
+      ],
+      "custom_css": [
+        "@media (max-width: 576px) {.h3 {font-size: 16px; }}"
+      ],
+      "name": "t:sections.lookbook-image.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "heading": "Intentional ingredients",
+        "description": "",
+        "header_size": "small",
+        "header_alignment": "left",
+        "image_ratio": "landscape",
+        "custom_ratio": "",
+        "hotspot_style": "plus",
+        "action_when_click_on_hotspot": "open",
+        "items_per_row": 5,
+        "column_gap": 30,
+        "show_arrow": false,
+        "carousel_pagination": "show_dots_on_mobile",
+        "infinite": true,
+        "autoplay": true,
+        "autorotate_speed": 2,
+        "reveal": false,
+        "items_per_row_mobile": 2,
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "reset_spacing": true
+      }
+    },
+    "collection_list_wEki3A": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_RaMAhe": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "collection_image": "shopify://shop_images/MADE_IN_INDIA_LOGO.png",
+            "collection_title": "MADE IN INDIA"
+          }
+        },
+        "collection_NMfE3y": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "collection_image": "shopify://shop_images/SALFATE_PARABEN_FREE.png",
+            "collection_title": "PARABEN FREE"
+          }
+        },
+        "collection_kFNqRT": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "collection_image": "shopify://shop_images/CLINICALLY_TESTED.png",
+            "collection_title": "CLINICALLY TESTED"
+          }
+        },
+        "collection_XMLjGN": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "collection_image": "shopify://shop_images/CRUELTY_FREE.png",
+            "collection_title": "CRUELTY FREE"
+          }
+        },
+        "collection_kYhinB": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "collection_image": "shopify://shop_images/GMP_LOGO.png",
+            "collection_title": "GMP CERTIFIED"
+          }
+        },
+        "collection_mHkzAU": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "collection_image": "shopify://shop_images/VEGAN.png",
+            "collection_title": "VEGAN"
+          }
+        },
+        "collection_RtDdAh": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "collection_image": "shopify://shop_images/tested_in_spain.png",
+            "collection_title": "TESTED IN SPAIN"
+          }
+        }
+      },
+      "block_order": [
+        "collection_RaMAhe",
+        "collection_NMfE3y",
+        "collection_kFNqRT",
+        "collection_XMLjGN",
+        "collection_kYhinB",
+        "collection_mHkzAU",
+        "collection_RtDdAh"
+      ],
+      "custom_css": [
+        "@media (max-width: 576px) {.h3 {font-size: 16px; }}"
+      ],
+      "name": "t:sections.collection-list.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "heading": "They say being green is the new cool ..we say it’s the future of beauty, where clean meets couture and sustainability never looked this good.",
+        "description": "<p>We say yes to conscious beauty. Our commitment to  <strong>People, Planet, and Pets </strong>guides every choice we make from ethical sourcing to cruelty-free practices, ensuring sustainability and care are at the heart of what we do.<br/><br/></p>",
+        "show_view_all_button": false,
+        "header_size": "small",
+        "header_alignment": "left",
+        "display_mode": "carousel",
+        "image_ratio": "adapt",
+        "custom_ratio": "",
+        "items_per_row": 7,
+        "column_gap": 10,
+        "collection_information_position": "below_image",
+        "design": "default",
+        "text_alignment": "center",
+        "show_product_count": false,
+        "show_icon": false,
+        "show_description": false,
+        "font_size": 12,
+        "font_weight": "subheading_weight",
+        "information_spacing": 12,
+        "rounded_image": false,
+        "image_custom_width": true,
+        "image_width": 115,
+        "show_arrow": false,
+        "carousel_pagination": "disable",
+        "infinite": true,
+        "autoplay": true,
+        "autorotate_speed": 2,
+        "reveal": false,
+        "items_per_row_mobile": 3,
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "reset_spacing": true
+      }
+    },
+    "collection_tab_9Dg4qk": {
+      "type": "collection-tab",
+      "blocks": {
+        "collection_HcArYF": {
+          "type": "collection",
+          "settings": {
+            "collection": "bestsellers",
+            "collection_title": "MOST LOVED"
+          }
+        },
+        "collection_Me7V7a": {
+          "type": "collection",
+          "settings": {
+            "collection": "combo-products",
+            "collection_title": "SUPER SAVER COMBOS"
+          }
+        }
+      },
+      "block_order": [
+        "collection_HcArYF",
+        "collection_Me7V7a"
+      ],
+      "name": "t:sections.collection-tab.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "heading": "",
+        "description": "",
+        "header_size": "medium",
+        "header_alignment": "center",
+        "tab_header_style": "horizontal",
+        "horizontal_tab_style": "underline",
+        "display_mode": "carousel",
+        "items_to_show": 8,
+        "items_per_row": 4,
+        "column_gap": 30,
+        "show_arrow": false,
+        "carousel_pagination": "disable",
+        "infinite": false,
+        "autoplay": false,
+        "autorotate_speed": 5,
+        "reveal": false,
+        "rows": 2,
+        "show_load_more_button": false,
+        "button_label": "Load more",
+        "carousel_on_mobile": true,
+        "items_per_row_mobile": 2,
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "reset_spacing": true
+      }
+    },
+    "brand_logo_MKfAhJ": {
+      "type": "brand-logo",
+      "blocks": {
+        "brand_items_tPiCgg": {
+          "type": "brand_items",
+          "settings": {
+            "image": "shopify://shop_images/amazon.png",
+            "link": "https://www.amazon.in/stores/Dunamiss/page/5B224EDB-CB50-4BC4-878F-7E6EBC143299?lp_asin=B0DJBPCMK5&ref_=cm_sw_r_apin_ast_store_6QRWVZD88NSWXFQYVNJ2"
+          }
+        },
+        "brand_items_BeBkX3": {
+          "type": "brand_items",
+          "settings": {
+            "image": "shopify://shop_images/download_c1a0d92e-c501-4c4c-b200-c6277e947523.png",
+            "link": "https://www.myntra.com/dunamiss-cosmetics"
+          }
+        },
+        "brand_items_3HATa9": {
+          "type": "brand_items",
+          "settings": {
+            "image": "shopify://shop_images/nyka.png",
+            "link": "https://www.nykaa.com/brands/dunamiss-cosmetics/c/74542"
+          }
+        },
+        "brand_items_XNeXYa": {
+          "type": "brand_items",
+          "settings": {
+            "image": "shopify://shop_images/blinkit_logo.jpg",
+            "link": "https://blinkit.com/prn/x/prid/660954"
+          }
+        },
+        "brand_items_r7Tyde": {
+          "type": "brand_items",
+          "settings": {
+            "image": "shopify://shop_images/jio_mart_logo.jpg",
+            "link": "https://www.jiomart.com/search?q=Dunamiss%20"
+          }
+        },
+        "brand_items_UCxtW3": {
+          "type": "brand_items",
+          "settings": {
+            "image": "shopify://shop_images/nono_logo_jpg.jpg",
+            "link": "https://www.noon.com/uae-en/search/?originalQuery=Dunamiss&q=dunamiss"
+          }
+        }
+      },
+      "block_order": [
+        "brand_items_tPiCgg",
+        "brand_items_BeBkX3",
+        "brand_items_3HATa9",
+        "brand_items_XNeXYa",
+        "brand_items_r7Tyde",
+        "brand_items_UCxtW3"
+      ],
+      "custom_css": [
+        "@media (max-width: 576px) {.h3 {font-size: 16px; }}"
+      ],
+      "name": "t:sections.brand-logo.presets.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "heading": "In Your Cart, On Your Terms",
+        "description": "",
+        "show_view_all_button": false,
+        "view_all_button_link": "",
+        "header_size": "small",
+        "header_alignment": "left",
+        "image_ratio": "landscape",
+        "custom_ratio": "",
+        "img_width": 235,
+        "logo_opacity": 100,
+        "open_link_newtab": true,
+        "framed": true,
+        "items_per_row": 5,
+        "column_gap": 10,
+        "show_arrow": false,
+        "carousel_pagination": "show_dots",
+        "infinite": true,
+        "autoplay": true,
+        "autorotate_speed": 2,
+        "reveal": false,
+        "items_per_row_mobile": 2.5,
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "reset_spacing": true
+      }
+    },
+    "brand_logo_FdGXWr": {
+      "type": "brand-logo",
+      "blocks": {
+        "brand_items_jaFaHC": {
+          "type": "brand_items",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/amazon.png",
+            "link": "https://www.amazon.in/stores/Dunamiss/page/5B224EDB-CB50-4BC4-878F-7E6EBC143299?lp_asin=B0DJBPCMK5&ref_=cm_sw_r_apin_ast_store_6QRWVZD88NSWXFQYVNJ2"
+          }
+        },
+        "brand_items_BhpqKV": {
+          "type": "brand_items",
+          "settings": {
+            "image": "shopify://shop_images/hindustan_insider_logo_png.png",
+            "link": "https://hindustaninsider.in/2025/09/30/dunamiss-cosmetics-redefining-indian-beauty-with-science-clean-luxury-and-womens-empowerment/"
+          }
+        },
+        "brand_items_g4DatT": {
+          "type": "brand_items",
+          "settings": {
+            "image": "shopify://shop_images/Entrepreneur_Magazine_Logo_png.png",
+            "link": "https://www.instagram.com/p/DMp6nIjvYm4/?igsh=MXI1ZmptZzFpNzgzbQ%3D%3D"
+          }
+        },
+        "brand_items_QTCdqH": {
+          "type": "brand_items",
+          "settings": {
+            "image": "shopify://shop_images/forbes.png",
+            "link": "https://www.forbesindia.com/article/brand-connect/visionary-leaders-amp-trailblazing-brands/95839/1"
+          }
+        },
+        "brand_items_7EB6cB": {
+          "type": "brand_items",
+          "settings": {
+            "image": "shopify://shop_images/IMG_8429.png",
+            "link": "https://www.vogue.in/shopping/promotion/this-diwali-gift-wellness-its-starring-role-with-these-must-have-essentials"
+          }
+        }
+      },
+      "block_order": [
+        "brand_items_jaFaHC",
+        "brand_items_BhpqKV",
+        "brand_items_g4DatT",
+        "brand_items_QTCdqH",
+        "brand_items_7EB6cB"
+      ],
+      "custom_css": [
+        "@media (max-width: 576px) {.h3 {font-size: 16px; }}"
+      ],
+      "name": "t:sections.brand-logo.presets.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "heading": "Featured In",
+        "description": "",
+        "show_view_all_button": false,
+        "view_all_button_link": "",
+        "header_size": "small",
+        "header_alignment": "left",
+        "image_ratio": "landscape",
+        "custom_ratio": "",
+        "img_width": 270,
+        "logo_opacity": 100,
+        "open_link_newtab": true,
+        "framed": true,
+        "items_per_row": 4,
+        "column_gap": 10,
+        "show_arrow": false,
+        "carousel_pagination": "disable",
+        "infinite": true,
+        "autoplay": true,
+        "autorotate_speed": 5,
+        "reveal": false,
+        "items_per_row_mobile": 2.5,
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "reset_spacing": true
+      }
+    },
+    "judgeme_home_reviews": {
+      "type": "judgeme-home-carousel",
+      "settings": {
+        "heading": "Loved by our community",
+        "description": "Discover what our customers are saying.",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "1770530229f1b84ee7": {
+      "type": "home-apps",
+      "blocks": {
+        "shopvid_mp_tiktok_block_8DWzwp": {
+          "type": "shopify://apps/ag-shoppable-video/blocks/mp_tiktok_block/1216543a-6237-4445-a5f2-61991cd76022",
+          "settings": {
+            "mp_tiktok_feed_id": "0802-538855"
+          }
+        }
+      },
+      "block_order": [
+        "shopvid_mp_tiktok_block_8DWzwp"
+      ],
+      "settings": {
+        "heading": "Watch It. Love It. Shop It."
+      }
+    }
+  },
+  "order": [
+    "slideshow_8KKtNU",
+    "collection_list_GxyQj4",
+    "products_carousel_Kmy9VX",
+    "lookbook_image_cDBj3Y",
+    "collection_list_wEki3A",
+    "collection_tab_9Dg4qk",
+    "judgeme_home_reviews",
+    "brand_logo_MKfAhJ",
+    "brand_logo_FdGXWr",
+    "1770530229f1b84ee7"
+  ]
+}

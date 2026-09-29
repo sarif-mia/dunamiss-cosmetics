@@ -1,0 +1,60 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "wrapper": "div#essential-loyalty-landing-page",
+  "sections": {
+    "essential-loyalty-landing-page": {
+      "type": "essential-loyalty-landing-page",
+      "blocks": {
+        "block_hero": {
+          "type": "shopify://apps/essential-loyalty/blocks/landing-page-hero/bb1b2244-edbc-4be2-b271-04fde65a5c2f",
+          "settings": {}
+        },
+        "block_howItWorks": {
+          "type": "shopify://apps/essential-loyalty/blocks/landing-page-how-it-works/bb1b2244-edbc-4be2-b271-04fde65a5c2f",
+          "settings": {}
+        },
+        "block_waysToEarn": {
+          "type": "shopify://apps/essential-loyalty/blocks/landing-page-ways-to-earn/bb1b2244-edbc-4be2-b271-04fde65a5c2f",
+          "settings": {}
+        },
+        "block_waysToRedeem": {
+          "type": "shopify://apps/essential-loyalty/blocks/landing-page-ways-to-redeem/bb1b2244-edbc-4be2-b271-04fde65a5c2f",
+          "settings": {}
+        },
+        "block_referral": {
+          "type": "shopify://apps/essential-loyalty/blocks/landing-page-referral-program/bb1b2244-edbc-4be2-b271-04fde65a5c2f",
+          "settings": {}
+        },
+        "block_vipTiers": {
+          "type": "shopify://apps/essential-loyalty/blocks/landing-page-vip-tiers/bb1b2244-edbc-4be2-b271-04fde65a5c2f",
+          "settings": {}
+        },
+        "block_faq": {
+          "type": "shopify://apps/essential-loyalty/blocks/landing-page-faq/bb1b2244-edbc-4be2-b271-04fde65a5c2f",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "block_hero",
+        "block_howItWorks",
+        "block_waysToEarn",
+        "block_waysToRedeem",
+        "block_referral",
+        "block_vipTiers",
+        "block_faq"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "essential-loyalty-landing-page"
+  ]
+}

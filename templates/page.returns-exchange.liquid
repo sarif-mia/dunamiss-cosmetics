@@ -1,0 +1,1225 @@
+<!-- =========================
+     DUNAMISS RETURNS & EXCHANGES
+========================= -->
+
+<style>
+  .dm-return {
+    --dm-bg: #f8f3ef;
+    --dm-card: #ffffff;
+    --dm-text: var(--brand-text);
+    --dm-muted: var(--brand-text);
+    --dm-accent: var(--brand-accent);
+    --dm-accent-dark: var(--brand-accent);
+    --dm-accent-light: #f8e7ed;
+    --dm-border: #eadbd4;
+    --dm-green: #587254;
+    --dm-warning: #a16b3f;
+
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 0 20px;
+    font-family: var(--body-font);
+    color: var(--dm-text);
+  }
+
+  .dm-return *,
+  .dm-return *::before,
+  .dm-return *::after {
+    box-sizing: border-box;
+  }
+
+  /* =========================
+     HERO
+  ========================= */
+
+  .dm-return-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 58px 48px;
+    margin-bottom: 24px;
+    border-radius: 24px;
+
+    background:
+      radial-gradient(
+        circle at 85% 20%,
+        rgba(255,255,255,.55) 0,
+        rgba(255,255,255,0) 32%
+      ),
+      linear-gradient(
+        135deg,
+        var(--brand-surface) 0%,
+        #f5e7e1 48%,
+        #eee0d8 100%
+      );
+
+    border: 1px solid var(--brand-border);
+    box-shadow: 0 12px 35px rgba(100, 55, 65, .08);
+  }
+
+  .dm-return-hero::after {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    right: -70px;
+    bottom: -110px;
+    border-radius: 50%;
+    background: rgba(184, 92, 120, .10);
+  }
+
+  .dm-return-eyebrow {
+    position: relative;
+    z-index: 2;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 13px;
+
+    color: var(--dm-accent-dark);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+  }
+
+  .dm-return-eyebrow svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .dm-return-hero h1 {
+    position: relative;
+    z-index: 2;
+
+    margin: 0 0 14px;
+
+    color: var(--brand-heading);
+
+    font-family: var(--body-font);
+    font-size: clamp(34px, 5vw, 52px);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -1px;
+  }
+
+  .dm-return-hero p {
+    position: relative;
+    z-index: 2;
+
+    max-width: 650px;
+    margin: 0;
+
+    color: var(--brand-text);
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  /* =========================
+     QUICK INFO
+  ========================= */
+
+  .dm-return-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .dm-return-highlight {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 19px;
+
+    background: var(--dm-card);
+    border: 1px solid var(--dm-border);
+    border-radius: 16px;
+
+    box-shadow: 0 6px 22px rgba(70, 45, 35, .055);
+  }
+
+  .dm-return-icon {
+    flex: 0 0 44px;
+
+    width: 44px;
+    height: 44px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    color: var(--dm-accent-dark);
+    background: var(--dm-accent-light);
+  }
+
+  .dm-return-icon svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .dm-return-highlight strong {
+    display: block;
+    margin-bottom: 3px;
+
+    color: var(--brand-heading);
+    font-size: 14px;
+  }
+
+  .dm-return-highlight span {
+    color: var(--dm-muted);
+    font-size: 12px;
+  }
+
+  /* =========================
+     SECTION
+  ========================= */
+
+  .dm-return-section {
+    margin-bottom: 18px;
+    padding: 29px;
+
+    background: var(--dm-card);
+    border: 1px solid var(--dm-border);
+    border-radius: 20px;
+
+    box-shadow: 0 6px 25px rgba(60, 40, 30, .045);
+  }
+
+  .dm-return-section-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .dm-return-number {
+    flex: 0 0 38px;
+
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 11px;
+
+    background: var(--dm-accent-light);
+    color: var(--dm-accent-dark);
+
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .dm-return-section h2 {
+    margin: 0 0 5px;
+
+    color: var(--brand-heading);
+
+    font-family: var(--body-font);
+    font-size: 23px;
+    font-weight: 500;
+  }
+
+  .dm-return-intro {
+    margin: 0;
+    color: var(--dm-muted);
+    font-size: 13px;
+  }
+
+  /* =========================
+     POLICY GRID
+  ========================= */
+
+  .dm-return-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .dm-return-card {
+    padding: 22px;
+
+    border: 1px solid var(--dm-border);
+    border-radius: 16px;
+
+    background: #fcfaf9;
+  }
+
+  .dm-return-card.accent {
+    background:
+      linear-gradient(
+        145deg,
+        #fff2f5 0%,
+        #fffaf8 100%
+      );
+
+    border-color: var(--brand-border);
+  }
+
+  .dm-return-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    margin: 0 0 10px;
+
+    color: var(--brand-heading);
+    font-size: 16px;
+  }
+
+  .dm-return-card h3 svg {
+    width: 18px;
+    height: 18px;
+    color: var(--dm-accent-dark);
+  }
+
+  .dm-return-card p {
+    margin: 0;
+
+    color: var(--brand-text);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* =========================
+     LIST
+  ========================= */
+
+  .dm-return-list {
+    display: grid;
+    gap: 11px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  .dm-return-list li {
+    position: relative;
+
+    padding-left: 29px;
+
+    color: var(--brand-text);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .dm-return-list li::before {
+    content: "✓";
+
+    position: absolute;
+    left: 0;
+    top: 1px;
+
+    width: 19px;
+    height: 19px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: #e9f0e6;
+    color: var(--dm-green);
+
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* =========================
+     NOTICE
+  ========================= */
+
+  .dm-return-notice {
+    display: flex;
+    gap: 14px;
+
+    padding: 18px;
+
+    border: 1px solid #eadfd6;
+    border-radius: 14px;
+
+    background: #fcf8f4;
+  }
+
+  .dm-return-notice.warning {
+    background: #fff8ef;
+  }
+
+  .dm-return-notice-icon {
+    flex: 0 0 38px;
+
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid #eadbd2;
+    border-radius: 10px;
+
+    background: #fff;
+    color: var(--dm-accent-dark);
+  }
+
+  .dm-return-notice-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .dm-return-notice strong {
+    display: block;
+    margin-bottom: 5px;
+
+    color: var(--brand-heading);
+    font-size: 14px;
+  }
+
+  .dm-return-notice p {
+    margin: 0;
+
+    color: var(--dm-muted);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  /* =========================
+     EXCHANGE FLOW
+  ========================= */
+
+  .dm-exchange-flow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    position: relative;
+
+    margin-top: 26px;
+  }
+
+  .dm-exchange-flow::before {
+    content: "";
+
+    position: absolute;
+    top: 20px;
+    left: 12%;
+    right: 12%;
+
+    height: 1px;
+
+    background: #e4d9d2;
+  }
+
+  .dm-flow-step {
+    position: relative;
+    z-index: 1;
+
+    text-align: center;
+  }
+
+  .dm-flow-icon {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    margin: 0 auto 13px;
+
+    border: 1px solid #dfc9cd;
+    border-radius: 50%;
+
+    background: #fff;
+    color: var(--dm-accent-dark);
+
+    box-shadow: 0 3px 10px rgba(90, 50, 60, .05);
+  }
+
+  .dm-flow-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .dm-flow-step strong {
+    display: block;
+    margin-bottom: 5px;
+
+    color: var(--brand-heading);
+    font-size: 13px;
+  }
+
+  .dm-flow-step span {
+    color: var(--dm-muted);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  /* =========================
+     TIME BADGE
+  ========================= */
+
+  .dm-time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-top: 18px;
+    padding: 9px 13px;
+
+    border: 1px solid var(--brand-border);
+    border-radius: 30px;
+
+    background: #f9eaf0;
+    color: var(--dm-accent-dark);
+
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .dm-time-badge svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  /* =========================
+     INTERNATIONAL
+  ========================= */
+
+  .dm-international {
+    display: flex;
+    gap: 16px;
+
+    padding: 22px;
+
+    border: 1px solid #e4d8ce;
+    border-radius: 16px;
+
+    background:
+      linear-gradient(
+        135deg,
+        #f8f0ea 0%,
+        #fffaf7 100%
+      );
+  }
+
+  .dm-international-icon {
+    flex: 0 0 45px;
+
+    width: 45px;
+    height: 45px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid #e8ddd6;
+    border-radius: 12px;
+
+    background: #fff;
+    color: var(--dm-accent-dark);
+  }
+
+  .dm-international-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .dm-international h3 {
+    margin: 0 0 7px;
+
+    color: var(--brand-heading);
+    font-size: 15px;
+  }
+
+  .dm-international p {
+    margin: 0;
+
+    color: var(--dm-muted);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* =========================
+     SUPPORT
+  ========================= */
+
+  .dm-return-support {
+    position: relative;
+    overflow: hidden;
+
+    margin-top: 24px;
+    padding: 40px 36px;
+
+    border-radius: 22px;
+
+    color: #fff;
+
+    background:
+      radial-gradient(
+        circle at 90% 15%,
+        rgba(255,255,255,.16),
+        transparent 30%
+      ),
+      linear-gradient(
+        135deg,
+        var(--brand-accent) 0%,
+        var(--brand-accent) 50%,
+        var(--brand-accent) 100%
+      );
+
+    box-shadow: 0 12px 35px rgba(140, 60, 85, .18);
+  }
+
+  .dm-return-support::after {
+    content: "";
+
+    position: absolute;
+
+    width: 200px;
+    height: 200px;
+
+    right: -70px;
+    bottom: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.08);
+  }
+
+  .dm-return-support h2 {
+    position: relative;
+    z-index: 1;
+
+    margin: 0 0 8px;
+
+    color: #fff;
+
+    font-family: var(--body-font);
+    font-size: 28px;
+    font-weight: 500;
+  }
+
+  .dm-return-support > p {
+    position: relative;
+    z-index: 1;
+
+    max-width: 650px;
+
+    margin: 0 0 22px;
+
+    color: rgba(255,255,255,.90);
+
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .dm-return-contact {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .dm-return-contact a,
+  .dm-return-contact span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 14px;
+
+    border: 1px solid rgba(255,255,255,.30);
+    border-radius: 30px;
+
+    color: #fff;
+    text-decoration: none;
+
+    background: rgba(255,255,255,.12);
+
+    font-size: 12px;
+
+    transition: all .2s ease;
+  }
+
+  .dm-return-contact a:hover {
+    background: rgba(255,255,255,.22);
+    border-color: rgba(255,255,255,.50);
+    transform: translateY(-1px);
+  }
+
+  .dm-return-contact svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  /* =========================
+     FOOTER
+  ========================= */
+
+  .dm-return-footer {
+    padding: 22px 10px 5px;
+
+    text-align: center;
+
+    color: var(--brand-text);
+
+    font-family: var(--body-font);
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  /* =========================
+     MOBILE
+  ========================= */
+
+  @media (max-width: 700px) {
+
+    .dm-return {
+      margin: 25px auto;
+      padding: 0 14px;
+    }
+
+    .dm-return-hero {
+      padding: 36px 25px;
+      border-radius: 20px;
+    }
+
+    .dm-return-hero h1 {
+      font-size: 36px;
+    }
+
+    .dm-return-hero p {
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .dm-return-highlights {
+      grid-template-columns: 1fr;
+    }
+
+    .dm-return-section {
+      padding: 22px 18px;
+      border-radius: 17px;
+    }
+
+    .dm-return-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .dm-exchange-flow {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    .dm-exchange-flow::before {
+      display: none;
+    }
+
+    .dm-flow-step {
+      display: grid;
+
+      grid-template-columns: 45px 1fr;
+
+      text-align: left;
+      align-items: center;
+
+      column-gap: 12px;
+    }
+
+    .dm-flow-icon {
+      grid-row: span 2;
+      margin: 0;
+    }
+
+    .dm-return-support {
+      padding: 30px 22px;
+      border-radius: 20px;
+    }
+
+    .dm-return-contact {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .dm-return-contact a,
+    .dm-return-contact span {
+      justify-content: center;
+    }
+
+    .dm-international {
+      padding: 18px;
+    }
+  }
+</style>
+
+
+<div class="dm-return">
+
+  <!-- HERO -->
+  <section class="dm-return-hero">
+
+    <div class="dm-return-eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M4 7h16"/>
+        <path d="M6 7l1 14h10l1-14"/>
+        <path d="M9 7V4h6v3"/>
+        <path d="M9 11v6M15 11v6"/>
+      </svg>
+      Dunamiss Care
+    </div>
+
+    <h1>Returns &amp; Exchanges</h1>
+
+    <p>
+      Shopping should feel effortless. We've made returns and exchanges
+      just as smooth. Because your experience matters as much as
+      your skincare.
+    </p>
+
+  </section>
+
+
+  <!-- QUICK HIGHLIGHTS -->
+  <div class="dm-return-highlights">
+
+    <div class="dm-return-highlight">
+
+      <div class="dm-return-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+          <path d="M20 12a8 8 0 1 1-2.3-5.7"/>
+          <path d="M20 4v8h-8"/>
+        </svg>
+      </div>
+
+      <div>
+        <strong>Easy Resolution</strong>
+        <span>We're here to help</span>
+      </div>
+
+    </div>
+
+
+    <div class="dm-return-highlight">
+
+      <div class="dm-return-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 8v4l3 2"/>
+        </svg>
+      </div>
+
+      <div>
+        <strong>Quick Reporting</strong>
+        <span>Report issues promptly</span>
+      </div>
+
+    </div>
+
+
+    <div class="dm-return-highlight">
+
+      <div class="dm-return-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+          <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/>
+          <path d="M8.5 12l2.2 2.2 4.8-5"/>
+        </svg>
+      </div>
+
+      <div>
+        <strong>Quality Verified</strong>
+        <span>Every request is reviewed</span>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- GENERAL POLICY -->
+  <section class="dm-return-section">
+
+    <div class="dm-return-section-head">
+      <div class="dm-return-number">01</div>
+
+      <div>
+        <h2>General Policy</h2>
+        <p class="dm-return-intro">
+          Your satisfaction is at the heart of everything we do.
+        </p>
+      </div>
+    </div>
+
+    <div class="dm-return-grid">
+
+      <div class="dm-return-card accent">
+
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+            <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/>
+            <path d="M8.5 12l2.2 2.2 4.8-5"/>
+          </svg>
+          Hygiene &amp; Safety
+        </h3>
+
+        <p>
+          For hygiene and safety reasons, opened or used products
+          cannot be returned or exchanged.
+        </p>
+
+      </div>
+
+
+      <div class="dm-return-card">
+
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+            <path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3z"/>
+            <path d="M9 8h6M9 12h6M9 16h3"/>
+          </svg>
+          Original Condition
+        </h3>
+
+        <p>
+          Eligible products must be unused, unopened, and in their
+          original packaging.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <div class="dm-return-notice"><p><strong>Request deadline:</strong> Eligible return and exchange requests must be reported within 48 hours of delivery, with a clear unboxing video for verification.</p><p><strong>Sale products:</strong> Products purchased on sale are not eligible for return or exchange.</p></div>
+
+  <!-- BEFORE YOU REACH OUT -->
+  <section class="dm-return-section">
+
+    <div class="dm-return-section-head">
+      <div class="dm-return-number">02</div>
+
+      <div>
+        <h2>Before You Reach Out</h2>
+        <p class="dm-return-intro">
+          A few simple steps can make the process smoother.
+        </p>
+      </div>
+    </div>
+
+    <ul class="dm-return-list">
+
+      <li>Inspect your order as soon as it arrives.</li>
+
+      <li>
+        Dunamiss is not responsible for damage caused after
+        successful delivery.
+      </li>
+
+      <li>
+        Keep your order and packaging intact until you've checked
+        everything.
+      </li>
+
+    </ul>
+
+  </section>
+
+
+  <!-- EXCHANGE POLICY -->
+  <section class="dm-return-section">
+
+    <div class="dm-return-section-head">
+      <div class="dm-return-number">03</div>
+
+      <div>
+        <h2>Exchange Policy</h2>
+        <p class="dm-return-intro">
+          Received a damaged or incorrect product? We'll gladly help.
+        </p>
+      </div>
+    </div>
+
+    <div class="dm-return-notice">
+
+      <div class="dm-return-notice-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+          <path d="M20 12a8 8 0 1 1-2.3-5.7"/>
+          <path d="M20 4v8h-8"/>
+        </svg>
+      </div>
+
+      <div>
+        <strong>Exchange requests require verification.</strong>
+
+        <p>
+          Report your request within 48 hours of delivery.
+          A clear unboxing video is mandatory for verification.
+          Products must be unused and untampered with.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="dm-exchange-flow">
+
+      <div class="dm-flow-step">
+
+        <div class="dm-flow-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+            <path d="M12 20V10"/>
+            <path d="M8 14l4-4 4 4"/>
+            <path d="M5 4h14"/>
+          </svg>
+        </div>
+
+        <strong>1. Report</strong>
+        <span>Contact us with your request.</span>
+
+      </div>
+
+
+      <div class="dm-flow-step">
+
+        <div class="dm-flow-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+            <circle cx="11" cy="11" r="6"/>
+            <path d="M16 16l5 5"/>
+            <path d="M9 11l1.5 1.5L14 9"/>
+          </svg>
+        </div>
+
+        <strong>2. Verification</strong>
+        <span>Our quality team reviews the case.</span>
+
+      </div>
+
+
+      <div class="dm-flow-step">
+
+        <div class="dm-flow-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+            <path d="M3 12h17"/>
+            <path d="M15 6l6 6-6 6"/>
+          </svg>
+        </div>
+
+        <strong>3. Resolution</strong>
+        <span>Approved exchanges are processed.</span>
+
+      </div>
+
+    </div>
+
+
+    <div class="dm-time-badge">
+
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 7v5l3 2"/>
+      </svg>
+
+      Processing time: 7–21 business days
+
+    </div>
+
+  </section>
+
+
+  <!-- EXCHANGE ELIGIBILITY -->
+  <section class="dm-return-section">
+
+    <div class="dm-return-section-head">
+      <div class="dm-return-number">04</div>
+
+      <div>
+        <h2>Exchange Eligibility</h2>
+        <p class="dm-return-intro">
+          Your request may be eligible when the following conditions are met.
+        </p>
+      </div>
+    </div>
+
+
+    <ul class="dm-return-list">
+
+      <li>The product arrived damaged or incorrect.</li>
+
+      <li>You contact us within 48 hours of delivery.</li>
+      <li>The product was not purchased on sale.</li>
+
+      <li>Our quality team successfully verifies your request.</li>
+
+    </ul>
+
+
+    <div class="dm-return-notice" style="margin-top:20px;">
+
+      <div class="dm-return-notice-icon">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 8v5"/>
+          <circle cx="12" cy="16.5" r=".7" fill="currentColor"/>
+        </svg>
+
+      </div>
+
+      <div>
+
+        <strong>Important</strong>
+
+        <p>
+          All exchange requests are subject to approval after verification.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- RETURN POLICY -->
+  <section class="dm-return-section">
+
+    <div class="dm-return-section-head">
+      <div class="dm-return-number">05</div>
+
+      <div>
+        <h2>Return Policy</h2>
+        <p class="dm-return-intro">
+          Returns are accepted only when the following conditions apply.
+        </p>
+      </div>
+    </div>
+
+
+    <ul class="dm-return-list">
+
+      <li>The product arrived damaged.</li>
+
+      <li>Items are missing from your order.</li>
+
+      <li>
+        The product remains unopened, unused, and in its original condition.
+      </li>
+
+      <li>Return requests are raised within 48 hours of delivery.</li>
+      <li>The product was not purchased on sale.</li>
+      <li>A clear unboxing video is provided for verification.</li>
+
+    </ul>
+
+  </section>
+
+
+  <!-- INTERNATIONAL ORDERS -->
+  <section class="dm-return-section">
+
+    <div class="dm-return-section-head">
+      <div class="dm-return-number">06</div>
+
+      <div>
+        <h2>International Orders</h2>
+        <p class="dm-return-intro">
+          Special conditions apply to international shipments.
+        </p>
+      </div>
+    </div>
+
+
+    <div class="dm-international">
+
+      <div class="dm-international-icon">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M3 12h18"/>
+          <path d="M12 3c2.3 2.5 3.5 5.5 3.5 9s-1.2 6.5-3.5 9c-2.3-2.5-3.5-5.5-3.5-9S9.7 5.5 12 3z"/>
+        </svg>
+
+      </div>
+
+      <div>
+
+        <h3>International Return &amp; Exchange Notice</h3>
+
+        <p>
+          Returns and exchanges are currently unavailable for international
+          orders. In exceptional cases, unused or transit-damaged products
+          may be reviewed individually. Any international return or exchange
+          shipping costs must be borne by the customer.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SUPPORT -->
+  <section class="dm-return-support">
+
+    <h2>Need Help?</h2>
+
+    <p>
+      We're always here for you. Reach out to our support team
+      and we'll be happy to assist with your request.
+    </p>
+
+
+    <div class="dm-return-contact">
+
+      <a href="mailto:care@dunamiss.in">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <path d="M3 7l9 6 9-6"/>
+        </svg>
+
+        care@dunamiss.in
+
+      </a>
+
+
+      <a href="https://wa.me/919516656907" aria-label="Message Dunamiss on WhatsApp">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+          <path d="M6 3l4 2-2 4c1.3 2.7 3.3 4.7 6 6l4-2 2 4-2 3c-7 1-14-6-13-13L6 3z"/>
+        </svg>
+
+        WhatsApp: +91 95166 56907
+
+      </a>
+
+
+      <span>
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 7v5l3 2"/>
+        </svg>
+
+        Every day · 10 AM–6 PM IST
+
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <div class="dm-return-footer">
+    Because luxury isn't just about great skincare — it's about great service too.
+  </div>
+
+</div>

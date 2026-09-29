@@ -1,0 +1,16 @@
+/* Homepage section padding: paired 24px edges on desktop, capped at 16px on mobile. */
+.home-apps-spacing { padding-block: 24px; }
+@media (max-width: 767px) {
+  body.index #MainContent > .shopify-section > .section {
+    padding-top: min(calc(var(--section-pt, 24) * 1px), 16px);
+    padding-bottom: min(calc(var(--section-pb, 24) * 1px), 16px);
+  }
+  body.index #MainContent .dm-reviews {
+    padding-top: min(var(--reviews-top, 24px), 16px);
+    padding-bottom: min(var(--reviews-bottom, 24px), 16px);
+  }
+  .home-apps-spacing { padding-block: 16px; }
+}
+
+/* Keep collection labels comfortable to activate on touch screens. */
+.collection-item__name { display: inline-flex; align-items: center; min-height: 24px; }

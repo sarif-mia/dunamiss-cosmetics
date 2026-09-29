@@ -1,0 +1,1001 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    .dunamiss-contact-container{
+        width:90%;
+        max-width:1350px;
+        margin:auto;
+    }
+    
+    
+    /*==============================
+        HERO
+    ==============================*/
+    
+    .dunamiss-contact-hero{
+        background:var(--brand-ivory);
+        padding:90px 0;
+        text-align:center;
+    }
+    
+    .dunamiss-contact-hero h1{
+        font-family: var(--body-font);
+        font-size:72px;
+        font-weight:400;
+        margin-bottom:10px;
+        color:var(--brand-ink);
+    }
+    
+    .dunamiss-contact-hero p{
+        max-width:760px;
+        margin:auto;
+        font-size:19px;
+        color:var(--brand-muted);
+        line-height:1.9;
+    }
+    
+    
+    /*==============================
+        CONTACT
+    ==============================*/
+    
+    .dunamiss-contact-contact-section{
+        padding:80px 0;
+    }
+    
+    .dunamiss-contact-contact-grid{
+        display:grid;
+        grid-template-columns:360px 1fr;
+        gap:40px;
+        align-items:start;
+    }
+    
+    
+    /*==============================
+        SUPPORT CARD
+    ==============================*/
+    
+    .dunamiss-contact-support-card{
+        background:var(--brand-rose);
+        color:var(--color-white);
+        padding:40px 35px;
+        border-radius:8px;
+    }
+    
+    .dunamiss-contact-support-card h2{
+        font-family: var(--body-font);
+        font-size: 33px;
+        font-weight:400;
+        margin-bottom:15px;
+        margin-top: 0;
+        color:var(--color-white);
+    }
+    
+    .dunamiss-contact-support-card p{
+        font-size:14px;
+        opacity:.95;
+        margin-bottom:20px;
+        line-height:1.8;
+    }
+    
+    .dunamiss-contact-support-item{
+        display:flex;
+        align-items:flex-start;
+        gap:18px;
+        margin-bottom:20px;
+    }
+    
+    .dunamiss-contact-support-item i{
+        width:22px;
+        font-size:18px;
+        margin-top:4px;
+    }
+    
+    .dunamiss-contact-support-item span{
+        font-size:14px;
+        line-height:1.8;
+    }
+
+    .dunamiss-contact-support-item a{
+        color:var(--color-white);
+        font-weight:600;
+        text-decoration:underline;
+        text-underline-offset:3px;
+    }
+    
+    .dunamiss-contact-social-icons{
+        margin-top:35px;
+        display:flex;
+        gap:15px;
+    }
+    
+    .dunamiss-contact-social-icons a{
+        width:50px;
+        height:50px;
+        border:1px solid rgba(255,255,255,.5);
+        border-radius:50%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        transition:.3s;
+        text-decoration:none;
+    }
+    
+    .dunamiss-contact-social-icons a i{
+        font-size:22px;
+    }
+    
+    .dunamiss-contact-social-icons a:hover{
+        background:var(--color-white);
+        color:var(--brand-rose);
+    }
+    
+    
+    /*==============================
+        FORM
+    ==============================*/
+    
+    .dunamiss-contact-contact-form h2{
+        font-family: var(--body-font);
+        font-size:56px;
+        font-weight:400;
+        margin-bottom:12px;
+        margin-top:10px;
+    }
+    
+    .dunamiss-contact-contact-form p{
+        color:var(--brand-muted);
+        margin-bottom:30px;
+        line-height:1.8;
+        font-size:14px;
+    }
+    
+    .dunamiss-contact-row{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:25px;
+        margin-bottom:25px;
+    }
+    
+    .dunamiss-contact-contact-form input{
+        width:100%;
+        height:60px;
+        border:1px solid var(--brand-rose);
+        padding:0 18px;
+        font-size:14px;
+        transition:.3s;
+        border-radius: 5px;
+    }
+    
+    .dunamiss-contact-contact-form textarea{
+        width:100%;
+        height:140px;
+        border:1px solid var(--brand-rose);
+        padding:18px;
+        font-size:14px;
+        margin-bottom:22px;
+        transition:.3s;
+        border-radius: 5px;
+    }
+    
+    .dunamiss-contact-contact-form input:focus,
+    .dunamiss-contact-contact-form textarea:focus{
+        border-color:var(--brand-blush);
+    }
+    
+    .dunamiss-contact-checkbox{
+        display:flex;
+        align-items:center;
+        gap:10px;
+        margin-bottom:28px;
+        font-size:14px;
+        color:var(--brand-muted);
+    }
+    
+    .dunamiss-contact-checkbox input{
+        width:16px;
+        height:16px;
+    }
+    
+    .dunamiss-contact-checkbox a{
+        color:var(--brand-rose);
+    }
+    
+    .dunamiss-contact-contact-form button{
+        width:100%;
+        height:60px;
+        border:none;
+        background:var(--brand-rose);
+        color:var(--color-white);
+        letter-spacing:2px;
+        font-size:14px;
+        cursor:pointer;
+        transition:.3s;
+        border-radius: 5px;
+    }
+    
+    .dunamiss-contact-contact-form button:hover{
+        background:var(--brand-ink);
+    }
+    /*====================================
+        LOCATION SECTION
+    ====================================*/
+    
+    .dunamiss-contact-location{
+        padding:80px 0;
+    }
+    
+    .dunamiss-contact-location-grid{
+        display:grid;
+        grid-template-columns:480px 1fr;
+        gap:40px;
+        align-items:center;
+        background:var(--brand-blush);
+        border-radius:8px;
+        overflow:hidden;
+    }
+    
+    .dunamiss-contact-location-content{
+        padding:60px 35px;
+    }
+    
+    .dunamiss-contact-location-content h2{
+        font-family: var(--body-font);
+        font-size:45px;
+        line-height:1.1;
+        font-weight:400;
+        margin-bottom:35px;
+        color:var(--brand-ink);
+    }
+    
+    .dunamiss-contact-location-content h4{
+        font-size:32px;
+        font-family: var(--body-font);
+        font-weight:500;
+        margin-bottom:18px;
+        color:var(--brand-ink);
+    }
+    
+    .dunamiss-contact-location-content p{
+        color:var(--brand-muted);
+        font-size:14px;
+        line-height:1.8;
+    }
+    
+    .dunamiss-contact-map{
+        width:100%;
+        height:100%;
+    }
+    
+    .dunamiss-contact-map img{
+        width:100%;
+        height:100%;
+        min-height:420px;
+        object-fit:cover;
+    }
+    
+    
+    /*====================================
+        FAQ
+    ====================================*/
+    
+    .dunamiss-contact-faq{
+        padding:110px 0;
+    }
+    
+    .dunamiss-contact-faq h2{
+        font-family: var(--body-font);
+        font-size:64px;
+        text-align:center;
+        font-weight:400;
+        margin-bottom:70px;
+        color:var(--brand-ink);
+    }
+    
+    .dunamiss-contact-faq-item{
+        border-bottom:1px solid var(--color-border);
+        margin-bottom: 25px;
+    }
+    
+    .dunamiss-contact-faq-question{
+        width:100%;
+        background:var(--brand-blush);
+        border:none;
+        padding:22px 35px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        text-align: left;
+        cursor:pointer;
+        font-size:26px;
+        font-family: var(--body-font);
+        color:var(--brand-ink);
+        transition:.3s;
+    }
+    
+    .dunamiss-contact-faq-question:hover{
+        background:var(--brand-ivory);
+    }
+    
+    .dunamiss-contact-faq-question i{
+        font-size:22px;
+        color:var(--brand-muted);
+        transition:.35s ease;
+    }
+    
+    .dunamiss-contact-faq-answer{
+        max-height:0;
+        overflow:hidden;
+        transition:max-height .35s ease;
+        background:var(--color-white);
+    }
+    
+    .dunamiss-contact-faq-answer p{
+        padding:30px;
+        font-size:14px;
+        color:var(--brand-muted);
+        line-height:1.8;
+    }
+    
+    
+    /* Accordion Active */
+    
+    .dunamiss-contact-faq-item.active .faq-answer{
+        max-height:250px;
+    }
+    
+    .dunamiss-contact-faq-item.active .faq-question i{
+        transform:rotate(45deg);
+        color:var(--brand-rose);
+    }
+    
+    .dunamiss-contact-faq-item.active .faq-question{
+        color:var(--brand-rose);
+    }
+    /*====================================
+        BADGES SECTION
+    ====================================*/
+    
+    .dunamiss-contact-badges{
+        padding:100px 0;
+        background:var(--brand-ivory);
+    }
+    
+    .dunamiss-contact-badges h2{
+        max-width:900px;
+        margin:0 auto 70px;
+        text-align:center;
+        font-family: var(--body-font);
+        font-size:58px;
+        font-weight:400;
+        line-height:1.25;
+        color:var(--brand-ink);
+    }
+    
+    .dunamiss-contact-badge-wrapper{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:35px;
+        flex-wrap:wrap;
+    }
+    
+    .dunamiss-contact-badge-wrapper img{
+        width:140px;
+        height:140px;
+        object-fit:contain;
+        transition:.3s ease;
+    }
+    
+    .dunamiss-contact-badge-wrapper img:hover{
+        transform:translateY(-8px);
+    }
+    
+    
+    /*====================================
+        RESPONSIVE
+    ====================================*/
+    
+    /* Large Devices */
+    
+    @media (max-width:1200px){
+    
+        .dunamiss-contact-hero h1{
+            font-size:60px;
+        }
+    
+        .dunamiss-contact-contact-form h2{
+            font-size:48px;
+        }
+    
+        .dunamiss-contact-faq h2{
+            font-size:54px;
+        }
+    
+        .dunamiss-contact-badges h2{
+            font-size:48px;
+        }
+    
+        .dunamiss-contact-location-content h2{
+            font-size:48px;
+        }
+    
+    }
+    
+    
+    /* Tablet */
+    
+    @media (max-width:992px){
+    
+        .dunamiss-contact-hero{
+            padding:70px 0;
+        }
+    
+        .dunamiss-contact-hero h1{
+            font-size:52px;
+        }
+    
+        .dunamiss-contact-hero p{
+            font-size:17px;
+        }
+    
+        .dunamiss-contact-contact-grid{
+            grid-template-columns:1fr;
+        }
+    
+        .dunamiss-contact-support-card{
+            order:2;
+        }
+    
+        .dunamiss-contact-contact-form{
+            order:1;
+        }
+    
+        .dunamiss-contact-location-grid{
+            grid-template-columns:1fr;
+        }
+    
+        .dunamiss-contact-location-content{
+            padding:50px 35px;
+        }
+    
+        .dunamiss-contact-map img{
+            min-height:350px;
+        }
+    
+        .dunamiss-contact-faq h2{
+            font-size:48px;
+        }
+    
+        .dunamiss-contact-faq-question{
+            font-size:22px;
+            padding:24px 25px;
+        }
+    
+        .dunamiss-contact-faq-answer p{
+            padding:0 25px 25px;
+        }
+    
+        .dunamiss-contact-badges h2{
+            font-size:42px;
+        }
+    
+    }
+    
+    
+    /* Mobile */
+    
+    @media (max-width:768px){
+    
+        .dunamiss-contact-container{
+            width:92%;
+        }
+    
+        .dunamiss-contact-hero{
+            padding:60px 0;
+        }
+    
+        .dunamiss-contact-hero h1{
+            font-size:42px;
+        }
+    
+        .dunamiss-contact-hero p{
+            font-size:16px;
+        }
+    
+        .dunamiss-contact-contact-section,
+        .dunamiss-contact-location,
+        .dunamiss-contact-faq,
+        .dunamiss-contact-badges{
+            padding:70px 0;
+        }
+    
+        .dunamiss-contact-contact-form h2{
+            font-size:40px;
+        }
+    
+        .dunamiss-contact-row{
+            grid-template-columns:1fr;
+            gap:20px;
+        }
+    
+        .dunamiss-contact-contact-form input{
+            height:55px;
+        }
+    
+        .dunamiss-contact-contact-form textarea{
+            height:150px;
+        }
+    
+        .dunamiss-contact-support-card{
+            padding:35px 25px;
+        }
+    
+        .dunamiss-contact-support-card h2{
+            font-size:34px;
+        }
+    
+        .dunamiss-contact-location-content{
+            padding:40px 25px;
+        }
+    
+        .dunamiss-contact-location-content h2{
+            font-size:42px;
+        }
+    
+        .dunamiss-contact-location-content h4{
+            font-size:26px;
+        }
+    
+        .dunamiss-contact-faq h2{
+            font-size:38px;
+            margin-bottom:45px;
+        }
+    
+        .dunamiss-contact-faq-question{
+            font-size:18px;
+            padding:22px 20px;
+        }
+    
+        .dunamiss-contact-faq-question i{
+            font-size:18px;
+        }
+    
+        .dunamiss-contact-faq-answer p{
+            padding:0 20px 22px;
+            font-size:15px;
+        }
+    
+        .dunamiss-contact-badges h2{
+            font-size:34px;
+            margin-bottom:45px;
+        }
+    
+        .dunamiss-contact-badge-wrapper{
+            gap:20px;
+        }
+    
+        .dunamiss-contact-badge-wrapper img{
+            width:100px;
+            height:100px;
+        }
+    
+    }
+    
+    
+    /* Small Mobile */
+    
+    @media (max-width:480px){
+    
+        .dunamiss-contact-hero h1{
+            font-size:34px;
+        }
+    
+        .dunamiss-contact-hero p{
+            font-size:15px;
+        }
+    
+        .dunamiss-contact-contact-form h2{
+            font-size:34px;
+        }
+    
+        .dunamiss-contact-support-card h2{
+            font-size:30px;
+        }
+    
+        .dunamiss-contact-location-content h2{
+            font-size:34px;
+        }
+    
+        .dunamiss-contact-location-content h4{
+            font-size:22px;
+        }
+    
+        .dunamiss-contact-faq h2{
+            font-size:30px;
+        }
+    
+        .dunamiss-contact-faq-question{
+            font-size:16px;
+            padding:18px;
+        }
+    
+        .dunamiss-contact-faq-answer p{
+            font-size:14px;
+        }
+    
+        .dunamiss-contact-badges h2{
+            font-size:28px;
+            line-height:1.4;
+        }
+    
+        .dunamiss-contact-badge-wrapper img{
+            width:80px;
+            height:80px;
+        }
+    
+        .dunamiss-contact-social-icons{
+            justify-content:flex-start;
+            flex-wrap:wrap;
+        }
+    
+    }
+</style>
+
+
+<!-- =========================
+            HERO SECTION
+    ========================== -->
+
+<section class="dunamiss-contact-hero">
+
+    <div class="dunamiss-contact-container">
+
+        <h1>Have a question?</h1>
+
+        <p>
+            Please contact us using the customer support channels below. Please drop us a text on our WhatsApp and we'd get back to you. Not available on calls.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+        CONTACT SECTION
+    ========================== -->
+
+<section class="dunamiss-contact-contact-section">
+
+    <div class="dunamiss-contact-container dunamiss-contact-contact-grid">
+
+        <!-- Left -->
+
+        <div class="dunamiss-contact-support-card">
+
+            <h2>Customer Support</h2>
+
+            <p>
+                Have a question? Please contact us using the customer support channels.
+            </p>
+
+
+            <div class="dunamiss-contact-support-item">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <span>
+                        7207, Bougainvillea St,
+                        Block C2,
+                        DLF Phase IV,
+                        Sector 43,
+                        Gurugram,
+                        Haryana 122009
+                    </span>
+
+            </div>
+
+
+
+            <div class="dunamiss-contact-support-item">
+
+                <i class="fa-regular fa-clock"></i>
+
+                <span>
+                        Opening hours:
+                        Every day
+                        10 AM–6 PM IST
+                    </span>
+
+            </div>
+
+
+
+            <div class="dunamiss-contact-support-item">
+
+                <i class="fa-solid fa-phone"></i>
+
+                <span>
+                        <a href="https://wa.me/919516656907">WhatsApp: +91 95166 56907</a>
+                    </span>
+
+            </div>
+            <div class="dunamiss-contact-support-item">
+
+                <i class="fa-regular fa-envelope"></i>
+
+                <span>
+                        Email:
+                        <a href="mailto:care@dunamiss.in">care@dunamiss.in</a>
+                    </span>
+
+            </div>
+
+            <div class="dunamiss-contact-social-icons">
+
+                <a href="https://www.facebook.com/profile.php?id=61552254965408" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="https://www.youtube.com/@dunamisscosmetics/" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+
+                <a href="https://www.instagram.com/dunamisscosmetics" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Right -->
+
+        <div class="dunamiss-contact-contact-form">
+
+            <h2>Get in touch</h2>
+            <p>
+                Please submit all general enquiries in the contact form below and we look forward to hearing from you soon.
+            </p>
+
+            {% form 'contact', id: 'dunamiss-contact-form', class: 'dunamiss-contact-contact-form' %}
+
+                {% if form.posted_successfully? %}
+                    <p class="success" style="margin-bottom: 20px; color: #137f24;">Thanks for contacting us. We will get back to you shortly.</p>
+                {% else %}
+                    {{ form.errors | default_errors }}
+                {% endif %}
+
+                <div class="dunamiss-contact-row">
+
+                    <input type="email" name="contact[email]" value="{{ form.email }}" placeholder="Your Email" required>
+
+                    <input type="text" name="contact[name]" value="{{ form.name }}" placeholder="Your name" required>
+                </div>
+                <textarea name="contact[body]" placeholder="Enter please your message" required>{{ form.body }}</textarea>
+
+                <label class="dunamiss-contact-checkbox">
+
+                    <input type="checkbox" name="contact[agree]">
+
+                    <span>
+                            I agree to the
+                            <a href="/pages/privacy-policy">Privacy Policy</a>
+                            of the website.
+                        </span>
+
+                </label>
+
+                <div id="shopify-captcha" data-captcha-sitekey="{{ 'Shopify.Captcha.siteKey' | t }}" style="margin-bottom: 22px;"></div>
+
+                <button type="submit">
+                    SUBMIT
+                </button>
+            {% endform %}
+
+            <script src="https://cdn.shopify.com/shopifycloud/storefront-common/js/storefront-common.js" defer></script>
+        </div>
+    </div>
+</section>
+<!-- =========================
+        LOCATION
+    ========================== -->
+
+<section class="dunamiss-contact-location">
+
+    <div class="dunamiss-contact-container dunamiss-contact-location-grid">
+
+        <div class="dunamiss-contact-location-content">
+
+            <h2>
+                    Our Office Location
+                </h2>
+
+            <h4>Gurugram, Haryana</h4>
+
+            <p>
+                7207, Bougainvillea St, Block C2, DLF Phase IV, Sector 43, Gurugram, Haryana 122009
+            </p>
+
+        </div>
+
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.627551472567!2d77.08400447549445!3d28.46064177575905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18c4a21e4983%3A0xaf7aeda1533b4cb0!2s7207%2C%20Bougainvillea%20St%2C%20Block%20C2%2C%20DLF%20Phase%20IV%2C%20Sector%2043%2C%20Gurugram%2C%20Haryana%20122009%2C%20India!5e0!3m2!1sen!2sbd!4v1784715856462!5m2!1sen!2sbd"
+            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================
+            FAQ
+    ========================== -->
+
+<section class="dunamiss-contact-faq">
+
+    <div class="dunamiss-contact-container">
+
+        <h2>
+                Frequently Asked Questions
+            </h2>
+
+        <div class="dunamiss-contact-faq-item">
+
+            <button class="dunamiss-contact-faq-question">
+
+                How long does delivery take?
+
+                <i class="fa-solid fa-plus"></i>
+
+            </button>
+
+            <div class="dunamiss-contact-faq-answer">
+
+                <p>
+                    Orders are usually delivered within 3–7 business days.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="dunamiss-contact-faq-item">
+
+            <button class="dunamiss-contact-faq-question">
+
+                Can I return a product for a refund?
+
+                <i class="fa-solid fa-plus"></i>
+
+            </button>
+
+            <div class="dunamiss-contact-faq-answer">
+
+                <p>
+                    Yes. Returns are accepted within the return period if the product meets the return policy.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="dunamiss-contact-faq-item">
+
+            <button class="dunamiss-contact-faq-question">
+
+                How do exchanges work?
+
+                <i class="fa-solid fa-plus"></i>
+
+            </button>
+
+            <div class="dunamiss-contact-faq-answer">
+
+                <p>
+                    Contact support and we'll guide you through the exchange process.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="dunamiss-contact-faq-item">
+
+            <button class="dunamiss-contact-faq-question">
+
+                Can I cancel or change my order after placing it?
+
+                <i class="fa-solid fa-plus"></i>
+
+            </button>
+
+            <div class="dunamiss-contact-faq-answer">
+
+                <p>
+                    Orders can only be modified before shipment.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================
+        BADGES
+    ========================== -->
+
+<section class="dunamiss-contact-badges">
+
+    <div class="dunamiss-contact-container">
+
+        <h2>
+
+                We're clean, we're green,
+                we're sustainable,
+                we're all that you need!
+
+            </h2>
+
+        <div class="dunamiss-contact-badge-wrapper">
+
+            <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/CLINICALLY_TESTED.png?v=1751015670" alt="1" width="140" height="140">
+            <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/SALFATE_PARABEN_FREE.png?v=1751015669" alt="2" width="140" height="140">
+            <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/MADE_IN_INDIA_LOGO.png?v=1752050225" alt="3" width="140" height="140">
+            <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/GMP_LOGO.png?v=1751015670" alt="4" width="140" height="140">
+            <img src="https://dunamiss.in/cdn/shop/files/VEGAN.png?v=1751015669&width=550" alt="5" width="140" height="140">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+    // ==============================
+// FAQ Accordion
+// ==============================
+document.addEventListener("DOMContentLoaded", function () {
+
+    const faqItems = document.querySelectorAll(".dunamiss-contact-faq-item");
+
+    faqItems.forEach((item) => {
+
+        const question = item.querySelector(".dunamiss-contact-faq-question");
+        const answer = item.querySelector(".dunamiss-contact-faq-answer");
+
+        // প্রথমে সব answer hide
+        answer.style.maxHeight = null;
+
+        question.addEventListener("click", function () {
+
+            const isActive = item.classList.contains("active");
+
+            // Close all FAQ
+            faqItems.forEach((faq) => {
+                faq.classList.remove("active");
+                faq.querySelector(".dunamiss-contact-faq-answer").style.maxHeight = null;
+            });
+
+            // Open clicked FAQ
+            if (!isActive) {
+                item.classList.add("active");
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+
+        });
+
+    });
+
+});
+</script>

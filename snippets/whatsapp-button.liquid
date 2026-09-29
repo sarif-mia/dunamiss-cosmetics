@@ -1,0 +1,86 @@
+<style>
+  .whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    z-index: 9;
+  }
+
+  .whatsapp-float .wa-button {
+    background: linear-gradient(145deg, #25d366, #128c7e);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 12px #25d366, 0 0 18px #25d366;
+    animation: pulseGlow 2s infinite;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease;
+  }
+
+  .whatsapp-float .wa-button:hover {
+    transform: scale(1.1);
+  }
+
+  .whatsapp-float .wa-button img {
+    width: 80%;
+    height: auto;
+    filter: brightness(10);
+  }
+
+  @media (max-width: 767.98px) {
+    body:has(sticky-add-cart.sticky_mobile--show.show-sticky-cart) .whatsapp-float {
+      bottom: calc(var(--whatsapp-cart-clearance, 80px) + 16px);
+    }
+  }
+
+  html:is(.open-drawer, .open-search, .nav-open) .whatsapp-float {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  @keyframes pulseGlow {
+    0% {
+      box-shadow: 0 0 5px #25d366;
+    }
+    50% {
+      box-shadow: 0 0 20px #25d366;
+    }
+    100% {
+      box-shadow: 0 0 5px #25d366;
+    }
+  }
+</style>
+
+<div class="whatsapp-float">
+  <a href="https://wa.me/+919516656907" target="_blank" class="wa-button" aria-label="WhatsApp Chat">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/icons8-whatsapp-48.png?v=1752414796"
+      alt="WhatsApp"
+      width="48"
+      height="48"
+      loading="lazy"
+    >
+  </a>
+</div>
+
+{% if request.page_type == 'product' %}
+  <script>
+    (() => {
+      const cart = document.querySelector('sticky-add-cart.sticky_mobile--show');
+      if (!cart) return;
+      const measure = () => {
+        const bottom = parseFloat(getComputedStyle(cart).bottom) || 0;
+        document.documentElement.style.setProperty(
+          '--whatsapp-cart-clearance', `${cart.offsetHeight + Math.max(0, bottom)}px`
+        );
+      };
+      measure();
+      if (window.ResizeObserver) new ResizeObserver(measure).observe(cart);
+      window.addEventListener('resize', measure, { passive: true });
+    })();
+  </script>
+{% endif %}

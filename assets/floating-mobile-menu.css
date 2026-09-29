@@ -1,0 +1,173 @@
+@media screen and (max-width: 1024px) {
+  .section-header-custom-floating .header__menu .navigation.mobile {
+    --color-heading: var(--brand-heading);
+    --color-text: var(--brand-text);
+    --color-border: var(--brand-border);
+    width: min(400px, calc(100vw - 24px));
+    max-width: 100%;
+    background: var(--brand-background);
+    border-radius: 0 22px 22px 0;
+    box-shadow: 12px 0 48px rgb(53 38 44 / 14%);
+    overflow: hidden;
+  }
+
+  .section-header-custom-floating .navigation.mobile > .close-menu {
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--brand-border);
+    border-radius: 50%;
+    background: var(--brand-background);
+    z-index: 5;
+  }
+
+  .section-header-custom-floating .navigation.mobile .navigation__menu-content-mobile {
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--brand-border) transparent;
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .section-header-custom-floating .navigation.mobile .menu-mobile-title {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+    min-height: 76px;
+    padding: 14px 72px 14px 24px;
+    background: var(--brand-surface);
+    border-bottom: 1px solid var(--brand-border);
+    gap: 16px;
+  }
+
+  .section-header-custom-floating .navigation.mobile .menu-mobile-title a {
+    color: var(--brand-heading);
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+  }
+
+  .section-header-custom-floating .header__menu .navigation.mobile .horizontal-list {
+    padding: 16px;
+    margin: 0;
+    max-height: none;
+  }
+
+  .section-header-custom-floating .header__menu .navigation.mobile .level0 {
+    z-index: auto;
+    margin: 0 0 4px;
+    border-radius: 12px;
+    transition: background-color 160ms ease;
+  }
+
+  .section-header-custom-floating .header__menu .navigation.mobile .level0:has(> menu-item.is-open) {
+    background: var(--brand-surface);
+  }
+
+  .section-header-custom-floating .header__menu .navigation.mobile .level0 > menu-item {
+    min-height: 52px;
+    padding: 0 14px;
+    border: 0;
+  }
+
+  .section-header-custom-floating .header__menu .navigation.mobile .level0 > menu-item > a {
+    min-height: 52px;
+    padding: 12px 0;
+    margin: 0;
+    color: var(--brand-heading);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .section-header-custom-floating .header__menu .navigation.mobile .level0 > menu-item > a::after {
+    display: none;
+  }
+
+  .section-header-custom-floating .navigation.mobile menu-item > open-children-toggle {
+    min-width: 44px;
+    min-height: 44px;
+    padding-inline-end: 14px;
+    color: var(--brand-accent);
+  }
+
+  .section-header-custom-floating .navigation.mobile menu-item > open-children-toggle svg {
+    transition: transform 160ms ease;
+  }
+
+  .section-header-custom-floating .navigation.mobile menu-item.is-open > open-children-toggle svg {
+    transform: rotate(90deg);
+  }
+
+  /* These are inline accordions; the drawer retains one persistent close control. */
+  .section-header-custom-floating .navigation.mobile :is(.submenu, .sub-children-menu) > .hidden-1025.grey-bg {
+    display: none;
+  }
+
+  .section-header-custom-floating .header__menu .navigation.mobile .submenu-horizontal {
+    margin-top: 0;
+    border-radius: 0;
+    transition: none;
+  }
+
+  .section-header-custom-floating .navigation.mobile .subchildmenu {
+    padding: 0 14px 12px 26px;
+    margin: 0;
+  }
+
+  .section-header-custom-floating .navigation.mobile .subchildmenu menu-item {
+    border: 0;
+    border-inline-start: 1px solid var(--brand-border);
+    padding-inline-start: 14px;
+  }
+
+  .section-header-custom-floating .navigation.mobile .subchildmenu a {
+    min-height: 44px;
+    padding-block: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--brand-text);
+  }
+
+  .section-header-custom-floating .navigation.mobile a:focus-visible,
+  .section-header-custom-floating .navigation.mobile close-menu:focus-visible {
+    outline: 2px solid var(--brand-accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  .section-header-custom-floating .navigation.mobile .level0 > a {
+    margin-top: 8px;
+    padding: 12px 14px;
+    border: 1px solid var(--brand-border);
+    border-radius: 12px;
+    min-height: 48px;
+  }
+
+  .rtl .section-header-custom-floating .header__menu .navigation.mobile {
+    border-radius: 22px 0 0 22px;
+  }
+
+  .rtl .section-header-custom-floating .navigation.mobile > .close-menu {
+    right: auto;
+    left: 16px;
+  }
+
+  .rtl .section-header-custom-floating .navigation.mobile .menu-mobile-title {
+    padding-inline: 24px 72px;
+  }
+
+  .rtl .section-header-custom-floating .navigation.mobile menu-item.is-open > open-children-toggle svg {
+    transform: rotate(-90deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .section-header-custom-floating .navigation.mobile menu-item > open-children-toggle svg,
+    .section-header-custom-floating .header__menu .navigation.mobile .level0 {
+      transition: none;
+    }
+  }
+}

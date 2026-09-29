@@ -1,0 +1,148 @@
+<style>
+.dunamiss-benefits-section {
+  padding:10px 0;
+  background: #fff;
+}
+
+.dunamiss-benefits-container {
+  width: min(100%, 1080px);
+  margin: 0 auto;
+}
+
+.dunamiss-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  background: #f9f7f5;
+  border: 1px solid var(--brand-border);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.dunamiss-benefits-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 5px 10px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(17, 17, 17, 0.04);
+}
+
+.dunamiss-benefits-image {
+  width: 35px;
+  height: 35px;
+  min-width: 35px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #f1ede9;
+}
+
+.dunamiss-benefits-image img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.dunamiss-benefits-item h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: #111111;
+}
+
+@media (max-width: 860px) {
+  .dunamiss-benefits-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .dunamiss-benefits-section {
+    padding: 20px 0;
+  }
+
+  .dunamiss-benefits-grid {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .dunamiss-benefits-item {
+    gap: 12px;
+    padding: 5px 14px;
+  }
+
+  .dunamiss-benefits-image {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
+  .dunamiss-benefits-image img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .dunamiss-benefits-item h3 {
+    font-size: 1.3rem;
+  }
+}
+</style>
+
+{% assign benefit_keys = '1,2,3,4' | split: ',' %}
+{% assign show_benefits = false %}
+{% if product != nil and product.metafields.custom != blank %}
+  {% for i in benefit_keys %}
+    {% assign image_key = 'benefit_' | append: i | append: '_image' %}
+    {% assign text_key = 'benefit_' | append: i | append: '_text' %}
+    {% assign benefit_image = product.metafields.custom[image_key] %}
+    {% assign benefit_text = product.metafields.custom[text_key] %}
+    {% if benefit_image != blank or benefit_text != blank %}
+      {% assign show_benefits = true %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if show_benefits %}
+<section class="dunamiss-benefits-section">
+
+    <div class="dunamiss-benefits-container">
+
+          <div class="dunamiss-benefits-grid">
+
+            {% for i in benefit_keys %}
+                {% assign benefit_image = blank %}
+                {% assign benefit_text = blank %}
+
+                {% if product != nil and product.metafields.custom != blank %}
+                    {% assign image_key = 'benefit_' | append: i | append: '_image' %}
+                    {% assign text_key = 'benefit_' | append: i | append: '_text' %}
+                    {% assign benefit_image = product.metafields.custom[image_key] %}
+                    {% assign benefit_text = product.metafields.custom[text_key] %}
+                {% endif %}
+
+                {% if benefit_image != blank or benefit_text != blank %}
+                  <div class="dunamiss-benefits-item">
+
+                      {% if benefit_image != blank %}
+                        <div class="dunamiss-benefits-image">
+                            <img src="{{ benefit_image | image_url: width: 300 }}" alt="{{ benefit_text | default: 'Benefit ' | append: i | escape }}" width="{{ benefit_image.width | default: 300 }}" height="{{ benefit_image.height | default: 300 }}" loading="lazy">
+                        </div>
+                      {% endif %}
+
+                      <h3>
+                          {{ benefit_text }}
+                      </h3>
+
+                  </div>
+                {% endif %}
+            {% endfor %}
+
+          </div>
+
+    </div>
+
+</section>
+{% endif %}

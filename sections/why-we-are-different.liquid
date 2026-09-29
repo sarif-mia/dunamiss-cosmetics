@@ -1,0 +1,232 @@
+{% if template == 'index' %}
+<section class="duna-why-different">
+  {% if section.settings.section_heading != blank %}
+    <h2 class="duna-diff-heading">{{ section.settings.section_heading }}</h2>
+  {% endif %}
+
+  <div class="duna-diff-wrapper">
+    {% for block in section.blocks %}
+    <div class="duna-diff-item">
+      <div class="duna-mobile-header">
+        <span class="duna-header-text">{{ block.settings.text_default }}</span>
+        <span class="duna-toggle-icon">+</span>
+      </div>
+
+      {% if block.settings.overlay_position == 'top' %}
+        <div
+          class="duna-text-overlay"
+          style="background-color: {{ block.settings.bg_color }};"
+        >
+          <div class="duna-text-default">{{ block.settings.text_default }}</div>
+          <div class="duna-text-hover">{{ block.settings.text_hover }}</div>
+        </div>
+      {% endif %}
+
+      {% if block.settings.image %}
+        <img
+          class="duna-image"
+          src="{{ block.settings.image | image_url: width: 600 }}"
+          alt="{{ block.settings.text_default | escape }}"
+          width="{{ block.settings.image.width }}"
+          height="{{ block.settings.image.height }}"
+          loading="lazy"
+        >
+      {% endif %}
+
+      {% if block.settings.overlay_position == 'bottom' %}
+        <div
+          class="duna-text-overlay"
+          style="background-color: {{ block.settings.bg_color }};"
+        >
+          <div class="duna-text-default">{{ block.settings.text_default }}</div>
+          <div class="duna-text-hover">{{ block.settings.text_hover }}</div>
+        </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+.duna-why-different {
+  text-align: center;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.duna-diff-heading {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.duna-diff-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.duna-diff-item {
+  flex: 1 1 calc(25% - 20px);
+  max-width: calc(25% - 20px);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.duna-image {
+  width: 100%;
+  display: block;
+  border-radius:10px;
+}
+
+.duna-text-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  color: #fff;
+  text-align: center;
+  transition: 0.3s;
+  font-size: 16px;
+  font-family: var(--body-font);
+}
+
+.duna-text-overlay.top {
+  top: 0;
+  bottom: auto;
+}
+
+.duna-text-hover {
+  display: none;
+}
+
+.duna-mobile-header {
+  display: none;
+}
+
+.duna-diff-item:hover .duna-text-default {
+  display: none;
+}
+.duna-diff-item:hover .duna-text-hover {
+  display: block;
+}
+
+/* Mobile Accordion View */
+@media (max-width: 768px) {
+  .duna-diff-wrapper {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .duna-diff-item {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .duna-text-overlay {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .duna-text-overlay.top {
+    top: 0;
+    bottom: auto;
+  }
+
+  .duna-image {
+    display: none;
+  }
+
+  .duna-mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f3f3f3;
+    padding: 10px;
+    font-weight: bold;
+  }
+
+  .duna-toggle-icon {
+    transition: transform 0.3s;
+  }
+
+  .duna-diff-item.active .duna-image,
+  .duna-diff-item.active .duna-text-overlay {
+    display: block;
+  }
+
+  .duna-diff-item.active .duna-text-default {
+    display: none;
+  }
+
+  .duna-diff-item.active .duna-text-hover {
+    display: block;
+  }
+
+  .duna-diff-item.active .duna-toggle-icon {
+    transform: rotate(45deg);
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const items = document.querySelectorAll('.duna-diff-item');
+
+  items.forEach(item => {
+    const header = item.querySelector('.duna-mobile-header');
+    header.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        item.classList.toggle('active');
+      }
+    });
+  });
+});
+</script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Why We’re Different",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "Why We’re Different"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "diff_block",
+      "name": "Block",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "text_default", "label": "Default Text" },
+        { "type": "text", "id": "text_hover", "label": "Hover / Mobile Text" },
+        { "type": "color", "id": "bg_color", "label": "Overlay Background Color", "default": "#000000" },
+        {
+          "type": "select",
+          "id": "overlay_position",
+          "label": "Overlay Position",
+          "default": "bottom",
+          "options": [
+            { "value": "bottom", "label": "Below Image" },
+            { "value": "top", "label": "Above Image" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Why We’re Different" }
+  ]
+}
+{% endschema %}

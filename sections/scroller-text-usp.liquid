@@ -1,0 +1,119 @@
+<section class="duna-scroller-section">
+  <!-- Row 1: Right to Left -->
+  <div class="duna-scroller-row duna-scroller-left">
+    <div class="duna-scroller-track">
+      {% for i in (1..2) %}
+        {% for block in section.blocks %}
+          <span class="duna-scroller-item" style="background-color: {{ block.settings.bg_color }};">
+            {{ block.settings.text }}
+          </span>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Row 2: Left to Right -->
+  <div class="duna-scroller-row duna-scroller-right">
+    <div class="duna-scroller-track">
+      {% for i in (1..2) %}
+        {% for block in section.blocks %}
+          <span class="duna-scroller-item" style="background-color: {{ block.settings.bg_color }};">
+            {{ block.settings.text }}
+          </span>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+.duna-scroller-section {
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.duna-scroller-row {
+  overflow: hidden;
+  width: 100%;
+  margin: 12px 0;
+}
+
+.duna-scroller-track {
+  display: inline-flex;
+  animation: duna-scroll-left 25s linear infinite;
+}
+
+.duna-scroller-right .duna-scroller-track {
+  animation: duna-scroll-right 25s linear infinite;
+}
+
+.duna-scroller-item {
+  display: inline-block;
+  margin: 0 12px;
+  padding: 6px 18px;
+  border-radius: 50px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+/* ✅ Hover effect (scale only, no glow) */
+.duna-scroller-item:hover {
+  transform: scale(1.08);
+  border-radius: 0;
+}
+
+/* ✅ Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .duna-scroller-item {
+    margin: 0 6px;
+    padding: 6px 14px;
+    font-size: 12px;
+    border-radius: 20px;
+  }
+}
+
+/* Continuous Loop Animations */
+@keyframes duna-scroll-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes duna-scroll-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Scroller Text",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Tag",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "YOUR USP"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "#f4a261"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scroller Text"
+    }
+  ]
+}
+{% endschema %}

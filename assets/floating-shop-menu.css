@@ -1,0 +1,73 @@
+.dm-shop-nav { display: none; }
+/* Keep navigation metrics stable from first paint, independent of web-font loading. */
+body .section-header-custom-floating .header__menu {
+  --heading-font: Arial, Helvetica, sans-serif;
+  --body-font: Arial, Helvetica, sans-serif;
+  --menu-font: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body .section-header-custom-floating .header__menu :is(a, summary, button) {
+  font-family: Arial, Helvetica, sans-serif;
+}
+body .section-header-custom-floating .header__menu .level0 > menu-item > a,
+body .section-header-custom-floating .dm-shop-menu > summary {
+  font-weight: 600;
+  line-height: 1.2;
+}
+@media (min-width: 1025px) {
+  body .section-header-custom-floating .header__menu { position: static; align-items: center; justify-content: center; flex-wrap: nowrap; column-gap: 12px; margin-left: 0; }
+  .section-header-custom-floating .header__menu > .dm-shop-nav { width: auto; flex: 0 0 auto; }
+  .section-header-custom-floating .header__menu > nav.navigation { width: auto; flex: 0 1 auto; min-width: 0; }
+  .section-header-custom-floating .header__menu > nav.navigation .horizontal-list { margin-block: 0; }
+  .dm-shop-nav { display: flex; align-items: center; gap: 28px; font-size: 14px; }
+  .dm-shop-nav a { text-decoration: none; color: var(--brand-heading, #1a1a1a); }
+  .dm-shop-menu > summary { cursor: pointer; list-style: none; padding: 4px 6px; font-size: 1.4rem; line-height: 1.2; color: var(--brand-heading); transition: color 0.2s ease; }
+  .dm-shop-menu > summary::-webkit-details-marker { display: none; }
+  .dm-shop-menu > summary { display: inline-flex; align-items: center; gap: 8px; }
+  .dm-shop-chevron { display: block; flex: 0 0 10px; }
+  .dm-shop-panel { position: absolute; top: calc(100% + 6px); inset-inline: 0; width: min(100%, 1080px); margin-inline: auto; box-sizing: border-box; display: grid; grid-template-columns: minmax(0, 1fr) 210px; align-items: start; gap: 24px; padding: 2.5rem 3rem; max-height: min(560px, 72vh); overflow-y: auto; background: var(--color-background, #fff); border: 0; border-radius: 16px; box-shadow: var(--shadow); z-index: 50; }
+  .dm-shop-menu:not([open]) > .dm-shop-panel { display: none; }
+  .dm-shop-columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .dm-shop-group + .dm-shop-group { margin-top: 16px; }
+  .dm-shop-heading { display: inline-block; font-weight: 600; margin-bottom: 5px; }
+  .dm-shop-column ul { list-style: none; margin: 0; padding: 0; }
+  .dm-shop-column ul ul { padding-inline-start: 12px; }
+  .dm-shop-column li a { display: inline-block; padding-block: 5px; line-height: 1.5; font-size: var(--body-font-size, 14px); color: var(--color-text, #333); }
+  .dm-shop-nav a:hover { color: var(--color-link-hover, #75465c); }
+  .dm-shop-nav :focus-visible { outline: 2px solid var(--brand-accent, #75465c); outline-offset: 3px; }
+  .dm-shop-promo { align-self: start; display: block; background: transparent; }
+  .dm-shop-promo img, .dm-shop-promo > svg { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
+  .dm-shop-promo > span { display: block; padding: 12px 0 0; background: transparent; font-size: 13px; line-height: 1.5; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+}
+
+@media (min-width: 1025px) {
+  .dm-shop-column { min-width: 0; }
+  .dm-shop-column + .dm-shop-column { border-inline-start: 1px solid var(--brand-border, #eadbe0); padding-inline-start: 16px; }
+  .dm-shop-column a { overflow-wrap: anywhere; }
+  .dm-shop-heading { font-size: 13px; line-height: 1.5; }
+}
+
+@media (min-width: 1025px) and (prefers-reduced-motion: no-preference) {
+  .dm-shop-menu[open] > .dm-shop-panel { animation: dm-shop-dropdown-in .25s ease; }
+}
+@keyframes dm-shop-dropdown-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Reserve navigation rows before web fonts arrive; avoid moving the homepage hero. */
+@media (min-width: 1025px) {
+  body .section-header-custom-floating .header__menu .level0 > menu-item > a,
+  .dm-shop-menu > summary { font-size: 13px; }
+  body .section-header-custom-floating .header__menu > nav.navigation:not(.mobile) .horizontal-list {
+    display: grid;
+    grid-template-columns: repeat(6, max-content);
+    justify-content: center;
+  }
+}
+@media (min-width: 1400px) {
+  body .section-header-custom-floating .header__menu > nav.navigation:not(.mobile) .horizontal-list {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+}

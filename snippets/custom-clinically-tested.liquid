@@ -1,0 +1,197 @@
+<style>
+/* ========== CERTIFIED QUALITY ASSURANCE SECTION ========== */
+.clinically-tested-certified-quality-section {
+    padding: 20px 0;
+    background-color: #fff;
+    text-align: left;
+    overflow: hidden;
+}
+
+.clinically-badge{
+    display:inline-block;
+    margin: 0;
+    background-color: var(--brand-border, #eadbe0);
+    color: var(--brand-accent, #75465c);
+    border: 1px solid var(--brand-accent, #75465c);
+    border-radius: 4px;
+    padding: 0.75rem 1.15rem;
+    font-size: 14px;
+    font-family: var(--body-font);
+    font-weight: 600;
+    line-height: 1.4;
+}
+.clinically-tested-certificates-carousel {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    position: relative;
+}
+.clinically-tested-title-arrow{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.clinically-tested-carousel-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.clinically-tested-carousel-btn {
+    width: 42px;
+    height: 42px;
+    border: 1px solid #d6d6d6;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    color: #1a1a1a;
+    transition: all 0.2s ease;
+}
+
+.clinically-tested-carousel-btn:hover {
+    background: #f3f3f3;
+}
+
+.clinically-tested-certificates-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 24px;
+    align-items: stretch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 8px;
+}
+
+.clinically-tested-certificates-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.clinically-tested-certificate-item {
+    text-align: center;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    padding-bottom: 16px;
+    flex: 0 0 calc(24.8% - 16px);
+    scroll-snap-align: start;
+    border-radius: 8px;
+}
+
+.clinically-tested-certificate-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--brand-accent);
+}
+
+.clinically-tested-certificate-item h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+    padding: 0 8px;
+}
+
+@media(max-width:991px){
+   .clinically-tested-certificate-item {
+    flex: 0 0 calc(50% - 16px);
+   }
+   .clinically-tested-certified-quality-section {
+	padding: 20px 0px;
+   }
+}
+</style>
+<!-- CERTIFIED QUALITY ASSURANCE SECTION -->
+    <section class="clinically-tested-certified-quality-section">
+        <div class="clinically-tested-content">
+            <div class="clinically-tested-certificates-carousel">
+                <div class="clinically-tested-title-arrow" >
+                    <h2 class="clinically-badge">
+                    Clinically tested
+                    </h2>
+                    <div class="clinically-tested-carousel-controls" aria-label="Certificate carousel controls">
+                        <button type="button" class="clinically-tested-carousel-btn prev-btn" aria-label="Previous certificates">
+                            <svg class="icon icon-prev" width="16" height="16" aria-hidden="true"><use href="#icon-back"></use></svg>
+                        </button>
+                        <button type="button" class="clinically-tested-carousel-btn next-btn" aria-label="Next certificates">
+                            <svg class="icon icon-next" width="16" height="16" aria-hidden="true"><use href="#icon-next"></use></svg>
+                        </button>
+                    </div>                   
+                </div>    
+                <div class="clinically-tested-certificates-grid" id="clinically-tested-certificatesGrid">
+                    <div class="clinically-tested-certificate-item">
+                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/LIP_BALM_CERTIFICATE.jpg?v=1748238114" alt="Lip Balm Certification" width="250" height="350">
+                    </div>
+                    <div class="clinically-tested-certificate-item">
+                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/CERTIFICATE_SHEET_MASK.jpg?v=1750227236" alt="Sheet Mask Certification" width="250" height="350">
+                    </div>
+                    <div class="clinically-tested-certificate-item">
+                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/TESTED_IN_INDIA.jpg?v=1784529809" alt="Production Certification" width="250" height="350">
+                    </div>
+                    <div class="clinically-tested-certificate-item">
+                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/On-Site_Inspection_Zurko.jpg?v=1784529846" alt="On-Site Inspection" width="250" height="350">
+                    </div>
+                    <div class="clinically-tested-certificate-item">
+                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Hazel_Glitter_Certification.png?v=1784537161" alt="Hazel Glitter Certification" width="250" height="350">
+                    </div>
+                    <div class="clinically-tested-certificate-item">
+                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Eye_Balm_Certification.png?v=1784537161" alt="Eye Balm Certification" width="250" height="350">
+                    </div>
+                     <div class="clinically-tested-certificate-item">
+                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Sunscreen_Certification.png?v=1784537160" alt="Sunscreen Certification" width="250" height="350">
+                    </div>
+                    <div class="clinically-tested-certificate-item">
+                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Lip_Oil_Certification.png?v=1784537159" alt="Lip Oil" width="250" height="350">
+                    </div>
+                    <div class="clinically-tested-certificate-item">
+                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Am_Cream__Certification.png?v=1784537160" alt="AM Cream Certification" width="250" height="350">
+                    </div>
+                    <div class="clinically-tested-certificate-item">
+                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Mocka_Kiss_Certification.png?v=1784537160" alt="Mocha Kiss" width="250" height="350">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<script>
+/* certificate Sections Dunamiss */
+document.addEventListener('DOMContentLoaded', function () {
+    const grid = document.getElementById('clinically-tested-certificatesGrid');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    if (!grid || !prevBtn || !nextBtn) return;
+
+    const getScrollAmount = () => {
+        const firstCard = grid.querySelector('.clinically-tested-certificate-item');
+        if (!firstCard) return 0;
+        // add gap value consistent with CSS gap
+        return Math.round(firstCard.getBoundingClientRect().width + 24);
+    };
+
+    const scrollCards = (direction) => {
+        const amount = getScrollAmount();
+        const currentLeft = grid.scrollLeft;
+        const targetLeft = direction === 'next'
+            ? currentLeft + amount
+            : currentLeft - amount;
+
+        grid.scrollTo({ left: targetLeft, behavior: 'smooth' });
+    };
+
+    prevBtn.addEventListener('click', function () {
+        scrollCards('prev');
+    });
+
+    nextBtn.addEventListener('click', function () {
+        scrollCards('next');
+    });
+});
+</script>

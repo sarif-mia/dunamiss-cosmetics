@@ -1,0 +1,95 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement_bar_kKdQKm": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_JieKBC": {
+          "type": "announcement",
+          "settings": {
+            "text": "<a href=\"/collections/eye-balm\">INDIA'S FIRST<em><strong> EYE BALM</strong></em> IS HERE</a>",
+            "countdown_deadline": ""
+          }
+        },
+        "announcement_WKYmca": {
+          "type": "announcement",
+          "settings": {
+            "text": "<a href=\"/collections/tinted-lip-balm\">SPF Tinted Lip Balms at just 999</a>",
+            "countdown_deadline": ""
+          }
+        },
+        "announcement_QQCQA9": {
+          "type": "announcement",
+          "settings": {
+            "text": "<a href=\"/pages/discount-offer\">Free Surprise Gift Awaits You at <strong>₹299</strong></a>",
+            "countdown_deadline": ""
+          }
+        },
+        "announcement_Bxw8HJ": {
+          "type": "announcement",
+          "settings": {
+            "text": "<a href=\"/collections/shop-all\">💄 LOVE. SHOP. REPEAT.</a>",
+            "countdown_deadline": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_JieKBC",
+        "announcement_WKYmca",
+        "announcement_QQCQA9",
+        "announcement_Bxw8HJ"
+      ],
+      "custom_css": [],
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "scheme-25660921-1026-4593-945d-081d88dda9ec",
+        "announcement_actions": "slide",
+        "show_close": true,
+        "homepage_only": true,
+        "show_mobile": true,
+        "show_separator_line": false,
+        "uppercase": true,
+        "font_size": 12,
+        "font_weight": "body_weight",
+        "speed": 15,
+        "space_between": 50,
+        "icon_between_item": "none",
+        "change_every": 5,
+        "padding_top": 5,
+        "padding_bottom": 5
+      }
+    },
+    "custom_floating_header_yj6gPi": {
+      "type": "custom-floating-header",
+      "name": "Custom floating header",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "logo_position": "left",
+        "transparent_header": false,
+        "mega_menu": "main-menu",
+        "show_search": true,
+        "show_account_icon": true,
+        "show_recently_viewed": false,
+        "show_wishlist_icon": false,
+        "show_shopping_cart": true,
+        "show_currency": false,
+        "show_language": false
+      }
+    }
+  },
+  "order": [
+    "announcement_bar_kKdQKm",
+    "custom_floating_header_yj6gPi"
+  ]
+}

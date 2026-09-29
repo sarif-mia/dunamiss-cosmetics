@@ -1,0 +1,138 @@
+<style>
+  .extra-gallery-wrapper {
+    margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .extra-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+  }
+
+  .extra-gallery-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .extra-gallery-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .extra-gallery-title-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--brand-border, #eadbe0);
+    border: 1px solid var(--brand-accent, #75465c);
+    padding: 0.75rem 1.15rem;
+    border-radius: 4px;
+  }
+
+  .extra-gallery-heading {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+    text-align: left;
+    color: var(--brand-accent, #75465c);
+    font-family: var(--body-font);
+  }
+
+  .extra-gallery-subtitle {
+    font-size: 1.4rem;
+    color: #666666;
+    margin: 0;
+    text-align: right;
+    font-weight: 400;
+    font-family: var(--body-font);
+  }
+
+  @media (max-width: 767px) {
+    .extra-gallery-wrapper {
+      padding: 1px 0 20px;
+      margin-top: -3.5rem;
+    }
+
+    .extra-gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas:
+        "img1 img1"
+        "img2 img3"
+        "img4 img4";
+      gap: 10px;
+    }
+
+    .extra-gallery-subtitle {
+      display: none;
+    }
+
+    .extra-gallery-item:nth-child(1) {
+      grid-area: img1;
+    }
+
+    .extra-gallery-item:nth-child(2) {
+      grid-area: img2;
+    }
+
+    .extra-gallery-item:nth-child(3) {
+      grid-area: img3;
+    }
+
+    .extra-gallery-item:nth-child(4) {
+      grid-area: img4;
+    }
+  }
+</style>
+
+{% assign images = product.metafields.custom.extra_gallery_images.value %}
+
+{% if images != blank %}
+<div class="extra-gallery-wrapper">
+  <div class="fluid_container">
+
+    <div class="extra-gallery-header">
+      <div class="extra-gallery-title-badge">
+        <h2 class="extra-gallery-heading">
+          Explore More Looks
+        </h2>
+      </div>
+
+      <p class="extra-gallery-subtitle">
+        Get inspired by these stunning images<br>
+        Working across four pathways for faster, visible results
+      </p>
+    </div>
+
+    <div class="extra-gallery-grid">
+      {% for image in images limit:4 %}
+        <div class="extra-gallery-item">
+          <img
+            src="{{ image | image_url: width: 1200 }}"
+            srcset="
+              {{ image | image_url: width: 400 }} 400w,
+              {{ image | image_url: width: 800 }} 800w,
+              {{ image | image_url: width: 1200 }} 1200w"
+            sizes="(max-width:767px) 100vw, 50vw"
+            alt="{{ image.alt | escape }}"
+            width="{{ image.width }}"
+            height="{{ image.height }}"
+            loading="lazy"
+            class="extra-gallery-image">
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+{% endif %}

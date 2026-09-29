@@ -1,0 +1,90 @@
+{% liquid
+  assign shop_menu = section.settings.shop_menu | default: section.settings.mega_menu
+  assign column_zero = ''
+  assign column_one = ''
+  assign column_two = ''
+  assign height_zero = 0
+  assign height_one = 0
+  assign height_two = 0
+  for category in shop_menu.links
+    assign weight = category.links.size | plus: 2
+    for child in category.links
+      assign weight = weight | plus: child.links.size
+    endfor
+    assign token = forloop.index0 | prepend: '|' | append: '|'
+    if height_zero <= height_one and height_zero <= height_two
+      assign column_zero = column_zero | append: token
+      assign height_zero = height_zero | plus: weight
+    elsif height_one <= height_two
+      assign column_one = column_one | append: token
+      assign height_one = height_one | plus: weight
+    else
+      assign column_two = column_two | append: token
+      assign height_two = height_two | plus: weight
+    endif
+  endfor
+  assign promo_image = section.settings.shop_menu_image
+  if promo_image == blank
+    assign promo_image = collections['shop-all'].products.first.featured_image
+  endif
+%}
+<nav class="dm-shop-nav" aria-label="Shop navigation">
+  <details class="dm-shop-menu">
+    <summary class="{% if settings.menu_font == 'heading_font' %}heading-style{% endif %}">
+      Shop
+      <svg class="dm-shop-chevron" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true" focusable="false">
+        <path fill="currentColor" d="M1.09 1.822a.52.52 0 0 1-.178-.396c0-.164.06-.306.178-.424A.557.557 0 0 1 1.5.838c.164 0 .3.055.41.164L5 4.092l3.09-3.09A.557.557 0 0 1 8.5.838c.164 0 .3.055.41.164.119.118.178.26.178.424a.52.52 0 0 1-.178.396l-3.5 3.5A.535.535 0 0 1 5 5.5c-.164 0-.3-.06-.41-.178l-3.5-3.5Z"/>
+      </svg>
+    </summary>
+    <div class="dm-shop-panel">
+      <div class="dm-shop-columns">
+        {% for column in (0..2) %}
+          {% liquid
+            case column
+              when 0
+                assign column_items = column_zero
+              when 1
+                assign column_items = column_one
+              when 2
+                assign column_items = column_two
+            endcase
+          %}
+          <div class="dm-shop-column">
+            {% for link in shop_menu.links %}
+              {% assign token = forloop.index0 | prepend: '|' | append: '|' %}
+              {% if column_items contains token %}
+                <div class="dm-shop-group">
+                  <a class="dm-shop-heading" href="{{ link.url }}">{{ link.title | escape }}</a>
+                  {% if link.links != blank %}
+                    <ul role="list">
+                      {% for child in link.links %}
+                        <li>
+                          <a href="{{ child.url }}">{{ child.title | escape }}</a>
+                          {% if child.links != blank %}
+                            <ul role="list">
+                              {% for grandchild in child.links %}
+                                <li><a href="{{ grandchild.url }}">{{ grandchild.title | escape }}</a></li>
+                              {% endfor %}
+                            </ul>
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+      <a class="dm-shop-promo" href="{{ section.settings.shop_menu_image_link | default: '/collections/shop-all' }}">
+        {% if promo_image != blank %}
+          {{ promo_image | image_url: width: 720 | image_tag: widths: '240, 360, 540, 720', sizes: '220px', loading: 'lazy', alt: section.settings.shop_menu_image_heading }}
+        {% else %}
+          {{ 'collection-1' | placeholder_svg_tag }}
+        {% endif %}
+        <span>{{ section.settings.shop_menu_image_heading | default: 'Discover your next favourite' | escape }}</span>
+      </a>
+    </div>
+  </details>
+</nav>

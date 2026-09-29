@@ -1,0 +1,99 @@
+<style>
+.sub-collections-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 25px;
+  padding: 20px 0;
+  justify-content: center;
+  align-items: center;
+  -webkit-overflow-scrolling: touch;
+  margin-top:-3rem;
+}
+
+.sub-collection-item {
+  flex: 0 0 auto;
+  text-align: center;
+  width: 150px;
+}
+
+.sub-collection-item img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  border: 3px solid #fff;
+  background-color: #f9f9f9;
+
+  /* glowing effect */
+  box-shadow: 0 0 8px rgba(182, 65, 104, 0.5), 0 0 15px rgba(255,64,129,0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.sub-collection-item h4 {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+  text-align: center;
+}
+
+.sub-collection-item a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.sub-collections-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.sub-collections-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media screen and (max-width: 768px) {
+  .sub-collection-item {
+    width: 115px;
+  }
+
+  .sub-collection-item img {
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 0 4px rgba(255,64,129,0.5), 0 0 8px rgba(255,64,129,0.3);
+  }
+
+  .sub-collection-item h4 {
+    font-size: 1rem;
+  }
+  .sub-collections-scroll {
+    gap: 5px;
+  }
+}
+</style>
+
+{% assign sub_collections = collection.metafields.custom.sub_collections.value %}
+
+{% if sub_collections != blank %}
+<div class="sub-collections-scroll">
+  {% for sub_collection in sub_collections %}
+    {% if sub_collection.image != blank %}
+      <div class="sub-collection-item">
+        {% assign custom_url = sub_collection.metafields.custom.custom_url %}
+        <a href="{{ custom_url | default: '#' }}" target="_blank">
+          <img
+            src="{{ sub_collection.image | image_url: width: 600 }}"
+            alt="{{ sub_collection.title | escape }}"
+            width="300"
+            height="300"
+            loading="lazy"
+          >
+          <h4>{{ sub_collection.title }}</h4>
+        </a>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+{% endif %}

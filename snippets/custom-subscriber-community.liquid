@@ -1,0 +1,130 @@
+<style>
+.discounts-subscribers-section {
+  padding: 0;
+}
+
+.discounts-subscribers-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.discounts-subscribers-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.discounts-subscribers-gallery img {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+}
+
+.discounts-subscribers-card {
+  background: var(--brand-surface);
+  border-radius: 32px;
+  padding: 40px 32px;
+  color: var(--brand-text);
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.discounts-subscribers-card h3 {
+  margin: 0 0 18px;
+  color: var(--brand-text);
+  font-size: clamp(34px, 3.2vw, 50px);
+  line-height: 1.05;
+  font-family: var(--body-font);
+}
+
+.discounts-subscribers-card p {
+  margin: 10px 0 30px;
+  color: var(--brand-text);
+  max-width: 520px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.discounts-subscribers-form {
+  display: grid;
+  gap: 12px;
+}
+
+.discounts-subscribers-form input {
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--brand-border);
+  background: #fff;
+  color: var(--brand-text);
+  outline: none;
+  font-size: 14px;
+}
+
+.discounts-subscribers-form input::placeholder {
+  color: var(--brand-text);
+}
+
+.discounts-subscribers-form button {
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 999px;
+  border: 1px solid #fff;
+  background: var(--brand-accent);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.discounts-subscribers-note {
+  margin: 22px 0 0;
+  color: var(--brand-text);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .discounts-subscribers-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .discounts-subscribers-card {
+    padding: 32px 24px;
+  }
+}
+</style>
+
+<section class="discounts-subscribers-section">
+  <div class="container-fluid">
+    <div class="discounts-subscribers-grid">
+      <div class="discounts-subscribers-gallery">
+        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/EYE_BALM_COMMING_SOON_image_6_jpg.jpg?v=1774847153" alt="image 1" width="800" height="800" loading="lazy" />
+        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/6FABC92F-7444-435E-B092-8DF126D5B0CD.jpg?v=1750091894" alt="image 2" width="800" height="800" loading="lazy" />
+        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Untitled_design_7_56f11543-a563-441b-b425-14e63e3a235a.png?v=1706867912" alt="image 3" width="800" height="800" loading="lazy" />
+        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Untitled_design_-_2026-06-02T134928.959.jpg?v=1780388593" alt="image 4" width="800" height="800" loading="lazy" />
+      </div>
+
+      <div class="discounts-subscribers-card">
+        <h3 class="community-header">Join our community, we have lots to offer</h3>
+        <p>Get the latest scoop straight from our brand. New launches, discounts, exclusive access & more. You’ll get first dibs on everything fresh and fun.</p>
+        <form class="discounts-subscribers-form" method="post" action="/contact#contact_form" accept-charset="UTF-8">
+          <input type="hidden" name="form_type" value="customer" />
+          <input type="hidden" name="utf8" value="✓" />
+          <input type="hidden" name="contact[tags]" value="newsletter" />
+          <input type="email" name="contact[email]" placeholder="Enter Your Email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="discounts-subscribers-note">You can unsubscribe anytime. For more details review our <a href="https://dunamiss.in/pages/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+

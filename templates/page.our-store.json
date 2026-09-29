@@ -1,0 +1,25 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "custom-liquid",
+      "settings": {
+        "section_width": "container",
+        "custom_liquid": "<div class=\"text-center\"><h1>Shop Dunamiss Online</h1><p>We do not currently have a physical retail store. Explore our products online.</p><a class=\"btn-primary inline-flex\" href=\"{{ routes.all_products_collection_url }}\">Shop all products</a><p>Need help? <a href=\"https://wa.me/919516656907\">Message us on WhatsApp</a> or email <a href=\"mailto:care@dunamiss.in\">care@dunamiss.in</a>.</p></div>",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

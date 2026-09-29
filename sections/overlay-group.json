@@ -1,0 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.overlay_group.name",
+  "type": "custom.overlay",
+  "sections": {
+    "before_you_leave_NddErH": {
+      "type": "before-you-leave",
+      "name": "t:sections.before-you-leave.name",
+      "settings": {
+        "show_time": 30,
+        "banner": "shopify://shop_images/EYE_BALM_COMMING_SOON_image_4_jpg.jpg",
+        "sub_heading": "",
+        "content_heading": "",
+        "description": "",
+        "code": "",
+        "color_scheme": "",
+        "recommended_heading": "You may also like...",
+        "collection": "combo-products",
+        "recommended_button_label": "SHOP NOW"
+      }
+    }
+  },
+  "order": [
+    "before_you_leave_NddErH"
+  ]
+}

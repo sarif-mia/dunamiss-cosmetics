@@ -1,0 +1,441 @@
+{%- liquid
+  assign related_items = product.metafields.custom.bought_together
+  if related_items.value != blank
+    assign related_items = related_items.value
+  endif
+-%}
+
+<style>
+  .bought-together-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .bought-together-card {
+    background: var(--color-background-2, #fff);
+    min-height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .bought-together-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    aspect-ratio: 1 / 1;
+  }
+
+  .bought-together-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+
+  .bought-together-image .primary-image {
+    position: relative;
+    z-index: 1;
+  }
+
+  .bought-together-image .secondary-image {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0;
+  }
+
+  .bought-together-card:hover .bought-together-image .primary-image {
+    opacity: 0;
+  }
+
+  .bought-together-card:hover .bought-together-image .secondary-image {
+    opacity: 1;
+  }
+
+  .bought-together-card:hover .bought-together-image img {
+    transform: scale(1.04);
+  }
+
+  .quick-cart-form {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    z-index: 3;
+  }
+
+  .quick-cart-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 8px 14px rgba(0, 0, 0, 0.14);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-foreground, #121212);
+    border: 1px solid rgba(18, 18, 18, 0.08);
+    cursor: pointer;
+    z-index: 5;
+    line-height: 0;
+    flex-shrink: 0;
+    aspect-ratio: 1;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    position: relative;
+  }
+
+  .quick-cart-btn:hover {
+    background: var(--color-primary, #111111);
+    color: var(--color-white, #ffffff);
+    border-color: transparent;
+    box-shadow: 0 10px 18px rgba(17, 17, 17, 0.18);
+    transform: translateY(-2px);
+  }
+
+  .quick-cart-btn svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+    margin: 0 auto;
+    color: inherit;
+    fill: currentColor;
+  }
+
+  .quick-cart-btn .plus-mark {
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    width: 10px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--color-primary, #111111);
+    color: #fff;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.14);
+  }
+
+  .bought-together-info {
+    padding-top: 10px;
+  }
+
+  .product-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-foreground);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    margin-bottom: 6px;
+  }
+
+  .price-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .price {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .compare-price {
+    font-size: 14px;
+    text-decoration: line-through;
+    color:#af0303;
+    opacity: .7;
+  }
+
+  @media (max-width:991px){
+    .bought-together-list{
+      grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+  }
+
+  @media (max-width:767px){
+
+    .bought-together-list{
+      display:flex;
+      overflow-x:auto;
+      gap:10px;
+      scroll-snap-type:x mandatory;
+      padding-bottom:8px;
+    }
+
+    .bought-together-card{
+      min-width:220px;
+      scroll-snap-align:start;
+    }
+
+    .quick-cart-btn{
+      width:36px;
+      height:36px;
+    }
+
+    .quick-cart-btn svg{
+      width:17px;
+      height:17px;
+    }
+
+  }
+
+  @media (max-width: 480px) {
+    .quick-cart-form {
+      right: 10px;
+      bottom: 10px;
+    }
+
+    .quick-cart-btn {
+      width: 32px;
+      height: 32px;
+    }
+
+    .quick-cart-btn svg {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+</style>
+
+{%- if related_items != blank -%}
+
+<div class="bought-together-meta">
+
+  <h3 class="bought-together-heading capitalize mb-12 mt-4">
+    {{ 'products.product.bought_together.text' | t }}
+  </h3>
+
+  <div class="bought-together-list">
+
+    {%- for item in related_items -%}
+
+      {%- liquid
+        assign related_product = blank
+
+        if item.value != blank
+          assign related_product = item.value
+        elsif item != blank and item.id != blank
+          assign related_product = item
+        elsif item != blank
+          assign related_product = all_products[item]
+        endif
+      -%}
+
+      {%- if related_product != blank and related_product.id != blank and related_product.id != product.id -%}
+
+      <div class="bought-together-card p-12">
+
+        <div class="bought-together-image">
+          <a href="{{ related_product.url }}" style="text-decoration:none; display:block;">
+            {% render 'responsive-image',
+              image: related_product.featured_image,
+              image_alt: related_product.title,
+              class:'primary-image w-full h-full aspect-square object-cover'
+            %}
+
+            {% if related_product.media[1] != blank %}
+              {% render 'responsive-image',
+                image: related_product.media[1],
+                image_alt: related_product.title,
+                class:'secondary-image w-full h-full aspect-square object-cover'
+              %}
+            {% endif %}
+          </a>
+
+          <form method="post" action="/cart/add" class="quick-cart-form" data-quick-cart>
+            <input type="hidden" name="id" value="{{ related_product.selected_or_first_available_variant.id }}">
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit" class="quick-cart-btn" aria-label="Quick Add">
+              <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.5 5.5V4.75C4.5 3.23122 5.73122 2 7.25 2C8.76878 2 10 3.23122 10 4.75V5.5H11.5C12.3284 5.5 13 6.17157 13 7V12.5C13 13.3284 12.3284 14 11.5 14H3.5C2.67157 14 2 13.3284 2 12.5V7C2 6.17157 2.67157 5.5 3.5 5.5H4.5ZM6 5.5H8.5V4.75C8.5 4.05964 7.94036 3.5 7.25 3.5C6.55964 3.5 6 4.05964 6 4.75V5.5Z" fill="currentColor"/>
+              </svg>
+              <span class="plus-mark">+</span>
+            </button>
+          </form>
+        </div>
+
+        <div class="bought-together-info">
+          <a href="{{ related_product.url }}" style="text-decoration:none; display:block;">
+            <div class="product-title">
+              {{ related_product.title }}
+            </div>
+
+            {%- assign selected_variant = related_product.selected_or_first_available_variant -%}
+            {%- assign regular_price = selected_variant.price -%}
+            {%- assign compare_price = selected_variant.compare_at_price -%}
+
+            {% if compare_price > regular_price %}
+
+              <div class="price-row">
+
+                <span class="price">
+                  {{ regular_price | money }}
+                </span>
+
+                <span class="compare-price">
+                  {{ compare_price | money }}
+                </span>
+
+              </div>
+
+            {% else %}
+
+              <div class="price">
+                {{ regular_price | money }}
+              </div>
+
+            {% endif %}
+          </a>
+        </div>
+
+      </div>
+
+      {%- endif -%}
+
+    {%- endfor -%}
+
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    function updateCartCounters() {
+      fetch('/cart.js')
+        .then((response) => response.json())
+        .then((cart) => {
+          if (!cart || typeof cart.item_count === 'undefined') return;
+
+          document.querySelectorAll('.cart-count').forEach((element) => {
+            if (element.classList.contains('cart-count-drawer')) {
+              element.innerHTML = `(${cart.item_count})`;
+            } else {
+              element.innerHTML = cart.item_count > 100 ? '~' : cart.item_count;
+            }
+          });
+
+          if (document.querySelector('header-total-price')) {
+            document.querySelector('header-total-price').updateTotal(cart);
+          }
+
+          const freeShipBar = document.querySelector('free-ship-progress-bar');
+          if (freeShipBar && typeof freeShipBar.init === 'function') {
+            freeShipBar.init(cart.items_subtotal_price);
+          }
+        })
+        .catch((error) => {
+          console.warn('Quick add cart refresh failed:', error);
+        });
+    }
+
+    function bindQuickCartForms() {
+      document.querySelectorAll('.quick-cart-form[data-quick-cart]').forEach((form) => {
+        if (form.dataset.bound === 'true') return;
+        form.dataset.bound = 'true';
+
+        form.addEventListener('submit', async function (event) {
+          event.preventDefault();
+
+          const button = form.querySelector('.quick-cart-btn');
+          const idInput = form.querySelector('input[name="id"]');
+          const quantityInput = form.querySelector('input[name="quantity"]');
+          const cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
+
+          if (!button || !idInput) return;
+
+          const variantId = Number(idInput.value);
+          const quantity = Number(quantityInput?.value || 1);
+
+          if (!variantId) return;
+
+          button.setAttribute('disabled', 'disabled');
+          button.classList.add('loading');
+
+          try {
+            const response = await fetch('/cart/add.js', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              },
+              body: JSON.stringify({
+                id: variantId,
+                quantity: quantity,
+                sections: cart && typeof cart.getSectionsToRender === 'function'
+                  ? cart.getSectionsToRender().map((section) => section.id)
+                  : [],
+                sections_url: window.location.pathname
+              })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok || (data && data.errors)) {
+              const errorMessage = data && data.message ? data.message : 'Unable to add item to cart.';
+              throw new Error(errorMessage);
+            }
+
+            updateCartCounters();
+
+            if (cart) {
+              if (typeof cart.getSectionsToRender === 'function') {
+                cart.getSectionsToRender().forEach((section) => {
+                  const sectionNode = document.getElementById(section.id);
+                  if (!sectionNode || !data.sections || !data.sections[section.id]) return;
+
+                  const parsed = new DOMParser().parseFromString(data.sections[section.id], 'text/html');
+                  const content = parsed.querySelector('#minicart-form');
+                  if (content) {
+                    sectionNode.innerHTML = content.innerHTML;
+                  }
+                });
+              }
+
+              if (typeof cart.cartAction === 'function') {
+                cart.cartAction();
+              }
+
+              if (typeof cart.open === 'function') {
+                cart.open();
+              }
+            } else {
+              window.location.href = '/cart';
+            }
+          } catch (error) {
+            console.error('Quick add to cart failed:', error);
+            if (!document.querySelector('cart-notification') && !document.querySelector('cart-drawer')) {
+              window.location.href = '/cart';
+            }
+          } finally {
+            button.removeAttribute('disabled');
+            button.classList.remove('loading');
+          }
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bindQuickCartForms);
+    } else {
+      bindQuickCartForms();
+    }
+
+    document.addEventListener('shopify:section:load', bindQuickCartForms);
+  })();
+</script>
+
+{%- endif -%}

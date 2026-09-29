@@ -1,0 +1,127 @@
+<style>
+  .tested-trusted-button-wrap {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px 10px 10px 0;
+  }
+
+  .tested-trusted-button {
+    display: inline-block;
+    margin: 0;
+    background-color: var(--brand-border, #eadbe0);
+    color: var(--brand-accent, #75465c);
+    border: 1px solid var(--brand-accent, #75465c);
+    border-radius: 4px;
+    padding: 0.75rem 1.15rem;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .custom-icon-blocks {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 20px 15px;
+  }
+
+  .custom-icon-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+  }
+
+  .custom-icon-block img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 768px) {
+    .custom-icon-blocks {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding: 16px 10px;
+    }
+
+    .custom-icon-block {
+      height: 80px;
+    }
+
+    .custom-icon-block img {
+      width: 65px;
+      height: 65px;
+    }
+  }
+</style>
+
+<div class="tested-trusted-button-wrap">
+  <h2 class="tested-trusted-button">Tested and Trusted</h2>
+</div>
+
+<div class="custom-icon-blocks">
+  <div class="custom-icon-block">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/CLINICALLY_TESTED.png?v=1751015670"
+      alt="Clinically Tested"
+      width="70"
+      height="70"
+      loading="lazy"
+    >
+  </div>
+  <div class="custom-icon-block">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/SALFATE_PARABEN_FREE.png?v=1751015669"
+      alt="Paraben Free"
+      width="70"
+      height="70"
+      loading="lazy"
+    >
+  </div>
+  <div class="custom-icon-block">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/CRUELTY_FREE.png?v=1751015670"
+      alt="Cruelty Free & Vegan"
+      width="70"
+      height="70"
+      loading="lazy"
+    >
+  </div>
+  <div class="custom-icon-block">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/MADE_IN_INDIA_LOGO.png?v=1752050225"
+      alt="Made In India"
+      width="70"
+      height="70"
+      loading="lazy"
+    >
+  </div>
+  <div class="custom-icon-block">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/GMP_LOGO.png?v=1751015670"
+      alt="GMP Certified"
+      width="70"
+      height="70"
+      loading="lazy"
+    >
+  </div>
+   <div class="custom-icon-block">
+    <img
+      src="https://dunamiss.in/cdn/shop/files/VEGAN.png?v=1751015669&width=550"
+      alt="GMP Certified"
+      width="70"
+      height="70"
+      loading="lazy"
+    >
+  </div>
+   <div class="custom-icon-block">
+    <img
+      src="https://dunamiss.in/cdn/shop/files/tested_in_spain.png?v=1741773083&width=660"
+      alt="GMP Certified"
+      width="70"
+      height="70"
+      loading="lazy"
+    >
+  </div>
+</div>

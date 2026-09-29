@@ -1,0 +1,29 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "1778148708075ce729": {
+      "type": "apps",
+      "blocks": {
+        "ag_shoppable_video_video_studio_block_aAy878": {
+          "type": "shopify://apps/ag-shoppable-video/blocks/video_studio_block/1216543a-6237-4445-a5f2-61991cd76022",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "ag_shoppable_video_video_studio_block_aAy878"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "1778148708075ce729"
+  ]
+}

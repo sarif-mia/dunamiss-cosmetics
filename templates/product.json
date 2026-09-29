@@ -1,0 +1,397 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "next_prev": true
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title_G6tU8U": {
+          "type": "title",
+          "settings": {
+            "show_vendor": false
+          }
+        },
+        "custom_liquid_TinQzB": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{{ product.metafields.custom.product_subtitle.value }}"
+          }
+        },
+        "review_and_sold_AAbJC9": {
+          "type": "review_and_sold",
+          "settings": {
+            "show_review": true,
+            "show_sold_products": false,
+            "sold": "8,10,12,15,17,22",
+            "hours": "10,12,15,16,18,20,24"
+          }
+        },
+        "price_VJ4N8m": {
+          "type": "price",
+          "settings": {}
+        },
+        "short_description_9BGxVm": {
+          "type": "short_description",
+          "settings": {
+            "excerpt_length": 200
+          }
+        },
+        "custom_liquid_8rKT7x": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'custom-key-benifits' %}"
+          }
+        },
+        "variant_picker_tcCihG": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_type": "swatches",
+            "show_size_guide": false,
+            "size_guide_label": "Size guide",
+            "size_guide_page": ""
+          }
+        },
+        "buy_buttons_LcQGtR": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false,
+            "show_wishlist": false,
+            "show_compare": false
+          }
+        },
+        "pickup_avaiability_cyVydQ": {
+          "type": "pickup_avaiability",
+          "settings": {}
+        },
+        "more_colors_3zmxGq": {
+          "type": "more_colors",
+          "settings": {
+            "heading": "",
+            "image_width": 40
+          }
+        },
+        "custom_liquid_tNaaJj": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'custom-offer-block' %}"
+          }
+        },
+        "collapsible_row_m3g6f8": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Product Description",
+            "content": "{{ product.description }}",
+            "use_product_description": true,
+            "open": false
+          }
+        },
+        "collapsible_row_DA4FUC": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Why Choose Dunamiss",
+            "content": "<p>{{ product.metafields.custom.why_to_choose_dunamiss | metafield_tag }}</p>",
+            "use_product_description": false,
+            "open": false
+          }
+        },
+        "collapsible_row_zUieRM": {
+          "type": "collapsible_row",
+          "disabled": true,
+          "settings": {
+            "heading": "How To Use",
+            "content": "<p>{{ product.metafields.custom.product_description | metafield_tag }}</p>",
+            "use_product_description": false,
+            "open": false
+          }
+        },
+        "collapsible_row_CCD9pD": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Product Key Ingredients",
+            "content": "<p>{{ product.metafields.custom.product_ingredients | metafield_tag }}</p>",
+            "use_product_description": false,
+            "open": false
+          }
+        },
+        "collapsible_row_eLaQpR": {
+          "type": "collapsible_row",
+          "disabled": true,
+          "settings": {
+            "heading": "Return, Refund, and Shipping Policy",
+            "content": "<p><strong>Return &amp; Exchange Policy</strong></p><p>Eligible return or exchange requests must be reported within 48 hours of delivery. Products purchased on sale are not eligible for return or exchange.</p><p>Eligible damaged-delivery requests require a clear unboxing video and verification. Email <a href=\"mailto:care@dunamiss.in\">care@dunamiss.in</a> or message us on <a href=\"https://wa.me/919516656907\">WhatsApp</a>. See our <a href=\"/pages/returns-exchange-policy\">Return &amp; Exchange Policy</a> for full eligibility details.</p><p><strong>Shipping Policy</strong></p><p>Customers are responsible for return shipping unless specified otherwise. For assistance, contact us at +919516656907 or care@dunamiss.in.</p><p><strong>Shipping</strong></p><ul><li>Free shipping available for orders above ₹299 within India.</li><li>Orders dispatched within 24-48 hours.</li><li>Delivery time:Metro cities: 2-5 working days.</li><li>Rest of India: 4-7 working days.</li></ul>",
+            "use_product_description": false,
+            "open": false
+          }
+        },
+        "custom_liquid_3iHhWi": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'custom-icon-features' %}"
+          }
+        },
+        "judge_me_reviews_store_summary_waPN9f": {
+          "type": "shopify://apps/judge-me-reviews/blocks/store_summary/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "data_source": "real",
+            "theme": "expanded",
+            "button_theme_color": "#ffffff",
+            "button_theme_text_color": "#000000",
+            "show_keywords": true,
+            "keywords_visibility": "shown",
+            "show_button": true,
+            "button_visibility": "shown",
+            "alignment": "left",
+            "title_size": "default",
+            "text_size": "default",
+            "corner_styling": "soft",
+            "widget_color": "#ebebeb",
+            "text_color": "#000000",
+            "lighter_text_color": "#787878",
+            "button_color": "#d6afb0",
+            "button_text_color": "#ffffff",
+            "show_sentiment_colors": false,
+            "max_width": 1100,
+            "heading_text": "Customers say",
+            "button_text": "See AI reviews summary"
+          }
+        },
+        "custom_liquid_CKPNUB": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{%render'product-bought-together' %}"
+          }
+        }
+      },
+      "block_order": [
+        "title_G6tU8U",
+        "custom_liquid_TinQzB",
+        "review_and_sold_AAbJC9",
+        "price_VJ4N8m",
+        "short_description_9BGxVm",
+        "custom_liquid_8rKT7x",
+        "variant_picker_tcCihG",
+        "buy_buttons_LcQGtR",
+        "pickup_avaiability_cyVydQ",
+        "more_colors_3zmxGq",
+        "custom_liquid_tNaaJj",
+        "collapsible_row_m3g6f8",
+        "collapsible_row_DA4FUC",
+        "collapsible_row_zUieRM",
+        "collapsible_row_CCD9pD",
+        "collapsible_row_eLaQpR",
+        "custom_liquid_3iHhWi",
+        "judge_me_reviews_store_summary_waPN9f",
+        "custom_liquid_CKPNUB"
+      ],
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "default",
+        "enable_sticky_content_on_desktop": true,
+        "enable_skeleton_loading": false,
+        "desktop_media_width": 55,
+        "desktop_layout": "grid_2_column",
+        "image_zoom": "open_lightbox",
+        "enable_video_looping": true,
+        "enable_video_autoplay": true,
+        "enable_frequently_bought_together": true,
+        "enable_on_desktop": true,
+        "enable_on_mobile": true,
+        "mobile_options": "hidden_thumbnail",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "reset_spacing": false
+      }
+    },
+    "product-set": {
+      "type": "product-set",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "heading": "Combination Styles",
+        "description": "",
+        "header_size": "medium",
+        "header_alignment": "left",
+        "items_per_row": 2,
+        "column_gap": 30,
+        "show_arrow": false,
+        "carousel_pagination": "show_dots",
+        "infinite": false,
+        "autoplay": true,
+        "autorotate_speed": 5,
+        "reveal": false,
+        "items_per_row_mobile": 1,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "reset_spacing": false
+      }
+    },
+    "custom_liquid_gwJkEU": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom_liquid.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "custom_liquid": "{% for tag in product.tags %}\n  {% case tag %}\n\n    {% when 'satin' %}\n      {% render 'custom-inside-science-satin', product: product %}\n\n    {% when 'lipgloss' %}\n      {% render 'custom-inside-science-lipgloss', product: product %}\n\n    {% when 'glimmer' %}\n      {% render 'custom-inside-science-glimmer', product: product %}\n\n{% when 'nailpaints' %}\n      {% render 'custom-inside-science-nailpaints', product: product %}\n\n{% when 'tinted' %}\n      {% render 'custom-inside-science-tinted', product: product %}\n\n{% when 'liquid-lipstick' %}\n      {% render 'custom-inside-science-liquid', product: product %}\n\n{% when 'lip-oil' %}\n      {% render 'custom-inside-science-lipoil', product: product %}\n\n{% when 'kajal' %}\n      {% render 'custom-inside-science-kajal', product: product %}\n\n{% when 'eyebalm' %}\n      {% render 'custom-inside-science-eyebalm', product: product %}\n{% when 'aquasilk' %}\n      {% render 'custom-inside-science-aquasilk', product: product %}\n\n  {% endcase %}\n{% endfor %}",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "reset_spacing": false
+      }
+    },
+    "custom_liquid_PURh7m": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom_liquid.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "custom_liquid": "{% render 'custom-clinically-tested' %}",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "reset_spacing": false
+      }
+    },
+    "1716793714ce89e457": {
+      "type": "apps",
+      "blocks": {
+        "ag_shoppable_video_mp_tiktok_block_AMRChV": {
+          "type": "shopify://apps/ag-shoppable-video/blocks/mp_tiktok_block/1216543a-6237-4445-a5f2-61991cd76022",
+          "settings": {
+            "mp_tiktok_feed_id": "0802-492238"
+          }
+        },
+        "judge_me_reviews_review_widget_KFVR47": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": true,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "ag_shoppable_video_mp_tiktok_block_AMRChV",
+        "judge_me_reviews_review_widget_KFVR47"
+      ],
+      "custom_css": [
+        ".jdgm-review-widget .jdgm-write-rev-link.jdgm-write-rev-link {background: linear-gradient(135deg, #040200 0%, #ee0979 100%); color: #fff; margin-bottom: 10px; border: none;}"
+      ],
+      "settings": {}
+    },
+    "related_products": {
+      "type": "related-products",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "heading": "Recommended for you",
+        "description": "Trending Dunamiss picks our customers are loving  shop your next fave now!",
+        "header_size": "medium",
+        "header_alignment": "left",
+        "items_to_show": 4,
+        "items_per_row": 4,
+        "column_gap": 30,
+        "items_per_row_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "reset_spacing": false
+      }
+    },
+    "faq_mEU3UT": {
+      "type": "faq",
+      "blocks": {
+        "faq_items_38JK4f": {
+          "type": "faq-items",
+          "settings": {
+            "faq_title": "Are there any shipping charges for orders below a certain amount?",
+            "faq_content": "Enjoy Free Shipping on Prepaid Orders! For COD orders, a flat shipping fee of ₹49 applies across India."
+          }
+        },
+        "faq_items_qaeXtA": {
+          "type": "faq-items",
+          "settings": {
+            "faq_title": "How long does it take for my order to be delivered?",
+            "faq_content": "Orders are typically delivered within 3–7 business days, depending on your location."
+          }
+        },
+        "faq_items_AGg4UC": {
+          "type": "faq-items",
+          "settings": {
+            "faq_title": "What payment methods do you accept?",
+            "faq_content": "We accept credit/debit cards, net banking, and mobile wallets."
+          }
+        },
+        "faq_items_tCmxdL": {
+          "type": "faq-items",
+          "settings": {
+            "faq_title": "What is your return and exchange policy?",
+            "faq_content": "Opened or used products are not eligible. Report eligible damaged-delivery requests within 48 hours of delivery with a clear unboxing video for verification. Products purchased on sale are not eligible for return or exchange."
+          }
+        },
+        "faq_items_gXfECB": {
+          "type": "faq-items",
+          "settings": {
+            "faq_title": "What is your brand's purpose?",
+            "faq_content": "To create kind beauty that empowers self-love and supports the skin barrier and the environment."
+          }
+        }
+      },
+      "block_order": [
+        "faq_items_38JK4f",
+        "faq_items_qaeXtA",
+        "faq_items_AGg4UC",
+        "faq_items_tCmxdL",
+        "faq_items_gXfECB"
+      ],
+      "name": "t:sections.faq.presets.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "heading": "Frequently Asked Questions",
+        "description": "",
+        "header_size": "medium",
+        "header_alignment": "left",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "reset_spacing": false
+      }
+    },
+    "custom_liquid_rAwaf3": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom_liquid.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "custom_liquid": "{% render 'custom-subscriber-community' %}",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "reset_spacing": false
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main",
+    "product-set",
+    "custom_liquid_gwJkEU",
+    "custom_liquid_PURh7m",
+    "1716793714ce89e457",
+    "related_products",
+    "faq_mEU3UT",
+    "custom_liquid_rAwaf3"
+  ]
+}

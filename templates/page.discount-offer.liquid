@@ -1,0 +1,507 @@
+
+    <style>
+      .discounts-hero,
+      .discounts-section,
+      .discounts-subscriber-section {
+        --bg: var(--brand-ivory);
+        --text: var(--brand-ink);
+        --muted: var(--brand-muted);
+        --accent: var(--brand-rose);
+        --accent-dark: var(--brand-ink);
+        --border: var(--color-border);
+        --card: var(--color-white);
+        color: var(--text);
+        background: var(--bg);
+        font-family: var(--body-font);
+        line-height: 1.6;
+      }
+
+      .discounts-hero *,
+      .discounts-section *,
+      .discounts-subscriber-section * {
+        box-sizing: border-box;
+      }
+
+      .discounts-hero a,
+      .discounts-section a,
+      .discounts-subscriber-section a {
+        text-decoration: none;
+      }
+
+      .discounts-hero h1,
+      .discounts-hero h2,
+      .discounts-hero h3,
+      .discounts-hero h4,
+      .discounts-hero h5,
+      .discounts-hero h6,
+      .discounts-section h1,
+      .discounts-section h2,
+      .discounts-section h3,
+      .discounts-section h4,
+      .discounts-section h5,
+      .discounts-section h6,
+      .discounts-subscriber-section h1,
+      .discounts-subscriber-section h2,
+      .discounts-subscriber-section h3,
+      .discounts-subscriber-section h4,
+      .discounts-subscriber-section h5,
+      .discounts-subscriber-section h6 {
+        font-family: var(--body-font);
+        font-weight: 500;
+      }
+
+
+      .discounts-hero {
+        background: linear-gradient(135deg, var(--brand-ivory) 0%, var(--brand-blush) 100%);
+        padding: 90px 0 70px;
+      }
+
+      .discounts-hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .discounts-eyebrow {
+        display: inline-block;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--accent-dark);
+        margin-bottom: 14px;
+      }
+
+      .discounts-hero h1 {
+        font-size: clamp(36px, 5vw, 56px);
+        line-height: 1.1;
+        margin: 0 0 16px;
+        color: var(--brand-ink);
+      }
+
+      .discounts-hero p {
+        font-size: 18px;
+        color: var(--muted);
+        margin: 0 0 24px;
+        max-width: 620px;
+      }
+
+      .discounts-hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .discounts-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 12px 22px;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(231, 60, 117, 0.25);
+        border: none;
+      }
+
+      .discounts-btn-primary {
+        background: var(--brand-rose);
+        color: var(--color-white);
+      }
+
+      .discounts-btn-primary:hover {
+        background: var(--brand-ink);
+        box-shadow: 0 6px 20px rgba(199, 27, 87, 0.4);
+        transform: translateY(-2px);
+      }
+
+      .discounts-btn-secondary {
+        color: var(--card);
+        background: var(--brand-rose);
+      }
+
+      .discounts-btn-secondary:hover {
+        background: var(--brand-ink);
+        box-shadow: 0 6px 20px rgba(184, 24, 77, 0.4);
+        transform: translateY(-2px);
+      }
+
+      .discounts-hero-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+      }
+
+      .discounts-hero-card:hover {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        transform: translateY(-4px);
+      }
+
+      .discounts-hero-card h3 {
+        font-size: 22px;
+        margin: 0 0 10px;
+      }
+
+      .community-header {
+        color:var(--color-white);
+        }
+      
+
+      .discounts-hero-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .discounts-hero-card li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #f4e8e2;
+        font-size: 14px;
+      }
+
+      .discounts-hero-card li:last-child {
+        border-bottom: none;
+      }
+
+      .discounts-section {
+        padding: 70px 0;
+      }
+
+      .discounts-section-heading {
+        text-align: center;
+        margin-bottom: 36px;
+      }
+
+      .discounts-section-heading h2 {
+        font-size: 40px;
+        margin: 0 0 10px;
+      }
+
+      .discounts-section-heading p {
+        max-width: 700px;
+        margin: 0 auto;
+        color: var(--muted);
+        font-size: 18px;
+      }
+
+      .discounts-offer-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+
+      .discounts-offer-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 24px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease;
+      }
+
+      .discounts-offer-card:hover {
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+        transform: translateY(-6px);
+        border-color: var(--brand-rose);
+      }
+
+      .discounts-offer-card h3 {
+        font-size: 20px;
+        margin: 10px 0 8px;
+      }
+
+      .discounts-offer-card p {
+        color: var(--muted);
+        margin: 0 0 16px;
+      }
+
+      .discounts-offer-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .discounts-offer-card .discounts-btn-secondary {
+        width: 100%;
+      }
+
+      
+
+      .discounts-cta-box {
+        background: var(--brand-rose);
+        color: var(--color-white);
+        border-radius: 24px;
+        padding: 36px 28px;
+        text-align: center;
+      }
+
+      .discounts-cta-box h3 {
+        font-size: 40px;
+        margin: 0 0 12px;
+        color: var(--color-white);
+      }
+
+      .discounts-cta-box p {
+        color: var(--color-white);
+        max-width: 700px;
+        margin: 0 auto 22px;
+      }
+
+      .discounts-cta-box .discounts-btn-primary {
+        background: var(--color-white);
+        color: var(--brand-ink);
+        display: inline-flex;
+      }
+
+      .discounts-cta-box .discounts-btn-primary:hover {
+        background: var(--brand-ivory);
+        color: var(--brand-ink);
+        box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5);
+      }
+
+      .discounts-subscriber-section {
+        padding: 0;
+      }
+
+      .discounts-subscriber-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .discounts-subscriber-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .discounts-subscriber-gallery img {
+        width: 100%;
+        display: block;
+        border-radius: 20px;
+        object-fit: cover;
+        aspect-ratio: 1 / 1;
+      }
+
+      .discounts-subscriber-card {
+        background: var(--brand-ink);
+        border-radius: 32px;
+        padding: 40px 32px;
+        color: var(--color-white);
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .discounts-subscriber-card h3 {
+        margin: 0 0 18px;
+        font-size: clamp(34px, 3.2vw, 50px);
+        line-height: 1.05;
+      }
+
+      .discounts-subscriber-card p {
+        margin: 10px 0 30px;
+        color: rgba(255,255,255,0.88);
+        max-width: 520px;
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .discounts-subscriber-form {
+        display: grid;
+        gap: 12px;
+      }
+
+      .discounts-subscriber-form input {
+        width: 100%;
+        padding: 16px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.55);
+        background: rgba(255,255,255,0.14);
+        color: #fff;
+        outline: none;
+        font-size: 14px;
+      }
+
+      .discounts-subscriber-form input::placeholder {
+        color: rgba(255,255,255,0.76);
+      }
+
+      .discounts-subscriber-form button {
+        width: 100%;
+        padding: 16px 18px;
+        border-radius: 999px;
+        border: none;
+        background: var(--brand-rose);
+        color: var(--color-white);
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(199, 27, 87, 0.25);
+      }
+
+      .discounts-subscriber-form button:hover {
+        background: var(--brand-rose);
+        box-shadow: 0 6px 20px rgba(199, 27, 87, 0.4);
+        transform: translateY(-2px);
+      }
+
+      .discounts-subscriber-note {
+        margin: 22px 0 0;
+        color: rgba(255,255,255,0.72);
+        font-size: 12px;
+        line-height: 1.7;
+      }
+
+      @media (max-width: 900px) {
+        .discounts-hero-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .discounts-offer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .discounts-subscriber-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .discounts-hero {
+          padding: 70px 0 50px;
+        }
+
+        .discounts-offer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .discounts-hero-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+      }
+    </style>
+
+    <section class="discounts-hero">
+      <div class="container discounts-hero-grid">
+        <div>
+          <span class="discounts-eyebrow">Limited-time offers</span>
+          <h1>Exclusive discounts and upcoming sale events in one place.</h1>
+          <p>Discover the best savings for the season, from flash deals to member-only perks. Choose the offer that fits your shopping style and enjoy the best value before the sale ends.</p>
+          <div class="discounts-hero-actions">
+            <a class="discounts-btn discounts-btn-primary" href="{{ routes.all_products_collection_url }}">Shop now</a>
+            <a class="discounts-btn discounts-btn-secondary" href="#offers">View offers</a>
+          </div>
+        </div>
+
+        <div class="discounts-hero-card">
+          <h3>Best approach for shoppers</h3>
+          <ul>
+            <li><span>Current offer</span><span class="tag">Special offer</span></li>
+            <li><span>Best value</span><span class="tag">Bundle & save</span></li>
+            <li>
+              <span>Shop link</span>
+              <a class="tag" href="{{ routes.all_products_collection_url }}">View products</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="discounts-section" id="offers">
+      <div class="fluid_container">
+        <div class="discounts-section-heading">
+          <h2>Featured discount offers</h2>
+          <p>Choose an offer below to save more on your favorite picks before the promotion expires.</p>
+        </div>
+
+        <div class="discounts-offer-grid">
+          
+          <article class="discounts-offer-card">
+            <span class="tag">Free Gift</span>
+            <h3>Get a free gift on orders over ₹999.</h3>
+            <p>Spend ₹999 or more and receive a special free gift with your order.</p>
+            <div class="discounts-offer-meta">
+              <span>Offer</span>
+              <strong>FREE GIFT</strong>
+            </div>
+            <a class="discounts-btn discounts-btn-secondary" href="{{ routes.all_products_collection_url }}">Shop Now</a>
+          </article>
+
+          {% comment %} <article class="discounts-offer-card">
+            <span class="tag">UpTo 70% OFF</span>
+            <h3>Get off your order</h3>
+            <p>Enjoy a special first-purchase reward and discover our best-sellers at a better price.</p>
+            <div class="discounts-offer-meta">
+              <span>No Code</span>
+              <strong>Required</strong>
+            </div>
+            <a class="discounts-btn discounts-btn-secondary" href="{{ routes.all_products_collection_url }}">Claim offer</a>
+          </article> {% endcomment %}
+
+          <article class="discounts-offer-card">
+            <span class="tag">Bundle savings</span>
+            <h3>Buy more, save more</h3>
+            <p>Mix and match your favorite products to unlock extra savings on complete sets.</p>
+            <div class="discounts-offer-meta">
+              <span>Valid until</span>
+              <strong>Next month</strong>
+            </div>
+            <a class="discounts-btn discounts-btn-secondary" href="{{ routes.all_products_collection_url }}">View bundles</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="discounts-section">
+      <div class="fluid_container">
+        <div class="discounts-cta-box">
+          <h3>Don’t miss the next big offer</h3>
+          <p>Visit the shop now to see the latest products, check the active deals, and grab your favorites before the sale period ends.</p>
+          <a class="discounts-btn discounts-btn-primary" href="{{ routes.all_products_collection_url }}">Explore shop</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="discounts-subscriber-section">
+      <div class="fluid_container">
+        <div class="discounts-subscriber-grid">
+          <div class="discounts-subscriber-gallery">
+            <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/DSC066691.png?v=1784611533" alt="image 1" width="800" height="800" loading="lazy" />
+            <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Untitled_design_-_2026-06-01T130253.797.jpg?v=1780299256" alt="image 2" width="800" height="800" loading="lazy" />
+            <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Untitled_design_7_56f11543-a563-441b-b425-14e63e3a235a.png?v=1706867912" alt="image 3" width="800" height="800" loading="lazy" />
+            <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Untitled_design_-_2026-06-02T134928.959.jpg?v=1780388593" alt="image 4" width="800" height="800" loading="lazy" />
+          </div>
+
+          <div class="discounts-subscriber-card">
+            <h3 class="community-header">Join our community, we have lots to offer</h3>
+            <p>Get the latest scoop straight from our brand. New launches, discounts, exclusive access & more. You’ll get first dibs on everything fresh and fun.</p>
+            <form class="discounts-subscriber-form" method="post" action="/contact#contact_form" accept-charset="UTF-8">
+              <input type="hidden" name="form_type" value="customer" />
+              <input type="hidden" name="utf8" value="✓" />
+              <input type="hidden" name="contact[tags]" value="newsletter" />
+              <input type="email" name="contact[email]" placeholder="Enter Your Email" required />
+              <button type="submit">Subscribe</button>
+            </form>
+                  <p class="discounts-subscriber-note">You can unsubscribe anytime. For more details review our <a href="https://dunamiss.in/pages/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>

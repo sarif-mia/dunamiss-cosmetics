@@ -1,0 +1,44 @@
+{% liquid
+  assign font_family_body = 'Instrument Sans'
+  assign font_family_heading = 'Instrument Sans'
+  assign font_menu_family = 'Instrument Sans'
+  assign font_button_family = 'Instrument Sans'
+%}
+
+{% style %}
+  @font-face {
+    font-family: "Instrument Sans";
+    src: url({{ 'InstrumentSans-Regular.woff2' | asset_url }}) format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Instrument Sans";
+    src: url({{ 'InstrumentSans-Medium.woff2' | asset_url }}) format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Instrument Sans";
+    src: url({{ 'InstrumentSans-SemiBold.woff2' | asset_url }}) format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Instrument Sans";
+    src: url({{ 'InstrumentSans-Bold.woff2' | asset_url }}) format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    --body-font: "Instrument Sans", sans-serif;
+    --heading-font: "Instrument Sans", sans-serif;
+    --menu-font: "Instrument Sans", sans-serif;
+    --btn-font: "Instrument Sans", sans-serif;
+  }
+{% endstyle %}

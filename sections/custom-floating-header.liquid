@@ -1,0 +1,579 @@
+{%- liquid
+  assign section_st = section.settings
+  assign theme_st = settings
+  assign section_width = section_st.section_width
+  assign transparent = section_st.transparent_header
+  assign color_scheme = section_st.color_scheme
+  assign top_search = section_st.show_search
+  assign my_account = section_st.show_account_icon
+  assign recently_viewed = section_st.show_recently_viewed
+  assign wishlist = section_st.show_wishlist_icon
+  assign minicart = section_st.show_shopping_cart
+  assign show_country = section_st.show_currency
+  assign show_language = section_st.show_language
+  assign transparent_class = ''
+  if request.page_type == 'index' and transparent
+    assign transparent_class = ' transparent absolute-1025 inset-x-0 z-15'
+  endif
+-%}
+{%- style -%}
+  .section-header.section-header-custom-floating {
+    --floating-header-gap: 12px;
+    position: fixed;
+    top: var(--announcement-bar-height, 0px);
+    left: 0;
+    right: 0;
+    z-index: 30;
+    padding-block: var(--floating-header-gap);
+    background: var(--brand-background, #fffcf8);
+    isolation: isolate;
+  }
+  /* Keep the fixed bar above page content when the theme opens a drawer. */
+  body:has(.section-header-custom-floating) .shopify-section-group-header-group.section-announcement-bar:not(.section-header) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+  }
+  body:has(.section-header-custom-floating) #MainContent {
+    padding-top: calc(var(--announcement-bar-height, 0px) + var(--floating-header-height, 0px));
+  }
+  /* Search dialogs and their backdrop must cover the fixed header as well. */
+  body:has(.section-header-custom-floating) :is(.search_type_drawer, .search_type_popup) #search-form {
+    z-index: 51;
+    top: 0;
+    bottom: 0;
+    height: 100dvh;
+    max-height: 100dvh;
+  }
+  body:has(.section-header-custom-floating) :is(.search_type_drawer, .search_type_popup) ~ .overlay_search {
+    z-index: 50;
+    right: 0;
+  }
+  .section-header-custom-floating .header__inner {
+    padding: 0;
+  }
+  .section-header-custom-floating .header__shell {
+    margin: 0 auto;
+    width: 100%;
+    background: {{ section.settings.header_background | default: '#f8f5f0' }};
+    border: 1px solid var(--brand-border, #eadbe0);
+    box-shadow: 0 4px 16px rgba(26, 26, 26, 0.06);
+    border-radius: 18px;
+    padding: 4px 6px;
+    position: relative;
+    z-index: 30;
+    overflow: visible;
+  }
+  .section-header-custom-floating header-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: auto;
+  }
+  .section-header-custom-floating .header__top-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 44px;
+    gap: 10px;
+    z-index: 3;
+    flex-wrap: nowrap;
+  }
+  .section-header-custom-floating .header__menu-toggle {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 3;
+    order: 1;
+    margin-right: 8px;
+  }
+  .section-header-custom-floating .header__logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 0 0 auto;
+    min-width: 0;
+    order: 2;
+    margin-right: auto;
+  }
+.section-header-custom-floating .header__action {
+    position: static;
+    margin-left: auto;
+    transform: none;
+    z-index: 2;
+    flex-shrink: 0;
+    order: 3;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-header-custom-floating .header__menu {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 5;
+    margin-top: 0;
+    margin-left: 10px;
+    flex: 1 1 auto;
+    min-width: 0;
+    order: 3;
+    gap: 0;
+  }
+.section-header-custom-floating .header__menu .level0 {
+    position: relative;
+    z-index: 1;
+  }
+  .section-header-custom-floating .header__menu .level0:hover,
+  .section-header-custom-floating .header__menu .level0.open {
+    z-index: 10;
+  }
+  .section-header-custom-floating .header__menu .level0 > menu-item {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+.section-header-custom-floating .header__menu .submenu-horizontal {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.25s ease;
+    border-radius: 16px;
+    background: var(--color-background, #fff);
+    overflow: hidden;
+    margin-top: 6px;
+    z-index: 999;
+  }
+  .section-header-custom-floating .header__menu .level0:hover > .submenu-horizontal,
+  .section-header-custom-floating .header__menu .level0:focus-within > .submenu-horizontal,
+  .section-header-custom-floating .header__menu .level0.open > .submenu-horizontal {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .section-header-custom-floating .header__menu .level0 > menu-item > a {
+    padding: 4px 6px;
+    border-radius: 0;
+    transition: color 0.2s ease;
+    position: relative;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .section-header-custom-floating .header__menu .level0 > menu-item > a::after {
+    content: '';
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: 1px;
+    height: 2px;
+    width: 80%;
+    border-radius: 999px;
+    background: var(--brand-surface);
+    opacity: 0;
+    transform: scaleX(0.7);
+    transform-origin: center;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .section-header-custom-floating .header__menu .level0:hover > menu-item > a,
+  .section-header-custom-floating .header__menu .level0:focus-within > menu-item > a,
+  .section-header-custom-floating .header__menu .level0.open > menu-item > a {
+    color: var(--brand-heading);
+  }
+  .section-header-custom-floating .header__menu .level0:hover > menu-item > a::after,
+  .section-header-custom-floating .header__menu .level0:focus-within > menu-item > a::after,
+  .section-header-custom-floating .header__menu .level0.open > menu-item > a::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  .section-header-custom-floating .header__action svg,
+  .section-header-custom-floating .header__menu .header-color {
+    color: var(--brand-heading);
+  }
+  @media screen and (min-width: 1025px) {
+    .section-header-custom-floating .header__menu-toggle {
+      display: none;
+    }
+    .section-header-custom-floating .header__menu {
+      width: auto;
+      order: 2;
+    }
+    .section-header-custom-floating .header__menu > nav {
+      width: 100%;
+      min-width: 0;
+    }
+    .section-header-custom-floating .horizontal-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    .section-header-custom-floating {
+      --floating-header-gap: 8px;
+      width: 100%;
+    }
+    .section-header-custom-floating .header__shell {
+      width: 100%;
+      border-radius: 16px;
+      padding: 4px 7px;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+    .section-header-custom-floating .header__inner > div {
+      width: 100%;
+      max-width: none;
+      padding-inline: var(--bs-gutter-x, 1.5rem);
+    }
+    .section-header-custom-floating .header__top-row {
+      display: grid;
+      --mobile-header-icon-size: 36px;
+      grid-template-columns: minmax(108px, 1fr) minmax(0, auto) minmax(108px, 1fr);
+      min-height: 48px;
+      gap: 4px;
+      padding: 0;
+    }
+    .section-header-custom-floating .header__menu {
+      position: absolute;
+      width: 0;
+      min-width: 0;
+      flex: 0 0 0;
+      margin: 0;
+      overflow: visible;
+    }
+    .section-header-custom-floating .header__menu > nav.horizontal:not(.mobile) {
+      display: none !important;
+    }
+.section-header-custom-floating .header__menu-toggle {
+      display: flex;
+      margin: 0;
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .section-header-custom-floating .header__menu-toggle .nav-toggle {
+      justify-content: center;
+    }
+    .section-header-custom-floating .header__menu .navigation.mobile {
+      z-index: 9999;
+      overflow: visible;
+      pointer-events: auto;
+      top: var(--announcement-bar-height, 0px) !important;
+      bottom: 0 !important;
+      height: calc(100dvh - var(--announcement-bar-height, 0px)) !important;
+      max-height: calc(100dvh - var(--announcement-bar-height, 0px));
+    }
+    .section-header-custom-floating .header__menu .navigation.mobile .horizontal-list,
+    .section-header-custom-floating .header__menu .navigation.mobile .submenu,
+    .section-header-custom-floating .header__menu .navigation.mobile .submenu-horizontal,
+    .section-header-custom-floating .header__menu .navigation.mobile .sub-children-menu {
+      overflow: visible !important;
+    }
+    .section-header-custom-floating .header__menu .navigation.mobile .submenu-horizontal,
+    .section-header-custom-floating .header__menu .navigation.mobile .sub-children-menu {
+      position: relative !important;
+      top: auto !important;
+      left: auto !important;
+      right: auto !important;
+      bottom: auto !important;
+      transform: none !important;
+      max-width: 100% !important;
+      min-height: auto !important;
+      z-index: auto !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      display: block !important;
+    }
+    .section-header-custom-floating .header__menu .navigation.mobile .submenu,
+    .section-header-custom-floating .header__menu .navigation.mobile .sub-children-menu,
+    .section-header-custom-floating .header__menu .navigation.mobile .submenu-horizontal {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      display: none !important;
+    }
+    .section-header-custom-floating .header__menu .navigation.mobile menu-item.is-open + .submenu-horizontal,
+    .section-header-custom-floating .header__menu .navigation.mobile menu-item.is-open + .submenu,
+    .section-header-custom-floating .header__menu .navigation.mobile menu-item.is-open + .sub-children-menu {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      transform: none !important;
+      position: relative !important;
+      display: block !important;
+    }
+    .section-header-custom-floating .header__menu .navigation.mobile .sub-children-menu {
+      padding-left: 1.5rem;
+      padding-right: 1rem;
+    }
+    .section-header-custom-floating .header__logo {
+      position: static;
+      left: auto;
+      transform: none;
+      width: auto;
+      flex: 1 1 auto;
+      min-width: 0;
+      overflow: visible;
+      margin: 0;
+      justify-content: center;
+      grid-column: 2;
+      grid-row: 1;
+    }
+    .section-header-custom-floating .header__logo :is(h1, .logo-img, span.header__normal-logo) {
+      min-width: 0;
+      max-width: 100%;
+    }
+    .section-header-custom-floating .header__logo .logo-img {
+      width: 100%;
+      justify-content: center;
+    }
+    .section-header-custom-floating .header__logo span.header__normal-logo {
+      width: var(--header-logo-width-mobile, 120px);
+    }
+    .section-header-custom-floating .header__logo img,
+    .section-header-custom-floating .header__logo svg {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    .section-header-custom-floating .header__action {
+      gap: 0;
+      margin: 0;
+      flex: 0 0 auto;
+      grid-column: 3;
+      grid-row: 1;
+      justify-self: end;
+    }
+    .section-header-custom-floating .header__action > * {
+      flex: 0 0 auto;
+    }
+    .section-header-custom-floating .header__action :is(.header_account, .header--icon, .header-icon, .top-search-toggle) {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: var(--mobile-header-icon-size);
+      height: 44px;
+      margin: 0;
+      flex: 0 0 var(--mobile-header-icon-size);
+    }
+    .section-header-custom-floating #kp-login-button-header-logo,
+    .section-header-custom-floating #icon-kwikpass {
+      width: var(--mobile-header-icon-size);
+      height: 44px;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  @media screen and (max-width: 374px) {
+    .section-header-custom-floating .header__top-row {
+      --mobile-header-icon-size: 32px;
+      grid-template-columns: minmax(96px, 1fr) minmax(0, auto) minmax(96px, 1fr);
+    }
+  }
+{%- endstyle -%}
+<script src="{{ 'floating-shop-menu.js' | asset_url }}" defer></script>
+
+<script src="{{ 'floating-header.js' | asset_url }}" defer="defer"></script>
+
+<header
+class="header relative section gradient remove_spacing color-{{ color_scheme }}{{ transparent_class }} popup-search-mobile"
+  data-sticky="none"
+  data-section-id="{{ section.id }}"
+>
+  <div class="header__inner">
+    <div class="{{ section_width }}">
+      <div class="header__shell">
+        <header-inner class="logo-position header-middle align-center">
+          <div class="header__top-row">
+            <div class="header__menu-toggle">
+              {%- render 'toggle-menu' -%}
+            </div>
+            <div class="header__logo text-center inline-flex align-center justify-center">
+              {%- render 'logo', isTransparent: transparent -%}
+            </div>
+            <div class="header__menu">
+              {% render 'floating-shop-menu' %}
+              {%- liquid
+                render 'horizontal-menu', class: 'min-h-1025-50', show_language: show_language
+              -%}
+            </div>
+            <div class="header__action flex flex-end align-center">
+              <svg hidden>
+              <symbol id="icon-wishlist-header">
+                <path d="M17.4693 1.46278C16.4831 0.52335 15.178 0 13.8216 0C12.4652 0 11.1601 0.52335 10.1739 1.46278L9.5 2.11096L8.8261 1.46278C7.84238 0.51698 6.53343 -0.00720742 5.17448 0.000442952C3.81807 -0.00598466 2.512 0.518175 1.53069 1.46278C1.04762 1.9183 0.662488 2.46909 0.399178 3.08097C0.135869 3.69285 0 4.35278 0 5.01983C0 5.68687 0.135869 6.3468 0.399178 6.95868C0.662488 7.57057 1.04762 8.12135 1.53069 8.57687L8.96715 15.7858C9.04006 15.8502 9.12189 15.9034 9.21006 15.9439C9.39624 16.0187 9.60376 16.0187 9.78994 15.9439C9.87811 15.9034 9.95994 15.8502 10.0329 15.7858L17.4693 8.57687C17.9524 8.12135 18.3375 7.57057 18.6008 6.95868C18.8641 6.3468 19 5.68687 19 5.01983C19 4.35278 18.8641 3.69285 18.6008 3.08097C18.3375 2.46909 17.9524 1.9183 17.4693 1.46278ZM17.4693 5.00402C17.4715 5.47163 17.3796 5.93483 17.1991 6.36555C17.0186 6.79627 16.7533 7.18553 16.4193 7.50976L9.5 14.2286L2.58856 7.50976C2.24936 7.18822 1.97903 6.80001 1.79425 6.36906C1.60946 5.93811 1.51413 5.47355 1.51413 5.00402C1.51413 4.53448 1.60946 4.06992 1.79425 3.63897C1.97903 3.20802 2.24936 2.81981 2.58856 2.49828C3.28454 1.82749 4.21191 1.45613 5.17448 1.46278C6.14183 1.45534 7.07438 1.82652 7.77606 2.49828L8.96715 3.66025C9.04006 3.72459 9.12189 3.77785 9.21006 3.81834C9.39624 3.89313 9.60376 3.89313 9.78994 3.81834C9.87811 3.77785 9.95994 3.72459 10.0329 3.66025L11.2318 2.49828C11.9277 1.82749 12.8551 1.45613 13.8177 1.46278C14.785 1.45534 15.7176 1.82652 16.4193 2.49828C16.7562 2.82115 17.0244 3.20981 17.2076 3.64059C17.3908 4.07137 17.4852 4.53526 17.485 5.00402H17.4693Z" fill="currentColor"/>
+              </symbol>
+              <symbol id="icon-recently-view">
+                <path d="M16.99 8.495C16.99 7.91538 16.9357 7.34784 16.827 6.79238C16.7062 6.23691 16.5372 5.7056 16.3198 5.19843C16.1145 4.69127 15.8549 4.20826 15.541 3.74939C15.2391 3.29053 14.8949 2.86789 14.5085 2.48148C14.1221 2.10715 13.6995 1.763 13.2406 1.44904C12.7938 1.14716 12.3168 0.887537 11.8097 0.670181C11.3025 0.452825 10.7712 0.289808 10.2157 0.18113C9.66027 0.0603767 9.08669 0 8.495 0C7.90331 0 7.32973 0.0603767 6.77426 0.18113C6.2188 0.289808 5.68748 0.452825 5.18032 0.670181C4.67316 0.887537 4.19618 1.14716 3.74939 1.44904C3.29053 1.763 2.86789 2.10715 2.48148 2.48148C2.09507 2.86789 1.75092 3.29053 1.44904 3.74939C1.13508 4.20826 0.869424 4.69127 0.652068 5.19843C0.446787 5.7056 0.28377 6.23691 0.163017 6.79238C0.054339 7.34784 0 7.91538 0 8.495C0 9.08669 0.054339 9.66027 0.163017 10.2157C0.28377 10.7712 0.446787 11.3025 0.652068 11.8097C0.869424 12.3168 1.13508 12.7999 1.44904 13.2587C1.75092 13.7055 2.09507 14.1221 2.48148 14.5085C2.86789 14.8949 3.29053 15.2391 3.74939 15.541C4.19618 15.8549 4.67316 16.1206 5.18032 16.3379C5.68748 16.5553 6.2188 16.7183 6.77426 16.827C7.32973 16.9477 7.90331 17.0081 8.495 17.0081C9.08669 17.0081 9.66027 16.9477 10.2157 16.827C10.7712 16.7183 11.3025 16.5553 11.8097 16.3379C12.3168 16.1206 12.7938 15.8549 13.2406 15.541C13.6995 15.2391 14.1221 14.8949 14.5085 14.5085C14.8949 14.1221 15.2391 13.7055 15.541 13.2587C15.8549 12.7999 16.1145 12.3168 16.3198 11.8097C16.5372 11.3025 16.7062 10.7712 16.827 10.2157C16.9357 9.66027 16.99 9.08669 16.99 8.495ZM15.4504 8.495C15.4504 9.46103 15.2693 10.3667 14.907 11.212C14.5447 12.0572 14.0497 12.7938 13.4217 13.4217C12.7817 14.0497 12.0391 14.5447 11.1938 14.907C10.3606 15.2693 9.46103 15.4504 8.495 15.4504C7.52897 15.4504 6.62332 15.2693 5.77805 14.907C4.94485 14.5447 4.20826 14.0497 3.56826 13.4217C2.94034 12.7938 2.44526 12.0572 2.083 11.212C1.72074 10.3667 1.53961 9.46103 1.53961 8.495C1.53961 7.54105 1.72074 6.64144 2.083 5.79616C2.44526 4.95089 2.94034 4.21429 3.5682 3.5682C4.20826 2.94034 4.94485 2.44526 5.77805 2.083C6.62332 1.72074 7.52897 1.53961 8.495 1.53961C9.46103 1.53961 10.3606 1.72074 11.1938 2.083C12.0391 2.44526 12.7817 2.94034 13.4217 3.5682C14.0497 4.20826 14.5447 4.94485 14.907 5.77805C15.2693 6.62332 15.4504 7.52897 15.4504 8.495Z" fill="currentColor"/>
+              </symbol>
+              <symbol id="icon-search">
+                <path fill="currentColor" d="M11.2 11.04c-.094 0-.094 0 0 0l-.094.095c-.47.467-1.035.842-1.788 1.122-.66.281-1.412.375-2.165.375-.753 0-1.506-.188-2.165-.468A5.52 5.52 0 0 1 3.2 10.947 5.993 5.993 0 0 1 1.976 9.17C1.694 8.608 1.6 7.953 1.6 7.205c0-.749.188-1.497.47-2.152.283-.749.66-1.31 1.13-1.872.565-.468 1.13-.842 1.788-1.123.66-.28 1.412-.467 2.165-.467.753 0 1.506.187 2.165.467.658.281 1.317.655 1.788 1.217.47.468.847 1.123 1.223 1.778.283.655.471 1.31.471 2.152 0 .748-.188 1.497-.47 2.152a8.78 8.78 0 0 1-1.13 1.684Zm4.518 3.463-2.918-2.9c.47-.656.847-1.31 1.13-2.06.282-.748.376-1.59.376-2.432 0-1.03-.188-1.965-.565-2.807-.376-.842-.847-1.59-1.506-2.246-.659-.654-1.412-1.122-2.259-1.497C9.13.187 8.188 0 7.153 0 6.212 0 5.27.187 4.329.561c-.847.375-1.6.843-2.258 1.497-.66.655-1.13 1.404-1.506 2.34C.188 5.24 0 6.175 0 7.205c0 .935.188 1.871.565 2.807.376.842.94 1.59 1.6 2.245.659.655 1.411 1.123 2.259 1.591.847.28 1.788.468 2.729.468.847 0 1.694-.094 2.447-.375.753-.28 1.506-.655 2.07-1.122l2.918 2.9c.189.187.377.281.565.281.188 0 .376-.094.565-.28.188-.188.282-.375.282-.562 0-.28-.094-.468-.282-.655Z"/>
+              </symbol>
+              <symbol id="icon-account">
+                <path fill="currentColor" d="M15.899 14.84a9.143 9.143 0 0 0-3.35-3.292 9.203 9.203 0 0 0-9.101 0 9.143 9.143 0 0 0-3.35 3.293.773.773 0 0 0 .067.855c.064.08.145.146.238.193a.784.784 0 0 0 .39.101.737.737 0 0 0 .671-.373 7.57 7.57 0 0 1 2.774-2.727 7.619 7.619 0 0 1 7.537 0 7.57 7.57 0 0 1 2.773 2.727.78.78 0 0 0 1.062.28.716.716 0 0 0 .36-.458.772.772 0 0 0-.071-.598ZM8 9.6a4.777 4.777 0 0 0 3.363-1.387A4.866 4.866 0 0 0 12.8 4.844a4.867 4.867 0 0 0-1.406-3.425A4.778 4.778 0 0 0 8 0C6.727 0 5.506.51 4.606 1.419A4.867 4.867 0 0 0 3.2 4.844a4.866 4.866 0 0 0 1.436 3.369A4.777 4.777 0 0 0 8 9.6ZM4.8 4.844c0-.856.337-1.678.937-2.283A3.185 3.185 0 0 1 8 1.615c.848 0 1.662.34 2.262.946a3.245 3.245 0 0 1 0 4.567c-.6.606-1.414.946-2.262.946-.849 0-1.663-.34-2.263-.946A3.245 3.245 0 0 1 4.8 4.844Z"/>
+              </symbol>
+              <symbol id="icon-bag">
+                <path d="M12.7518 2.91374L11.6276 1.44835H3.37237L2.24824 2.91374H12.7518ZM14.8419 3.18637V3.20341C14.8419 3.20341 14.8478 3.20341 14.8595 3.20341C14.8946 3.27157 14.9239 3.33972 14.9473 3.40788C14.9824 3.47604 15 3.54988 15 3.62939V13.819C15 14.1143 14.9356 14.3983 14.8068 14.6709C14.6897 14.9322 14.5316 15.1594 14.3326 15.3525C14.1335 15.557 13.8934 15.716 13.6124 15.8296C13.3431 15.9432 13.0562 16 12.7518 16H2.24824C1.94379 16 1.65105 15.9375 1.37002 15.8126C1.1007 15.699 0.866511 15.5456 0.667447 15.3525C0.456674 15.1594 0.29274 14.9322 0.175644 14.6709C0.058548 14.3983 0 14.1143 0 13.819V3.62939C0 3.58395 0.0058548 3.53852 0.0175644 3.49308C0.029274 3.43628 0.0468384 3.37948 0.0702576 3.32268C0.0819672 3.29996 0.0936768 3.27725 0.105386 3.25453C0.128806 3.23181 0.14637 3.20909 0.15808 3.18637L2.40632 0.28967C2.47658 0.198793 2.5644 0.130635 2.66979 0.085197C2.77518 0.028399 2.88642 0 3.00351 0H11.9965C12.1136 0 12.2248 0.028399 12.3302 0.085197C12.4356 0.130635 12.5234 0.198793 12.5937 0.28967L14.8419 3.18637ZM1.51054 4.36209V13.819C1.51054 13.9098 1.5281 14.0007 1.56323 14.0916C1.59836 14.1825 1.65105 14.262 1.72131 14.3301C1.79157 14.3983 1.87354 14.4494 1.96721 14.4835C2.06089 14.5176 2.15457 14.5346 2.24824 14.5346H12.7518C12.8571 14.5346 12.9508 14.5176 13.0328 14.4835C13.1265 14.4494 13.2084 14.3983 13.2787 14.3301C13.3489 14.262 13.4016 14.1825 13.4368 14.0916C13.4719 14.0007 13.4895 13.9098 13.4895 13.819V4.36209H1.51054ZM9.74824 6.54313C9.74824 6.33866 9.8185 6.16826 9.95902 6.03195C10.1112 5.88427 10.2927 5.81044 10.5035 5.81044C10.7026 5.81044 10.8724 5.88427 11.0129 6.03195C11.1651 6.16826 11.2412 6.33866 11.2412 6.54313C11.2412 7.04295 11.1417 7.51438 10.9426 7.9574C10.7553 8.40043 10.4918 8.78665 10.1522 9.11608C9.81265 9.44551 9.41452 9.70678 8.95785 9.89989C8.50117 10.0816 8.01522 10.1725 7.5 10.1725C6.98478 10.1725 6.49883 10.0816 6.04215 9.89989C5.58548 9.70678 5.18735 9.44551 4.84777 9.11608C4.5082 8.78665 4.23888 8.40043 4.03 7.9574C3.83093 7.51438 3.7314 7.04295 3.7314 6.54313C3.7314 6.33866 3.80166 6.16826 3.94218 6.03195C4.0827 5.88427 4.26426 5.81044 4.475 5.81044C4.68574 5.81044 4.8673 5.88427 5.00782 6.03195C5.14834 6.16826 5.2186 6.33866 5.2186 6.54313C5.2186 6.85869 5.15044 7.16698 5.01412 7.46801C4.8778 7.76903 4.68333 8.04201 4.4307 8.28695C4.17808 8.53189 3.8773 8.73949 3.52837 8.90989C3.17944 9.08028 2.80447 9.16547 2.40351 9.16547C2.00254 9.16547 1.62757 9.08028 1.27865 8.90989C0.92972 8.73949 0.62894 8.53189 0.376316 8.28695C0.123692 8.04201 0 7.76903 0 7.46801Z"/>
+              </symbol>
+            </svg>
+            {% if show_language or show_country %}
+              <div class="lang__currency-desktop me-20 hidden flex-1025 gap-15">
+                {% if show_language %}
+                  {% render 'language-switcher' %}
+                {% endif %}
+                {% if show_country %}
+                  {% render 'country-switcher' %}
+                {% endif %}
+              </div>
+            {% endif %}
+            {%- liquid
+              if top_search
+                render 'top-search-header'
+              endif
+              if my_account
+                render 'my-account'
+              endif
+              if recently_viewed
+                render 'recently-viewed'
+              endif
+              if wishlist
+                render 'wishlist'
+              endif
+              if minicart and theme_st.enable_catalog_mode == false
+                render 'minicart_header'
+              endif
+            -%}
+            </div>
+          </div>
+        </header-inner>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Establish the fixed-header offsets during parsing, before deferred theme scripts.
+  (() => {
+    const header = document.currentScript.closest('.section-header-custom-floating');
+    if (!header) return;
+    const announcementHeight = Array.from(document.querySelectorAll('.section-announcement-bar'))
+      .reduce((height, bar) => height + bar.getBoundingClientRect().height, 0);
+    document.documentElement.style.setProperty('--announcement-bar-height', `${announcementHeight}px`);
+    document.documentElement.style.setProperty('--floating-header-height', `${header.getBoundingClientRect().height}px`);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Custom floating header",
+  "class": "section-header section-header-custom-floating",
+  "limit": 1,
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "presets": [
+    {
+      "name": "Custom floating header",
+      "category": "Header"
+    }
+  ],
+  "settings": [
+    { "type": "link_list", "id": "shop_menu", "label": "Shop mega menu", "info": "Leave empty to use the main menu. Categories are arranged in three columns." },
+    { "type": "image_picker", "id": "shop_menu_image", "label": "Shop mega menu image" },
+    { "type": "url", "id": "shop_menu_image_link", "label": "Shop image link" },
+    { "type": "text", "id": "shop_menu_image_heading", "label": "Shop image caption", "default": "Discover your next favourite" },
+    {
+      "type": "color",
+      "id": "header_background",
+      "label": "Floating header background",
+      "default": "#f8f5f0"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "options": [
+        {"value": "container", "label": "Container"},
+        {"value": "fluid_container", "label": "Fluid container"},
+        {"value": "stretch_width", "label": "Stretch width"},
+        {"value": "full_width", "label": "Full width"}
+      ],
+      "default": "stretch_width",
+      "label": "Section width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "default-color-scheme"
+    },
+    {
+      "type": "select",
+      "id": "logo_position",
+      "options": [
+        {"value": "left", "label": "Left"},
+        {"value": "center", "label": "Center"}
+      ],
+      "default": "left",
+      "label": "Logo position"
+    },
+    {
+      "type": "checkbox",
+      "id": "transparent_header",
+      "default": false,
+      "label": "Transparent header"
+    },
+    {
+      "type": "link_list",
+      "id": "mega_menu",
+      "label": "Main menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "default": true,
+      "label": "Show search"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account_icon",
+      "default": true,
+      "label": "Show account icon"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_recently_viewed",
+      "default": false,
+      "label": "Show recently viewed"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wishlist_icon",
+      "default": false,
+      "label": "Show wishlist icon"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shopping_cart",
+      "default": true,
+      "label": "Show cart"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_currency",
+      "default": false,
+      "label": "Show currency"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_language",
+      "default": false,
+      "label": "Show language"
+    }
+  ]
+}
+{% endschema %}

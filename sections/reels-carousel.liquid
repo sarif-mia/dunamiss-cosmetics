@@ -1,0 +1,125 @@
+
+
+{% if section.settings.section_heading != blank %}
+  <h2 class="reels-heading">{{ section.settings.section_heading }}</h2>
+{% endif %}
+
+<div class="reels-carousel-wrapper">
+  <button class="reel-arrow-box left" id="arrow-left" onclick="scrollReels('left')" aria-label="Scroll Left">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>
+  </button>
+
+  <div class="reels-carousel" id="reels-carousel">
+    {% for block in section.blocks %}
+      <div class="reel-item">
+        {% assign video_url = block.settings.video_url %}
+        {% assign video_id = '' %}
+        {% assign platform = '' %}
+
+        {% if video_url contains 'watch?v=' %}
+          {% assign video_id = video_url | split: 'v=' | last | split: '&' | first %}
+          {% assign platform = 'youtube' %}
+        {% elsif video_url contains '/shorts/' %}
+          {% assign video_id = video_url | split: '/shorts/' | last | split: '?' | first %}
+          {% assign platform = 'youtube' %}
+        {% elsif video_url contains 'instagram.com/reel/' %}
+          {% assign platform = 'instagram' %}
+        {% elsif video_url contains '.mp4' %}
+          {% assign platform = 'mp4' %}
+        {% endif %}
+
+        {% if platform == 'youtube' %}
+          <iframe
+            class="reel-video lazyVdHide"
+            loading="lazy"
+            data-src="https://www.youtube.com/embed/{{ video_id }}?autoplay=1&mute=1&loop=1&playlist={{ video_id }}&modestbranding=1&playsinline=1"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        {% elsif platform == 'mp4' %}
+          <video class="reel-video lazyVdHide" autoplay muted loop playsinline controls preload="none">
+            <source data-src="{{ video_url }}" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        {% elsif platform == 'instagram' %}
+          <iframe class="reel-video" loading="lazy" src="{{ video_url }}/embed" frameborder="0" allowfullscreen></iframe>
+        {% else %}
+          <div class="reel-fallback">Invalid video link</div>
+        {% endif %}
+
+        {% if block.settings.product_tag != blank %}
+          <div class="reel-tag">
+            <a href="/products/{{ block.settings.product_tag | handleize }}">View Product</a>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <button class="reel-arrow-box right" id="arrow-right" onclick="scrollReels('right')" aria-label="Scroll Right">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" fill="currentColor"/></svg>
+  </button>
+</div>
+
+<script>
+function scrollReels(direction) {
+  const carousel = document.getElementById('reels-carousel');
+  const item = document.querySelector('.reel-item');
+  const scrollAmount = item ? item.offsetWidth + 16 : 220;
+  carousel.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+}
+
+function updateArrowVisibility() {
+  const carousel = document.getElementById('reels-carousel');
+  const leftArrow = document.getElementById('arrow-left');
+  const rightArrow = document.getElementById('arrow-right');
+
+  leftArrow.style.display = carousel.scrollLeft > 10 ? 'flex' : 'none';
+  rightArrow.style.display = carousel.scrollLeft + carousel.offsetWidth < carousel.scrollWidth - 10 ? 'flex' : 'none';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.getElementById('reels-carousel');
+  updateArrowVisibility();
+  carousel.addEventListener('scroll', updateArrowVisibility);
+});
+</script>
+
+{% schema %}
+{
+  "name": "Reels Carousel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "Featured Reels"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL (YouTube, Instagram Reel, or Shopify MP4)"
+        },
+        {
+          "type": "product",
+          "id": "product_tag",
+          "label": "Optional Product Tag"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Reels Carousel"
+    }
+  ]
+}
+{% endschema %}

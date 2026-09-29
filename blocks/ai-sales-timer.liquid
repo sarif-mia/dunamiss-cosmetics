@@ -1,0 +1,1050 @@
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-sales-timer-{{ ai_gen_id }} {
+    background: {{ block.settings.background_color }};
+    background: {{ block.settings.background_gradient }};
+    padding: {{ block.settings.padding_top }}px {{ block.settings.padding_horizontal }}px {{ block.settings.padding_bottom }}px;
+    text-align: {{ block.settings.text_alignment }};
+    border-radius: {{ block.settings.border_radius }}px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-sales-timer-content-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .ai-sales-timer-header-{{ ai_gen_id }} {
+    margin-bottom: {{ block.settings.header_spacing }}px;
+  }
+
+  .ai-sales-timer-title-{{ ai_gen_id }} {
+    color: {{ block.settings.title_color }};
+    font-size: {{ block.settings.title_size }}px;
+    font-weight: {{ block.settings.title_weight }};
+    margin: 0 0 {{ block.settings.title_margin }}px;
+    line-height: 1.2;
+  }
+
+  .ai-sales-timer-subtitle-{{ ai_gen_id }} {
+    color: {{ block.settings.subtitle_color }};
+    font-size: {{ block.settings.subtitle_size }}px;
+    margin: 0;
+    opacity: 0.9;
+  }
+
+  .ai-sales-timer-countdown-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: {{ block.settings.timer_alignment }};
+    gap: {{ block.settings.timer_gap }}px;
+    flex-wrap: wrap;
+    margin-bottom: {{ block.settings.timer_bottom_spacing }}px;
+  }
+
+  .ai-sales-timer-unit-{{ ai_gen_id }} {
+    background: {{ block.settings.timer_background }};
+    border: {{ block.settings.timer_border_width }}px solid {{ block.settings.timer_border_color }};
+    border-radius: {{ block.settings.timer_border_radius }}px;
+    padding: {{ block.settings.timer_padding }}px;
+    min-width: {{ block.settings.timer_min_width }}px;
+    box-shadow: {{ block.settings.timer_shadow }};
+    transition: transform 0.3s ease;
+  }
+
+  .ai-sales-timer-unit-{{ ai_gen_id }}:hover {
+    transform: translateY(-2px);
+  }
+
+  .ai-sales-timer-number-{{ ai_gen_id }} {
+    display: block;
+    font-size: {{ block.settings.number_size }}px;
+    font-weight: {{ block.settings.number_weight }};
+    color: {{ block.settings.number_color }};
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .ai-sales-timer-label-{{ ai_gen_id }} {
+    display: block;
+    font-size: {{ block.settings.label_size }}px;
+    color: {{ block.settings.label_color }};
+    text-transform: {{ block.settings.label_transform }};
+    font-weight: {{ block.settings.label_weight }};
+  }
+
+  .ai-sales-timer-message-{{ ai_gen_id }} {
+    color: {{ block.settings.message_color }};
+    font-size: {{ block.settings.message_size }}px;
+    margin: 0;
+    padding: {{ block.settings.message_padding }}px;
+    background: {{ block.settings.message_background }};
+    border-radius: {{ block.settings.message_border_radius }}px;
+    display: none;
+  }
+
+  .ai-sales-timer-message-{{ ai_gen_id }}.show {
+    display: block;
+  }
+
+  .ai-sales-timer-expired-{{ ai_gen_id }} {
+    color: {{ block.settings.expired_color }};
+    font-size: {{ block.settings.expired_size }}px;
+    font-weight: {{ block.settings.expired_weight }};
+    margin: 0;
+    display: none;
+  }
+
+  .ai-sales-timer-expired-{{ ai_gen_id }}.show {
+    display: block;
+  }
+
+  .ai-sales-timer-not-started-{{ ai_gen_id }} {
+    color: {{ block.settings.not_started_color }};
+    font-size: {{ block.settings.not_started_size }}px;
+    margin: 0;
+    display: none;
+  }
+
+  .ai-sales-timer-not-started-{{ ai_gen_id }}.show {
+    display: block;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-sales-timer-{{ ai_gen_id }} {
+      padding: {{ block.settings.mobile_padding_top }}px {{ block.settings.mobile_padding_horizontal }}px {{ block.settings.mobile_padding_bottom }}px;
+    }
+
+    .ai-sales-timer-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.mobile_title_size }}px;
+    }
+
+    .ai-sales-timer-subtitle-{{ ai_gen_id }} {
+      font-size: {{ block.settings.mobile_subtitle_size }}px;
+    }
+
+    .ai-sales-timer-countdown-{{ ai_gen_id }} {
+      gap: {{ block.settings.mobile_timer_gap }}px;
+      justify-content: {{ block.settings.mobile_timer_alignment }};
+    }
+
+    .ai-sales-timer-unit-{{ ai_gen_id }} {
+      min-width: {{ block.settings.mobile_timer_min_width }}px;
+      padding: {{ block.settings.mobile_timer_padding }}px;
+    }
+
+    .ai-sales-timer-number-{{ ai_gen_id }} {
+      font-size: {{ block.settings.mobile_number_size }}px;
+    }
+
+    .ai-sales-timer-label-{{ ai_gen_id }} {
+      font-size: {{ block.settings.mobile_label_size }}px;
+    }
+  }
+
+  {% if block.settings.show_pulse_effect %}
+    @keyframes ai-pulse-{{ ai_gen_id }} {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .ai-sales-timer-unit-{{ ai_gen_id }}.pulse {
+      animation: ai-pulse-{{ ai_gen_id }} 1s ease-in-out infinite;
+    }
+  {% endif %}
+{% endstyle %}
+
+<sales-countdown-timer-{{ ai_gen_id }}
+  class="ai-sales-timer-{{ ai_gen_id }}"
+  data-start-time="{{ block.settings.sale_start_time }}"
+  data-end-time="{{ block.settings.sale_end_time }}"
+  data-timezone="{{ block.settings.timezone }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-sales-timer-content-{{ ai_gen_id }}">
+    {% if block.settings.title != blank or block.settings.subtitle != blank %}
+      <div class="ai-sales-timer-header-{{ ai_gen_id }}">
+        {% if block.settings.title != blank %}
+          <h2 class="ai-sales-timer-title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+        {% endif %}
+        {% if block.settings.subtitle != blank %}
+          <p class="ai-sales-timer-subtitle-{{ ai_gen_id }}">{{ block.settings.subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="ai-sales-timer-countdown-{{ ai_gen_id }}" id="countdown-{{ ai_gen_id }}">
+      {% if block.settings.show_days %}
+        <div class="ai-sales-timer-unit-{{ ai_gen_id }}">
+          <span class="ai-sales-timer-number-{{ ai_gen_id }}" data-unit="days">00</span>
+          <span class="ai-sales-timer-label-{{ ai_gen_id }}">{{ block.settings.days_label }}</span>
+        </div>
+      {% endif %}
+      
+      {% if block.settings.show_hours %}
+        <div class="ai-sales-timer-unit-{{ ai_gen_id }}">
+          <span class="ai-sales-timer-number-{{ ai_gen_id }}" data-unit="hours">00</span>
+          <span class="ai-sales-timer-label-{{ ai_gen_id }}">{{ block.settings.hours_label }}</span>
+        </div>
+      {% endif %}
+      
+      {% if block.settings.show_minutes %}
+        <div class="ai-sales-timer-unit-{{ ai_gen_id }}">
+          <span class="ai-sales-timer-number-{{ ai_gen_id }}" data-unit="minutes">00</span>
+          <span class="ai-sales-timer-label-{{ ai_gen_id }}">{{ block.settings.minutes_label }}</span>
+        </div>
+      {% endif %}
+      
+      {% if block.settings.show_seconds %}
+        <div class="ai-sales-timer-unit-{{ ai_gen_id }}">
+          <span class="ai-sales-timer-number-{{ ai_gen_id }}" data-unit="seconds">00</span>
+          <span class="ai-sales-timer-label-{{ ai_gen_id }}">{{ block.settings.seconds_label }}</span>
+        </div>
+      {% endif %}
+    </div>
+
+    {% if block.settings.sale_message != blank %}
+      <p class="ai-sales-timer-message-{{ ai_gen_id }}" id="sale-message-{{ ai_gen_id }}">
+        {% if block.settings.sale_message_link != blank %}
+          <a href="{{ block.settings.sale_message_link }}" style="color: inherit; text-decoration: none;">
+            {{ block.settings.sale_message }}
+          </a>
+        {% else %}
+          {{ block.settings.sale_message }}
+        {% endif %}
+      </p>
+    {% endif %}
+
+    {% if block.settings.expired_message != blank %}
+      <p class="ai-sales-timer-expired-{{ ai_gen_id }}" id="expired-message-{{ ai_gen_id }}">
+        {{ block.settings.expired_message }}
+      </p>
+    {% endif %}
+
+    {% if block.settings.not_started_message != blank %}
+      <p class="ai-sales-timer-not-started-{{ ai_gen_id }}" id="not-started-message-{{ ai_gen_id }}">
+        {{ block.settings.not_started_message }}
+      </p>
+    {% endif %}
+  </div>
+</sales-countdown-timer-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class SalesCountdownTimer{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.startTime = this.dataset.startTime;
+        this.endTime = this.dataset.endTime;
+        this.timezone = this.dataset.timezone || 'UTC';
+        this.interval = null;
+        this.isActive = false;
+      }
+
+      connectedCallback() {
+        this.initTimer();
+        this.startCountdown();
+      }
+
+      disconnectedCallback() {
+        if (this.interval) {
+          clearInterval(this.interval);
+        }
+      }
+
+      initTimer() {
+        this.countdownElement = this.querySelector('#countdown-{{ ai_gen_id }}');
+        this.saleMessageElement = this.querySelector('#sale-message-{{ ai_gen_id }}');
+        this.expiredMessageElement = this.querySelector('#expired-message-{{ ai_gen_id }}');
+        this.notStartedMessageElement = this.querySelector('#not-started-message-{{ ai_gen_id }}');
+        
+        this.daysElement = this.querySelector('[data-unit="days"]');
+        this.hoursElement = this.querySelector('[data-unit="hours"]');
+        this.minutesElement = this.querySelector('[data-unit="minutes"]');
+        this.secondsElement = this.querySelector('[data-unit="seconds"]');
+      }
+
+      parseDateTime(dateTimeString) {
+        if (!dateTimeString) return null;
+        
+        const date = new Date(dateTimeString);
+        return isNaN(date.getTime()) ? null : date;
+      }
+
+      getCurrentTime() {
+        return new Date();
+      }
+
+      startCountdown() {
+        this.updateTimer();
+        this.interval = setInterval(() => {
+          this.updateTimer();
+        }, 1000);
+      }
+
+      updateTimer() {
+        const now = this.getCurrentTime();
+        const startTime = this.parseDateTime(this.startTime);
+        const endTime = this.parseDateTime(this.endTime);
+
+        if (!endTime) {
+          this.showExpired();
+          return;
+        }
+
+        if (startTime && now < startTime) {
+          this.showNotStarted();
+          this.calculateTimeRemaining(startTime, now);
+          return;
+        }
+
+        if (now >= endTime) {
+          this.showExpired();
+          return;
+        }
+
+        this.showActive();
+        this.calculateTimeRemaining(endTime, now);
+      }
+
+      calculateTimeRemaining(targetTime, currentTime) {
+        const timeDiff = targetTime.getTime() - currentTime.getTime();
+        
+        if (timeDiff <= 0) {
+          this.showExpired();
+          return;
+        }
+
+        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+        this.updateDisplay(days, hours, minutes, seconds);
+        
+        {% if block.settings.show_pulse_effect %}
+          if (timeDiff <= 60000) {
+            this.addPulseEffect();
+          }
+        {% endif %}
+      }
+
+      updateDisplay(days, hours, minutes, seconds) {
+        if (this.daysElement) {
+          this.daysElement.textContent = this.padZero(days);
+        }
+        if (this.hoursElement) {
+          this.hoursElement.textContent = this.padZero(hours);
+        }
+        if (this.minutesElement) {
+          this.minutesElement.textContent = this.padZero(minutes);
+        }
+        if (this.secondsElement) {
+          this.secondsElement.textContent = this.padZero(seconds);
+        }
+      }
+
+      padZero(num) {
+        return num.toString().padStart(2, '0');
+      }
+
+      showActive() {
+        if (this.countdownElement) this.countdownElement.style.display = 'flex';
+        if (this.saleMessageElement) this.saleMessageElement.classList.add('show');
+        if (this.expiredMessageElement) this.expiredMessageElement.classList.remove('show');
+        if (this.notStartedMessageElement) this.notStartedMessageElement.classList.remove('show');
+        this.isActive = true;
+      }
+
+      showExpired() {
+        if (this.countdownElement) this.countdownElement.style.display = 'none';
+        if (this.saleMessageElement) this.saleMessageElement.classList.remove('show');
+        if (this.expiredMessageElement) this.expiredMessageElement.classList.add('show');
+        if (this.notStartedMessageElement) this.notStartedMessageElement.classList.remove('show');
+        
+        if (this.interval) {
+          clearInterval(this.interval);
+        }
+        this.isActive = false;
+      }
+
+      showNotStarted() {
+        if (this.countdownElement) this.countdownElement.style.display = 'flex';
+        if (this.saleMessageElement) this.saleMessageElement.classList.remove('show');
+        if (this.expiredMessageElement) this.expiredMessageElement.classList.remove('show');
+        if (this.notStartedMessageElement) this.notStartedMessageElement.classList.add('show');
+        this.isActive = false;
+      }
+
+      addPulseEffect() {
+        const units = this.querySelectorAll('.ai-sales-timer-unit-{{ ai_gen_id }}');
+        units.forEach(unit => {
+          unit.classList.add('pulse');
+        });
+      }
+    }
+
+    customElements.define('sales-countdown-timer-{{ ai_gen_id }}', SalesCountdownTimer{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Sales countdown timer",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Timer settings"
+    },
+    {
+      "type": "text",
+      "id": "sale_start_time",
+      "label": "Sale start time",
+      "info": "Format: YYYY-MM-DD HH:MM (24-hour format). Example: 2024-12-25 09:00"
+    },
+    {
+      "type": "text",
+      "id": "sale_end_time",
+      "label": "Sale end time",
+      "info": "Format: YYYY-MM-DD HH:MM (24-hour format). Example: 2024-12-31 23:59"
+    },
+    {
+      "type": "select",
+      "id": "timezone",
+      "label": "Timezone",
+      "options": [
+        { "value": "UTC", "label": "UTC" },
+        { "value": "America/New_York", "label": "Eastern Time" },
+        { "value": "America/Chicago", "label": "Central Time" },
+        { "value": "America/Denver", "label": "Mountain Time" },
+        { "value": "America/Los_Angeles", "label": "Pacific Time" },
+        { "value": "Europe/London", "label": "London" },
+        { "value": "Europe/Paris", "label": "Paris" },
+        { "value": "Asia/Tokyo", "label": "Tokyo" },
+        { "value": "Asia/Kolkata", "label": "India" },
+        { "value": "Australia/Sydney", "label": "Sydney" }
+      ],
+      "default": "UTC"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Limited Time Offer"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Sale ends soon! Don't miss out"
+    },
+    {
+      "type": "text",
+      "id": "sale_message",
+      "label": "Sale active message",
+      "default": "Hurry up! Limited time offer"
+    },
+    {
+      "type": "url",
+      "id": "sale_message_link",
+      "label": "Sale message link (optional)",
+      "info": "Make the sale message clickable by adding a URL"
+    },
+    {
+      "type": "text",
+      "id": "expired_message",
+      "label": "Sale expired message",
+      "default": "Sale has ended. Thank you for your interest!"
+    },
+    {
+      "type": "text",
+      "id": "not_started_message",
+      "label": "Sale not started message",
+      "default": "Sale starts in:"
+    },
+    {
+      "type": "header",
+      "content": "Timer display"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_days",
+      "label": "Show days",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_hours",
+      "label": "Show hours",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_minutes",
+      "label": "Show minutes",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_seconds",
+      "label": "Show seconds",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "days_label",
+      "label": "Days label",
+      "default": "Days"
+    },
+    {
+      "type": "text",
+      "id": "hours_label",
+      "label": "Hours label",
+      "default": "Hours"
+    },
+    {
+      "type": "text",
+      "id": "minutes_label",
+      "label": "Minutes label",
+      "default": "Minutes"
+    },
+    {
+      "type": "text",
+      "id": "seconds_label",
+      "label": "Seconds label",
+      "default": "Seconds"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "timer_alignment",
+      "label": "Timer alignment",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 300,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "label": "Maximum width",
+      "default": 800
+    },
+    {
+      "type": "range",
+      "id": "timer_gap",
+      "min": 5,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Timer gap",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "timer_background",
+      "label": "Timer background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "timer_border_color",
+      "label": "Timer border color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "number_color",
+      "label": "Number color",
+      "default": "#d0473e"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "message_color",
+      "label": "Message color",
+      "default": "#d0473e"
+    },
+    {
+      "type": "color",
+      "id": "message_background",
+      "label": "Message background",
+      "default": "rgba(208, 71, 62, 0.1)"
+    },
+    {
+      "type": "color",
+      "id": "expired_color",
+      "label": "Expired message color",
+      "default": "#999999"
+    },
+    {
+      "type": "color",
+      "id": "not_started_color",
+      "label": "Not started message color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "title_weight",
+      "min": 300,
+      "max": 700,
+      "step": 100,
+      "label": "Title weight",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "number_size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Number size",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "number_weight",
+      "min": 300,
+      "max": 700,
+      "step": 100,
+      "label": "Number weight",
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "label_size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Label size",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "label_weight",
+      "min": 300,
+      "max": 700,
+      "step": 100,
+      "label": "Label weight",
+      "default": 500
+    },
+    {
+      "type": "select",
+      "id": "label_transform",
+      "label": "Label text transform",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "uppercase", "label": "Uppercase" },
+        { "value": "lowercase", "label": "Lowercase" },
+        { "value": "capitalize", "label": "Capitalize" }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "range",
+      "id": "message_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Message size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "expired_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Expired message size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "expired_weight",
+      "min": 300,
+      "max": 700,
+      "step": 100,
+      "label": "Expired message weight",
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "not_started_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Not started message size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Timer styling"
+    },
+    {
+      "type": "range",
+      "id": "timer_min_width",
+      "min": 60,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "label": "Timer minimum width",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "timer_padding",
+      "min": 10,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Timer padding",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "timer_border_width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "Timer border width",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "timer_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Timer border radius",
+      "default": 8
+    },
+    {
+      "type": "select",
+      "id": "timer_shadow",
+      "label": "Timer shadow",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "0 2px 4px rgba(0,0,0,0.1)", "label": "Light" },
+        { "value": "0 4px 8px rgba(0,0,0,0.15)", "label": "Medium" },
+        { "value": "0 8px 16px rgba(0,0,0,0.2)", "label": "Strong" }
+      ],
+      "default": "0 2px 4px rgba(0,0,0,0.1)"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Horizontal padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Header spacing",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "title_margin",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Title margin bottom",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "timer_bottom_spacing",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Timer bottom spacing",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "message_padding",
+      "min": 5,
+      "max": 25,
+      "step": 5,
+      "unit": "px",
+      "label": "Message padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "message_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Message border radius",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Effects"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pulse_effect",
+      "label": "Show pulse effect when under 1 minute",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Mobile settings"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile top padding",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile bottom padding",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_horizontal",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile horizontal padding",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "mobile_title_size",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile title size",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "mobile_subtitle_size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile subtitle size",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "mobile_timer_alignment",
+      "label": "Mobile timer alignment",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "mobile_timer_gap",
+      "min": 5,
+      "max": 25,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile timer gap",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mobile_timer_min_width",
+      "min": 50,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile timer minimum width",
+      "default": 65
+    },
+    {
+      "type": "range",
+      "id": "mobile_timer_padding",
+      "min": 8,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile timer padding",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "mobile_number_size",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Mobile number size",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "mobile_label_size",
+      "min": 8,
+      "max": 14,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile label size",
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sales countdown timer"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,20 @@
+# Local operating-system and editor files
+.DS_Store
+**/.DS_Store
+.idea/
+.vscode/
+
+# Shopify CLI state and store-specific settings (including the theme license)
+.shopify/
+config/settings_data.json
+
+# Local audit artifacts and rollback copies
+reports/
+
+# Credentials and local dependencies
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+node_modules/

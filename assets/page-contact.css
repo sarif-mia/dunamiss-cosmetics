@@ -1,0 +1,121 @@
+#privacy:not(:checked) ~ button {
+  opacity: 0.4;
+  pointer-events: none;
+}
+#contact_form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.contact-container {
+  gap: clamp(3rem, 4vw, var(--column_gap));
+}
+.contact-us .contact-container {
+  align-items: stretch;
+  gap: clamp(24px, 4vw, 56px);
+}
+.contact-us .support_customer {
+  width: 34%;
+  max-width: none;
+  align-self: stretch;
+  padding: clamp(24px, 3vw, 38px);
+  background: #f8ecef;
+  border: 1px solid #e6d7de;
+  border-radius: 20px;
+}
+.contact-us .support_customer .contact_header {
+  margin-bottom: 22px;
+}
+.contact-us .support_customer .section__header-heading {
+  font-size: 28px;
+}
+.contact-us .support_customer p {
+  line-height: 1.8;
+}
+.contact-us .support_customer p strong {
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.contact-us .support_customer a[href*="wa.me"],
+.contact-us .support_customer a[href^="mailto:"] {
+  color: #75465c;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.contact-us .contact_form {
+  min-width: 0;
+  padding: clamp(24px, 3vw, 40px);
+  background: #fff;
+  border: 1px solid #e6d7de;
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(117, 70, 92, 0.06);
+}
+.contact-us .contact_form .section__header-heading {
+  font-size: 32px;
+}
+.contact-us .contact_form #contact_form {
+  gap: 22px;
+}
+.contact-us .contact_form .form-control {
+  min-height: 54px;
+  border-color: #e6d7de;
+  border-radius: 10px;
+}
+.contact-us .contact_form textarea.form-control {
+  min-height: 160px;
+}
+.contact-us .contact_form .form-control:focus {
+  border-color: #75465c;
+  box-shadow: 0 0 0 3px rgba(117, 70, 92, 0.12);
+}
+.contact-us .contact_form .privacy_btn {
+  min-height: 52px;
+  border-radius: 10px;
+}
+.page:has(.contact-us) .sec__page-heading {
+  padding-block: 34px;
+  background: linear-gradient(135deg, #fbf1f1, #fffaf7);
+  border-bottom: 1px solid #f0e3e5;
+}
+.page:has(.contact-us) .sec__page-heading .heading-content {
+  max-width: 780px;
+  margin-inline: auto;
+}
+.page:has(.contact-us) .sec__page-heading .heading-title {
+  font-size: clamp(38px, 5vw, 58px);
+}
+.page:has(.contact-us) .heading-description {
+  max-width: 620px;
+  margin-inline: auto;
+}
+.page:has(.contact-us) .heading-description a[href*="wa.me"],
+.page:has(.contact-us) .heading-description a[href^="mailto:"] {
+  color: #75465c;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.map iframe {
+  width: 100%;
+  border-radius: var(--rounded-radius);
+}
+@media (min-width: 768px) {
+  .contact-us .contact_form {
+    flex: 1;
+  }
+}
+@media (max-width: 767px) {
+  .contact-us .contact-container {
+    gap: 18px;
+  }
+  .contact-us .support_customer,
+  .contact-us .contact_form {
+    width: 100%;
+    padding: 24px;
+  }
+  .contact-us .contact_form .section__header-heading {
+    font-size: 28px;
+  }
+}

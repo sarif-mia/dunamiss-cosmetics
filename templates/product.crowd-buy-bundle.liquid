@@ -1,0 +1,33 @@
+<div class="cb-bundle-shell" data-product-id="{{ product.id }}" data-cb-template="bob">
+  {%- assign cb_v = product.selected_or_first_available_variant -%}
+  {%- assign cb_ssr = product.metafields.bob_bundle.booster_ssr -%}
+  <div class="cb-bundle-media">
+    {%- if product.featured_image -%}
+      <img src="{{ product.featured_image | image_url: width: 900 }}" alt="{{ product.title | escape }}" width="900" loading="eager" />
+    {%- endif -%}
+  </div>
+  <div class="cb-bundle-main">
+    <h1 class="cb-bundle-title">{{ product.title | escape }}</h1>
+    {%- comment -%}
+      Widget mount ABOVE the Add to cart — combo card, or the list/grid widget,
+      sit where the price/offer belongs. Full SSR: the combo card is rendered
+      server-side at save and stored in the booster_ssr metafield (one shared
+      template, per-product content — the landing page's page.content parallel),
+      output raw so the client hydrates it: instant paint, crawlable, no flash.
+      Empty for older boosters / list-grid → the widget renders fresh into it.
+    {%- endcomment -%}
+    <div id="cb-bundle-host">{% if cb_ssr != blank %}{{ cb_ssr.value }}{% endif %}</div>
+    <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" class="cb-bundle-form" data-cb-bundle-form>
+      <input type="hidden" name="id" value="{{ cb_v.id }}">
+      <input type="hidden" name="quantity" value="1">
+      <button type="submit" name="add" class="cb-bundle-atc">{{ 'products.product.add_to_cart' | t | default: 'Add to cart' }}</button>
+    </form>
+  </div>
+</div>
+<style>
+  .cb-bundle-shell{width:100%;max-width:1320px;margin:0 auto;padding:24px 16px;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:start}
+  .cb-bundle-media img{width:100%;height:auto;border-radius:12px;display:block}
+  .cb-bundle-title{margin:0 0 16px;font-size:24px;line-height:1.25}
+  .cb-bundle-atc{width:100%;padding:14px 20px;font-size:16px;font-weight:600;border:0;border-radius:10px;background:#111;color:#fff;cursor:pointer}
+  @media(max-width:749px){.cb-bundle-shell{grid-template-columns:1fr;gap:20px;padding:16px}}
+</style>

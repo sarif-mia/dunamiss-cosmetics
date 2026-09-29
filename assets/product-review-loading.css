@@ -1,0 +1,32 @@
+/* Keep app markup measurable while its async components and styles initialize. */
+.product-reviews-loading-notice {
+  padding: 16px;
+  color: var(--brand-text, #333);
+  background: var(--brand-background, #fffcf8);
+}
+.product-reviews-loading-notice button {
+  padding: 8px 12px;
+  color: var(--brand-accent, #75465c);
+  text-decoration: underline;
+  cursor: pointer;
+}
+html.product-reviews-pending #judgeme_product_reviews {
+  position: relative;
+  min-height: 480px;
+  max-height: 480px;
+  overflow: hidden;
+}
+html.product-reviews-pending #judgeme_product_reviews > * {
+  visibility: hidden !important;
+}
+html.product-reviews-pending #judgeme_product_reviews::before {
+  content: "";
+  position: absolute;
+  inset: 24px var(--bs-gutter-x, 1.5rem);
+  border-radius: 12px;
+  background:
+    linear-gradient(var(--brand-border, #eadbe0), var(--brand-border, #eadbe0)) 24px 28px / 180px 20px no-repeat,
+    linear-gradient(var(--brand-border, #eadbe0), var(--brand-border, #eadbe0)) 24px 66px / 120px 14px no-repeat,
+    linear-gradient(var(--brand-surface, #f8f5f0), var(--brand-surface, #f8f5f0)) 0 120px / 100% 300px no-repeat;
+  pointer-events: none;
+}

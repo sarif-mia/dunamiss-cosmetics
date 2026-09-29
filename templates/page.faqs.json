@@ -1,0 +1,221 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "page-heading": {
+      "type": "page-heading",
+      "blocks": {
+        "breadcrumb_kg6gTP": {
+          "type": "breadcrumb",
+          "settings": {}
+        },
+        "heading_fmyy8C": {
+          "type": "heading",
+          "settings": {
+            "page_title": "Help Center",
+            "header_size": "default"
+          }
+        },
+        "description_TfxHmk": {
+          "type": "description",
+          "settings": {
+            "description": "<p>Message us on <a href=\"https://wa.me/919516656907\">WhatsApp: +91 95166 56907</a> or email <a href=\"mailto:care@dunamiss.in\">care@dunamiss.in</a>. Phone support is not available.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "breadcrumb_kg6gTP",
+        "heading_fmyy8C",
+        "description_TfxHmk"
+      ],
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "alignment": "center",
+        "overlay_opacity": 0,
+        "height": "adapt",
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "page-faqs",
+      "blocks": {
+        "title_fipewL": {
+          "type": "title",
+          "settings": {
+            "title": "Orders & Shipping"
+          }
+        },
+        "faq_ThHtgk": {
+          "type": "faq",
+          "settings": {
+            "question": "Are there any shipping charges for orders below a certain amount?",
+            "answer": "<p>Enjoy Free Shipping on Prepaid Orders! For COD orders, a flat shipping fee of ₹49 applies across India.</p>"
+          }
+        },
+        "faq_Gicg7X": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does it take for my order to be delivered?",
+            "answer": "<p>Orders are typically delivered within 3–7 business days, depending on your location.</p>"
+          }
+        },
+        "faq_836jPJ": {
+          "type": "faq",
+          "settings": {
+            "question": "What should I do if there is a problem with my delivery?",
+            "answer": "<p>Message us on <a href=\"https://wa.me/919516656907\">WhatsApp: +91 95166 56907</a> or email <a href=\"mailto:care@dunamiss.in\">care@dunamiss.in</a> within 48 hours of delivery. Claims after this period will not be accepted.</p>"
+          }
+        },
+        "faq_ia7ibM": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I amend my order after it has been placed?",
+            "answer": "<p>Changes are only possible before dispatch. Message us on <a href=\"https://wa.me/919516656907\">WhatsApp: +91 95166 56907</a> or email <a href=\"mailto:care@dunamiss.in\">care@dunamiss.in</a>.</p>"
+          }
+        },
+        "title_gbHw88": {
+          "type": "title",
+          "settings": {
+            "title": "Payment Information"
+          }
+        },
+        "faq_fFdf33": {
+          "type": "faq",
+          "settings": {
+            "question": "What payment methods do you accept?",
+            "answer": "<p>We accept credit/debit cards, net banking, and mobile wallets.</p>"
+          }
+        },
+        "faq_7zgeNX": {
+          "type": "faq",
+          "settings": {
+            "question": "Is it safe to make online payments on your website?",
+            "answer": "<p>Yes, we use secure payment gateways and encryption to ensure your payment is safe.</p>"
+          }
+        },
+        "title_bqPdEf": {
+          "type": "title",
+          "settings": {
+            "title": "Return & Exchange"
+          }
+        },
+        "faq_Yk6NFT": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I return or exchange opened or used products?",
+            "answer": "<p>No. Opened or used products are not eligible for return or exchange for hygiene reasons. For a product that arrived damaged, please follow our damaged-product request process.</p>"
+          }
+        },
+        "faq_4M7pba": {
+          "type": "faq",
+          "settings": {
+            "question": "What should I do if I receive a damaged product?",
+            "answer": "<p>Report the issue within 48 hours of delivery on <a href=\"https://wa.me/919516656907\">WhatsApp: +91 95166 56907</a> or email <a href=\"mailto:care@dunamiss.in\">care@dunamiss.in</a>, with your order details and a clear unboxing video. Eligible requests are subject to verification. Products purchased on sale are not eligible for return or exchange.</p>"
+          }
+        },
+        "faq_kAVH4d": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the process for exchanging a damaged product?",
+            "answer": "<p>For an eligible product, report the issue and provide a clear unboxing video within 48 hours of delivery. Once approved, exchanges are processed within 7–21 business days. Products purchased on sale are not eligible for return or exchange.</p>"
+          }
+        },
+        "faq_YnHLzc": {
+          "type": "faq",
+          "settings": {
+            "question": "When can I request a return?",
+            "answer": "<p>Eligible requests for products received damaged or orders with missing items must be reported within 48 hours of delivery, with a clear unboxing video for verification. Products must remain unused and in their original condition. Being unopened alone does not make a product eligible. Products purchased on sale are not eligible for return or exchange. See our <a href=\"/pages/returns-exchange-policy\">Return &amp; Exchange Policy</a> for details.</p>"
+          }
+        },
+        "title_WyfxtT": {
+          "type": "title",
+          "settings": {
+            "title": "Brand Philosophy"
+          }
+        },
+        "faq_ihTetD": {
+          "type": "faq",
+          "settings": {
+            "question": "What does the heart in your logo represent?",
+            "answer": "<p>It represents our commitment to care — for your skin and for the planet.</p>"
+          }
+        },
+        "faq_efgqCe": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your brand's purpose?",
+            "answer": "<p>To create kind beauty that empowers self-love and supports the skin barrier and the environment.</p>"
+          }
+        },
+        "faq_L3TytR": {
+          "type": "faq",
+          "settings": {
+            "question": "How do you nurture people and the planet?",
+            "answer": "<p>By using nature’s finest ingredients and promoting conscious consumption.</p>"
+          }
+        },
+        "faq_YHU93w": {
+          "type": "faq",
+          "settings": {
+            "question": "What sets your brand apart?",
+            "answer": "<p>We show heart in every step — from ingredients to packaging — and always prioritize well-being.</p>"
+          }
+        },
+        "faq_sale_products": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I return or exchange a sale product?",
+            "answer": "<p>No. Products purchased on sale are not eligible for return or exchange.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "title_fipewL",
+        "faq_ThHtgk",
+        "faq_Gicg7X",
+        "faq_836jPJ",
+        "faq_ia7ibM",
+        "title_gbHw88",
+        "faq_fFdf33",
+        "faq_7zgeNX",
+        "title_bqPdEf",
+        "faq_Yk6NFT",
+        "faq_4M7pba",
+        "faq_kAVH4d",
+        "faq_YnHLzc",
+        "faq_sale_products",
+        "title_WyfxtT",
+        "faq_ihTetD",
+        "faq_efgqCe",
+        "faq_L3TytR",
+        "faq_YHU93w"
+      ],
+      "settings": {
+        "section_width": "fluid_container",
+        "heading": "Need more help?",
+        "description": "<p>Message us on <a href=\"https://wa.me/919516656907\">WhatsApp: +91 95166 56907</a> or email <a href=\"mailto:care@dunamiss.in\">care@dunamiss.in</a>. Phone support is not available.</p><p>Support hours: Every day, 10 AM–6 PM IST.</p><p>Please allow 3–5 business days from the time your package arrives back to us for a refund to be issued.</p>",
+        "first_button_label": "Message on WhatsApp",
+        "first_button_link": "https://wa.me/919516656907",
+        "first_button_type": "outline",
+        "second_button_label": "Contact Us",
+        "second_button_link": "shopify://pages/contact",
+        "second_button_type": "primary",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "page-heading",
+    "main"
+  ]
+}

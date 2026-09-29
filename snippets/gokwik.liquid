@@ -1,0 +1,236 @@
+
+
+{% if settings.envType == 'production' %}
+  {% assign env = 'pdp' %}
+{% elsif settings.envType == 'sandbox' %}
+  {% assign env = 'sandbox.pdp' %}
+{% endif %}
+
+{% if settings.goEnable %}
+  <script>
+    window.gaTag = {ga4: "{{ settings.ga4Gokwik }}"}
+    window.merchantInfo  = {
+            mid: "{{ settings.mid }}",
+            environment: "{{ settings.envType }}",
+            type: "merchantInfo",
+      		storeId: "{{shop.id}}",
+      		fbpixel: "{{settings.fbpixel}}",
+          }
+    var productFormSelector = '';
+    var cart = {{ cart | json }}
+    var templateName = '{{template.name}}'
+  </script>
+
+  <script src="https://{{ env }}.gokwik.co/merchant-integration/build/merchant.integration.js?v4" defer></script>
+
+  <script>
+    window.addEventListener('gokwikLoaded', () => {
+      const controls = '#gokwik-buy-now, .gokwik-checkout button';
+      const relevantControls = controls + ", button[name='add']";
+      const boundButtons = new WeakSet();
+      const gokwikAdsID = {{ settings.gkAdsConfig | json }};
+      let clicked = false;
+      let pendingFrame = 0;
+
+      function trackCheckout() {
+        if (clicked || !gokwikAdsID) return;
+        clicked = true;
+        window.gtag?.('event', 'conversion', {
+          'send_to': gokwikAdsID.toString().trim(),
+          'value': {{ order.total_price | divided_by: 100.0 }},
+          'currency': '{{ order.shop.currency }}',
+          'transaction_id': '{{ order.order_number }}'
+        });
+      }
+
+      function syncControls() {
+        pendingFrame = 0;
+        const addButton = document.querySelector("button[name='add']");
+        document.querySelectorAll(controls).forEach((button) => {
+          // Retain availability when variants update or the cart replaces its HTML.
+          const disabled = button.id === 'gokwik-buy-now' && Boolean(addButton?.disabled);
+          if (button.disabled !== disabled) button.disabled = disabled;
+          button.classList.remove('disabled');
+          if (gokwikAdsID && !boundButtons.has(button)) {
+            button.addEventListener('click', trackCheckout);
+            boundButtons.add(button);
+          }
+        });
+      }
+
+      function containsControl(node) {
+        return node.nodeType === 1 &&
+          (node.matches(relevantControls) || Boolean(node.querySelector(relevantControls)));
+      }
+
+      // Ignore review, video and other widget mutations. Only reconcile commerce
+      // controls when they are inserted/removed or the add button changes stock state.
+      const observer = new MutationObserver((records) => {
+        const relevant = records.some((record) => {
+          if (record.type === 'attributes') return record.target.matches("button[name='add']");
+          return [...record.addedNodes, ...record.removedNodes].some(containsControl);
+        });
+        if (relevant && !pendingFrame) pendingFrame = requestAnimationFrame(syncControls);
+      });
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['disabled']
+      });
+      gokwikSdk.on('modal_closed', () => { clicked = false; });
+      syncControls();
+    }, { once: true });
+  </script>
+
+{% endif %}
+
+<style>
+  {% if settings.goEnable %}
+  .gokwik-checkout {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: end;
+    margin-bottom: 10px;
+  }
+  .gokwik-checkout button {
+    max-width:100%;
+    width: 100%;
+    {% comment %} border: none; {% endcomment %}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: {{ settings.priClr }};
+    position: relative;
+    cursor: pointer;
+    {% comment %} border-radius: 10px; {% endcomment %}
+    padding: 5px 10px;
+    height:45px;
+  }
+  #gokwik-buy-now.disabled, .gokwik-disabled{
+    opacity:0.5;
+    cursor: not-allowed;
+    }
+    .gokwik-checkout button:focus {
+    outline: none;
+  }
+  .gokwik-checkout button > span {
+    display: flex;
+  }
+  .gokwik-checkout button > span.btn-text {
+    display: flex;
+    flex-direction: column;
+    {% comment %} color: {{ settings.secClr }}; {% endcomment %}
+    align-items: center;
+  }
+  .gokwik-checkout button > span.btn-text > span:last-child {
+  	padding-top: 2px;
+      font-size: 10px;
+      line-height: 10px;
+      text-transform: initial;
+  }
+  {% comment %} .gokwik-checkout button > span.btn-text > span:first-child {
+     font-size: 15px;
+  } {% endcomment %}
+  .gokwik-checkout button > span.pay-opt-icon img:first-child {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  /*   Additional */
+  .gokwik-checkout button.disabled{
+    opacity:0.5;
+    cursor: not-allowed;
+    }
+  .gokwik-checkout button.disabled .addloadr#btn-loader{
+     display: flex!important;
+  }
+    #gokwik-buy-now.disabled .addloadr#btn-loader{
+     display: flex!important;
+  }
+      #gokwik-buy-now:disabled{
+     cursor: not-allowed;
+     opacity:0.5;
+  }
+
+
+
+
+  {% endif %}
+
+  {% if settings.goBuynowEnable %}
+   #gokwik-buy-now {
+     background: {{ settings.btnBClr }};
+     width: 100%;
+     color: {{ settings.btnTextClr }};
+     cursor: pointer;
+     line-height: 1;
+     border: none;
+     padding: 15px 10px;
+     font-size: 15px;
+      margin-bottom: 10px;
+     position:relative;
+   }
+
+
+  {% endif %}
+  /* Loader CSS */
+    #btn-loader{
+      display: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      justify-content: center;
+      align-items: center;
+      background:{{ settings.priClr }};
+      border-radius:30px;
+
+    }
+
+  .cir-loader,
+  .cir-loader:after {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+  }
+  .cir-loader {
+    margin: 6px auto;
+    font-size: 10px;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 0.5em solid rgba(255, 255, 255, 0.2);
+    border-right: 0.5em solid rgba(255, 255, 255, 0.2);
+    border-bottom: 0.5em solid rgba(255, 255, 255, 0.2);
+    border-left: 0.5em solid #000;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load8 1.1s infinite linear;
+    animation: load8 1.1s infinite linear;
+  }
+  @-webkit-keyframes load8 {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes load8 {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
+

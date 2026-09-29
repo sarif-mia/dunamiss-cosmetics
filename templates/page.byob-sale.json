@@ -1,0 +1,123 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-default",
+      "disabled": true,
+      "settings": {
+        "section_width": "fluid_container",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_overlay_6EdAdf": {
+      "type": "image-with-text-overlay",
+      "name": "t:sections.image_with_text_overlay.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "image": "shopify://shop_images/WEBSITE_CREATIVE_BYOB_SALE_DESKTOP.jpg",
+        "image_mobile": "shopify://shop_images/WEBSITE_CREATIVE_BYOB_SALE_Mobile.jpg",
+        "image_behavior": "none",
+        "overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_height": 600,
+        "mobile_height": 500,
+        "content_alignment": "left",
+        "content_position": "top-left",
+        "content_width": "container",
+        "content_max_width": 100,
+        "content_padding_block": 15,
+        "content_padding_inline": 0,
+        "show_content_background": false,
+        "content_background": "#ffffff",
+        "content_box_opacity": 100,
+        "content_below_image": false,
+        "content_alignment_mobile": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "reset_spacing": true
+      }
+    },
+    "scrolling_text_9VLrVC": {
+      "type": "scrolling-text",
+      "blocks": {
+        "scrolling_text_4QVFmF": {
+          "type": "scrolling_text",
+          "settings": {
+            "content": "<strong>Unlock MASSIVE Discounts!</strong>"
+          }
+        }
+      },
+      "block_order": [
+        "scrolling_text_4QVFmF"
+      ],
+      "name": "t:sections.scrolling_text.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "scheme-25660921-1026-4593-945d-081d88dda9ec",
+        "direction": "left",
+        "icon_between_item": "unset",
+        "speed": 12,
+        "space_between_text": 30,
+        "font_size": 18,
+        "font_weight": "body_weight",
+        "uppercase": false,
+        "use_heading_font": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "reset_spacing": false
+      }
+    },
+    "products_grid_fQE8VW": {
+      "type": "products-grid",
+      "name": "t:sections.products-grid.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "heading": "Build Your Bundle",
+        "description": "The more you buy the more you save!",
+        "header_size": "medium",
+        "header_alignment": "center",
+        "collection": "the-byob-sale",
+        "items_to_show": 8,
+        "items_per_row": 4,
+        "column_gap": 30,
+        "rows_on_desktop": 2,
+        "action_with_additional_products": "load_more",
+        "button_label": "Load more",
+        "show_banner": false,
+        "sticky_banner": false,
+        "banner_width": 30,
+        "position": "left",
+        "banner_type": "image",
+        "video_url": "",
+        "banner_text_color": "",
+        "banner_heading": "",
+        "banner_subheading": "",
+        "banner_description": "",
+        "banner_button_label": "",
+        "banner_link": "",
+        "carousel_on_mobile": false,
+        "items_per_row_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "reset_spacing": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_6EdAdf",
+    "scrolling_text_9VLrVC",
+    "products_grid_fQE8VW"
+  ]
+}

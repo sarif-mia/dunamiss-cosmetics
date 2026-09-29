@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /admin
+Disallow: /cart
+Disallow: /carts
+Disallow: /checkout
+Disallow: /orders
+Disallow: /account
+Disallow: /search
+Disallow: /recommendations/products
+
+{% for group in robots.default_groups %}{% if group.sitemap != blank %}{{ group.sitemap }}{% break %}{% endif %}{% endfor %}
+
+User-agent: GPTBot
+Allow: /

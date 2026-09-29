@@ -1,0 +1,627 @@
+{% comment %}
+------------------------------------------------------------
+IMPORTANT: The contents of this file are generated.
+Please exercise caution as any changes made to this file may be overwritten.
+------------------------------------------------------------
+{% endcomment %}
+
+{% assign s = section.settings %}
+{% assign metafield = shop.metafields.essential_loyalty.landing_page.value %}
+{% assign customer_json = customer.metafields.essential_loyalty.landing_page.value | json %}
+
+<style>
+  {%- comment -%}
+    ⚠️ A blank setting must emit NOTHING, not an empty declaration (#1216).
+    `--x: ;` is a VALID custom property with an empty value, so `var(--x, fallback)` substitutes the
+    EMPTY value rather than the fallback — the using declaration then dies at computed-value time.
+    That is why `border: 2px solid var(--essential-button-border-color)` produced no border at all
+    on every shop: the property was present, just empty. Only these four settings ship without a
+    schema default, so only these can be blank; the rest always carry a value.
+  {%- endcomment -%}
+  :root {
+    {%- if s.heading_font_family != blank %}--essential-heading-font-family: {{ s.heading_font_family }};{% endif -%}
+    {%- if s.text_font_family != blank %}--essential-text-font-family: {{ s.text_font_family }};{% endif -%}
+    --essential-heading-color: {{ s.heading_color }};
+    --essential-text-color: {{ s.text_color }};
+    {%- if s.page_background_color != blank %}--essential-page-background-color: {{ s.page_background_color }};{% endif -%}
+    --essential-page-max-width: {{ s.page_max_width }}px;
+    --essential-border-radius: {{ s.border_radius }}px;
+    --essential-heading-font-size: {{ s.heading_font_size }}px;
+    --essential-text-font-size: {{ s.text_font_size }}px;
+    --essential-heading-font-size-mobile: {{ s.heading_font_size_mobile }}px;
+    --essential-text-font-size-mobile: {{ s.text_font_size_mobile }}px;
+
+    --essential-button-background-color: {{ s.button_background_color }};
+    --essential-button-text-color: {{ s.button_text_color }};
+    --essential-button-hover-background-color: {{ s.button_hover_background_color }};
+    --essential-button-hover-text-color: {{ s.button_hover_text_color }};
+    {%- if s.button_border_color != blank %}--essential-button-border-color: {{ s.button_border_color }};{% endif -%}
+    --essential-button-font-size: {{ s.button_font_size }}px;
+    --essential-button-padding-x: {{ s.button_padding_x }}px;
+    --essential-button-padding-y: {{ s.button_padding_y }}px;
+
+    --essential-input-background-color: {{ s.input_background_color }};
+    --essential-input-text-color: {{ s.input_text_color }};
+    --essential-input-border-color: {{ s.input_border_color }};
+    --essential-input-font-size: {{ s.input_font_size }}px;
+    --essential-input-padding-x: {{ s.input_padding_x }}px;
+    --essential-input-padding-y: {{ s.input_padding_y }}px;
+
+    --essential-card-background-color: {{ s.card_background_color }};
+    --essential-card-heading-color: {{ s.card_heading_color }};
+    --essential-card-text-color: {{ s.card_text_color }};
+    --essential-card-icon-color: {{ s.card_icon_color }};
+    --essential-card-border-color: {{ s.card_border_color }};
+    --essential-card-heading-font-size: {{ s.card_heading_font_size }}px;
+    --essential-card-text-font-size: {{ s.card_text_font_size }}px;
+    --essential-card-image-height: {{ s.card_image_height }}px;
+
+    --essential-table-thead-background-color: {{ s.table_thead_background_color }};
+    --essential-table-thead-text-color: {{ s.table_thead_text_color }};
+    --essential-table-tbody-text-color: {{ s.table_tbody_text_color }};
+    --essential-table-border-color: {{ s.table_border_color }};
+
+    --essential-modal-background-color: {{ s.modal_background_color }};
+    --essential-modal-text-color: {{ s.modal_text_color }};
+    --essential-modal-icon-color: {{ s.modal_icon_color }};
+    --essential-modal-icon-position-top: {{ s.modal_icon_position_top }}px;
+    --essential-modal-icon-position-right: {{ s.modal_icon_position_right }}px;
+    --essential-modal-heading-font-size: {{ s.modal_heading_font_size }}px;
+    --essential-modal-text-font-size: {{ s.modal_text_font_size }}px;
+  }
+
+  #essential-loyalty-landing-page {
+    background: var(--essential-page-background-color);
+  }
+
+  #essential-loyalty-landing-page .shopify-app-block {
+      width: 100%;
+  }
+
+  {{ s.custom_css }}
+</style>
+
+<script>
+  window.HoneyProxyPrefix = "{{ metafield.proxy_prefix }}";
+  /* Skip Alpine injection if the host theme already ships it (e.g. Pixel Union
+   * Empire family). A second Alpine triggers Alpine.start() twice and renders
+   * every x-for list as duplicate sibling DOM (3 rewards displayed as 6). */
+  window.addEventListener('load', function () {
+    if (window.Alpine || window.deferLoadingAlpine) return;
+    [
+      "https://unpkg.com/alpinejs",
+      "https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.x.x/dist/cdn.min.js"
+    ].forEach(function (src) {
+      var script = document.createElement('script');
+      script.src = src;
+      script.defer = true;
+      document.body.appendChild(script);
+    });
+  });
+
+  document.addEventListener('alpine:init', () => {
+    Alpine.store('i18n', {
+      locale: "{{ localization.language.iso_code }}",
+      fallback: "{{ metafield.shop.primary_locale }}",
+      translate: function(text, properties) {
+        if (!text) return null;
+        var translatedText = text[this.locale] || text[this.fallback] || text['en'];
+
+        if (properties) {
+          Object.keys(properties).forEach(function(key) {
+            var searchStr = '{' + key + '}';
+            var value = properties[key];
+            while (translatedText.indexOf(searchStr) !== -1) {
+              translatedText = translatedText.replace(searchStr, value);
+            }
+          });
+        }
+
+        return translatedText;
+      }
+    });
+
+    Alpine.store('shop', {{ metafield | json }})
+
+    Alpine.store('customer', {
+      /* Two different questions, and conflating them WAS the #1282 bug: this flag answers "is
+         someone logged into Shopify", `payload` answers "do we have a loyalty record for them".
+         Every other storefront surface (floating widget, legacy proxy, customer accounts) creates
+         that record on first contact; this page only ever read a cached copy from the customer
+         metafield, so a logged-in non-member rendered `referral_code=undefined` and a tier bar with
+         the same tier at both ends, on every reload, forever. */
+      hasShopifyCustomer: {% if customer %}true{% else %}false{% endif %},
+      shopifyCustomerId: {% if customer %}{{ customer.id }}{% else %}null{% endif %},
+      payload: {% if customer %}{{ customer_json }}{% else %}null{% endif %},
+      /* True only while the first bootstrap request is in flight. Blocks use it to render NEITHER
+         the member nor the non-member state for that moment, rather than flashing "join" at someone
+         who is one request away from being a member. */
+      bootstrapping: false,
+      init() {
+        /* Alpine calls this when the store is registered. Nothing else could break the cycle:
+           refresh() is otherwise only called by the earn/redeem blocks after a successful action,
+           and those already require a customer record to exist. */
+        if (!this.hasShopifyCustomer || this.payload !== null) return;
+        /* ⚠️ This CHECKS a stamp; it does not write one. The first cut stamped "bootstrapped"
+           before the request and skipped on any later load, which broke the exact flow this whole
+           change exists for: a merchant created a second account in the same browser, the stamp
+           from the first one was still there, no request was made, and the page showed the join CTA
+           to a logged-in customer. Measured on 1820ab-83: TWO new accounts, ONE proxy call.
+           It broke a plain reload too — the metafield write is async, so the second load of a
+           brand-new customer still has no payload and needed the request just as much.
+           Only a bootstrap that RETURNED NOTHING stamps (see refresh), and the stamp is per
+           customer, so one unsyncable customer cannot mute the next one. */
+        try {
+          if (sessionStorage.getItem(this.stampKey())) {
+            /* ⚠️ `bootstrapping` MUST stay true on this path. Blocks read
+               `!authenticated() && !bootstrapping` as "show the join CTA", so returning with it
+               false tells a logged-in customer to create an account — byte for byte the symptom
+               this change exists to remove, reached from a stamped failure instead of a missing
+               request. Unknown state renders neither branch, which is the honest answer. */
+            this.bootstrapping = true;
+
+            return;
+          }
+        } catch (e) { /* storage blocked (private mode) — just do the request */ }
+        this.refresh();
+      },
+      /* Per CUSTOMER, not per session: the session is shared by everyone who logs in on this
+         browser, which is precisely how the first version failed. */
+      stampKey() {
+        return 'essential_loyalty_bootstrap_failed:' + this.shopifyCustomerId;
+      },
+      stamp(failed) {
+        try {
+          failed
+            ? sessionStorage.setItem(this.stampKey(), '1')
+            : sessionStorage.removeItem(this.stampKey());
+        } catch (e) { /* storage blocked — nothing to remember, every load simply retries */ }
+      },
+      authenticated() {
+        return this.payload !== null;
+      },
+      activities() {
+        if (!this.payload) return [];
+        return this.payload.activities || [];
+      },
+      discounts() {
+        if (!this.payload) return [];
+        return this.payload.discounts || [];
+      },
+      points() {
+        if (!this.payload) return 0;
+        return this.payload.points;
+      },
+      refresh() {
+        /* Gated on the SHOPIFY customer, not on `payload`. The old `if (!this.payload) return`
+           made this unreachable in exactly the case that needed it: no metafield meant no payload,
+           which meant the one call that would have created the record was never made. A genuinely
+           logged-out visitor still issues no request. */
+        if (!this.hasShopifyCustomer) return;
+        this.bootstrapping = true;
+        return fetch(HoneyProxyPrefix + '/proxy/api/customer.json')
+          .then(response => response.json())
+          .then(json => {
+            /* ⚠️ An `{"errors": …}` body has NO `data` key at all — ProxyAPIController answers a
+               bad proxy signature or an unknown shop that way. Destructuring it yields `undefined`,
+               which becomes `null`, which would be recorded as "this customer cannot be resolved":
+               a statement about the REQUEST dressed up as one about the customer. Treated like a
+               rejected fetch instead — state stays unknown, nothing is stamped, the next load
+               tries again. */
+            if (!json || !('data' in json)) return;
+
+            /* `json.data || null`, NEVER a spread: the endpoint answers {"data": null} when the
+               request carries no logged_in_customer_id, and spreading null yields {} — which is not
+               null, so authenticated() would start returning true for a logged-out visitor and
+               points() would return undefined. */
+            this.payload = json.data || null;
+            /* THE only "stop asking" signal, and a definitive one: the endpoint resolved the
+               request and had no customer to give (deleted in Shopify, a sync that keeps failing).
+               A payload CLEARS any earlier stamp, so nothing transient becomes permanent. */
+            this.stamp(this.payload === null);
+            this.bootstrapping = false;
+          })
+          .catch(() => {
+            /* ⚠️ Deliberately leaves `bootstrapping` TRUE, and deliberately swallows. A rejected
+               fetch (offline, 5xx, or an HTML error page that response.json() chokes on) tells us
+               NOTHING about whether this customer is a member — and blocks read
+               `!authenticated() && !bootstrapping` as "show the join CTA", so clearing the flag
+               here would invite a logged-in customer to create an account. Showing neither state is
+               the honest outcome. Without the catch this was also an unhandled rejection on the
+               merchant's storefront: init() calls refresh() fire-and-forget, unlike every earn/redeem
+               caller, which awaits it inside a try/catch.
+
+               ⚠️ And it does NOT stamp. The paragraph above says a rejection tells us nothing about
+               this customer; recording it as "unresolvable for the rest of the session" would
+               contradict exactly that, and one 502 during a deploy would then mute the bootstrap
+               and show the join CTA to a real member. The case the stamp exists for — a customer
+               who can never be resolved — arrives as a 200 with `"data": null`, handled above. */
+          });
+      },
+      actionCompleted(id) {
+        if (!this.payload) return false;
+        return (this.payload?.completed_action_ids || []).indexOf(id) !== -1;
+      },
+    })
+  })
+</script>
+
+<div id="essential-loyalty-landing-page" style="max-width: var(--essential-page-max-width); margin: 0 auto;">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when '@app' %}
+        {% render block %}
+    {% endcase %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Landing Page Settings",
+  "blocks": [
+    { "type": "@app" }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "text",
+      "id": "heading_font_family",
+      "label": "Heading Font Family"
+    },
+    {
+      "type": "text",
+      "id": "text_font_family",
+      "label": "Text Font Family"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color_background",
+      "id": "page_background_color",
+      "label": "Page Background Color"
+    },
+    {
+      "type": "range",
+      "id": "page_max_width",
+      "min": 400,
+      "max": 2400,
+      "step": 20,
+      "unit": "px",
+      "label": "Page Max Width",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border Radius",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "min": 10,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "text_font_size",
+      "min": 10,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Text Font Size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 10,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "text_font_size_mobile",
+      "min": 10,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Text Font Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background_color",
+      "label": "Hover Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Hover Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Border Color"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_padding_y",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Vertical Padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "button_padding_x",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "label": "Horizontal Padding",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Input"
+    },
+    {
+      "type": "color",
+      "id": "input_background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Border Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "input_font_size",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "input_padding_x",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Vertical Padding",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "input_padding_y",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Horizontal Padding",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Card"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_heading_color",
+      "label": "Card Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_icon_color",
+      "label": "Card Icon Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card Border Color",
+      "default": "#c6c6c6"
+    },
+    {
+      "type": "range",
+      "id": "card_heading_font_size",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Heading Font Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_text_font_size",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Text Font Size",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "card_image_height",
+      "min": 10,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Card Image Height",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Table"
+    },
+    {
+      "type": "color",
+      "id": "table_thead_background_color",
+      "label": "thead Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "table_thead_text_color",
+      "label": "thead Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "table_tbody_text_color",
+      "label": "tbody Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "table_border_color",
+      "label": "Border Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Modal"
+    },
+    {
+      "type": "color",
+      "id": "modal_background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "modal_text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "modal_icon_color",
+      "label": "Icon Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "modal_icon_position_top",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Modal Close Icon Position Top",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "modal_icon_position_right",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Modal Close Icon Position Right",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "modal_heading_font_size",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Modal Heading Font Size",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "modal_text_font_size",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Modal Text Font Size",
+      "default": 14
+    }
+  ]
+}
+{% endschema %}

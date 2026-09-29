@@ -1,0 +1,100 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "store_info_tUhcyD": {
+          "type": "store_info",
+          "settings": {
+            "image": "shopify://shop_images/Dunamiss_Logo_in_B.png",
+            "image_width": 120,
+            "store_heading": "",
+            "store_description": "<p>We are a proud Indian cosmetic brand that believes in the idea of \u2018<strong>Beauty with Power</strong>\u2019 through conscious consumption!</p>",
+            "store_address": true,
+            "store_phone": false,
+            "store_email": true,
+            "content_width": "33.333%"
+          }
+        },
+        "link_list_Kp4WTg": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Explore",
+            "menu": "know-more",
+            "content_width": "16%"
+          }
+        },
+        "link_list_JTq77M": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Customer Care",
+            "menu": "footer",
+            "content_width": "16%"
+          }
+        },
+        "newsletter_Rk8BD6": {
+          "type": "newsletter",
+          "settings": {
+            "heading": "Join the Dunamiss community",
+            "description": "Join the Dunamiss community for new launches, beauty tips, and the latest updates.",
+            "email_placeholder": "Enter your email...",
+            "button_label": "Join the community",
+            "note": "By signing up, you agree to our <a href=\"/pages/terms-conditions\">Terms &amp; Conditions</a> and <a href=\"/pages/privacy-policy\">Privacy Policy</a>.",
+            "content_width": "33.333%"
+          }
+        },
+        "link_list_shop": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop",
+            "menu": "main-menu",
+            "content_width": "20%",
+            "link_limit": 6
+          }
+        }
+      },
+      "block_order": [
+        "store_info_tUhcyD",
+        "link_list_shop",
+        "link_list_Kp4WTg",
+        "link_list_JTq77M",
+        "newsletter_Rk8BD6"
+      ],
+      "custom_css": [
+        ".newsletter {flex: 1;}"
+      ],
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "scheme-25660921-1026-4593-945d-081d88dda9ec",
+        "enable_back_top": false,
+        "separator_line": "all-page",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "payment_enable": true,
+        "payment_width": 340,
+        "policy_menu": false,
+        "copyright_text": "\u00a9 [year] Dunamiss. All rights reserved.",
+        "footer_heading_size": 16,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "reset_spacing_on_homepage": true
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

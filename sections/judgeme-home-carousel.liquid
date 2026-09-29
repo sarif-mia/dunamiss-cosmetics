@@ -1,0 +1,84 @@
+{%- liquid
+  assign jm_metafields = shop.metafields.judgeme
+  assign review_count = jm_metafields.all_reviews_count | default: 0 | plus: 0
+-%}
+{{ 'dunamiss-review-carousel.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'dunamiss-review-carousel.js' | asset_url }}" defer></script>
+{% if jm_metafields.featured_carousel != blank and review_count > 0 %}
+  <dunamiss-review-carousel
+    class="dm-reviews"
+    hidden
+    data-design-mode="{{ request.design_mode }}"
+    style="--reviews-top: {{ section.settings.padding_top }}px; --reviews-bottom: {{ section.settings.padding_bottom }}px;"
+  >
+    <div class="fluid_container">
+      <header class="dm-reviews__header">
+        <h2 id="ReviewsHeading-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+        {% if section.settings.description != blank %}
+          <p>{{ section.settings.description | escape }}</p>
+        {% endif %}
+      </header>
+      {% comment %}Inert data source: Judge.me cannot initialize a competing slider inside a template.{% endcomment %}
+      <template data-review-source>{{ jm_metafields.featured_carousel }}</template>
+      <div class="dm-reviews__slider">
+      <button type="button" class="dm-reviews__arrow dm-reviews__arrow--previous" data-previous aria-label="Previous reviews" aria-controls="ReviewsTrack-{{ section.id }}" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m15 5-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="dm-reviews__track" id="ReviewsTrack-{{ section.id }}" role="region" aria-labelledby="ReviewsHeading-{{ section.id }}" aria-roledescription="carousel" tabindex="0"></div>
+      <button type="button" class="dm-reviews__arrow dm-reviews__arrow--next" data-next aria-label="Next reviews" aria-controls="ReviewsTrack-{{ section.id }}" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <span class="visually-hidden" data-review-status role="status" aria-live="polite" aria-atomic="true"></span>
+      <p data-review-empty hidden>No featured review cards were found. Select reviews for the Reviews Carousel in Judge.me.</p>
+    </div>
+  </dunamiss-review-carousel>
+{% elsif request.design_mode %}
+  <div class="fluid_container" style="padding-block: 32px;">
+    <h2>{{ section.settings.heading | escape }}</h2>
+    <p>Select published reviews for the Reviews Carousel in Judge.me. This section stays hidden from shoppers until carousel data is available.</p>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Judge.me review carousel",
+  "tag": "section",
+  "enabled_on": { "templates": ["index"] },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Custom carousel: 4 cards on desktop, 2 on tablet and 1 on mobile. Select featured reviews in Judge.me. Review content comes only from its carousel metafield."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Loved by our community"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Discover what our customers are saying."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "presets": [{ "name": "Judge.me review carousel" }]
+}
+{% endschema %}

@@ -1,0 +1,234 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "page_sale_banner_DK6g3h": {
+      "type": "page-sale-banner",
+      "blocks": {
+        "item_nbN6pz": {
+          "type": "item",
+          "settings": {
+            "sale_label": "GLIMMER",
+            "sale_title": "Sale 30% Off",
+            "sale_desc": "Shine Bright with 30% Savings!",
+            "sale_code": "No Code Required",
+            "content_width": "25%"
+          }
+        },
+        "item_iaa9QM": {
+          "type": "item",
+          "settings": {
+            "sale_label": "Limited Deal",
+            "sale_title": "Sale 15% Off",
+            "sale_desc": "Best-selling beauty for less.",
+            "sale_code": "DUNAMISSBFF",
+            "content_width": "50%"
+          }
+        },
+        "item_i6WegL": {
+          "type": "item",
+          "settings": {
+            "sale_label": "COMBO",
+            "sale_title": "COMBO for ₹599",
+            "sale_desc": "Get 3 Lip Balms just for ₹599",
+            "sale_code": "No Code Required",
+            "content_width": "25%"
+          }
+        },
+        "item_MFtELj": {
+          "type": "item",
+          "settings": {
+            "sale_label": "Monsoon Sale",
+            "sale_title": "Best Sellers",
+            "sale_desc": "Best-selling beauty for less.",
+            "sale_code": "No Code Required",
+            "content_width": "25%"
+          }
+        }
+      },
+      "block_order": [
+        "item_nbN6pz",
+        "item_iaa9QM",
+        "item_i6WegL",
+        "item_MFtELj"
+      ],
+      "custom_css": [],
+      "settings": {
+        "section_width": "fluid_container",
+        "overlay_opacity": 80,
+        "color_scheme": "scheme-bb1431b0-be4a-4b03-a450-f572c07e3904",
+        "heading": "MONSOON SALE LIVE",
+        "description": "<p>End Of Summer Sale ...<em>Shop our new in </em><em><strong>Monsoon sale</strong></em></p>",
+        "header_size": "large",
+        "header_alignment": "center",
+        "heading_uppercase": false,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "reset_spacing": true
+      }
+    },
+    "scrolling_text_XyQdFP": {
+      "type": "scrolling-text",
+      "blocks": {
+        "scrolling_text_KrUKh9": {
+          "type": "scrolling_text",
+          "settings": {
+            "content": "<strong>Enjoy up to 50% OFF</strong>"
+          }
+        },
+        "scrolling_text_XFjWft": {
+          "type": "scrolling_text",
+          "settings": {
+            "content": "<strong>Use Code: DUNAMISSBFF</strong>"
+          }
+        },
+        "scrolling_text_6iNFmi": {
+          "type": "scrolling_text",
+          "settings": {
+            "content": "<strong>Get 3 Lip Balms COMBO for ₹599</strong>"
+          }
+        }
+      },
+      "block_order": [
+        "scrolling_text_KrUKh9",
+        "scrolling_text_XFjWft",
+        "scrolling_text_6iNFmi"
+      ],
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "scheme-3dcafa25-94c8-4464-83df-4132c6dca730",
+        "direction": "left",
+        "icon_between_item": "star",
+        "speed": 25,
+        "space_between_text": 80,
+        "font_size": 13,
+        "font_weight": "heading_weight",
+        "uppercase": true,
+        "use_heading_font": false,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "reset_spacing": false
+      }
+    },
+    "collection_tab_mjLLX3": {
+      "type": "collection-tab",
+      "blocks": {
+        "collection_EwEAQi": {
+          "type": "collection",
+          "settings": {
+            "collection": "lips",
+            "collection_title": "All Products"
+          }
+        },
+        "collection_QRwbGX": {
+          "type": "collection",
+          "settings": {
+            "collection": "bestsellers",
+            "collection_title": "Best Of Sale"
+          }
+        },
+        "collection_hYgmw9": {
+          "type": "collection",
+          "settings": {
+            "collection": "eye-care",
+            "collection_title": "Sale 50% Off"
+          }
+        },
+        "collection_giKLGx": {
+          "type": "collection",
+          "settings": {
+            "collection": "glimmer-lip-balm",
+            "collection_title": "Sale 30% Off"
+          }
+        }
+      },
+      "block_order": [
+        "collection_EwEAQi",
+        "collection_QRwbGX",
+        "collection_hYgmw9",
+        "collection_giKLGx"
+      ],
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "heading": "Last Chance 50–75% Off. Snooze—You Lose",
+        "description": "",
+        "header_size": "medium",
+        "header_alignment": "center",
+        "tab_header_style": "horizontal",
+        "horizontal_tab_style": "underline",
+        "display_mode": "grid",
+        "items_to_show": 8,
+        "items_per_row": 4,
+        "column_gap": 30,
+        "show_arrow": false,
+        "carousel_pagination": "disable",
+        "infinite": false,
+        "autoplay": false,
+        "autorotate_speed": 5,
+        "reveal": false,
+        "rows": 2,
+        "show_load_more_button": true,
+        "button_label": "Show All Products",
+        "carousel_on_mobile": true,
+        "items_per_row_mobile": 2,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "reset_spacing": false
+      }
+    },
+    "rich_text_EcBgbR": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_j3PNaT": {
+          "type": "heading",
+          "settings": {
+            "heading": "Beauty with Power, Every Day!",
+            "font_size": 36,
+            "font_weight": "heading_weight",
+            "uppercase": false,
+            "spacing_bottom": 24
+          }
+        },
+        "description_P9ehdd": {
+          "type": "description",
+          "settings": {
+            "description": "<p>At <strong>Dunamiss</strong>, we believe in more than just makeup our products are crafted to <strong>empower</strong>. With <strong>rich, vibrant shades</strong> and <strong>nourishing natural ingredients</strong>, our lipsticks offer more than color; they’re a statement of <strong>confidence</strong> and <strong>conscious beauty</strong>.</p><p>Whether you're looking for <strong>bold glam</strong> or a <strong>subtle everyday look</strong>, every shade is designed to suit your style while embracing <strong>sustainability</strong>.</p>",
+            "font_size": 15,
+            "font_weight": "body_weight",
+            "spacing_bottom": 10
+          }
+        }
+      },
+      "block_order": [
+        "heading_j3PNaT",
+        "description_P9ehdd"
+      ],
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "content_alignment": "center",
+        "content_max_width": 77,
+        "enable_expand_content": true,
+        "expand_content_button": "See all Information",
+        "content_max_height": 150,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "reset_spacing": false
+      }
+    }
+  },
+  "order": [
+    "page_sale_banner_DK6g3h",
+    "scrolling_text_XyQdFP",
+    "collection_tab_mjLLX3",
+    "rich_text_EcBgbR"
+  ]
+}
