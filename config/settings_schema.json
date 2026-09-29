@@ -1833,6 +1833,16 @@
         "default": "#ffffff"
       }
     ]
-  }
-
+  },
+{
+  "name": "Store locator map",
+  "settings": [
+    {
+      "type": "text",
+      "id": "mapbox_public_token",
+      "label": "Mapbox public access token",
+      "info": "Use a domain-restricted public token starting with pk. Never enter a secret token. Leave blank to show store details without a map."
+    }
+  ]
+}
 ]
