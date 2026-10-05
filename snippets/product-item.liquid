@@ -279,7 +279,6 @@
         {% if type != 'list' and type != 'sticky' %}
           {% comment %} Product item wishlist using only wishlist page {% endcomment %}
           {% if template_enable_remove_in_wishlist_page == true %}
-            {%- if show_wishlist == true -%}
               {% if wishlist == empty %}
                 {% assign action_when_click_added_wishlist = 'remove' %}
               {% endif %}
@@ -287,7 +286,7 @@
                 tabindex="0"
                 class="product-item__button pointer product-item__button-wishlist tooltip btn-hover transition btn-hover transition shadow btn-white rounded-50 p-0 border w-45 h-45 inline-flex content-center absolute top-10 top-1025-15{% if settings.rtl %} left-10 left-1025-15{% else %} right-10 right-1025-15{% endif %}"
                 data-product-id="{{ card_product.id }}"
-                data-action="{{ action_when_click_added_wishlist }}"
+                data-action="{% if template_enable_remove_in_wishlist_page %}remove{% else %}{{ action_when_click_added_wishlist }}{% endif %}"
                 data-tooltip-remove="{{ 'products.product.actions.wishlist.remove' | t }}"
                 data-tooltip-add="{{ 'products.product.actions.wishlist.add' | t }}"
                 data-tooltip-redirect="{{ 'products.product.actions.wishlist.redirect' | t }}"
@@ -299,7 +298,6 @@
                   {{- 'products.product.actions.wishlist.add' | t -}}
                 </span>
               </button-wishlist>
-            {%- endif -%}
           {% endif %}
           <div class="product-item__action transition flex flex-column gap-5 absolute static-1025 bottom-10{% if settings.rtl %} left-10{% else %} right-10{% endif %}{% if settings.show_action_on_mobile and product_style != 'card' %} invisible-1025{% elsif settings.show_action_on_mobile and product_style == 'card' %} visible-1025{% elsif settings.show_action_on_mobile == false and product_style == 'card' %} visible-1025{% endif %}{% if settings.show_action_on_mobile == false %} invisible{% endif %}">
             {% if template_enable_action == true %}

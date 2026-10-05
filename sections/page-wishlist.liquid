@@ -18,6 +18,8 @@
   <skeleton-page></skeleton-page>
   <div class="wishlist-page-section-inner">
     <div class="{{ section_width }} wishlist-page-main">
+      <h1 class="wishlist-heading">My Wishlist</h1>
+      <p class="wishlist-intro">Your saved favourites, all in one place.</p>
       {%- if search.results != blank -%}
         {% paginate search.results by 50 %}
           <div class="wishlist-list-items grid grid-cols gap fadeIn">

@@ -5824,7 +5824,7 @@ class ButtonWishlist extends HTMLElement {
             if (this.closest('.wishlist-page-main')) {
               this.closest('.wishlist-list').remove();
               const product = document.querySelectorAll(
-                `.wishlist-page-section .product-item__action button-wishlist`
+                `.wishlist-page-section .wishlist-list`
               );
               if (product.length < 1) {
                 document

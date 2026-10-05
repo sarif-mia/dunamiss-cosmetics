@@ -39,7 +39,10 @@ var WishlistPageShopify = (function () {
             query;
 
           fetch(`${window.routes.search_url}${productAjaxURL}`)
-            .then((response) => response.text())
+            .then((response) => {
+              if (!response.ok) throw new Error("Wishlist could not load");
+              return response.text();
+            })
             .then((responseText) => {
               const html = parser.parseFromString(responseText, "text/html");
               const row = document.createElement("div");
@@ -62,10 +65,12 @@ var WishlistPageShopify = (function () {
                 _this.skeletonFunction(0);
                 div_no_product.classList.remove("hidden");
               }
-              _this.mergeItems();
+
             })
             .catch((e) => {
-              console.error(e);
+              _this.skeletonFunction(0);
+              div_no_product.classList.remove("hidden");
+              div_no_product.querySelector("p").textContent = "Your wishlist could not load. Please refresh to try again.";
             })
             .finally((e) => {
               initLazyloadItem();

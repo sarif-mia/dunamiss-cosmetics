@@ -81,7 +81,7 @@
         "show_search": true,
         "show_account_icon": true,
         "show_recently_viewed": false,
-        "show_wishlist_icon": false,
+        "show_wishlist_icon": true,
         "show_shopping_cart": true,
         "show_currency": false,
         "show_language": false

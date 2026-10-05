@@ -245,3 +245,8 @@ media-gallery [data-shade-hidden] { display: none !important; }
   border-radius: 50%;
   box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
 }
+
+.wishlist-heading { margin: 0 0 8px; }
+.wishlist-intro { margin: 0 0 28px; }
+.wishlist-page-section { min-height: 320px; padding-bottom: 40px; }
+.header__wishlist .header-icon { width: 35px; height: 35px; }
