@@ -216,6 +216,14 @@
     }
   }
   @media screen and (max-width: 1024px) {
+    html.nav-open .section-header-custom-floating {
+      z-index: 60;
+    }
+    html.nav-open body:has(.section-header-custom-floating) .section-announcement-bar,
+    html.nav-open body:has(.section-header-custom-floating) #honeypop-app {
+      visibility: hidden;
+      pointer-events: none;
+    }
     .section-header-custom-floating {
       --floating-header-gap: 8px;
       width: 100%;
@@ -264,10 +272,10 @@
       z-index: 9999;
       overflow: visible;
       pointer-events: auto;
-      top: var(--announcement-bar-height, 0px) !important;
+      top: 0 !important;
       bottom: 0 !important;
-      height: calc(100dvh - var(--announcement-bar-height, 0px)) !important;
-      max-height: calc(100dvh - var(--announcement-bar-height, 0px));
+      height: 100dvh !important;
+      max-height: 100dvh;
     }
     .section-header-custom-floating .header__menu .navigation.mobile .horizontal-list,
     .section-header-custom-floating .header__menu .navigation.mobile .submenu,
