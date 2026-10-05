@@ -202,10 +202,10 @@
   {% if type != 'single' and type != 'quickview' %}
     </zoom-action>
   {% endif %}
-{% if product.handle == 'dunamiss-liquid-lipstick' %}
+{% if product.handle == 'dunamiss-liquid-lipstick' or product.handle == 'dunamiss-lip-oil' %}
   <script type="application/json" data-shade-media-map>{
-    "variants": { {% for variant in product.variants %}"{{ variant.id }}": {{ variant.featured_media.id | json }}{% unless forloop.last %},{% endunless %}{% endfor %} },
-    "media": { {% assign shade_owner = 0 %}{% for media in product.media %}{% for variant in product.variants %}{% if variant.featured_media.id == media.id %}{% assign shade_owner = media.id %}{% endif %}{% endfor %}"{{ media.id }}": {{ shade_owner | json }}{% unless forloop.last %},{% endunless %}{% endfor %} }
+    "variants": { {% for variant in product.variants %}"{{ variant.id }}": {{ variant.featured_media.id | default: product.media.first.id | json }}{% unless forloop.last %},{% endunless %}{% endfor %} },
+    "media": { {% assign shade_owner = product.media.first.id %}{% for media in product.media %}{% for variant in product.variants %}{% if variant.featured_media.id == media.id %}{% assign shade_owner = media.id %}{% endif %}{% endfor %}"{{ media.id }}": {{ shade_owner | json }}{% unless forloop.last %},{% endunless %}{% endfor %} }
   }</script>
 {% endif %}
 </media-gallery>
