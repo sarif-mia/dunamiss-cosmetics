@@ -29,14 +29,29 @@
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
+    {%- assign storefront_title = page_title -%}
+    {%- if request.page_type == 'collection' -%}
+      {%- capture reviewed_collection_title -%}
+        {%- render 'collection-seo-copy', collection: collection, part: 'title' -%}
+      {%- endcapture -%}
+      {%- assign reviewed_collection_title = reviewed_collection_title | strip -%}
+      {%- assign storefront_title = reviewed_collection_title | default: page_title -%}
+    {%- endif -%}
     <title>
-      {{ page_title | remove: 'SEO Optimized Title: ' }}
+      {{ storefront_title | remove: 'SEO Optimized Title: ' | escape }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- unless storefront_title contains shop.name %} &ndash; {{ shop.name | escape }}{% endunless -%}
     </title>
     {%- liquid
       assign storefront_description = page_description
+      if request.page_type == 'collection'
+        capture reviewed_collection_description
+          render 'collection-seo-copy', collection: collection, part: 'description'
+        endcapture
+        assign reviewed_collection_description = reviewed_collection_description | strip
+        assign storefront_description = reviewed_collection_description | default: page_description
+      endif
       if storefront_description == blank
         case request.page_type
           when 'collection'
@@ -79,7 +94,7 @@
     {% if storefront_description != blank %}
       <meta name="description" content="{{ storefront_description | strip | escape }}">
     {% endif %}
-    {% render 'meta-tags' %}
+    {% render 'meta-tags', storefront_title: storefront_title, storefront_description: storefront_description %}
     {{ content_for_header }}
     {{ 'critical.s.min.css' | asset_url | stylesheet_tag }}
     {% if settings.scroll_animation != 'none' %}

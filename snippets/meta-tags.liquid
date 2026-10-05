@@ -1,5 +1,5 @@
 {%- liquid
-  assign og_title = page_title | default: shop.name | remove: 'SEO Optimized Title: '
+  assign og_title = storefront_title | default: page_title | default: shop.name | remove: 'SEO Optimized Title: '
   assign og_url = canonical_url | default: request.origin
   assign og_type = 'website'
   assign og_description = storefront_description | default: page_description | default: shop.description | default: shop.name

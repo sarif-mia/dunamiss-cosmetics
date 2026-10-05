@@ -25,3 +25,13 @@ Git pushes save source code to GitHub. This repository does not configure automa
 ## Store locator
 
 The legacy hardcoded Mapbox token has been removed. Configure your own domain-restricted public token under **Theme settings → Store locator map** to enable the map. Store details remain available without a token. Use a public `pk.` token, never a secret token. This GitHub preparation change has not been deployed to the live Shopify theme.
+
+## Collection copy
+
+English collection copy, headings, search titles and descriptions are maintained in `content/collection-seo.json`. Rebuild the Liquid snippet after editing:
+
+```sh
+python3 scripts/build-collection-seo.py
+```
+
+The generated `snippets/collection-seo-copy.liquid` supplies the storefront content for the listed collection handles. Unlisted collections and other languages retain their existing content and metadata. Shopify Admin metafields remain stored independently; edits to those fields do not override the reviewed English copy for listed handles. Empty collections show an availability note, and promotional copy directs shoppers to current prices and offer terms.
