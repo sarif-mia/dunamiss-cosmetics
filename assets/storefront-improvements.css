@@ -294,3 +294,12 @@ media-gallery [data-shade-hidden] { display: none !important; }
   padding: 0 18px;
   line-height: normal;
 }
+
+:root body .footer__newsletter input[type="email"] {
+  box-sizing: border-box;
+  height: 35px;
+  min-height: 35px;
+  max-height: 35px;
+  padding-block: 0;
+  line-height: normal;
+}
