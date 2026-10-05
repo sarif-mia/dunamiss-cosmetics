@@ -250,3 +250,16 @@ media-gallery [data-shade-hidden] { display: none !important; }
 .wishlist-intro { margin: 0 0 28px; }
 .wishlist-page-section { min-height: 320px; padding-bottom: 40px; }
 .header__wishlist .header-icon { width: 35px; height: 35px; }
+
+/* Keep wishlist hearts readable in resting, saved and hover states. */
+:root body .product-detail__media > button-wishlist {
+  color: #74465e;
+}
+:root body button-wishlist:is(:hover, :focus-visible, .active) {
+  color: #fff;
+  background: #74465e;
+  border-color: #74465e;
+}
+:root body .header__wishlist .header-icon:is(:hover, :focus-visible) {
+  color: #74465e;
+}
