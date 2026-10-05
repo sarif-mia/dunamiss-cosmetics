@@ -300,6 +300,7 @@
 }
 @media (max-width: 767.98px) {
   .slideshow .sec__content.slideshow-button-only {
-    top: 24%;
+    top: auto;
+    bottom: 56px;
   }
 }
