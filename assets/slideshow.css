@@ -264,3 +264,23 @@
 .slideshow .swiper:not(.swiper-initialized) > .swiper-wrapper > .swiper-slide:first-child .sec__content-inner { opacity: 1; visibility: visible; }
 .slideshow .swiper:not(.swiper-initialized) > .swiper-wrapper > .swiper-slide:not(:first-child) { visibility: hidden; }
 .slideshow .swiper-pagination-bullet { min-width: 24px; min-height: 24px; }
+
+/* Keep standalone homepage CTAs clear of text baked into the banner image. */
+.slideshow .sec__content.slideshow-button-only {
+  position: absolute;
+  top: 64%;
+  left: 4%;
+  width: 92%;
+  margin: 0;
+  padding: 0;
+}
+.slideshow .slideshow-button-only .sec__content-inner {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+}
+@media (max-width: 767.98px) {
+  .slideshow .sec__content.slideshow-button-only {
+    top: 24%;
+  }
+}

@@ -194,7 +194,7 @@
                   or block_st.second_button_label != blank
                 %}
                   <div
-                    class="sec__content relative z-1 flex{% if block_st.content_width == 'full_width' %} w-full{% else %} w-1024-full{% endif %} {{ block_st.content_position }} {{ block_st.content_width }} text-{{block_st.content_alignment_mobile}} text-md-{{ block_st.content_alignment }}{% if block_st.show_content_background %} py-custom px-custom{% if block_st.content_padding_inline < 15 %} min-value{% endif %}{% endif %}"
+                    class="sec__content relative z-1 flex{% if request.page_type == 'index' and section_st.content_below_image == false and block_st.heading == blank and block_st.subheading == blank and block_st.description == blank %} slideshow-button-only{% endif %}{% if block_st.content_width == 'full_width' %} w-full{% else %} w-1024-full{% endif %} {{ block_st.content_position }} {{ block_st.content_width }} text-{{block_st.content_alignment_mobile}} text-md-{{ block_st.content_alignment }}{% if block_st.show_content_background %} py-custom px-custom{% if block_st.content_padding_inline < 15 %} min-value{% endif %}{% endif %}"
                     style="--padding-inline: {{ block_st.content_padding_inline }};--padding-block: {{ block_st.content_padding_block }};"
                   >
                     <div
