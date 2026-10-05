@@ -1,5 +1,5 @@
 (() => {
-  const normalize = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  const normalize = value => String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().replace(/\bdimond\b/g, 'diamond');
   const maps = new WeakMap();
   const shadeName = value => /^(lilina|linina)$/i.test(value || '') ? 'Liliana' : value;
   function createMap(data) {
