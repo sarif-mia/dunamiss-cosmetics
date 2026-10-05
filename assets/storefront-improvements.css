@@ -187,7 +187,7 @@ body :is(#kp-login-button-header-logo, #icon-kwikpass, #icon-close-kwikpass):foc
 
 /* One shared button height across desktop and mobile. */
 :root body :is(
-  button, input[type="submit"], input[type="button"],
+  button:not(#honeypop-app button), input[type="submit"], input[type="button"],
   #kp-login-button-header-logo, #icon-kwikpass, #icon-close-kwikpass,
   a.btn, a.btn-primary, a.btn-outline, a.button,
   select-option, button-quickview, button-wishlist, button-compare,
@@ -322,4 +322,16 @@ media-gallery [data-shade-hidden] { display: none !important; }
 :root body .footer__newsletter input[type="email"]::placeholder {
   color: var(--input-placeholder-color, #666);
   opacity: 1;
+}
+
+/* Vertical rewards tabs need enough height for their icon and label. */
+:root body #honeypop-app button[class*="LabelLauncher_"][style*="vertical-rl"] {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  padding-block: 16px !important;
+}
+:root body #honeypop-app [class*="LabelLauncherContent_"] {
+  margin: 0;
+  line-height: 1.2;
 }
