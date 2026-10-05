@@ -103,6 +103,7 @@
     {{ 'brand-system.css' | asset_url | stylesheet_tag }}
     {{ 'add-to-cart-animation.css' | asset_url | stylesheet_tag }}
     {{ 'storefront-improvements.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'button-heights.js' | asset_url }}" defer></script>
     {% if request.page_type == 'index' %}
       {{ 'home-spacing.css' | asset_url | stylesheet_tag }}
     {% endif %}

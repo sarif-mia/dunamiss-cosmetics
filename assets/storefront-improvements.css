@@ -13,8 +13,8 @@ body .storefront-hero-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
-  padding: 8px 20px;
+  min-height: 35px;
+  padding: 6px 20px;
   border-radius: 6px;
   background: var(--brand-accent);
   color: #fff;
@@ -90,19 +90,19 @@ body .product-item__wrapper.product-grid .product-item__information > product-fo
   body .storefront-hero-cta {
     left: 16px;
     bottom: 42px;
-    min-height: 36px;
-    padding: 7px 16px;
+    min-height: 35px;
+    padding: 6px 16px;
     font-size: 14px;
   }
   :root body .product-form__buttons button.product_submit_button,
   :root body .product-form__buttons .buy-now-compact #gokwik-buy-now,
   :root body .product-form__quantity .quantity {
-    height: 48px;
-    min-height: 48px;
+    height: 35px;
+    min-height: 35px;
   }
   :root body .product-form__quantity .quantity__button {
-    height: 48px;
-    min-height: 48px;
+    height: 35px;
+    min-height: 35px;
   }
   body .dunamiss-benefits-grid {
     padding: 8px;
@@ -183,4 +183,47 @@ body :is(#kp-login-button-header-logo, #icon-kwikpass, #icon-close-kwikpass):foc
   content: normal;
   color: var(--brand-accent);
   font-weight: 600;
+}
+
+/* One shared button height across desktop and mobile. */
+:root body :is(
+  button, input[type="submit"], input[type="button"],
+  #kp-login-button-header-logo, #icon-kwikpass, #icon-close-kwikpass,
+  a.btn, a.btn-primary, a.btn-outline, a.button,
+  select-option, button-quickview, button-wishlist, button-compare,
+  .storefront-hero-cta, .wa-button
+) {
+  box-sizing: border-box;
+  height: 35px !important;
+  min-height: 35px !important;
+  max-height: 35px !important;
+  padding-block: 0 !important;
+}
+:root body :is(.storefront-hero-cta, .newsletter-form__button, a.btn-primary, a.btn-outline) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+:root body :is(
+  .dm-reviews__arrow, .carousel-btn, .button-close, .close-cart-button,
+  .wa-button, button-quickview, button-wishlist, button-compare
+) {
+  width: 35px !important;
+  min-width: 35px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+:root body :is(.product-form__quantity .quantity, .product-form__quantity input) {
+  height: 35px;
+  min-height: 35px;
+}
+shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
+  --shopify-accelerated-checkout-button-block-size: 35px;
+}
+:root body :is(#gokwik-buy-now, .gokwik-checkout) .cir-loader {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  border-width: 3px;
 }
