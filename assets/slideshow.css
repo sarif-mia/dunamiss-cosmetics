@@ -279,6 +279,25 @@
   max-width: none;
   padding: 0;
 }
+.slideshow .slideshow-button-only .sec__content-btn {
+  justify-content: flex-start;
+}
+/* Separate links keep buttons valid and let empty content areas click through. */
+.slideshow .sec__content,
+.slideshow .storefront-hero-cta {
+  pointer-events: none;
+}
+.slideshow .sec__content a,
+.slideshow .sec__content button {
+  pointer-events: auto;
+}
+.slideshow .sec__content {
+  z-index: 2;
+}
+.slideshow .slideshow-slide-link:focus-visible {
+  outline: 2px solid var(--color-heading);
+  outline-offset: -4px;
+}
 @media (max-width: 767.98px) {
   .slideshow .sec__content.slideshow-button-only {
     top: 24%;

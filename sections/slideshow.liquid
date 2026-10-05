@@ -116,9 +116,6 @@
               endif
             %}
             <div {{ block.shopify_attributes }} class="swiper-slide">
-              {% if slide_link != blank %}
-                <a href="{{ slide_link }}" aria-label="{{ slide_label | escape }}">
-              {% endif %}
               <div
                 class="sec__inner flex relative{% if section_st.content_below_image %} flex-column flex-md-row text-below-mb{% endif %}{% if slide_height == 'adapt' and image_mobile != blank %} ratio-mobile{% endif %} h-{{ slide_height }}"
                 style="--overlay-opacity: {{ block_st.overlay_opacity }}%;{% if slide_height == 'adapt' or  slide_height == 'full_screen' %}--aspect-ratio: {{ ratio_dk }};--aspect-ratio-mb: {{ ratio_mb }};{% endif %}"
@@ -260,13 +257,13 @@
                     </div>
                   </div>
                 {% endif %}
+                {% if slide_link != blank %}
+                  <a class="slideshow-slide-link absolute inset-0 z-1" href="{{ slide_link }}" aria-label="{{ slide_label | escape }}"></a>
+                {% endif %}
                 {% if request.page_type == 'index' and slide_link != blank and block_st.first_button_label == blank and block_st.second_button_label == blank %}
                   <span class="storefront-hero-cta">Shop {{ slide_link | split: '/' | last | replace: '-', ' ' | capitalize }}</span>
                 {% endif %}
               </div>
-              {% if slide_link != blank %}
-                </a>
-              {% endif %}
             </div>
           {% endfor %}
         </div>
