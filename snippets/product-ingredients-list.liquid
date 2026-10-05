@@ -1,7 +1,8 @@
 {%- liquid
   assign ingredient_text = content | strip_html | strip_newlines | strip
   assign can_format = false
-  unless content contains '<ul' or content contains '<ol'
+  assign ingredient_check = ingredient_text | downcase
+  unless content contains '<ul' or content contains '<ol' or ingredient_check contains ' helps ' or ingredient_check contains 'work together' or ingredient_check contains 'designed to'
     if ingredient_text contains ','
       if ingredient_text contains 'Enriched with ' or ingredient_text contains 'Aqua,'
         assign can_format = true

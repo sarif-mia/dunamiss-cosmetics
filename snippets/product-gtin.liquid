@@ -1,0 +1,33 @@
+{%- comment -%}
+  Emit a GTIN only when the stored barcode is numeric and passes its check digit.
+  JSON encoding preserves leading zeros and prevents invalid JSON numbers.
+{%- endcomment -%}
+{%- liquid
+  assign barcode = variant.barcode | strip
+  assign first_character = barcode | slice: 0, 1
+  if first_character == "'"
+    assign barcode_length = barcode.size | minus: 1
+    assign barcode = barcode | slice: 1, barcode_length
+  endif
+  assign non_digits = barcode | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9'
+  assign valid_length = false
+  if barcode.size == 8 or barcode.size == 12 or barcode.size == 13 or barcode.size == 14
+    assign valid_length = true
+  endif
+  assign checksum = 0
+  if valid_length and non_digits == blank
+    assign digits = barcode | split: ''
+    for digit in digits
+      assign parity = barcode.size | minus: forloop.index | modulo: 2
+      assign weighted_digit = digit | plus: 0
+      if parity == 1
+        assign weighted_digit = weighted_digit | times: 3
+      endif
+      assign checksum = checksum | plus: weighted_digit
+    endfor
+    assign checksum = checksum | modulo: 10
+  endif
+-%}
+{%- if valid_length and non_digits == blank and checksum == 0 -%}
+  "gtin{{ barcode.size }}": {{ barcode | json }},
+{%- endif -%}

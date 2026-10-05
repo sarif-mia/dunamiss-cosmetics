@@ -143,8 +143,8 @@
           "type": "custom_tab",
           "settings": {
             "title": "Why Choose Dunamiss",
-            "tab_content": "content_page",
-            "content_rich": "<p>{{ product.metafields.custom.why_to_choose_dunamiss | metafield_tag }}</p>",
+            "tab_content": "content",
+            "content_rich": "{{ product.metafields.custom.why_to_choose_dunamiss | metafield_tag }}",
             "page": ""
           }
         },
@@ -153,7 +153,7 @@
           "settings": {
             "title": "Product Ingredients",
             "tab_content": "content",
-            "content_rich": "<p>{{ product.metafields.custom.product_ingredients | metafield_tag }}</p>",
+            "content_rich": "{{ product.metafields.custom.product_ingredients | metafield_tag }}",
             "page": ""
           }
         },

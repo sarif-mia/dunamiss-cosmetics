@@ -119,7 +119,7 @@
         style="--aspect-ratio: {{ ratio }}"
       >
         {% if is_thumbnail == true %}
-          {%- assign image_alt = featured_media.alt | default: 'product' | escape -%}
+          {%- assign image_alt = featured_media.alt | default: product.title | escape -%}
           {% render 'responsive-image',
             type: 'product',
             image: featured_media.preview_image,
@@ -167,7 +167,7 @@
           endfor
         -%}
         {% if is_thumbnail == true %}
-          {%- assign image_alt = featured_media.alt | default: 'product' | escape -%}
+          {%- assign image_alt = featured_media.alt | default: product.title | escape -%}
           {% render 'responsive-image',
             type: 'product',
             image: featured_media.preview_image,
@@ -210,7 +210,7 @@
         {% endif %}
       >
         {% if is_thumbnail == true %}
-          {%- assign image_alt = featured_media.alt | default: 'product' | escape -%}
+          {%- assign image_alt = featured_media.alt | default: product.title | escape -%}
           {% render 'responsive-image',
             type: 'product',
             image: featured_media.preview_image,
@@ -232,7 +232,7 @@
                 <span class="deferred-media__poster-button motion-reduce">
                   {%- render 'icon-3d-model' -%}
                 </span>
-                {%- assign image_alt = featured_media.alt | default: 'product' | escape -%}
+                {%- assign image_alt = featured_media.alt | default: product.title | escape -%}
                 {% render 'responsive-image',
                   type: 'product',
                   image: featured_media.preview_image,
@@ -289,7 +289,7 @@
           >
         {% endif %}
         {% if zoom_type != 'no_zoom' %}
-          {%- assign image_alt = featured_media.alt | default: 'product' | escape -%}
+          {%- assign image_alt = featured_media.alt | default: product.title | escape -%}
           {% render 'responsive-image',
             type: 'product',
             image: featured_media.preview_image,
@@ -302,7 +302,7 @@
             </button>
           {% endif %}
         {% else %}
-          {%- assign image_alt = featured_media.alt | default: 'product' | escape -%}
+          {%- assign image_alt = featured_media.alt | default: product.title | escape -%}
           {% if type != 'quickview' %}
             {% render 'responsive-image',
               type: 'product',

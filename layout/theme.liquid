@@ -34,7 +34,9 @@
       {{ storefront_title | remove: 'SEO Optimized Title: ' | escape }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless storefront_title contains shop.name %} &ndash; {{ shop.name | escape }}{% endunless -%}
+      {%- assign title_brand_check = storefront_title | downcase -%}
+      {%- assign storefront_brand = shop.name | split: ' ' | first | downcase -%}
+      {%- unless title_brand_check contains storefront_brand or request.page_type == 'product' %} &ndash; {{ shop.name | escape }}{% endunless -%}
     </title>
     {%- liquid
       assign storefront_description = page_description

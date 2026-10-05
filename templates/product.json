@@ -105,7 +105,7 @@
           "type": "collapsible_row",
           "settings": {
             "heading": "Why Choose Dunamiss",
-            "content": "<p>{{ product.metafields.custom.why_to_choose_dunamiss | metafield_tag }}</p>",
+            "content": "{{ product.metafields.custom.why_to_choose_dunamiss | metafield_tag }}",
             "use_product_description": false,
             "open": false
           }
@@ -115,7 +115,7 @@
           "disabled": true,
           "settings": {
             "heading": "How To Use",
-            "content": "<p>{{ product.metafields.custom.product_description | metafield_tag }}</p>",
+            "content": "{{ product.metafields.custom.product_description | metafield_tag }}",
             "use_product_description": false,
             "open": false
           }
@@ -124,7 +124,7 @@
           "type": "collapsible_row",
           "settings": {
             "heading": "Product Key Ingredients",
-            "content": "<p>{{ product.metafields.custom.product_ingredients | metafield_tag }}</p>",
+            "content": "{{ product.metafields.custom.product_ingredients | metafield_tag }}",
             "use_product_description": false,
             "open": false
           }

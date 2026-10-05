@@ -31,3 +31,11 @@ The legacy hardcoded Mapbox token has been removed. Configure your own domain-re
 Manage collection copy in Shopify Admin. The collection title supplies the page H1; **Search engine listing** supplies the search title and meta description. The existing multi-line metafields **Sort Content** (`custom.sort_content`) and **Full Content** (`custom.full_content`) supply the HTML introduction and expandable body.
 
 The theme renders these Admin values directly, with heading normalization, responsive formatting and keyboard-accessible expansion. Empty collections show an availability note. `content/collection-seo.json` is a review snapshot of the October 2026 migration, rather than an override of Admin edits. Theme deployment does not overwrite collection data.
+
+## Product copy
+
+Manage product names, HTML descriptions, search titles and meta descriptions in Shopify Admin. Product subtitles, short descriptions, usage instructions and product details use the existing `custom` metafields. Multiline text metafields contain plain text; only the native product description contains HTML.
+
+`content/product-seo.json` is a review snapshot of the October 2026 published catalogue update. Draft and unlisted review records remain in local audit reports. It does not override subsequent Admin edits. Product templates render native names and descriptions, including the selectable lip oil trio. Product search titles render directly without a second store-name suffix.
+
+The theme preserves product-image alt text and uses the product name when alt text is empty. Product structured data JSON-encodes GTINs, removes a spreadsheet apostrophe prefix, and emits only numeric identifiers with a valid check digit. Barcode values stored in Admin are unchanged.

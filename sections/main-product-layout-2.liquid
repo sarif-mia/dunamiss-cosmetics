@@ -219,7 +219,7 @@
                 {{ block.shopify_attributes }}
               >
                 {%- if product.title != blank -%}
-                  {% if product.handle == 'everyday-peptide-lip-oils-set-of-3' %}Dunamiss Lip Oil — Build Your Set of 3{% else %}{{ product.title | escape }}{% endif %}
+                  {{ product.title | escape }}
                 {%- else -%}
                   {{ 'onboarding.product_title_example' | t }}
                 {% endif %}
@@ -482,7 +482,7 @@
                                 width="300px"
                                 height="300px"
                                 src="{{ featured_media.preview_image | image_url }}"
-                                alt="{{ featured_media.alt }}"
+                                alt="{{ featured_media.alt | default: product.title | escape }}"
                               >
                               <p class="mb-0 mt-10 heading-style capitalize">
                                 {{ product.selected_or_first_available_variant.title }}
@@ -903,7 +903,7 @@
                   class="product-detail__description{% if enable_skeleton_loading %} skeleton-loading{% endif %}"
                   {{ block.shopify_attributes }}
                 >
-                  {% if product.handle == 'everyday-peptide-lip-oils-set-of-3' %}{% render 'lip-oil-bundle-description' %}{% else %}{{ product.description }}{% endif %}
+                  {{ product.description }}
                 </div>
               {% endif %}
             {%- else -%}
@@ -1238,7 +1238,7 @@
 
   <script type="application/ld+json">
     {
-      "@context": "http://schema.org/",
+      "@context": "https://schema.org",
       "@type": "Product",
       "name": {{ product.title | json }},
       "url": {{ request.origin | append: product.url | json }},
@@ -1262,16 +1262,8 @@
             {%- if variant.sku != blank -%}
               "sku": {{ variant.sku | json }},
             {% endif %}
-            {%- if variant.barcode.size == 12 -%}
-              "gtin12": {{ variant.barcode }},
-            {% endif %}
-            {%- if variant.barcode.size == 13 -%}
-              "gtin13": {{ variant.barcode }},
-            {% endif %}
-            {%- if variant.barcode.size == 14 -%}
-              "gtin14": {{ variant.barcode }},
-            {% endif %}
-            "availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+            {% render 'product-gtin', variant: variant %}
+            "availability" : "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
             "price" : {{ variant.price | divided_by: 100.00 | json }},
             "priceCurrency" : {{ cart.currency.iso_code | json }},
             "url" : {{ request.origin | append: variant.url | json }}
