@@ -229,3 +229,19 @@ shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
 }
 
 media-gallery [data-shade-hidden] { display: none !important; }
+
+/* Keep the product gallery wishlist control inside the image area. */
+:root body .product-detail__media { position: relative; }
+:root body .product-detail__media > button-wishlist {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  bottom: auto;
+  left: auto;
+  z-index: 3;
+  margin: 0;
+  display: inline-flex !important;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
+}
