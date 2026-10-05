@@ -219,7 +219,7 @@
                 {{ block.shopify_attributes }}
               >
                 {%- if product.title != blank -%}
-                  {{ product.title | escape }}
+                  {% if product.handle == 'everyday-peptide-lip-oils-set-of-3' %}Dunamiss Lip Oil — Build Your Set of 3{% else %}{{ product.title | escape }}{% endif %}
                 {%- else -%}
                   {{ 'onboarding.product_title_example' | t }}
                 {% endif %}
@@ -903,7 +903,7 @@
                   class="product-detail__description{% if enable_skeleton_loading %} skeleton-loading{% endif %}"
                   {{ block.shopify_attributes }}
                 >
-                  {{ product.description }}
+                  {% if product.handle == 'everyday-peptide-lip-oils-set-of-3' %}{% render 'lip-oil-bundle-description' %}{% else %}{{ product.description }}{% endif %}
                 </div>
               {% endif %}
             {%- else -%}
@@ -1065,6 +1065,8 @@
             </ul>
           {%- else -%}
           {%- when 'collapsible_row' -%}
+            {% assign accordion_heading_check = block_st.heading | downcase %}
+            {% if accordion_heading_check contains 'ingredient' and block_st.content == blank and block_st.use_product_description != true %}{% continue %}{% endif %}
             {% comment %} collapsible {% endcomment %}
             <collapsible-block
               tabindex="0"

@@ -204,6 +204,7 @@
   {% endif %}
 {% if product.variants.size > 1 %}
   <script type="application/json" data-shade-media-map>{
+    "handle": {{ product.handle | json }},
     "options": {{ product.options | json }},
     "variants": [{% for variant in product.variants %}{"id": {{ variant.id | json }}, "options": {{ variant.options | json }}, "media": {{ variant.featured_media.id | json }}}{% unless forloop.last %},{% endunless %}{% endfor %}],
     "media": [{% for media in product.media %}{"id": {{ media.id | json }}, "alt": {{ media.alt | json }}, "src": {{ media.preview_image.src | json }}, "type": {{ media.media_type | json }}}{% unless forloop.last %},{% endunless %}{% endfor %}]
