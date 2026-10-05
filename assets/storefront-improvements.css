@@ -227,3 +227,5 @@ shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
   margin: 0;
   border-width: 3px;
 }
+
+media-gallery [data-shade-hidden] { display: none !important; }
