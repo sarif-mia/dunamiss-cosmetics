@@ -3,11 +3,11 @@
   const maps = new WeakMap();
   const shadeName = value => /^(lilina|linina)$/i.test(value || '') ? 'Liliana' : value;
   function createMap(data) {
-    const bundleOptions = data.options.map((name, index) => /^choose an option\s*-\s*\d+$/i.test(name.trim()) ? index : -1).filter(index => index >= 0);
+    const bundleOptions = data.options.map((name, index) => /^(?:choose an option\s*-?\s*\d+|(?:colou?r|shade|lip oil|lipstick|item)\s*-?\s*\d+(?:\s*[-—:]\s*(?:choose\s+)?shade)?)$/i.test(name.trim()) ? index : -1).filter(index => index >= 0);
     const option = bundleOptions.length > 1 ? bundleOptions[0] : data.options.findIndex(name => /^(colou?r|shade)s?$/i.test(name.trim()));
     const selectedOptions = bundleOptions.length > 1 ? bundleOptions : [option];
     if (option < 0) return null;
-    const shades = [...new Set(data.variants.map(variant => shadeName(variant.options[option])))];
+    const shades = [...new Set(data.variants.flatMap(variant => selectedOptions.map(index => shadeName(variant.options[index]))))];
     if (shades.length < 2) return null;
     const owners = new Map();
     const anchors = new Map();
@@ -40,7 +40,7 @@
       if (explicit) owner = explicit;
       else if (grouped && media.type === 'image') owners.set(id, owner);
     }
-    return { option, selectedOptions, owners, variants: data.variants, handle: data.handle };
+    return { option, selectedOptions, owners, variants: data.variants, handle: data.handle, itemName: /lip oils?/.test(normalize(`${data.title} ${data.handle}`)) ? 'Lip Oil' : /lipsticks?/.test(normalize(`${data.title} ${data.handle}`)) ? 'Lipstick' : 'Item' };
   }
   function update() {
     document.querySelectorAll('media-gallery').forEach(gallery => {
@@ -55,14 +55,15 @@
       if (!variant) return;
       const selected = data.selectedOptions.map(index => shadeName(variant.options[index]));
       const identifiable = selected.every(shade => [...data.owners.values()].includes(shade));
-      if (data.handle === 'everyday-peptide-lip-oils-set-of-3') {
+      if (data.selectedOptions.length > 1) {
         product.querySelectorAll('variant-radios-detail fieldset').forEach((fieldset, index) => {
+          if (!data.selectedOptions.includes(index)) return;
           const label = fieldset.querySelector('.form__label');
           if (label) {
             const value = document.createElement('span');
             value.className = 'option_value heading-style capitalize';
             value.textContent = shadeName(variant.options[index]);
-            label.replaceChildren(`Lip Oil ${index + 1} — Choose shade: `, value);
+            label.replaceChildren(`${data.itemName} ${data.selectedOptions.indexOf(index) + 1} — Choose shade: `, value);
           }
           fieldset.querySelectorAll('label').forEach(label => {
             for (const node of label.childNodes) {
