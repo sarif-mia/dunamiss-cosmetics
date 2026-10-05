@@ -303,3 +303,23 @@ media-gallery [data-shade-hidden] { display: none !important; }
   padding-block: 0;
   line-height: normal;
 }
+
+/* Keep the accessible label while centering the visible email text. */
+:root body .footer__newsletter .form-floating > label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+:root body .footer__newsletter input[type="email"] {
+  padding: 0 12px;
+  line-height: 33px;
+}
+:root body .footer__newsletter input[type="email"]::placeholder {
+  color: var(--input-placeholder-color, #666);
+  opacity: 1;
+}
