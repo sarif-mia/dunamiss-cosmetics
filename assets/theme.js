@@ -6209,7 +6209,7 @@ class SwatchFunctions extends SwatchInit {
       qtyRules.classList.remove('hidden');
   }
   updateMedia(variantGroup = false) {
-    if (!this.productTarget) return;
+    if (!this.productTarget || !this.currentVariant?.featured_media) return;
     const mediaGalleries = this.productTarget.querySelector('media-gallery');
     const layout = mediaGalleries?.dataset.layout;
     if (!layout) return;
@@ -6235,16 +6235,15 @@ class SwatchFunctions extends SwatchInit {
         }
       });
     } else {
-      // mediaGalleries.setActiveMedia(
-      //   `${this.dataset.section}-${this.currentVariant.featured_media.id}`,
-      //   true
-      // );
-      const mediaElement = document.querySelector(
-        `[data-media-id="${this.dataset.section}-${this.currentVariant.featured_media.id}"]`
+      const viewer = mediaGalleries.querySelector('[id^="GalleryViewer"]');
+      if (!viewer) return;
+      // Keep the shopper at the swatches instead of scrolling down the page.
+      viewer.style.overflowAnchor = 'none';
+      mediaGalleries.setActiveMedia(
+        `${this.dataset.section}-${this.currentVariant.featured_media.id}`,
+        true
       );
-      if (mediaElement) {
-        mediaElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
+      viewer.scrollLeft = 0;
     }
   }
   updateMediaSticky() {
@@ -8971,9 +8970,9 @@ class MediaGallery extends HTMLElement {
     super();
   }
   setActiveMedia(mediaId, prepend) {
-    const activeMedia = this.querySelector(
-      '[id^="GalleryViewer"]'
-    ).querySelector(`[data-media-id="${mediaId}"]`);
+    const viewer = this.querySelector('[id^="GalleryViewer"]');
+    if (!viewer) return;
+    const activeMedia = viewer.querySelector(`[data-media-id="${mediaId}"]`);
     if (!activeMedia) return;
     this.querySelector('[id^="GalleryViewer"]')
       .querySelectorAll('[data-media-id]')
