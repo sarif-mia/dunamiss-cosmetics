@@ -285,3 +285,12 @@ media-gallery [data-shade-hidden] { display: none !important; }
 :root body :is(#gokwik-buy-now, .gokwik-checkout) #btn-loader {
   background: var(--brand-accent);
 }
+
+:root body .discounts-subscribers-form input[type="email"] {
+  box-sizing: border-box;
+  height: 35px;
+  min-height: 35px;
+  max-height: 35px;
+  padding: 0 18px;
+  line-height: normal;
+}
