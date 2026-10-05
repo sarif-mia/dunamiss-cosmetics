@@ -1,4 +1,4 @@
-/* Shared storefront refinements; retain the theme's current brand colors. */
+/* Shared storefront refinements using the theme brand palette. */
 body .storefront-collection-heading h1 {
   margin: 0 0 20px;
   color: var(--brand-heading);
@@ -253,13 +253,35 @@ media-gallery [data-shade-hidden] { display: none !important; }
 
 /* Keep wishlist hearts readable in resting, saved and hover states. */
 :root body .product-detail__media > button-wishlist {
-  color: #74465e;
+  color: var(--brand-accent);
 }
 :root body button-wishlist:is(:hover, :focus-visible, .active) {
   color: #fff;
-  background: #74465e;
-  border-color: #74465e;
+  background: var(--brand-accent);
+  border-color: var(--brand-accent);
 }
 :root body .header__wishlist .header-icon:is(:hover, :focus-visible) {
-  color: #74465e;
+  color: var(--brand-accent);
+}
+
+/* Use the theme accent consistently for storefront purchase controls. */
+:root body {
+  --btn-primary-bg-color: var(--brand-accent);
+  --btn-primary-color: #fff;
+  --btn-primary-hover-bg-color: var(--brand-accent-hover);
+  --btn-primary-hover-color: #fff;
+}
+:root body :is(.btn-white, .btn-primary, .product__add-cart, #gokwik-buy-now, .gokwik-checkout button) {
+  --btn-bg: var(--brand-accent);
+  --btn-color: #fff;
+  background: var(--brand-accent);
+  color: #fff;
+  border-color: var(--brand-accent);
+}
+:root body :is(.btn-white, .btn-primary, .product__add-cart, #gokwik-buy-now, .gokwik-checkout button):is(:hover, :focus-visible) {
+  background: var(--brand-accent-hover);
+  color: #fff;
+}
+:root body :is(#gokwik-buy-now, .gokwik-checkout) #btn-loader {
+  background: var(--brand-accent);
 }
