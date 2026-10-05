@@ -29,7 +29,7 @@
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
-    {%- assign storefront_title = page_title -%}
+    {%- assign storefront_title = page_title | replace: '&amp;', '&' | replace: '&quot;', '"' | replace: '&#39;', "'" | replace: '&lt;', '<' | replace: '&gt;', '>' -%}
     <title>
       {{ storefront_title | remove: 'SEO Optimized Title: ' | escape }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
