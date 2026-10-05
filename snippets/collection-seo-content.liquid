@@ -1,18 +1,9 @@
 {%- capture intro -%}
-  {%- render 'collection-seo-copy', collection: collection, part: 'intro' -%}
+  {%- render 'collection-seo-text', field: collection.metafields.custom.sort_content -%}
 {%- endcapture -%}
 {%- capture full_content -%}
-  {%- render 'collection-seo-copy', collection: collection, part: 'full' -%}
+  {%- render 'collection-seo-text', field: collection.metafields.custom.full_content, continuation: true -%}
 {%- endcapture -%}
-{%- assign reviewed_intro = intro | strip -%}
-{%- if reviewed_intro == blank -%}
-  {%- capture intro -%}
-    {%- render 'collection-seo-text', field: collection.metafields.custom.sort_content -%}
-  {%- endcapture -%}
-  {%- capture full_content -%}
-    {%- render 'collection-seo-text', field: collection.metafields.custom.full_content, continuation: true -%}
-  {%- endcapture -%}
-{%- endif -%}
 {%- assign intro_text = intro | strip_html | strip -%}
 {%- assign full_text = full_content | strip_html | strip -%}
 {%- if intro_text != blank or full_text != blank -%}
@@ -22,7 +13,7 @@
       {%- if intro_text != blank -%}
         <div class="collection-seo-intro">{{ intro }}</div>
       {%- endif -%}
-      {%- if reviewed_intro != blank and collection.all_products_count == 0 -%}
+      {%- if collection.all_products_count == 0 -%}
         <p class="collection-seo-availability">No products are currently listed in this collection. Explore the related collections below for available options.</p>
       {%- endif -%}
       {%- if full_text != blank and full_text != intro_text -%}

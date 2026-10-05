@@ -28,10 +28,6 @@ The legacy hardcoded Mapbox token has been removed. Configure your own domain-re
 
 ## Collection copy
 
-English collection copy, headings, search titles and descriptions are maintained in `content/collection-seo.json`. Rebuild the Liquid snippet after editing:
+Manage collection copy in Shopify Admin. The collection title supplies the page H1; **Search engine listing** supplies the search title and meta description. The existing multi-line metafields **Sort Content** (`custom.sort_content`) and **Full Content** (`custom.full_content`) supply the HTML introduction and expandable body.
 
-```sh
-python3 scripts/build-collection-seo.py
-```
-
-The generated `snippets/collection-seo-copy.liquid` supplies the storefront content for the listed collection handles. Unlisted collections and other languages retain their existing content and metadata. Shopify Admin metafields remain stored independently; edits to those fields do not override the reviewed English copy for listed handles. Empty collections show an availability note, and promotional copy directs shoppers to current prices and offer terms.
+The theme renders these Admin values directly, with heading normalization, responsive formatting and keyboard-accessible expansion. Empty collections show an availability note. `content/collection-seo.json` is a review snapshot of the October 2026 migration, rather than an override of Admin edits. Theme deployment does not overwrite collection data.

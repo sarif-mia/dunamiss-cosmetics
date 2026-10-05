@@ -30,13 +30,6 @@
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
     {%- assign storefront_title = page_title -%}
-    {%- if request.page_type == 'collection' -%}
-      {%- capture reviewed_collection_title -%}
-        {%- render 'collection-seo-copy', collection: collection, part: 'title' -%}
-      {%- endcapture -%}
-      {%- assign reviewed_collection_title = reviewed_collection_title | strip -%}
-      {%- assign storefront_title = reviewed_collection_title | default: page_title -%}
-    {%- endif -%}
     <title>
       {{ storefront_title | remove: 'SEO Optimized Title: ' | escape }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
@@ -45,13 +38,6 @@
     </title>
     {%- liquid
       assign storefront_description = page_description
-      if request.page_type == 'collection'
-        capture reviewed_collection_description
-          render 'collection-seo-copy', collection: collection, part: 'description'
-        endcapture
-        assign reviewed_collection_description = reviewed_collection_description | strip
-        assign storefront_description = reviewed_collection_description | default: page_description
-      endif
       if storefront_description == blank
         case request.page_type
           when 'collection'

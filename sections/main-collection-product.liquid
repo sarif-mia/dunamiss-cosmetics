@@ -63,11 +63,7 @@
     -%}
   {% endif %}
   <div class="{{ section_width }} storefront-collection-heading">
-    {%- capture reviewed_collection_heading -%}
-      {%- render 'collection-seo-copy', collection: collection, part: 'h1' -%}
-    {%- endcapture -%}
-    {%- assign reviewed_collection_heading = reviewed_collection_heading | strip -%}
-    <h1>{{ reviewed_collection_heading | default: collection.title | escape }}</h1>
+    <h1>{{ collection.title | escape }}</h1>
   </div>
   <grid-list
     {% if scroll_animation != 'slide_in' %}
