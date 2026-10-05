@@ -62,6 +62,9 @@
       collection_url: collection.url
     -%}
   {% endif %}
+  <div class="{{ section_width }} storefront-collection-heading">
+    <h1>{{ collection.title | escape }}</h1>
+  </div>
   <grid-list
     {% if scroll_animation != 'slide_in' %}
       hold
@@ -271,8 +274,7 @@
                     paginate: paginate,
                     section_st: section_st,
                     pagination: pagination,
-                    number_page: number_products,
-                    paginate: paginate
+                    number_page: number_products
                   %}
                 {% endif %}
               {% endif %}

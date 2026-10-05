@@ -12,7 +12,7 @@
 -%}
 
 {% if request.page_type == 'index' %}
-  <h1 class="my-0 inline-flex align-center">
+  <div class="my-0 inline-flex align-center">
 {%- endif -%}
 <a
   class="logo-img no-underline inline-flex align-center{% if request.page_type != 'index' %} h1 my-0{% endif %}"
@@ -79,5 +79,5 @@
   {%- endif -%}
 </a>
 {% if request.page_type == 'index' %}
-  </h1>
+  </div>
 {%- endif -%}

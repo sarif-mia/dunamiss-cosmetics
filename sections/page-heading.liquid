@@ -50,7 +50,7 @@
                data-motion-delay="{{ forloop.index0 | times: 50 }}"
                 class="{% if scroll_animation == 'slide_in' %} opacity-0 {% endif %} block"
               >
-                <h2 class="heading-title heading-letter-spacing h2 mt-8 mb-0 {{ header_size }}">
+                <h1 class="heading-title heading-letter-spacing h2 mt-8 mb-0 {{ header_size }}">
                   {%- if block_st.page_title != blank -%}
                     {{ block_st.page_title }}
                   {%- else -%}
@@ -62,7 +62,7 @@
                       {{ page.title }}
                     {% endif %}
                   {% endif %}
-                </h2>
+                </h1>
               </motion-element>
             {%- when 'description' -%}
               {% if block_st.description != blank or page.content != blank %}

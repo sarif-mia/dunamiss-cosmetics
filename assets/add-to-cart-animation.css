@@ -1,0 +1,44 @@
+/* Product cards retain their existing brand colors. */
+body .product-item__wrapper :is(.product__add-cart, .bls-add-cart-list) {
+  --cart-animation-background: var(--brand-accent);
+  --cart-animation-text: #fff;
+  --cart-animation-hover-background: var(--brand-accent-hover);
+}
+
+/* Override the legacy card hover background shorthand, including during hover.
+   Keep both sweep colors filled so the label stays readable throughout. */
+:root body :is(button.product_submit_button[name="add"], .product-item__wrapper :is(.product__add-cart, .bls-add-cart-list)) {
+  background-color: var(--cart-animation-background, var(--btn-primary-bg-color));
+  background-color: var(--cart-animation-hover-background, color-mix(in srgb, var(--btn-primary-bg-color) 80%, #000));
+  background-image: linear-gradient(var(--cart-animation-background, var(--btn-primary-bg-color)), var(--cart-animation-background, var(--btn-primary-bg-color)));
+  background-repeat: no-repeat;
+  background-size: 101% 101%;
+  background-position: right center;
+  border: 1px solid var(--cart-animation-background, var(--btn-primary-bg-color));
+  color: var(--cart-animation-text, var(--btn-primary-color));
+  transition: background-size .45s cubic-bezier(.785, .135, .15, .86),
+    background-position .45s step-end,
+    transform .3s ease, opacity .3s ease, visibility .3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :root body :is(button.product_submit_button[name="add"], .product-item__wrapper :is(.product__add-cart, .bls-add-cart-list)):not(:disabled):not([aria-disabled="true"]):not(.disabled):not(.loading):hover {
+    background-size: 0% 101%;
+    background-position: left center;
+    color: var(--cart-animation-text, var(--btn-primary-color));
+  }
+}
+
+:root body :is(button.product_submit_button[name="add"], .product-item__wrapper :is(.product__add-cart, .bls-add-cart-list)):not(:disabled):not([aria-disabled="true"]):not(.disabled):not(.loading):focus-visible {
+  background-size: 0% 101%;
+  background-position: left center;
+  color: var(--cart-animation-text, var(--btn-primary-color));
+  outline: 2px solid var(--cart-animation-background, var(--btn-primary-bg-color));
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root body :is(button.product_submit_button[name="add"], .product-item__wrapper :is(.product__add-cart, .bls-add-cart-list)) {
+    transition: none;
+  }
+}

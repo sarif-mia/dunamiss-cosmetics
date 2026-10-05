@@ -213,22 +213,22 @@ class ProductRecommendations extends SlideSection {
       if (!entries[0].isIntersecting) return;
       observer.unobserve(this);
       fetch(this.dataset.url)
-        .then((response) => response.text())
+        .then((response) => {
+          if (!response.ok) throw new Error("Recommendations unavailable");
+          return response.text();
+        })
         .then((text) => {
           const html = document.createElement("div");
           html.innerHTML = text;
           const recommendations = html.querySelector("product-recommendations");
-          if (recommendations && recommendations.innerHTML.trim().length) {
+          const section = this.closest('.sec__related-product');
+          if (recommendations && recommendations.querySelector('.product-item')) {
             this.innerHTML = recommendations.innerHTML;
-          }
-          if (recommendations.innerHTML.trim().length === 0) {
-            // this.remove();
-            this.style.display = "none";
-            if (document.querySelector(".product-recommendations-heading")) {
-              document
-                .querySelector(".product-recommendations-heading")
-                .remove();
-            }
+            section?.removeAttribute('data-recommendations-pending');
+          } else if (section) {
+            section.hidden = true;
+          } else {
+            this.hidden = true;
           }
         })
         .finally(() => {
@@ -240,6 +240,8 @@ class ProductRecommendations extends SlideSection {
           initLazyloadItem();
         })
         .catch((e) => {
+          const section = this.closest('.sec__related-product');
+          if (section && !this.querySelector('.product-item')) section.hidden = true;
           console.error(e);
         });
     };
@@ -534,7 +536,7 @@ class ProductGrouped extends HTMLElement {
         const parsedState = JSON.parse(state);
         if (parsedState.message) {
           handleErrorMessagePopup(parsedState.description);
-          if (!content) return;
+          return;
         } else {
           parsedState.items.forEach((e) => {
             if (e.quantity > 0) {

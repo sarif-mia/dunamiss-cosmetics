@@ -1,0 +1,186 @@
+/* Shared storefront refinements; retain the theme's current brand colors. */
+body .storefront-collection-heading h1 {
+  margin: 0 0 20px;
+  color: var(--brand-heading);
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.25;
+}
+body .storefront-hero-cta {
+  position: absolute;
+  z-index: 2;
+  left: 28px;
+  bottom: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 24px;
+  border-radius: 6px;
+  background: var(--brand-accent);
+  color: #fff;
+  font-weight: 600;
+  line-height: 1.2;
+  box-shadow: 0 3px 12px rgb(0 0 0 / 12%);
+}
+body .slideshow a:focus-visible .storefront-hero-cta {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+body .sec__related-product[data-recommendations-pending] .section__header,
+body .sec__related-product[hidden] {
+  display: none;
+}
+body .product-item .product-item__wrapper.product-grid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+body .product-item .product-item__wrapper.product-grid > .product-item__inner {
+  flex-shrink: 0;
+}
+body .product-item .product-item__wrapper.product-grid > .product-item__information {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 160px;
+}
+body .product-item__wrapper.product-grid .product-item__name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  min-height: 2.6em;
+  line-height: 1.3;
+  white-space: normal;
+  text-overflow: ellipsis;
+}
+body .product-item__wrapper.product-grid .product-item__information > review-product {
+  min-height: 20px;
+}
+body .product-item__wrapper.product-grid .product-item__information > .product-item__price {
+  min-height: 22px;
+}
+body .product-item__wrapper.product-grid .product-item__information > :is(product-form, select-option.morden-style) {
+  margin-top: auto;
+  padding-top: 16px;
+}
+body .product-item__wrapper.product-grid .product-item__information > product-form .morden-style {
+  margin-top: 0;
+}
+@media (max-width: 767px) {
+  body.index .slideshow .sec__inner.h-adapt {
+    height: clamp(380px, 62svh, 500px);
+    min-height: 0;
+    aspect-ratio: auto;
+    overflow: hidden;
+  }
+  body.index .slideshow .sec__inner.h-adapt::before {
+    display: none;
+  }
+  body.index .slideshow .banner__media {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+  body.index .slideshow .banner__media img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  body .storefront-hero-cta {
+    left: 16px;
+    bottom: 42px;
+    min-height: 44px;
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+  :root body .product-form__buttons button.product_submit_button,
+  :root body .product-form__buttons .buy-now-compact #gokwik-buy-now,
+  :root body .product-form__quantity .quantity {
+    height: 48px;
+    min-height: 48px;
+  }
+  :root body .product-form__quantity .quantity__button {
+    height: 48px;
+    min-height: 48px;
+  }
+  body .dunamiss-benefits-grid {
+    padding: 8px;
+    gap: 8px;
+  }
+  body .dunamiss-benefits-item {
+    padding: 8px;
+    gap: 6px;
+    min-width: 0;
+  }
+  body .dunamiss-benefits-image {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+  }
+  body .dunamiss-benefits-image img {
+    width: 26px;
+    height: 26px;
+  }
+  body .dunamiss-benefits-item h3 {
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 1.4;
+    word-break: normal;
+    overflow-wrap: normal;
+  }
+  body .whatsapp-float {
+    left: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+  }
+  body .whatsapp-float .wa-button {
+    width: 44px;
+    height: 44px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+    animation: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body .whatsapp-float .wa-button {
+    animation: none;
+    transition: none;
+  }
+}
+
+body .storefront-purchase-details {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: var(--brand-surface);
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--brand-text);
+}
+body .storefront-purchase-details p { margin: 0; }
+body .storefront-purchase-details p + p { margin-top: 6px; }
+body .storefront-purchase-details a { color: inherit; text-underline-offset: 3px; }
+
+body :is(#kp-login-button-header-logo, #icon-kwikpass, #icon-close-kwikpass):focus-visible {
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Restore visible ingredient markers even when generic theme lists are reset. */
+:root body .product-ingredients-content :is(ul, ol) {
+  padding-inline-start: 24px;
+  margin-block: 12px 18px;
+}
+:root body .product-ingredients-content :is(ul, ol) > li {
+  display: list-item;
+  padding-inline-start: 4px;
+  margin-block: 6px;
+  line-height: 1.65;
+}
+:root body .product-ingredients-content ul > li { list-style-type: disc; }
+:root body .product-ingredients-content ol > li { list-style-type: decimal; }
+:root body .product-ingredients-content li::marker {
+  content: normal;
+  color: var(--brand-accent);
+  font-weight: 600;
+}

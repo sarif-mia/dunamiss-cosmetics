@@ -1085,7 +1085,12 @@
               >
                 <div class="collapsible-content_inner mb-12 rich__text-mt-0">
                   {%- if block_st.content != blank -%}
-                    {{ block_st.content }}
+                    {% assign accordion_heading = block_st.heading | downcase %}
+                    {% if accordion_heading contains 'ingredient' %}
+                      {% render 'product-ingredients-list', content: block_st.content %}
+                    {% else %}
+                      {{ block_st.content }}
+                    {% endif %}
                   {% endif %}
                 </div>
               </div>

@@ -89,15 +89,16 @@
                       class="form-input form-input-placeholder w-full form-control"
                       name="contact[name]"
                       {% if form.name %}
-                        value="{{ form.name }}"
+                        value="{{ form.name | escape }}"
                       {% elsif customer %}
-                        value="{{ customer.name }}"
+                        value="{{ customer.name | escape }}"
                       {% endif %}
                       id="inputName"
+                      autocomplete="name"
                       required
                       placeholder="{{ name }}"
                     >
-                    <label class="field__label" for="customer_email">
+                    <label class="field__label" for="inputName">
                       {{ name | default:  'Name' }}
                     </label>
                   </div>
@@ -108,9 +109,10 @@
                       placeholder="{{  email }}"
                       class="form-input form-input-placeholder w-full form-control"
                       id="email"
+                      autocomplete="email"
                       required
                     >
-                    <label class="field__label" for="customer_email">
+                    <label class="field__label" for="email">
                       {{ email | default:  'Email' }}
                     </label>
                   </div>
@@ -121,6 +123,7 @@
                     name="contact[body]"
                     placeholder="{{ your_comment }}"
                     id="message"
+                    required
                   ></textarea>
                   <label class="form__label" for="message">
                     {{ your_comment | default:  'Your_comment' }}
@@ -135,6 +138,7 @@
                           type="checkbox"
                           name="conditions"
                           id="privacy"
+                          required
                         >
                         <span class="checkmark relative me-10  pointer-none pointer inline-flex"></span>
                       </div>

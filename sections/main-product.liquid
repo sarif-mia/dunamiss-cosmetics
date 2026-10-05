@@ -479,7 +479,12 @@
                       {{ 'onboarding.default_description' | t }}
                     {% endif %}
                   {% else %}
-                    {{ block_st.content }}
+                    {% assign accordion_heading = block_st.heading | downcase %}
+                    {% if accordion_heading contains 'ingredient' %}
+                      {% render 'product-ingredients-list', content: block_st.content %}
+                    {% else %}
+                      {{ block_st.content }}
+                    {% endif %}
                   {% endif %}
                 </div>
               </div>

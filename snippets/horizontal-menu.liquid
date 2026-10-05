@@ -35,7 +35,6 @@
   assign uppercase_first = section_st.uppercase_first
   assign menu_mobile_tab = section_st.menu_tab
   assign collection_list = section_st.collection_list
-  assign title_categories = section_st.title_categories
 -%}
 {% liquid
   assign enable_rtl = settings.rtl
@@ -393,7 +392,6 @@
                                   {%- if product_value != blank -%}
                                     {% render 'product-item',
                                       card_product: product_value,
-                                      template_enable_action: false,
                                       template_enable_product_vendor: false,
                                       template_enable_rate: false,
                                       template_enable_product_short_description: false,
@@ -943,7 +941,6 @@
                                   {%- if product_value != blank -%}
                                     {% render 'product-item',
                                       card_product: product_value,
-                                      template_enable_action: false,
                                       template_enable_product_vendor: false,
                                       template_enable_rate: false,
                                       template_enable_product_short_description: false,

@@ -30,13 +30,54 @@
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
     <title>
-      {{ page_title }}
+      {{ page_title | remove: 'SEO Optimized Title: ' }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
       {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
+    {%- liquid
+      assign storefront_description = page_description
+      if storefront_description == blank
+        case request.page_type
+          when 'collection'
+            capture storefront_description
+              echo 'Explore '
+              echo collection.title
+              echo ' at '
+              echo shop.name
+              echo '. Discover beauty and everyday care, with product details to help you choose.'
+            endcapture
+          when 'page'
+            assign storefront_description = page.content | strip_html | strip_newlines | truncate: 155
+            if storefront_description == blank
+              case page.handle
+                when 'contact', 'contact-us'
+                  assign storefront_description = 'Contact Dunamiss customer support by WhatsApp or email. Get help with products, orders and delivery, every day from 10 AM to 6 PM IST.'
+                when 'about-us'
+                  assign storefront_description = 'Meet Dunamiss, an Indian beauty brand bringing together everyday care and expressive colour. Discover our story, founders and values.'
+                when 'faq'
+                  assign storefront_description = 'Find answers about Dunamiss orders, shipping, payments, returns and exchanges. Get in touch with our support team when you need help.'
+                when 'shipping-delivery'
+                  assign storefront_description = 'Explore Dunamiss shipping charges, dispatch and delivery timelines, order tracking and support for delivery concerns.'
+                when 'returns-exchange-policy'
+                  assign storefront_description = 'Read the Dunamiss return and exchange policy, eligibility, request deadlines and how to contact support about damaged or incorrect products.'
+                else
+                  capture storefront_description
+                    echo page.title | remove: 'SEO Optimized Title: '
+                    echo ' — Information and support from '
+                    echo shop.name
+                    echo '.'
+                  endcapture
+              endcase
+            endif
+          else
+            assign storefront_description = shop.description | default: shop.name
+        endcase
+      endif
+    -%}
+    {%- assign storefront_description = storefront_description | remove: 'Meta Description: ' | replace: '&amp;', '&' | replace: '&#39;', "'" | strip_html | strip | truncate: 155 -%}
+    {% if storefront_description != blank %}
+      <meta name="description" content="{{ storefront_description | strip | escape }}">
     {% endif %}
     {% render 'meta-tags' %}
     {{ content_for_header }}
@@ -60,6 +101,8 @@
     <noscript>{{ 'judgeme-reviews.s.min.css' | asset_url | stylesheet_tag }}</noscript>
     {% render 'font-variables' %}
     {{ 'brand-system.css' | asset_url | stylesheet_tag }}
+    {{ 'add-to-cart-animation.css' | asset_url | stylesheet_tag }}
+    {{ 'storefront-improvements.css' | asset_url | stylesheet_tag }}
     {% if request.page_type == 'index' %}
       {{ 'home-spacing.css' | asset_url | stylesheet_tag }}
     {% endif %}
@@ -237,6 +280,9 @@
     -%}
     {% render 'kwikpass-add-button' %}
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {% if request.page_type == 'index' %}
+        <h1 class="visually-hidden">{{ shop.name | escape }} — Beauty and everyday care</h1>
+      {% endif %}
       {{ content_for_layout }}
     </main>
     {% sections 'footer-group' %}
@@ -253,9 +299,7 @@
     {% render 'whatsapp-button' %}
     {% render 'kwikpass' %}
 
-{% if template.name =='page' %}
-<h1 style="display:none">{{page.title}}</h1>
-{% endif %}
+
 
 
   </body>

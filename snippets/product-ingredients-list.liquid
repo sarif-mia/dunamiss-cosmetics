@@ -1,0 +1,43 @@
+{%- liquid
+  assign ingredient_text = content | strip_html | strip_newlines | strip
+  assign can_format = false
+  unless content contains '<ul' or content contains '<ol'
+    if ingredient_text contains ','
+      if ingredient_text contains 'Enriched with ' or ingredient_text contains 'Aqua,'
+        assign can_format = true
+      endif
+    endif
+  endunless
+-%}
+<div class="product-ingredients-content">
+{%- if can_format -%}
+  {%- liquid
+    assign ingredient_parts = ingredient_text | split: ', the formula is complemented by '
+    assign key_ingredients = ingredient_parts.first | remove_first: 'Enriched with ' | split: ','
+  -%}
+  <ul class="product-ingredients-list" style="list-style: disc; padding-inline-start: 22px; margin: 10px 0 18px;">
+    {%- for ingredient in key_ingredients -%}
+      {%- assign ingredient_name = ingredient | strip | remove_first: 'and ' -%}
+      {%- if ingredient_name != blank -%}<li>{{ ingredient_name | escape }}</li>{%- endif -%}
+    {%- endfor -%}
+  </ul>
+  {%- if ingredient_parts.size > 1 -%}
+    {%- liquid
+      assign additional_text = ingredient_parts.last | split: ' to create ' | first
+      assign additional_ingredients = additional_text | split: ','
+    -%}
+    <h4>Additional Ingredients</h4>
+    <ul class="product-ingredients-list" style="list-style: disc; padding-inline-start: 22px; margin: 10px 0 18px;">
+      {%- for ingredient in additional_ingredients -%}
+        {%- assign ingredient_name = ingredient | strip | remove_first: 'and ' -%}
+        {%- if ingredient_name != blank -%}<li>{{ ingredient_name | escape }}</li>{%- endif -%}
+      {%- endfor -%}
+    </ul>
+    {%- if ingredient_parts.last contains ' to create ' -%}
+      <p>{{ ingredient_parts.last | split: ' to create ' | last | capitalize | escape }}</p>
+    {%- endif -%}
+  {%- endif -%}
+{%- else -%}
+  {{ content }}
+{%- endif -%}
+</div>

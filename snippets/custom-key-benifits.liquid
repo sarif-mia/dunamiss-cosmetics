@@ -128,7 +128,7 @@
 
                       {% if benefit_image != blank %}
                         <div class="dunamiss-benefits-image">
-                            <img src="{{ benefit_image | image_url: width: 300 }}" alt="{{ benefit_text | default: 'Benefit ' | append: i | escape }}" width="{{ benefit_image.width | default: 300 }}" height="{{ benefit_image.height | default: 300 }}" loading="lazy">
+                            <img src="{{ benefit_image | image_url: width: 80 }}" alt="{{ benefit_text | default: 'Benefit ' | append: i | escape }}" width="{{ benefit_image.width | default: 300 }}" height="{{ benefit_image.height | default: 300 }}" loading="lazy">
                         </div>
                       {% endif %}
 

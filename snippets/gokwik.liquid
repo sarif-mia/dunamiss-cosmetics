@@ -45,9 +45,9 @@
 
       function syncControls() {
         pendingFrame = 0;
-        const addButton = document.querySelector("button[name='add']");
         document.querySelectorAll(controls).forEach((button) => {
           // Retain availability when variants update or the cart replaces its HTML.
+          const addButton = button.closest('product-form')?.querySelector("button[name='add']");
           const disabled = button.id === 'gokwik-buy-now' && Boolean(addButton?.disabled);
           if (button.disabled !== disabled) button.disabled = disabled;
           button.classList.remove('disabled');
@@ -146,9 +146,8 @@
   .gokwik-checkout button.disabled .addloadr#btn-loader{
      display: flex!important;
   }
-    #gokwik-buy-now.disabled .addloadr#btn-loader{
-     display: flex!important;
-  }
+  /* Buy now is disabled while the SDK loads and for unavailable variants.
+     GoKwik shows the loader explicitly when checkout starts. */
       #gokwik-buy-now:disabled{
      cursor: not-allowed;
      opacity:0.5;
@@ -232,5 +231,4 @@
     }
   }
 </style>
-
 

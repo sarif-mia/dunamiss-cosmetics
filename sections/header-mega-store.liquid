@@ -11,6 +11,7 @@
     assign recently_viewed = section_st.show_recently_viewed
     assign wishlist = section_st.show_wishlist_icon
     assign minicart = section_st.show_shopping_cart
+    assign show_language = section_st.show_language
   -%}
   {%- capture style -%}
   --section-pt: {{ section_st.padding_top }}; 
@@ -91,12 +92,6 @@
                 -%}
               </div>
               <div class="header-information relative z-1 flex justify-between align-center fs-14">
-                {% liquid
-                  assign phone = false
-                  if section_st.show_phone and theme_st.store_phone != blank
-                    assign phone = true
-                  endif
-                %}
                 {% liquid
                   if recently_viewed
                     render 'recently-viewed', type: 'header_mega'

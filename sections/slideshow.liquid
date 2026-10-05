@@ -260,6 +260,9 @@
                     </div>
                   </div>
                 {% endif %}
+                {% if request.page_type == 'index' and slide_link != blank and block_st.first_button_label == blank and block_st.second_button_label == blank %}
+                  <span class="storefront-hero-cta">Shop {{ slide_link | split: '/' | last | replace: '-', ' ' | capitalize }}</span>
+                {% endif %}
               </div>
               {% if slide_link != blank %}
                 </a>

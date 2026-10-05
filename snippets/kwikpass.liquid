@@ -1,6 +1,13 @@
 <script>
   let token = null;
   let isDropdownVisible = false;
+  document.addEventListener('keydown', (event) => {
+    const control = event.target.closest('#kp-login-button-header-logo, #icon-kwikpass, #icon-close-kwikpass');
+    if (control && event.target === control && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      control.click();
+    }
+  });
 
   // Section reloads can restore the theme account link after Kwikpass replaces it.
   // Route that link through the same controls used by the desktop header.

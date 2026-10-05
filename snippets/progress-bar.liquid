@@ -19,6 +19,8 @@
     font-size: 24px;
     cursor: pointer;
     padding: 4px 10px;
+    min-width: 44px;
+    min-height: 44px;
     color:rgb(0, 0, 0);
     font-weight: bold;
     user-select: none;
@@ -26,196 +28,47 @@
 
   .offer-text {
     font-size: 14px;
-    white-space: nowrap;
-    min-width: 160px;
+    white-space: normal;
+    min-width: 0;
+    flex: 1;
+    line-height: 1.35;
     text-align: center;
   }
 
-  .progress-bar-wrapper {
-    padding: 10px;
-    border-radius: 12px;
-    background: linear-gradient(0deg, rgba(160, 37, 91, 0.1) 0%, transparent 100%);
-    font-family: var(--body-font);
-    display: none;
-  }
-
-  .progress-message {
-    font-weight: 600;
-    margin-bottom: 8px;
-    text-align: center;
-  }
-
-  .progress-bar {
-    position: relative;
-    height: 10px;
-    background: #ddd;
-    border-radius: 999px;
-    margin-bottom: 20px;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .progress-fill {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(to right, var(--brand-accent), #FFB86F);
-    transition: width 0.4s ease;
-    border-radius: 999px;
-  }
-
-  .milestone-icon {
-    position: absolute;
-    top: -6px;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    border: 2px solid white;
-    background-color: #bbb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
-  }
-
-  .milestone-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 50%;
-  }
-
-  .milestone-icon.active {
-    background-color: #28a745;
-    border-color: #28a745;
-    transform: scale(1.1);
-  }
-
-  .congrats-message {
-    font-size: 14px;
-    font-weight: bold;
-    color: #28a745;
-    margin-top: 5px;
-    display: none;
-    text-align: center;
-  }
-
-  .congrats-message.show {
-    display: block;
-  }
 </style>
-<!-- Offer Train (Carousel) -->
-<div class="offer-train-wrapper">
-  <button class="carousel-btn left" id="offer-prev">‹</button>
-  <span class="offer-text" id="offer-text">Shop More, Glow More</span>
-  <button class="carousel-btn right" id="offer-next">›</button>
-</div>
-<!-- Progress Bar -->
-<div class="progress-bar-wrapper">
-  <div class="progress-message" id="progress-message">Loading cart progress...</div>
-  <div class="progress-fill" id="progress-fill"></div>
-  <!-- Milestone Icons -->
-  <div class="milestone-icon" id="dot-399" style="left: 49.9%;">
-    <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/gift-box.png?v=1751185316" alt="Gift Icon" width="22" height="22">
-  </div>
-  <div class="milestone-icon" id="dot-599" style="left: 74.96%;">
-    <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/discount.png?v=1751185474" alt="10% Off Icon" width="22" height="22">
-  </div>
-  <div class="milestone-icon" id="dot-799" style="left: 100%; transform: translateX(-50%);">
-    <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/discount.png?v=1751185474" alt="15% Off Icon" width="22" height="22">
-  </div>
-  <div class="congrats-message" id="congrats-msg"></div>
-</div>
+<!-- Gift offers use instance-scoped controls and do not poll the cart. -->
+<gift-offer-carousel class="offer-train-wrapper" role="region" aria-label="Shipping and gift offers">
+  <button type="button" class="carousel-btn left" data-offer-prev aria-label="Previous gift offer">‹</button>
+  <span class="offer-text" data-offer-text aria-live="polite" aria-atomic="true">Free shipping and a free gift on prepaid orders</span>
+  <button type="button" class="carousel-btn right" data-offer-next aria-label="Next gift offer">›</button>
+</gift-offer-carousel>
 <script>
-  // Offer Carousel Logic
-  const offers = ["Spend ₹299 → Get Satin Scrunchies", "Spend ₹749 → Get a Scrunchie Pouch", "Spend ₹899 → Get a Denim Tote Bag"];
-  let offerIndex = 0;
-  const offerText = document.getElementById("offer-text");
-  const prevBtn = document.getElementById("offer-prev");
-  const nextBtn = document.getElementById("offer-next");
-
-  function updateOfferText() {
-    offerText.textContent = offers[offerIndex];
-  }
-  prevBtn.onclick = () => {
-    offerIndex = (offerIndex - 1 + offers.length) % offers.length;
-    updateOfferText();
-  };
-  nextBtn.onclick = () => {
-    offerIndex = (offerIndex + 1) % offers.length;
-    updateOfferText();
-  };
-  setInterval(() => {
-    offerIndex = (offerIndex + 1) % offers.length;
-    updateOfferText();
-  }, 3000);
-  // Progress Bar Logic
-  function updateProgressBar(cartTotal) {
-    const fill = document.getElementById('progress-fill');
-    const message = document.getElementById('progress-message');
-    const congrats = document.getElementById('congrats-msg');
-    const dot399 = document.getElementById('dot-399');
-    const dot599 = document.getElementById('dot-599');
-    const dot799 = document.getElementById('dot-799');
-    let percent = Math.min((cartTotal / 799) * 100, 100);
-    fill.style.width = `${percent}%`;
-    dot399.classList.remove("active");
-    dot599.classList.remove("active");
-    dot799.classList.remove("active");
-    congrats.classList.remove("show");
-    congrats.textContent = "";
-    if (cartTotal >= 799) {
-      message.textContent = "🎉 ₹799 reached: 15% OFF unlocked!";
-      dot399.classList.add("active");
-      dot599.classList.add("active");
-      dot799.classList.add("active");
-      congrats.textContent = "🎊 Congrats! You've unlocked 15% OFF!";
-      congrats.classList.add("show");
-    } else if (cartTotal >= 599) {
-      message.textContent = `🎁 ₹${(799 - cartTotal).toFixed(2)} away from 15% OFF`;
-      dot399.classList.add("active");
-      dot599.classList.add("active");
-      congrats.textContent = "🎉 Congrats! 10% OFF unlocked!";
-      congrats.classList.add("show");
-    } else if (cartTotal >= 399) {
-      message.textContent = `🎊 ₹${(599 - cartTotal).toFixed(2)} away from 10% OFF`;
-      dot399.classList.add("active");
-      congrats.textContent = "🥳 Congrats! Free Gift unlocked!";
-      congrats.classList.add("show");
-    } else {
-      message.textContent = `🛒 ₹${(399 - cartTotal).toFixed(2)} away from Free Gift`;
-    }
-    if (congrats.classList.contains("show")) {
-      clearTimeout(window.congratsTimeout);
-      window.congratsTimeout = setTimeout(() => {
-        congrats.classList.remove("show");
-        congrats.textContent = "";
-      }, 3000);
-    }
-  }
-
-  function fetchCartAndUpdateBar() {
-    fetch('/cart.js').then(res => res.json()).then(cart => {
-      const total = cart.total_price / 100;
-      updateProgressBar(total);
+  (() => {
+    if (customElements.get('gift-offer-carousel')) return;
+    customElements.define('gift-offer-carousel', class extends HTMLElement {
+      connectedCallback() {
+        this.controller?.abort();
+        this.controller = new AbortController();
+        this.index = 0;
+        this.offers = ['Free shipping and a free gift on prepaid orders', 'Prepaid orders over ₹1,199 get a complimentary tote bag', 'COD convenience fee: ₹49'];
+        const options = { signal: this.controller.signal };
+        const bindControls = () => {
+          const text = this.querySelector('[data-offer-text]');
+          if (text) text.textContent = this.offers[this.index];
+          this.querySelector('[data-offer-prev]')?.addEventListener('click', () => this.showOffer(-1), options);
+          this.querySelector('[data-offer-next]')?.addEventListener('click', () => this.showOffer(1), options);
+        };
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', bindControls, { ...options, once: true });
+        } else {
+          queueMicrotask(bindControls);
+        }
+      }
+      showOffer(direction) {
+        this.index = (this.index + direction + this.offers.length) % this.offers.length;
+        this.querySelector('[data-offer-text]').textContent = this.offers[this.index];
+      }
+      disconnectedCallback() { this.controller?.abort(); }
     });
-  }
-  // Real-time hook: Shopify Cart update listener (works in most themes)
-  function initRealTimeCartProgress() {
-    // 1. Initial fetch
-    fetchCartAndUpdateBar();
-    // 2. Listen to Shopify AJAX updates (if theme uses them)
-    if (typeof Shopify !== 'undefined' && Shopify.onCartUpdate) {
-      Shopify.onCartUpdate = function() {
-        fetchCartAndUpdateBar();
-      };
-    }
-    // 3. Fallback: Poll every 3 seconds to stay synced
-    setInterval(fetchCartAndUpdateBar, 3000);
-  }
-  document.addEventListener("DOMContentLoaded", function() {
-    updateOfferText();
-    initRealTimeCartProgress();
-  });
+  })();
 </script>

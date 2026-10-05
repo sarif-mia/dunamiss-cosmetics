@@ -770,15 +770,15 @@
 
                 <div class="dunamiss-contact-row">
 
-                    <input type="email" name="contact[email]" value="{{ form.email }}" placeholder="Your Email" required>
+                    <input type="email" name="contact[email]" value="{{ form.email | escape }}" placeholder="Your Email" aria-label="Email address" autocomplete="email" required>
 
-                    <input type="text" name="contact[name]" value="{{ form.name }}" placeholder="Your name" required>
+                    <input type="text" name="contact[name]" value="{{ form.name | escape }}" placeholder="Your name" aria-label="Your name" autocomplete="name" required>
                 </div>
-                <textarea name="contact[body]" placeholder="Enter please your message" required>{{ form.body }}</textarea>
+                <textarea name="contact[body]" placeholder="Your message" aria-label="Your message" required>{{ form.body | escape }}</textarea>
 
                 <label class="dunamiss-contact-checkbox">
 
-                    <input type="checkbox" name="contact[agree]">
+                    <input type="checkbox" name="contact[agree]" required>
 
                     <span>
                             I agree to the

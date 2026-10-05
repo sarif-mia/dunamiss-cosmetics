@@ -315,6 +315,12 @@
           </div>
         {%- endform -%}
       </product-form>
+      {% if type == 'single' or type == 'main_product' %}
+        <div class="storefront-purchase-details">
+          <p><a href="{{ pages['shipping-delivery'].url | default: '/pages/shipping-delivery' }}">Delivery usually takes 3–7 business days.</a> Free prepaid shipping · ₹49 COD fee.</p>
+          <p>Damaged or incorrect item? <a href="{{ pages['returns-exchange-policy'].url | default: '/pages/returns-exchange-policy' }}">Contact us within 48 hours; eligibility applies.</a></p>
+        </div>
+      {% endif %}
     </div>
   {% endif %}
 

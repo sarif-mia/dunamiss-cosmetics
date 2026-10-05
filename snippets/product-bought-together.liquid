@@ -256,7 +256,7 @@
             {% endif %}
           </a>
 
-          <form method="post" action="/cart/add" class="quick-cart-form" data-quick-cart>
+          <form method="post" action="{{ routes.cart_add_url }}" class="quick-cart-form" data-quick-cart>
             <input type="hidden" name="id" value="{{ related_product.selected_or_first_available_variant.id }}">
             <input type="hidden" name="quantity" value="1">
             <button type="submit" class="quick-cart-btn" aria-label="Quick Add">
