@@ -1,0 +1,18 @@
+{%- capture content -%}
+  {%- if field.type == 'rich_text_field' -%}
+    {{- field | metafield_tag -}}
+  {%- else -%}
+    {{- field.value | default: field -}}
+  {%- endif -%}
+{%- endcapture -%}
+{%- liquid
+  if content contains '<h1'
+    assign content = content | replace: '<h2', '<h3' | replace: '</h2>', '</h3>' | replace: '<h1', '<h2' | replace: '</h1>', '</h2>'
+  endif
+  if content contains '<h2' or continuation
+    assign content = content | replace: '<h4', '<h3' | replace: '</h4>', '</h3>'
+  else
+    assign content = content | replace: '<h4', '<h2' | replace: '</h4>', '</h2>'
+  endif
+-%}
+{{- content -}}

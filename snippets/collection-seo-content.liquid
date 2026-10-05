@@ -1,0 +1,31 @@
+{%- capture intro -%}
+  {%- render 'collection-seo-text', field: collection.metafields.custom.sort_content -%}
+{%- endcapture -%}
+{%- capture full_content -%}
+  {%- render 'collection-seo-text', field: collection.metafields.custom.full_content, continuation: true -%}
+{%- endcapture -%}
+{%- assign intro_text = intro | strip_html | strip -%}
+{%- assign full_text = full_content | strip_html | strip -%}
+{%- if intro_text != blank or full_text != blank -%}
+  {{ 'collection-seo.css' | asset_url | stylesheet_tag }}
+  <div class="{{ section_width }}">
+    <div class="collection-meta-content collection-seo-content rte">
+      {%- if intro_text != blank -%}
+        <div class="collection-seo-intro">{{ intro }}</div>
+      {%- endif -%}
+      {%- if full_text != blank and full_text != intro_text -%}
+        {%- if intro_text != blank -%}
+          <details class="collection-seo-details">
+            <summary class="collection-seo-toggle">
+              <span class="collection-seo-more">Read more</span>
+              <span class="collection-seo-less">Read less</span>
+            </summary>
+            <div class="collection-seo-full">{{ full_content }}</div>
+          </details>
+        {%- else -%}
+          <div class="collection-seo-full">{{ full_content }}</div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}

@@ -289,20 +289,7 @@
       </div>
     </div>
   </grid-list>
-  <!-- Short content collection page -->
-  <div class="collection-meta-content">
-    {{ collection.metafields.custom.sort_content }}
-    <span class="moretext" style="display:none;">
-      {{ collection.metafields.custom.full_content }}
-    </span>
-    <a
-      href="#"
-      class="moreless-button"
-      onclick="let s=this.previousElementSibling; s.style.display = s.style.display === 'none' ? 'inline' : 'none'; this.textContent = this.textContent === 'Read more' ? 'Read less' : 'Read more'; return false;"
-      >Read more</a
-    >
-  </div>
-  <!-- Short content collection page -->
+  {% render 'collection-seo-content', collection: collection, section_width: section_width %}
 </section>
 
 {% schema %}
