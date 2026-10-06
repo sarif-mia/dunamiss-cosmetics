@@ -26,12 +26,6 @@
             "show_vendor": false
           }
         },
-        "custom_liquid_TinQzB": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{{ product.metafields.custom.product_subtitle.value }}"
-          }
-        },
         "review_and_sold_AAbJC9": {
           "type": "review_and_sold",
           "settings": {
@@ -180,10 +174,9 @@
       },
       "block_order": [
         "title_G6tU8U",
-        "custom_liquid_TinQzB",
+        "short_description_9BGxVm",
         "review_and_sold_AAbJC9",
         "price_VJ4N8m",
-        "short_description_9BGxVm",
         "custom_liquid_8rKT7x",
         "variant_picker_tcCihG",
         "buy_buttons_LcQGtR",
