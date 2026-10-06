@@ -25,7 +25,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
-    <link rel="canonical" href="{{ canonical_url }}">
+    {%- liquid
+      assign storefront_canonical_url = canonical_url
+      if request.page_type == 'page' and page.handle == 'returns-exchange-policy' and shop.refund_policy.body != blank and shop.refund_policy.url != blank
+        assign storefront_canonical_url = shop.secure_url | append: shop.refund_policy.url
+      endif
+    -%}
+    <link rel="canonical" href="{{ storefront_canonical_url | escape }}">
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
@@ -83,6 +89,7 @@
       <meta name="description" content="{{ storefront_description | strip | escape }}">
     {% endif %}
     {% render 'meta-tags', storefront_title: storefront_title, storefront_description: storefront_description %}
+    {% render 'merchant-return-policy' %}
     {{ content_for_header }}
     {{ 'critical.s.min.css' | asset_url | stylesheet_tag }}
     {% if settings.scroll_animation != 'none' %}

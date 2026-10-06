@@ -39,3 +39,7 @@ Manage product names, HTML descriptions, search titles and meta descriptions in 
 `content/product-seo.json` is a review snapshot of the October 2026 published catalogue update. Draft and unlisted review records remain in local audit reports. It does not override subsequent Admin edits. Product templates render native names and descriptions, including the selectable lip oil trio. Product search titles render directly without a second store-name suffix.
 
 The theme preserves product-image alt text and uses the product name when alt text is empty. Product structured data JSON-encodes GTINs, removes a spreadsheet apostrophe prefix, and emits only numeric identifiers with a valid check digit. Barcode values stored in Admin are unchanged.
+
+Organization structured data links to the published Shopify refund policy using Google's supported `merchantReturnLink` option. Edit the policy in **Settings → Policies**; its URL is read from Shopify. The theme does not infer return fees, delivery windows or credit-note validity from policy prose.
+
+The custom Returns & Exchanges page renders that same native policy and points its canonical URL to the policy page. Its styling and support contacts remain in the theme; its eligibility and timing terms come from Admin.

@@ -1,0 +1,21 @@
+{%- comment -%}
+  Google supports a merchantReturnLink for organization-level return policies.
+  Read the published Shopify policy so changes in Admin remain authoritative.
+{%- endcomment -%}
+{%- if shop.refund_policy.body != blank and shop.refund_policy.url != blank -%}
+  {%- assign merchant_policy_url = shop.secure_url | append: shop.refund_policy.url -%}
+  {%- assign merchant_organization_id = shop.secure_url | append: '#organization' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": {{ merchant_organization_id | json }},
+      "name": {{ shop.name | json }},
+      "url": {{ shop.secure_url | json }},
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "merchantReturnLink": {{ merchant_policy_url | json }}
+      }
+    }
+  </script>
+{%- endif -%}
