@@ -14,7 +14,7 @@
   style="{{ style | strip | strip_newlines }}"
 >
   <div class="{{ section_width }}">
-    <article class="article-template single__post-content" itemscope itemtype="http://schema.org/BlogPosting">
+    <article class="article-template single__post-content">
       <div class="single-post-breadcrumbs py-30">
         {%- render 'breadcrumbs' -%}
       </div>
@@ -22,8 +22,8 @@
         {% assign block_st = block.settings %}
         {%- case block.type -%}
           {%- when 'title' -%}
-            <div {{ block.shopify_attributes }} class="single__post-header text-center page-title container-min">
-              <h1 class="heading-letter-spacing article-template__title mb-15 h0 mt-15" itemprop="headline">
+            <div {{ block.shopify_attributes }} class="single__post-header text-center container-min">
+              <h1 class="heading-letter-spacing article-template__title mb-15 h0 mt-15">
                 {{ article.title | escape }}
               </h1>
             </div>
@@ -48,12 +48,12 @@
                 {{- 'blog_post.post_by' | t }}
                 <span class="primary-color heading_weight ms-5">{{ article.author }}</span>
               </div>
-              <div
+              <time
                 class="article-card-date dot-between inline-flex align-center"
-                itemprop="dateCreated pubdate datePublished"
+                datetime="{{ article.published_at | date: '%Y-%m-%d' }}"
               >
                 {{ article.published_at | date: '%b %d %Y' }}
-              </div>
+              </time>
               {%- if blog.comments_enabled? -%}
                 <div class="article-card-comments dot-between inline-flex align-center">
                   {%- if blog.comments_enabled? -%}
@@ -79,7 +79,6 @@
             {%- if article.image -%}
               <div
                 class="rounded rounded-corner-item text-center mt-30 mb-40"
-                itemprop="image"
               >
                 <div
                   class="rounded-corner-item relative article-template__hero-{{ block_st.image_height }} relative overflow-hidden media"
@@ -105,7 +104,6 @@
             </details>
             <div
               class="container-min article-template__content mt-40 rte"
-              itemprop="articleBody"
               {{ block.shopify_attributes }}
             >
               {{ article.content }}
@@ -449,33 +447,44 @@
 </div>
 <script src="{{ 'blog.s.min.js' | asset_url }}" defer="defer"></script>
 
+{%- liquid
+  assign article_author_type = 'Person'
+  assign article_author_name = article.author | downcase
+  if article_author_name == 'dunamiss cosmetics' or article_author_name == 'dunamiss online' or article_author_name == 'ninja digital'
+    assign article_author_type = 'Organization'
+  endif
+  assign article_schema_id = canonical_url | append: '#article'
+  assign article_publisher_id = shop.secure_url | append: '#organization'
+  assign article_schema_body = article.content | replace: '</p>', '</p> ' | replace: '</h2>', '</h2> ' | replace: '</li>', '</li> ' | strip_html
+-%}
 <script type="application/ld+json">
   {
-    "@context": "http://schema.org",
-    "@type": "Article",
-    "articleBody": {{ article.content | strip_html | json }},
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": {{ article_schema_id | json }},
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": {{ request.origin | append: page.url | json }}
+      "@id": {{ canonical_url | json }}
     },
     "headline": {{ article.title | json }},
+    "articleBody": {{ article_schema_body | json }},
     {% if article.excerpt != blank %}
       "description": {{ article.excerpt | strip_html | json }},
     {% endif %}
     {% if article.image %}
-      "image": [
-        {{ article | image_url: width: 1920 | prepend: "https:" | json }}
-      ],
+      "image": [{{ article.image | image_url: width: 1920 | prepend: 'https:' | json }}],
     {% endif %}
-    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
-    "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
+    "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
     "author": {
-      "@type": "Person",
+      "@type": {{ article_author_type | json }},
       "name": {{ article.author | json }}
     },
     "publisher": {
       "@type": "Organization",
-      "name": {{ shop.name | json }}
+      "@id": {{ article_publisher_id | json }},
+      "name": {{ shop.name | json }},
+      "url": {{ shop.secure_url | json }}
     }
   }
 </script>

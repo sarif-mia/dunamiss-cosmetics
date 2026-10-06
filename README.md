@@ -45,3 +45,9 @@ Assign each variant's image in Shopify Admin. The gallery uses these native asso
 Organization structured data links to the published Shopify refund policy using Google's supported `merchantReturnLink` option. Edit the policy in **Settings → Policies**; its URL is read from Shopify. The theme does not infer return fees, delivery windows or credit-note validity from policy prose.
 
 The custom Returns & Exchanges page renders that same native policy and points its canonical URL to the policy page. Its styling and support contacts remain in the theme; its eligibility and timing terms come from Admin.
+
+## Blog copy
+
+Manage articles in **Content → Blog posts**. Native titles, HTML content, excerpts and search-engine fields supply the article pages and cards. Existing URLs, authors, publication dates and visibility are preserved during copy updates. `content/blog-seo.json` is a review snapshot of the published-article revisions and does not override later Admin edits.
+
+The article template renders BlogPosting structured data from native article fields, with the article's canonical URL, publication and modification timestamps, image and author identity. Its title container avoids the generic `page-title` class because the store's custom CSS hides that class. Product references point to current listings; ingredient information is kept separate from unsupported treatment, universal-suitability and firsthand-review claims.
