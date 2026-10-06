@@ -40,6 +40,8 @@ Manage product names, HTML descriptions, search titles and meta descriptions in 
 
 The theme preserves product-image alt text and uses the product name when alt text is empty. Product structured data JSON-encodes GTINs, removes a spreadsheet apostrophe prefix, and emits only numeric identifiers with a valid check digit. Barcode values stored in Admin are unchanged.
 
+Assign each variant's image in Shopify Admin. The gallery uses these native associations to show the selected cream or shade and its related images. `content/product-variant-media.json` records the reviewed skincare cream image assignments; it does not override later Admin edits.
+
 Organization structured data links to the published Shopify refund policy using Google's supported `merchantReturnLink` option. Edit the policy in **Settings → Policies**; its URL is read from Shopify. The theme does not infer return fees, delivery windows or credit-note validity from policy prose.
 
 The custom Returns & Exchanges page renders that same native policy and points its canonical URL to the policy page. Its styling and support contacts remain in the theme; its eligibility and timing terms come from Admin.

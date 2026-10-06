@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-06",
+  "source_of_truth": "Shopify native variant image associations",
+  "product": "skin-care-creams-types",
+  "product_id": 15395586638059,
+  "variants": [
+    {
+      "id": 67823437611243,
+      "option": "PM CREAM",
+      "featured_image_id": 52789148483819,
+      "image_url": "https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Untitleddesign-2026-09-30T155126.953.jpg?v=1790763987",
+      "matching_product": "dunamiss-pm-cream"
+    },
+    {
+      "id": 67823725510891,
+      "option": "Deep Cookie",
+      "featured_image_id": 52789140586731,
+      "image_url": "https://cdn.shopify.com/s/files/1/0686/9680/1515/files/deepcookie1_jpg.jpg?v=1790763932",
+      "matching_product": "dunamiss-bb-cream-deep-cookie"
+    },
+    {
+      "id": 67823958884587,
+      "option": "Olive Brown",
+      "featured_image_id": 52789128003819,
+      "image_url": "https://cdn.shopify.com/s/files/1/0686/9680/1515/files/olivebrown1_jpg.jpg?v=1790763856",
+      "matching_product": "dunamiss-bb-cream-olive-brown"
+    },
+    {
+      "id": 67824708747499,
+      "option": "Tan Mocha",
+      "featured_image_id": 52789113618667,
+      "image_url": "https://cdn.shopify.com/s/files/1/0686/9680/1515/files/tanmocha1_jpg.jpg?v=1790763773",
+      "matching_product": "dunamiss-bb-cream-tan-mocha"
+    },
+    {
+      "id": 67824708780267,
+      "option": "Golden Hue",
+      "featured_image_id": 52789105492203,
+      "image_url": "https://cdn.shopify.com/s/files/1/0686/9680/1515/files/glodenhue1_jpg.jpg?v=1790763714",
+      "matching_product": "dunamiss-bb-cream-golden-hue"
+    },
+    {
+      "id": 67824937435371,
+      "option": "Natural Beige",
+      "featured_image_id": 52789087994091,
+      "image_url": "https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Untitleddesign-2026-09-30T153415_404_jpg.jpg?v=1790763599",
+      "matching_product": "dunamiss-bb-cream-natural-beign"
+    },
+    {
+      "id": 67824937468139,
+      "option": "Ivory Fair",
+      "featured_image_id": 52788913078507,
+      "image_url": "https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Ivoryfair1.png?v=1790762660",
+      "matching_product": "dunamiss-pm-cream-copy"
+    },
+    {
+      "id": 67824937500907,
+      "option": "AM CREAM",
+      "featured_image_id": 52788995817707,
+      "image_url": "https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Untitled_design_-_2026-09-30T153718.503.jpg?v=1790762999",
+      "matching_product": "dunamiss-am-cream"
+    }
+  ],
+  "note": "Review snapshot; native Shopify variant images remain authoritative. Theme deployment does not overwrite these associations."
+}
