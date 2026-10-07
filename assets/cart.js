@@ -6,6 +6,12 @@ function debounce(fn, wait) {
   };
 }
 
+function publishCartUpdate(cart, source = "cart-page") {
+  document.dispatchEvent(
+    new CustomEvent("cart:updated", { detail: { cart, source } })
+  );
+}
+
 class CartRemoveButton extends HTMLElement {
   constructor() {
     super();
@@ -175,6 +181,7 @@ class CartItems extends HTMLElement {
           }
           this.updateLiveRegions(line, key, parsedState.item_count);
         }
+        publishCartUpdate(parsedState);
         // let gift_card_product = this.querySelector(`cart-remove-button#${gift_form_minicart.dataset.variantId}`);
         // gift_form_minicart
         this.disableLoading();
@@ -276,6 +283,7 @@ class CartItems extends HTMLElement {
               if (cart_free_ship) {
                 cart_free_ship.init(cart.items_subtotal_price);
               }
+              publishCartUpdate(cart);
             }
           })
           .catch((error) => {
@@ -423,6 +431,7 @@ class CartItems extends HTMLElement {
               if (cart_free_ship) {
                 cart_free_ship.init(cart.items_subtotal_price);
               }
+              publishCartUpdate(cart);
             }
           })
           .catch((error) => {
@@ -750,6 +759,7 @@ class CartDiscount extends HTMLElement {
 
     // Reinitialize components
     BlsLazyloadImg.init();
+    publishCartUpdate(data);
   }
 
   /**

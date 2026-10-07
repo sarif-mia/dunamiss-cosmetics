@@ -83,7 +83,7 @@
 :root body .dm-native-cart .quantity__button { width: 29px; padding: 0; background: transparent; }
 :root body .dm-native-cart .quantity-input { width: 28px; font-size: 16px; }
 .dm-native-cart .dm-cart-item--gift { border-color: #dbc4ce; background: #fffafb; }
-.dm-cart-gift-badge { align-self: flex-start; margin-top: 5px; border-radius: 999px; background: #f1e2e8; color: var(--dm-cart-accent-dark); padding: 3px 8px; font-size: 9px; font-weight: 700; line-height: 1.2; letter-spacing: .05em; text-transform: uppercase; }
+.dm-cart-gift-badge { align-self: flex-start; margin-top: 5px; border-radius: 999px; background: #f1e2e8; color: var(--dm-cart-accent-dark, #5d3448); padding: 3px 8px; font-size: 9px; font-weight: 700; line-height: 1.2; letter-spacing: .05em; text-transform: uppercase; }
 :root body .dm-cart-footer {
   flex: 0 0 auto;
   position: relative;

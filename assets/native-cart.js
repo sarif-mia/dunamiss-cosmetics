@@ -8,11 +8,9 @@
   const content = cart.querySelector('#minicart-form');
   const originalOpen = cart.open.bind(cart);
   const originalClose = cart.close.bind(cart);
-  let lastRender = 0;
   let state;
   let opener;
   let queue = Promise.resolve();
-  let dirty = false;
   let recommendationController;
   let errorTimer;
   let giftSyncing = false;
@@ -44,6 +42,15 @@
     cart.cartAction();
     window.BlsLazyloadImg?.init?.();
   };
+  const cartPageSection = () => document.querySelector('#main-cart-items')?.dataset.id;
+  const renderCartPage = (html) => {
+    const current = document.querySelector('#main-cart-items');
+    if (!current || !html) return;
+    const updated = new DOMParser().parseFromString(html, 'text/html').querySelector('#main-cart-items');
+    if (!updated) return;
+    current.replaceWith(updated);
+    window.BlsLazyloadImg?.init?.();
+  };
   const enqueue = (operation) => {
     const result = queue.then(operation);
     queue = result.catch(() => {});
@@ -56,9 +63,12 @@
     const id = focused?.getAttribute('data-id');
     const name = focused?.getAttribute('name');
     try {
+      const mainSection = cartPageSection();
+      const sections = ['minicart-form'];
+      if (mainSection) sections.push(mainSection);
       const response = await fetch(rootURL + endpoint, {
         method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...body, sections: ['minicart-form'], sections_url: location.pathname })
+        body: JSON.stringify({ ...body, sections, sections_url: location.pathname })
       });
       const result = await response.json();
       if (!response.ok || result.errors || result.status >= 400) {
@@ -66,9 +76,9 @@
       }
       const invalidDiscount = feedback && result.discount_codes?.some((discount) => body.discount.split(',').some((code) => code.toLowerCase() === discount.code.toLowerCase()) && !discount.applicable);
       render(result.sections['minicart-form']);
-      dirty = true;
+      if (mainSection) renderCartPage(result.sections[mainSection]);
       if (invalidDiscount) throw new Error('This discount code is not available for your cart.');
-      document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart: result } }));
+      document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart: result, source: 'native-cart' } }));
       if (feedback) content.querySelector('[data-native-cart-feedback]').textContent = feedback;
       if (id && name && panel.getAttribute('aria-hidden') === 'false') {
         [...panel.querySelectorAll('[data-id]')].find((node) => node.dataset.id === id && node.getAttribute('name') === name)?.focus({ preventScroll: true });
@@ -88,7 +98,7 @@
     return mutate('cart/change.js', { id, quantity: value });
   };
   cart.refreshNativeCart = () => enqueue(async () => {
-    const response = await fetch(rootURL + 'cart?sections=minicart-form', { headers: { Accept: 'application/json' }, cache: 'no-store' });
+    const response = await fetch(rootURL + 'cart?sections=minicart-form', { cache: 'no-store' });
     if (!response.ok || !response.headers.get('content-type')?.includes('application/json')) throw new Error('Unable to refresh your cart.');
     const sections = await response.json();
     render(sections['minicart-form']);
@@ -103,7 +113,7 @@
     document.querySelectorAll('[data-native-cart-trigger]').forEach((trigger) => trigger.setAttribute('aria-expanded', 'true'));
     await originalOpen();
     panel.querySelector('.close-cart-button').focus({ preventScroll: true });
-    if (cart.activeElement?.id === 'cart-icon-bubble' || Date.now() - lastRender > 1500) cart.refreshNativeCart().catch(() => {});
+    cart.refreshNativeCart().catch((failure) => error(failure.message));
   };
   cart.close = () => {
     error('');
@@ -120,17 +130,6 @@
       document.documentElement.style.removeProperty('padding-right');
     }, 160);
     if (opener?.isConnected) opener.focus({ preventScroll: true });
-    if (dirty && document.body.classList.contains('template-cart')) {
-      dirty = false;
-      const section = document.querySelector('#main-cart-items');
-      if (section) fetch(rootURL + 'cart?section_id=' + encodeURIComponent(section.dataset.id))
-        .then((response) => response.ok ? response.text() : Promise.reject(new Error('Unable to refresh cart page')))
-        .then((html) => {
-          const updated = new DOMParser().parseFromString(html, 'text/html').querySelector('#main-cart-items');
-          if (updated) section.innerHTML = updated.innerHTML;
-          window.BlsLazyloadImg?.init?.();
-        }).catch((failure) => error(failure.message));
-    }
   };
   cart.addEventListener('click', (event) => {
     const closeButton = event.target.closest('.dm-cart-close, .close-cart');
@@ -142,15 +141,26 @@
   document.querySelectorAll('.minicart__action').forEach((button) => button.addEventListener('click', () => cart.setActiveElement(button), { capture: true }));
   // Remaining bundle widgets can open the theme drawer through their existing API.
   window.openCrowdBuyCart = async () => {
-    try { await cart.refreshNativeCart(); await cart.open(); } catch (failure) { error(failure.message); }
+    try { await cart.open(); } catch (failure) { error(failure.message); }
   };
   const drawerConfig = () => JSON.parse(content.querySelector('[data-native-cart-config]')?.textContent || '{}');
+  const itemProperty = (item, name) => {
+    if (!Array.isArray(item.properties)) return item.properties?.[name];
+    const property = item.properties.find((candidate) => Array.isArray(candidate) ? candidate[0] === name : candidate?.name === name);
+    return Array.isArray(property) ? property[1] : property?.value;
+  };
+  const isAutomaticGift = (item) => itemProperty(item, '_dm_auto_gift') === '1'
+    || (itemProperty(item, '_gift_pick') === '1' && itemProperty(item, '_gift_tier_id'));
+  const qualifyingSubtotal = () => {
+    if (!state?.items?.every((item) => Number.isFinite(Number(item.finalLinePrice)))) return Number(state?.subtotal || 0);
+    return state.items.reduce((total, item) => isAutomaticGift(item) ? total : total + Number(item.finalLinePrice), 0);
+  };
   const updateOffers = () => {
     const config = drawerConfig();
     const offers = content.querySelector('[data-native-cart-offers]');
     if (!offers || !state?.count) return;
     const milestones = [];
-    const amount = state.subtotal / 100;
+    const amount = qualifyingSubtotal() / 100;
     if (config.shipping?.enabled && config.shipping.threshold > 0) {
       milestones.push({ threshold: Number(config.shipping.threshold), label: 'Free shipping' });
     }
@@ -176,15 +186,10 @@
       : 'Your offer milestones are unlocked';
     offers.hidden = milestones.length === 0;
   };
-  const itemProperty = (item, name) => {
-    if (!Array.isArray(item.properties)) return item.properties?.[name];
-    const property = item.properties.find((candidate) => Array.isArray(candidate) ? candidate[0] === name : candidate?.name === name);
-    return Array.isArray(property) ? property[1] : property?.value;
-  };
   const syncAutomaticGifts = () => {
     if (giftSyncing || !state?.items) return;
     const gift = drawerConfig().gift || {};
-    const amount = state.subtotal / 100;
+    const amount = qualifyingSubtotal() / 100;
     const variantId = String(gift.variantId || '');
     const eligible = gift.enabled && gift.available && variantId && Number(gift.threshold) > 0 && Number(gift.threshold) <= amount;
     const updates = {};
@@ -214,7 +219,6 @@
     sequence.finally(() => { giftSyncing = false; });
   };
   const updateContent = () => {
-    lastRender = Date.now();
     state = JSON.parse(content.querySelector('[data-native-cart-state]')?.textContent || '{}');
     document.querySelectorAll('.cart-count').forEach((node) => { node.textContent = node.classList.contains('cart-count-drawer') ? `(${state.count})` : String(state.count > 100 ? '~' : state.count); });
     updateOffers();
@@ -236,6 +240,10 @@
   new MutationObserver(updateContent).observe(content, { childList: true });
   updateContent();
   window.addEventListener('load', () => { updateOffers(); syncAutomaticGifts(); }, { once: true });
+  document.addEventListener('cart:updated', (event) => {
+    if (event.detail?.source === 'native-cart') return;
+    cart.refreshNativeCart().catch((failure) => error(failure.message));
+  });
   cart.addEventListener('click', (event) => {
     const terms = content.querySelector('[data-native-cart-terms]');
     if (event.target.closest('.dm-cart-checkout')) { if (terms && !terms.checked) { event.preventDefault(); event.stopImmediatePropagation(); error('Please accept the terms before checkout.'); terms.focus(); } else queueMicrotask(() => cart.close()); }

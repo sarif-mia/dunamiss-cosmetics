@@ -160,8 +160,16 @@
                   </thead>
                   <tbody>
                     {%- for item in cart.items -%}
+                      {%- liquid
+                        assign is_auto_gift = false
+                        if item.properties['_dm_auto_gift'] == '1'
+                          assign is_auto_gift = true
+                        elsif item.properties['_gift_tier_id'] != blank and item.properties['_gift_pick'] == '1'
+                          assign is_auto_gift = true
+                        endif
+                      -%}
                       <tr
-                        class="cart-item page__cart-item"
+                        class="cart-item page__cart-item{% if is_auto_gift %} dm-cart-item--gift{% endif %}"
                         id="CartItem-{{ item.index | plus: 1 }}"
                         style="--custom-width: 8rem"
                       >
@@ -200,6 +208,7 @@
                             >
                               {{- item.product.title | escape -}}
                             </a>
+                            {% if is_auto_gift %}<span class="dm-cart-gift-badge">Free gift</span>{% endif %}
 
                             {%- if item.product.has_only_default_variant == false
                               or item.properties.size != 0
@@ -259,7 +268,7 @@
                                 </li>
                               {%- endfor -%}
                             </ul>
-                            <cart-remove-button
+                            {% unless is_auto_gift %}<cart-remove-button
                               data-product-id="{{ item.product.selected_or_first_available_variant.id }}"
                               id="Remove-{{ item.index | plus: 1 }}"
                               data-index="{{ item.index | plus: 1 }}"
@@ -284,7 +293,7 @@
                                 </span>
                                 <div class="icon-rotator"></div>
                               </button>
-                            </cart-remove-button>
+                            </cart-remove-button>{% endunless %}
                           </div>
                         </td>
                         <td class="border-0 border-bottom py-30 cart__page-price px-10">
@@ -328,7 +337,10 @@
                             class="cart-item__quantity border-0 border-bottom py-30 px-10"
                             data-title="{{ 'general.cart.headings.quantity' | t }}"
                           >
-                            <div class="cart-item__quantity-wrapper">
+                            {% if is_auto_gift %}
+                              <span class="dm-cart-gift-quantity" aria-label="Gift quantity: 1">1</span>
+                            {% else %}
+                              <div class="cart-item__quantity-wrapper">
                               <quantity-input class="quantity btn-rounded border inline-flex text-center grey-bg overflow-hidden">
                                 <button
                                   class="quantity__button pointer border-0 no-js-hidden w-custom grey-bg ps-20"
@@ -369,7 +381,8 @@
                                   </svg>
                                 </button>
                               </quantity-input>
-                            </div>
+                              </div>
+                            {% endif %}
                           </td>
                         {% endif %}
                         <td

@@ -55,6 +55,21 @@ body .product-item__wrapper.product-grid .product-item__information > :is(produc
 body .product-item__wrapper.product-grid .product-item__information > product-form .morden-style {
   margin-top: 0;
 }
+.page-cart .page__cart-item.dm-cart-item--gift {
+  background: #fffafb;
+}
+.page-cart .dm-cart-gift-quantity {
+  display: inline-flex;
+  min-width: 35px;
+  min-height: 35px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--brand-border, #eadde2);
+  border-radius: 6px;
+  color: var(--brand-text, #333);
+  background: #fff;
+  font-weight: 600;
+}
 @media (max-width: 767px) {
   body.index .slideshow .sec__inner.h-adapt {
     height: clamp(420px, 68svh, 550px);
