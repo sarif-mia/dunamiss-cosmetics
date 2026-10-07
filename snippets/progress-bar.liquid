@@ -1,74 +1,189 @@
-<!-- offer-carousel + progress-bar -->
-<style>
-  .offer-train-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: var(--body-font);
-    gap: 12px;
-    background: var(--brand-surface);
-    margin-left: 5%;
-    margin-right: 5%;
-    width: 90%;
-    border-radius: 10px;
-  }
+{% liquid
+  assign shipping_threshold = settings.free_shipping_minimum | plus: 0
+  assign shipping_threshold_money = shipping_threshold | times: 100 | money_without_currency | prepend: '₹'
+  assign gift_threshold = settings.native_cart_gift_threshold | plus: 0
+  assign gift_threshold_money = gift_threshold | times: 100 | money_without_currency | prepend: '₹'
+  assign gift_product = settings.native_cart_gift_product
+  assign discount_threshold = settings.native_cart_discount_threshold | plus: 0
+  assign discount_threshold_money = discount_threshold | times: 100 | money_without_currency | prepend: '₹'
+  assign offer_count = 0
 
-  .carousel-btn {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 4px 10px;
-    min-width: 44px;
-    min-height: 44px;
-    color:rgb(0, 0, 0);
-    font-weight: bold;
-    user-select: none;
-  }
+  if settings.show_on_minicart_cart_page and shipping_threshold > 0
+    assign offer_count = offer_count | plus: 1
+  endif
 
-  .offer-text {
-    font-size: 14px;
-    white-space: normal;
-    min-width: 0;
-    flex: 1;
-    line-height: 1.35;
-    text-align: center;
-  }
+  if settings.native_cart_auto_gift and gift_product != blank and gift_threshold > 0
+    assign offer_count = offer_count | plus: 1
+  endif
 
-</style>
-<!-- Gift offers use instance-scoped controls and do not poll the cart. -->
-<gift-offer-carousel class="offer-train-wrapper" role="region" aria-label="Shipping and gift offers">
-  <button type="button" class="carousel-btn left" data-offer-prev aria-label="Previous gift offer">‹</button>
-  <span class="offer-text" data-offer-text aria-live="polite" aria-atomic="true">Free shipping and a free gift on prepaid orders</span>
-  <button type="button" class="carousel-btn right" data-offer-next aria-label="Next gift offer">›</button>
-</gift-offer-carousel>
-<script>
-  (() => {
-    if (customElements.get('gift-offer-carousel')) return;
-    customElements.define('gift-offer-carousel', class extends HTMLElement {
-      connectedCallback() {
-        this.controller?.abort();
-        this.controller = new AbortController();
-        this.index = 0;
-        this.offers = ['Free shipping and a free gift on prepaid orders', 'Prepaid orders over ₹1,199 get a complimentary tote bag', 'COD convenience fee: ₹49'];
-        const options = { signal: this.controller.signal };
-        const bindControls = () => {
-          const text = this.querySelector('[data-offer-text]');
-          if (text) text.textContent = this.offers[this.index];
+  if settings.native_cart_discount_milestone and discount_threshold > 0
+    assign offer_count = offer_count | plus: 1
+  endif
+%}
+
+{% if offer_count > 0 %}
+  <style>
+    .dm-cart-offer-carousel {
+      width: min(90%, 880px);
+      min-height: 58px;
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr) 44px;
+      align-items: center;
+      gap: 8px;
+      margin-inline: auto;
+      padding: 6px 8px;
+      border: 1px solid var(--brand-border, #eadde2);
+      border-radius: 12px;
+      background: var(--brand-surface, #fff9f7);
+      color: var(--color-heading, #1b191a);
+      font-family: var(--body-font);
+    }
+
+    :root body .dm-cart-offer-carousel__button {
+      width: 44px;
+      min-width: 44px;
+      height: 44px !important;
+      min-height: 44px !important;
+      max-height: 44px !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--color-heading, #1b191a);
+      padding: 0;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    :root body .dm-cart-offer-carousel__button:hover {
+      background: rgb(117 70 92 / 8%);
+      color: var(--brand-accent, #75465c);
+    }
+
+    .dm-cart-offer-carousel__content {
+      min-width: 0;
+      text-align: center;
+    }
+
+    .dm-cart-offer-carousel__text {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.4;
+      text-wrap: balance;
+    }
+
+    .dm-cart-offer-carousel__position {
+      display: block;
+      margin-top: 2px;
+      color: #6f686b;
+      font-size: 10px;
+      line-height: 1.2;
+    }
+
+    .dm-cart-offer-carousel__items {
+      display: none !important;
+    }
+
+    .dm-cart-offer-carousel[data-single-offer] {
+      grid-template-columns: 1fr;
+      padding-inline: 16px;
+    }
+
+    .dm-cart-offer-carousel[data-single-offer] .dm-cart-offer-carousel__button,
+    .dm-cart-offer-carousel[data-single-offer] .dm-cart-offer-carousel__position {
+      display: none;
+    }
+
+    .dm-cart-offer-carousel:focus-visible {
+      outline: 2px solid var(--brand-accent, #75465c);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 480px) {
+      .dm-cart-offer-carousel {
+        width: 100%;
+        gap: 4px;
+        padding-inline: 4px;
+      }
+
+      .dm-cart-offer-carousel__text {
+        font-size: 12px;
+      }
+    }
+  </style>
+
+  <gift-offer-carousel
+    class="dm-cart-offer-carousel"
+    role="region"
+    aria-label="Current cart offers"
+    tabindex="0"
+    {% if offer_count == 1 %}data-single-offer{% endif %}
+  >
+    <button type="button" class="dm-cart-offer-carousel__button" data-offer-prev aria-label="Previous offer">‹</button>
+    <span class="dm-cart-offer-carousel__content">
+      <span class="dm-cart-offer-carousel__text" data-offer-text aria-live="polite" aria-atomic="true"></span>
+      <span class="dm-cart-offer-carousel__position" data-offer-position aria-hidden="true"></span>
+    </span>
+    <button type="button" class="dm-cart-offer-carousel__button" data-offer-next aria-label="Next offer">›</button>
+    <span class="dm-cart-offer-carousel__items" hidden>
+      {% if settings.show_on_minicart_cart_page and shipping_threshold > 0 %}
+        <span data-offer-item>Free shipping on orders of {{ shipping_threshold_money }} or more</span>
+      {% endif %}
+      {% if settings.native_cart_auto_gift and gift_product != blank and gift_threshold > 0 %}
+        <span data-offer-item>Spend {{ gift_threshold_money }} and receive a free gift</span>
+      {% endif %}
+      {% if settings.native_cart_discount_milestone and discount_threshold > 0 %}
+        <span data-offer-item>Spend {{ discount_threshold_money }} and get {{ settings.native_cart_discount_label | default: 'a special discount' | escape }}</span>
+      {% endif %}
+    </span>
+  </gift-offer-carousel>
+
+  <script>
+    (() => {
+      if (customElements.get('gift-offer-carousel')) return;
+
+      customElements.define('gift-offer-carousel', class extends HTMLElement {
+        connectedCallback() {
+          this.controller?.abort();
+          this.controller = new AbortController();
+          this.index = 0;
+          this.offers = [...this.querySelectorAll('[data-offer-item]')]
+            .map((item) => item.textContent.trim())
+            .filter(Boolean);
+
+          const options = { signal: this.controller.signal };
           this.querySelector('[data-offer-prev]')?.addEventListener('click', () => this.showOffer(-1), options);
           this.querySelector('[data-offer-next]')?.addEventListener('click', () => this.showOffer(1), options);
-        };
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', bindControls, { ...options, once: true });
-        } else {
-          queueMicrotask(bindControls);
+          this.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+              event.preventDefault();
+              this.showOffer(event.key === 'ArrowLeft' ? -1 : 1);
+            }
+          }, options);
+          this.render();
         }
-      }
-      showOffer(direction) {
-        this.index = (this.index + direction + this.offers.length) % this.offers.length;
-        this.querySelector('[data-offer-text]').textContent = this.offers[this.index];
-      }
-      disconnectedCallback() { this.controller?.abort(); }
-    });
-  })();
-</script>
+
+        showOffer(direction) {
+          this.index = (this.index + direction + this.offers.length) % this.offers.length;
+          this.render();
+        }
+
+        render() {
+          const text = this.querySelector('[data-offer-text]');
+          const position = this.querySelector('[data-offer-position]');
+          if (text) text.textContent = this.offers[this.index] || '';
+          if (position) position.textContent = `${this.index + 1} / ${this.offers.length}`;
+        }
+
+        disconnectedCallback() {
+          this.controller?.abort();
+        }
+      });
+    })();
+  </script>
+{% endif %}
