@@ -7,8 +7,8 @@
       <h2 id="NativeCartHeading"><span>Your Cart</span><span class="cart-count cart-count-drawer">({{ cart.item_count }})</span></h2>
       <button type="button" class="btn-reset close-cart-button dm-cart-close" aria-label="Close cart">{% render 'icon-close' %}</button>
     </div>
+    <p class="dm-cart-error" data-native-cart-error role="alert" aria-live="assertive" hidden></p>
     <div id="minicart-form" class="minicart-form dm-cart-form bls-image-js">{% render 'native-cart-content' %}</div>
-    <p class="dm-cart-error" data-native-cart-error role="alert" hidden></p>
   </div>
 </cart-notification>
 <div class="overlayminicart dm-cart-overlay"></div>

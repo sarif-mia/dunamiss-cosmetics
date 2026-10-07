@@ -14,14 +14,22 @@
   let queue = Promise.resolve();
   let dirty = false;
   let recommendationController;
+  let errorTimer;
   const rootURL = window.Shopify?.routes?.root || '/';
   const money = (cents) => window.Shopify?.formatMoney
     ? Shopify.formatMoney(cents, window.cartStrings?.money_format || '₹ {{amount_no_decimals}}')
     : new Intl.NumberFormat('en-IN', { style: 'currency', currency: state?.currency || 'INR', maximumFractionDigits: 0 }).format(cents / 100);
   const error = (message) => {
     const node = cart.querySelector('[data-native-cart-error]');
-    node.textContent = message || 'Please try again.';
-    node.hidden = !message;
+    clearTimeout(errorTimer);
+    if (!message) {
+      node.textContent = '';
+      node.hidden = true;
+      return;
+    }
+    node.textContent = message;
+    node.hidden = false;
+    errorTimer = setTimeout(() => error(''), 6000);
   };
   const busy = (value) => {
     panel.setAttribute('aria-busy', String(value));
@@ -31,6 +39,7 @@
     const node = new DOMParser().parseFromString(html, 'text/html').querySelector('#minicart-form');
     if (!node) throw new Error('Unable to refresh your cart. Please try again.');
     content.innerHTML = node.innerHTML;
+    error('');
     cart.cartAction();
     window.BlsLazyloadImg?.init?.();
   };
@@ -79,25 +88,34 @@
   };
   cart.refreshNativeCart = () => enqueue(async () => {
     const response = await fetch(rootURL + 'cart?sections=minicart-form', { headers: { Accept: 'application/json' }, cache: 'no-store' });
-    if (!response.ok) throw new Error('Unable to refresh your cart.');
+    if (!response.ok || !response.headers.get('content-type')?.includes('application/json')) throw new Error('Unable to refresh your cart.');
     const sections = await response.json();
     render(sections['minicart-form']);
   });
   cart.open = async () => {
     if (panel.getAttribute('aria-hidden') === 'false') return;
+    error('');
     opener = cart.activeElement?.isConnected ? cart.activeElement : document.activeElement;
     panel.inert = false;
     panel.setAttribute('aria-hidden', 'false');
     document.querySelectorAll('[data-native-cart-trigger]').forEach((trigger) => trigger.setAttribute('aria-expanded', 'true'));
     await originalOpen();
     panel.querySelector('.close-cart-button').focus({ preventScroll: true });
-    if (cart.activeElement?.id === 'cart-icon-bubble' || Date.now() - lastRender > 1500) cart.refreshNativeCart().catch((failure) => error(failure.message));
+    if (cart.activeElement?.id === 'cart-icon-bubble' || Date.now() - lastRender > 1500) cart.refreshNativeCart().catch(() => {});
   };
   cart.close = () => {
+    error('');
     panel.setAttribute('aria-hidden', 'true');
     panel.inert = true;
     document.querySelectorAll('[data-native-cart-trigger]').forEach((trigger) => trigger.setAttribute('aria-expanded', 'false'));
     originalClose();
+    setTimeout(() => {
+      if (panel.getAttribute('aria-hidden') !== 'true') return;
+      panel.classList.remove('open');
+      cart.classList.remove('open');
+      document.documentElement.classList.remove('open-minicart', 'open-drawer');
+      document.documentElement.style.removeProperty('padding-right');
+    }, 160);
     if (opener?.isConnected) opener.focus({ preventScroll: true });
     if (dirty && document.body.classList.contains('template-cart')) {
       dirty = false;
@@ -111,6 +129,13 @@
         }).catch((failure) => error(failure.message));
     }
   };
+  cart.addEventListener('click', (event) => {
+    const closeButton = event.target.closest('.dm-cart-close, .close-cart');
+    if (!closeButton || !cart.contains(closeButton)) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    cart.close();
+  }, { capture: true });
   document.querySelectorAll('.minicart__action').forEach((button) => button.addEventListener('click', () => cart.setActiveElement(button), { capture: true }));
   // Remaining bundle/gift widgets can open the theme drawer through their existing API.
   window.openCrowdBuyCart = async () => {

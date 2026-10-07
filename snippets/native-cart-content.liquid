@@ -18,8 +18,8 @@
     <div class="dm-cart-milestones" data-native-cart-milestones></div>
     <button type="button" class="dm-cart-gift" data-native-cart-gift hidden>Choose your free gift</button>
   </div>
-  <div class="dm-cart-scroll custom-scrollbar">
-    <form id="minicart" action="{{ routes.cart_url }}" method="post" novalidate>
+  <div class="dm-cart-scroll custom-scrollbar{% if cart.item_count == 0 %} dm-cart-scroll--empty{% endif %}">
+    <form id="minicart" action="{{ routes.cart_url }}" method="post"{% if cart.item_count == 0 %} class="dm-cart-empty-form"{% endif %} novalidate>
       {% if cart.item_count > 0 %}
         <div class="minicart-body"><div class="items">
           {% for item in cart.items %}{% render 'cart-item', item: item %}{% endfor %}
@@ -32,9 +32,9 @@
         </div>
       {% else %}
         <div class="dm-cart-empty">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 7h14l1 14H4L5 7Z M8 8V6a4 4 0 0 1 8 0v2" stroke="currentColor" stroke-width="1.5"/></svg>
+          <span class="dm-cart-empty-icon" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M5 7h14l1 14H4L5 7Z M8 8V6a4 4 0 0 1 8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
           <h3>Your cart is empty</h3>
-          <p>Find your next favourite.</p>
+          <p>Discover something made for your everyday beauty ritual.</p>
           <button type="button" class="close-cart btn-primary">Continue shopping</button>
         </div>
       {% endif %}
