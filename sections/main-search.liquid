@@ -59,7 +59,7 @@
     {% endif %}
   >
   <div class="{{ section_width }}">
-    <div class="title-wrapper-with-link text-center page-title section-spacing-top mb-60">
+    <div class="title-wrapper-with-link text-center search-page-heading section-spacing-top mb-60">
       <div class="breadcrumbs">
         {%- render 'breadcrumbs', class: 'justify-content-center' -%}
       </div>
@@ -75,6 +75,9 @@
         <h1 class="heading-title heading-letter-spacing h2 mt-8 mb-0">
           {{ 'templates.search.title_no_search' | t }}
         </h1>
+      {% endif %}
+      {% if search.performed and search.results_count == 0 %}
+        <p class="mt-20">Try a different keyword, or <a href="{{ routes.all_products_collection_url }}">browse all products</a>.</p>
       {% endif %}
       <div class="search-form inset-x-0 z-4 bg-default h-full d-flex flex-column">
         <action-search

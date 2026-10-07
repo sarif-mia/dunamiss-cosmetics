@@ -27,9 +27,20 @@ The layout loads their generated `assets/storefront-bundle.css` in the same casc
 
 Git pushes save source code to GitHub. This repository does not configure automatic deployment to Shopify.
 
+Before editing or deploying, compare local files with the current live theme:
+
+```sh
+python3 scripts/check-live-theme.py
+```
+
+This downloads the store's currently published theme into an ignored report directory,
+compares all seven Shopify theme directories byte for byte, and lists any drift.
+It includes the untracked store configuration and never overwrites local work.
+For changes, deploy only the reviewed files; after deployment, rerun the comparison.
+
 ## Store locator
 
-The legacy hardcoded Mapbox token has been removed. Configure your own domain-restricted public token under **Theme settings → Store locator map** to enable the map. Store details remain available without a token. Use a public `pk.` token, never a secret token. This GitHub preparation change has not been deployed to the live Shopify theme.
+Configure the map under **Theme settings → Store locator map**. The current public token is stored in the untracked store configuration, rather than runtime JavaScript. Store details remain available without a token. Use a domain-restricted public `pk.` token, never a secret token.
 
 ## Collection copy
 

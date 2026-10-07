@@ -23,9 +23,9 @@
             "subheading": "",
             "heading": "",
             "description": "",
-            "first_button_label": "",
+            "first_button_label": "Shop Lip Oil",
             "first_button_link": "shopify://collections/lip-oil",
-            "first_button_style": true,
+            "first_button_style": false,
             "second_button_label": "",
             "second_button_link": "",
             "second_button_style": false,
@@ -52,7 +52,7 @@
             "subheading": "",
             "heading": "",
             "description": "",
-            "first_button_label": "",
+            "first_button_label": "Shop Satin Lipstick",
             "first_button_link": "shopify://collections/satin-lipstick",
             "first_button_style": false,
             "second_button_label": "",
@@ -81,9 +81,9 @@
             "subheading": "",
             "heading": "",
             "description": "",
-            "first_button_label": "",
+            "first_button_label": "Shop Lip Gloss",
             "first_button_link": "shopify://collections/lip-gloss",
-            "first_button_style": true,
+            "first_button_style": false,
             "second_button_label": "",
             "second_button_link": "",
             "second_button_style": false,
@@ -142,8 +142,8 @@
         "@media (min-width: 992px) {.stretch_width .h-full_screen {min-height: calc( 100vh - var(--height-header, 70px) - var(--height-topbar, 0px) - 200px - var(--height-bar, 0px) - var(--bs-gutter-x) ); }}"
       ],
       "settings": {
-        "section_width": "fluid_container",
         "align_desktop_content": true,
+        "section_width": "fluid_container",
         "slide_height": "adapt",
         "desktop_height": 600,
         "mobile_height": 490,
@@ -310,6 +310,58 @@
         "autoplay": false,
         "autorotate_speed": 5,
         "reveal": false,
+        "items_per_row_mobile": 2,
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "reset_spacing": true
+      }
+    },
+    "collection_tab_9Dg4qk": {
+      "type": "collection-tab",
+      "blocks": {
+        "collection_HcArYF": {
+          "type": "collection",
+          "settings": {
+            "collection": "bestsellers",
+            "collection_title": "MOST LOVED"
+          }
+        },
+        "collection_Me7V7a": {
+          "type": "collection",
+          "settings": {
+            "collection": "combo-products",
+            "collection_title": "SUPER SAVER COMBOS"
+          }
+        }
+      },
+      "block_order": [
+        "collection_HcArYF",
+        "collection_Me7V7a"
+      ],
+      "name": "t:sections.collection-tab.name",
+      "settings": {
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "heading": "",
+        "description": "",
+        "header_size": "medium",
+        "header_alignment": "center",
+        "tab_header_style": "horizontal",
+        "horizontal_tab_style": "underline",
+        "display_mode": "carousel",
+        "items_to_show": 8,
+        "items_per_row": 4,
+        "column_gap": 30,
+        "show_arrow": false,
+        "carousel_pagination": "disable",
+        "infinite": false,
+        "autoplay": false,
+        "autorotate_speed": 5,
+        "reveal": false,
+        "rows": 2,
+        "show_load_more_button": false,
+        "button_label": "Load more",
+        "carousel_on_mobile": true,
         "items_per_row_mobile": 2,
         "padding_top": 24,
         "padding_bottom": 24,
@@ -659,56 +711,13 @@
         "reset_spacing": true
       }
     },
-    "collection_tab_9Dg4qk": {
-      "type": "collection-tab",
-      "blocks": {
-        "collection_HcArYF": {
-          "type": "collection",
-          "settings": {
-            "collection": "bestsellers",
-            "collection_title": "MOST LOVED"
-          }
-        },
-        "collection_Me7V7a": {
-          "type": "collection",
-          "settings": {
-            "collection": "combo-products",
-            "collection_title": "SUPER SAVER COMBOS"
-          }
-        }
-      },
-      "block_order": [
-        "collection_HcArYF",
-        "collection_Me7V7a"
-      ],
-      "name": "t:sections.collection-tab.name",
+    "judgeme_home_reviews": {
+      "type": "judgeme-home-carousel",
       "settings": {
-        "section_width": "fluid_container",
-        "color_scheme": "",
-        "heading": "",
-        "description": "",
-        "header_size": "medium",
-        "header_alignment": "center",
-        "tab_header_style": "horizontal",
-        "horizontal_tab_style": "underline",
-        "display_mode": "carousel",
-        "items_to_show": 8,
-        "items_per_row": 4,
-        "column_gap": 30,
-        "show_arrow": false,
-        "carousel_pagination": "disable",
-        "infinite": false,
-        "autoplay": false,
-        "autorotate_speed": 5,
-        "reveal": false,
-        "rows": 2,
-        "show_load_more_button": false,
-        "button_label": "Load more",
-        "carousel_on_mobile": true,
-        "items_per_row_mobile": 2,
+        "heading": "Loved by our community",
+        "description": "Discover what our customers are saying.",
         "padding_top": 24,
-        "padding_bottom": 24,
-        "reset_spacing": true
+        "padding_bottom": 24
       }
     },
     "brand_logo_MKfAhJ": {
@@ -876,15 +885,6 @@
         "padding_top": 24,
         "padding_bottom": 24,
         "reset_spacing": true
-      }
-    },
-    "judgeme_home_reviews": {
-      "type": "judgeme-home-carousel",
-      "settings": {
-        "heading": "Loved by our community",
-        "description": "Discover what our customers are saying.",
-        "padding_top": 24,
-        "padding_bottom": 24
       }
     },
     "1770530229f1b84ee7": {

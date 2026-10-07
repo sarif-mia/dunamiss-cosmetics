@@ -2529,6 +2529,31 @@ class OpenChildrenToggle extends HTMLElement {
     super();
     this.addEventListener('click', this.onToggle.bind(this), false);
   }
+  connectedCallback() {
+    // The other chevron is decorative inside the category's existing link.
+    if (this.parentElement?.tagName !== 'MENU-ITEM') return;
+    this.setAttribute('role', 'button');
+    this.tabIndex = 0;
+    const label = this.parentElement.querySelector('a')?.textContent.trim() || 'category';
+    this.setAttribute('aria-label', `Toggle ${label} submenu`);
+    const sync = () => this.setAttribute('aria-expanded', String(this.parentElement.classList.contains('is-open')));
+    sync();
+    this.stateObserver?.disconnect();
+    this.stateObserver = new MutationObserver(sync);
+    this.stateObserver.observe(this.parentElement, { attributes: true, attributeFilter: ['class'] });
+    if (!this.keyboardInitialized) {
+      this.keyboardInitialized = true;
+      this.addEventListener('keydown', (event) => {
+        if (event.target === this && ['Enter', ' '].includes(event.key)) {
+          event.preventDefault();
+          this.click();
+        }
+      });
+    }
+  }
+  disconnectedCallback() {
+    this.stateObserver?.disconnect();
+  }
   onToggle() {
     const parent = this.parentElement;
     if (parent) {
@@ -2546,6 +2571,15 @@ class CloseMenu extends HTMLElement {
   constructor() {
     super();
     this.addEventListener('click', this.onClose.bind(this), false);
+    this.setAttribute('role', 'button');
+    this.setAttribute('aria-label', 'Close menu');
+    this.tabIndex = 0;
+    this.addEventListener('keydown', (event) => {
+      if (event.target === this && ['Enter', ' '].includes(event.key)) {
+        event.preventDefault();
+        this.click();
+      }
+    });
   }
   onClose() {
     document.querySelector('.nav-toggle').classList.remove('open');
@@ -5751,7 +5785,22 @@ class ButtonWishlist extends HTMLElement {
 
   init() {
     this.initializeWishlistStatus();
+    this.setAttribute('role', 'button');
+    this.tabIndex = 0;
+    this.syncAccessibleState();
+    this.addEventListener('keydown', (event) => {
+      if (event.target === this && ['Enter', ' '].includes(event.key)) {
+        event.preventDefault();
+        this.click();
+      }
+    });
     this.addEventListener('click', this.onThisClick.bind(this));
+  }
+
+  syncAccessibleState() {
+    const saved = this.classList.contains('active');
+    this.setAttribute('aria-pressed', String(saved));
+    this.setAttribute('aria-label', saved ? (this.action === 'remove' ? this.removeTooltip : this.redirectTooltip) : this.addTooltip);
   }
 
   initializeWishlistStatus() {
@@ -5792,6 +5841,7 @@ class ButtonWishlist extends HTMLElement {
         }
         _this.classList.remove('active');
       }
+      _this.syncAccessibleState();
     });
   }
 

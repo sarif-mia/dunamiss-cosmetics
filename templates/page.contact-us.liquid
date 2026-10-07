@@ -340,16 +340,12 @@
     
     /* Accordion Active */
     
-    .dunamiss-contact-faq-item.active .faq-answer{
-        max-height:250px;
-    }
-    
-    .dunamiss-contact-faq-item.active .faq-question i{
+    .dunamiss-contact-faq-item.active .dunamiss-contact-faq-question i{
         transform:rotate(45deg);
         color:var(--brand-rose);
     }
     
-    .dunamiss-contact-faq-item.active .faq-question{
+    .dunamiss-contact-faq-item.active .dunamiss-contact-faq-question{
         color:var(--brand-rose);
     }
     /*====================================
@@ -969,10 +965,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const faqItems = document.querySelectorAll(".dunamiss-contact-faq-item");
 
-    faqItems.forEach((item) => {
+    faqItems.forEach((item, index) => {
 
         const question = item.querySelector(".dunamiss-contact-faq-question");
         const answer = item.querySelector(".dunamiss-contact-faq-answer");
+        answer.id = `ContactFaqAnswer-${index}`;
+        answer.hidden = true;
+        question.type = "button";
+        question.setAttribute("aria-controls", answer.id);
+        question.setAttribute("aria-expanded", "false");
 
         // প্রথমে সব answer hide
         answer.style.maxHeight = null;
@@ -984,18 +985,31 @@ document.addEventListener("DOMContentLoaded", function () {
             // Close all FAQ
             faqItems.forEach((faq) => {
                 faq.classList.remove("active");
-                faq.querySelector(".dunamiss-contact-faq-answer").style.maxHeight = null;
+                const closedAnswer = faq.querySelector(".dunamiss-contact-faq-answer");
+                closedAnswer.style.maxHeight = null;
+                closedAnswer.hidden = true;
+                faq.querySelector(".dunamiss-contact-faq-question").setAttribute("aria-expanded", "false");
             });
 
             // Open clicked FAQ
             if (!isActive) {
                 item.classList.add("active");
+                answer.hidden = false;
+                question.setAttribute("aria-expanded", "true");
                 answer.style.maxHeight = answer.scrollHeight + "px";
             }
 
         });
 
     });
+
+    window.addEventListener("resize", () => {
+        faqItems.forEach((item) => {
+            if (!item.classList.contains("active")) return;
+            const answer = item.querySelector(".dunamiss-contact-faq-answer");
+            answer.style.maxHeight = answer.scrollHeight + "px";
+        });
+    }, { passive: true });
 
 });
 </script>

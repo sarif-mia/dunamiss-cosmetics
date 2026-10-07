@@ -264,9 +264,9 @@
                               id="Remove-{{ item.index | plus: 1 }}"
                               data-index="{{ item.index | plus: 1 }}"
                             >
-                              <a
-                                href="{{ item.url_to_remove }}"
-                                class="cart-remove button--tertiary relative fs-small light-dark-grey hover-heading-color"
+                              <button
+                                type="button"
+                                class="btn-reset cart-remove button--tertiary relative fs-small light-dark-grey hover-heading-color"
                                 aria-label="{{ 'general.cart.remove_title' | t: title: item.title }}"
                                 name="{{ 'general.cart.remove_title' | t: title: item.title }}"
                               >
@@ -283,7 +283,7 @@
                                   </svg>
                                 </span>
                                 <div class="icon-rotator"></div>
-                              </a>
+                              </button>
                             </cart-remove-button>
                           </div>
                         </td>

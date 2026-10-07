@@ -297,7 +297,7 @@
             class: 'drift-trigger'
           %}
           {% if zoom_type == 'open_lightbox' %}
-            <button class="zoom_light_box">
+            <button type="button" class="zoom_light_box" aria-label="Zoom product image">
               {% render 'icon-zoom' %}
             </button>
           {% endif %}
@@ -553,7 +553,7 @@
                 endif
               %}
               {% if loop_zoom == false %}
-                <button class="zoom_light_box">
+                <button type="button" class="zoom_light_box" aria-label="Zoom product image">
                   {% render 'icon-zoom' %}
                 </button>
               {% endif %}

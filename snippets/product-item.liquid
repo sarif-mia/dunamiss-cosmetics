@@ -354,6 +354,7 @@
                       <button-quickview
                         data-custom-class="quickview"
                         tabindex="0"
+                        aria-label="{{ 'products.product.actions.quickview.label' | t | escape }}: {{ card_product.title | escape }}"
                         class="{% if product_style == 'card' %}invisible-1025 product__action-animation transition {% endif %}product-item__button pointer product-item__button-quickview tooltip relative btn-hover transition btn-white rounded-50 p-0 shadow w-45 h-45 inline-flex-1025 hidden content-center"
                         data-url="/products/{{ card_product.handle }}?section_id=product-quickview&ajax=1"
                       >

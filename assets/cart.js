@@ -89,7 +89,6 @@ class CartItems extends HTMLElement {
       })
       .then((state) => {
         const parsedState = JSON.parse(state);
-        console.log("parsedState", parsedState);
         if (parsedState.errors) {
           this.updateMessageErrors(line, parsedState.errors, target);
           this.disableLoading();

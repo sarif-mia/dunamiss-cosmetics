@@ -13,11 +13,28 @@ const options_collection = {
   section: '.sec__collection-main',
 };
 
+function bindCollectionAction(element, fallbackLabel) {
+  element.setAttribute('role', 'button');
+  element.tabIndex = 0;
+  if (!element.hasAttribute('aria-label')) {
+    element.setAttribute('aria-label', element.querySelector('.visually-hidden')?.textContent.trim() || element.textContent.trim() || fallbackLabel);
+  }
+  element.addEventListener('keydown', (event) => {
+    if (event.target === element && ['Enter', ' '].includes(event.key)) {
+      event.preventDefault();
+      element.click();
+    }
+  });
+}
+
 class BtnFilter extends HTMLElement {
   constructor() {
     super();
     this.collectionSidebar = document.getElementById('CollectionSidebar');
     this.addEventListener('click', this.onOpen.bind(this), false);
+    bindCollectionAction(this, 'Open filters');
+    this.setAttribute('aria-controls', 'CollectionSidebar');
+    this.setAttribute('aria-expanded', 'false');
   }
   onOpen() {
     if (!this.classList.contains('open')) {
@@ -25,11 +42,14 @@ class BtnFilter extends HTMLElement {
       document.documentElement.classList.add('open-drawer', 'open-sidebar');
       root.style.setProperty('padding-right', getScrollBarWidth.init() + 'px');
       this.classList.add('open');
+      this.setAttribute('aria-expanded', 'true');
+      this.collectionSidebar.querySelector('close-filter')?.focus();
     } else {
       this.collectionSidebar.classList.remove('open');
       document.documentElement.classList.remove('open-drawer', 'open-sidebar');
       root.style.removeProperty('padding-right');
       this.classList.remove('open');
+      this.setAttribute('aria-expanded', 'false');
     }
   }
 }
@@ -39,11 +59,14 @@ class CloseFilter extends HTMLElement {
     super();
     this.collectionSidebar = document.getElementById('CollectionSidebar');
     this.addEventListener('click', this.onClose.bind(this), false);
+    bindCollectionAction(this, 'Close filters');
   }
   onClose() {
     this.collectionSidebar.classList.remove('open');
     document.documentElement.classList.remove('open-drawer', 'open-sidebar');
     document.querySelector('.btn-filter').classList.remove('open');
+    document.querySelectorAll('btn-filter').forEach((button) => button.setAttribute('aria-expanded', 'false'));
+    document.querySelector('btn-filter')?.focus();
     root.style.removeProperty('padding-right');
   }
 }
@@ -61,6 +84,7 @@ class GridMode extends HTMLElement {
   constructor() {
     super();
     this.addEventListener('click', this.gridMode.bind(this), false);
+    bindCollectionAction(this, 'Change grid layout');
   }
   async gridMode() {
     if (this.classList.contains('active')) return;
@@ -117,6 +141,7 @@ class ViewMode extends HTMLElement {
   constructor() {
     super();
     this.addEventListener('click', this.viewMode.bind(this), false);
+    bindCollectionAction(this, 'Change product view');
   }
   viewMode() {
     const view_mode = this.getAttribute('data-view');
@@ -170,6 +195,7 @@ class FilterSort extends HTMLElement {
   constructor() {
     super();
     this.addEventListener('click', this.filterSort.bind(this), false);
+    bindCollectionAction(this, 'Sort products');
   }
   filterSort() {
     const value = this.getAttribute('value');
@@ -186,6 +212,9 @@ class SelectSorter extends HTMLElement {
   constructor() {
     super();
     this.addEventListener('click', this.activeFilterSort.bind(this), false);
+    bindCollectionAction(this, 'Sort products');
+    this.setAttribute('aria-controls', 'SortBy');
+    this.setAttribute('aria-expanded', 'false');
   }
   activeFilterSort() {
     if (this.closest('.select-custom').classList.contains('active')) {
@@ -193,9 +222,23 @@ class SelectSorter extends HTMLElement {
     } else {
       this.closest('.select-custom').classList.add('active');
     }
+    this.setAttribute('aria-expanded', String(this.closest('.select-custom').classList.contains('active')));
   }
 }
 customElements.define('select-sorter', SelectSorter);
+
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Escape') return;
+  if (document.documentElement.classList.contains('open-sidebar')) {
+    document.querySelector('#CollectionSidebar close-filter')?.click();
+  }
+  document.querySelectorAll('.toolbar-sorter .select-custom.active').forEach((sorter) => {
+    sorter.classList.remove('active');
+    const control = sorter.querySelector('select-sorter');
+    control?.setAttribute('aria-expanded', 'false');
+    control?.focus();
+  });
+});
 
 var eventCollectionShopify = (function () {
   return {

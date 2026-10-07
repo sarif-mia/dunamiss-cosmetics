@@ -22,6 +22,9 @@
   line-height: 1.3;
   overflow-wrap: anywhere;
 }
+:root body .search-page-heading .heading-title {
+  overflow-wrap: anywhere;
+}
 :root body :is(.about-page, .dm-shipping, .dm-terms, .dm-return,
   .dm-privacy-page, .dunamiss-contact-container) h2 {
   font-size: 2.8rem;
@@ -69,6 +72,7 @@
   line-height: 1.4;
   min-height: 2.8em;
   overflow: visible;
+  white-space: normal;
   text-transform: none;
   overflow-wrap: anywhere;
 }
