@@ -1,0 +1,21 @@
+<article class="dm-cart-recommendation product-item">
+  <a href="{{ product.url }}" class="dm-cart-recommendation-image product-item__media">
+    {% if product.featured_image %}
+      {{ product.featured_image | image_url: width: 260 | image_tag: loading: 'lazy', widths: '130,260', sizes: '130px', alt: product.title }}
+    {% endif %}
+  </a>
+  <a href="{{ product.url }}" class="dm-cart-recommendation-title">{{ product.title | escape }}</a>
+  <div class="dm-cart-recommendation-bottom"><strong>{{ product.price | money }}</strong>
+    {% if product.available %}
+      {% if product.has_only_default_variant %}
+        <product-form><form method="post" action="{{ routes.cart_add_url }}">
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <input type="hidden" name="quantity" value="1">
+          <button type="submit" name="add" aria-label="Add {{ product.title | escape }} to cart">+</button>
+        </form></product-form>
+      {% else %}
+        <a class="dm-cart-recommendation-options" href="{{ product.url }}" aria-label="Choose options for {{ product.title | escape }}">+</a>
+      {% endif %}
+    {% endif %}
+  </div>
+</article>

@@ -1,0 +1,92 @@
+{% liquid
+  assign native_discount_codes = cart.cart_level_discount_applications | where: 'type', 'discount_code' | map: 'title'
+  for item in cart.items
+    for allocation in item.line_level_discount_allocations
+      if allocation.discount_application.type == 'discount_code'
+        assign current_discount = allocation.discount_application.title | split: '|||'
+        assign native_discount_codes = native_discount_codes | concat: current_discount
+      endif
+    endfor
+  endfor
+  assign native_discount_codes = native_discount_codes | uniq
+%}
+{% comment %}Shared by the theme drawer and Shopify's minicart-form section response.{% endcomment %}
+<div class="dm-cart-content" data-native-cart-content>
+  <script type="application/json" data-native-cart-state>{"count":{{ cart.item_count | json }},"total":{{ cart.total_price | json }},"subtotal":{{ cart.items_subtotal_price | json }},"currency":{{ cart.currency.iso_code | default: shop.currency | json }},"discountCodes":{{ native_discount_codes | json }}}</script>
+  <div class="dm-cart-offers" data-native-cart-offers hidden>
+    <p class="dm-cart-offer-message" data-native-cart-message aria-live="polite"></p>
+    <div class="dm-cart-milestones" data-native-cart-milestones></div>
+    <button type="button" class="dm-cart-gift" data-native-cart-gift hidden>Choose your free gift</button>
+  </div>
+  <div class="dm-cart-scroll custom-scrollbar">
+    <form id="minicart" action="{{ routes.cart_url }}" method="post" novalidate>
+      {% if cart.item_count > 0 %}
+        <div class="minicart-body"><div class="items">
+          {% for item in cart.items %}{% render 'cart-item', item: item %}{% endfor %}
+        </div></div>
+        <button type="button" class="dm-cart-clear" data-native-cart-clear>Clear cart</button>
+        <div class="dm-cart-clear-confirm" data-native-cart-confirm hidden>
+          <p>Remove all items from your cart?</p>
+          <button type="button" data-native-cart-cancel>Cancel</button>
+          <button type="button" data-native-cart-clear-confirm>Yes, clear</button>
+        </div>
+      {% else %}
+        <div class="dm-cart-empty">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 7h14l1 14H4L5 7Z M8 8V6a4 4 0 0 1 8 0v2" stroke="currentColor" stroke-width="1.5"/></svg>
+          <h3>Your cart is empty</h3>
+          <p>Find your next favourite.</p>
+          <button type="button" class="close-cart btn-primary">Continue shopping</button>
+        </div>
+      {% endif %}
+    </form>
+    {% if cart.item_count > 0 %}
+      {% if settings.product_recommendations_type == 'auto' %}
+        <div class="cart-recommend dm-cart-recommendations" data-native-cart-recommendations data-url="{{ routes.product_recommendations_url }}?product_id={{ cart.items.first.product_id }}&limit=6&section_id=native-cart-recommendations" hidden></div>
+      {% else %}
+        <div class="dm-cart-recommendations">
+          <h3>You may also like</h3>
+          <div class="dm-cart-recommendation-track">
+            {% for suggested in settings.select_product_recommendations limit: 6 %}
+              {% assign in_cart = false %}
+              {% for item in cart.items %}{% if item.product_id == suggested.id %}{% assign in_cart = true %}{% endif %}{% endfor %}
+              {% unless in_cart %}{% render 'native-cart-recommendation', product: suggested %}{% endunless %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+  {% if cart.item_count > 0 %}
+    <div class="cart-footer dm-cart-footer">
+      <form class="dm-cart-coupon" data-native-cart-coupon>
+        <label class="visually-hidden" for="NativeCartDiscount">Discount code</label>
+        <input id="NativeCartDiscount" type="text" name="discount" autocomplete="off" placeholder="Enter discount code" maxlength="100">
+        <button type="submit">Apply</button>
+      </form>
+      <p class="dm-cart-feedback" data-native-cart-feedback role="status" aria-live="polite"></p>
+      <details class="dm-cart-available-coupons" data-native-cart-coupons hidden>
+        <summary>Available offers</summary><div data-native-cart-coupon-list></div>
+      </details>
+      {% if cart.cart_level_discount_applications.size > 0 %}
+        <ul class="dm-cart-discounts">
+          {% for discount in cart.cart_level_discount_applications %}
+            <li>{{ discount.title | escape }} <span>−{{ discount.total_allocated_amount | money }}</span></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      <div class="dm-cart-shipping"><span>Shipping</span><span>At checkout</span></div>
+      <div class="subtotal dm-cart-total" data-cart-subtotal><span>Estimated total</span><strong class="subtotal-price" data-cart-subtotal-price>{{ cart.total_price | money }}</strong></div>
+      <p class="dm-cart-tax">Tax included. Shipping calculated at checkout.</p>
+      {% if settings.show_check_box_in_cart %}
+        <label class="dm-cart-terms"><input type="checkbox" name="conditions" data-native-cart-terms>{{ settings.text_terms_conditions }}</label>
+      {% endif %}
+      {% if settings.goEnable %}
+        {% render 'gokwik-checkout' %}
+      {% else %}
+        <button type="submit" form="minicart" name="checkout" class="btn-primary dm-cart-checkout">Secure checkout</button>
+      {% endif %}
+      <div class="dm-cart-payment" aria-label="Secure checkout"><span aria-hidden="true">&#128274;</span> Secure, protected checkout</div>
+      <a class="dm-cart-view" href="{{ routes.cart_url }}">View cart</a>
+    </div>
+  {% endif %}
+</div>

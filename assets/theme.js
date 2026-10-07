@@ -5282,6 +5282,7 @@ class BeforeYouLeave extends HTMLElement {
       });
 
       function getTimeOut() {
+        if (document.documentElement.matches('.open-minicart, .nav-open, .open-search, .open-sidebar')) return;
         action = action + 1;
         if (action >= 1) {
           document.documentElement.classList.add('open-drawer', 'open-byl');

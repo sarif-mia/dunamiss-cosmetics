@@ -15,6 +15,26 @@
 <html class="no-js" lang="{{ request.locale.iso_code }}">
    <head>
 
+    <script>
+      window.dunamissOpenCart = function (trigger) {
+        var cart = document.querySelector('cart-notification.dm-native-cart');
+        if (!cart || cart.dataset.nativeInitialized !== 'true') {
+          window.dunamissPendingCartTrigger = trigger;
+          return;
+        }
+        if (typeof cart.setActiveElement === 'function') cart.setActiveElement(trigger);
+        if (cart.querySelector('.dm-cart-drawer').getAttribute('aria-hidden') === 'false') cart.close();
+        else cart.open();
+      };
+      document.addEventListener('click', function (event) {
+        var trigger = event.target.closest('[data-native-cart-trigger]');
+        if (!trigger) return;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        window.dunamissOpenCart(trigger);
+      }, true);
+    </script>
+
  <!-- Gokwik theme code start -->
 
 <link rel="dns-prefetch" href="https://pdp.gokwik.co/">
@@ -111,7 +131,6 @@
     <noscript>{{ 'judgeme-reviews.s.min.css' | asset_url | stylesheet_tag }}</noscript>
     {% render 'font-variables' %}
     {{ 'storefront-bundle.css' | asset_url | stylesheet_tag }}
-    <script src="{{ 'button-heights.js' | asset_url }}" defer></script>
     <script src="{{ 'shade-gallery.js' | asset_url }}" defer></script>
     {% if request.page_type == 'index' %}
       {{ 'home-spacing.css' | asset_url | stylesheet_tag }}

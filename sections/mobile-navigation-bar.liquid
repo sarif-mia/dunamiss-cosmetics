@@ -45,10 +45,14 @@
             <span class="block fs-small heading-style">{{ 'mobile_navbar.account' | t }}</span>
           </a>
         {% when 'cart' %}
-          <a
+          <button
             id="cart-icon-bubble-mobile"
-            href="{{ routes.cart_url }}"
-            class="no-underline lh-normal inline-flex content-center flex-column text-center heading-color{% if request.path == "/cart" %} active{% endif %}"
+            type="button"
+            class="btn-reset minicart__action no-underline lh-normal inline-flex content-center flex-column text-center heading-color{% if request.path == "/cart" %} active{% endif %}"
+            data-native-cart-trigger
+            aria-controls="minicart_wrapper"
+            aria-haspopup="dialog"
+            aria-expanded="false"
             aria-label="{{ 'mobile_navbar.cart' | t }}"
           >
             <span class="relative inline-flex">
@@ -71,7 +75,7 @@
               {% endif %}
             </span>
             <span class="block fs-small heading-style">{{ 'mobile_navbar.cart' | t }}</span>
-          </a>
+          </button>
         {% when 'wishlist' %}
           <a
             id="wishlist-icon-bubble-mobile"

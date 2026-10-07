@@ -5,11 +5,14 @@
       id="header__minicart"
       class="header__minicart {% if type == 'header_mega' %}header__minicart--mega{% endif %} {{ action_after_add_cart }}{% if action_after_add_cart == 'show_popup' %} relative{% endif %}"
     >
-      <a
+      <button
         id="cart-icon-bubble"
-        href="{{ routes.cart_url }}"
-
-        class="no-underline {% if template != 'cart' and action_after_add_cart != 'go_to_cart_page' %}minicart__action{% endif %} header-icon header-color w-44 h-44 inline-flex content-center  {% if action_after_add_cart == 'show_popup' %}show-overlay{% else %}overlayminicart{% endif %}"
+        type="button"
+        class="btn-reset no-underline minicart__action header-icon header-color w-44 h-44 inline-flex content-center {% if action_after_add_cart == 'show_popup' %}show-overlay{% else %}overlayminicart{% endif %}"
+        data-native-cart-trigger
+        aria-controls="minicart_wrapper"
+        aria-haspopup="dialog"
+        aria-expanded="false"
       >
         <span class="visually-hidden">{{ 'general.cart.label' | t }}</span>
         <h-count class="relative lh-1 fs-0">
@@ -47,7 +50,7 @@
             </span>
           </header-total-price>
         {% endif %}
-      </a>
+      </button>
     </div>
   </div>
 </div>

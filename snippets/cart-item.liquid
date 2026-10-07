@@ -173,7 +173,7 @@
                 type="button"
                 data-id="{{- item.key -}}"
                 style="--custom-width: 3rem"
-                aria-label="minus"
+                aria-label="Decrease quantity"
               >
                 <svg width="9" height="1" fill="none">
                   <path fill="#111" d="M9 0v1H0V0h9Z"/>
@@ -199,7 +199,7 @@
                 type="button"
                 data-id="{{- item.key -}}"
                 style="--custom-width: 3rem"
-                aria-label="plus"
+                aria-label="Increase quantity"
               >
                 <svg width="9" height="9" fill="none">
                   <path fill="#111" fill-rule="evenodd" d="M4 9h1V5h4V4H5V0H4v4H0v1h4v4Z" clip-rule="evenodd"/>
@@ -242,9 +242,9 @@
         class="minicart__item-remove {% if show_message_when_remove %} action-add-wishlist{% endif %}"
         data-index="{{- item.key -}}"
       >
-        <a
-          href="{{ item.url_to_remove }}"
-          class="cart-remove button--tertiary relative"
+        <button
+          type="button"
+          class="btn-reset cart-remove button--tertiary relative"
           aria-label="{{- 'general.cart.remove' | t -}}"
           name="{{- 'general.cart.remove' | t -}}"
         >
@@ -253,7 +253,7 @@
           </svg>
 
           <div class="icon-rotator"></div>
-        </a>
+        </button>
       </mini-cart-remove-button>
     </div>
   </div>

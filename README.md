@@ -38,6 +38,22 @@ compares all seven Shopify theme directories byte for byte, and lists any drift.
 It includes the untracked store configuration and never overwrites local work.
 For changes, deploy only the reviewed files; after deployment, rerun the comparison.
 
+## Cart drawer
+
+The storefront uses the theme-owned native drawer in `snippets/minicart.liquid`.
+Keep **Theme settings → Cart → Action after adding to cart** set to **Open drawer**
+and keep the BOB app cart drawer disabled. `assets/native-cart.js` extends the
+theme's existing cart component and uses Shopify's locale-aware Ajax Cart API;
+`assets/native-cart.css` contains the drawer's scoped Dunamiss styling. The
+header and mobile cart controls are buttons, so a slow script load cannot send
+customers to `/cart`. The intentional **View cart** link remains available in
+the drawer.
+
+Quantity, remove, clear, coupon, recommendation add, offer progress and checkout
+entry all refresh from Shopify's returned cart state. The compatibility function
+`window.openCrowdBuyCart` lets remaining bundle and gift widgets open this native
+drawer without restoring the app drawer.
+
 ## Store locator
 
 Configure the map under **Theme settings → Store locator map**. The current public token is stored in the untracked store configuration, rather than runtime JavaScript. Store details remain available without a token. Use a domain-restricted public `pk.` token, never a secret token.

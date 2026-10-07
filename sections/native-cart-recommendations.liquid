@@ -1,0 +1,12 @@
+{% if recommendations.products_count > 0 %}
+  <div data-native-cart-recommendation-content>
+    <h3>You may also like</h3>
+    <div class="dm-cart-recommendation-track">
+      {% for product in recommendations.products %}
+        {% assign in_cart = false %}
+        {% for item in cart.items %}{% if item.product_id == product.id %}{% assign in_cart = true %}{% endif %}{% endfor %}
+        {% if product.available and in_cart == false %}{% render 'native-cart-recommendation', product: product %}{% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
