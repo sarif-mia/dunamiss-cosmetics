@@ -19,7 +19,7 @@ npx @shopify/cli@latest theme check
 ```
 
 After editing `assets/brand-system.css`, `assets/add-to-cart-animation.css`, or
-`assets/storefront-improvements.css`, run `python3 scripts/build-storefront-css.py`.
+`assets/storefront-improvements.css`, or `assets/storefront-typography.css`, run `python3 scripts/build-storefront-css.py`.
 The layout loads their generated `assets/storefront-bundle.css` in the same cascade order.
 
 `config/settings_data.json` is intentionally untracked because it contains store-specific configuration and the theme license. On a new checkout, obtain that file from the appropriate store theme or a trusted local copy before previewing. Shopify CLI state, credentials, generated audit reports, and rollback artifacts are also excluded.

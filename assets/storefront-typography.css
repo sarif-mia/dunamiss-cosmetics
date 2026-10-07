@@ -1,0 +1,206 @@
+/* Shared readable type scale. The theme uses a 10px rem baseline. */
+:root body {
+  --body-font-size: 1.6rem;
+  --input-font-size: 1.6rem;
+  --body-line-height: 1.6;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+:root body :is(.section__header-heading, .dm-reviews__header h2) {
+  font-size: 3.2rem;
+  line-height: 1.25;
+}
+:root body :is(.heading-title, .storefront-collection-heading h1,
+  .about-page h1, .dm-hero h1, .dm-privacy-page h1,
+  .dm-return h1, .dunamiss-contact-hero h1) {
+  font-size: clamp(3.2rem, 4vw, 4.8rem);
+  line-height: 1.2;
+}
+:root body .product-detail__title {
+  font-size: 2.8rem;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+:root body :is(.about-page, .dm-shipping, .dm-terms, .dm-return,
+  .dm-privacy-page, .dunamiss-contact-container) h2 {
+  font-size: 3.2rem;
+  line-height: 1.25;
+}
+:root body :is(.about-page, .dm-shipping, .dm-terms, .dm-return,
+  .dm-privacy-page) h3 {
+  font-size: 2rem;
+  line-height: 1.35;
+}
+:root body :is(.about-page, .dm-shipping, .dm-terms, .dm-return,
+  .dm-privacy-page, .dunamiss-contact-container,
+  .shopify-policy__body, .article-template__content) :is(p, li) {
+  font-size: 1.6rem;
+  line-height: 1.65;
+}
+:root body :is(.rte, .product-detail__description,
+  .product-detail__custom-liquid, .product-ingredients-content) :is(p, li) {
+  font-size: 1.6rem;
+  line-height: 1.65;
+}
+:root body :is(.dm-section-intro, .dm-card p, .dm-notice p,
+  .dm-privacy-note p, .dm-benefit p, .dm-return-highlights p,
+  .storefront-purchase-details) {
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+:root body :is(.about-eyebrow, .dm-eyebrow, .dm-privacy-tag,
+  .dm-privacy-badge, .dm-tag) {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+:root body :is(.dm-contact-buttons, .dm-return-support,
+  .dm-privacy-support, .dunamiss-contact-support-item) a {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* Product names remain complete, with actions aligned by the card's flex layout. */
+:root body .product-item__wrapper .product-item__name {
+  display: block;
+  -webkit-line-clamp: unset;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  min-height: 2.8em;
+  overflow: visible;
+  text-transform: none;
+  overflow-wrap: anywhere;
+}
+:root body .product-item__wrapper .product-item__price :is(.price, .price-item) {
+  font-size: 1.6rem;
+  line-height: 1.4;
+}
+:root body .product-item__wrapper .product-item__price .compare-price {
+  font-size: 1.4rem;
+  color: #666;
+  opacity: 1;
+}
+:root body .product-item__wrapper :is(.product__badges-inner, .product__badges-sale) {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  min-height: 2.4rem;
+}
+:root body .product-detail__price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.8rem 1.6rem;
+}
+:root body :is(.available-offer-header h2, .collapsible-heading,
+  .faq-section-title) {
+  font-size: 1.8rem;
+  line-height: 1.4;
+}
+:root body :is(.available-offer-card p, .available-offer-card a,
+  .dunamiss-benefits-item h3, .gokwik-buy-now-subtext) {
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+:root body :is(.available-offer-card, .dunamiss-benefits-item) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+:root body :is(.jm-store-summary-text, .jdgm-rev__body,
+  .dm-reviews__card p) {
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+:root body :is(.jm-store-summary-keywords__tag,
+  .jm-store-summary-disclaimer__text) {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+:root body :is(.Shopvid__VideoBlock__Card, .Shopvid__ProductCard) {
+  font-family: var(--body-font);
+}
+:root body .community-header {
+  font-size: 3.2rem;
+  line-height: 1.25;
+}
+:root body :is(.newsletter-note, .discounts-subscribers-note,
+  .footer__copyright, announcement-bar .announcement__bar-message) {
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+:root body :is(.header__menu .menu_item-link, .header__menu summary.heading-style) {
+  font-size: 1.4rem;
+}
+:root body .dm-review__product-name {
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+:root body .dunamiss-contact-faq-question {
+  font-size: 1.8rem;
+  line-height: 1.4;
+  height: auto !important;
+  max-height: none !important;
+  padding-block: 12px !important;
+}
+:root body .product-form__buttons .buy-now-compact #gokwik-buy-now {
+  font-size: 1.4rem;
+  height: auto !important;
+  min-height: 35px !important;
+  max-height: none !important;
+  padding-block: 6px !important;
+  flex-wrap: wrap;
+}
+
+/* Keep fields readable and let multiline actions grow with enlarged text. */
+:root body input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+:root body :is(select, textarea) {
+  font-family: var(--body-font);
+  font-size: 1.6rem;
+}
+:root body input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+:root body select {
+  min-height: max(35px, calc(1.3em + 12px));
+}
+:root body :is(.footer__newsletter, .discounts-subscribers-form) input[type="email"] {
+  height: auto;
+  max-height: none;
+}
+:root body :is(button.product_submit_button, .product__add-cart,
+  .newsletter-form__button, .dunamiss-contact-contact-form button[type="submit"],
+  a.btn-primary, a.btn-outline, a.button, .storefront-hero-cta,
+  input[type="submit"]) {
+  font-size: 1.4rem;
+  line-height: 1.3;
+  height: auto !important;
+  min-height: 35px !important;
+  max-height: none !important;
+  padding-block: 6px !important;
+  white-space: normal;
+}
+
+@media (max-width: 767px) {
+  /* Section custom CSS uses generated IDs; enforce the shared mobile scale. */
+  :root body .section__header-heading {
+    font-size: 2.4rem !important;
+  }
+  :root body :is(.section__header-heading, .dm-reviews__header h2,
+    .about-page h2, .dm-shipping h2, .dm-terms h2, .dm-return h2,
+    .dm-privacy-page h2, .dunamiss-contact-container h2, .community-header) {
+    font-size: 2.4rem;
+    line-height: 1.3;
+  }
+  :root body :is(.heading-title, .storefront-collection-heading h1,
+    .about-page h1, .dm-hero h1, .dm-privacy-page h1,
+    .dm-return h1, .dunamiss-contact-hero h1) {
+    font-size: 3.2rem;
+  }
+  :root body .product-detail__title {
+    font-size: 2.4rem;
+  }
+  :root body .product-item__wrapper .product-item__price :is(.price, .price-item) {
+    font-size: 1.4rem;
+  }
+  :root body .product-item__wrapper .product-item__price .compare-price {
+    font-size: 1.2rem;
+  }
+}

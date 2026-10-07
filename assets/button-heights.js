@@ -20,12 +20,20 @@
       style.textContent = `
         button {
           box-sizing: border-box;
-          height: 35px !important;
+          height: auto !important;
           min-height: 35px !important;
-          max-height: 35px !important;
-          padding-block: 0 !important;
+          max-height: none !important;
+          padding-block: 6px !important;
+          font-family: var(--body-font, "Instrument Sans", Arial, sans-serif);
+          font-size: 14px;
+          line-height: 1.3;
         }
         .cart-close { width: 35px !important; }
+        .checkout-label { font-size: 14px !important; line-height: 1.4; }
+        .payment-badge-text, .discount-hint-left {
+          font-size: 12px !important;
+          line-height: 1.5;
+        }
       `;
       root.appendChild(style);
       // Keep the override when the app remounts its drawer contents.
