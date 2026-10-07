@@ -94,9 +94,9 @@
   background: var(--dm-cart-surface);
   box-shadow: 0 -10px 28px rgb(43 26 34 / 6%);
 }
-.dm-cart-coupon { display: flex; gap: 8px; }
+.dm-cart-coupon { display: flex; align-items: center; gap: 8px; }
 :root body .dm-cart-coupon input { min-width: 0; width: 100%; height: 40px; background: var(--dm-cart-bg); border: 1px solid #d4c6cc; border-radius: 8px; padding: 8px 12px; font-size: 16px; }
-:root body .dm-cart-coupon button { min-width: 66px; border: 1px solid var(--dm-cart-accent); border-radius: 8px; background: transparent; color: var(--dm-cart-accent); padding: 6px 13px; font-size: 12px; font-weight: 600; }
+:root body .dm-cart-coupon button { min-width: 66px; height: 40px; min-height: 40px; max-height: 40px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--dm-cart-accent); border-radius: 8px; background: transparent; color: var(--dm-cart-accent); padding: 0 13px; font-size: 12px; font-weight: 600; line-height: 1; }
 .dm-cart-feedback:empty { display: none; }
 .dm-cart-feedback { margin: 5px 0; font-size: 11px; color: #8d2548; }
 .dm-cart-discounts { list-style: none; padding: 0; margin: 8px 0; font-size: 11px; color: #377451; }
@@ -143,7 +143,9 @@
 }
 :root body .dm-cart-recommendation-bottom { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 7px; font-size: 12px; }
 :root body .dm-cart-recommendation button,
-.dm-cart-recommendation-options { display: inline-flex; justify-content: center; align-items: center; width: 28px; min-width: 28px; height: 28px; border: 1px solid var(--dm-cart-accent); border-radius: 50%; background: transparent; color: var(--dm-cart-accent); font-size: 18px; padding: 0; text-decoration: none; }
+.dm-cart-recommendation-options { flex: 0 0 32px; display: inline-flex; justify-content: center; align-items: center; width: 32px; min-width: 32px; height: 32px; min-height: 32px; max-height: 32px; border: 1px solid var(--dm-cart-accent); border-radius: 50%; background: transparent; color: var(--dm-cart-accent); padding: 0; line-height: 0; text-decoration: none; }
+.dm-cart-recommendation-action svg,
+.dm-cart-recommendation-options svg { width: 13px; height: 13px; display: block; pointer-events: none; }
 .dm-cart-offers { flex: 0 0 auto; padding: 10px 20px 12px; border-bottom: 1px solid var(--dm-cart-border); background: #fff9f7; }
 .dm-cart-offer-message { margin: 0 0 8px; color: #3b3437; text-align: center; font-size: 11px; line-height: 1.4; }
 .dm-cart-progress { height: 3px; overflow: hidden; border-radius: 4px; background: #e8dce0; }

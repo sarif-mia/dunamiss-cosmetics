@@ -189,7 +189,7 @@ body :is(#kp-login-button-header-logo, #icon-kwikpass, #icon-close-kwikpass):foc
 
 /* One shared button height across desktop and mobile. */
 :root body :is(
-  button:not(#honeypop-app button):not(.dm-cart-offer-carousel__button), input[type="submit"], input[type="button"],
+  button:not(#honeypop-app button):not(.dm-cart-offer-carousel__button):not(.dm-cart-recommendation-action):not(.dm-cart-coupon-submit), input[type="submit"], input[type="button"],
   #kp-login-button-header-logo, #icon-kwikpass, #icon-close-kwikpass,
   a.btn, a.btn-primary, a.btn-outline, a.button,
   select-option, button-quickview, button-wishlist, button-compare,

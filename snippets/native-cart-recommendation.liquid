@@ -11,10 +11,18 @@
         <product-form><form method="post" action="{{ routes.cart_add_url }}">
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
           <input type="hidden" name="quantity" value="1">
-          <button type="submit" name="add" aria-label="Add {{ product.title | escape }} to cart">+</button>
+          <button type="submit" name="add" class="dm-cart-recommendation-action" aria-label="Add {{ product.title | escape }} to cart">
+            <svg aria-hidden="true" viewBox="0 0 14 14" focusable="false">
+              <path d="M7 2v10M2 7h10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
         </form></product-form>
       {% else %}
-        <a class="dm-cart-recommendation-options" href="{{ product.url }}" aria-label="Choose options for {{ product.title | escape }}">+</a>
+        <a class="dm-cart-recommendation-options" href="{{ product.url }}" aria-label="Choose options for {{ product.title | escape }}">
+          <svg aria-hidden="true" viewBox="0 0 14 14" focusable="false">
+            <path d="M7 2v10M2 7h10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
       {% endif %}
     {% endif %}
   </div>
