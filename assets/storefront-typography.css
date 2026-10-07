@@ -1,52 +1,52 @@
 /* Shared readable type scale. The theme uses a 10px rem baseline. */
 :root body {
-  --body-font-size: 1.6rem;
+  --body-font-size: 1.4rem;
   --input-font-size: 1.6rem;
   --body-line-height: 1.6;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   line-height: 1.6;
 }
 
 :root body :is(.section__header-heading, .dm-reviews__header h2) {
-  font-size: 3.2rem;
+  font-size: 2.8rem;
   line-height: 1.25;
 }
 :root body :is(.heading-title, .storefront-collection-heading h1,
   .about-page h1, .dm-hero h1, .dm-privacy-page h1,
   .dm-return h1, .dunamiss-contact-hero h1) {
-  font-size: clamp(3.2rem, 4vw, 4.8rem);
+  font-size: clamp(2.8rem, 3.5vw, 4.2rem);
   line-height: 1.2;
 }
 :root body .product-detail__title {
-  font-size: 2.8rem;
+  font-size: 2.6rem;
   line-height: 1.3;
   overflow-wrap: anywhere;
 }
 :root body :is(.about-page, .dm-shipping, .dm-terms, .dm-return,
   .dm-privacy-page, .dunamiss-contact-container) h2 {
-  font-size: 3.2rem;
+  font-size: 2.8rem;
   line-height: 1.25;
 }
 :root body :is(.about-page, .dm-shipping, .dm-terms, .dm-return,
   .dm-privacy-page) h3 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   line-height: 1.35;
 }
 :root body :is(.about-page, .dm-shipping, .dm-terms, .dm-return,
   .dm-privacy-page, .dunamiss-contact-container,
   .shopify-policy__body, .article-template__content) :is(p, li) {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   line-height: 1.65;
 }
 :root body :is(.rte, .product-detail__description,
   .product-detail__custom-liquid, .product-ingredients-content) :is(p, li) {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   line-height: 1.65;
 }
 :root body :is(.dm-section-intro, .dm-card p, .dm-notice p,
   .dm-privacy-note p, .dm-benefit p, .dm-return-highlights p,
   .storefront-purchase-details) {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   line-height: 1.6;
 }
 :root body :is(.about-eyebrow, .dm-eyebrow, .dm-privacy-tag,
@@ -56,7 +56,7 @@
 }
 :root body :is(.dm-contact-buttons, .dm-return-support,
   .dm-privacy-support, .dunamiss-contact-support-item) a {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   line-height: 1.5;
   overflow-wrap: anywhere;
 }
@@ -65,7 +65,7 @@
 :root body .product-item__wrapper .product-item__name {
   display: block;
   -webkit-line-clamp: unset;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   line-height: 1.4;
   min-height: 2.8em;
   overflow: visible;
@@ -73,11 +73,11 @@
   overflow-wrap: anywhere;
 }
 :root body .product-item__wrapper .product-item__price :is(.price, .price-item) {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   line-height: 1.4;
 }
 :root body .product-item__wrapper .product-item__price .compare-price {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: #666;
   opacity: 1;
 }
@@ -94,12 +94,12 @@
 }
 :root body :is(.available-offer-header h2, .collapsible-heading,
   .faq-section-title) {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   line-height: 1.4;
 }
 :root body :is(.available-offer-card p, .available-offer-card a,
   .dunamiss-benefits-item h3, .gokwik-buy-now-subtext) {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   line-height: 1.5;
 }
 :root body :is(.available-offer-card, .dunamiss-benefits-item) {
@@ -108,7 +108,7 @@
 }
 :root body :is(.jm-store-summary-text, .jdgm-rev__body,
   .dm-reviews__card p) {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   line-height: 1.6;
 }
 :root body :is(.jm-store-summary-keywords__tag,
@@ -120,30 +120,30 @@
   font-family: var(--body-font);
 }
 :root body .community-header {
-  font-size: 3.2rem;
+  font-size: 2.8rem;
   line-height: 1.25;
 }
 :root body :is(.newsletter-note, .discounts-subscribers-note,
   .footer__copyright, announcement-bar .announcement__bar-message) {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   line-height: 1.5;
 }
 :root body :is(.header__menu .menu_item-link, .header__menu summary.heading-style) {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
 :root body .dm-review__product-name {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   line-height: 1.5;
 }
 :root body .dunamiss-contact-faq-question {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   line-height: 1.4;
   height: auto !important;
   max-height: none !important;
   padding-block: 12px !important;
 }
 :root body .product-form__buttons .buy-now-compact #gokwik-buy-now {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   height: auto !important;
   min-height: 35px !important;
   max-height: none !important;
@@ -169,7 +169,7 @@
   .newsletter-form__button, .dunamiss-contact-contact-form button[type="submit"],
   a.btn-primary, a.btn-outline, a.button, .storefront-hero-cta,
   input[type="submit"]) {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   line-height: 1.3;
   height: auto !important;
   min-height: 35px !important;
@@ -178,27 +178,38 @@
   white-space: normal;
 }
 
+:root body .footer__block-heading {
+  font-size: 2rem;
+  line-height: 1.3;
+}
+:root body .dm-review__title {
+  font-size: 1.6rem;
+}
+
 @media (max-width: 767px) {
+  :root body .footer__block-heading {
+    font-size: 1.8rem;
+  }
   /* Section custom CSS uses generated IDs; enforce the shared mobile scale. */
   :root body .section__header-heading {
-    font-size: 2.4rem !important;
+    font-size: 2rem !important;
   }
   :root body :is(.section__header-heading, .dm-reviews__header h2,
     .about-page h2, .dm-shipping h2, .dm-terms h2, .dm-return h2,
     .dm-privacy-page h2, .dunamiss-contact-container h2, .community-header) {
-    font-size: 2.4rem;
+    font-size: 2rem;
     line-height: 1.3;
   }
   :root body :is(.heading-title, .storefront-collection-heading h1,
     .about-page h1, .dm-hero h1, .dm-privacy-page h1,
     .dm-return h1, .dunamiss-contact-hero h1) {
-    font-size: 3.2rem;
+    font-size: 2.8rem;
   }
   :root body .product-detail__title {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
   }
   :root body .product-item__wrapper .product-item__price :is(.price, .price-item) {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
   :root body .product-item__wrapper .product-item__price .compare-price {
     font-size: 1.2rem;

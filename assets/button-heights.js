@@ -25,11 +25,11 @@
           max-height: none !important;
           padding-block: 6px !important;
           font-family: var(--body-font, "Instrument Sans", Arial, sans-serif);
-          font-size: 14px;
+          font-size: 13px;
           line-height: 1.3;
         }
         .cart-close { width: 35px !important; }
-        .checkout-label { font-size: 14px !important; line-height: 1.4; }
+        .checkout-label { font-size: 13px !important; line-height: 1.4; }
         .payment-badge-text, .discount-hint-left {
           font-size: 12px !important;
           line-height: 1.5;
