@@ -2,7 +2,7 @@
 {{ 'native-cart.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'native-cart.js' | asset_url }}" defer></script>
 <cart-notification id="minicart_wrapper" class="minicart open_drawer bls-image-js dm-native-cart" tabindex="-1">
-  <div class="minicart__wrapper bls__drawer fixed inset-y-0 right-0 transition-popup dm-cart-drawer" role="dialog" aria-modal="true" aria-labelledby="NativeCartHeading" aria-hidden="true" inert>
+  <div class="minicart__wrapper bls__drawer fixed inset-y-0 right-0 transition-popup dm-cart-drawer" role="dialog" aria-modal="true" aria-labelledby="NativeCartHeading" aria-hidden="true" inert hidden>
     <div class="minicart__header dm-cart-header">
       <h2 id="NativeCartHeading"><span>Your Cart</span><span class="cart-count cart-count-drawer">({{ cart.item_count }})</span></h2>
       <button type="button" class="btn-reset close-cart-button dm-cart-close" aria-label="Close cart">{% render 'icon-close' %}</button>

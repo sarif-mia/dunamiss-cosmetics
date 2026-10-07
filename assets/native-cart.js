@@ -97,6 +97,7 @@
     if (panel.getAttribute('aria-hidden') === 'false') return;
     error('');
     opener = cart.activeElement?.isConnected ? cart.activeElement : document.activeElement;
+    panel.hidden = false;
     panel.inert = false;
     panel.setAttribute('aria-hidden', 'false');
     document.querySelectorAll('[data-native-cart-trigger]').forEach((trigger) => trigger.setAttribute('aria-expanded', 'true'));
@@ -110,6 +111,7 @@
     panel.inert = true;
     document.querySelectorAll('[data-native-cart-trigger]').forEach((trigger) => trigger.setAttribute('aria-expanded', 'false'));
     originalClose();
+    panel.hidden = true;
     setTimeout(() => {
       if (panel.getAttribute('aria-hidden') !== 'true') return;
       panel.classList.remove('open');
