@@ -110,9 +110,7 @@
     <link rel="stylesheet" href="{{ 'judgeme-reviews.s.min.css' | asset_url }}" media="print" onload="this.media='all'">
     <noscript>{{ 'judgeme-reviews.s.min.css' | asset_url | stylesheet_tag }}</noscript>
     {% render 'font-variables' %}
-    {{ 'brand-system.css' | asset_url | stylesheet_tag }}
-    {{ 'add-to-cart-animation.css' | asset_url | stylesheet_tag }}
-    {{ 'storefront-improvements.css' | asset_url | stylesheet_tag }}
+    {{ 'storefront-bundle.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'button-heights.js' | asset_url }}" defer></script>
     <script src="{{ 'shade-gallery.js' | asset_url }}" defer></script>
     {% if request.page_type == 'index' %}

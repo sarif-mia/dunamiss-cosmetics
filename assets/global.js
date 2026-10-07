@@ -1066,7 +1066,12 @@ class SlideLazyLoad {
     );
     loadingSwiper.forEach((el) => {
       el.classList.remove('lazy-loading-swiper-after');
-      this.initSlide(el);
+      // Keep offscreen homepage carousels behind their visibility observer.
+      if (document.body.classList.contains('index') && typeof el.init === 'function') {
+        el.init();
+      } else {
+        this.initSlide(el);
+      }
     });
     const reviewProduct = document.querySelectorAll('.review-product-added');
     reviewProduct.forEach((el) => {
