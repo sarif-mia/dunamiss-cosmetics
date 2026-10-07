@@ -1293,6 +1293,49 @@
       },
       {
         "type": "header",
+        "content": "Native cart offers"
+      },
+      {
+        "type": "paragraph",
+        "content": "These options power the theme cart drawer without a cart app. Configure a matching automatic discount in Shopify Admin → Discounts when the gift product or threshold changes."
+      },
+      {
+        "type": "checkbox",
+        "id": "native_cart_auto_gift",
+        "label": "Automatically add free gift",
+        "default": true
+      },
+      {
+        "type": "product",
+        "id": "native_cart_gift_product",
+        "label": "Free gift product"
+      },
+      {
+        "type": "number",
+        "id": "native_cart_gift_threshold",
+        "label": "Free gift minimum cart value",
+        "default": 1050
+      },
+      {
+        "type": "checkbox",
+        "id": "native_cart_discount_milestone",
+        "label": "Show discount milestone",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "native_cart_discount_threshold",
+        "label": "Discount milestone cart value",
+        "default": 1599
+      },
+      {
+        "type": "text",
+        "id": "native_cart_discount_label",
+        "label": "Discount milestone label",
+        "default": "₹250 off"
+      },
+      {
+        "type": "header",
         "content": "t:settings_schema.cart.settings.cart_count_down.label"
       },
       {

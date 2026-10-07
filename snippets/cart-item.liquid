@@ -5,6 +5,12 @@
   assign show_message_when_remove = theme_st.show_message_when_remove
   assign show_currency_code = theme_st.show_currency_code
   assign show_quantity = theme_st.show_quantity_input
+  assign is_auto_gift = false
+  if native_cart and item.properties['_dm_auto_gift'] == '1'
+    assign is_auto_gift = true
+  elsif native_cart and item.properties['_gift_tier_id'] != blank and item.properties['_gift_pick'] == '1'
+    assign is_auto_gift = true
+  endif
 -%}
 {% liquid
   assign enable_rtl = settings.rtl
@@ -21,7 +27,7 @@
 <div
   id="minicart__product-{{ item.key }}"
   product-handle="{{ item.product.handle }}"
-  class="cart-item flex mb-20 pb-20 gap-15 border-bottom-dashed"
+  class="cart-item flex mb-20 pb-20 gap-15 border-bottom-dashed{% if is_auto_gift %} dm-cart-item--gift{% endif %}"
 >
   <div class="minicart__product__image global-media-settings w-custom fs-0 relative" style="--custom-width: 9rem">
     <a href="{{- item.url -}}" class="rounded-5 fs-0 " aria-label="{{ item.product.title | escape }}">
@@ -46,6 +52,7 @@
         {{- item.product.title | escape -}}
       </a>
     </h3>
+    {% if is_auto_gift %}<span class="dm-cart-gift-badge">Free gift</span>{% endif %}
     <div class="minicart__item-variant cart-options flex flex-wrap">
       {%- unless item.product.has_only_default_variant -%}
         {%- for option in item.options_with_values -%}
@@ -164,7 +171,7 @@
           <span class="cart-item__error-text cart-item__error-text-{{ item.id }}"></span>
           {%- render 'icon-error' -%}
         </div>
-        {% if show_add_cart == true and theme_st.enable_catalog_mode == false and show_quantity %}
+        {% if show_add_cart == true and theme_st.enable_catalog_mode == false and show_quantity and is_auto_gift == false %}
           <div class="minicart__actions mt-6 flex grow-1 bottom-left w-full">
             <quantity-input class="quantity rounded-3 border inline-flex text-center grey-bg">
               <button
@@ -220,7 +227,7 @@
         </symbol>
       </svg>
       {% assign item_url = item.url %}
-      {%- unless item.product.has_only_default_variant -%}
+      {%- unless item.product.has_only_default_variant or is_auto_gift -%}
         {% if show_add_cart and theme_st.enable_catalog_mode == false %}
           <minicart-item-edit
             data-text-header="{{ 'general.cart.cart_edit' | t }}"
@@ -237,7 +244,7 @@
           </minicart-item-edit>
         {% endif %}
       {%- endunless -%}
-      <mini-cart-remove-button
+      {% unless is_auto_gift %}<mini-cart-remove-button
         data-product-handle="{{ item.product.id }}"
         class="minicart__item-remove {% if show_message_when_remove %} action-add-wishlist{% endif %}"
         data-index="{{- item.key -}}"
@@ -254,7 +261,7 @@
 
           <div class="icon-rotator"></div>
         </button>
-      </mini-cart-remove-button>
+      </mini-cart-remove-button>{% endunless %}
     </div>
   </div>
   {% if show_message_when_remove %}

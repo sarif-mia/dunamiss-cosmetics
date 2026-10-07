@@ -9,27 +9,25 @@
     endfor
   endfor
   assign native_discount_codes = native_discount_codes | uniq
+  assign native_shipping_threshold = settings.free_shipping_minimum | plus: 0
+  assign native_gift_threshold = settings.native_cart_gift_threshold | plus: 0
+  assign native_discount_threshold = settings.native_cart_discount_threshold | plus: 0
+  assign native_gift_variant = settings.native_cart_gift_product.selected_or_first_available_variant
 %}
 {% comment %}Shared by the theme drawer and Shopify's minicart-form section response.{% endcomment %}
 <div class="dm-cart-content" data-native-cart-content>
-  <script type="application/json" data-native-cart-state>{"count":{{ cart.item_count | json }},"total":{{ cart.total_price | json }},"subtotal":{{ cart.items_subtotal_price | json }},"currency":{{ cart.currency.iso_code | default: shop.currency | json }},"discountCodes":{{ native_discount_codes | json }}}</script>
+  <script type="application/json" data-native-cart-state>{"count":{{ cart.item_count | json }},"total":{{ cart.total_price | json }},"subtotal":{{ cart.items_subtotal_price | json }},"currency":{{ cart.currency.iso_code | default: shop.currency | json }},"discountCodes":{{ native_discount_codes | json }},"items":[{% for item in cart.items %}{"key":{{ item.key | json }},"variantId":{{ item.variant_id | json }},"quantity":{{ item.quantity | json }},"properties":{{ item.properties | json }}}{% unless forloop.last %},{% endunless %}{% endfor %}]}</script>
+  <script type="application/json" data-native-cart-config>{"shipping":{"enabled":{{ settings.show_on_minicart_cart_page | json }},"threshold":{{ native_shipping_threshold | json }}},"gift":{"enabled":{{ settings.native_cart_auto_gift | json }},"threshold":{{ native_gift_threshold | json }},"variantId":{{ native_gift_variant.id | json }},"available":{{ native_gift_variant.available | json }}},"discount":{"enabled":{{ settings.native_cart_discount_milestone | json }},"threshold":{{ native_discount_threshold | json }},"label":{{ settings.native_cart_discount_label | default: 'Discount' | json }}}}</script>
   <div class="dm-cart-offers" data-native-cart-offers hidden>
     <p class="dm-cart-offer-message" data-native-cart-message aria-live="polite"></p>
     <div class="dm-cart-milestones" data-native-cart-milestones></div>
-    <button type="button" class="dm-cart-gift" data-native-cart-gift hidden>Choose your free gift</button>
   </div>
   <div class="dm-cart-scroll custom-scrollbar{% if cart.item_count == 0 %} dm-cart-scroll--empty{% endif %}">
     <form id="minicart" action="{{ routes.cart_url }}" method="post"{% if cart.item_count == 0 %} class="dm-cart-empty-form"{% endif %} novalidate>
       {% if cart.item_count > 0 %}
         <div class="minicart-body"><div class="items">
-          {% for item in cart.items %}{% render 'cart-item', item: item %}{% endfor %}
+          {% for item in cart.items %}{% render 'cart-item', item: item, native_cart: true %}{% endfor %}
         </div></div>
-        <button type="button" class="dm-cart-clear" data-native-cart-clear>Clear cart</button>
-        <div class="dm-cart-clear-confirm" data-native-cart-confirm hidden>
-          <p>Remove all items from your cart?</p>
-          <button type="button" data-native-cart-cancel>Cancel</button>
-          <button type="button" data-native-cart-clear-confirm>Yes, clear</button>
-        </div>
       {% else %}
         <div class="dm-cart-empty">
           <span class="dm-cart-empty-icon" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M5 7h14l1 14H4L5 7Z M8 8V6a4 4 0 0 1 8 0v2" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
@@ -58,11 +56,13 @@
   </div>
   {% if cart.item_count > 0 %}
     <div class="cart-footer dm-cart-footer">
-      <form class="dm-cart-coupon" data-native-cart-coupon>
-        <label class="visually-hidden" for="NativeCartDiscount">Discount code</label>
-        <input id="NativeCartDiscount" type="text" name="discount" autocomplete="off" placeholder="Enter discount code" maxlength="100">
-        <button type="submit">Apply</button>
-      </form>
+      {% if settings.enable_discount_code %}
+        <form class="dm-cart-coupon" data-native-cart-coupon>
+          <label class="visually-hidden" for="NativeCartDiscount">Discount code</label>
+          <input id="NativeCartDiscount" type="text" name="discount" autocomplete="off" placeholder="Enter discount code" maxlength="100">
+          <button type="submit">Apply</button>
+        </form>
+      {% endif %}
       <p class="dm-cart-feedback" data-native-cart-feedback role="status" aria-live="polite"></p>
       {% if cart.cart_level_discount_applications.size > 0 %}
         <ul class="dm-cart-discounts">
@@ -77,11 +77,7 @@
       {% if settings.show_check_box_in_cart %}
         <label class="dm-cart-terms"><input type="checkbox" name="conditions" data-native-cart-terms>{{ settings.text_terms_conditions }}</label>
       {% endif %}
-      {% if settings.goEnable %}
-        {% render 'gokwik-checkout' %}
-      {% else %}
-        <button type="submit" form="minicart" name="checkout" class="btn-primary dm-cart-checkout">Secure checkout</button>
-      {% endif %}
+      <button type="submit" form="minicart" name="checkout" class="btn-primary dm-cart-checkout">Secure checkout</button>
       <div class="dm-cart-payment" aria-label="Secure checkout"><span aria-hidden="true">&#128274;</span> Secure, protected checkout</div>
       <a class="dm-cart-view" href="{{ routes.cart_url }}">View cart</a>
     </div>

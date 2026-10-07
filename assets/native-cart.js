@@ -15,6 +15,7 @@
   let dirty = false;
   let recommendationController;
   let errorTimer;
+  let giftSyncing = false;
   const rootURL = window.Shopify?.routes?.root || '/';
   const money = (cents) => window.Shopify?.formatMoney
     ? Shopify.formatMoney(cents, window.cartStrings?.money_format || '₹ {{amount_no_decimals}}')
@@ -33,7 +34,7 @@
   };
   const busy = (value) => {
     panel.setAttribute('aria-busy', String(value));
-    panel.querySelectorAll('.quantity__button, input[name="updates[]"], .cart-remove, .dm-cart-clear, .dm-cart-coupon button, .gokwik-checkout button, .dm-cart-checkout, .dm-cart-recommendation button[name="add"]').forEach((node) => { node.disabled = value; });
+    panel.querySelectorAll('.quantity__button, input[name="updates[]"], .cart-remove, .dm-cart-coupon button, .dm-cart-checkout, .dm-cart-recommendation button[name="add"]').forEach((node) => { node.disabled = value; });
   };
   const render = (html) => {
     const node = new DOMParser().parseFromString(html, 'text/html').querySelector('#minicart-form');
@@ -137,25 +138,25 @@
     cart.close();
   }, { capture: true });
   document.querySelectorAll('.minicart__action').forEach((button) => button.addEventListener('click', () => cart.setActiveElement(button), { capture: true }));
-  // Remaining bundle/gift widgets can open the theme drawer through their existing API.
+  // Remaining bundle widgets can open the theme drawer through their existing API.
   window.openCrowdBuyCart = async () => {
     try { await cart.refreshNativeCart(); await cart.open(); } catch (failure) { error(failure.message); }
   };
-  const rules = () => window.STOREWIDE_RULES || {};
+  const drawerConfig = () => JSON.parse(content.querySelector('[data-native-cart-config]')?.textContent || '{}');
   const updateOffers = () => {
-    const config = rules();
+    const config = drawerConfig();
     const offers = content.querySelector('[data-native-cart-offers]');
     if (!offers || !state?.count) return;
     const milestones = [];
     const amount = state.subtotal / 100;
-    if (config.shipping?.enabled && !config.shipping.freeShippingForAll && config.shipping.freeShippingThreshold > 0) {
-      milestones.push({ threshold: Number(config.shipping.freeShippingThreshold), label: 'Free shipping' });
+    if (config.shipping?.enabled && config.shipping.threshold > 0) {
+      milestones.push({ threshold: Number(config.shipping.threshold), label: 'Free shipping' });
     }
-    for (const gift of config.gifts || []) {
-      if (gift.threshold > 0 && (config.giftMeasure || 'value') === 'value') milestones.push({ threshold: Number(gift.threshold), label: 'Free gift' });
+    if (config.gift?.enabled && config.gift.available && config.gift.variantId && config.gift.threshold > 0) {
+      milestones.push({ threshold: Number(config.gift.threshold), label: 'Free gift' });
     }
-    for (const discount of config.progressiveDiscounts || []) {
-      if (discount.threshold > 0 && (config.progressiveMeasure || 'value') === 'value') milestones.push({ threshold: Number(discount.threshold), label: discount.discountType === 'FIXED_AMOUNT' ? money(discount.discountValue * 100) + ' off' : discount.discountValue + '% off' });
+    if (config.discount?.enabled && config.discount.threshold > 0) {
+      milestones.push({ threshold: Number(config.discount.threshold), label: config.discount.label || 'Discount' });
     }
     milestones.sort((a, b) => a.threshold - b.threshold);
     const track = offers.querySelector('[data-native-cart-milestones]');
@@ -172,14 +173,50 @@
       ? `Add ${money((next.threshold - amount) * 100)} more to get ${next.label}`
       : 'Your offer milestones are unlocked';
     offers.hidden = milestones.length === 0;
-    const giftButton = offers.querySelector('[data-native-cart-gift]');
-    giftButton.hidden = !config.gifts?.some((gift) => amount >= gift.threshold && gift.giftOptions?.some((option) => option.variants?.some((variant) => variant.available)));
+  };
+  const itemProperty = (item, name) => {
+    if (!Array.isArray(item.properties)) return item.properties?.[name];
+    const property = item.properties.find((candidate) => Array.isArray(candidate) ? candidate[0] === name : candidate?.name === name);
+    return Array.isArray(property) ? property[1] : property?.value;
+  };
+  const syncAutomaticGifts = () => {
+    if (giftSyncing || !state?.items) return;
+    const gift = drawerConfig().gift || {};
+    const amount = state.subtotal / 100;
+    const variantId = String(gift.variantId || '');
+    const eligible = gift.enabled && gift.available && variantId && Number(gift.threshold) > 0 && Number(gift.threshold) <= amount;
+    const updates = {};
+    let hasGift = false;
+    for (const item of state.items) {
+      const ownGift = itemProperty(item, '_dm_auto_gift') === '1';
+      const legacyGift = itemProperty(item, '_gift_pick') === '1' && String(item.variantId) === variantId;
+      if (!ownGift && !legacyGift) continue;
+      if (eligible && !hasGift && String(item.variantId) === variantId && item.quantity === 1) hasGift = true;
+      else updates[item.key] = 0;
+    }
+    const additions = eligible && !hasGift ? [{
+      id: Number(variantId),
+      quantity: 1,
+      properties: {
+        _dm_auto_gift: '1',
+        _dm_gift_threshold: String(gift.threshold),
+        _gift_tier_id: `t${Number(gift.threshold)}`,
+        _gift_pick: '1'
+      }
+    }] : [];
+    if (!Object.keys(updates).length && !additions.length) return;
+    giftSyncing = true;
+    let sequence = Promise.resolve();
+    if (Object.keys(updates).length) sequence = sequence.then(() => mutate('cart/update.js', { updates }));
+    if (additions.length) sequence = sequence.then(() => mutate('cart/add.js', { items: additions }));
+    sequence.finally(() => { giftSyncing = false; });
   };
   const updateContent = () => {
     lastRender = Date.now();
     state = JSON.parse(content.querySelector('[data-native-cart-state]')?.textContent || '{}');
     document.querySelectorAll('.cart-count').forEach((node) => { node.textContent = node.classList.contains('cart-count-drawer') ? `(${state.count})` : String(state.count > 100 ? '~' : state.count); });
     updateOffers();
+    syncAutomaticGifts();
     const recommendation = content.querySelector('[data-native-cart-recommendations]');
     recommendationController?.abort();
     if (recommendation) {
@@ -196,34 +233,10 @@
   };
   new MutationObserver(updateContent).observe(content, { childList: true });
   updateContent();
-  window.addEventListener('load', updateOffers, { once: true });
-  const openGiftPicker = async () => {
-    const tier = rules().gifts?.find((gift) => state.subtotal / 100 >= gift.threshold && gift.giftOptions?.length);
-    if (!tier) return;
-    if (!window.CrowdBuyGiftPicker) {
-      const source = [...document.scripts].find((script) => script.src.includes('/bob-the-bundle-builder-') && script.src.includes('/assets/'));
-      if (!source) throw new Error('Please contact us for help choosing your gift.');
-      await new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = new URL('gift-picker.min.js', source.src).href;
-        script.onload = resolve;
-        script.onerror = () => { script.remove(); reject(new Error('Unable to load gift choices. Please try again.')); };
-        document.head.append(script);
-      });
-    }
-    let mount = panel.querySelector('.dm-cart-gift-mount');
-    if (!mount) { mount = document.createElement('div'); mount.className = 'dm-cart-gift-mount'; panel.append(mount); }
-    window.CrowdBuyGiftPicker?.open(tier, { mount, earned: true, source: 'storewide' });
-  };
-  cart.addEventListener('click', (event) => {
-    if (event.target.closest('[data-native-cart-clear]')) content.querySelector('[data-native-cart-confirm]').hidden = false;
-    if (event.target.closest('[data-native-cart-cancel]')) content.querySelector('[data-native-cart-confirm]').hidden = true;
-    if (event.target.closest('[data-native-cart-clear-confirm]')) mutate('cart/clear.js', {});
-    if (event.target.closest('[data-native-cart-gift]')) openGiftPicker().catch((failure) => error(failure.message));
-  });
+  window.addEventListener('load', () => { updateOffers(); syncAutomaticGifts(); }, { once: true });
   cart.addEventListener('click', (event) => {
     const terms = content.querySelector('[data-native-cart-terms]');
-    if (event.target.closest('.gokwik-checkout button, .dm-cart-checkout')) { if (terms && !terms.checked) { event.preventDefault(); event.stopImmediatePropagation(); error('Please accept the terms before checkout.'); terms.focus(); } else queueMicrotask(() => cart.close()); }
+    if (event.target.closest('.dm-cart-checkout')) { if (terms && !terms.checked) { event.preventDefault(); event.stopImmediatePropagation(); error('Please accept the terms before checkout.'); terms.focus(); } else queueMicrotask(() => cart.close()); }
   }, { capture: true });
   cart.addEventListener('submit', (event) => {
     if (!event.target.matches('[data-native-cart-coupon]')) return;
@@ -234,7 +247,7 @@
   });
   cart.addEventListener('keydown', (event) => {
     if (panel.getAttribute('aria-hidden') !== 'false') return;
-    if (event.key === 'Escape') { event.preventDefault(); const gift = panel.querySelector('.dm-cart-gift-mount'); if (gift?.children.length) { window.CrowdBuyGiftPicker?.close(); event.stopPropagation(); } else cart.close(); }
+    if (event.key === 'Escape') { event.preventDefault(); cart.close(); }
     if (event.key === 'Tab') {
       const focusable = [...panel.querySelectorAll('button, a[href], input, summary, [tabindex="0"]')].filter((node) => !node.disabled && node.getBoundingClientRect().width && !node.closest('[hidden]'));
       const first = focusable[0], last = focusable.at(-1);

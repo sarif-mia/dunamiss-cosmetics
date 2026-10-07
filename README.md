@@ -42,17 +42,21 @@ For changes, deploy only the reviewed files; after deployment, rerun the compari
 
 The storefront uses the theme-owned native drawer in `snippets/minicart.liquid`.
 Keep **Theme settings → Cart → Action after adding to cart** set to **Open drawer**
-and keep the BOB app cart drawer disabled. `assets/native-cart.js` extends the
+and keep any app-provided cart drawer disabled. `assets/native-cart.js` extends the
 theme's existing cart component and uses Shopify's locale-aware Ajax Cart API;
 `assets/native-cart.css` contains the drawer's scoped Dunamiss styling. The
 header and mobile cart controls are buttons, so a slow script load cannot send
 customers to `/cart`. The intentional **View cart** link remains available in
-the drawer.
+the drawer. The drawer does not read offer rules or cart state from an app.
 
-Quantity, remove, clear, coupon, recommendation add, offer progress and checkout
-entry all refresh from Shopify's returned cart state. The compatibility function
-`window.openCrowdBuyCart` lets remaining bundle and gift widgets open this native
-drawer without restoring the app drawer.
+Quantity, remove, coupon, recommendation add, offer progress and checkout entry
+all refresh from Shopify's returned cart state. Eligible storewide gifts are added
+automatically and removed if the qualifying subtotal is no longer met. Control free
+shipping, the gift product and threshold, the discount milestone, and discount-code
+visibility in **Theme settings → Cart**. Match gift and discount milestones with native
+automatic discounts under **Shopify Admin → Discounts**. The optional compatibility
+function `window.openCrowdBuyCart` lets an existing bundle widget open this drawer;
+the drawer works without that widget or its app.
 
 ## Store locator
 
