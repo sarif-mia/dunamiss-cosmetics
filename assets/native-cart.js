@@ -124,13 +124,13 @@
     const milestones = [];
     const amount = state.subtotal / 100;
     if (config.shipping?.enabled && !config.shipping.freeShippingForAll && config.shipping.freeShippingThreshold > 0) {
-      milestones.push({ threshold: Number(config.shipping.freeShippingThreshold), label: 'Free shipping', icon: '🚚', color: '#10b981' });
+      milestones.push({ threshold: Number(config.shipping.freeShippingThreshold), label: 'Free shipping' });
     }
     for (const gift of config.gifts || []) {
-      if (gift.threshold > 0 && (config.giftMeasure || 'value') === 'value') milestones.push({ threshold: Number(gift.threshold), label: 'Free gift', icon: '🎁', color: '#7d098c' });
+      if (gift.threshold > 0 && (config.giftMeasure || 'value') === 'value') milestones.push({ threshold: Number(gift.threshold), label: 'Free gift' });
     }
     for (const discount of config.progressiveDiscounts || []) {
-      if (discount.threshold > 0 && (config.progressiveMeasure || 'value') === 'value') milestones.push({ threshold: Number(discount.threshold), label: discount.discountType === 'FIXED_AMOUNT' ? money(discount.discountValue * 100) + ' off' : discount.discountValue + '% off', icon: '✦', color: '#7d098c' });
+      if (discount.threshold > 0 && (config.progressiveMeasure || 'value') === 'value') milestones.push({ threshold: Number(discount.threshold), label: discount.discountType === 'FIXED_AMOUNT' ? money(discount.discountValue * 100) + ' off' : discount.discountValue + '% off' });
     }
     milestones.sort((a, b) => a.threshold - b.threshold);
     const track = offers.querySelector('[data-native-cart-milestones]');
@@ -141,14 +141,6 @@
       const fill = document.createElement('span');
       fill.style.width = `${Math.min(100, amount / visibleMilestones.at(-1).threshold * 100)}%`;
       progress.append(fill); track.append(progress);
-      const labels = document.createElement('div'); labels.className = 'dm-cart-thresholds';
-      for (const milestone of visibleMilestones) {
-        const label = document.createElement('span');
-        label.dataset.reached = String(amount >= milestone.threshold);
-        label.textContent = `${milestone.label} ${money(milestone.threshold * 100)}`;
-        labels.append(label);
-      }
-      track.append(labels);
     }
     const next = milestones.find((milestone) => amount < milestone.threshold);
     offers.querySelector('[data-native-cart-message]').textContent = next
@@ -157,17 +149,6 @@
     offers.hidden = milestones.length === 0;
     const giftButton = offers.querySelector('[data-native-cart-gift]');
     giftButton.hidden = !config.gifts?.some((gift) => amount >= gift.threshold && gift.giftOptions?.some((option) => option.variants?.some((variant) => variant.available)));
-    const coupons = content.querySelector('[data-native-cart-coupons]');
-    if (coupons) {
-      const list = coupons.querySelector('[data-native-cart-coupon-list]');
-      list.replaceChildren();
-      for (const coupon of config.coupons || []) {
-        if (!coupon.code) continue;
-        const button = document.createElement('button'); button.type = 'button'; button.textContent = coupon.code; button.dataset.nativeCoupon = coupon.code;
-        list.append(button);
-      }
-      coupons.hidden = !list.children.length;
-    }
   };
   const updateContent = () => {
     lastRender = Date.now();
@@ -213,8 +194,6 @@
     if (event.target.closest('[data-native-cart-clear]')) content.querySelector('[data-native-cart-confirm]').hidden = false;
     if (event.target.closest('[data-native-cart-cancel]')) content.querySelector('[data-native-cart-confirm]').hidden = true;
     if (event.target.closest('[data-native-cart-clear-confirm]')) mutate('cart/clear.js', {});
-    const coupon = event.target.closest('[data-native-coupon]');
-    if (coupon) { content.querySelector('[name="discount"]').value = coupon.dataset.nativeCoupon; }
     if (event.target.closest('[data-native-cart-gift]')) openGiftPicker().catch((failure) => error(failure.message));
   });
   cart.addEventListener('click', (event) => {

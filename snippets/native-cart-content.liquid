@@ -64,9 +64,6 @@
         <button type="submit">Apply</button>
       </form>
       <p class="dm-cart-feedback" data-native-cart-feedback role="status" aria-live="polite"></p>
-      <details class="dm-cart-available-coupons" data-native-cart-coupons hidden>
-        <summary>Available offers</summary><div data-native-cart-coupon-list></div>
-      </details>
       {% if cart.cart_level_discount_applications.size > 0 %}
         <ul class="dm-cart-discounts">
           {% for discount in cart.cart_level_discount_applications %}
