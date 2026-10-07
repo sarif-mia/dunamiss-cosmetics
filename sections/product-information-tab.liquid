@@ -23,6 +23,7 @@
             {%- for block in section.blocks %}
               {% liquid
                 assign bk_st = block.settings
+                assign tab_heading = bk_st.title | downcase
                 assign hidden = ''
                 if block.type == 'custom_tab' and bk_st.tab_content == 'content_custom'
                   assign hidden = 'hidden'
@@ -43,7 +44,7 @@
                     tab-review-app
                   {%- endif -%}
                 >
-                  {{- bk_st.title -}}
+                  {% if tab_heading contains 'ingredient' %}Product Key Ingredients{% else %}{{- bk_st.title -}}{% endif %}
                   {%- if block.type == '@app' -%}
                     {{ 'products.product.review_app' | t }}
                   {%- endif -%}
@@ -82,7 +83,12 @@
                           {% if bk_st.content_rich == blank %}
                             No content available.
                           {% else %}
-                            {{ bk_st.content_rich }}
+                            {% assign tab_heading = bk_st.title | downcase %}
+                            {% if tab_heading contains 'ingredient' %}
+                              {% render 'product-ingredients-list', content: bk_st.content_rich %}
+                            {% else %}
+                              {{ bk_st.content_rich }}
+                            {% endif %}
                           {% endif %}
                         {%- when 'content_page' -%}
                           {%- if bk_st.page != blank -%}

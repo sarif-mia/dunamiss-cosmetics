@@ -19,7 +19,8 @@ npx @shopify/cli@latest theme check
 ```
 
 After editing `assets/brand-system.css`, `assets/add-to-cart-animation.css`, or
-`assets/storefront-improvements.css`, or `assets/storefront-typography.css`, run `python3 scripts/build-storefront-css.py`.
+`assets/storefront-improvements.css`, `assets/storefront-typography.css`, or
+`assets/product-ingredients.css`, run `python3 scripts/build-storefront-css.py`.
 The layout loads their generated `assets/storefront-bundle.css` in the same cascade order.
 
 `config/settings_data.json` is intentionally untracked because it contains store-specific configuration and the theme license. On a new checkout, obtain that file from the appropriate store theme or a trusted local copy before previewing. Shopify CLI state, credentials, generated audit reports, and rollback artifacts are also excluded.
@@ -45,6 +46,15 @@ Manage product names, HTML descriptions, search titles and meta descriptions in 
 The theme preserves product-image alt text and uses the product name when alt text is empty. Product structured data JSON-encodes GTINs, removes a spreadsheet apostrophe prefix, and emits only numeric identifiers with a valid check digit. Barcode values stored in Admin are unchanged.
 
 Assign each variant's image in Shopify Admin. The gallery uses these native associations to show the selected cream or shade and its related images. `content/product-variant-media.json` records the reviewed skincare cream image assignments; it does not override later Admin edits.
+
+Manage key ingredients in the native `custom.product_ingredients` metafield.
+Use one ingredient per line; numbered Markdown lists and `May Contain:` groups
+are formatted automatically. Put ingredient descriptions on the lines after
+the name and separate such groups with a blank line. For sets or creams with different formulas,
+start each component with `### Product or shade name` on its own line. The
+shared formatter preserves formula names and existing prose in both product
+layouts. Empty ingredient data stays hidden. `content/product-ingredients.json`
+records source-based ingredient additions and does not override later Admin edits.
 
 Organization structured data links to the published Shopify refund policy using Google's supported `merchantReturnLink` option. Edit the policy in **Settings → Policies**; its URL is read from Shopify. The theme does not infer return fees, delivery windows or credit-note validity from policy prose.
 

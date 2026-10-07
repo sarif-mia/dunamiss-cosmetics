@@ -1,0 +1,26 @@
+{%- liquid
+  assign ingredient_name = ingredient | strip
+  assign number_prefix = ingredient_name | split: '. ' | first
+  assign number_value = number_prefix | plus: 0
+  if number_value > 0 and number_prefix.size < 4
+    assign numbered_prefix = number_prefix | append: '. '
+    assign ingredient_name = ingredient_name | remove_first: numbered_prefix | strip
+  endif
+  assign bullet_prefix = ingredient_name | slice: 0, 2
+  if bullet_prefix == '- ' or bullet_prefix == '• '
+    assign ingredient_name = ingredient_name | remove_first: bullet_prefix | strip
+  endif
+  assign markdown_prefix = ingredient_name | slice: 0, 2
+  if markdown_prefix == '**'
+    assign ingredient_name = ingredient_name | remove: '**'
+  endif
+  assign ingredient_check = ingredient_name | downcase
+  assign ingredient_ending = ingredient_name | slice: -1, 1
+-%}
+{%- if ingredient_name != blank -%}
+  {%- if ingredient_ending == ':' -%}
+    <li class="product-ingredients-group"><h4>{{ ingredient_name | escape_once }}</h4></li>
+  {%- else -%}
+    <li class="product-ingredients-item">{{ ingredient_name | escape_once }}</li>
+  {%- endif -%}
+{%- endif -%}

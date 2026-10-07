@@ -1074,7 +1074,7 @@
               class="bls-toggle {% if block_st.open == true %} active {% endif %} relative border-bottom block{% if enable_skeleton_loading %} skeleton-loading{% endif %}"
             >
               <h3 class="h6 my-0 pointer py-17 relative collapsible-heading heading-letter-spacing">
-                {{- block_st.heading }}
+                {% if accordion_heading_check contains 'ingredient' %}Product Key Ingredients{% else %}{{- block_st.heading }}{% endif %}
                 <span class="open-children-toggle absolute inset-0 flex flex-end pointer">
                   <span class="icon_plus-animation"> </span>
                 </span>

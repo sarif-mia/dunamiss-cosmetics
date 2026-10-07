@@ -1,0 +1,535 @@
+{
+  "date": "2026-10-07",
+  "store": "cfe991.myshopify.com",
+  "source_of_truth": "Shopify native custom.product_ingredients metafield; this is a review snapshot, not a theme override",
+  "scope": "35 empty active-product fields filled from existing matching product/shade data or same-product descriptions/Science Breakdown",
+  "matching": "User approved product family and exact shade matching where SKU fields were empty",
+  "products": [
+    {
+      "handle": "coral-spark",
+      "product_id": 9065015836907,
+      "title": "Dunamiss Lip Gloss | Coral Spark",
+      "metafield": "custom.product_ingredients",
+      "value": "Hydrogenated Castor Oil\nCaprylic/Capric Triglycerides\nVolutio\nPeppermint Oil\nCapsaicin\nVitamin E (Tocopherol Acetate)",
+      "source_type": "existing same-product Science Breakdown",
+      "source_products": [],
+      "matching_evidence": "Existing Science Breakdown on this same product; tag lipgloss"
+    },
+    {
+      "handle": "diamond-sin",
+      "product_id": 9065042837739,
+      "title": "Dunamiss Lip Gloss | Diamond Sin",
+      "metafield": "custom.product_ingredients",
+      "value": "Hydrogenated Castor Oil\nCaprylic/Capric Triglycerides\nVolutio\nPeppermint Oil\nCapsaicin\nVitamin E (Tocopherol Acetate)",
+      "source_type": "existing same-product Science Breakdown",
+      "source_products": [],
+      "matching_evidence": "Existing Science Breakdown on this same product; tag lipgloss"
+    },
+    {
+      "handle": "plum-drip",
+      "product_id": 9065046507755,
+      "title": "Dunamiss Lip Gloss | Plum Drip",
+      "metafield": "custom.product_ingredients",
+      "value": "Hydrogenated Castor Oil\nCaprylic/Capric Triglycerides\nVolutio\nPeppermint Oil\nCapsaicin\nVitamin E (Tocopherol Acetate)",
+      "source_type": "existing same-product Science Breakdown",
+      "source_products": [],
+      "matching_evidence": "Existing Science Breakdown on this same product; tag lipgloss"
+    },
+    {
+      "handle": "amber-frost",
+      "product_id": 9066925785323,
+      "title": "Dunamiss Lip Gloss | Amber Frost",
+      "metafield": "custom.product_ingredients",
+      "value": "Hydrogenated Castor Oil\nCaprylic/Capric Triglycerides\nVolutio\nPeppermint Oil\nCapsaicin\nVitamin E (Tocopherol Acetate)",
+      "source_type": "existing same-product Science Breakdown",
+      "source_products": [],
+      "matching_evidence": "Existing Science Breakdown on this same product; tag lipgloss"
+    },
+    {
+      "handle": "mocha-fudge",
+      "product_id": 9066925981931,
+      "title": "Dunamiss Lip Gloss | Mocha Fudge",
+      "metafield": "custom.product_ingredients",
+      "value": "Hydrogenated Castor Oil\nCaprylic/Capric Triglycerides\nVolutio\nPeppermint Oil\nCapsaicin\nVitamin E (Tocopherol Acetate)",
+      "source_type": "existing same-product Science Breakdown",
+      "source_products": [],
+      "matching_evidence": "Existing Science Breakdown on this same product; tag lipgloss"
+    },
+    {
+      "handle": "rose-gleam",
+      "product_id": 9066926113003,
+      "title": "Dunamiss Lip Gloss | Rose Gleam",
+      "metafield": "custom.product_ingredients",
+      "value": "Hydrogenated Castor Oil\nCaprylic/Capric Triglycerides\nVolutio\nPeppermint Oil\nCapsaicin\nVitamin E (Tocopherol Acetate)",
+      "source_type": "existing same-product Science Breakdown",
+      "source_products": [],
+      "matching_evidence": "Existing Science Breakdown on this same product; tag lipgloss"
+    },
+    {
+      "handle": "aqua-silk-the-future-of-luxury-body-care",
+      "product_id": 9781019148523,
+      "title": "Dunacare Aqua Silk Body Wash",
+      "metafield": "custom.product_ingredients",
+      "value": "Hyaluronic Acid\nAloe Vera\nNiacinamide\nVitamin E\nSea Cucumber\nSeaweed",
+      "source_type": "existing same-product Science Breakdown",
+      "source_products": [],
+      "matching_evidence": "Existing Science Breakdown on this same product; tag aquasilk"
+    },
+    {
+      "handle": "dunamiss-lip-gloss",
+      "product_id": 9898932895979,
+      "title": "Dunamiss Lip Gloss",
+      "metafield": "custom.product_ingredients",
+      "value": "Hydrogenated Castor Oil\nCaprylic/Capric Triglycerides\nVolutio\nPeppermint Oil\nCapsaicin\nVitamin E (Tocopherol Acetate)",
+      "source_type": "existing same-product Science Breakdown",
+      "source_products": [],
+      "matching_evidence": "Existing Science Breakdown on this same product; tag lipgloss"
+    },
+    {
+      "handle": "dunamiss-lip-oil",
+      "product_id": 9364880031979,
+      "title": "Dunamiss Lip Glow Oil",
+      "metafield": "custom.product_ingredients",
+      "value": "Peptides  \nCupuacu  \nBabassu  \nOctyl Palmitate  \nOleaeuropea Fruit Oil  \nRicinus Communis  \nCaprylic Capric Triglyceride  \nFragrance  \nMica  \nCI 14190  ,CI 45380  ,CI 73360  ,CI 77163  ,CI 17200  ,CI 45370",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "dunamiss-lip-glow-oil-maria-mauve-magic",
+        "dunamiss-lip-glow-oil-liliana-soft-tint",
+        "dunamiss-lip-glow-oil-rosita-plumping-shine",
+        "dunamiss-lip-glow-oil-ramona-gloss-hydration",
+        "dunamiss-lip-glow-oil-bonita-hydrating-tint-gloss"
+      ],
+      "matching_evidence": "Same lip oil family and its five matching shades; identical source formulas"
+    },
+    {
+      "handle": "dunamiss-satin-lipstick",
+      "product_id": 9382139429099,
+      "title": "Dunamiss Satin Lipstick",
+      "metafield": "custom.product_ingredients",
+      "value": "Cerifera (Cadelilia Wax / Candelilia / Cire De Candelilia)\nOzokerite\nCopernicia Prunifera (Carnauba Wax)\nCetyl Alcohol\nNatural Fragrance\nKojic Acid\nHyaluronic Acid\nKaolin\nButyrospermum Parkii (Shea Butter)\nSimmondsia Chinensis (Jojoba Oil)\nPrunus Amygdalus Dulcis (Almond Oil)\nRicinus Communis (Castor Oil)\nTocopherol\nIsopropyl Myristate\nPongamia Pinnata Seed Extract\nVanilla Planifolia Fruit\nCaprylic/Triglyceride",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "lucia-soft-rose-satin-lipstick",
+        "carla-cinnamon-brown-satin-lipstick",
+        "dona-red-sheen-satin-lipstick",
+        "camilla-soft-fuschia-natural-lipstick",
+        "matilda-deep-mauve-satin-matte-lipstick",
+        "sophia-plum-sheen-satin-lipstick"
+      ],
+      "matching_evidence": "Six current satin shades match six existing shade listings"
+    },
+    {
+      "handle": "dunamiss-liquid-lipstick",
+      "product_id": 9899922850027,
+      "title": "Dunamiss Matte Liquid Lipstick",
+      "metafield": "custom.product_ingredients",
+      "value": "Enriched with Enzymatic Hyaluronic Active, Jojoba Seed Oil, Organic Apricot Kernel Oil, Passion Fruit Oil, and Vitamin E (Tocopheryl Acetate), Dunamiss Liquid Lipstick helps keep lips hydrated, nourished, and comfortable throughout the day. These skin-loving ingredients work together to moisturize, condition, and protect lips from dryness while promoting a soft, smooth appearance. The formula is further enhanced with Dimethicone for a silky-smooth application, Trimethylsiloxysilicate for long-lasting, smudge-resistant wear, and Silica for a lightweight, soft-matte finish, delivering intense color payoff with all-day comfort.",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "divine-wine-matte-lipstick",
+        "rosewood-nude-liquid-lipsticks",
+        "coco-latte-liquid-lipstick",
+        "rose-play-liquid-lipstick"
+      ],
+      "matching_evidence": "Current Divine Wine/Rosewood/Coco/Rose Play shades match existing liquid lipstick listings"
+    },
+    {
+      "handle": "everyday-peptide-lip-oils-set-of-3",
+      "product_id": 9118157963499,
+      "title": "Dunamiss Lip Glow Oil Trio | Choose Your Shades",
+      "metafield": "custom.product_ingredients",
+      "value": "Peptides  \nCupuacu  \nBabassu  \nOctyl Palmitate  \nOleaeuropea Fruit Oil  \nRicinus Communis  \nCaprylic Capric Triglyceride  \nFragrance  \nMica  \nCI 14190  ,CI 45380  ,CI 73360  ,CI 77163  ,CI 17200  ,CI 45370",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "dunamiss-lip-glow-oil-rosita-plumping-shine",
+        "dunamiss-lip-glow-oil-bonita-hydrating-tint-gloss",
+        "dunamiss-lip-glow-oil-liliana-soft-tint",
+        "dunamiss-lip-glow-oil-maria-mauve-magic",
+        "dunamiss-lip-glow-oil-cosmo-nourishing-shine"
+      ],
+      "matching_evidence": "Lip oil sets use the same existing lip oil shades; source formulas identical"
+    },
+    {
+      "handle": "festive-peptide-lip-oil-set-of-3",
+      "product_id": 9118151868651,
+      "title": "Dunamiss Festive Lip Glow Oil Trio",
+      "metafield": "custom.product_ingredients",
+      "value": "Peptides  \nCupuacu  \nBabassu  \nOctyl Palmitate  \nOleaeuropea Fruit Oil  \nRicinus Communis  \nCaprylic Capric Triglyceride  \nFragrance  \nMica  \nCI 14190  ,CI 45380  ,CI 73360  ,CI 77163  ,CI 17200  ,CI 45370",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "dunamiss-lip-glow-oil-rosita-plumping-shine",
+        "dunamiss-lip-glow-oil-bonita-hydrating-tint-gloss",
+        "dunamiss-lip-glow-oil-liliana-soft-tint",
+        "dunamiss-lip-glow-oil-maria-mauve-magic",
+        "dunamiss-lip-glow-oil-cosmo-nourishing-shine"
+      ],
+      "matching_evidence": "Lip oil sets use the same existing lip oil shades; source formulas identical"
+    },
+    {
+      "handle": "nail-paints-pack-of-2-combo",
+      "product_id": 9108119617771,
+      "title": "Dunamiss Nail Polish Duo | Candy Cloud & Pearl Glow",
+      "metafield": "custom.product_ingredients",
+      "value": "1. **Ethyl Acetate**  \n2. **Butyl Acetate**  \n3. **Non-settling Gel**  \n4. **Nitrocellulose**  \n5. **Resin**  \n6. **Acetyl Tributyl Citrate**  \n7. **Benzophenone-3**  \n8. **Tocopherol Acetate**  \n9. **Biotin**  \n10. **Simmondsia Chinensis (Jojoba) Seed Oil**  \n11. **May Contain:**  \n   - Maroon (C.I. 15880:1)  \n   - Lake of Brilliant Blue (C.I. 42090:1)  \n   - Titanium Dioxide (C.I. 77891)  \n   - Lithol Rubin B (C.I. 15850:1)  \n   - Black D&C (C.I. 77266)  \n   - Tartrazine Yellow (C.I. 19140)  \n   - Mica",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "candy-cloud",
+        "pearl-glow"
+      ],
+      "matching_evidence": "Named nail-polish shades in this set; preserve existing formula and optional pigments"
+    },
+    {
+      "handle": "nail-paints-pack-of-6-combo",
+      "product_id": 9108120699115,
+      "title": "Dunamiss Nail Polish Set | Pack of 6",
+      "metafield": "custom.product_ingredients",
+      "value": "1. **Ethyl Acetate**  \n2. **Butyl Acetate**  \n3. **Non-settling Gel**  \n4. **Nitrocellulose**  \n5. **Resin**  \n6. **Acetyl Tributyl Citrate**  \n7. **Benzophenone-3**  \n8. **Tocopherol Acetate**  \n9. **Biotin**  \n10. **Simmondsia Chinensis (Jojoba) Seed Oil**  \n11. **May Contain:**  \n   - Maroon (C.I. 15880:1)  \n   - Lake of Brilliant Blue (C.I. 42090:1)  \n   - Titanium Dioxide (C.I. 77891)  \n   - Lithol Rubin B (C.I. 15850:1)  \n   - Black D&C (C.I. 77266)  \n   - Tartrazine Yellow (C.I. 19140)  \n   - Mica",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "dunamiss-nail-paint-blush-pop",
+        "candy-cloud",
+        "cocoa-rush",
+        "nude-muse",
+        "pearl-glow",
+        "sky-babe",
+        "sunny-side",
+        "berry-mood",
+        "mocha-glow",
+        "rust-rose",
+        "starry-night",
+        "wine-o-clock",
+        "dunamiss-nail-paint-color"
+      ],
+      "matching_evidence": "Named nail-polish shades in this set; preserve existing formula and optional pigments"
+    },
+    {
+      "handle": "nail-paints-pack-of-3-combo-1",
+      "product_id": 9203865452779,
+      "title": "Dunamiss Nail Polish Trio | Candy Cloud, Mocha Glow & Pearl Glow",
+      "metafield": "custom.product_ingredients",
+      "value": "1. **Ethyl Acetate**  \n2. **Butyl Acetate**  \n3. **Non-settling Gel**  \n4. **Nitrocellulose**  \n5. **Resin**  \n6. **Acetyl Tributyl Citrate**  \n7. **Benzophenone-3**  \n8. **Tocopherol Acetate**  \n9. **Biotin**  \n10. **Simmondsia Chinensis (Jojoba) Seed Oil**  \n11. **May Contain:**  \n   - Maroon (C.I. 15880:1)  \n   - Lake of Brilliant Blue (C.I. 42090:1)  \n   - Titanium Dioxide (C.I. 77891)  \n   - Lithol Rubin B (C.I. 15850:1)  \n   - Black D&C (C.I. 77266)  \n   - Tartrazine Yellow (C.I. 19140)  \n   - Mica",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "candy-cloud",
+        "pearl-glow",
+        "mocha-glow"
+      ],
+      "matching_evidence": "Named nail-polish shades in this set; preserve existing formula and optional pigments"
+    },
+    {
+      "handle": "nail-paints-pack-of-3-combo-2",
+      "product_id": 9203867058411,
+      "title": "Dunamiss Nail Polish Trio | Nude Muse, Sunny Side & Wine O’Clock",
+      "metafield": "custom.product_ingredients",
+      "value": "1. **Ethyl Acetate**  \n2. **Butyl Acetate**  \n3. **Non-settling Gel**  \n4. **Nitrocellulose**  \n5. **Resin**  \n6. **Acetyl Tributyl Citrate**  \n7. **Benzophenone-3**  \n8. **Tocopherol Acetate**  \n9. **Biotin**  \n10. **Simmondsia Chinensis (Jojoba) Seed Oil**  \n11. **May Contain:**  \n   - Maroon (C.I. 15880:1)  \n   - Lake of Brilliant Blue (C.I. 42090:1)  \n   - Titanium Dioxide (C.I. 77891)  \n   - Lithol Rubin B (C.I. 15850:1)  \n   - Black D&C (C.I. 77266)  \n   - Tartrazine Yellow (C.I. 19140)  \n   - Mica",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "nude-muse",
+        "sunny-side"
+      ],
+      "matching_evidence": "Named nail-polish shades in this set; preserve existing formula and optional pigments"
+    },
+    {
+      "handle": "nail-paints-pack-of-3-combo-3",
+      "product_id": 9203884228843,
+      "title": "Dunamiss Nail Polish Trio | Candy Cloud, Sunny Side & Sky Babe",
+      "metafield": "custom.product_ingredients",
+      "value": "1. **Ethyl Acetate**  \n2. **Butyl Acetate**  \n3. **Non-settling Gel**  \n4. **Nitrocellulose**  \n5. **Resin**  \n6. **Acetyl Tributyl Citrate**  \n7. **Benzophenone-3**  \n8. **Tocopherol Acetate**  \n9. **Biotin**  \n10. **Simmondsia Chinensis (Jojoba) Seed Oil**  \n11. **May Contain:**  \n   - Maroon (C.I. 15880:1)  \n   - Lake of Brilliant Blue (C.I. 42090:1)  \n   - Titanium Dioxide (C.I. 77891)  \n   - Lithol Rubin B (C.I. 15850:1)  \n   - Black D&C (C.I. 77266)  \n   - Tartrazine Yellow (C.I. 19140)  \n   - Mica",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "candy-cloud",
+        "sky-babe",
+        "sunny-side"
+      ],
+      "matching_evidence": "Named nail-polish shades in this set; preserve existing formula and optional pigments"
+    },
+    {
+      "handle": "nail-paints-pack-of-2-combo-1",
+      "product_id": 9204432470251,
+      "title": "Dunamiss Nail Polish Duo | Nude Muse & Wine O’Clock",
+      "metafield": "custom.product_ingredients",
+      "value": "1. **Ethyl Acetate**  \n2. **Butyl Acetate**  \n3. **Non-settling Gel**  \n4. **Nitrocellulose**  \n5. **Resin**  \n6. **Acetyl Tributyl Citrate**  \n7. **Benzophenone-3**  \n8. **Tocopherol Acetate**  \n9. **Biotin**  \n10. **Simmondsia Chinensis (Jojoba) Seed Oil**  \n11. **May Contain:**  \n   - Maroon (C.I. 15880:1)  \n   - Lake of Brilliant Blue (C.I. 42090:1)  \n   - Titanium Dioxide (C.I. 77891)  \n   - Lithol Rubin B (C.I. 15850:1)  \n   - Black D&C (C.I. 77266)  \n   - Tartrazine Yellow (C.I. 19140)  \n   - Mica",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "nude-muse"
+      ],
+      "matching_evidence": "Named nail-polish shades in this set; preserve existing formula and optional pigments"
+    },
+    {
+      "handle": "nail-paints-pack-of-2-combo-2",
+      "product_id": 9204432634091,
+      "title": "Dunamiss Nail Polish Duo | Candy Cloud & Sky Babe",
+      "metafield": "custom.product_ingredients",
+      "value": "1. **Ethyl Acetate**  \n2. **Butyl Acetate**  \n3. **Non-settling Gel**  \n4. **Nitrocellulose**  \n5. **Resin**  \n6. **Acetyl Tributyl Citrate**  \n7. **Benzophenone-3**  \n8. **Tocopherol Acetate**  \n9. **Biotin**  \n10. **Simmondsia Chinensis (Jojoba) Seed Oil**  \n11. **May Contain:**  \n   - Maroon (C.I. 15880:1)  \n   - Lake of Brilliant Blue (C.I. 42090:1)  \n   - Titanium Dioxide (C.I. 77891)  \n   - Lithol Rubin B (C.I. 15850:1)  \n   - Black D&C (C.I. 77266)  \n   - Tartrazine Yellow (C.I. 19140)  \n   - Mica",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "candy-cloud",
+        "sky-babe"
+      ],
+      "matching_evidence": "Named nail-polish shades in this set; preserve existing formula and optional pigments"
+    },
+    {
+      "handle": "nail-paints-pack-of-2-combo-3",
+      "product_id": 9204432699627,
+      "title": "Dunamiss Nail Polish Duo | Nude Muse & Berry Mood",
+      "metafield": "custom.product_ingredients",
+      "value": "1. **Ethyl Acetate**  \n2. **Butyl Acetate**  \n3. **Non-settling Gel**  \n4. **Nitrocellulose**  \n5. **Resin**  \n6. **Acetyl Tributyl Citrate**  \n7. **Benzophenone-3**  \n8. **Tocopherol Acetate**  \n9. **Biotin**  \n10. **Simmondsia Chinensis (Jojoba) Seed Oil**  \n11. **May Contain:**  \n   - Maroon (C.I. 15880:1)  \n   - Lake of Brilliant Blue (C.I. 42090:1)  \n   - Titanium Dioxide (C.I. 77891)  \n   - Lithol Rubin B (C.I. 15850:1)  \n   - Black D&C (C.I. 77266)  \n   - Tartrazine Yellow (C.I. 19140)  \n   - Mica",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "nude-muse",
+        "berry-mood"
+      ],
+      "matching_evidence": "Named nail-polish shades in this set; preserve existing formula and optional pigments"
+    },
+    {
+      "handle": "nail-paints-pack-of-2-combo-4",
+      "product_id": 9204432929003,
+      "title": "Dunamiss Nail Polish Duo | Pearl Glow & Berry Mood",
+      "metafield": "custom.product_ingredients",
+      "value": "1. **Ethyl Acetate**  \n2. **Butyl Acetate**  \n3. **Non-settling Gel**  \n4. **Nitrocellulose**  \n5. **Resin**  \n6. **Acetyl Tributyl Citrate**  \n7. **Benzophenone-3**  \n8. **Tocopherol Acetate**  \n9. **Biotin**  \n10. **Simmondsia Chinensis (Jojoba) Seed Oil**  \n11. **May Contain:**  \n   - Maroon (C.I. 15880:1)  \n   - Lake of Brilliant Blue (C.I. 42090:1)  \n   - Titanium Dioxide (C.I. 77891)  \n   - Lithol Rubin B (C.I. 15850:1)  \n   - Black D&C (C.I. 77266)  \n   - Tartrazine Yellow (C.I. 19140)  \n   - Mica",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "pearl-glow",
+        "berry-mood"
+      ],
+      "matching_evidence": "Named nail-polish shades in this set; preserve existing formula and optional pigments"
+    },
+    {
+      "handle": "nail-paints-pack-of-2-combo-5",
+      "product_id": 9204433027307,
+      "title": "Dunamiss Nail Polish Duo | Candy Cloud & Mocha Glow",
+      "metafield": "custom.product_ingredients",
+      "value": "1. **Ethyl Acetate**  \n2. **Butyl Acetate**  \n3. **Non-settling Gel**  \n4. **Nitrocellulose**  \n5. **Resin**  \n6. **Acetyl Tributyl Citrate**  \n7. **Benzophenone-3**  \n8. **Tocopherol Acetate**  \n9. **Biotin**  \n10. **Simmondsia Chinensis (Jojoba) Seed Oil**  \n11. **May Contain:**  \n   - Maroon (C.I. 15880:1)  \n   - Lake of Brilliant Blue (C.I. 42090:1)  \n   - Titanium Dioxide (C.I. 77891)  \n   - Lithol Rubin B (C.I. 15850:1)  \n   - Black D&C (C.I. 77266)  \n   - Tartrazine Yellow (C.I. 19140)  \n   - Mica",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "candy-cloud",
+        "mocha-glow"
+      ],
+      "matching_evidence": "Named nail-polish shades in this set; preserve existing formula and optional pigments"
+    },
+    {
+      "handle": "nail-paints-pack-of-2-combo-6",
+      "product_id": 9204433453291,
+      "title": "Dunamiss Nail Polish Duo | Sunny Side & Sky Babe",
+      "metafield": "custom.product_ingredients",
+      "value": "1. **Ethyl Acetate**  \n2. **Butyl Acetate**  \n3. **Non-settling Gel**  \n4. **Nitrocellulose**  \n5. **Resin**  \n6. **Acetyl Tributyl Citrate**  \n7. **Benzophenone-3**  \n8. **Tocopherol Acetate**  \n9. **Biotin**  \n10. **Simmondsia Chinensis (Jojoba) Seed Oil**  \n11. **May Contain:**  \n   - Maroon (C.I. 15880:1)  \n   - Lake of Brilliant Blue (C.I. 42090:1)  \n   - Titanium Dioxide (C.I. 77891)  \n   - Lithol Rubin B (C.I. 15850:1)  \n   - Black D&C (C.I. 77266)  \n   - Tartrazine Yellow (C.I. 19140)  \n   - Mica",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "sky-babe",
+        "sunny-side"
+      ],
+      "matching_evidence": "Named nail-polish shades in this set; preserve existing formula and optional pigments"
+    },
+    {
+      "handle": "nail-paints-pack-of-2-combo-7",
+      "product_id": 9204433551595,
+      "title": "Dunamiss Nail Polish Duo | Sunny Side & Berry Mood",
+      "metafield": "custom.product_ingredients",
+      "value": "1. **Ethyl Acetate**  \n2. **Butyl Acetate**  \n3. **Non-settling Gel**  \n4. **Nitrocellulose**  \n5. **Resin**  \n6. **Acetyl Tributyl Citrate**  \n7. **Benzophenone-3**  \n8. **Tocopherol Acetate**  \n9. **Biotin**  \n10. **Simmondsia Chinensis (Jojoba) Seed Oil**  \n11. **May Contain:**  \n   - Maroon (C.I. 15880:1)  \n   - Lake of Brilliant Blue (C.I. 42090:1)  \n   - Titanium Dioxide (C.I. 77891)  \n   - Lithol Rubin B (C.I. 15850:1)  \n   - Black D&C (C.I. 77266)  \n   - Tartrazine Yellow (C.I. 19140)  \n   - Mica",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "sunny-side",
+        "berry-mood"
+      ],
+      "matching_evidence": "Named nail-polish shades in this set; preserve existing formula and optional pigments"
+    },
+    {
+      "handle": "nail-pack-of-12",
+      "product_id": 9904108798187,
+      "title": "Dunamiss Nail Polish Set | Pack of 12",
+      "metafield": "custom.product_ingredients",
+      "value": "1. **Ethyl Acetate**  \n2. **Butyl Acetate**  \n3. **Non-settling Gel**  \n4. **Nitrocellulose**  \n5. **Resin**  \n6. **Acetyl Tributyl Citrate**  \n7. **Benzophenone-3**  \n8. **Tocopherol Acetate**  \n9. **Biotin**  \n10. **Simmondsia Chinensis (Jojoba) Seed Oil**  \n11. **May Contain:**  \n   - Maroon (C.I. 15880:1)  \n   - Lake of Brilliant Blue (C.I. 42090:1)  \n   - Titanium Dioxide (C.I. 77891)  \n   - Lithol Rubin B (C.I. 15850:1)  \n   - Black D&C (C.I. 77266)  \n   - Tartrazine Yellow (C.I. 19140)  \n   - Mica",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "dunamiss-nail-paint-blush-pop",
+        "candy-cloud",
+        "cocoa-rush",
+        "nude-muse",
+        "pearl-glow",
+        "sky-babe",
+        "sunny-side",
+        "berry-mood",
+        "mocha-glow",
+        "rust-rose",
+        "starry-night",
+        "wine-o-clock",
+        "dunamiss-nail-paint-color"
+      ],
+      "matching_evidence": "Named nail-polish shades in this set; preserve existing formula and optional pigments"
+    },
+    {
+      "handle": "sheet-mask-pack-of-5",
+      "product_id": 9151747588331,
+      "title": "Dunamiss Hyaluronic Acid & Peptide Sheet Masks | Pack of 5",
+      "metafield": "custom.product_ingredients",
+      "value": "Give your skin an instant glow boost with the Dunamiss Sheet Mask, infused with Copper Tripeptide and Acetyl Hexapeptide-8 for smoother-looking skin, and Sodium Hyaluronate & Glycerin for deep hydration. With soothing Allantoin and Zinc PCA, it leaves your skin feeling fresh, plump, and radiant in just minutes.",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "sheet-mask-hyaluronic-peptide-rich"
+      ],
+      "matching_evidence": "Multipack of the same sheet mask"
+    },
+    {
+      "handle": "glow-set-of-2-hydrating-sunscreen-mists",
+      "product_id": 9202860949739,
+      "title": "Dunamiss Hydra Glow Sunscreen Mist SPF 30 PA++ Duo",
+      "metafield": "custom.product_ingredients",
+      "value": "Enriched with Niacinamide, Sodium Hyaluronate, Glycerin, Trehalose, Urea, Allantoin, Sodium PCA, Serine, Tropaeolum Majus Flower Extract, and Laminaria Digitata Extract, the formula is complemented by Aqua, Pentylene Glycol, Glycereth-26, Homosalate, Benzophenone-4, PEG-40 Hydrogenated Castor Oil, PPG-26-Buteth-26, Caprylyl Glycol, Pullulan, Phenoxyethanol, Citric Acid, Ethylhexylglycerin, Sodium Gluconate, and Fragrance to create a lightweight, refreshing skincare mist designed to leave the skin feeling hydrated, fresh, and comfortable.",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "hydra-glow-spf-mist"
+      ],
+      "matching_evidence": "Duo of the same sunscreen mist"
+    },
+    {
+      "handle": "glimmer-lip-balm-combo-spf-20",
+      "product_id": 9898814701803,
+      "title": "Dunamiss Glimmer Lip Balm SPF 20 Duo",
+      "metafield": "custom.product_ingredients",
+      "value": "Cocos Nucifera (Coconut) Oil  \nPrunus Amygdalus Dulcis (Sweet Almond) Oil  \nRicinus Communis (Castor) Seed Oil  \nMangifera Indica (Mango) Seed Butter  \nButyrospermum Parkii (Shea) Butter  \nEuphorbia Cerifera (Candelilla) Wax  \nMicrocrystalline Wax  \nTocopherol Acetate  \nMay Contain: Red Iron Oxide CI 77491  \nTitanium Dioxide CI 77891  \nRed 6 CI 15850  \nBrilliant Blue CI 42090  \nYellow Iron Oxide CI 77492  \nBlack Iron Oxide CI 77499  \nMica (and) Titanium Dioxide (and) Iron Oxides",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "dunamiss-glimmer-lip-balm-rose-spark-tinted-moisturizing-shine",
+        "dunamiss-glimmer-lip-balm-hazel-glitter-shimmer-nourish-finish"
+      ],
+      "matching_evidence": "Same SPF20 Rose Spark/Hazel Glitter products in this duo"
+    },
+    {
+      "handle": "tinted-lip-balm-combo-spf-20",
+      "product_id": 9898821058795,
+      "title": "Dunamiss Tinted Lip Balm SPF 20 Duo",
+      "metafield": "custom.product_ingredients",
+      "value": "Shea Butter, Cocoa Butter, Coconut oil, Castor oil,  Vitamin E, Kojic acid,EGF, Sea Buckthorn,Passionfruit",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "mocha-kiss-tinted-lip-balm-spf20",
+        "gimme-red-tinted-lip-balm-spf20"
+      ],
+      "matching_evidence": "Same SPF20 Mocha Kiss/Gimme Red products, excluding older non-SPF formulas"
+    },
+    {
+      "handle": "glow-set-spf-glow-mist-sheet-mask",
+      "product_id": 9118159143147,
+      "title": "Dunamiss Glow Set | Sunscreen Mist & Sheet Mask",
+      "metafield": "custom.product_ingredients",
+      "value": "### Dunamiss Hydra Glow Sunscreen Mist SPF 30 PA++\nEnriched with Niacinamide, Sodium Hyaluronate, Glycerin, Trehalose, Urea, Allantoin, Sodium PCA, Serine, Tropaeolum Majus Flower Extract, and Laminaria Digitata Extract, the formula is complemented by Aqua, Pentylene Glycol, Glycereth-26, Homosalate, Benzophenone-4, PEG-40 Hydrogenated Castor Oil, PPG-26-Buteth-26, Caprylyl Glycol, Pullulan, Phenoxyethanol, Citric Acid, Ethylhexylglycerin, Sodium Gluconate, and Fragrance to create a lightweight, refreshing skincare mist designed to leave the skin feeling hydrated, fresh, and comfortable.\n\n### Dunamiss Hyaluronic Acid & Peptide Sheet Mask\nGive your skin an instant glow boost with the Dunamiss Sheet Mask, infused with Copper Tripeptide and Acetyl Hexapeptide-8 for smoother-looking skin, and Sodium Hyaluronate & Glycerin for deep hydration. With soothing Allantoin and Zinc PCA, it leaves your skin feeling fresh, plump, and radiant in just minutes.",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "hydra-glow-spf-mist",
+        "sheet-mask-hyaluronic-peptide-rich"
+      ],
+      "matching_evidence": "Two named existing products; keep each formula under its own product heading"
+    },
+    {
+      "handle": "black-brown-kajal-eyeliner-eye-balm",
+      "product_id": 9898813325547,
+      "title": "Dunamiss Eye Care & Makeup Set | 4 Products",
+      "metafield": "custom.product_ingredients",
+      "value": "### Dunamiss Smudge-Proof Kajal | Jet Black\nCarnauba Wax  \nCandelilla Wax  \nIsopropyl Myristate  \nCaprylic/Capric Triglyceride  \nTocopherol  \nCamphor  \nCarbon Black  \nAlmond Oil\n\n### Dunamiss Smudge-Proof Kajal | Jet Brown\nCarnauba Wax  \nCandelilla Wax  \nIsopropyl Myristate  \nCaprylic/Capric Triglyceride  \nTocopherol  \nCamphor  \nCarbon Black  \nAlmond Oil\n\n### Dunamiss Liquid Sketch Eyeliner | Intense Black\nAqua  \nIron Oxide-Black  \nStyrene/Acrylates Copolymer  \nGellan Gum  \nSodium Carbonate  \nSorbitol  \nSorbic Acid  \nAlmond Oil  \nTocopherol\n\n### Dunamiss Mira Eye Balm Stick\nCucumber Extract\nInstantly cools and soothes tired eyes\nReduces puffiness\n\nCaffeine\nHelps reduce dark circles\nDe-puffs under-eye bags\n\nBlue Light Defense\nProtects from screen-induced stress\nPrevents early signs of aging\n\nEGF (Epidermal Growth Factor)\nSupports skin repair\nImproves texture and smoothness",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "dunamiss-24hr-smudge-proof-kajal-jet-black",
+        "dunamiss-24hr-smudge-proof-kajal-jet-brown",
+        "dunamiss-liquid-sketch-smudge-proof-eyeliner-intense-black",
+        "dunamiss-eye-balm-stick-sp20-mira"
+      ],
+      "matching_evidence": "Four named existing eye products; keep product formulas separate"
+    },
+    {
+      "handle": "sheet-mask-mist-sunscreen-eye-balm",
+      "product_id": 9904108372203,
+      "title": "Dunamiss Skincare Set | Mask, Mist, Sunscreen & Eye Balm",
+      "metafield": "custom.product_ingredients",
+      "value": "### Dunamiss Hyaluronic Acid & Peptide Sheet Mask\nGive your skin an instant glow boost with the Dunamiss Sheet Mask, infused with Copper Tripeptide and Acetyl Hexapeptide-8 for smoother-looking skin, and Sodium Hyaluronate & Glycerin for deep hydration. With soothing Allantoin and Zinc PCA, it leaves your skin feeling fresh, plump, and radiant in just minutes.\n\n### Dunamiss Hydra Glow Sunscreen Mist SPF 30 PA++\nEnriched with Niacinamide, Sodium Hyaluronate, Glycerin, Trehalose, Urea, Allantoin, Sodium PCA, Serine, Tropaeolum Majus Flower Extract, and Laminaria Digitata Extract, the formula is complemented by Aqua, Pentylene Glycol, Glycereth-26, Homosalate, Benzophenone-4, PEG-40 Hydrogenated Castor Oil, PPG-26-Buteth-26, Caprylyl Glycol, Pullulan, Phenoxyethanol, Citric Acid, Ethylhexylglycerin, Sodium Gluconate, and Fragrance to create a lightweight, refreshing skincare mist designed to leave the skin feeling hydrated, fresh, and comfortable.\n\n### Dunamiss Daily Sunscreen SPF 50 PA++++ | 50 ml\nCeramide Complex helps strengthen the skin's natural barrier and lock in moisture, while PDRN supports skin repair and renewal for a healthier, youthful complexion. Hyaluronic Acid delivers deep, long-lasting hydration to keep skin soft and plump, and Niacinamide (Vitamin B3) brightens the complexion, evens skin tone, and helps reduce pigmentation. Centella Asiatica soothes irritation, calms redness, and supports skin recovery, while Ectoine protects the skin from environmental stressors and UV-induced damage. The advanced Peptide Complex (Acetyl Hexapeptide-8, Palmitoyl Tripeptide-1, and Copper Tripeptide-1) enhances skin firmness, improves elasticity, and promotes collagen production for smoother, healthier-looking skin.\n\n### Dunamiss Mira Eye Balm Stick\nCucumber Extract\nInstantly cools and soothes tired eyes\nReduces puffiness\n\nCaffeine\nHelps reduce dark circles\nDe-puffs under-eye bags\n\nBlue Light Defense\nProtects from screen-induced stress\nPrevents early signs of aging\n\nEGF (Epidermal Growth Factor)\nSupports skin repair\nImproves texture and smoothness",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "sheet-mask-hyaluronic-peptide-rich",
+        "hydra-glow-spf-mist",
+        "dunamiss-spf-50-pa-barrier-strengthening-daily-sunscreen",
+        "dunamiss-eye-balm-stick-sp20-mira"
+      ],
+      "matching_evidence": "Four named skincare products; keep product formulas separate"
+    },
+    {
+      "handle": "skin-care-creams-types",
+      "product_id": 15395586638059,
+      "title": "Dunamiss Skincare Creams | AM, PM & BB+",
+      "metafield": "custom.product_ingredients",
+      "value": "### Dunamiss PM Night Face Cream | 50 ml\nEnriched with Peptides, Ceramides, Centella Asiatica, Hyaluronic Acid, Shea Butter, Squalane, Niacinamide & Panthenol, this restorative night cream deeply nourishes, replenishes moisture and supports overnight skin repair for softer, smoother and refreshed-looking skin by morning.\n\n### Dunamiss Cloud Blur BB+ Cream SPF 30 PA++ | Deep Cookie\nDUNAMISS BB Cream – Deep Cookie is enriched with Niacinamide, Hyaluronic Acid, Ceramide NP, Panthenol (Vitamin B5), Vitamin E, Argan Oil, Zinc Oxide, Titanium Dioxide, Adenosine, Betaine, and Peach Flower Extract. This skincare-infused BB cream helps hydrate and nourish the skin, support the skin barrier, improve the appearance of uneven tone and dullness, while complementing its lightweight, natural-looking coverage for a smooth, radiant everyday finish.\n\n### Dunamiss Cloud Blur BB+ Cream SPF 30 PA++ | Olive Brown\nDUNAMISS BB Cream - Olive Brown is enriched with Niacinamide, Hyaluronic Acid, Ceramide NP, Panthenol (Vitamin B5), Vitamin E, Argan Oil, Zinc Oxide, Titanium Dioxide, Adenosine, Betaine, and Peach Flower Extract. This skincare-infused formula helps hydrate and nourish the skin, support the skin barrier, improve the appearance of uneven and dull skin, and maintain a smooth, radiant complexion, while complementing the BB cream’s lightweight, natural-looking everyday coverage.\n\n### Dunamiss Cloud Blur BB+ Cream SPF 30 PA++ | Tan Mocha\nDUNAMISS BB Cream – Tan Mocha is enriched with Niacinamide, Hyaluronic Acid, Ceramide NP, Panthenol (Vitamin B5), Vitamin E, Argan Oil, Zinc Oxide, Titanium Dioxide, Adenosine, and Peach Flower Extract. This skincare-infused BB cream helps hydrate and nourish the skin, support the skin barrier, improve the appearance of uneven skin tone, and reduce the look of dullness, while delivering smooth, natural-looking coverage with a fresh, radiant finish.\n\n### Dunamiss Cloud Blur BB+ Cream SPF 30 PA++ | Golden Hue\nDUNAMISS BB Cream – Golden Hue is enriched with Niacinamide, Hyaluronic Acid, Ceramide NP, Panthenol (Vitamin B5), Vitamin E (Tocopherol), Zinc Oxide, Titanium Dioxide, Argan Oil, Lavender Oil, Adenosine, and Peach Flower Extract. This skin-loving blend helps hydrate and nourish the skin, support the skin barrier, improve the appearance of uneven and dull skin, and promote a smooth, radiant-looking complexion, making it an ideal everyday BB cream for natural-looking coverage and a healthy glow\n\n### Dunamiss Cloud Blur BB+ Cream SPF 30 PA++ | Natural Beige\nDUNAMISS BB Cream – Natural Beige is enriched with Niacinamide, Moringa Seed Oil, Hydrolyzed Hyaluronic Acid, Ceramide NP, Panthenol (Vitamin B5), Vitamin E, Betaine, Adenosine, Peach Flower Extract, Zinc Oxide, and Titanium Dioxide. This skin-loving blend helps hydrate and nourish the skin, support the natural skin barrier, improve the appearance of uneven and dull skin, and maintain a smooth, healthy-looking complexion. Designed for effortless everyday beauty, this hydrating BB cream for women combines skincare benefits with a lightweight, natural-looking finish, making DUNAMISS Natural Beige BB Cream an ideal choice for a fresh, smooth, radiant, and even-toned look.\n\n### Dunamiss Cloud Blur BB+ Cream SPF 30 PA++ | Ivory Fair\nDUNAMISS BB Cream -Ivory Fair is enriched with Niacinamide, Hyaluronic Acid, Ceramide NP, Panthenol (Vitamin B5), Vitamin E, Argan Oil, Adenosine, Zinc Oxide, and Titanium Dioxide. This skin-loving blend helps hydrate, nourish, support the skin barrier, improve the appearance of uneven skin tone, and provide smooth, natural-looking coverage for a fresh and radiant finish.\n\n### Dunamiss AM Daily Face Cream | 50 ml\nEnriched with Niacinamide, Kojic Acid Dipalmitate, Alpha-Arbutin, Ceramide Complex, Copper Peptide, Hyaluronic Acid, Squalane, Vitamin E, Panthenol & Glycerin, this daily face cream helps brighten, hydrate and support the skin barrier, leaving skin looking smooth, nourished and naturally radiant.",
+      "source_type": "existing product/shade ingredient metafields",
+      "source_products": [
+        "dunamiss-pm-cream",
+        "dunamiss-bb-cream-deep-cookie",
+        "dunamiss-bb-cream-olive-brown",
+        "dunamiss-bb-cream-tan-mocha",
+        "dunamiss-bb-cream-golden-hue",
+        "dunamiss-bb-cream-natural-beign",
+        "dunamiss-pm-cream-copy",
+        "dunamiss-am-cream"
+      ],
+      "matching_evidence": "Reuse reviewed AM/PM/BB shade associations; keep each cream formula under its own heading"
+    },
+    {
+      "handle": "dunacare-bloom-passion-body-wash",
+      "product_id": 9781019246827,
+      "title": "Dunacare Bloom Passion Body Wash",
+      "metafield": "custom.product_ingredients",
+      "value": "Vitamin C\nNiacinamide\nAloe Vera\nRose Extract\nOrange Extract",
+      "source_type": "same-product current description and native category ingredient fields",
+      "source_products": [
+        "dunacare-bloom-passion-body-wash"
+      ],
+      "matching_evidence": "Confirmed in current same-product description and existing category ingredient metafields"
+    }
+  ],
+  "excluded_without_ingredient_data": [
+    {
+      "handle": "mini-incense-sticks-candle-set",
+      "title": "Dunamiss Luxe Keychain",
+      "type": "Accessories",
+      "reason": "Accessory: ingredients not applicable"
+    },
+    {
+      "handle": "premium-satin-scrunchies-gentle-on-your-hair",
+      "title": "Dunamiss Satin Hair Scrunchies",
+      "type": "Hair Accessories",
+      "reason": "Accessory: ingredients not applicable"
+    },
+    {
+      "handle": "scrunchie-pouch-secret-pocket",
+      "title": "Dunamiss Scrunchie with Secret Pocket",
+      "type": "Hair Accessories",
+      "reason": "Accessory: ingredients not applicable"
+    },
+    {
+      "handle": "vaccum-flask",
+      "title": "Dunamiss Vacuum Flask",
+      "type": "Accessories",
+      "reason": "Accessory: ingredients not applicable"
+    },
+    {
+      "handle": "tote-bag-stylish-durable-and-eco-friendly",
+      "title": "Dunamiss Denim Tote Bag",
+      "type": "Accessories",
+      "reason": "Accessory: ingredients not applicable"
+    },
+    {
+      "handle": "vanity-zip-pouch",
+      "title": "Dunamiss Vanity Zip Pouch",
+      "type": "Accessories",
+      "reason": "Accessory: ingredients not applicable"
+    },
+    {
+      "handle": "dunacare-premium-shower-loofah",
+      "title": "Dunacare Shower Loofah",
+      "type": "Bath Accessory",
+      "reason": "Accessory: ingredients not applicable"
+    },
+    {
+      "handle": "hair-scrunchie",
+      "title": "Dunacare Satin Hair Scrunchies",
+      "type": "Hair Accessories",
+      "reason": "Accessory: ingredients not applicable"
+    }
+  ]
+}
