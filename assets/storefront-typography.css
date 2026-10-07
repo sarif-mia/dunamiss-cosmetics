@@ -89,8 +89,29 @@
 :root body .product-detail__price {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.8rem 1.6rem;
+  align-items: center;
+  gap: 0.4rem 1.2rem;
+}
+:root body .product-detail__price .price-left-sec {
+  display: flex;
+  flex: 0 0 auto;
+  max-width: 100%;
+  padding: 0;
+}
+:root body .product-detail__price .price-right-sec {
+  display: block;
+  flex: 0 0 auto;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+:root body .product-detail__price .card-product-price {
+  align-items: center;
+  column-gap: 0.8rem;
+}
+:root body .product-detail__price .price-regular {
+  display: flex;
+  align-items: center;
 }
 :root body :is(.available-offer-header h2, .collapsible-heading,
   .faq-section-title) {
