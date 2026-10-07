@@ -282,6 +282,16 @@ body .storefront-collection-heading h1 {
   margin: 0 0 20px;
   color: var(--brand-heading);
 }
+body .storefront-collection-heading--with-subheading h1 {
+  margin-bottom: 6px;
+}
+body .storefront-collection-heading__subtitle {
+  margin: 0 0 20px;
+  color: var(--brand-text-muted, #6f686b);
+  font-size: clamp(16px, 1.2vw, 20px);
+  font-weight: 400;
+  line-height: 1.45;
+}
 body .storefront-hero-cta {
   position: absolute;
   z-index: 2;

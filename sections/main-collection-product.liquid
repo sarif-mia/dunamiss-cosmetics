@@ -31,6 +31,15 @@
   assign items_per_row_mobile = section_st.items_per_row_mobile
   assign pagination = section_st.pagination
   assign column = section_st.items_per_row
+  assign collection_display_heading = collection.title
+  assign collection_display_subheading = blank
+  assign heading_override_handle = section_st.heading_override_handle | strip
+  if heading_override_handle != blank and heading_override_handle == collection.handle
+    if section_st.heading_override != blank
+      assign collection_display_heading = section_st.heading_override
+    endif
+    assign collection_display_subheading = section_st.subheading_override
+  endif
   assign view = 'grid'
   if page_query_string contains 'view='
     assign view = page_query_string | split: 'view=' | last | split: '&' | first
@@ -62,8 +71,11 @@
       collection_url: collection.url
     -%}
   {% endif %}
-  <div class="{{ section_width }} storefront-collection-heading">
-    <h1>{{ collection.title | escape }}</h1>
+  <div class="{{ section_width }} storefront-collection-heading{% if collection_display_subheading != blank %} storefront-collection-heading--with-subheading{% endif %}">
+    <h1>{{ collection_display_heading | escape }}</h1>
+    {%- if collection_display_subheading != blank -%}
+      <p class="storefront-collection-heading__subtitle">{{ collection_display_subheading | escape }}</p>
+    {%- endif -%}
   </div>
   <grid-list
     {% if scroll_animation != 'slide_in' %}
@@ -320,6 +332,29 @@
       ],
       "default": "fluid_container",
       "label": "t:sections.all.section_width.label"
+    },
+    {
+      "type": "header",
+      "content": "Collection heading override"
+    },
+    {
+      "type": "text",
+      "id": "heading_override_handle",
+      "label": "Collection handle",
+      "info": "The override is shown only on this collection.",
+      "default": "sheet-mask"
+    },
+    {
+      "type": "text",
+      "id": "heading_override",
+      "label": "Heading",
+      "default": "Mask & Chill"
+    },
+    {
+      "type": "text",
+      "id": "subheading_override",
+      "label": "Subheading",
+      "default": "Hydrating Sheet Mask"
     },
     {
       "type": "header",
