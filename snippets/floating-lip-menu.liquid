@@ -32,34 +32,44 @@
     </a>
   </menu-item>
   <div class="dm-shop-panel dm-lip-panel submenu submenu-horizontal invisible-1025 absolute gradient overflow-x-hidden">
-    <div class="dm-shop-columns">
-      {% for column in (0..1) %}
-        {% liquid
-          case column
-            when 0
-              assign column_items = column_zero
-            when 1
-              assign column_items = column_one
-          endcase
-        %}
-        <div class="dm-shop-column">
-          {% for child in lip_link.links %}
-            {% assign token = forloop.index0 | prepend: '|' | append: '|' %}
-            {% if column_items contains token %}
-              <div class="dm-shop-group">
-                <a class="dm-shop-heading" href="{{ child.url }}">{{ child.title | escape }}</a>
-                {% if child.links != blank %}
-                  <ul role="list">
-                    {% for grandchild in child.links %}
-                      <li><a href="{{ grandchild.url }}">{{ grandchild.title | escape }}</a></li>
-                    {% endfor %}
-                  </ul>
-                {% endif %}
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-      {% endfor %}
+    <div class="dm-lip-navigation">
+      <div class="dm-lip-intro">
+        {% if section.settings.lip_menu_title != blank %}
+          <p class="dm-lip-title">{{ section.settings.lip_menu_title | escape }}</p>
+        {% endif %}
+        {% if section.settings.lip_menu_subheading != blank %}
+          <p class="dm-lip-subheading">{{ section.settings.lip_menu_subheading | escape }}</p>
+        {% endif %}
+      </div>
+      <div class="dm-shop-columns">
+        {% for column in (0..1) %}
+          {% liquid
+            case column
+              when 0
+                assign column_items = column_zero
+              when 1
+                assign column_items = column_one
+            endcase
+          %}
+          <div class="dm-shop-column">
+            {% for child in lip_link.links %}
+              {% assign token = forloop.index0 | prepend: '|' | append: '|' %}
+              {% if column_items contains token %}
+                <div class="dm-shop-group">
+                  <a class="dm-shop-heading" href="{{ child.url }}">{{ child.title | escape }}</a>
+                  {% if child.links != blank %}
+                    <ul role="list">
+                      {% for grandchild in child.links %}
+                        <li><a href="{{ grandchild.url }}">{{ grandchild.title | escape }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
     </div>
     <a class="dm-shop-promo" href="{{ section.settings.lip_menu_image_link | default: lip_link.url }}">
       {% if promo_image != blank %}
