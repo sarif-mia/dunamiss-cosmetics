@@ -407,7 +407,7 @@ class="header relative section gradient remove_spacing color-{{ color_scheme }}{
             <div class="header__menu">
               {% render 'floating-shop-menu' %}
               {%- liquid
-                render 'horizontal-menu', class: 'min-h-1025-50', show_language: show_language, custom_lip_menu: true, custom_skin_menu: true
+                render 'horizontal-menu', class: 'min-h-1025-50', show_language: show_language, custom_lip_menu: true, custom_eye_menu: true, custom_skin_menu: true
               -%}
             </div>
             <div class="header__action flex flex-end align-center">
@@ -501,6 +501,11 @@ class="header relative section gradient remove_spacing color-{{ color_scheme }}{
     { "type": "text", "id": "lip_menu_image_heading", "label": "Lip Care image caption", "default": "Find your perfect lip ritual" },
     { "type": "text", "id": "lip_menu_title", "label": "Lip Care menu heading", "default": "Explore Lip Care" },
     { "type": "text", "id": "lip_menu_subheading", "label": "Lip Care menu subheading", "default": "Colour, care & shine for every look" },
+    { "type": "image_picker", "id": "eye_menu_image", "label": "Eye Care mega menu image" },
+    { "type": "url", "id": "eye_menu_image_link", "label": "Eye Care image link" },
+    { "type": "text", "id": "eye_menu_image_heading", "label": "Eye Care image caption", "default": "Discover your perfect eye essentials" },
+    { "type": "text", "id": "eye_menu_title", "label": "Eye Care menu heading", "default": "Explore Eye Care" },
+    { "type": "text", "id": "eye_menu_subheading", "label": "Eye Care menu subheading", "default": "Define, nourish & enhance every look" },
     { "type": "image_picker", "id": "skin_menu_image", "label": "Skin Care mega menu image" },
     { "type": "url", "id": "skin_menu_image_link", "label": "Skin Care image link" },
     { "type": "text", "id": "skin_menu_image_heading", "label": "Skin Care image caption", "default": "Build your perfect skin ritual" },
