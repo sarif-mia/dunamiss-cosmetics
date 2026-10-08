@@ -711,4 +711,70 @@
 }
 .dunamiss-inside-science .dunamiss-science-use { grid-column: 1 / -1; }
 .dunamiss-inside-science .dunamiss-science-use p { max-width: 760px; margin: 12px auto 0; line-height: 1.7; }
-.dunamiss-inside-science .custom-inside-science-fill { width: 100%; }
+.dunamiss-inside-science > .custom-inside-science-card .custom-inside-science-fill { width: var(--bar-width, 100%); }
+
+/* Existing aquasilk category variations. */
+.dunamiss-inside-science--aquasilk .custom-inside-science-icon-image img, .dunamiss-inside-science--aquasilk .custom-inside-active-icon img, .dunamiss-inside-science--aquasilk .custom-inside-rating-icon img, .dunamiss-inside-science--aquasilk .custom-inside-love-icon img { width: 45px; height: 45px; min-width: 45px; border-radius: 50%; }
+.dunamiss-inside-science--aquasilk .dunamiss-feature-bar { max-width: 100%; margin: 40px auto; padding: 15px 0px; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--brand-background); border-radius: 18px; overflow: hidden; }
+.dunamiss-inside-science--aquasilk .dunamiss-feature-item { display: flex; align-items: center; gap: 18px; padding: 18px 22px; border-right: 1px solid var(--brand-border); }
+.dunamiss-inside-science--aquasilk .dunamiss-feature-item:last-child { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; }
+.dunamiss-inside-science--aquasilk .dunamiss-feature-image { width: 55px; height: 55px; object-fit: contain; flex-shrink: 0; }
+.dunamiss-inside-science--aquasilk .dunamiss-feature-text h4 { margin: 0px; font-size: 16px; font-weight: 700; color: var(--brand-text); line-height: 1.2; }
+.dunamiss-inside-science--aquasilk .dunamiss-feature-text p { margin: 3px 0px 0px; font-size: 16px; font-weight: 700; color: var(--brand-text); line-height: 1.2; }
+@media (max-width: 991px) { .dunamiss-inside-science--aquasilk .dunamiss-feature-bar { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 991px) { .dunamiss-inside-science--aquasilk .dunamiss-feature-item { border-bottom: 1px solid var(--brand-border); } }
+@media (max-width: 991px) { .dunamiss-inside-science--aquasilk .dunamiss-feature-item:nth-child(2), .dunamiss-inside-science--aquasilk .dunamiss-feature-item:nth-child(4) { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; } }
+@media (max-width: 576px) { .dunamiss-inside-science--aquasilk .dunamiss-feature-bar { grid-template-columns: 1fr; } }
+@media (max-width: 576px) { .dunamiss-inside-science--aquasilk .dunamiss-feature-item { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; border-bottom: 1px solid var(--brand-border); } }
+@media (max-width: 576px) { .dunamiss-inside-science--aquasilk .dunamiss-feature-item:last-child { border-bottom-width: medium; border-bottom-style: none; border-bottom-color: currentcolor; } }
+@media (max-width: 576px) { .dunamiss-inside-science--aquasilk .dunamiss-feature-image { width: 45px; height: 45px; } }
+@media (max-width: 576px) { .dunamiss-inside-science--aquasilk .dunamiss-feature-text h4, .dunamiss-inside-science--aquasilk .dunamiss-feature-text p { font-size: 14px; } }
+
+/* Existing glimmer category variations. */
+.dunamiss-inside-science--glimmer .custom-inside-love-grid { display: grid; grid-template-columns: repeat(6, 1fr); border-radius: 16px; overflow: hidden; }
+@media (max-width: 1100px) { .dunamiss-inside-science--glimmer .custom-inside-love-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .dunamiss-inside-science--glimmer .custom-inside-love-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* Existing lipgloss category variations. */
+.dunamiss-inside-science--lipgloss .custom-inside-love-grid { display: grid; grid-template-columns: repeat(6, 1fr); border-radius: 16px; overflow: hidden; }
+@media (max-width: 1100px) { .dunamiss-inside-science--lipgloss .custom-inside-love-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .dunamiss-inside-science--lipgloss .custom-inside-love-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* Existing lipoil category variations. */
+.dunamiss-inside-science--lipoil .custom-inside-active-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+@media (max-width: 991px) { .dunamiss-inside-science--lipoil .custom-inside-active-grid { grid-template-columns: repeat(2, 1fr); } }
+.dunamiss-inside-science--lipoil .dunamiss-feature-bar { max-width: 100%; margin: 40px auto; display: grid; grid-template-columns: repeat(5, 1fr); background: var(--brand-background); border-radius: 18px; padding: 15px 0px; overflow: hidden; }
+.dunamiss-inside-science--lipoil .dunamiss-feature-item { display: flex; align-items: center; gap: 18px; padding: 18px 22px; border-right: 1px solid var(--brand-border); }
+.dunamiss-inside-science--lipoil .dunamiss-feature-item:last-child { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; }
+.dunamiss-inside-science--lipoil .dunamiss-feature-image { width: 55px; height: 55px; object-fit: contain; flex-shrink: 0; }
+.dunamiss-inside-science--lipoil .dunamiss-feature-text h4 { margin: 0px; font-family: var(--heading-font); font-size: 16px; font-weight: 700; color: var(--brand-text); line-height: 1.2; }
+.dunamiss-inside-science--lipoil .dunamiss-feature-text p { margin: 3px 0px 0px; font-size: 16px; font-weight: 700; color: var(--brand-text); line-height: 1.2; }
+@media (max-width: 991px) { .dunamiss-inside-science--lipoil .dunamiss-feature-bar { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 991px) { .dunamiss-inside-science--lipoil .dunamiss-feature-item { border-bottom: 1px solid var(--brand-border); } }
+@media (max-width: 991px) { .dunamiss-inside-science--lipoil .dunamiss-feature-item:nth-child(2), .dunamiss-inside-science--lipoil .dunamiss-feature-item:nth-child(4) { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; } }
+@media (max-width: 576px) { .dunamiss-inside-science--lipoil .dunamiss-feature-bar { grid-template-columns: 1fr; } }
+@media (max-width: 576px) { .dunamiss-inside-science--lipoil .dunamiss-feature-item { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; border-bottom: 1px solid var(--brand-border); } }
+@media (max-width: 576px) { .dunamiss-inside-science--lipoil .dunamiss-feature-item:last-child { border-bottom-width: medium; border-bottom-style: none; border-bottom-color: currentcolor; } }
+@media (max-width: 576px) { .dunamiss-inside-science--lipoil .dunamiss-feature-image { width: 45px; height: 45px; } }
+@media (max-width: 576px) { .dunamiss-inside-science--lipoil .dunamiss-feature-text h4, .dunamiss-inside-science--lipoil .dunamiss-feature-text p { font-size: 14px; } }
+
+/* Existing nailpaints category variations. */
+.dunamiss-inside-science--nailpaints .dunamiss-feature-bar { max-width: 100%; margin: 40px auto; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--brand-background); border: 2px solid var(--brand-border); border-radius: 18px; overflow: hidden; }
+.dunamiss-inside-science--nailpaints .dunamiss-feature-item { display: flex; align-items: center; gap: 18px; padding: 18px 22px; border-right: 1px solid var(--brand-border); }
+.dunamiss-inside-science--nailpaints .dunamiss-feature-item:last-child { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; }
+.dunamiss-inside-science--nailpaints .dunamiss-feature-image { width: 55px; height: 55px; object-fit: contain; flex-shrink: 0; }
+.dunamiss-inside-science--nailpaints .dunamiss-feature-text h4 { margin: 0px; font-family: var(--heading-font); font-size: 16px; font-weight: 700; color: var(--brand-text); line-height: 1.2; }
+.dunamiss-inside-science--nailpaints .dunamiss-feature-text p { margin: 3px 0px 0px; font-family: var(--body-font); font-size: 16px; font-weight: 700; color: var(--brand-text); line-height: 1.2; }
+@media (max-width: 991px) { .dunamiss-inside-science--nailpaints .dunamiss-feature-bar { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 991px) { .dunamiss-inside-science--nailpaints .dunamiss-feature-item { border-bottom: 1px solid var(--brand-border); } }
+@media (max-width: 991px) { .dunamiss-inside-science--nailpaints .dunamiss-feature-item:nth-child(2), .dunamiss-inside-science--nailpaints .dunamiss-feature-item:nth-child(4) { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; } }
+@media (max-width: 576px) { .dunamiss-inside-science--nailpaints .dunamiss-feature-bar { grid-template-columns: 1fr; } }
+@media (max-width: 576px) { .dunamiss-inside-science--nailpaints .dunamiss-feature-item { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; border-bottom: 1px solid var(--brand-border); } }
+@media (max-width: 576px) { .dunamiss-inside-science--nailpaints .dunamiss-feature-item:last-child { border-bottom-width: medium; border-bottom-style: none; border-bottom-color: currentcolor; } }
+@media (max-width: 576px) { .dunamiss-inside-science--nailpaints .dunamiss-feature-image { width: 45px; height: 45px; } }
+@media (max-width: 576px) { .dunamiss-inside-science--nailpaints .dunamiss-feature-text h4, .dunamiss-inside-science--nailpaints .dunamiss-feature-text p { font-size: 14px; } }
+
+/* Existing satin category variations. */
+.dunamiss-inside-science--satin .custom-inside-love-grid { display: grid; grid-template-columns: repeat(6, 1fr); border-radius: 16px; overflow: hidden; }
+@media (max-width: 1100px) { .dunamiss-inside-science--satin .custom-inside-love-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .dunamiss-inside-science--satin .custom-inside-love-grid { grid-template-columns: repeat(2, 1fr); } }

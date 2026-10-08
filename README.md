@@ -73,16 +73,24 @@ GoKwik checkout remains controlled by the existing Theme settings integration.
 
 ## Inside Science
 
-`sections/dunamiss-inside-science.liquid` is the product page section.
-`snippets/dunamiss-inside-science.liquid` routes existing category layouts by explicit
-product handle. New product content lives in `snippets/dunamiss-inside-science-data.liquid`,
-with source URLs beside each entry. Its shared markup lives in
-`snippets/dunamiss-inside-science-layout.liquid` and its styles in
-`assets/dunamiss-inside-science.css`.
+The product template renders Inside Science from its Custom Liquid section:
 
-Add new product details to the data snippet using an explicit handle match and verified
-brand information. Reuse the shared layout rather than creating a snippet per product.
-Shopify runtime directories must remain flat; do not move these files into subfolders.
+```liquid
+{% render 'dunamiss-inside-science', product: product %}
+```
+
+Use this same render in Theme Editor instead of the retired category snippets.
+Keep one Inside Science section per product template to avoid duplicates.
+The component uses three snippets: `dunamiss-inside-science` for explicit product
+routing, `dunamiss-inside-science-data` for category and product content, and
+`dunamiss-inside-science-layout` for shared markup. Its shared CSS and progress
+animation live in `assets/dunamiss-inside-science.css` and
+`assets/dunamiss-inside-science.js`.
+
+Existing category content is preserved in the data snippet. Add new product details
+there using an explicit handle match and verified brand information, with source URLs.
+Reuse the shared layout rather than creating a snippet per product. Shopify runtime
+directories must remain flat; do not move these files into subfolders.
 
 ## Deployment
 

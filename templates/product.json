@@ -235,9 +235,15 @@
       }
     },
     "custom_liquid_gwJkEU": {
-      "type": "dunamiss-inside-science",
+      "type": "custom-liquid",
+      "name": "Inside Science",
       "settings": {
-        "section_width": "fluid_container"
+        "section_width": "fluid_container",
+        "color_scheme": "",
+        "custom_liquid": "{% render 'dunamiss-inside-science', product: product %}",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "reset_spacing": false
       }
     },
     "custom_liquid_PURh7m": {

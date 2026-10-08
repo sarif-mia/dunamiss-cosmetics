@@ -1,3 +1,15 @@
+{%- if legacy_hero != blank -%}
+{{ 'dunamiss-inside-science.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'dunamiss-inside-science.js' | asset_url }}" defer></script>
+<div class="dunamiss-inside-science dunamiss-inside-science--{{ science_category | escape }}">
+{% if legacy_hero != blank %}<div class="custom-inside-hero-section">{{ legacy_hero }}</div>{% endif %}
+{% if legacy_science != blank %}<div class="custom-inside-science-card">{{ legacy_science }}</div>{% endif %}
+{% if legacy_active != blank %}<div class="custom-inside-active-section">{{ legacy_active }}</div>{% endif %}
+{% if legacy_rating != blank %}<div class="custom-inside-rating-section">{{ legacy_rating }}</div>{% endif %}
+{% if legacy_love != blank %}<div class="custom-inside-love-section">{{ legacy_love }}</div>{% endif %}
+{% if legacy_feature != blank %}<div class="dunamiss-feature-bar">{{ legacy_feature }}</div>{% endif %}
+</div>
+{%- else -%}
 {% comment %}
 Reuse the established Inside Science classes and four numbered sections.
 Only published product information is supplied by dunamiss-inside-science-data.
@@ -91,4 +103,6 @@ The decorative divider does not represent a measured performance score.
       </div>
     </div>
   </div>
+{%- endif -%}
+
 {%- endif -%}
