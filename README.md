@@ -42,10 +42,10 @@ All custom runtime styles use the `dunamiss-*.css` prefix. Page and component fi
 such as `dunamiss-cart-page.css` and `dunamiss-cart-drawer.css`, are loaded only where
 the feature needs them. Header layout belongs to `dunamiss-floating-header.css`, while
 desktop mega-menu presentation belongs to `dunamiss-desktop-navigation.css`. Shared
-custom source modules live in `styles/dunamiss` and are combined into
+custom source modules live directly in `styles/` and are combined into
 `assets/dunamiss-global.css`.
 
-After editing any file in `styles/dunamiss`, run:
+After editing a source CSS file in `styles/`, run:
 
 ```sh
 python3 scripts/build-storefront-css.py

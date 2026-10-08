@@ -6,7 +6,7 @@ easy to navigate, this repository separates original theme CSS from Dunamiss CSS
 - `assets/*.s.min.css` — optimized original theme styles loaded at runtime.
 - `assets/dunamiss-*.css` — Dunamiss runtime styles. These names describe the page or
   component they own.
-- `styles/dunamiss/*.css` — editable source modules used to generate shared global CSS.
+- `styles/*.css` — editable source modules used to generate shared global CSS.
 
 ## Shared Dunamiss styles
 

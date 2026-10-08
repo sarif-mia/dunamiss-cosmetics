@@ -22,7 +22,7 @@ provide the organization.
 
 ## Repository-only folders
 
-- `styles/dunamiss/` contains the editable modules that generate the shared custom CSS.
+- `styles/` contains the editable modules that generate the shared custom CSS.
 - `scripts/` contains deterministic build, audit, and live-parity tools.
 - `content/` contains reviewed migration snapshots; it does not override Shopify Admin.
 - `docs/` contains maintenance documentation.
@@ -49,7 +49,8 @@ the loading order is replaced with an equivalent early measurement.
 
 ## CSS workflow
 
-Edit files in `styles/dunamiss/` for shared tokens, typography, and components, then run:
+Edit the CSS files directly in `styles/` for shared tokens, typography, and components,
+then run:
 
 ```sh
 python3 scripts/build-storefront-css.py
