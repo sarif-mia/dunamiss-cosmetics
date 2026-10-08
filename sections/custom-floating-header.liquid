@@ -407,7 +407,7 @@ class="header relative section gradient remove_spacing color-{{ color_scheme }}{
             <div class="header__menu">
               {% render 'floating-shop-menu' %}
               {%- liquid
-                render 'horizontal-menu', class: 'min-h-1025-50', show_language: show_language
+                render 'horizontal-menu', class: 'min-h-1025-50', show_language: show_language, custom_lip_menu: true
               -%}
             </div>
             <div class="header__action flex flex-end align-center">
@@ -494,6 +494,9 @@ class="header relative section gradient remove_spacing color-{{ color_scheme }}{
     { "type": "image_picker", "id": "shop_menu_image", "label": "Shop mega menu image" },
     { "type": "url", "id": "shop_menu_image_link", "label": "Shop image link" },
     { "type": "text", "id": "shop_menu_image_heading", "label": "Shop image caption", "default": "Discover your next favourite" },
+    { "type": "image_picker", "id": "lip_menu_image", "label": "Lip Care mega menu image" },
+    { "type": "url", "id": "lip_menu_image_link", "label": "Lip Care image link" },
+    { "type": "text", "id": "lip_menu_image_heading", "label": "Lip Care image caption", "default": "Find your perfect lip ritual" },
     {
       "type": "color",
       "id": "header_background",

@@ -1,0 +1,78 @@
+{% liquid
+  assign column_zero = ''
+  assign column_one = ''
+  assign column_two = ''
+  for child in lip_link.links
+    assign child_title = child.title | downcase
+    assign token = forloop.index0 | prepend: '|' | append: '|'
+    if child_title contains 'oil' or child_title contains 'gloss'
+      assign column_zero = column_zero | append: token
+    elsif child_title contains 'satin' or child_title contains 'liquid'
+      assign column_one = column_one | append: token
+    else
+      assign column_two = column_two | append: token
+    endif
+  endfor
+  assign promo_image = section.settings.lip_menu_image
+  if promo_image == blank
+    assign promo_image = collections['lip-care'].products.first.featured_image
+  endif
+%}
+
+<li class="level0 menu-parent menu-parent__horizontal mega-menu dm-lip-mega">
+  <menu-item class="relative static-1025 flex justify-between align-center border-bottom border-bottom-1025-0 header-color px-15">
+    <a
+      class="no-underline py-10 relative lh-normal inline-flex min-h-55 min-h-1025-50 z-1 align-center{% if theme_st.menu_font == 'heading_font' %} heading-style{% endif %}"
+      href="{{ lip_link.url }}"
+      aria-label="{{ lip_link.title | escape }}"
+    >
+      <span>{{ lip_link.title | escape }}</span>
+      <open-children-toggle class="inline-flex flex-end align-center ms-5 static-1025">
+        <svg class="icon-down hidden block-1025" width="10" height="6" aria-hidden="true">
+          <use href="#icon-arrow-down" />
+        </svg>
+      </open-children-toggle>
+    </a>
+  </menu-item>
+  <div class="dm-shop-panel dm-lip-panel submenu submenu-horizontal invisible-1025 absolute gradient overflow-x-hidden">
+    <div class="dm-shop-columns">
+      {% for column in (0..2) %}
+        {% liquid
+          case column
+            when 0
+              assign column_items = column_zero
+            when 1
+              assign column_items = column_one
+            when 2
+              assign column_items = column_two
+          endcase
+        %}
+        <div class="dm-shop-column">
+          {% for child in lip_link.links %}
+            {% assign token = forloop.index0 | prepend: '|' | append: '|' %}
+            {% if column_items contains token %}
+              <div class="dm-shop-group">
+                <a class="dm-shop-heading" href="{{ child.url }}">{{ child.title | escape }}</a>
+                {% if child.links != blank %}
+                  <ul role="list">
+                    {% for grandchild in child.links %}
+                      <li><a href="{{ grandchild.url }}">{{ grandchild.title | escape }}</a></li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+    <a class="dm-shop-promo" href="{{ section.settings.lip_menu_image_link | default: lip_link.url }}">
+      {% if promo_image != blank %}
+        {{ promo_image | image_url: width: 720 | image_tag: widths: '240, 360, 540, 720', sizes: '210px', loading: 'lazy', alt: section.settings.lip_menu_image_heading }}
+      {% else %}
+        {{ 'collection-2' | placeholder_svg_tag }}
+      {% endif %}
+      <span>{{ section.settings.lip_menu_image_heading | default: 'Find your perfect lip ritual' | escape }}</span>
+    </a>
+  </div>
+</li>
