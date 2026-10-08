@@ -26,7 +26,7 @@
         "description_Uyfq9Y": {
           "type": "description",
           "settings": {
-            "description": "<p>Review your selected items before purchase. Enjoy a seamless shopping experience!</p>"
+            "description": "<p>Review your items and complete your order securely.</p>"
           }
         }
       },
@@ -41,7 +41,7 @@
         "alignment": "center",
         "overlay_opacity": 0,
         "height": "adapt",
-        "padding_top": 80,
+        "padding_top": 44,
         "padding_bottom": 0
       }
     },
@@ -62,7 +62,7 @@
         "heading_3": "Privacy Protection",
         "description_3": "<p>Your privacy is always our top priority.</p>",
         "heading_delivery": "Shipping Policy",
-        "description_delivery": "<p>Customers are responsible for return shipping unless specified otherwise. For assistance, contact us at <strong>+919516656907</strong>or <strong>care@dunamiss.in</strong></p><p><strong>Shipping</strong></p><p>Free shipping for prepaid orders. <strong>COD</strong>: ₹49 </p><ul><li>Orders dispatched within 24-48 hours.</li><li>Delivery time: Metro cities: 2-5 working days.</li><li>Rest of India: 4-7 working days.</li></ul>",
+        "description_delivery": "<p>Customers are responsible for return shipping unless specified otherwise. For assistance, contact us at <strong>+919516656907</strong> or <strong>care@dunamiss.in</strong></p><p><strong>Shipping</strong></p><p>Free shipping for prepaid orders. <strong>COD</strong>: ₹49 </p><ul><li>Orders dispatched within 24-48 hours.</li><li>Delivery time: Metro cities: 2-5 working days.</li><li>Rest of India: 4-7 working days.</li></ul>",
         "heading_guarantee": "Return Policy",
         "description_guarantee": "<p>Eligible return or exchange requests must be reported within 48 hours of delivery. Products purchased on sale are not eligible for return or exchange.</p><p>Eligible damaged-delivery requests require a clear unboxing video and verification. Email <a href=\"mailto:care@dunamiss.in\">care@dunamiss.in</a> or message us on <a href=\"https://wa.me/919516656907\">WhatsApp</a>. See our <a href=\"/pages/returns-exchange-policy\">Return &amp; Exchange Policy</a> for full eligibility details.</p>",
         "heading_payment": "Payment Support",

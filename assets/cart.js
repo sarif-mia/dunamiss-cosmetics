@@ -156,6 +156,7 @@ class CartItems extends HTMLElement {
           );
           const totals_content = document.querySelector(".cart-info .totals");
           if (totals && totals_content) totals_content.innerHTML = totals;
+          this.syncCartPageSummary(html);
           const cart_gift_html = html.getElementById("gift");
           const cart_gift = document.getElementById("gift");
 
@@ -324,6 +325,7 @@ class CartItems extends HTMLElement {
           );
           const totals_content = document.querySelector(".cart-info .totals");
           if (totals && totals_content) totals_content.innerHTML = totals;
+          this.syncCartPageSummary(html);
           const cart_gift_html = html.getElementById("gift");
           const cart_gift = document.getElementById("gift");
           if (cart_gift) {
@@ -468,12 +470,13 @@ class CartItems extends HTMLElement {
             parsedState.sections[
               document.getElementById("main-cart-items").dataset.id
             ],
-            ".cart__footer .totals"
+            ".cart-info .totals"
           );
           const totals_content = document.querySelector(
-            ".cart__footer .totals"
+            ".cart-info .totals"
           );
           if (totals && totals_content) totals_content.innerHTML = totals;
+          this.syncCartPageSummary(html);
         }
       })
       .catch(() => {
@@ -485,6 +488,23 @@ class CartItems extends HTMLElement {
     return new DOMParser()
       .parseFromString(html, "text/html")
       .querySelector(selector).innerHTML;
+  }
+
+  syncCartPageSummary(html) {
+    if (!html) return;
+    [
+      ".dm-cart-page-list-heading p",
+      ".dm-cart-page-summary-title span:last-child",
+    ].forEach((selector) => {
+      const current = document.querySelector(selector);
+      const updated = html.querySelector(selector);
+      if (current && updated) current.textContent = updated.textContent;
+    });
+    const currentDiscounts = document.querySelector(".js-contents_discounts");
+    const updatedDiscounts = html.querySelector(".js-contents_discounts");
+    if (currentDiscounts && updatedDiscounts) {
+      currentDiscounts.innerHTML = updatedDiscounts.innerHTML;
+    }
   }
 
   enableLoading(line) {
