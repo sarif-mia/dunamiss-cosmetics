@@ -37,45 +37,55 @@
       </svg>
     </summary>
     <div class="dm-shop-panel">
-      <div class="dm-shop-columns">
-        {% for column in (0..2) %}
-          {% liquid
-            case column
-              when 0
-                assign column_items = column_zero
-              when 1
-                assign column_items = column_one
-              when 2
-                assign column_items = column_two
-            endcase
-          %}
-          <div class="dm-shop-column">
-            {% for link in shop_menu.links %}
-              {% assign token = forloop.index0 | prepend: '|' | append: '|' %}
-              {% if column_items contains token %}
-                <div class="dm-shop-group">
-                  <a class="dm-shop-heading" href="{{ link.url }}">{{ link.title | escape }}</a>
-                  {% if link.links != blank %}
-                    <ul role="list">
-                      {% for child in link.links %}
-                        <li>
-                          <a href="{{ child.url }}">{{ child.title | escape }}</a>
-                          {% if child.links != blank %}
-                            <ul role="list">
-                              {% for grandchild in child.links %}
-                                <li><a href="{{ grandchild.url }}">{{ grandchild.title | escape }}</a></li>
-                              {% endfor %}
-                            </ul>
-                          {% endif %}
-                        </li>
-                      {% endfor %}
-                    </ul>
-                  {% endif %}
-                </div>
-              {% endif %}
-            {% endfor %}
-          </div>
-        {% endfor %}
+      <div class="dm-mega-navigation">
+        <div class="dm-mega-intro">
+          {% if section.settings.shop_menu_title != blank %}
+            <p class="dm-mega-title">{{ section.settings.shop_menu_title | escape }}</p>
+          {% endif %}
+          {% if section.settings.shop_menu_subheading != blank %}
+            <p class="dm-mega-subheading">{{ section.settings.shop_menu_subheading | escape }}</p>
+          {% endif %}
+        </div>
+        <div class="dm-shop-columns">
+          {% for column in (0..2) %}
+            {% liquid
+              case column
+                when 0
+                  assign column_items = column_zero
+                when 1
+                  assign column_items = column_one
+                when 2
+                  assign column_items = column_two
+              endcase
+            %}
+            <div class="dm-shop-column">
+              {% for link in shop_menu.links %}
+                {% assign token = forloop.index0 | prepend: '|' | append: '|' %}
+                {% if column_items contains token %}
+                  <div class="dm-shop-group">
+                    <a class="dm-shop-heading" href="{{ link.url }}">{{ link.title | escape }}</a>
+                    {% if link.links != blank %}
+                      <ul role="list">
+                        {% for child in link.links %}
+                          <li>
+                            <a href="{{ child.url }}">{{ child.title | escape }}</a>
+                            {% if child.links != blank %}
+                              <ul role="list">
+                                {% for grandchild in child.links %}
+                                  <li><a href="{{ grandchild.url }}">{{ grandchild.title | escape }}</a></li>
+                                {% endfor %}
+                              </ul>
+                            {% endif %}
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endfor %}
+        </div>
       </div>
       <a class="dm-shop-promo" href="{{ section.settings.shop_menu_image_link | default: '/collections/shop-all' }}">
         {% if promo_image != blank %}
