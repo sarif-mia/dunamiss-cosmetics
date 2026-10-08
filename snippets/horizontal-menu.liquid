@@ -84,6 +84,10 @@
             {% render 'floating-lip-menu', lip_link: link, section: section, theme_st: theme_st %}
             {% continue %}
           {%- endif -%}
+          {%- if custom_skin_menu and title == 'skin care' -%}
+            {% render 'floating-skin-menu', skin_link: link, section: section, theme_st: theme_st %}
+            {% continue %}
+          {%- endif -%}
           {% if last_block != null %}
             {%- liquid
               assign block_st = last_block.settings

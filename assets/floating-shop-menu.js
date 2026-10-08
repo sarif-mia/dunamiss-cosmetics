@@ -7,17 +7,17 @@
     menu.dataset.initialized = 'true';
     let hoverOpened = false;
     let closeTimer;
-    const closeLipMenu = () => menu.closest('.header__menu')?.querySelectorAll('.dm-lip-mega.open, .dm-lip-mega.visible').forEach((item) => {
+    const closeCategoryMenus = () => menu.closest('.header__menu')?.querySelectorAll('.dm-category-mega.open, .dm-category-mega.visible').forEach((item) => {
       item.classList.remove('open', 'visible');
     });
     menu.addEventListener('pointerenter', (event) => {
       clearTimeout(closeTimer);
-      closeLipMenu();
+      closeCategoryMenus();
       if (!desktop.matches || event.pointerType !== 'mouse' || menu.open) return;
       menu.open = true;
       hoverOpened = true;
     });
-    menu.addEventListener('focusin', closeLipMenu);
+    menu.addEventListener('focusin', closeCategoryMenus);
     menu.querySelector('summary').addEventListener('click', (event) => {
       if (hoverOpened) { event.preventDefault(); menu.open = true; hoverOpened = false; }
     });
