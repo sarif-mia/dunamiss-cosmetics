@@ -53,10 +53,29 @@
           %}
           <div class="dm-shop-column">
             {% for child in skin_link.links %}
-              {% assign token = forloop.index0 | prepend: '|' | append: '|' %}
+              {% liquid
+                assign token = forloop.index0 | prepend: '|' | append: '|'
+                assign child_title = child.title | downcase
+                assign child_subtitle = ''
+                case child_title
+                  when 'mist'
+                    assign child_subtitle = section.settings.skin_menu_mist_subtitle
+                  when 'creams'
+                    assign child_subtitle = section.settings.skin_menu_creams_subtitle
+                  when 'sheet mask'
+                    assign child_subtitle = section.settings.skin_menu_mask_subtitle
+                  when 'sun perfect sunscreen'
+                    assign child_subtitle = section.settings.skin_menu_sunscreen_subtitle
+                endcase
+              %}
               {% if column_items contains token %}
                 <div class="dm-shop-group">
-                  <a class="dm-shop-heading" href="{{ child.url }}">{{ child.title | escape }}</a>
+                  <a class="dm-shop-heading dm-category-link" href="{{ child.url }}">
+                    <span>{{ child.title | escape }}</span>
+                    {% if child_subtitle != blank %}
+                      <span class="dm-category-subtitle">{{ child_subtitle | escape }}</span>
+                    {% endif %}
+                  </a>
                   {% if child.links != blank %}
                     <ul role="list">
                       {% for grandchild in child.links %}

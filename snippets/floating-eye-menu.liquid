@@ -68,10 +68,10 @@
               %}
               {% if column_items contains token %}
                 <div class="dm-shop-group">
-                  <a class="dm-shop-heading dm-eye-category-link" href="{{ child.url }}">
+                  <a class="dm-shop-heading dm-category-link" href="{{ child.url }}">
                     <span>{{ child.title | escape }}</span>
                     {% if child_subtitle != blank %}
-                      <span class="dm-eye-category-subtitle">{{ child_subtitle | escape }}</span>
+                      <span class="dm-category-subtitle">{{ child_subtitle | escape }}</span>
                     {% endif %}
                   </a>
                   {% if child.links != blank %}
