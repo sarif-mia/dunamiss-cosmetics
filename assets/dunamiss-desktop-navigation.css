@@ -38,6 +38,8 @@ body .section-header-custom-floating .dm-shop-menu > summary {
   .dm-shop-promo { align-self: start; display: block; background: transparent; }
   .dm-shop-promo img, .dm-shop-promo > svg { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
   .dm-shop-promo > span { display: block; padding: 12px 0 0; background: transparent; font-size: 13px; line-height: 1.5; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  .section-header-custom-floating .dm-shop-menu > .dm-shop-panel { row-gap: 12px; }
+  .section-header-custom-floating .dm-shop-menu > .dm-shop-panel > .dm-mega-intro { grid-column: 1 / -1; margin-bottom: 0; }
   .section-header-custom-floating .dm-category-mega { position: static !important; }
   .section-header-custom-floating .dm-category-panel { top: calc(100% + 6px); inset-inline: 0; width: min(100%, 840px); }
   .section-header-custom-floating .dm-mega-navigation { min-width: 0; }
