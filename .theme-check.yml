@@ -1,0 +1,18 @@
+extends: theme-check:recommended
+
+ignore:
+  - node_modules/**
+  - reports/**
+  - styles/**
+
+# These checks consume excessive memory on this legacy multilingual theme.
+# Translation parity and static translation references remain covered by
+# scripts/audit-theme.py.
+MatchingTranslations:
+  enabled: false
+
+TranslationKeyExists:
+  enabled: false
+
+ValidSchemaTranslations:
+  enabled: false

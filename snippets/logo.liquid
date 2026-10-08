@@ -46,7 +46,7 @@
           class="header__normal-logo{% if isTransparent and request.page_type == 'index' and transparent != blank %} hidden{% endif %}"
           width="{{ logo_width }}"
           height="{{ logo_height }}"
-          alt="{{ logo_height.alt | default: shop.name | escape }}"
+          alt="{{ logo_image.alt | default: shop.name | escape }}"
         >
       {%- else -%}
         <span class="text-logo">{{- shop.name -}}</span>
@@ -70,7 +70,7 @@
           class="header__transparent-logo"
           width="{{ logo_width }}"
           height="{{ logo_height }}"
-          alt="{{ logo_height.alt | default: shop.name | escape }}"
+          alt="{{ logo_transparent.alt | default: shop.name | escape }}"
         >
       {%- endif -%}
     </span>

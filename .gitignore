@@ -18,3 +18,7 @@ reports/
 *.pem
 *.key
 node_modules/
+
+# Python tooling cache
+__pycache__/
+*.py[cod]

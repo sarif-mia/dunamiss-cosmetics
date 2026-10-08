@@ -29,8 +29,6 @@
   assign ingredient_check = ingredient_text | downcase
   assign can_format_formula = false
   if ingredient_text contains ','
-    assign formula_start = ingredient_check | slice: 0, 5
-    assign enriched_start = ingredient_check | slice: 0, 14
     if ingredient_text contains ', the formula is complemented by '
       assign can_format_formula = true
     else

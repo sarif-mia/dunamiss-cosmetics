@@ -562,7 +562,7 @@
                     aria-label="{{ featured_image.alt }}"
                     class="banner-link"
                     {%- if open_link != blank -%}
-                      target="_blank"
+                      target="_blank" rel="noopener noreferrer"
                     {%- endif -%}
                   >
                     <div class="image responsive-image" style="--aspect-ratio: {{ ratio }}">

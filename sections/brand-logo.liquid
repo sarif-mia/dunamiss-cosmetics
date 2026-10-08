@@ -182,7 +182,7 @@
                   href="{{ block_st.link }}"
                 {% endif %}
                 {%- if section_st.open_link_newtab != blank -%}
-                  target="_blank"
+                  target="_blank" rel="noopener noreferrer"
                 {%- else -%}
                   target="_self"
                 {% endif %}

@@ -1123,7 +1123,7 @@
             "value": "6",
             "label": "t:settings_schema.color_swatches.settings.limit_color.6"
           }
-        ],
+        ]
       },
       {
         "type": "select",
@@ -1552,7 +1552,7 @@
           {
             "value": "background",
             "label": "t:settings_schema.colors.settings.header.background"
-          },
+          }
         ]
       }
     ]

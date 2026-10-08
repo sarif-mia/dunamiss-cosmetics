@@ -426,7 +426,7 @@
     gap: 9px;
   }
 
-  .dm-contact-buttons a {
+  .dm-contact-buttons :is(a, .dm-contact-hours) {
     display: inline-flex;
     align-items: center;
     gap: 7px;
@@ -508,7 +508,7 @@
       align-items: stretch;
     }
 
-    .dm-contact-buttons a {
+    .dm-contact-buttons :is(a, .dm-contact-hours) {
       justify-content: center;
     }
 
@@ -884,7 +884,7 @@
         </a>
 
 
-        <a href="javascript:void(0)">
+        <span class="dm-contact-hours">
 
           <svg viewBox="0 0 24 24" fill="none"
                stroke="currentColor" stroke-width="1.7">
@@ -894,7 +894,7 @@
 
           Every day · 10 AM–6 PM IST
 
-        </a>
+        </span>
 
       </div>
 

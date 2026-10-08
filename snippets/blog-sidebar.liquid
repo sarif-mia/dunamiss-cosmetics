@@ -134,7 +134,7 @@
               href="{% if url == blank %}#{% else %}{{ url }}{% endif %}"
               class="banner-link"
               {%- if open_link != blank -%}
-                target="_blank"
+                target="_blank" rel="noopener noreferrer"
               {%- endif -%}
             >
               <div class="image" style="--aspect-ratio: {{ ratio }}">

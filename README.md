@@ -15,8 +15,19 @@ npx @shopify/cli@latest theme dev --store cfe991.myshopify.com
 Validate theme code:
 
 ```sh
+python3 scripts/audit-theme.py
 npx @shopify/cli@latest theme check
 ```
+
+The fast local audit validates strict JSON and section schemas, JavaScript syntax,
+Liquid asset/snippet/section references, external-link safety, generated CSS freshness,
+translation parity, static translation references, and tracked-file hygiene. Run both
+commands before a deployment.
+
+Theme Check can report warnings for GoKwik/video remote assets, large original-theme
+sections, and snippets rendered from JSON `custom_liquid` settings. Treat errors as
+blocking. Before removing an apparently orphaned snippet, check both Liquid files and
+embedded Liquid in JSON templates; `scripts/audit-theme.py` checks both locations.
 
 ### CSS organization
 

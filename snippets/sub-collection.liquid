@@ -82,7 +82,7 @@
     {% if sub_collection.image != blank %}
       <div class="sub-collection-item">
         {% assign custom_url = sub_collection.metafields.custom.custom_url %}
-        <a href="{{ custom_url | default: '#' }}" target="_blank">
+        <a href="{{ custom_url | default: '#' }}" target="_blank" rel="noopener noreferrer">
           <img
             src="{{ sub_collection.image | image_url: width: 600 }}"
             alt="{{ sub_collection.title | escape }}"

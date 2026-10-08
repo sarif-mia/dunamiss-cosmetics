@@ -48,7 +48,7 @@
         "custom_liquid_8rKT7x": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'custom-key-benifits' %}"
+            "custom_liquid": "{% render 'custom-key-benefits' %}"
           }
         },
         "variant_picker_tcCihG": {

@@ -723,7 +723,7 @@
           "fade_in": "Fade in",
           "zoom": "Zoom"
         }
-      },
+      }
     },
     "store_information": {
       "name": "Store information",
@@ -2263,7 +2263,7 @@
         "policy_links": {
           "content": "Policy links",
           "info": "To add a policy, go to your [legal settings.](\/admin\/settings\/legal)"
-        },
+        }
       },
       "blocks": {
         "content_width": {
@@ -2322,7 +2322,7 @@
       "name": "Product with banner",
       "blocks": {
         "settings": {
-          "name": "Product banner",
+          "name": "Product banner"
         }
       }
     },
@@ -2667,7 +2667,7 @@
         },
         "slide_width": {
           "label": "Slide width"
-        },
+        }
       }
     },
     "testimonials_product": {
@@ -3531,7 +3531,7 @@
           "background_color": {
             "label": "Background color",
             "enable": "Enable backglound color"
-          },
+          }
         },
         "icon_setting": {
           "label": "Icon setting"
@@ -3621,7 +3621,7 @@
           },
           "image_width_heading": {
             "label": "Image width on heading"
-          },
+          }
         },
         "block_settings": {
           "label": "Block setting",
@@ -3647,14 +3647,14 @@
           "position": {
             "label": "Position image",
             "right": "right",
-            "left": "left",
+            "left": "left"
           },
           "width_img": {
             "label": "Width image"
           },
           "width_heading": {
             "label": "Width heading"
-          },
+          }
           
         }
       },

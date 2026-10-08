@@ -69,8 +69,8 @@
       {% endif %}
       {%- if code != blank -%}
         <div class="before-code mb-30">
-          <a
-            href="javascript:;"
+          <button
+            type="button"
             class="btn-primary inline-flex discount gap-10 no-underline content-center"
             data-code="{{ code }}"
             aria-label="{{ 'popup.copy' | t }}"
@@ -86,7 +86,7 @@
                 {{- 'popup.copied' | t -}}
               </span>
             </span>
-          </a>
+          </button>
         </div>
       {% endif %}
       {%- if description != blank -%}

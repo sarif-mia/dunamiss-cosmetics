@@ -31,7 +31,14 @@ def build_global() -> str:
     return output
 
 
-ASSETS.joinpath("dunamiss-global.css").write_text(build_global())
-ASSETS.joinpath("dunamiss-foundations.css").write_text(
-    generated_header() + SOURCES.joinpath("foundations.css").read_text()
-)
+def build_foundations() -> str:
+    return generated_header() + SOURCES.joinpath("foundations.css").read_text()
+
+
+def write_outputs() -> None:
+    ASSETS.joinpath("dunamiss-global.css").write_text(build_global())
+    ASSETS.joinpath("dunamiss-foundations.css").write_text(build_foundations())
+
+
+if __name__ == "__main__":
+    write_outputs()

@@ -86,7 +86,7 @@
                   {% endif %}
                   aria-label="{{ block_st.first_button_label }}"
                   {%- if open_link != blank -%}
-                    target="_blank"
+                    target="_blank" rel="noopener noreferrer"
                   {% endif %}
                   class="inline-flex no-underline btn-{{ block_st.first_button_type }}"
                 >
