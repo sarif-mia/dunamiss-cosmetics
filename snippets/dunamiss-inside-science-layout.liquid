@@ -1,20 +1,93 @@
-{% comment %}Shared layout. Content is supplied by dunamiss-inside-science-data.{% endcomment %}
+{% comment %}
+Reuse the established Inside Science classes and four numbered sections.
+Only published product information is supplied by dunamiss-inside-science-data.
+The decorative divider does not represent a measured performance score.
+{% endcomment %}
 {%- if science_details != blank -%}
   {{ 'dunamiss-inside-science.css' | asset_url | stylesheet_tag }}
+  {%- assign details = science_details | split: '<li>' -%}
+  {%- assign ingredient_text = blank -%}
+  {%- for detail in details offset: 1 -%}
+    {%- assign fact = detail | split: '</li>' | first | strip -%}
+    {%- assign start = fact | slice: 0, 5 -%}
+    {%- if start == 'With ' -%}
+      {%- assign ingredient_text = fact | remove_first: 'With ' | remove_last: '.' | replace: ' and ', ', ' -%}
+    {%- endif -%}
+    {%- if fact contains 'Labelled ingredients include ' -%}
+      {%- assign ingredient_text = fact | remove_first: 'Labelled ingredients include ' | remove_last: '.' | replace: ' and ', ', ' -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign ingredients = ingredient_text | split: ', ' -%}
+  {%- assign icon_base = 'https://cdn.shopify.com/s/files/1/0686/9680/1515/files/' -%}
   <div class="dunamiss-inside-science">
-    <div class="dunamiss-inside-science__hero">
-      <p class="dunamiss-inside-science__eyebrow">The Science Inside</p>
-      <h2>{{ product.title | escape }}</h2>
-      <div>{{ science_overview }}</div>
+    <div class="custom-inside-hero-section">
+      <h3 class="custom-inside-hero-subtitle">The Science Inside</h3>
+      <h2 class="custom-inside-hero-title">{{ product.title | escape }}</h2>
+      <p class="custom-inside-hero-text">{{ science_overview }}</p>
     </div>
-    <div class="dunamiss-inside-science__grid">
-      <div class="dunamiss-inside-science__card">
-        <h3><span>1</span> FORMULA &amp; PRODUCT DETAILS</h3>
-        {{ science_details }}
+
+    <div class="custom-inside-science-card">
+      <h2><span class="custom-inside-science-number">1</span> SCIENCE BREAKDOWN</h2>
+      <div class="custom-inside-science-item">
+        <div class="custom-inside-science-icon-image">
+          <img class="brand-feature-icon" src="{{ icon_base }}science_backed_pink.png?v=1785134643" alt="" width="45" height="45" loading="lazy">
+        </div>
+        <div class="custom-inside-science-content">
+          <div class="custom-inside-science-top">
+            <h3>{% if ingredient_text != blank %}FORMULA INGREDIENTS{% else %}PRODUCT FORMULA &amp; FORMAT{% endif %}</h3>
+            <span class="custom-inside-science-badge">{% if ingredient_text != blank %}{{ ingredients.size }} Ingredients{% else %}Product details{% endif %}</span>
+          </div>
+          <div class="custom-inside-science-progress" aria-hidden="true"><div class="custom-inside-science-fill is-visible"></div></div>
+          <div class="custom-inside-science-tags">
+            {% if ingredient_text != blank %}
+              {% for ingredient in ingredients %}<span>{{ ingredient | escape }}</span>{% endfor %}
+            {% else %}
+              {% for detail in details offset: 1 %}<span>{{ detail | split: '</li>' | first | strip }}</span>{% endfor %}
+            {% endif %}
+          </div>
+        </div>
       </div>
-      <div class="dunamiss-inside-science__card">
-        <h3><span>2</span> HOW TO USE</h3>
-        <p>{{ science_directions }}</p>
+    </div>
+
+    <div class="custom-inside-active-section">
+      <div class="custom-inside-active-heading"><span class="custom-inside-active-number">2</span><h2>FORMULA &amp; PRODUCT DETAILS</h2></div>
+      <div class="custom-inside-active-grid">
+        {% for detail in details offset: 1 %}
+          {% assign fact = detail | split: '</li>' | first | strip %}
+          {% assign label = fact | split: ':' | first %}
+          <div class="custom-inside-active-card">
+            <div class="custom-inside-active-icon"><img class="brand-feature-icon" src="{{ icon_base }}leaf_pink.png?v=1785134659" alt="" width="45" height="45" loading="lazy"></div>
+            <div class="custom-inside-active-content">
+              <h3>{% if fact contains ':' %}{{ label }}{% elsif fact contains 'With ' or fact contains 'Labelled ingredients' %}Ingredients{% else %}Formula{% endif %}</h3>
+              <ul><li>{% if fact contains ':' %}{{ fact | remove_first: label | remove_first: ':' | strip }}{% else %}{{ fact }}{% endif %}</li></ul>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="custom-inside-rating-section">
+      <div class="custom-inside-rating-heading"><span class="custom-inside-rating-number">3</span><h2>HOW TO USE</h2></div>
+      <div class="custom-inside-rating-grid">
+        <div class="custom-inside-rating-card dunamiss-science-use">
+          <div class="custom-inside-rating-icon"><img class="brand-feature-icon" src="{{ icon_base }}simple_pink_outline_droplet.png?v=1785134524" alt="" width="45" height="45" loading="lazy"></div>
+          <h4>APPLICATION</h4><p>{{ science_directions }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom-inside-love-section">
+      <div class="custom-inside-love-heading"><span class="custom-inside-love-number">4</span><h2>WHY YOU'LL LOVE IT</h2></div>
+      <div class="custom-inside-love-grid">
+        {% for detail in details offset: 1 %}
+          {% assign fact = detail | split: '</li>' | first | strip %}
+          {% assign label = fact | split: ':' | first %}
+          <div class="custom-inside-love-card">
+            <div class="custom-inside-love-icon"><img class="brand-feature-icon" src="{{ icon_base }}lightweight_formula_pink.png?v=1785134803" alt="" width="45" height="45" loading="lazy"></div>
+            <h4>{% if fact contains ':' %}{{ label }}{% elsif fact contains 'With ' or fact contains 'Labelled ingredients' %}FORMULA INGREDIENTS{% else %}PRODUCT FORMAT{% endif %}</h4>
+            <p>{% if fact contains ':' %}{{ fact | remove_first: label | remove_first: ':' | strip }}{% else %}{{ fact }}{% endif %}</p>
+          </div>
+        {% endfor %}
       </div>
     </div>
   </div>

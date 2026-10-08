@@ -1,23 +1,714 @@
-.dunamiss-inside-science {
-  --science-accent: #c51c64;
-  max-width: 1100px;
-  margin: 60px auto;
-  padding: 0 20px;
-  color: var(--brand-text, #292129);
+/* Shared Inside Science design, matching custom-inside-science-tinted. */
+.custom-inside-hero-section{
+    max-width:900px;
+    margin:60px auto;
+    text-align:center;
+    padding:20px;
 }
-.dunamiss-inside-science__hero { max-width: 900px; margin: 0 auto 32px; text-align: center; }
-.dunamiss-inside-science__eyebrow { color: var(--science-accent); font-weight: 600; }
-.dunamiss-inside-science__hero h2 { font-size: clamp(24px, 3vw, 36px); margin: 12px 0; }
-.dunamiss-inside-science__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-.dunamiss-inside-science__card { background: #fff7fa; border: 1px solid #f3d8e3; border-radius: 16px; padding: 28px; }
-.dunamiss-inside-science__card h3 { display: flex; align-items: center; gap: 12px; font-size: 18px; margin: 0 0 20px; }
-.dunamiss-inside-science__card h3 span { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 32px; height: 32px; border-radius: 50%; background: var(--science-accent); color: #fff; }
-.dunamiss-inside-science__card ul { padding-left: 20px; margin: 0; }
-.dunamiss-inside-science__card li + li { margin-top: 10px; }
-.dunamiss-inside-science__card p { margin: 0; }
-.dunamiss-inside-science p, .dunamiss-inside-science li { line-height: 1.7; }
-@media (max-width: 749px) {
-  .dunamiss-inside-science { margin: 36px auto; padding: 0 16px; }
-  .dunamiss-inside-science__grid { grid-template-columns: 1fr; gap: 16px; }
-  .dunamiss-inside-science__card { padding: 20px; }
+
+.custom-inside-hero-top-line{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin-bottom:12px;
 }
+
+.custom-inside-hero-top-line span{
+    width:34px;
+    height:2px;
+    background:var(--brand-surface);
+    display:block;
+}
+
+.custom-inside-hero-top-line i{
+    color:var(--brand-accent);
+    font-size:12px;
+}
+
+.custom-inside-hero-subtitle{
+    font-family: var(--heading-font);
+    font-size:clamp(22px, 3.2vw, 32px);
+    font-weight:400;
+    color:var(--brand-heading);
+    line-height:1.1;
+    margin-bottom:8px;
+}
+
+.custom-inside-hero-title{
+    font-family: var(--heading-font);
+    font-size:clamp(26px, 4vw, 40px);
+    font-weight:700;
+    color:var(--brand-heading);
+    text-transform:uppercase;
+    line-height:1.2;
+    letter-spacing:0;
+    margin-bottom:20px;
+}
+
+.custom-inside-hero-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin-bottom:22px;
+}
+
+.custom-inside-hero-icon span{
+    width:42px;
+    height:2px;
+    background:var(--brand-surface);
+}
+
+.custom-inside-hero-icon i{
+    color:var(--brand-accent);
+    font-size:24px;
+}
+
+.custom-inside-hero-text{
+    font-family: var(--body-font);
+    max-width:645px;
+    margin:auto;
+    color:var(--brand-text);
+    font-size:18px;
+    line-height:1.7;
+}
+
+.custom-inside-hero-text strong{
+    font-weight:700;
+}
+
+@media(max-width:992px){
+
+.custom-inside-hero-subtitle{
+    font-size:clamp(22px, 3.2vw, 32px);
+}
+
+.custom-inside-hero-title{
+    font-size:clamp(26px, 4vw, 40px);
+}
+
+.custom-inside-hero-text{
+    font-size:16px;
+}
+
+}
+
+@media(max-width:768px){
+.custom-inside-hero-section{
+    margin:40px auto;
+    padding:15px;
+}
+.custom-inside-hero-subtitle{
+    font-size:clamp(22px, 3.2vw, 32px);
+}
+.custom-inside-hero-title{
+    font-size:clamp(26px, 4vw, 40px);
+}
+.custom-inside-hero-text{
+    font-size:15px;
+    line-height:1.6;
+}
+.custom-inside-hero-icon span{
+    width:25px;
+}
+
+
+}
+@media(max-width:480px){
+.custom-inside-hero-subtitle{
+    font-size:clamp(22px, 3.2vw, 32px);
+}
+.custom-inside-hero-title{
+    font-size:clamp(26px, 4vw, 40px);
+}
+.custom-inside-hero-text{
+    font-size:14px;
+}
+}
+.custom-inside-science-card{
+    margin:auto;
+    background:#fff;
+    border-radius:18px;
+    padding:30px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.custom-inside-science-card h2{
+    font-family: var(--heading-font);
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:var(--brand-heading);
+    font-size:22px;
+    margin-bottom:30px;
+}
+
+.custom-inside-science-number{
+    width:34px;
+    height:34px;
+    background:var(--brand-accent);
+    color:#fff;
+    border-radius:8px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+}
+
+.custom-inside-science-item{
+    display:flex;
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.custom-inside-science-icon-image{
+    width:55px;
+    height:55px;
+    border:2px solid var(--brand-border);
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:var(--brand-accent);
+    font-size:20px;
+    flex-shrink:0;
+}
+.custom-inside-science-icon-image img, .custom-inside-active-icon img, .custom-inside-rating-icon img, .custom-inside-love-icon img {
+	width: 45px;
+	height: 45px;
+	min-width: 45px;
+}
+.custom-inside-science-content{
+    flex:1;
+}
+
+.custom-inside-science-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.custom-inside-science-top h3{
+    font-family: var(--heading-font);
+    font-size:14px;
+    color:var(--brand-text);
+    font-weight:700;
+}
+
+.custom-inside-science-badge{
+    background:var(--brand-accent);
+    color:#fff;
+    padding:6px 12px;
+    border-radius:6px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.custom-inside-science-progress{
+    margin:12px 0;
+    height:6px;
+    background:var(--brand-surface);
+    border-radius:30px;
+    overflow:hidden;
+}
+
+.custom-inside-science-fill{
+    width:0;
+    height:100%;
+    background:var(--brand-accent);
+    border-radius:30px;
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.custom-inside-science-fill.is-visible{
+    width:var(--bar-width, 0%);
+}
+
+.custom-inside-science-tags{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.custom-inside-science-tags span{
+    font-family: var(--body-font);
+    background:var(--brand-surface);
+    padding:7px 14px;
+    border-radius:5px;
+    font-size:12px;
+    color:var(--brand-text);
+}
+
+@media(max-width:768px){
+
+    .custom-inside-science-top{
+        flex-direction:column;
+        align-items:end;
+        gap:10px;
+    }
+
+    .custom-inside-science-item{
+        flex-direction:column;
+    }
+
+    .custom-inside-science-icon{
+        width:50px;
+        height:50px;
+    }
+    .custom-inside-science-top h3 {
+	margin-top: -65px;
+	text-align: right;
+	max-width: 280px;
+   }
+
+}
+@media(max-width:480px){
+.custom-inside-science-top h3 {
+	max-width: 200px;
+}
+}
+.custom-inside-active-section{
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    margin-top:40px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.custom-inside-active-heading{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:25px;
+}
+
+.custom-inside-active-number{
+    width:32px;
+    height:32px;
+    background:var(--brand-accent);
+    color:#fff;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+}
+
+.custom-inside-active-heading h2{
+    font-family: var(--heading-font);
+    color:var(--brand-heading);
+    font-size:22px;
+    font-weight:700;
+}
+
+.custom-inside-active-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.custom-inside-active-card{
+    display:flex;
+    gap:15px;
+    padding:18px;
+    border:1px solid var(--brand-border);
+    border-radius:14px;
+    transition:.3s;
+}
+
+.custom-inside-active-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 20px rgba(236,11,109,.12);
+}
+
+.custom-inside-active-icon{
+    width:58px;
+    height:58px;
+    border:2px solid var(--brand-border);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--brand-accent);
+    font-size:24px;
+    flex-shrink:0;
+}
+
+.custom-inside-active-content{
+    flex:1;
+}
+
+.custom-inside-active-content h3{
+    font-family: var(--heading-font);
+    font-size:18px;
+    color:var(--brand-heading);
+    margin-bottom:10px;
+    position:relative;
+}
+
+.custom-inside-active-content h3::after{
+    content:"";
+    width:30px;
+    height:3px;
+    background:var(--brand-accent);
+    display:block;
+    margin-top:6px;
+    border-radius:10px;
+}
+
+.custom-inside-active-content ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.custom-inside-active-content ul li{
+    font-family: var(--body-font);
+    position:relative;
+    padding-left:18px;
+    margin-bottom:8px;
+    color:var(--brand-text);
+    font-size:14px;
+    line-height:1.5;
+}
+
+.custom-inside-active-content ul li::before{
+    content:"✓";
+    position:absolute;
+    left:0;
+    color:var(--brand-accent);
+    font-weight:bold;
+}
+
+@media(max-width:991px){
+
+.custom-inside-active-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:600px){
+
+/* .custom-inside-active-grid{
+    grid-template-columns:1fr;
+} */
+
+.custom-inside-active-card{
+    flex-direction:column;
+    text-align:center;
+}
+
+.custom-inside-active-icon{
+    margin:auto;
+}
+
+.custom-inside-active-content h3::after{
+    margin:8px auto 0;
+}
+
+.custom-inside-active-content ul li{
+    text-align:left;
+    font-size: 12px;
+}
+.custom-inside-active-content h3 {
+	font-size: 14px;
+}
+
+}
+
+.custom-inside-rating-section{
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    margin-top:40px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.custom-inside-rating-heading{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:25px;
+}
+
+.custom-inside-rating-number{
+    width:32px;
+    height:32px;
+    background:var(--brand-accent);
+    color:#fff;
+    border-radius:8px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:700;
+}
+
+.custom-inside-rating-heading h2{
+    font-family: var(--heading-font);
+    font-size:22px;
+    color:var(--brand-heading);
+    font-weight:700;
+}
+
+.custom-inside-rating-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    border-radius:16px;
+    overflow:hidden;
+}
+
+.custom-inside-rating-card{
+    padding:25px 15px;
+    text-align:center;
+    border-right:1px solid var(--brand-border);
+}
+
+ .custom-inside-rating-card:last-child{
+    border-right:none;
+}
+
+.custom-inside-rating-icon{
+    width:55px;
+    height:55px;
+    border:2px solid var(--brand-border);
+    border-radius:50%;
+    margin:0 auto 15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:var(--brand-accent);
+    font-size:22px;
+}
+
+.custom-inside-rating-card h4{
+    font-family: var(--heading-font);
+    font-size:12px;
+    color:var(--brand-heading);
+    line-height:1.5;
+    min-height:38px;
+    font-weight:700;
+    text-transform:uppercase;
+}
+
+.custom-inside-rating-score{
+    font-family: var(--body-font);
+    color:var(--brand-heading);
+    font-size:18px;
+    font-weight:700;
+    margin:12px 0 8px;
+}
+
+.custom-inside-rating-score span{
+    font-family: var(--body-font);
+    font-size:15px;
+    color:#000;
+}
+
+.custom-inside-rating-stars{
+    color:var(--brand-accent);
+    font-size:16px;
+    letter-spacing:2px;
+}
+
+@media(max-width:991px){
+
+.custom-inside-rating-grid{
+    grid-template-columns:repeat(3,1fr);
+}
+
+.custom-inside-rating-card{
+    border-right:1px solid var(--brand-border);
+    border-bottom:0px solid var(--brand-border);
+}
+
+.custom-inside-rating-card:nth-child(2n){
+    border-right:1px solid var(--brand-border);
+}
+.custom-inside-rating-card:nth-child(3n){
+    border-right:0px solid var(--brand-border);
+}
+}
+@media (max-width: 768px) {
+  .custom-inside-rating-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+  .custom-inside-rating-card:nth-child(2n) {
+    border-right: 0px solid var(--brand-border);
+  }
+  .custom-inside-rating-card:nth-child(3n) {
+	border-right: 1px solid var(--brand-border);
+  }
+}
+@media(max-width:576px){
+
+/* .custom-inside-rating-grid{
+    grid-template-columns:1fr;
+} */
+
+.custom-inside-rating-card{
+    border-right:none !important;
+    border-bottom:1px solid var(--brand-border);
+}
+
+.custom-inside-rating-card:last-child{
+    border-bottom:none;
+}
+
+.custom-inside-rating-score{
+    font-size:18px;
+}
+
+}
+
+.custom-inside-love-section{
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    margin-top:40px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.custom-inside-love-heading{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:25px;
+}
+
+.custom-inside-love-number{
+    width:32px;
+    height:32px;
+    background:var(--brand-accent);
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:8px;
+    font-weight:700;
+}
+
+.custom-inside-love-heading h2{
+    font-family: var(--heading-font);
+    color:var(--brand-heading);
+    font-size:22px;
+    font-weight:700;
+}
+
+.custom-inside-love-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    border-radius:16px;
+    overflow:hidden;
+}
+
+.custom-inside-love-card{
+    text-align:center;
+    padding:25px 18px;
+    border-right:1px solid var(--brand-border);
+    transition:.3s;
+}
+
+.custom-inside-love-card:last-child{
+    border-right:none;
+}
+
+.custom-inside-love-card:hover{
+    background:var(--brand-background);
+}
+
+.custom-inside-love-icon{
+    width:58px;
+    height:58px;
+    margin:auto;
+    border:2px solid var(--brand-border);
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:var(--brand-accent);
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.custom-inside-love-card h4{
+    font-family: var(--heading-font);
+    font-size:12px;
+    font-weight:700;
+    color:var(--brand-heading);
+    text-transform:uppercase;
+    line-height:1.5;
+    min-height:40px;
+    margin-bottom:10px;
+}
+
+.custom-inside-love-card p{
+    font-family: var(--body-font);
+    font-size:13px;
+    color:var(--brand-text);
+    line-height:1.6;
+}
+
+@media(max-width:1100px){
+
+.custom-inside-love-grid{
+    grid-template-columns:repeat(3,1fr);
+}
+
+.custom-inside-love-card{
+    border-right:1px solid var(--brand-border);
+    border-bottom:0px solid var(--brand-border);
+}
+
+.custom-inside-love-card:nth-child(3n){
+    border-right:none;
+}
+
+}
+
+@media(max-width:768px){
+
+.custom-inside-love-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.custom-inside-love-card:nth-child(3n){
+    border-right:1px solid var(--brand-border);
+}
+
+.custom-inside-love-card:nth-child(2n){
+    border-right:none;
+}
+
+}
+
+@media(max-width:576px){
+
+.custom-inside-love-card{
+    border-right:none;
+    border-bottom:1px solid var(--brand-border);
+}
+.custom-inside-love-card:nth-child(3n) {
+	border-right: 0px solid var(--brand-border);
+}
+.custom-inside-love-card:nth-child(5n) {
+	border-bottom: 0px solid var(--brand-border);
+}
+.custom-inside-love-card:last-child{
+    border-bottom:none;
+}
+.custom-inside-science-card,.custom-inside-active-section,.custom-inside-rating-section,.custom-inside-love-section {
+	padding: 18px;
+}
+.custom-inside-active-number,.custom-inside-science-number,.custom-inside-rating-number,.custom-inside-love-number {
+	width: 28px;
+	height: 28px;
+}
+.custom-inside-active-heading h2,.custom-inside-science-card h2,.custom-inside-rating-heading h2,.custom-inside-love-heading h2 {
+	font-size: 18px;
+}
+}
+.dunamiss-inside-science .dunamiss-science-use { grid-column: 1 / -1; }
+.dunamiss-inside-science .dunamiss-science-use p { max-width: 760px; margin: 12px auto 0; line-height: 1.7; }
+.dunamiss-inside-science .custom-inside-science-fill { width: 100%; }
