@@ -2,8 +2,10 @@
 <div class="gokwik-checkout{% if checkout_context == 'drawer' %} dm-cart-gokwik{% endif %}"{% if settings.hideFlow %} style="display:none !important;" {% endif %}>
   <button type='button' class="btn-primary w-full btn-checkout disabled{% if checkout_context == 'drawer' %} dm-cart-checkout{% endif %}" disabled onclick="onCheckoutClick(this)"{% if checkout_context == 'drawer' %} data-gokwik-cart-checkout{% endif %}>
             <span class="btn-text" >
-                <span>{{ settings.main-titile }}</span>
-                <span>{{ settings.sub-titile }}</span>
+                <span class="gokwik-checkout-title">{{ settings.main-titile }}</span>
+                {% if settings.sub-titile != blank %}
+                  <span class="gokwik-checkout-subtitle">{{ settings.sub-titile }}</span>
+                {% endif %}
             </span>
           {% comment %} <span class="pay-opt-icon">
              <!-- <img src="https://cdn.gokwik.co/v4/images/upi-icons.svg"> -->
