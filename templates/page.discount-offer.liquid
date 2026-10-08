@@ -1,507 +1,162 @@
+{{ 'discount-offers-page.css' | asset_url | stylesheet_tag }}
 
-    <style>
-      .discounts-hero,
-      .discounts-section,
-      .discounts-subscriber-section {
-        --bg: var(--brand-ivory);
-        --text: var(--brand-ink);
-        --muted: var(--brand-muted);
-        --accent: var(--brand-rose);
-        --accent-dark: var(--brand-ink);
-        --border: var(--color-border);
-        --card: var(--color-white);
-        color: var(--text);
-        background: var(--bg);
-        font-family: var(--body-font);
-        line-height: 1.6;
-      }
+{% liquid
+  assign shipping_threshold = settings.free_shipping_minimum | plus: 0
+  assign shipping_threshold_money = shipping_threshold | times: 100 | money
+  assign gift_threshold = settings.native_cart_gift_threshold | plus: 0
+  assign gift_threshold_money = gift_threshold | times: 100 | money
+  assign gift_product = settings.native_cart_gift_product
+  assign gift_variant = gift_product.selected_or_first_available_variant
+  assign discount_threshold = settings.native_cart_discount_threshold | plus: 0
+  assign discount_threshold_money = discount_threshold | times: 100 | money
+  assign discount_label = settings.native_cart_discount_label | default: 'Cart discount'
+  assign shipping_enabled = false
+  assign gift_enabled = false
+  assign discount_enabled = false
 
-      .discounts-hero *,
-      .discounts-section *,
-      .discounts-subscriber-section * {
-        box-sizing: border-box;
-      }
+  if settings.show_on_minicart_cart_page and shipping_threshold > 0
+    assign shipping_enabled = true
+  endif
+  if settings.native_cart_auto_gift and gift_product != blank and gift_variant.available and gift_threshold > 0
+    assign gift_enabled = true
+  endif
+  if settings.native_cart_discount_milestone and discount_threshold > 0
+    assign discount_enabled = true
+  endif
+%}
 
-      .discounts-hero a,
-      .discounts-section a,
-      .discounts-subscriber-section a {
-        text-decoration: none;
-      }
-
-      .discounts-hero h1,
-      .discounts-hero h2,
-      .discounts-hero h3,
-      .discounts-hero h4,
-      .discounts-hero h5,
-      .discounts-hero h6,
-      .discounts-section h1,
-      .discounts-section h2,
-      .discounts-section h3,
-      .discounts-section h4,
-      .discounts-section h5,
-      .discounts-section h6,
-      .discounts-subscriber-section h1,
-      .discounts-subscriber-section h2,
-      .discounts-subscriber-section h3,
-      .discounts-subscriber-section h4,
-      .discounts-subscriber-section h5,
-      .discounts-subscriber-section h6 {
-        font-family: var(--body-font);
-        font-weight: 500;
-      }
-
-
-      .discounts-hero {
-        background: linear-gradient(135deg, var(--brand-ivory) 0%, var(--brand-blush) 100%);
-        padding: 90px 0 70px;
-      }
-
-      .discounts-hero-grid {
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 40px;
-        align-items: center;
-      }
-
-      .discounts-eyebrow {
-        display: inline-block;
-        letter-spacing: 0.24em;
-        text-transform: uppercase;
-        font-size: 14px;
-        font-weight: 700;
-        color: var(--accent-dark);
-        margin-bottom: 14px;
-      }
-
-      .discounts-hero h1 {
-        font-size: clamp(36px, 5vw, 56px);
-        line-height: 1.1;
-        margin: 0 0 16px;
-        color: var(--brand-ink);
-      }
-
-      .discounts-hero p {
-        font-size: 18px;
-        color: var(--muted);
-        margin: 0 0 24px;
-        max-width: 620px;
-      }
-
-      .discounts-hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-      }
-
-      .discounts-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 999px;
-        padding: 12px 22px;
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        box-shadow: 0 4px 15px rgba(231, 60, 117, 0.25);
-        border: none;
-      }
-
-      .discounts-btn-primary {
-        background: var(--brand-rose);
-        color: var(--color-white);
-      }
-
-      .discounts-btn-primary:hover {
-        background: var(--brand-ink);
-        box-shadow: 0 6px 20px rgba(199, 27, 87, 0.4);
-        transform: translateY(-2px);
-      }
-
-      .discounts-btn-secondary {
-        color: var(--card);
-        background: var(--brand-rose);
-      }
-
-      .discounts-btn-secondary:hover {
-        background: var(--brand-ink);
-        box-shadow: 0 6px 20px rgba(184, 24, 77, 0.4);
-        transform: translateY(-2px);
-      }
-
-      .discounts-hero-card {
-        background: #fff;
-        border: 1px solid var(--border);
-        border-radius: 24px;
-        padding: 28px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
-      }
-
-      .discounts-hero-card:hover {
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        transform: translateY(-4px);
-      }
-
-      .discounts-hero-card h3 {
-        font-size: 22px;
-        margin: 0 0 10px;
-      }
-
-      .community-header {
-        color:var(--color-white);
-        }
-      
-
-      .discounts-hero-card ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .discounts-hero-card li {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 0;
-        border-bottom: 1px solid #f4e8e2;
-        font-size: 14px;
-      }
-
-      .discounts-hero-card li:last-child {
-        border-bottom: none;
-      }
-
-      .discounts-section {
-        padding: 70px 0;
-      }
-
-      .discounts-section-heading {
-        text-align: center;
-        margin-bottom: 36px;
-      }
-
-      .discounts-section-heading h2 {
-        font-size: 40px;
-        margin: 0 0 10px;
-      }
-
-      .discounts-section-heading p {
-        max-width: 700px;
-        margin: 0 auto;
-        color: var(--muted);
-        font-size: 18px;
-      }
-
-      .discounts-offer-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 22px;
-      }
-
-      .discounts-offer-card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 24px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-        transition: all 0.3s ease;
-      }
-
-      .discounts-offer-card:hover {
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
-        transform: translateY(-6px);
-        border-color: var(--brand-rose);
-      }
-
-      .discounts-offer-card h3 {
-        font-size: 20px;
-        margin: 10px 0 8px;
-      }
-
-      .discounts-offer-card p {
-        color: var(--muted);
-        margin: 0 0 16px;
-      }
-
-      .discounts-offer-meta {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 14px;
-        font-weight: 600;
-        margin-bottom: 16px;
-      }
-
-      .discounts-offer-card .discounts-btn-secondary {
-        width: 100%;
-      }
-
-      
-
-      .discounts-cta-box {
-        background: var(--brand-rose);
-        color: var(--color-white);
-        border-radius: 24px;
-        padding: 36px 28px;
-        text-align: center;
-      }
-
-      .discounts-cta-box h3 {
-        font-size: 40px;
-        margin: 0 0 12px;
-        color: var(--color-white);
-      }
-
-      .discounts-cta-box p {
-        color: var(--color-white);
-        max-width: 700px;
-        margin: 0 auto 22px;
-      }
-
-      .discounts-cta-box .discounts-btn-primary {
-        background: var(--color-white);
-        color: var(--brand-ink);
-        display: inline-flex;
-      }
-
-      .discounts-cta-box .discounts-btn-primary:hover {
-        background: var(--brand-ivory);
-        color: var(--brand-ink);
-        box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5);
-      }
-
-      .discounts-subscriber-section {
-        padding: 0;
-      }
-
-      .discounts-subscriber-grid {
-        display: grid;
-        grid-template-columns: 1.05fr 0.95fr;
-        gap: 24px;
-        align-items: stretch;
-      }
-
-      .discounts-subscriber-gallery {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
-      }
-
-      .discounts-subscriber-gallery img {
-        width: 100%;
-        display: block;
-        border-radius: 20px;
-        object-fit: cover;
-        aspect-ratio: 1 / 1;
-      }
-
-      .discounts-subscriber-card {
-        background: var(--brand-ink);
-        border-radius: 32px;
-        padding: 40px 32px;
-        color: var(--color-white);
-        min-height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-
-      .discounts-subscriber-card h3 {
-        margin: 0 0 18px;
-        font-size: clamp(34px, 3.2vw, 50px);
-        line-height: 1.05;
-      }
-
-      .discounts-subscriber-card p {
-        margin: 10px 0 30px;
-        color: rgba(255,255,255,0.88);
-        max-width: 520px;
-        font-size: 14px;
-        line-height: 1.8;
-      }
-
-      .discounts-subscriber-form {
-        display: grid;
-        gap: 12px;
-      }
-
-      .discounts-subscriber-form input {
-        width: 100%;
-        padding: 16px 18px;
-        border-radius: 999px;
-        border: 1px solid rgba(255,255,255,0.55);
-        background: rgba(255,255,255,0.14);
-        color: #fff;
-        outline: none;
-        font-size: 14px;
-      }
-
-      .discounts-subscriber-form input::placeholder {
-        color: rgba(255,255,255,0.76);
-      }
-
-      .discounts-subscriber-form button {
-        width: 100%;
-        padding: 16px 18px;
-        border-radius: 999px;
-        border: none;
-        background: var(--brand-rose);
-        color: var(--color-white);
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(199, 27, 87, 0.25);
-      }
-
-      .discounts-subscriber-form button:hover {
-        background: var(--brand-rose);
-        box-shadow: 0 6px 20px rgba(199, 27, 87, 0.4);
-        transform: translateY(-2px);
-      }
-
-      .discounts-subscriber-note {
-        margin: 22px 0 0;
-        color: rgba(255,255,255,0.72);
-        font-size: 12px;
-        line-height: 1.7;
-      }
-
-      @media (max-width: 900px) {
-        .discounts-hero-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .discounts-offer-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .discounts-subscriber-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      @media (max-width: 680px) {
-        .discounts-hero {
-          padding: 70px 0 50px;
-        }
-
-        .discounts-offer-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .discounts-hero-actions {
-          flex-direction: column;
-          align-items: stretch;
-        }
-      }
-    </style>
-
-    <section class="discounts-hero">
-      <div class="container discounts-hero-grid">
-        <div>
-          <span class="discounts-eyebrow">Limited-time offers</span>
-          <h1>Exclusive discounts and upcoming sale events in one place.</h1>
-          <p>Discover the best savings for the season, from flash deals to member-only perks. Choose the offer that fits your shopping style and enjoy the best value before the sale ends.</p>
-          <div class="discounts-hero-actions">
-            <a class="discounts-btn discounts-btn-primary" href="{{ routes.all_products_collection_url }}">Shop now</a>
-            <a class="discounts-btn discounts-btn-secondary" href="#offers">View offers</a>
-          </div>
+<main class="dm-offers-page">
+  <section class="dm-offers-hero" aria-labelledby="DmOffersTitle">
+    <div class="fluid_container dm-offers-hero__grid">
+      <div class="dm-offers-hero__content">
+        <span class="dm-offers-eyebrow">Current cart rewards</span>
+        <h1 id="DmOffersTitle">More beauty, more rewards.</h1>
+        <p>
+          Unlock the offers below as your qualifying cart value grows. Your progress updates automatically in the cart, so there is no code to remember.
+        </p>
+        <div class="dm-offers-actions">
+          <a class="dm-offers-button dm-offers-button--primary" href="{{ routes.all_products_collection_url }}">Shop all products</a>
+          <a class="dm-offers-button dm-offers-button--secondary" href="#current-offers">See current offers</a>
         </div>
+      </div>
 
-        <div class="discounts-hero-card">
-          <h3>Best approach for shoppers</h3>
-          <ul>
-            <li><span>Current offer</span><span class="tag">Special offer</span></li>
-            <li><span>Best value</span><span class="tag">Bundle & save</span></li>
+      <div class="dm-offers-ladder" aria-label="Current reward thresholds">
+        <div class="dm-offers-ladder__heading">
+          <span>Reward ladder</span>
+          <small>Unlocked automatically</small>
+        </div>
+        <ol>
+          {%- if shipping_enabled -%}
             <li>
-              <span>Shop link</span>
-              <a class="tag" href="{{ routes.all_products_collection_url }}">View products</a>
+              <span class="dm-offers-ladder__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3.5 6.5h10v10h-10zM13.5 10h3.2l3.8 3.7v2.8h-7zM7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span><small>Spend</small><strong>{{ shipping_threshold_money }}</strong></span>
+              <span>Free shipping</span>
             </li>
-          </ul>
-        </div>
+          {%- endif -%}
+          {%- if gift_enabled -%}
+            <li>
+              <span class="dm-offers-ladder__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 10h16v10H4zM3 6.5h18V10H3zM12 6.5V20M12 6.5H8.4a2.2 2.2 0 1 1 2.2-2.2c0 1.2 1.4 2.2 1.4 2.2Zm0 0h3.6a2.2 2.2 0 1 0-2.2-2.2c0 1.2-1.4 2.2-1.4 2.2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span><small>Spend</small><strong>{{ gift_threshold_money }}</strong></span>
+              <span>Free gift</span>
+            </li>
+          {%- endif -%}
+          {%- if discount_enabled -%}
+            <li>
+              <span class="dm-offers-ladder__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="m4.5 12 7.5-7.5h6.5a1 1 0 0 1 1 1V12L12 19.5 4.5 12Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M15.8 8.2h.01M9.2 14.8l5.6-5.6M10 10.2h.01M14 13.8h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </span>
+              <span><small>Spend</small><strong>{{ discount_threshold_money }}</strong></span>
+              <span>{{ discount_label | escape }}</span>
+            </li>
+          {%- endif -%}
+        </ol>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="discounts-section" id="offers">
-      <div class="fluid_container">
-        <div class="discounts-section-heading">
-          <h2>Featured discount offers</h2>
-          <p>Choose an offer below to save more on your favorite picks before the promotion expires.</p>
-        </div>
+  <section class="dm-offers-current" id="current-offers" aria-labelledby="DmCurrentOffersTitle">
+    <div class="fluid_container">
+      <div class="dm-offers-section-heading">
+        <span class="dm-offers-eyebrow">Available now</span>
+        <h2 id="DmCurrentOffersTitle">Offers that match your cart</h2>
+        <p>Shop normally and watch each reward unlock in your cart.</p>
+      </div>
 
-        <div class="discounts-offer-grid">
-          
-          <article class="discounts-offer-card">
-            <span class="tag">Free Gift</span>
-            <h3>Get a free gift on orders over ₹999.</h3>
-            <p>Spend ₹999 or more and receive a special free gift with your order.</p>
-            <div class="discounts-offer-meta">
-              <span>Offer</span>
-              <strong>FREE GIFT</strong>
-            </div>
-            <a class="discounts-btn discounts-btn-secondary" href="{{ routes.all_products_collection_url }}">Shop Now</a>
+      <div class="dm-offers-grid">
+        {%- if shipping_enabled -%}
+          <article class="dm-offers-card">
+            <span class="dm-offers-card__number">01</span>
+            <span class="dm-offers-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3.5 6.5h10v10h-10zM13.5 10h3.2l3.8 3.7v2.8h-7zM7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="dm-offers-card__tag">Shipping reward</span>
+            <h3>Free shipping from {{ shipping_threshold_money }}</h3>
+            <p>Reach {{ shipping_threshold_money }} in qualifying products and free shipping unlocks for your order.</p>
+            <div class="dm-offers-card__footer"><span>No code required</span><strong>{{ shipping_threshold_money }}</strong></div>
           </article>
+        {%- endif -%}
 
-          {% comment %} <article class="discounts-offer-card">
-            <span class="tag">UpTo 70% OFF</span>
-            <h3>Get off your order</h3>
-            <p>Enjoy a special first-purchase reward and discover our best-sellers at a better price.</p>
-            <div class="discounts-offer-meta">
-              <span>No Code</span>
-              <strong>Required</strong>
+        {%- if gift_enabled -%}
+          <article class="dm-offers-card dm-offers-card--gift">
+            <span class="dm-offers-card__number">02</span>
+            <div class="dm-offers-card__gift-row">
+              <span class="dm-offers-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 10h16v10H4zM3 6.5h18V10H3zM12 6.5V20M12 6.5H8.4a2.2 2.2 0 1 1 2.2-2.2c0 1.2 1.4 2.2 1.4 2.2Zm0 0h3.6a2.2 2.2 0 1 0-2.2-2.2c0 1.2-1.4 2.2-1.4 2.2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              {%- if gift_product.featured_image -%}
+                <a class="dm-offers-card__gift-image" href="{{ gift_product.url }}" aria-label="View {{ gift_product.title | escape }}">
+                  {{ gift_product.featured_image | image_url: width: 240 | image_tag: loading: 'lazy', widths: '120, 180, 240', sizes: '74px', alt: gift_product.title }}
+                </a>
+              {%- endif -%}
             </div>
-            <a class="discounts-btn discounts-btn-secondary" href="{{ routes.all_products_collection_url }}">Claim offer</a>
-          </article> {% endcomment %}
-
-          <article class="discounts-offer-card">
-            <span class="tag">Bundle savings</span>
-            <h3>Buy more, save more</h3>
-            <p>Mix and match your favorite products to unlock extra savings on complete sets.</p>
-            <div class="discounts-offer-meta">
-              <span>Valid until</span>
-              <strong>Next month</strong>
-            </div>
-            <a class="discounts-btn discounts-btn-secondary" href="{{ routes.all_products_collection_url }}">View bundles</a>
+            <span class="dm-offers-card__tag">Free gift</span>
+            <h3>A complimentary gift from {{ gift_threshold_money }}</h3>
+            <p>{{ gift_product.title | escape }} is added automatically when your qualifying cart reaches {{ gift_threshold_money }}.</p>
+            <div class="dm-offers-card__footer"><span>While stocks last</span><strong>{{ gift_threshold_money }}</strong></div>
           </article>
-        </div>
-      </div>
-    </section>
+        {%- endif -%}
 
-    <section class="discounts-section">
-      <div class="fluid_container">
-        <div class="discounts-cta-box">
-          <h3>Don’t miss the next big offer</h3>
-          <p>Visit the shop now to see the latest products, check the active deals, and grab your favorites before the sale period ends.</p>
-          <a class="discounts-btn discounts-btn-primary" href="{{ routes.all_products_collection_url }}">Explore shop</a>
-        </div>
+        {%- if discount_enabled -%}
+          <article class="dm-offers-card">
+            <span class="dm-offers-card__number">03</span>
+            <span class="dm-offers-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="m4.5 12 7.5-7.5h6.5a1 1 0 0 1 1 1V12L12 19.5 4.5 12Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M15.8 8.2h.01M9.2 14.8l5.6-5.6M10 10.2h.01M14 13.8h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <span class="dm-offers-card__tag">Cart saving</span>
+            <h3>{{ discount_label | escape }} from {{ discount_threshold_money }}</h3>
+            <p>Reach {{ discount_threshold_money }} in qualifying products to unlock {{ discount_label | escape }} on your order.</p>
+            <div class="dm-offers-card__footer"><span>Applied when eligible</span><strong>{{ discount_threshold_money }}</strong></div>
+          </article>
+        {%- endif -%}
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="discounts-subscriber-section">
-      <div class="fluid_container">
-        <div class="discounts-subscriber-grid">
-          <div class="discounts-subscriber-gallery">
-            <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/DSC066691.png?v=1784611533" alt="image 1" width="800" height="800" loading="lazy" />
-            <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Untitled_design_-_2026-06-01T130253.797.jpg?v=1780299256" alt="image 2" width="800" height="800" loading="lazy" />
-            <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Untitled_design_7_56f11543-a563-441b-b425-14e63e3a235a.png?v=1706867912" alt="image 3" width="800" height="800" loading="lazy" />
-            <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Untitled_design_-_2026-06-02T134928.959.jpg?v=1780388593" alt="image 4" width="800" height="800" loading="lazy" />
-          </div>
-
-          <div class="discounts-subscriber-card">
-            <h3 class="community-header">Join our community, we have lots to offer</h3>
-            <p>Get the latest scoop straight from our brand. New launches, discounts, exclusive access & more. You’ll get first dibs on everything fresh and fun.</p>
-            <form class="discounts-subscriber-form" method="post" action="/contact#contact_form" accept-charset="UTF-8">
-              <input type="hidden" name="form_type" value="customer" />
-              <input type="hidden" name="utf8" value="✓" />
-              <input type="hidden" name="contact[tags]" value="newsletter" />
-              <input type="email" name="contact[email]" placeholder="Enter Your Email" required />
-              <button type="submit">Subscribe</button>
-            </form>
-                  <p class="discounts-subscriber-note">You can unsubscribe anytime. For more details review our <a href="https://dunamiss.in/pages/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.</p>
-          </div>
-        </div>
+  <section class="dm-offers-info" aria-labelledby="DmOfferDetailsTitle">
+    <div class="fluid_container dm-offers-info__grid">
+      <div>
+        <span class="dm-offers-eyebrow">Good to know</span>
+        <h2 id="DmOfferDetailsTitle">Simple rewards, clearly shown.</h2>
       </div>
-    </section>
+      <ul>
+        <li>Progress is based on the qualifying cart subtotal after product discounts.</li>
+        <li>The free gift is limited to one per eligible cart and depends on availability.</li>
+        <li>Final eligibility, savings and shipping are confirmed in the cart and at checkout.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="dm-offers-cta">
+    <div class="fluid_container">
+      <div class="dm-offers-cta__inner">
+        <div><span>Ready to unlock your rewards?</span><h2>Build your beauty cart.</h2></div>
+        <a class="dm-offers-button dm-offers-button--light" href="{{ routes.all_products_collection_url }}">Start shopping</a>
+      </div>
+    </div>
+  </section>
+
+</main>
