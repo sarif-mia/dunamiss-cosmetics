@@ -202,14 +202,13 @@
                         endfor
                       -%}
                       <video
-                        class="rounded"
+                        class="rounded lazy-video"
                         loop="true"
                         muted="true"
                         playsinline="true"
                         autoplay="true"
                         data-src="{{ source_url }}"
                         data-poster="{{ local_video.preview_image | image_url: width: 1100 }}"
-                        class="rounded lazy-video"
                       ></video>
                     {% elsif image != blank %}
                       {% assign image_alt = image.alt | default: 'Instagram shop' %}

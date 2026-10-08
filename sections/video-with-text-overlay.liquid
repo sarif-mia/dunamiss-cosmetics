@@ -23,14 +23,14 @@
 {%- endcapture -%}
 {%- style -%}
   @media (min-aspect-ratio: 16/9) {
-    section .video-foreground {
+    #shopify-section-{{ section.id }} .video-foreground {
       height: 300%;
       top: -100%;
     }
   }
 
   @media (max-aspect-ratio: 16/9) {
-    section .video-foreground {
+    #shopify-section-{{ section.id }} .video-foreground {
       width: 300%;
       left: -100%;
     }
@@ -87,11 +87,25 @@
           {%- if section_st.video_url.type == 'youtube' or section_st.video_url.type == 'vimeo' -%}
               {%- if section_st.video_url.type == 'youtube' -%}
                 <div class="video-foreground block lazy-video-link" data-video-id="{{ video_id }}" data-video-type="youtube">
-                  <img sizes="30vw" loading="{{ loading }}" src="https://img.youtube.com/vi/{{ video_id }}/hqdefault.jpg" alt="YouTube Thumbnail" width="100%" height="100%">
+                  <img
+                    src="https://img.youtube.com/vi/{{ video_id }}/hqdefault.jpg"
+                    alt="YouTube video preview"
+                    width="480"
+                    height="360"
+                    sizes="30vw"
+                    loading="{{ loading }}"
+                  >
                 </div>
               {%- elsif section_st.video_url.type == 'vimeo' -%}
                 <div class="video-foreground block lazy-video-link" data-video-id="{{ video_id }}" data-video-type="vimeo">
-                  <img sizes="30vw" loading="{{ loading }}" src="https://vumbnail.com/{{ video_id }}.jpg" alt="Vimeo Thumbnail" width="100%" height="100%">
+                  <img
+                    src="https://vumbnail.com/{{ video_id }}.jpg"
+                    alt="Vimeo video preview"
+                    width="640"
+                    height="360"
+                    sizes="30vw"
+                    loading="{{ loading }}"
+                  >
                 </div>
               {% endif %}
           {% endif %}
@@ -174,8 +188,7 @@
                   {% endif %}
                   data-motion-delay="{{ forloop.index0 | times: 50 }}"
                   class="video-image block {% if scroll_animation != 'none' and scroll_animation != null %} scroll-trigger {{ scroll_animation }} {% endif %} w-custom mb-custom max-w-100 {% if section_st.content_alignment == 'center' %} mx-md-auto{% elsif section_st.content_alignment == 'right'%} ms-md-auto{% endif %}{% if section_st.content_alignment_mobile == 'center' %} mx-auto{% elsif section_st.content_alignment_mobile == 'right'%} ms-auto{% endif %}"
-                  style="--custom-width: {{ block_st.image_width }}px;--space-bottom: {{ spacing_bottom }};{%- if scroll_animation != 'none' -%}--animation-order: {{  forloop.index }}{% endif %}"
-                  style="--aspect-ratio: 1/1; --custom-width: {{ img_width }}px;"
+                  style="--aspect-ratio: 1/1; --custom-width: {{ img_width }}px; --space-bottom: {{ spacing_bottom }};{% if scroll_animation != 'none' %} --animation-order: {{ forloop.index }};{% endif %}"
                 >
                   {% if image != blank %}
                     {%- liquid

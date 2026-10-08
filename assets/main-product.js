@@ -645,11 +645,11 @@ class ProductBoughtTogether extends HTMLElement {
     this.init();
   }
   init() {
-    const boughTogether = document.querySelector(
-      '.productBoughTogether[type="application/json"]'
+    const boughtTogetherData = document.querySelector(
+      '.productBoughtTogether[type="application/json"]'
     );
-    if (!boughTogether) return;
-    const variantData = JSON.parse(boughTogether.innerText);
+    if (!boughtTogetherData) return;
+    const variantData = JSON.parse(boughtTogetherData.innerText);
     let query = "";
     variantData.forEach((e, key, variantData) => {
       if (!Object.is(variantData.length - 1, key)) {
@@ -659,22 +659,30 @@ class ProductBoughtTogether extends HTMLElement {
       }
     });
     const productAjaxURL =
-      "?q=id:" + query + "&section_id=product-bough-together";
+      "?q=id:" + query + "&section_id=product-bought-together";
     fetch(`${window.routes.search_url}${productAjaxURL}`)
-      .then((response) => response.text())
-      .then(async (responseText) => {
-        const html = new DOMParser().parseFromString(responseText, "text/html");
-        document.getElementById("product-bought-together").innerHTML =
-          html.querySelector(".bought-together").innerHTML;
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Unable to load recommendations (${response.status})`);
+        }
+        return response.text();
       })
-      .catch((e) => {
-        throw error;
+      .then((responseText) => {
+        const html = new DOMParser().parseFromString(responseText, "text/html");
+        const target = document.getElementById("product-bought-together");
+        const recommendations = html.querySelector(".bought-together");
+        if (target && recommendations) {
+          target.innerHTML = recommendations.innerHTML;
+        }
+      })
+      .catch((error) => {
+        console.error("Unable to load frequently bought together products.", error);
       })
       .finally(() => {
-        this.eventProductBoughTogetherAction();
+        this.eventProductBoughtTogetherAction();
       });
   }
-  eventProductBoughTogetherAction() {
+  eventProductBoughtTogetherAction() {
     var _this = this;
     document
       .querySelectorAll(".bought-together-checkbox")
@@ -732,7 +740,7 @@ class ProductBoughtTogether extends HTMLElement {
                   total_compare_price + Number(compare_price);
               });
               save_price = total_compare_price - total_price;
-              _this.eventProductBoughTogetherUpdatePrice(
+              _this.eventProductBoughtTogetherUpdatePrice(
                 total_price,
                 total_compare_price,
                 save_price
@@ -852,7 +860,7 @@ class ProductBoughtTogether extends HTMLElement {
                   total_compare_price + Number(compare_price);
               });
             save_price = total_compare_price - total_price;
-            _this.eventProductBoughTogetherUpdatePrice(
+            _this.eventProductBoughtTogetherUpdatePrice(
               total_price,
               total_compare_price,
               save_price
@@ -968,7 +976,7 @@ class ProductBoughtTogether extends HTMLElement {
       });
   }
 
-  eventProductBoughTogetherUpdatePrice(
+  eventProductBoughtTogetherUpdatePrice(
     total_price,
     total_compare_price,
     save_price

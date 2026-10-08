@@ -159,7 +159,7 @@
           </tbody>
           <tfoot>
             <tr class="">
-              <td class="border  " colspan="4" class="small--hide">{{ 'customer.order.subtotal' | t }}</td>
+              <td class="border small--hide" colspan="4">{{ 'customer.order.subtotal' | t }}</td>
               <td class="border " data-label="{{ 'customer.order.subtotal' | t }}">
                 {{ order.line_items_subtotal_price | money }}
               </td>
@@ -167,7 +167,7 @@
 
             {% for discount in order.discounts %}
               <tr>
-                <td class="border  " colspan="4" class="small--hide">
+                <td class="border small--hide" colspan="4">
                   {{ discount.code }}
                   {{ 'customer.order.discount' | t }}
                 </td>
@@ -177,7 +177,7 @@
 
             {% for shipping_method in order.shipping_methods %}
               <tr>
-                <td class="border  " colspan="4" class="small--hide">
+                <td class="border small--hide" colspan="4">
                   {{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})
                 </td>
                 <td class="border " data-label="{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})">
@@ -188,7 +188,7 @@
 
             {% for tax_line in order.tax_lines %}
               <tr>
-                <td class="border  " colspan="4" class="small--hide">
+                <td class="border small--hide" colspan="4">
                   {{ 'customer.order.tax' | t }} ({{ tax_line.title }}
                   {{ tax_line.rate | times: 100 }}%)
                 </td>
@@ -202,7 +202,7 @@
             {% endfor %}
 
             <tr>
-              <td class="border  " colspan="4" class="small--hide">{{ 'customer.order.total' | t }}</td>
+              <td class="border small--hide" colspan="4">{{ 'customer.order.total' | t }}</td>
               <td class="border " data-label="{{ 'customer.order.total' | t }}">
                 {{ order.total_price | money }}
                 {{ order.currency }}

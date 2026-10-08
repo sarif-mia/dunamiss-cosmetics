@@ -33,7 +33,7 @@
                       type="text"
                       placeholder="{{ 'customer.addresses.first_name' | t }}"
                       name="address[first_name]"
-                      id="AddresFsirstName_{{ form.id }}"
+                      id="AddressFirstName_{{ form.id }}"
                       value="{{ form.first_name }}"
                       required
                       autocapitalize="words"
@@ -44,7 +44,7 @@
                       {{- 'customer.addresses.last_name' | t -}}
                     </label>
                     <input
-                      class="form-input form-input-placeholder"
+                      class="form-input form-input-placeholder address-country-option"
                       type="text"
                       name="address[last_name]"
                       id="AddressLastName_{{ form.id }}"
@@ -111,7 +111,6 @@
                       name="address[country]"
                       id="AddressCountryNew"
                       required
-                      class="address-country-option"
                       data-default="{{ form.country }}"
                     >
                       {{ country_option_tags }}

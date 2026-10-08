@@ -291,14 +291,13 @@
                           assign video_url = "https://cdn.shopify.com/videos/c/o/v/" | append: video_url[0] | append:".mp4" 
                         -%}
                         <video
-                          class="rounded lazyVdHide"
+                          class="rounded lazyVdHide lazy-video"
                           loop="true"
                           muted="true"
                           playsinline="true"
                           autoplay="true"
                           data-src="{{ video_url }}"
                           poster="{{ local_video.preview_image | image_url: width: 1100 }}"
-                          class="rounded lazy-video"
                         ></video>
                       {% elsif image != blank %}
                         {% assign image_alt = image.alt | default: 'Instagram shop' %}
