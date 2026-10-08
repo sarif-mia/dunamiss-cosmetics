@@ -3,11 +3,9 @@ extends: theme-check:recommended
 ignore:
   - node_modules/**
   - reports/**
-  - styles/**
 
 # These checks consume excessive memory on this legacy multilingual theme.
-# Translation parity and static translation references remain covered by
-# scripts/audit-theme.py.
+# Translation files are maintained with the original theme locale structure.
 MatchingTranslations:
   enabled: false
 
