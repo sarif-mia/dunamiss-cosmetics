@@ -53,10 +53,27 @@
           %}
           <div class="dm-shop-column">
             {% for child in eye_link.links %}
-              {% assign token = forloop.index0 | prepend: '|' | append: '|' %}
+              {% liquid
+                assign token = forloop.index0 | prepend: '|' | append: '|'
+                assign child_title = child.title | downcase
+                assign child_subtitle = ''
+                case child_title
+                  when 'kajal'
+                    assign child_subtitle = section.settings.eye_menu_kajal_subtitle
+                  when 'eyeliner'
+                    assign child_subtitle = section.settings.eye_menu_eyeliner_subtitle
+                  when 'eye balm'
+                    assign child_subtitle = section.settings.eye_menu_balm_subtitle
+                endcase
+              %}
               {% if column_items contains token %}
                 <div class="dm-shop-group">
-                  <a class="dm-shop-heading" href="{{ child.url }}">{{ child.title | escape }}</a>
+                  <a class="dm-shop-heading dm-eye-category-link" href="{{ child.url }}">
+                    <span>{{ child.title | escape }}</span>
+                    {% if child_subtitle != blank %}
+                      <span class="dm-eye-category-subtitle">{{ child_subtitle | escape }}</span>
+                    {% endif %}
+                  </a>
                   {% if child.links != blank %}
                     <ul role="list">
                       {% for grandchild in child.links %}
