@@ -6,27 +6,27 @@
 -%}
 
 <style>
-  .bought-together-list {
+  .bought-together-meta .bought-together-list {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
   }
 
-  .bought-together-card {
+  .bought-together-meta .bought-together-card {
     background: var(--color-background-2, #fff);
     min-height: 100%;
     border-radius: 10px;
     overflow: hidden;
   }
 
-  .bought-together-image {
+  .bought-together-meta .bought-together-image {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
     aspect-ratio: 1 / 1;
   }
 
-  .bought-together-image img {
+  .bought-together-meta .bought-together-image img {
     display: block;
     width: 100%;
     height: 100%;
@@ -34,31 +34,31 @@
     transition: opacity 0.45s ease, transform 0.45s ease;
   }
 
-  .bought-together-image .primary-image {
+  .bought-together-meta .bought-together-image .primary-image {
     position: relative;
     z-index: 1;
   }
 
-  .bought-together-image .secondary-image {
+  .bought-together-meta .bought-together-image .secondary-image {
     position: absolute;
     inset: 0;
     z-index: 2;
     opacity: 0;
   }
 
-  .bought-together-card:hover .bought-together-image .primary-image {
+  .bought-together-meta .bought-together-card:hover .bought-together-image .primary-image {
     opacity: 0;
   }
 
-  .bought-together-card:hover .bought-together-image .secondary-image {
+  .bought-together-meta .bought-together-card:hover .bought-together-image .secondary-image {
     opacity: 1;
   }
 
-  .bought-together-card:hover .bought-together-image img {
+  .bought-together-meta .bought-together-card:hover .bought-together-image img {
     transform: scale(1.04);
   }
 
-  .quick-cart-form {
+  .bought-together-meta .quick-cart-form {
     position: absolute;
     right: 10px;
     bottom: 10px;
@@ -69,7 +69,7 @@
     z-index: 3;
   }
 
-  .quick-cart-btn {
+  .bought-together-meta .quick-cart-btn {
     width: 34px;
     height: 34px;
     border-radius: 50%;
@@ -89,7 +89,7 @@
     position: relative;
   }
 
-  .quick-cart-btn:hover {
+  .bought-together-meta .quick-cart-btn:hover {
     background: var(--color-primary, #111111);
     color: var(--color-white, #ffffff);
     border-color: transparent;
@@ -97,7 +97,13 @@
     transform: translateY(-2px);
   }
 
-  .quick-cart-btn svg {
+  .bought-together-meta .quick-cart-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    transform: none;
+  }
+
+  .bought-together-meta .quick-cart-btn svg {
     width: 18px;
     height: 18px;
     display: block;
@@ -106,7 +112,7 @@
     fill: currentColor;
   }
 
-  .quick-cart-btn .plus-mark {
+  .bought-together-meta .quick-cart-btn .plus-mark {
     position: absolute;
     right: 3px;
     bottom: 3px;
@@ -124,11 +130,11 @@
     box-shadow: 0 2px 6px rgba(0,0,0,0.14);
   }
 
-  .bought-together-info {
+  .bought-together-meta .bought-together-info {
     padding-top: 10px;
   }
 
-  .product-title {
+  .bought-together-title {
     font-size: 13px;
     font-weight: 600;
     color: var(--color-foreground);
@@ -140,19 +146,19 @@
     margin-bottom: 6px;
   }
 
-  .price-row {
+  .bought-together-price-row {
     display: flex;
     gap: 8px;
     align-items: center;
     flex-wrap: wrap;
   }
 
-  .price {
+  .bought-together-price {
     font-size: 13px;
     font-weight: 600;
   }
 
-  .compare-price {
+  .bought-together-compare-price {
     font-size: 14px;
     text-decoration: line-through;
     color:#af0303;
@@ -160,14 +166,14 @@
   }
 
   @media (max-width:991px){
-    .bought-together-list{
+    .bought-together-meta .bought-together-list{
       grid-template-columns:repeat(2,minmax(0,1fr));
     }
   }
 
   @media (max-width:767px){
 
-    .bought-together-list{
+    .bought-together-meta .bought-together-list{
       display:flex;
       overflow-x:auto;
       gap:10px;
@@ -175,17 +181,17 @@
       padding-bottom:8px;
     }
 
-    .bought-together-card{
+    .bought-together-meta .bought-together-card{
       min-width:220px;
       scroll-snap-align:start;
     }
 
-    .quick-cart-btn{
+    .bought-together-meta .quick-cart-btn{
       width:36px;
       height:36px;
     }
 
-    .quick-cart-btn svg{
+    .bought-together-meta .quick-cart-btn svg{
       width:17px;
       height:17px;
     }
@@ -193,17 +199,17 @@
   }
 
   @media (max-width: 480px) {
-    .quick-cart-form {
+    .bought-together-meta .quick-cart-form {
       right: 10px;
       bottom: 10px;
     }
 
-    .quick-cart-btn {
+    .bought-together-meta .quick-cart-btn {
       width: 32px;
       height: 32px;
     }
 
-    .quick-cart-btn svg {
+    .bought-together-meta .quick-cart-btn svg {
       width: 15px;
       height: 15px;
     }
@@ -237,6 +243,8 @@
 
       {%- if related_product != blank and related_product.id != blank and related_product.id != product.id -%}
 
+      {%- assign selected_variant = related_product.selected_or_first_available_variant -%}
+
       <div class="bought-together-card p-12">
 
         <div class="bought-together-image">
@@ -259,7 +267,14 @@
           <form method="post" action="{{ routes.cart_add_url }}" class="quick-cart-form" data-quick-cart>
             <input type="hidden" name="id" value="{{ related_product.selected_or_first_available_variant.id }}">
             <input type="hidden" name="quantity" value="1">
-            <button type="submit" class="quick-cart-btn" aria-label="Quick Add">
+            <button
+              type="submit"
+              class="quick-cart-btn"
+              aria-label="{% if selected_variant.available %}Quick add {{ related_product.title | escape }}{% else %}{{ related_product.title | escape }} is sold out{% endif %}"
+              {% unless selected_variant.available %}
+                disabled aria-disabled="true"
+              {% endunless %}
+            >
               <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4.5 5.5V4.75C4.5 3.23122 5.73122 2 7.25 2C8.76878 2 10 3.23122 10 4.75V5.5H11.5C12.3284 5.5 13 6.17157 13 7V12.5C13 13.3284 12.3284 14 11.5 14H3.5C2.67157 14 2 13.3284 2 12.5V7C2 6.17157 2.67157 5.5 3.5 5.5H4.5ZM6 5.5H8.5V4.75C8.5 4.05964 7.94036 3.5 7.25 3.5C6.55964 3.5 6 4.05964 6 4.75V5.5Z" fill="currentColor"/>
               </svg>
@@ -270,23 +285,22 @@
 
         <div class="bought-together-info">
           <a href="{{ related_product.url }}" style="text-decoration:none; display:block;">
-            <div class="product-title">
+            <div class="bought-together-title">
               {{ related_product.title }}
             </div>
 
-            {%- assign selected_variant = related_product.selected_or_first_available_variant -%}
             {%- assign regular_price = selected_variant.price -%}
             {%- assign compare_price = selected_variant.compare_at_price -%}
 
             {% if compare_price > regular_price %}
 
-              <div class="price-row">
+              <div class="bought-together-price-row">
 
-                <span class="price">
+                <span class="bought-together-price">
                   {{ regular_price | money }}
                 </span>
 
-                <span class="compare-price">
+                <span class="bought-together-compare-price">
                   {{ compare_price | money }}
                 </span>
 
@@ -294,7 +308,7 @@
 
             {% else %}
 
-              <div class="price">
+              <div class="bought-together-price">
                 {{ regular_price | money }}
               </div>
 
@@ -314,8 +328,10 @@
 
 <script>
   (function () {
+    const shopifyRoot = window.Shopify?.routes?.root || '/';
+
     function updateCartCounters() {
-      fetch('/cart.js')
+      fetch(`${shopifyRoot}cart.js`)
         .then((response) => response.json())
         .then((cart) => {
           if (!cart || typeof cart.item_count === 'undefined') return;
@@ -366,7 +382,7 @@
           button.classList.add('loading');
 
           try {
-            const response = await fetch('/cart/add.js', {
+            const response = await fetch(window.routes?.cart_add_url || `${shopifyRoot}cart/add.js`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -413,12 +429,12 @@
                 cart.open();
               }
             } else {
-              window.location.href = '/cart';
+              window.location.href = window.routes?.cart_url || `${shopifyRoot}cart`;
             }
           } catch (error) {
             console.error('Quick add to cart failed:', error);
             if (!document.querySelector('cart-notification') && !document.querySelector('cart-drawer')) {
-              window.location.href = '/cart';
+              window.location.href = window.routes?.cart_url || `${shopifyRoot}cart`;
             }
           } finally {
             button.removeAttribute('disabled');

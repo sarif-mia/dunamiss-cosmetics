@@ -127,11 +127,8 @@
                       {% endif %}
                       <ul
                         class="items list-none p-0 m-0 flex flex-wrap gap-custom"
-                        {% if iscolor %}
-                          style="--gap: 12"
-                        {% endif %}
-                        {% if is_size %}
-                          style="--gap: 10"
+                        {% if iscolor or is_size %}
+                          style="--gap: {% if iscolor %}12{% else %}10{% endif %};"
                         {% endif %}
                       >
                         {%- for value in filter.values -%}
@@ -209,9 +206,11 @@
                           >
                           <input
                             class="min-price-range w-full rounded-3 text-size"
+                            aria-label="{{ filter.label | escape }} minimum"
                             style="--input-height: 4rem;{% if enable_rtl %} --input-padding: 1rem 2.5rem 1rem 2rem;{% else %} --input-padding: 1rem 2rem 1rem 2.5rem{% endif %}"
                             name="{{ filter.min_value.param_name }}"
                             type="text"
+                            inputmode="decimal"
                             placeholder="0"
                             min="0"
                             {%- if filter.min_value.value -%}
@@ -247,19 +246,16 @@
                           <path d="M10 0.5L10 1.5L-4.37114e-08 1.5L0 0.5L10 0.5Z" fill="#666" />
                         </svg>
                         <div class="field flex-1 relative">
-                          <label
-                            for="max-price-range"
-                            class="hidden"
-                          ></label>
                           <span class="field-currency absolute lh-normal{% if enable_rtl %} right-15{% else %} left-15{% endif %} inset-y-0 inline-flex align-center"
                             >  {{ cart.currency.symbol }}</span
                           >
                           <input
-                            id="max-price-range"
                             class="max-price-range w-full rounded-3"
+                            aria-label="{{ filter.label | escape }} maximum"
                             style="--input-height: 4rem;{% if enable_rtl %} --input-padding: 1rem 2.5rem 1rem 2rem;{% else %} --input-padding: 1rem 2rem 1rem 2.5rem{% endif %}"
                             name="{{ filter.max_value.param_name }}"
                             type="text"
+                            inputmode="decimal"
                             min="0"
                             {%- if filter.max_value.value -%}
                               {%- if uses_comma_decimals -%}
