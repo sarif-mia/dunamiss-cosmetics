@@ -155,6 +155,12 @@
     if (!state?.items?.every((item) => Number.isFinite(Number(item.finalLinePrice)))) return Number(state?.subtotal || 0);
     return state.items.reduce((total, item) => isAutomaticGift(item) ? total : total + Number(item.finalLinePrice), 0);
   };
+  const offerIcon = (type) => ({
+    shipping: '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.5 6.5h10v10h-10zM13.5 10h3.2l3.8 3.7v2.8h-7zM7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    gift: '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 10h16v10H4zM3 6.5h18V10H3zM12 6.5V20M12 6.5H8.4a2.2 2.2 0 1 1 2.2-2.2c0 1.2 1.4 2.2 1.4 2.2Zm0 0h3.6a2.2 2.2 0 1 0-2.2-2.2c0 1.2-1.4 2.2-1.4 2.2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    discount: '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4.5 12 7.5-7.5h6.5a1 1 0 0 1 1 1V12L12 19.5 4.5 12Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M15.8 8.2h.01M9.2 14.8l5.6-5.6M10 10.2h.01M14 13.8h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+    complete: '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5.5 12.5 4 4 9-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+  }[type] || '');
   const updateOffers = () => {
     const config = drawerConfig();
     const offers = content.querySelector('[data-native-cart-offers]');
@@ -162,28 +168,51 @@
     const milestones = [];
     const amount = qualifyingSubtotal() / 100;
     if (config.shipping?.enabled && config.shipping.threshold > 0) {
-      milestones.push({ threshold: Number(config.shipping.threshold), label: 'Free shipping' });
+      milestones.push({ threshold: Number(config.shipping.threshold), label: 'Free shipping', type: 'shipping' });
     }
     if (config.gift?.enabled && config.gift.available && config.gift.variantId && config.gift.threshold > 0) {
-      milestones.push({ threshold: Number(config.gift.threshold), label: 'Free gift' });
+      milestones.push({ threshold: Number(config.gift.threshold), label: 'Free gift', type: 'gift' });
     }
     if (config.discount?.enabled && config.discount.threshold > 0) {
-      milestones.push({ threshold: Number(config.discount.threshold), label: config.discount.label || 'Discount' });
+      milestones.push({ threshold: Number(config.discount.threshold), label: config.discount.label || 'Discount', type: 'discount' });
     }
     milestones.sort((a, b) => a.threshold - b.threshold);
     const track = offers.querySelector('[data-native-cart-milestones]');
     track.replaceChildren();
     const visibleMilestones = milestones.slice(0, 3);
-    if (visibleMilestones.length) {
-      const progress = document.createElement('div'); progress.className = 'dm-cart-progress';
-      const fill = document.createElement('span');
-      fill.style.width = `${Math.min(100, amount / visibleMilestones.at(-1).threshold * 100)}%`;
-      progress.append(fill); track.append(progress);
-    }
     const next = milestones.find((milestone) => amount < milestone.threshold);
-    offers.querySelector('[data-native-cart-message]').textContent = next
-      ? `Add ${money((next.threshold - amount) * 100)} more to get ${next.label}`
-      : 'Your offer milestones are unlocked';
+    if (visibleMilestones.length) {
+      const maximum = visibleMilestones.at(-1).threshold;
+      const progressValue = Math.min(100, amount / maximum * 100);
+      const shell = document.createElement('div'); shell.className = 'dm-cart-progress-shell';
+      const progress = document.createElement('div'); progress.className = 'dm-cart-progress';
+      progress.setAttribute('role', 'progressbar');
+      progress.setAttribute('aria-label', 'Cart offer progress');
+      progress.setAttribute('aria-valuemin', '0');
+      progress.setAttribute('aria-valuemax', String(maximum));
+      progress.setAttribute('aria-valuenow', String(Math.min(amount, maximum)));
+      const fill = document.createElement('span'); fill.className = 'dm-cart-progress-fill';
+      fill.style.width = `${progressValue}%`;
+      progress.append(fill); shell.append(progress);
+      visibleMilestones.forEach((milestone) => {
+        const marker = document.createElement('span');
+        const unlocked = amount >= milestone.threshold;
+        marker.className = `dm-cart-milestone${unlocked ? ' is-unlocked' : ''}${next === milestone ? ' is-next' : ''}`;
+        marker.style.setProperty('--position', `${milestone.threshold / maximum * 100}%`);
+        marker.setAttribute('role', 'img');
+        marker.setAttribute('aria-label', `${milestone.label} at ${money(milestone.threshold * 100)}${unlocked ? ', unlocked' : ''}`);
+        marker.title = `${milestone.label} · ${money(milestone.threshold * 100)}`;
+        marker.innerHTML = unlocked ? offerIcon('complete') : offerIcon(milestone.type);
+        shell.append(marker);
+      });
+      track.append(shell);
+    }
+    const message = offers.querySelector('[data-native-cart-message]');
+    const messageIcon = document.createElement('span'); messageIcon.className = 'dm-cart-offer-message-icon';
+    messageIcon.innerHTML = offerIcon(next?.type || 'complete');
+    const messageText = document.createElement('span');
+    messageText.textContent = next ? `Add ${money((next.threshold - amount) * 100)} more to get ${next.label}` : 'Your offer milestones are unlocked';
+    message.replaceChildren(messageIcon, messageText);
     offers.hidden = milestones.length === 0;
   };
   const syncAutomaticGifts = () => {
