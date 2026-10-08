@@ -120,8 +120,8 @@
     {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
     {% comment %}Header geometry must be styled before its inline height measurement.{% endcomment %}
     {{ 'navigation.s.min.css' | asset_url | stylesheet_tag }}
-    {{ 'floating-mobile-menu.css' | asset_url | stylesheet_tag }}
-    {{ 'floating-shop-menu.css' | asset_url | stylesheet_tag }}
+    {{ 'dunamiss-mobile-navigation.css' | asset_url | stylesheet_tag }}
+    {{ 'dunamiss-desktop-navigation.css' | asset_url | stylesheet_tag }}
     {% if request.page_type == 'product' %}
       <script>document.documentElement.classList.add('product-reviews-pending');</script>
       <script src="{{ 'product-review-loading.js' | asset_url }}" defer></script>
@@ -130,10 +130,10 @@
     <link rel="stylesheet" href="{{ 'judgeme-reviews.s.min.css' | asset_url }}" media="print" onload="this.media='all'">
     <noscript>{{ 'judgeme-reviews.s.min.css' | asset_url | stylesheet_tag }}</noscript>
     {% render 'font-variables' %}
-    {{ 'storefront-bundle.css' | asset_url | stylesheet_tag }}
+    {{ 'dunamiss-global.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'shade-gallery.js' | asset_url }}" defer></script>
     {% if request.page_type == 'index' %}
-      {{ 'home-spacing.css' | asset_url | stylesheet_tag }}
+      {{ 'dunamiss-home.css' | asset_url | stylesheet_tag }}
     {% endif %}
     {% if request.design_mode %}
       {{ 'design-mode.css' | asset_url | stylesheet_tag: preload: true }}
