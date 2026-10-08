@@ -1,0 +1,101 @@
+{% liquid
+  assign shipping_threshold = settings.free_shipping_minimum | plus: 0
+  assign gift_threshold = settings.native_cart_gift_threshold | plus: 0
+  assign discount_threshold = settings.native_cart_discount_threshold | plus: 0
+  assign gift_variant = settings.native_cart_gift_product.selected_or_first_available_variant
+  assign shipping_enabled = false
+  assign gift_enabled = false
+  assign discount_enabled = false
+  assign offer_count = 0
+  assign maximum_threshold = 0
+
+  if settings.show_on_minicart_cart_page and shipping_threshold > 0
+    assign shipping_enabled = true
+    assign offer_count = offer_count | plus: 1
+    assign maximum_threshold = shipping_threshold
+  endif
+  if settings.native_cart_auto_gift and gift_variant != blank and gift_variant.available and gift_threshold > 0
+    assign gift_enabled = true
+    assign offer_count = offer_count | plus: 1
+    if gift_threshold > maximum_threshold
+      assign maximum_threshold = gift_threshold
+    endif
+  endif
+  if settings.native_cart_discount_milestone and discount_threshold > 0
+    assign discount_enabled = true
+    assign offer_count = offer_count | plus: 1
+    if discount_threshold > maximum_threshold
+      assign maximum_threshold = discount_threshold
+    endif
+  endif
+
+  assign qualifying_subtotal = 0
+  for item in cart.items
+    assign is_automatic_gift = false
+    assign has_legacy_gift_pick = false
+    assign has_legacy_gift_tier = false
+    for property in item.properties
+      if property.first == '_dm_auto_gift' and property.last == '1'
+        assign is_automatic_gift = true
+      endif
+      if property.first == '_gift_pick' and property.last == '1'
+        assign has_legacy_gift_pick = true
+      endif
+      if property.first == '_gift_tier_id' and property.last != blank
+        assign has_legacy_gift_tier = true
+      endif
+    endfor
+    if has_legacy_gift_pick and has_legacy_gift_tier
+      assign is_automatic_gift = true
+    endif
+    unless is_automatic_gift
+      assign qualifying_subtotal = qualifying_subtotal | plus: item.final_line_price
+    endunless
+  endfor
+%}
+
+{%- if offer_count > 0 -%}
+  <cart-offer-progress
+    class="dm-cart-page-offers"
+    data-amount="{{ qualifying_subtotal }}"
+    data-currency="{{ cart.currency.iso_code | default: shop.currency | escape }}"
+  >
+    <p class="dm-cart-page-offer-message" aria-live="polite">
+      <span class="dm-cart-page-offer-message-icon" data-cart-offer-message-icon aria-hidden="true"></span>
+      <span data-cart-offer-message-text>Checking your cart rewards…</span>
+    </p>
+    <div class="dm-cart-page-progress-shell">
+      <div
+        class="dm-cart-page-progress"
+        data-cart-offer-track
+        role="progressbar"
+        aria-label="Cart reward progress"
+        aria-valuemin="0"
+        aria-valuemax="{{ maximum_threshold }}"
+        aria-valuenow="0"
+      >
+        <span class="dm-cart-page-progress-fill" data-cart-offer-fill></span>
+      </div>
+      {%- if shipping_enabled -%}
+        <span class="dm-cart-page-milestone" data-cart-offer-milestone data-threshold="{{ shipping_threshold }}" data-type="shipping" data-label="Free shipping" role="img"></span>
+      {%- endif -%}
+      {%- if gift_enabled -%}
+        <span class="dm-cart-page-milestone" data-cart-offer-milestone data-threshold="{{ gift_threshold }}" data-type="gift" data-label="Free gift" role="img"></span>
+      {%- endif -%}
+      {%- if discount_enabled -%}
+        <span class="dm-cart-page-milestone" data-cart-offer-milestone data-threshold="{{ discount_threshold }}" data-type="discount" data-label="{{ settings.native_cart_discount_label | default: 'Discount' | escape }}" role="img"></span>
+      {%- endif -%}
+    </div>
+    <div class="dm-cart-page-offer-labels" style="--offer-count: {{ offer_count }}" aria-hidden="true">
+      {%- if shipping_enabled -%}
+        <span data-cart-offer-label data-threshold="{{ shipping_threshold }}">Free shipping<small>{{ shipping_threshold | times: 100 | money }}</small></span>
+      {%- endif -%}
+      {%- if gift_enabled -%}
+        <span data-cart-offer-label data-threshold="{{ gift_threshold }}">Free gift<small>{{ gift_threshold | times: 100 | money }}</small></span>
+      {%- endif -%}
+      {%- if discount_enabled -%}
+        <span data-cart-offer-label data-threshold="{{ discount_threshold }}">{{ settings.native_cart_discount_label | default: 'Discount' | escape }}<small>{{ discount_threshold | times: 100 | money }}</small></span>
+      {%- endif -%}
+    </div>
+  </cart-offer-progress>
+{%- endif -%}
