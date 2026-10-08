@@ -71,6 +71,19 @@ app-provided cart drawers disabled. Cart drawer behavior lives in
 `assets/dunamiss-cart-drawer.js`; cart presentation lives in the matching Dunamiss CSS.
 GoKwik checkout remains controlled by the existing Theme settings integration.
 
+## Inside Science
+
+`sections/dunamiss-inside-science.liquid` is the product page section.
+`snippets/dunamiss-inside-science.liquid` routes existing category layouts by explicit
+product handle. New product content lives in `snippets/dunamiss-inside-science-data.liquid`,
+with source URLs beside each entry. Its shared markup lives in
+`snippets/dunamiss-inside-science-layout.liquid` and its styles in
+`assets/dunamiss-inside-science.css`.
+
+Add new product details to the data snippet using an explicit handle match and verified
+brand information. Reuse the shared layout rather than creating a snippet per product.
+Shopify runtime directories must remain flat; do not move these files into subfolders.
+
 ## Deployment
 
 Push to the development theme first:

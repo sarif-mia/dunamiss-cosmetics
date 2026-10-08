@@ -1,0 +1,23 @@
+.dunamiss-inside-science {
+  --science-accent: #c51c64;
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 20px;
+  color: var(--brand-text, #292129);
+}
+.dunamiss-inside-science__hero { max-width: 900px; margin: 0 auto 32px; text-align: center; }
+.dunamiss-inside-science__eyebrow { color: var(--science-accent); font-weight: 600; }
+.dunamiss-inside-science__hero h2 { font-size: clamp(24px, 3vw, 36px); margin: 12px 0; }
+.dunamiss-inside-science__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.dunamiss-inside-science__card { background: #fff7fa; border: 1px solid #f3d8e3; border-radius: 16px; padding: 28px; }
+.dunamiss-inside-science__card h3 { display: flex; align-items: center; gap: 12px; font-size: 18px; margin: 0 0 20px; }
+.dunamiss-inside-science__card h3 span { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 32px; height: 32px; border-radius: 50%; background: var(--science-accent); color: #fff; }
+.dunamiss-inside-science__card ul { padding-left: 20px; margin: 0; }
+.dunamiss-inside-science__card li + li { margin-top: 10px; }
+.dunamiss-inside-science__card p { margin: 0; }
+.dunamiss-inside-science p, .dunamiss-inside-science li { line-height: 1.7; }
+@media (max-width: 749px) {
+  .dunamiss-inside-science { margin: 36px auto; padding: 0 16px; }
+  .dunamiss-inside-science__grid { grid-template-columns: 1fr; gap: 16px; }
+  .dunamiss-inside-science__card { padding: 20px; }
+}

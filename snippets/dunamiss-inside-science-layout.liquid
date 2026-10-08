@@ -1,0 +1,21 @@
+{% comment %}Shared layout. Content is supplied by dunamiss-inside-science-data.{% endcomment %}
+{%- if science_details != blank -%}
+  {{ 'dunamiss-inside-science.css' | asset_url | stylesheet_tag }}
+  <div class="dunamiss-inside-science">
+    <div class="dunamiss-inside-science__hero">
+      <p class="dunamiss-inside-science__eyebrow">The Science Inside</p>
+      <h2>{{ product.title | escape }}</h2>
+      <div>{{ science_overview }}</div>
+    </div>
+    <div class="dunamiss-inside-science__grid">
+      <div class="dunamiss-inside-science__card">
+        <h3><span>1</span> FORMULA &amp; PRODUCT DETAILS</h3>
+        {{ science_details }}
+      </div>
+      <div class="dunamiss-inside-science__card">
+        <h3><span>2</span> HOW TO USE</h3>
+        <p>{{ science_directions }}</p>
+      </div>
+    </div>
+  </div>
+{%- endif -%}

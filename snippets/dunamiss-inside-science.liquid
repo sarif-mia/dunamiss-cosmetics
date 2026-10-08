@@ -1,0 +1,24 @@
+{% comment %}Explicit product routing: existing category layouts plus explicitly registered product data; no tag routing.{% endcomment %}
+{%- case product.handle -%}
+{%- when 'dunamiss-nail-paint-emerald-jade', 'dunamiss-nail-paint-lilac-frost-copy', 'dunamiss-nail-paint-lilac-frost', 'dunamiss-nail-paint-starlit-rose', 'dunamiss-nail-paint-toffee-nude', 'dunamiss-nail-paint-petal-pink', 'dunamiss-nail-paint-almond-veil', 'dunamiss-nail-paint-caramel-nude', 'dunamiss-nail-paint-fuchsia-pop', 'dunamiss-nail-paint-raspberry-kiss', 'dunamiss-nail-paint-lavender-sky', 'dunamiss-nail-paint-blue-marine', 'dunamiss-nail-paint-vintage-rose', 'dunamiss-nail-paint-champagne-dust', 'dunamiss-nail-paint-copper-luxe', 'dunamiss-nail-paint-royal-plum', 'dunamiss-nail-paint-golden-hour', 'dunamiss-nail-paint-lilac-dream', 'dunamiss-nail-paint-ivory-pearl', 'dunamiss-nail-paint-midnight-ink', 'dunamiss-nail-paint-mango-muse', 'dunamiss-nail-paint-cherry-noir', 'dunamiss-nail-paint-mauve-shimmer', 'dunamiss-nail-paint-candy-rose', 'dunamiss-nail-paint-cocoa-silk', 'dunamiss-nail-paint-velvet-rose', 'dunamiss-nail-paint-color', 'nail-paints-pack-of-2-combo-7', 'nail-paints-pack-of-2-combo-6', 'nail-paints-pack-of-2-combo-5', 'nail-paints-pack-of-2-combo-4', 'nail-paints-pack-of-2-combo-3', 'nail-paints-pack-of-2-combo-2', 'nail-paints-pack-of-2-combo-1', 'nail-paints-pack-of-3-combo-3', 'nail-paints-pack-of-3-combo-2', 'nail-paints-pack-of-3-combo-1', 'nail-paints-pack-of-6-combo', 'nail-paints-pack-of-2-combo', 'wine-o-clock', 'starry-night', 'rust-rose', 'mocha-glow', 'berry-mood', 'sunny-side', 'sky-babe', 'pearl-glow', 'nude-muse', 'cocoa-rush', 'candy-cloud', 'dunamiss-nail-paint-blush-pop' -%}
+{% render 'custom-inside-science-nailpaints', product: product %}
+{%- when 'dunamiss-tinted-lip-balm', 'gimme-red-tinted-lip-balm-spf20', 'mocha-kiss-tinted-lip-balm-spf20' -%}
+{% render 'custom-inside-science-tinted', product: product %}
+{%- when 'dunamiss-glimmer-lip-balm', 'dunamiss-glimmer-lip-balm-hazel-glitter-shimmer-nourish-finish', 'dunamiss-glimmer-lip-balm-rose-spark-tinted-moisturizing-shine' -%}
+{% render 'custom-inside-science-glimmer', product: product %}
+{%- when 'dunamiss-smudge-proof-kajal', 'dunamiss-24hr-smudge-proof-kajal-jet-brown', 'dunamiss-24hr-smudge-proof-kajal-jet-black' -%}
+{% render 'custom-inside-science-kajal', product: product %}
+{%- when 'dunamiss-liquid-lipstick', 'divine-wine-matte-lipstick', 'rosewood-nude-liquid-lipsticks', 'coco-latte-liquid-lipstick', 'rose-play-liquid-lipstick' -%}
+{% render 'custom-inside-science-liquid', product: product %}
+{%- when 'dunamiss-lip-gloss', 'rose-gleam', 'mocha-fudge', 'amber-frost', 'plum-drip', 'diamond-sin', 'coral-spark' -%}
+{% render 'custom-inside-science-lipgloss', product: product %}
+{%- when 'rose-aqua-refresh-combo', 'aqua-silk-the-future-of-luxury-body-care' -%}
+{% render 'custom-inside-science-aquasilk', product: product %}
+{%- when 'dunamiss-satin-lipstick', 'lucia-soft-rose-satin-lipstick', 'carla-cinnamon-brown-satin-lipstick', 'matilda-deep-mauve-satin-matte-lipstick', 'sophia-plum-sheen-satin-lipstick', 'dona-red-sheen-satin-lipstick', 'camilla-soft-fuschia-natural-lipstick' -%}
+{% render 'custom-inside-science-satin', product: product %}
+{%- when 'dunamiss-lip-oil', 'everyday-peptide-lip-oils-set-of-3', 'festive-peptide-lip-oil-set-of-3', 'dunamiss-lip-glow-oil-liliana-soft-tint', 'dunamiss-lip-glow-oil-maria-mauve-magic', 'dunamiss-lip-glow-oil-ramona-gloss-hydration', 'dunamiss-lip-glow-oil-bonita-hydrating-tint-gloss', 'dunamiss-lip-glow-oil-cosmo-nourishing-shine', 'dunamiss-lip-glow-oil-rosita-plumping-shine' -%}
+{% render 'custom-inside-science-lipoil', product: product %}
+{%- when 'dunamiss-eye-balm-stick-sp20-mira' -%}
+{% render 'custom-inside-science-eyebalm', product: product %}
+{%- endcase -%}
+{% render 'dunamiss-inside-science-data', product: product %}

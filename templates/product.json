@@ -235,15 +235,9 @@
       }
     },
     "custom_liquid_gwJkEU": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom_liquid.name",
+      "type": "dunamiss-inside-science",
       "settings": {
-        "section_width": "fluid_container",
-        "color_scheme": "",
-        "custom_liquid": "{% for tag in product.tags %}\n  {% case tag %}\n\n    {% when 'satin' %}\n      {% render 'custom-inside-science-satin', product: product %}\n\n    {% when 'lipgloss' %}\n      {% render 'custom-inside-science-lipgloss', product: product %}\n\n    {% when 'glimmer' %}\n      {% render 'custom-inside-science-glimmer', product: product %}\n\n{% when 'nailpaints' %}\n      {% render 'custom-inside-science-nailpaints', product: product %}\n\n{% when 'tinted' %}\n      {% render 'custom-inside-science-tinted', product: product %}\n\n{% when 'liquid-lipstick' %}\n      {% render 'custom-inside-science-liquid', product: product %}\n\n{% when 'lip-oil' %}\n      {% render 'custom-inside-science-lipoil', product: product %}\n\n{% when 'kajal' %}\n      {% render 'custom-inside-science-kajal', product: product %}\n\n{% when 'eyebalm' %}\n      {% render 'custom-inside-science-eyebalm', product: product %}\n{% when 'aquasilk' %}\n      {% render 'custom-inside-science-aquasilk', product: product %}\n\n  {% endcase %}\n{% endfor %}",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "reset_spacing": false
+        "section_width": "fluid_container"
       }
     },
     "custom_liquid_PURh7m": {
