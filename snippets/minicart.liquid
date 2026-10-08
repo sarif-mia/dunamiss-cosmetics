@@ -1,6 +1,6 @@
 {{ 'minicart.s.min.css' | asset_url | stylesheet_tag }}
 {{ 'dunamiss-cart-drawer.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'native-cart.js' | asset_url }}" defer></script>
+<script src="{{ 'dunamiss-cart-drawer.js' | asset_url }}" defer></script>
 <cart-notification id="minicart_wrapper" class="minicart open_drawer bls-image-js dm-native-cart" tabindex="-1">
   <div class="minicart__wrapper bls__drawer fixed inset-y-0 right-0 transition-popup dm-cart-drawer" role="dialog" aria-modal="true" aria-labelledby="NativeCartHeading" aria-hidden="true" inert hidden>
     <div class="minicart__header dm-cart-header">
@@ -8,7 +8,7 @@
       <button type="button" class="btn-reset close-cart-button dm-cart-close" aria-label="Close cart">{% render 'icon-close' %}</button>
     </div>
     <p class="dm-cart-error" data-native-cart-error role="alert" aria-live="assertive" hidden></p>
-    <div id="minicart-form" class="minicart-form dm-cart-form bls-image-js">{% render 'native-cart-content' %}</div>
+    <div id="minicart-form" class="minicart-form dm-cart-form bls-image-js">{% render 'dunamiss-cart-content' %}</div>
   </div>
 </cart-notification>
 <div class="overlayminicart dm-cart-overlay"></div>

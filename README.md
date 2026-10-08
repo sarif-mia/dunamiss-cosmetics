@@ -9,14 +9,14 @@ The source includes the September 2026 performance updates: a single Google-pixe
 Use Shopify CLI with an authorized store account:
 
 ```sh
-npx @shopify/cli@latest theme dev --store cfe991.myshopify.com
+npx --yes @shopify/cli@latest theme dev --store cfe991.myshopify.com
 ```
 
 Validate theme code:
 
 ```sh
 python3 scripts/audit-theme.py
-npx @shopify/cli@latest theme check
+npx --yes @shopify/cli@latest theme check
 ```
 
 The fast local audit validates strict JSON and section schemas, JavaScript syntax,
@@ -29,6 +29,9 @@ sections, and snippets rendered from JSON `custom_liquid` settings. Treat errors
 blocking. Before removing an apparently orphaned snippet, check both Liquid files and
 embedded Liquid in JSON templates; `scripts/audit-theme.py` checks both locations.
 
+See `docs/theme-architecture.md` for folder ownership, custom-file naming, shared
+navigation components, and the deployment checklist.
+
 ### CSS organization
 
 The original theme styles stay in `assets` with their existing names. Files ending in
@@ -37,8 +40,10 @@ Do not rename or combine those vendor pairs as part of ordinary Dunamiss changes
 
 All custom runtime styles use the `dunamiss-*.css` prefix. Page and component files,
 such as `dunamiss-cart-page.css` and `dunamiss-cart-drawer.css`, are loaded only where
-the feature needs them. Shared custom source modules live in `styles/dunamiss` and are
-combined into `assets/dunamiss-global.css`.
+the feature needs them. Header layout belongs to `dunamiss-floating-header.css`, while
+desktop mega-menu presentation belongs to `dunamiss-desktop-navigation.css`. Shared
+custom source modules live in `styles/dunamiss` and are combined into
+`assets/dunamiss-global.css`.
 
 After editing any file in `styles/dunamiss`, run:
 
@@ -68,7 +73,7 @@ For changes, deploy only the reviewed files; after deployment, rerun the compari
 
 The storefront uses the theme-owned native drawer in `snippets/minicart.liquid`.
 Keep **Theme settings → Cart → Action after adding to cart** set to **Open drawer**
-and keep any app-provided cart drawer disabled. `assets/native-cart.js` extends the
+and keep any app-provided cart drawer disabled. `assets/dunamiss-cart-drawer.js` extends the
 theme's existing cart component and uses Shopify's locale-aware Ajax Cart API;
 `assets/dunamiss-cart-drawer.css` contains the drawer's scoped Dunamiss styling. The
 header and mobile cart controls are buttons, so a slow script load cannot send

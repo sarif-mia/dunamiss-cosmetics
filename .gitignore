@@ -10,6 +10,7 @@ config/settings_data.json
 
 # Local audit artifacts and rollback copies
 reports/
+dist/
 
 # Credentials and local dependencies
 .env

@@ -29,7 +29,7 @@ def main():
         snapshot = ROOT / 'reports' / 'live-theme-sync' / stamp
         snapshot.mkdir(parents=True)
         result = subprocess.run([
-            'npx', '@shopify/cli@latest', 'theme', 'pull', '--store', STORE,
+            'npx', '--yes', '@shopify/cli@latest', 'theme', 'pull', '--store', STORE,
             '--live', '--path', str(snapshot)
         ], cwd=ROOT)
         if result.returncode:

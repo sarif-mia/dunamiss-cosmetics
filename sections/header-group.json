@@ -70,7 +70,7 @@
       }
     },
     "custom_floating_header_yj6gPi": {
-      "type": "custom-floating-header",
+      "type": "dunamiss-floating-header",
       "name": "Custom floating header",
       "settings": {
         "section_width": "fluid_container",

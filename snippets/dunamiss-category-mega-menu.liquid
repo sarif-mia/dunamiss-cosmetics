@@ -1,0 +1,153 @@
+{% liquid
+  case category_type
+    when 'lip'
+      assign menu_title = section.settings.lip_menu_title
+      assign menu_subheading = section.settings.lip_menu_subheading
+      assign promo_image = section.settings.lip_menu_image
+      assign promo_link = section.settings.lip_menu_image_link | default: menu_link.url
+      assign promo_caption = section.settings.lip_menu_image_heading | default: 'Find your perfect lip ritual'
+      assign fallback_collection_handle = 'lip-care'
+    when 'eye'
+      assign menu_title = section.settings.eye_menu_title
+      assign menu_subheading = section.settings.eye_menu_subheading
+      assign promo_image = section.settings.eye_menu_image
+      assign promo_link = section.settings.eye_menu_image_link | default: menu_link.url
+      assign promo_caption = section.settings.eye_menu_image_heading | default: 'Discover your perfect eye essentials'
+      assign fallback_collection_handle = 'eye-care'
+    when 'skin'
+      assign menu_title = section.settings.skin_menu_title
+      assign menu_subheading = section.settings.skin_menu_subheading
+      assign promo_image = section.settings.skin_menu_image
+      assign promo_link = section.settings.skin_menu_image_link | default: menu_link.url
+      assign promo_caption = section.settings.skin_menu_image_heading | default: 'Build your perfect skin ritual'
+      assign fallback_collection_handle = 'skin-care'
+  endcase
+
+  if promo_image == blank
+    assign promo_image = collections[fallback_collection_handle].products.first.featured_image
+  endif
+
+  assign column_zero = ''
+  assign column_one = ''
+  assign split_index = menu_link.links.size | plus: 1 | divided_by: 2
+  for child in menu_link.links
+    assign token = forloop.index0 | prepend: '|' | append: '|'
+    if forloop.index <= split_index
+      assign column_zero = column_zero | append: token
+    else
+      assign column_one = column_one | append: token
+    endif
+  endfor
+%}
+
+<li class="level0 menu-parent menu-parent__horizontal mega-menu dm-category-mega dm-{{ category_type }}-mega">
+  <menu-item class="relative static-1025 flex justify-between align-center border-bottom border-bottom-1025-0 header-color px-15">
+    <a
+      class="no-underline py-10 relative lh-normal inline-flex min-h-55 min-h-1025-50 z-1 align-center{% if theme_st.menu_font == 'heading_font' %} heading-style{% endif %}"
+      href="{{ menu_link.url }}"
+      aria-label="{{ menu_link.title | escape }}"
+    >
+      <span>{{ menu_link.title | escape }}</span>
+      <open-children-toggle class="inline-flex flex-end align-center ms-5 static-1025">
+        <svg class="icon-down hidden block-1025" width="10" height="6" aria-hidden="true">
+          <use href="#icon-arrow-down" />
+        </svg>
+      </open-children-toggle>
+    </a>
+  </menu-item>
+  <div class="dm-shop-panel dm-category-panel dm-{{ category_type }}-panel submenu submenu-horizontal invisible-1025 absolute gradient overflow-x-hidden">
+    <div class="dm-mega-navigation">
+      <div class="dm-mega-intro">
+        {% if menu_title != blank %}
+          <p class="dm-mega-title">{{ menu_title | escape }}</p>
+        {% endif %}
+        {% if menu_subheading != blank %}
+          <p class="dm-mega-subheading">{{ menu_subheading | escape }}</p>
+        {% endif %}
+      </div>
+      <div class="dm-shop-columns">
+        {% for column in (0..1) %}
+          {% liquid
+            case column
+              when 0
+                assign column_items = column_zero
+              when 1
+                assign column_items = column_one
+            endcase
+          %}
+          <div class="dm-shop-column">
+            {% for child in menu_link.links %}
+              {% liquid
+                assign token = forloop.index0 | prepend: '|' | append: '|'
+                assign child_title = child.title | downcase
+                assign child_subtitle = ''
+                case category_type
+                  when 'lip'
+                    case child_title
+                      when 'lip oil'
+                        assign child_subtitle = section.settings.lip_menu_oil_subtitle
+                      when 'lip gloss'
+                        assign child_subtitle = section.settings.lip_menu_gloss_subtitle
+                      when 'satin lipstick'
+                        assign child_subtitle = section.settings.lip_menu_satin_subtitle
+                      when 'tinted lip balm'
+                        assign child_subtitle = section.settings.lip_menu_tinted_balm_subtitle
+                      when 'glimmer lip balm'
+                        assign child_subtitle = section.settings.lip_menu_glimmer_balm_subtitle
+                      when 'liquid lipsticks'
+                        assign child_subtitle = section.settings.lip_menu_liquid_subtitle
+                    endcase
+                  when 'eye'
+                    case child_title
+                      when 'kajal'
+                        assign child_subtitle = section.settings.eye_menu_kajal_subtitle
+                      when 'eyeliner'
+                        assign child_subtitle = section.settings.eye_menu_eyeliner_subtitle
+                      when 'eye balm'
+                        assign child_subtitle = section.settings.eye_menu_balm_subtitle
+                    endcase
+                  when 'skin'
+                    case child_title
+                      when 'mist'
+                        assign child_subtitle = section.settings.skin_menu_mist_subtitle
+                      when 'creams'
+                        assign child_subtitle = section.settings.skin_menu_creams_subtitle
+                      when 'sheet mask'
+                        assign child_subtitle = section.settings.skin_menu_mask_subtitle
+                      when 'sun perfect sunscreen'
+                        assign child_subtitle = section.settings.skin_menu_sunscreen_subtitle
+                    endcase
+                endcase
+              %}
+              {% if column_items contains token %}
+                <div class="dm-shop-group">
+                  <a class="dm-shop-heading dm-category-link" href="{{ child.url }}">
+                    <span>{{ child.title | escape }}</span>
+                    {% if child_subtitle != blank %}
+                      <span class="dm-category-subtitle">{{ child_subtitle | escape }}</span>
+                    {% endif %}
+                  </a>
+                  {% if child.links != blank %}
+                    <ul role="list">
+                      {% for grandchild in child.links %}
+                        <li><a href="{{ grandchild.url }}">{{ grandchild.title | escape }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <a class="dm-shop-promo" href="{{ promo_link }}">
+      {% if promo_image != blank %}
+        {{ promo_image | image_url: width: 720 | image_tag: widths: '240, 360, 540, 720', sizes: '210px', loading: 'lazy', alt: promo_caption }}
+      {% else %}
+        {{ 'collection-2' | placeholder_svg_tag }}
+      {% endif %}
+      <span>{{ promo_caption | escape }}</span>
+    </a>
+  </div>
+</li>

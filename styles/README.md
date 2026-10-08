@@ -34,6 +34,7 @@ Feature styles remain in `assets` because Shopify loads them directly:
 - `dunamiss-cart-page.css` — full cart page.
 - `dunamiss-collection-content.css` — collection introduction and SEO content.
 - `dunamiss-desktop-navigation.css` — desktop Shop navigation.
+- `dunamiss-floating-header.css` — floating header structure and responsive layout.
 - `dunamiss-mobile-navigation.css` — mobile navigation drawer.
 - `dunamiss-footer.css` — storefront footer.
 - `dunamiss-home.css` — homepage-only spacing.

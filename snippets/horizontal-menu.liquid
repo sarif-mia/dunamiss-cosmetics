@@ -81,15 +81,15 @@
             endfor
           -%}
           {%- if custom_lip_menu and title == 'lip care' -%}
-            {% render 'floating-lip-menu', lip_link: link, section: section, theme_st: theme_st %}
+            {% render 'dunamiss-category-mega-menu', menu_link: link, category_type: 'lip', section: section, theme_st: theme_st %}
             {% continue %}
           {%- endif -%}
           {%- if custom_eye_menu and title == 'eye care' -%}
-            {% render 'floating-eye-menu', eye_link: link, section: section, theme_st: theme_st %}
+            {% render 'dunamiss-category-mega-menu', menu_link: link, category_type: 'eye', section: section, theme_st: theme_st %}
             {% continue %}
           {%- endif -%}
           {%- if custom_skin_menu and title == 'skin care' -%}
-            {% render 'floating-skin-menu', skin_link: link, section: section, theme_st: theme_st %}
+            {% render 'dunamiss-category-mega-menu', menu_link: link, category_type: 'skin', section: section, theme_st: theme_st %}
             {% continue %}
           {%- endif -%}
           {% if last_block != null %}
