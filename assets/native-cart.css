@@ -109,6 +109,9 @@
 .dm-cart-tax { margin: 3px 0 9px; font-size: 12px; line-height: 1.45; color: var(--dm-cart-muted); }
 :root body .dm-cart-checkout { width: 100%; min-height: 46px !important; border: 1px solid var(--dm-cart-accent) !important; border-radius: 9px; background: var(--dm-cart-accent) !important; color: #fff !important; font-size: 13px; font-weight: 600; box-shadow: 0 6px 18px rgb(117 70 92 / 18%); }
 :root body .dm-cart-checkout:hover { background: var(--dm-cart-accent-dark) !important; border-color: var(--dm-cart-accent-dark) !important; }
+:root body .dm-cart-gokwik { align-items: stretch; margin-bottom: 0; }
+:root body .dm-cart-gokwik .dm-cart-checkout { height: auto; padding: 7px 12px; }
+:root body .dm-cart-gokwik .addloadr { border-radius: 9px; background: var(--dm-cart-accent); }
 .dm-cart-payment { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 7px; font-size: 10px; color: var(--dm-cart-muted); }
 .dm-cart-view { display: block; margin-top: 5px; text-align: center; font-size: 11px; color: #4a4245; text-decoration: underline; }
 .dm-cart-recommendations { padding: 15px 0 1px; margin-top: 13px; border: 0; border-top: 1px solid var(--dm-cart-border); }

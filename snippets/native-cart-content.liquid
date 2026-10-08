@@ -77,7 +77,11 @@
       {% if settings.show_check_box_in_cart %}
         <label class="dm-cart-terms"><input type="checkbox" name="conditions" data-native-cart-terms>{{ settings.text_terms_conditions }}</label>
       {% endif %}
-      <button type="submit" form="minicart" name="checkout" class="btn-primary dm-cart-checkout">Secure checkout</button>
+      {% if settings.goEnable %}
+        {% render 'gokwik-checkout', checkout_context: 'drawer' %}
+      {% else %}
+        <button type="submit" form="minicart" name="checkout" class="btn-primary dm-cart-checkout">Secure checkout</button>
+      {% endif %}
       <div class="dm-cart-payment" aria-label="Secure checkout"><span aria-hidden="true">&#128274;</span> Secure, protected checkout</div>
       <a class="dm-cart-view" href="{{ routes.cart_url }}">View cart</a>
     </div>

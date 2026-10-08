@@ -48,6 +48,9 @@ theme's existing cart component and uses Shopify's locale-aware Ajax Cart API;
 header and mobile cart controls are buttons, so a slow script load cannot send
 customers to `/cart`. The intentional **View cart** link remains available in
 the drawer. The drawer does not read offer rules or cart state from an app.
+While **Theme settings → GoKwik → Enable Checkout Button** is enabled, checkout
+buttons in the drawer and cart page launch GoKwik; the drawer keeps Shopify's
+native checkout submit as a fallback when that setting is disabled.
 
 Quantity, remove, coupon, recommendation add, offer progress and checkout entry
 all refresh from Shopify's returned cart state. Eligible storewide gifts are added

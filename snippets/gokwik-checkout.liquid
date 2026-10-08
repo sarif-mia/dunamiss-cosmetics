@@ -1,6 +1,6 @@
 {% if settings.goEnable %}
-<div class="gokwik-checkout"{% if settings.hideFlow %} style="display:none !important;" {% endif %}>
-  <button type='button' class="btn-primary w-full btn-checkout disabled" disabled onclick="onCheckoutClick(this)">
+<div class="gokwik-checkout{% if checkout_context == 'drawer' %} dm-cart-gokwik{% endif %}"{% if settings.hideFlow %} style="display:none !important;" {% endif %}>
+  <button type='button' class="btn-primary w-full btn-checkout disabled{% if checkout_context == 'drawer' %} dm-cart-checkout{% endif %}" disabled onclick="onCheckoutClick(this)"{% if checkout_context == 'drawer' %} data-gokwik-cart-checkout{% endif %}>
             <span class="btn-text" >
                 <span>{{ settings.main-titile }}</span>
                 <span>{{ settings.sub-titile }}</span>
@@ -14,4 +14,3 @@
   </button>
 </div>
 {% endif %}
-
