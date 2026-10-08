@@ -1,16 +1,13 @@
 {% liquid
   assign column_zero = ''
   assign column_one = ''
-  assign column_two = ''
+  assign split_index = lip_link.links.size | plus: 1 | divided_by: 2
   for child in lip_link.links
-    assign child_title = child.title | downcase
     assign token = forloop.index0 | prepend: '|' | append: '|'
-    if child_title contains 'oil' or child_title contains 'gloss'
+    if forloop.index <= split_index
       assign column_zero = column_zero | append: token
-    elsif child_title contains 'satin' or child_title contains 'liquid'
-      assign column_one = column_one | append: token
     else
-      assign column_two = column_two | append: token
+      assign column_one = column_one | append: token
     endif
   endfor
   assign promo_image = section.settings.lip_menu_image
@@ -36,15 +33,13 @@
   </menu-item>
   <div class="dm-shop-panel dm-lip-panel submenu submenu-horizontal invisible-1025 absolute gradient overflow-x-hidden">
     <div class="dm-shop-columns">
-      {% for column in (0..2) %}
+      {% for column in (0..1) %}
         {% liquid
           case column
             when 0
               assign column_items = column_zero
             when 1
               assign column_items = column_one
-            when 2
-              assign column_items = column_two
           endcase
         %}
         <div class="dm-shop-column">
