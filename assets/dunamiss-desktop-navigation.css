@@ -27,6 +27,11 @@ body .section-header-custom-floating .dm-shop-menu > summary {
   .dm-shop-chevron { display: block; flex: 0 0 10px; }
   .dm-shop-panel { position: absolute; top: calc(100% + 6px); inset-inline: 0; width: min(100%, 1080px); margin-inline: auto; box-sizing: border-box; display: grid; grid-template-columns: minmax(0, 1fr) 210px; align-items: start; gap: 24px; padding: 2.5rem 3rem; max-height: min(560px, 72vh); overflow-y: auto; background: var(--color-background, #fff); border: 0; border-radius: 16px; box-shadow: var(--shadow); z-index: 50; }
   .dm-shop-menu:not([open]) > .dm-shop-panel { display: none; }
+  body .section-header-custom-floating .header__menu .dm-shop-panel {
+    max-height: min(560px, 72dvh, calc(100dvh - var(--announcement-bar-height, 0px) - var(--floating-header-height, 0px) - 18px));
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
   .dm-shop-columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
   .dm-shop-group + .dm-shop-group { margin-top: 16px; }
   .dm-shop-heading { display: inline-block; font-weight: 600; margin-bottom: 5px; }
