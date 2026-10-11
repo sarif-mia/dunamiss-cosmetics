@@ -13,6 +13,31 @@
   assign height = section_st.height
   assign scroll_animation = settings.scroll_animation
 -%}
+
+{%- liquid
+  assign dm_banner_block = nil
+  for block in section.blocks
+    if block.type == 'dm_collection_banner' and block.settings.collection.handle == collection.handle
+      assign dm_banner_block = block
+    endif
+  endfor
+  assign dm_show_fallback_banner = false
+  if section_st.enable_missing_collection_banners and image_bg == blank
+    assign dm_show_fallback_banner = true
+  endif
+  if dm_banner_block != nil
+    if dm_banner_block.settings.show_banner == false
+      assign dm_show_fallback_banner = false
+    elsif section_st.enable_missing_collection_banners and dm_banner_block.settings.desktop_image != blank
+      assign dm_show_fallback_banner = true
+    endif
+  endif
+-%}
+{%- if dm_show_fallback_banner -%}
+  {{ 'dunamiss-collection-banner.css' | asset_url | stylesheet_tag }}
+  {% render 'dunamiss-collection-banner', collection: collection, section: section, banner_block: dm_banner_block %}
+{%- elsif dm_banner_block != nil and dm_banner_block.settings.show_banner == false -%}
+{%- else -%}
 {%- capture style -%}
   --section-pt: {{ section_st.padding_top }}; --section-pb: {{ section_st.padding_bottom }};{%- if image_bg != blank and height == 'adapt' -%}--aspect-ratio: {{ image_bg.aspect_ratio }}{% endif %};--overlay-opacity: {{ section_st.overlay_opacity }}%;
 {%- endcapture -%}
@@ -110,12 +135,20 @@
     </div>
   </div>
 {% endif %}
+{%- endif -%}
 {% schema %}
 {
   "name": "t:sections.collection_banner.name",
   "tag": "section",
   "class": "page-title",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_missing_collection_banners",
+      "label": "Show banners for collections without images",
+      "default": true,
+      "info": "Uses collection-specific artwork below. Existing collection images are preserved."
+    },
     {
       "type": "select",
       "id": "section_width",
@@ -233,7 +266,7 @@
       "unit": "px"
     }
   ],
-  "max_blocks": 3,
+  "max_blocks": 50,
   "blocks": [
     {
       "type": "breadcrumb",
@@ -286,20 +319,102 @@
           "content": "t:sections.all.page_heading.description.info"
         }
       ]
+    },
+    {
+      "type": "dm_collection_banner",
+      "name": "Collection banner",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Editor label",
+          "default": "Collection"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_banner",
+          "label": "Show banner",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "artwork",
+          "label": "Built-in artwork",
+          "options": [
+            {
+              "value": "lips",
+              "label": "Lips"
+            },
+            {
+              "value": "beauty",
+              "label": "Beauty"
+            },
+            {
+              "value": "gifting",
+              "label": "Gifting"
+            },
+            {
+              "value": "eyes",
+              "label": "Eyes"
+            },
+            {
+              "value": "nails",
+              "label": "Nails"
+            },
+            {
+              "value": "hair",
+              "label": "Hair"
+            },
+            {
+              "value": "bath",
+              "label": "Bath"
+            },
+            {
+              "value": "wellness",
+              "label": "Wellness"
+            },
+            {
+              "value": "skincare",
+              "label": "Skincare"
+            }
+          ],
+          "default": "beauty"
+        },
+        {
+          "type": "image_picker",
+          "id": "desktop_image",
+          "label": "Custom desktop image",
+          "info": "Optional. Replaces the built-in artwork for this collection."
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Custom mobile image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Banner heading",
+          "info": "Leave blank to use the collection name or shared category heading."
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Banner subtitle"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image description",
+          "info": "Leave blank for the artwork description."
+        }
+      ]
     }
   ]
 }
-{% endschema %}{%- comment -%}
-
-This file has been rewritten to preserve the original behavior.
-
----
-Changes:
-- from: '{% render ''placeholder-render'' | type: "collection", class: ''background-heading
-    absolute inset-0 z--1 pointer-none w-full h-full object-position-center object-fit-cover''
-    %}'
-  to: '{% render ''placeholder-render'', type: "collection", class: ''background-heading
-    absolute inset-0 z--1 pointer-none w-full h-full object-position-center object-fit-cover''
-    %}'
-  position: 1657..1828
-{%- endcomment -%}
+{% endschema %}

@@ -1,0 +1,107 @@
+{
+  "mode": "Built-in image_gen",
+  "date": "2026-10-11",
+  "purpose": "Theme fallback artwork for collections without collection images. Native collection-banner blocks can override images, headings and subtitles.",
+  "artworks": [
+    {
+      "group": "lips",
+      "desktop": "assets/dunamiss-collection-lips.webp",
+      "mobile": "assets/dunamiss-collection-lips-mobile.webp",
+      "prompt": "Use case: ads-marketing. Asset: production photograph for a Dunamiss cosmetics collection banner, image only, wide panoramic 3:1 landscape composition. Primary subject: artful lipstick colour swatches, rich berry, muted rose, mauve, terracotta and warm nude creamy pigment brushed across an ivory ceramic surface, subtle silky blush-pink fabric folds in background. Premium editorial beauty still life, realistic cosmetic texture, soft daylight, refined minimal composition, subjects clustered around the centre so the image can crop on mobile. Harmonize with an existing white, dusty blush and black luxury cosmetics website. Do not show product bottles or fabricated packaging. No people, no text, no logos, no watermarks, no promotional claims. Generate a standalone wide image, not a webpage or collage."
+    },
+    {
+      "group": "beauty",
+      "desktop": "assets/dunamiss-collection-beauty.webp",
+      "mobile": "assets/dunamiss-collection-beauty-mobile.webp",
+      "prompt": "Use case: ads-marketing. Asset: production photograph for Dunamiss cosmetics collection banners. Generate ONE standalone wide panoramic landscape image, ideally 3:1 aspect ratio. Scene: Artful rich rose, berry and nude cosmetic pigment swatches beside soft ivory silk folds and a blush-pink translucent acrylic tray, premium beauty editorial still life. No cosmetic containers or packaging. Soft natural daylight, premium realistic editorial beauty photography. Colour harmony: white, warm ivory and dusty blush with restrained rich accents. Keep main subject comfortably within the central 60% so responsive cropping preserves it. NO text, lettering, logos, watermarks, webpage mockup, collage or advertising claims. Do not invent branded products."
+    },
+    {
+      "group": "gifting",
+      "desktop": "assets/dunamiss-collection-gifting.webp",
+      "mobile": "assets/dunamiss-collection-gifting-mobile.webp",
+      "prompt": "Use case: ads-marketing. Asset: production photograph for Dunamiss cosmetics collection banners. Generate ONE standalone wide panoramic landscape image, ideally 3:1 aspect ratio. Scene: A beautifully wrapped small ivory gift box tied with a dusty blush satin ribbon, soft silk folds, refined celebratory still life with subtle warm glints. No products or visible contents. Soft natural daylight, premium realistic editorial beauty photography. Colour harmony: white, warm ivory and dusty blush with restrained rich accents. Keep main subject comfortably within the central 60% so responsive cropping preserves it. NO text, lettering, logos, watermarks, webpage mockup, collage or advertising claims. Do not invent branded products."
+    },
+    {
+      "group": "eyes",
+      "desktop": "assets/dunamiss-collection-eyes.webp",
+      "mobile": "assets/dunamiss-collection-eyes-mobile.webp",
+      "prompt": "Use case: ads-marketing. Asset: production photograph for Dunamiss cosmetics collection banners. Generate ONE standalone wide panoramic landscape image, ideally 3:1 aspect ratio. Scene: An editorial close-up detail of one adult South Asian woman's eye and temple with natural healthy skin texture, neutral makeup and subtly defined lashes, peaceful relaxed expression, eyes softly looking ahead. Surround with pale blush studio negative space; no hands, no applicators, no bottles. Soft natural daylight, premium realistic editorial beauty photography. Colour harmony: white, warm ivory and dusty blush with restrained rich accents. Keep main subject comfortably within the central 60% so responsive cropping preserves it. NO text, lettering, logos, watermarks, webpage mockup, collage or advertising claims. Do not invent branded products."
+    },
+    {
+      "group": "nails",
+      "desktop": "assets/dunamiss-collection-nails.webp",
+      "mobile": "assets/dunamiss-collection-nails-mobile.webp",
+      "prompt": "Use case: ads-marketing. Asset: production photograph for Dunamiss cosmetics collection banners. Generate ONE standalone wide panoramic landscape image, ideally 3:1 aspect ratio. Scene: Elegant adult South Asian hand resting naturally on ivory silk, five anatomically correct fingers, short rounded nails with alternating rich burgundy and muted rose glossy manicure. Soft blush editorial studio composition, no nail polish bottles. Soft natural daylight, premium realistic editorial beauty photography. Colour harmony: white, warm ivory and dusty blush with restrained rich accents. Keep main subject comfortably within the central 60% so responsive cropping preserves it. NO text, lettering, logos, watermarks, webpage mockup, collage or advertising claims. Do not invent branded products."
+    },
+    {
+      "group": "hair",
+      "desktop": "assets/dunamiss-collection-hair.webp",
+      "mobile": "assets/dunamiss-collection-hair-mobile.webp",
+      "prompt": "Use case: ads-marketing. Asset: production photograph for Dunamiss cosmetics collection banners. Generate ONE standalone wide panoramic landscape image, ideally 3:1 aspect ratio. Scene: Editorial close-up of lustrous long dark hair flowing gently over an adult South Asian woman's shoulder, face outside frame, realistic individual strands, ivory robe, quiet premium salon feel. Soft natural daylight, premium realistic editorial beauty photography. Colour harmony: white, warm ivory and dusty blush with restrained rich accents. Keep main subject comfortably within the central 60% so responsive cropping preserves it. NO text, lettering, logos, watermarks, webpage mockup, collage or advertising claims. Do not invent branded products."
+    },
+    {
+      "group": "bath",
+      "desktop": "assets/dunamiss-collection-bath.webp",
+      "mobile": "assets/dunamiss-collection-bath-mobile.webp",
+      "prompt": "Use case: ads-marketing. Asset: production photograph for Dunamiss cosmetics collection banners. Generate ONE standalone wide panoramic landscape image, ideally 3:1 aspect ratio. Scene: Premium spa still life with soft white cotton towels, a blush mesh bath pouf and beautiful translucent water and foam on warm ivory stone, subtle pink shadows and natural morning light. No bottles. Soft natural daylight, premium realistic editorial beauty photography. Colour harmony: white, warm ivory and dusty blush with restrained rich accents. Keep main subject comfortably within the central 60% so responsive cropping preserves it. NO text, lettering, logos, watermarks, webpage mockup, collage or advertising claims. Do not invent branded products."
+    },
+    {
+      "group": "wellness",
+      "desktop": "assets/dunamiss-collection-wellness.webp",
+      "mobile": "assets/dunamiss-collection-wellness-mobile.webp",
+      "prompt": "Use case: ads-marketing. Asset: production photograph for Dunamiss cosmetics collection banners. Generate ONE standalone wide panoramic landscape image, ideally 3:1 aspect ratio. Scene: Premium editorial still life of two clear water glasses, one pale peach and one pale pink, with a sliced orange and two strawberries beside them on ivory stone, soft blush background. Fresh and understated. No pills, bottles, packages, text or health claims. Soft natural daylight, premium realistic editorial beauty photography. Colour harmony: white, warm ivory and dusty blush with restrained rich accents. Keep main subject comfortably within the central 60% so responsive cropping preserves it. NO text, lettering, logos, watermarks, webpage mockup, collage or advertising claims. Do not invent branded products."
+    },
+    {
+      "group": "skincare",
+      "desktop": "assets/dunamiss-collection-skincare.webp",
+      "mobile": "assets/dunamiss-collection-skincare-mobile.webp",
+      "prompt": "Use case: ads-marketing. Asset: production photograph for Dunamiss cosmetics collection banners. Generate ONE standalone wide panoramic landscape image, ideally 3:1 aspect ratio. Scene: Premium macro skincare still life with a sculptural ivory cream smear on warm white ceramic, crystal-clear dew drops and subtle soft sunshine shadows, blush backdrop. Realistic rich cosmetic texture, calm and minimal. No containers or packages. Soft natural daylight, premium realistic editorial beauty photography. Colour harmony: white, warm ivory and dusty blush with restrained rich accents. Keep main subject comfortably within the central 60% so responsive cropping preserves it. NO text, lettering, logos, watermarks, webpage mockup, collage or advertising claims. Do not invent branded products."
+    }
+  ],
+  "collections_by_artwork": {
+    "lips": [
+      "liquid-lipsticks",
+      "office-wear-lipstick",
+      "beginner-lipstick",
+      "warm-skin-tone-lipstick",
+      "lipstick-for-chapped-lips",
+      "lipstick-for-neutral-undertones",
+      "lipstick-for-pale-skin",
+      "lipstick-for-brown-skin",
+      "kiss-proof-lipstick",
+      "lipstick-for-dusky-skin",
+      "lipstick-for-tan-skin",
+      "lips"
+    ],
+    "beauty": [
+      "best-deals",
+      "hot-festive-finds-under-999",
+      "new-arrivals",
+      "glow-for-less",
+      "the-byob-sale"
+    ],
+    "gifting": [
+      "women-festive-gift",
+      "buy-rakhi-combo-sets-online"
+    ],
+    "eyes": [
+      "eye-balm"
+    ],
+    "nails": [
+      "nail-paints-combo"
+    ],
+    "hair": [
+      "hair-care"
+    ],
+    "bath": [
+      "bath-essentials"
+    ],
+    "wellness": [
+      "supplements"
+    ],
+    "skincare": [
+      "sunscreen-cream",
+      "cream"
+    ]
+  }
+}

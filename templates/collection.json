@@ -6,10 +6,348 @@
         "breadcrumb_MJHLQb": {
           "type": "breadcrumb",
           "settings": {}
+        },
+        "dm_banner_1": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Best Deals",
+            "collection": "best-deals",
+            "show_banner": true,
+            "artwork": "beauty",
+            "heading": "",
+            "subtitle": "Discover your next beauty favourite",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_2": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Liquid Lipsticks",
+            "collection": "liquid-lipsticks",
+            "show_banner": true,
+            "artwork": "lips",
+            "heading": "",
+            "subtitle": "Find your colour, make it yours",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_3": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Office Wear Lipstick",
+            "collection": "office-wear-lipstick",
+            "show_banner": true,
+            "artwork": "lips",
+            "heading": "",
+            "subtitle": "Colour for your everyday routine",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_4": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Beginner Lipstick",
+            "collection": "beginner-lipstick",
+            "show_banner": true,
+            "artwork": "lips",
+            "heading": "",
+            "subtitle": "Your first step into colour",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_5": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Warm Skin Tone Lipstick",
+            "collection": "warm-skin-tone-lipstick",
+            "show_banner": true,
+            "artwork": "lips",
+            "heading": "",
+            "subtitle": "Explore shades for your beauty routine",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_6": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Lipstick For Chapped Lips",
+            "collection": "lipstick-for-chapped-lips",
+            "show_banner": true,
+            "artwork": "lips",
+            "heading": "",
+            "subtitle": "Explore your lip-care essentials",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_7": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Lipstick For Neutral Undertones",
+            "collection": "lipstick-for-neutral-undertones",
+            "show_banner": true,
+            "artwork": "lips",
+            "heading": "",
+            "subtitle": "Discover your colour palette",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_8": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Lipstick For Pale Skin",
+            "collection": "lipstick-for-pale-skin",
+            "show_banner": true,
+            "artwork": "lips",
+            "heading": "",
+            "subtitle": "Discover your colour palette",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_9": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Lipstick For Brown Skin",
+            "collection": "lipstick-for-brown-skin",
+            "show_banner": true,
+            "artwork": "lips",
+            "heading": "",
+            "subtitle": "Discover your colour palette",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_10": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Kiss Proof Lipstick",
+            "collection": "kiss-proof-lipstick",
+            "show_banner": true,
+            "artwork": "lips",
+            "heading": "",
+            "subtitle": "Explore the lip colour collection",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_11": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Lipstick For Dusky Skin",
+            "collection": "lipstick-for-dusky-skin",
+            "show_banner": true,
+            "artwork": "lips",
+            "heading": "",
+            "subtitle": "Discover your colour palette",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_12": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Lipstick For Tan Skin",
+            "collection": "lipstick-for-tan-skin",
+            "show_banner": true,
+            "artwork": "lips",
+            "heading": "",
+            "subtitle": "Discover your colour palette",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_13": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Women Festive Gift",
+            "collection": "women-festive-gift",
+            "show_banner": true,
+            "artwork": "gifting",
+            "heading": "",
+            "subtitle": "A little beauty, beautifully gifted",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_14": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Lips",
+            "collection": "lips",
+            "show_banner": true,
+            "artwork": "lips",
+            "heading": "",
+            "subtitle": "Your everyday lip edit",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_15": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Nail Paints Combo",
+            "collection": "nail-paints-combo",
+            "show_banner": true,
+            "artwork": "nails",
+            "heading": "",
+            "subtitle": "More shades, more ways to play",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_16": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Hot Festive Finds Under 999",
+            "collection": "hot-festive-finds-under-999",
+            "show_banner": true,
+            "artwork": "beauty",
+            "heading": "",
+            "subtitle": "Explore the festive beauty edit",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_17": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "New Arrivals",
+            "collection": "new-arrivals",
+            "show_banner": true,
+            "artwork": "beauty",
+            "heading": "",
+            "subtitle": "Meet the latest additions",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_18": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Glow For Less",
+            "collection": "glow-for-less",
+            "show_banner": true,
+            "artwork": "beauty",
+            "heading": "",
+            "subtitle": "Discover your everyday beauty edit",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_19": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Eye Balm",
+            "collection": "eye-balm",
+            "show_banner": true,
+            "artwork": "eyes",
+            "heading": "",
+            "subtitle": "Care for your eye-area routine",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_20": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "The Byob Sale",
+            "collection": "the-byob-sale",
+            "show_banner": true,
+            "artwork": "beauty",
+            "heading": "",
+            "subtitle": "Build your own beauty edit",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_21": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Hair Care",
+            "collection": "hair-care",
+            "show_banner": true,
+            "artwork": "hair",
+            "heading": "",
+            "subtitle": "Discover your hair-care routine",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_22": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Bath Essentials",
+            "collection": "bath-essentials",
+            "show_banner": true,
+            "artwork": "bath",
+            "heading": "",
+            "subtitle": "Make time for your daily ritual",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_23": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Supplements",
+            "collection": "supplements",
+            "show_banner": true,
+            "artwork": "wellness",
+            "heading": "",
+            "subtitle": "Sip, Glow & Recharge",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_24": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Sunscreen Cream",
+            "collection": "sunscreen-cream",
+            "show_banner": true,
+            "artwork": "skincare",
+            "heading": "",
+            "subtitle": "Youth Protection Sunscreen",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_25": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Buy Rakhi Combo Sets Online",
+            "collection": "buy-rakhi-combo-sets-online",
+            "show_banner": true,
+            "artwork": "gifting",
+            "heading": "",
+            "subtitle": "A little beauty, beautifully gifted",
+            "image_alt": ""
+          }
+        },
+        "dm_banner_26": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Cream",
+            "collection": "cream",
+            "show_banner": true,
+            "artwork": "skincare",
+            "heading": "",
+            "subtitle": "Day & Night Creams",
+            "image_alt": ""
+          }
         }
       },
       "block_order": [
-        "breadcrumb_MJHLQb"
+        "breadcrumb_MJHLQb",
+        "dm_banner_1",
+        "dm_banner_2",
+        "dm_banner_3",
+        "dm_banner_4",
+        "dm_banner_5",
+        "dm_banner_6",
+        "dm_banner_7",
+        "dm_banner_8",
+        "dm_banner_9",
+        "dm_banner_10",
+        "dm_banner_11",
+        "dm_banner_12",
+        "dm_banner_13",
+        "dm_banner_14",
+        "dm_banner_15",
+        "dm_banner_16",
+        "dm_banner_17",
+        "dm_banner_18",
+        "dm_banner_19",
+        "dm_banner_20",
+        "dm_banner_21",
+        "dm_banner_22",
+        "dm_banner_23",
+        "dm_banner_24",
+        "dm_banner_25",
+        "dm_banner_26"
       ],
       "custom_css": [
         ".overlay-bg {margin-top: 10px;}"
@@ -23,7 +361,8 @@
         "overlay_opacity": 0,
         "height": "adapt",
         "padding_top": 60,
-        "padding_bottom": 0
+        "padding_bottom": 0,
+        "enable_missing_collection_banners": true
       }
     },
     "subcollection": {

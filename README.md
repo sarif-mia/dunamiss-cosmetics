@@ -175,3 +175,25 @@ npx --yes @shopify/cli@latest theme push \
 ```
 
 Commit and push the same reviewed source to GitHub so local, live and Git remain aligned.
+
+## Collection banners
+
+Collections with no collection image use nine generated editorial artwork groups,
+with 26 collection-specific blocks in the default collection template. Existing
+collection images keep their original banner layout. No Shopify collection records
+are changed. A later collection image automatically takes precedence over the
+built-in fallback.
+
+In **Customize → Collections → Default collection → Collection banner**, choose
+the block named for the collection. Edit **Banner heading**, **Banner subtitle**,
+**Built-in artwork**, **Custom desktop image**, **Custom mobile image**, or
+**Image description**. **Show banner** hides that collection’s banner. Blank
+heading uses the collection name or shared Dunamiss category heading. A custom
+desktop image explicitly overrides the automatic image choice.
+
+Optimized desktop/mobile WebP files are in `assets/dunamiss-collection-*.webp`.
+The built-in image_gen prompt set and file manifest are in
+`docs/collection-banner-artwork.json`. New collection blocks can be added through
+**Add block → Collection banner**; choose a collection and artwork. Keep one block
+per collection. Unconfigured collections without images receive the Beauty artwork
+automatically while the section’s fallback-banner option is enabled.

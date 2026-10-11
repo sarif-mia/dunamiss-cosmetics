@@ -41,7 +41,7 @@ for path in list((ROOT / "templates").rglob("*.json")) + list((ROOT / "sections"
         assert set(order) <= blocks.keys(), f"Missing ordered blocks: {path}/{section_id}"
         # Strictly validate the controls changed in this migration. Original Glozin
         # templates contain obsolete saved settings that Shopify ignores.
-        if not section_type.startswith("dunamiss-") and section_type not in {"main-product", "main-collection-product"}:
+        if not section_type.startswith("dunamiss-") and section_type not in {"main-product", "main-collection-product", "main-collection-heading"}:
             continue
         schema = schemas[section_type]
         if section_type.startswith("dunamiss-"):
