@@ -179,7 +179,8 @@ Commit and push the same reviewed source to GitHub so local, live and Git remain
 ## Collection banners
 
 All 48 sitemap collections and the system `/collections/all` page share one
-collection-banner layout with one H1 and one subtitle. The product grid’s separate
+collection-banner layout with one H1 and one subtitle on desktop. Mobile shows
+the banner image only, while the heading remains available to assistive technology. The product grid’s separate
 heading is disabled in the default template. Each collection has its own generated
 editorial artwork, uploaded through **Shopify → Content → Files**. No banner bitmap
 is shipped in theme assets; responsive images use Shopify’s image CDN.

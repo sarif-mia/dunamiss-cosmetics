@@ -2,6 +2,7 @@
   margin-block: 20px 32px;
 }
 .dm-collection-banner {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 38fr) minmax(0, 62fr);
   overflow: hidden;
@@ -53,7 +54,18 @@
   .dm-collection-banner-wrap { margin-block: 12px 24px; }
   .dm-collection-banner { grid-template-columns: minmax(0, 1fr); min-height: 0; }
   .dm-collection-banner--text-only { grid-template-columns: minmax(0, 1fr); min-height: 0; }
-.dm-collection-banner__copy { padding: 24px; }
+  .dm-collection-banner__copy {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
   .dm-collection-banner__title { font-size: clamp(25px, 7vw, 34px); }
   .dm-collection-banner__subtitle { margin-top: 10px; font-size: 14px; }
 }
