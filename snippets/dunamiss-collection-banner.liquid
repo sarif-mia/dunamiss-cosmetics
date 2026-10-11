@@ -1,52 +1,30 @@
 {%- liquid
-  assign artwork = banner_block.settings.artwork | default: 'beauty'
-  assign desktop_image = banner_block.settings.desktop_image
+  assign desktop_image = banner_block.settings.desktop_image | default: collection.image
   assign mobile_image = banner_block.settings.mobile_image | default: desktop_image
+  assign show_image = true
+  if banner_block != nil and banner_block.settings.show_banner == false
+    assign show_image = false
+  endif
   assign banner_heading = banner_block.settings.heading
   assign banner_subtitle = banner_block.settings.subtitle
-  assign image_description = banner_block.settings.image_alt
-  assign artwork_file = artwork | prepend: 'dunamiss-collection-' | append: '.webp'
-  assign artwork_mobile_file = artwork | prepend: 'dunamiss-collection-' | append: '-mobile.webp'
-  if image_description == blank
-    case artwork
-      when 'lips', 'beauty'
-        assign image_description = 'Rose, berry and nude cosmetic textures on ivory silk'
-      when 'gifting'
-        assign image_description = 'An ivory gift box with a blush satin ribbon'
-      when 'eyes'
-        assign image_description = 'A natural eye-area beauty detail'
-      when 'nails'
-        assign image_description = 'A rose and burgundy manicure on ivory silk'
-      when 'hair'
-        assign image_description = 'Dark hair in a softly lit beauty portrait'
-      when 'bath'
-        assign image_description = 'Soft towels, a bath pouf and water on ivory stone'
-      when 'wellness'
-        assign image_description = 'Water glasses with orange slices and strawberries'
-      when 'skincare'
-        assign image_description = 'A cream texture with dew drops in soft sunlight'
-    endcase
-  endif
+  assign image_description = banner_block.settings.image_alt | default: desktop_image.alt | default: collection.title
 -%}
 {%- capture default_heading -%}{% render 'dunamiss-category-copy', url: collection.url, fallback: collection.title %}{%- endcapture -%}
+{% if banner_block == nil %}
+  {%- capture default_subtitle -%}{% render 'dunamiss-category-copy', url: collection.url, field: 'subtitle' %}{%- endcapture -%}
+  {%- assign banner_subtitle = default_subtitle | strip -%}
+{% endif %}
 <div class="dm-collection-banner-wrap {{ section.settings.section_width }}">
-  <div class="dm-collection-banner" {% if banner_block != nil %}{{ banner_block.shopify_attributes }}{% endif %}>
+  <div class="dm-collection-banner{% unless desktop_image != blank and show_image %} dm-collection-banner--text-only{% endunless %}" {% if banner_block != nil %}{{ banner_block.shopify_attributes }}{% endif %}>
     <div class="dm-collection-banner__copy">
-      <h2 class="dm-collection-banner__title">{% if banner_heading != blank %}{{ banner_heading | escape }}{% else %}{{ default_heading | strip }}{% endif %}</h2>
+      <h1 class="dm-collection-banner__title">{% if banner_heading != blank %}{{ banner_heading | escape }}{% else %}{{ default_heading | strip }}{% endif %}</h1>
       {% if banner_subtitle != blank %}<p class="dm-collection-banner__subtitle">{{ banner_subtitle | escape }}</p>{% endif %}
     </div>
-    <picture class="dm-collection-banner__visual">
-      {% if desktop_image != blank %}
+    {% if desktop_image != blank and show_image %}
+      <picture class="dm-collection-banner__visual">
         <source media="(max-width: 767px)" srcset="{{ mobile_image | image_url: width: 480 }} 480w, {{ mobile_image | image_url: width: 800 }} 800w" sizes="calc(100vw - 30px)">
         {{ desktop_image | image_url: width: 1920 | image_tag: widths: '800, 1200, 1600, 1920', sizes: '(min-width: 768px) 62vw, calc(100vw - 30px)', loading: 'eager', fetchpriority: 'high', alt: image_description, class: 'dm-collection-banner__image' }}
-      {% else %}
-        {% if mobile_image != blank %}
-          <source media="(max-width: 767px)" srcset="{{ mobile_image | image_url: width: 480 }} 480w, {{ mobile_image | image_url: width: 800 }} 800w" sizes="calc(100vw - 30px)">
-        {% else %}
-          <source media="(max-width: 767px)" srcset="{{ artwork_mobile_file | asset_url }}">
-        {% endif %}
-        <img class="dm-collection-banner__image" src="{{ artwork_file | asset_url }}" alt="{{ image_description | escape }}" width="1920" height="640" loading="eager" fetchpriority="high">
-      {% endif %}
-    </picture>
+      </picture>
+    {% endif %}
   </div>
 </div>

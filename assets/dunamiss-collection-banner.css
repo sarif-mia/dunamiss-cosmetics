@@ -5,10 +5,11 @@
   display: grid;
   grid-template-columns: minmax(0, 38fr) minmax(0, 62fr);
   overflow: hidden;
-  min-height: 240px;
+  min-height: clamp(260px, 20.5vw, 360px);
   background: #fbf7f4;
   border-radius: 12px;
 }
+.dm-collection-banner--text-only { grid-template-columns: minmax(0, 1fr); min-height: 0; }
 .dm-collection-banner__copy {
   display: flex;
   flex-direction: column;
@@ -38,6 +39,7 @@
   height: auto;
   display: block;
   min-width: 0;
+  min-height: 100%;
   aspect-ratio: 3 / 1;
 }
 .dm-collection-banner__image {
@@ -50,7 +52,8 @@
 @media (max-width: 767px) {
   .dm-collection-banner-wrap { margin-block: 12px 24px; }
   .dm-collection-banner { grid-template-columns: minmax(0, 1fr); min-height: 0; }
-  .dm-collection-banner__copy { padding: 24px; }
+  .dm-collection-banner--text-only { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+.dm-collection-banner__copy { padding: 24px; }
   .dm-collection-banner__title { font-size: clamp(25px, 7vw, 34px); }
   .dm-collection-banner__subtitle { margin-top: 10px; font-size: 14px; }
 }

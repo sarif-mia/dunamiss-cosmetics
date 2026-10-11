@@ -63,7 +63,7 @@ The active header is `sections/dunamiss-floating-header.liquid`. Shop navigation
 `snippets/dunamiss-category-mega-menu.liquid`. Menu headings, subtitles and promo images
 remain editable in the floating-header section settings.
 
-Category names and collection-page subtitle defaults are under **Customize → Theme
+Category names and fallback collection subtitles are under **Customize → Theme
 settings → Dunamiss categories**. Mega-menu item subtitles are edited in one place:
 **Header → Custom floating header → Menu subtitle blocks**. Choose the named block,
 edit **Subtitle**, and save. The same text appears in Shop and category menus.
@@ -178,22 +178,24 @@ Commit and push the same reviewed source to GitHub so local, live and Git remain
 
 ## Collection banners
 
-Collections with no collection image use nine generated editorial artwork groups,
-with 26 collection-specific blocks in the default collection template. Existing
-collection images keep their original banner layout. No Shopify collection records
-are changed. A later collection image automatically takes precedence over the
-built-in fallback.
+All 48 sitemap collections and the system `/collections/all` page share one
+collection-banner layout with one H1 and one subtitle. The product grid’s separate
+heading is disabled in the default template. Each collection has its own generated
+editorial artwork, uploaded through **Shopify → Content → Files**. No banner bitmap
+is shipped in theme assets; responsive images use Shopify’s image CDN.
 
-In **Customize → Collections → Default collection → Collection banner**, choose
+In **Customize → Collections → Default collection → Collection banner**, select
 the block named for the collection. Edit **Banner heading**, **Banner subtitle**,
-**Built-in artwork**, **Custom desktop image**, **Custom mobile image**, or
-**Image description**. **Show banner** hides that collection’s banner. Blank
-heading uses the collection name or shared Dunamiss category heading. A custom
-desktop image explicitly overrides the automatic image choice.
+**Desktop image**, **Mobile image**, or **Image description**. Blank heading uses
+the collection name or shared Dunamiss category heading. **Show banner image**
+hides the picture while keeping the page heading. Each subtitle is distinct.
 
-Optimized desktop/mobile WebP files are in `assets/dunamiss-collection-*.webp`.
-The built-in image_gen prompt set and file manifest are in
-`docs/collection-banner-artwork.json`. New collection blocks can be added through
-**Add block → Collection banner**; choose a collection and artwork. Keep one block
-per collection. Unconfigured collections without images receive the Beauty artwork
-automatically while the section’s fallback-banner option is enabled.
+Choose images from Shopify Files through the native image picker. A future
+collection can use **Add block → Collection banner**; select the collection and
+its image. The collection-handle field supports the system `all` collection.
+Keep one block per collection. If you remove the banner section, enable **Show
+separate collection heading** in the product grid section.
+
+The Files references, CDN URLs, collection mapping and built-in image_gen prompt
+set are recorded in `docs/collection-banner-artwork.json`. Optimized working images
+are saved under ignored `dist/collection-banners/`, outside the deployable theme.

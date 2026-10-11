@@ -3,325 +3,694 @@
     "banner": {
       "type": "main-collection-heading",
       "blocks": {
-        "breadcrumb_MJHLQb": {
-          "type": "breadcrumb",
-          "settings": {}
-        },
         "dm_banner_1": {
           "type": "dm_collection_banner",
           "settings": {
             "title": "Best Deals",
             "collection": "best-deals",
+            "handle": "best-deals",
             "show_banner": true,
-            "artwork": "beauty",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-best-deals-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Discover your next beauty favourite",
-            "image_alt": ""
+            "subtitle": "A considered edit of beauty favourites",
+            "image_alt": "A luminous sheer rose balm texture with small glassy dew drops on warm ivory ceramic and soft blush silk"
           }
         },
         "dm_banner_2": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Liquid Lipsticks",
-            "collection": "liquid-lipsticks",
+            "title": "Creamy Matte Lipstick",
+            "collection": "creamy-matte-lipstick",
+            "handle": "creamy-matte-lipstick",
             "show_banner": true,
-            "artwork": "lips",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-creamy-matte-lipstick-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Find your colour, make it yours",
-            "image_alt": ""
+            "subtitle": "Discover your soft matte colour edit",
+            "image_alt": "Four rich matte lipstick pigment strokes in plum, red, rose and cocoa on ivory ceramic, beautifully soft velvety texture."
           }
         },
         "dm_banner_3": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Office Wear Lipstick",
-            "collection": "office-wear-lipstick",
+            "title": "Tinted Lip Balm",
+            "collection": "tinted-lip-balm",
+            "handle": "tinted-lip-balm",
             "show_banner": true,
-            "artwork": "lips",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-tinted-lip-balm-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Colour for your everyday routine",
-            "image_alt": ""
+            "subtitle": "A little colour for your everyday lip ritual",
+            "image_alt": "Three translucent juicy lip-balm swatches in mocha, soft red and warm rose with clear glossy highlights on ivory porcelain."
           }
         },
         "dm_banner_4": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Beginner Lipstick",
-            "collection": "beginner-lipstick",
+            "title": "Liquid Lipsticks",
+            "collection": "liquid-lipsticks",
+            "handle": "liquid-lipsticks",
             "show_banner": true,
-            "artwork": "lips",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-liquid-lipsticks-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Your first step into colour",
-            "image_alt": ""
+            "subtitle": "Explore colour in a liquid format",
+            "image_alt": "Fluid matte lipstick colour strokes in wine, rosewood and terracotta, elegantly curved across ivory ceramic, soft blush silk behind."
           }
         },
         "dm_banner_5": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Warm Skin Tone Lipstick",
-            "collection": "warm-skin-tone-lipstick",
+            "title": "Shop All",
+            "collection": "shop-all",
+            "handle": "shop-all",
             "show_banner": true,
-            "artwork": "lips",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-shop-all-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Explore shades for your beauty routine",
-            "image_alt": ""
+            "subtitle": "Find your next Dunamiss favourite",
+            "image_alt": "A tasteful beauty texture arrangement of rose pigment swatches, a small ivory cream swirl and crystal-clear dew drops on an ivory ceramic tray."
           }
         },
         "dm_banner_6": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Lipstick For Chapped Lips",
-            "collection": "lipstick-for-chapped-lips",
+            "title": "Satin Lipstick",
+            "collection": "satin-lipstick",
+            "handle": "satin-lipstick",
             "show_banner": true,
-            "artwork": "lips",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-satin-lipstick-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Explore your lip-care essentials",
-            "image_alt": ""
+            "subtitle": "Your satin-finish colour wardrobe",
+            "image_alt": "Smooth luminous satin lipstick strokes in mauve, cinnamon and soft fuchsia on ivory ceramic, subtle satin reflections."
           }
         },
         "dm_banner_7": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Lipstick For Neutral Undertones",
-            "collection": "lipstick-for-neutral-undertones",
+            "title": "Bestsellers",
+            "collection": "bestsellers",
+            "handle": "bestsellers",
             "show_banner": true,
-            "artwork": "lips",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-bestsellers-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Discover your colour palette",
-            "image_alt": ""
+            "subtitle": "Meet the most-loved beauty edit",
+            "image_alt": "A premium beauty texture arrangement with rich berry and soft nude pigment and a dewy ivory cream swirl, refined ivory silk background."
           }
         },
         "dm_banner_8": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Lipstick For Pale Skin",
-            "collection": "lipstick-for-pale-skin",
+            "title": "Lip Oil",
+            "collection": "lip-oil",
+            "handle": "lip-oil",
             "show_banner": true,
-            "artwork": "lips",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-lip-oil-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Discover your colour palette",
-            "image_alt": ""
+            "subtitle": "Explore your glossy lip-care ritual",
+            "image_alt": "Macro clear glossy lip-oil texture with a hint of berry pigment and delicate reflective droplets on ivory ceramic, blush silk."
           }
         },
         "dm_banner_9": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Lipstick For Brown Skin",
-            "collection": "lipstick-for-brown-skin",
+            "title": "Kajal",
+            "collection": "kajal",
+            "handle": "kajal",
             "show_banner": true,
-            "artwork": "lips",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-kajal-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Discover your colour palette",
-            "image_alt": ""
+            "subtitle": "Explore rich definition for your eyes",
+            "image_alt": "Two precise rich black kajal strokes on warm ivory paper alongside subtle charcoal pigment texture, premium graphic editorial beauty still life."
           }
         },
         "dm_banner_10": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Kiss Proof Lipstick",
-            "collection": "kiss-proof-lipstick",
+            "title": "Sheet Mask",
+            "collection": "sheet-mask",
+            "handle": "sheet-mask",
             "show_banner": true,
-            "artwork": "lips",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-sheet-mask-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Explore the lip colour collection",
-            "image_alt": ""
+            "subtitle": "Hydrating Sheet Masks",
+            "image_alt": "A fresh clean white sheet-mask fabric folded on ivory ceramic with clear water droplets and soft blush silk"
           }
         },
         "dm_banner_11": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Lipstick For Dusky Skin",
-            "collection": "lipstick-for-dusky-skin",
+            "title": "Skin Care",
+            "collection": "skin-care",
+            "handle": "skin-care",
             "show_banner": true,
-            "artwork": "lips",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-skin-care-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Discover your colour palette",
-            "image_alt": ""
+            "subtitle": "Build a routine that feels like you",
+            "image_alt": "A sculptural ivory skincare cream swirl, translucent serum drops and soft water reflections on warm ivory ceramic, peaceful beauty still life."
           }
         },
         "dm_banner_12": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Lipstick For Tan Skin",
-            "collection": "lipstick-for-tan-skin",
+            "title": "Lip Care",
+            "collection": "lip-care",
+            "handle": "lip-care",
             "show_banner": true,
-            "artwork": "lips",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-lip-care-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Discover your colour palette",
-            "image_alt": ""
+            "subtitle": "Your complete lip colour & care edit",
+            "image_alt": "A glossy rose balm stroke, clear oil drops and a soft mauve satin pigment stroke together on an ivory tray, quiet premium lip-care editorial."
           }
         },
         "dm_banner_13": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Women Festive Gift",
-            "collection": "women-festive-gift",
+            "title": "Eye Care",
+            "collection": "eye-care",
+            "handle": "eye-care",
             "show_banner": true,
-            "artwork": "gifting",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-eye-care-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "A little beauty, beautifully gifted",
-            "image_alt": ""
+            "subtitle": "Discover your eye makeup & care essentials",
+            "image_alt": "An editorial close-up of one adult South Asian woman\u2019s eye and temple, understated softly defined lash line and natural skin texture, pale blush studio background"
           }
         },
         "dm_banner_14": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Lips",
-            "collection": "lips",
+            "title": "Eyeliner",
+            "collection": "eyeliner",
+            "handle": "eyeliner",
             "show_banner": true,
-            "artwork": "lips",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-eyeliner-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Your everyday lip edit",
-            "image_alt": ""
+            "subtitle": "Create your own signature line",
+            "image_alt": "An editorial close-up of one adult South Asian woman\u2019s eye with a refined thin black winged eyeliner and realistic natural skin, blush studio background, no applicator."
           }
         },
         "dm_banner_15": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Nail Paints Combo",
-            "collection": "nail-paints-combo",
+            "title": "Office Wear Lipstick",
+            "collection": "office-wear-lipstick",
+            "handle": "office-wear-lipstick",
             "show_banner": true,
-            "artwork": "nails",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-office-wear-lipstick-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "More shades, more ways to play",
-            "image_alt": ""
+            "subtitle": "Understated colour for your working day",
+            "image_alt": "Elegant soft mocha and muted rose pigment strokes on ivory ceramic beside a folded blush silk edge, subtle and understated daylight."
           }
         },
         "dm_banner_16": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Hot Festive Finds Under 999",
-            "collection": "hot-festive-finds-under-999",
+            "title": "Liquid Matte Mini",
+            "collection": "liquid-matte-mini",
+            "handle": "liquid-matte-mini",
             "show_banner": true,
-            "artwork": "beauty",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-liquid-matte-mini-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Explore the festive beauty edit",
-            "image_alt": ""
+            "subtitle": "Discover the mini liquid colour edit",
+            "image_alt": "Three small beautifully defined velvety pigment swatches in deep red, warm nude and rose on a compact ivory ceramic dish"
           }
         },
         "dm_banner_17": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "New Arrivals",
-            "collection": "new-arrivals",
+            "title": "Beginner Lipstick",
+            "collection": "beginner-lipstick",
+            "handle": "beginner-lipstick",
             "show_banner": true,
-            "artwork": "beauty",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-beginner-lipstick-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Meet the latest additions",
-            "image_alt": ""
+            "subtitle": "Find a first shade to call your own",
+            "image_alt": "Three approachable soft rose, peach nude and muted mauve satin pigment swatches on ivory ceramic, minimal fresh composition."
           }
         },
         "dm_banner_18": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Glow For Less",
-            "collection": "glow-for-less",
+            "title": "Warm Skin Tone Lipstick",
+            "collection": "warm-skin-tone-lipstick",
+            "handle": "warm-skin-tone-lipstick",
             "show_banner": true,
-            "artwork": "beauty",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-warm-skin-tone-lipstick-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Discover your everyday beauty edit",
-            "image_alt": ""
+            "subtitle": "Explore your warm-tone colour edit",
+            "image_alt": "Warm terracotta, caramel nude and cinnamon brown lipstick textures on ivory porcelain and soft blush silk, subtle golden daylight."
           }
         },
         "dm_banner_19": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Eye Balm",
-            "collection": "eye-balm",
+            "title": "Medium Skin Tone Lipstick",
+            "collection": "medium-skin-tone-lipstick",
+            "handle": "medium-skin-tone-lipstick",
             "show_banner": true,
-            "artwork": "eyes",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-medium-skin-tone-lipstick-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Care for your eye-area routine",
-            "image_alt": ""
+            "subtitle": "A colour edit for medium skin tones",
+            "image_alt": "Muted rosewood, rich mauve and warm cocoa lipstick textures on ivory ceramic, refined neutral beauty colour palette."
           }
         },
         "dm_banner_20": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "The Byob Sale",
-            "collection": "the-byob-sale",
+            "title": "Makeup Mirrors",
+            "collection": "makeup-mirrors",
+            "handle": "makeup-mirrors",
             "show_banner": true,
-            "artwork": "beauty",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-makeup-mirrors-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Build your own beauty edit",
-            "image_alt": ""
+            "subtitle": "A closer look at your beauty routine",
+            "image_alt": "A simple unbranded circular cosmetic mirror with a brushed champagne metal edge resting on ivory stone and blush silk, soft reflected daylight, no people or text."
           }
         },
         "dm_banner_21": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Hair Care",
-            "collection": "hair-care",
+            "title": "Glimmer Lip Balm",
+            "collection": "glimmer-lip-balm",
+            "handle": "glimmer-lip-balm",
             "show_banner": true,
-            "artwork": "hair",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-glimmer-lip-balm-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Discover your hair-care routine",
-            "image_alt": ""
+            "subtitle": "A touch of shimmer for your lip ritual",
+            "image_alt": "A sheer soft rose and warm hazel balm texture with delicate fine shimmer, sophisticated subtle sparkle on an ivory ceramic dish."
           }
         },
         "dm_banner_22": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Bath Essentials",
-            "collection": "bath-essentials",
+            "title": "Accessories",
+            "collection": "accessories",
+            "handle": "accessories",
             "show_banner": true,
-            "artwork": "bath",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-accessories-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Make time for your daily ritual",
-            "image_alt": ""
+            "subtitle": "The finishing touches to your routine",
+            "image_alt": "A simple unbranded circular cosmetic mirror and a blush satin scrunchie on ivory stone, elegant minimal beauty accessory still life."
           }
         },
         "dm_banner_23": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Supplements",
-            "collection": "supplements",
+            "title": "Eid Festival Sale",
+            "collection": "eid-festival-sale",
+            "handle": "eid-festival-sale",
             "show_banner": true,
-            "artwork": "wellness",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-eid-festival-sale-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Sip, Glow & Recharge",
-            "image_alt": ""
+            "subtitle": "Discover the Eid beauty edit",
+            "image_alt": "An ivory gift box with a soft blush satin bow, one delicate crescent-shaped decorative shadow across ivory stone, understated refined festive light, no text."
           }
         },
         "dm_banner_24": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Sunscreen Cream",
-            "collection": "sunscreen-cream",
+            "title": "Lipstick For Chapped Lips",
+            "collection": "lipstick-for-chapped-lips",
+            "handle": "lipstick-for-chapped-lips",
             "show_banner": true,
-            "artwork": "skincare",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-lipstick-for-chapped-lips-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "Youth Protection Sunscreen",
-            "image_alt": ""
+            "subtitle": "Explore your everyday lip-care collection",
+            "image_alt": "A luminous soft rose balm smear with clear reflective oil droplets on ivory ceramic, gentle warm morning light"
           }
         },
         "dm_banner_25": {
           "type": "dm_collection_banner",
           "settings": {
-            "title": "Buy Rakhi Combo Sets Online",
-            "collection": "buy-rakhi-combo-sets-online",
+            "title": "Lipstick For Neutral Undertones",
+            "collection": "lipstick-for-neutral-undertones",
+            "handle": "lipstick-for-neutral-undertones",
             "show_banner": true,
-            "artwork": "gifting",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-lipstick-for-neutral-undertones-v2.webp",
+            "mobile_image": "",
             "heading": "",
-            "subtitle": "A little beauty, beautifully gifted",
-            "image_alt": ""
+            "subtitle": "Your neutral-undertone colour edit",
+            "image_alt": "Balanced rose, mauve and neutral cocoa lipstick swatches arranged diagonally across ivory ceramic and blush silk."
           }
         },
         "dm_banner_26": {
           "type": "dm_collection_banner",
           "settings": {
+            "title": "Lipstick For Pale Skin",
+            "collection": "lipstick-for-pale-skin",
+            "handle": "lipstick-for-pale-skin",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-lipstick-for-pale-skin-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "A colour edit for lighter skin tones",
+            "image_alt": "Soft pink rose, light peach nude and delicate dusty mauve lipstick textures on ivory ceramic, airy gentle daylight."
+          }
+        },
+        "dm_banner_27": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Lipstick For Brown Skin",
+            "collection": "lipstick-for-brown-skin",
+            "handle": "lipstick-for-brown-skin",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-lipstick-for-brown-skin-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Explore your brown-skin colour wardrobe",
+            "image_alt": "Rich berry, deep mauve and warm cocoa lipstick textures on ivory ceramic, elegant depth and soft blush highlights."
+          }
+        },
+        "dm_banner_28": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Kiss Proof Lipstick",
+            "collection": "kiss-proof-lipstick",
+            "handle": "kiss-proof-lipstick",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-kiss-proof-lipstick-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Discover the occasion-ready lip edit",
+            "image_alt": "A bold crimson pigment stroke beside soft wine and muted rose swatches on ivory ceramic"
+          }
+        },
+        "dm_banner_29": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Lipstick For Dusky Skin",
+            "collection": "lipstick-for-dusky-skin",
+            "handle": "lipstick-for-dusky-skin",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-lipstick-for-dusky-skin-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Your dusky-skin colour collection",
+            "image_alt": "Deep plum, warm cinnamon and wine lipstick swatches on ivory ceramic with soft blush silk, sophisticated warm colour composition."
+          }
+        },
+        "dm_banner_30": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Lipstick For Tan Skin",
+            "collection": "lipstick-for-tan-skin",
+            "handle": "lipstick-for-tan-skin",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-lipstick-for-tan-skin-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Explore your tan-skin colour edit",
+            "image_alt": "Warm caramel nude, terracotta and toasted rose lipstick swatches on ivory ceramic, luminous warm sunlight."
+          }
+        },
+        "dm_banner_31": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Face Mist",
+            "collection": "face-mist",
+            "handle": "face-mist",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-face-mist-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "SPF + Anti-Pollution Mist",
+            "image_alt": "Crystal-clear fine mist droplets suspended in soft daylight above ivory stone with a subtle pale blush background, realistic fresh water texture, no bottle."
+          }
+        },
+        "dm_banner_32": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Women Festive Gift",
+            "collection": "women-festive-gift",
+            "handle": "women-festive-gift",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-women-festive-gift-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Beauty gifts for her festive moments",
+            "image_alt": "A beautiful small ivory gift box with a double blush satin ribbon and delicate pearlescent festive glints, elegant still life, no visible contents."
+          }
+        },
+        "dm_banner_33": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Combo Products",
+            "collection": "combo-products",
+            "handle": "combo-products",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-combo-products-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Better Together",
+            "image_alt": "Two small ivory boxes tied together with soft blush satin ribbon on ivory stone, refined coordinated gift arrangement, no printed packaging or visible contents."
+          }
+        },
+        "dm_banner_34": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Lips",
+            "collection": "lips",
+            "handle": "lips",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-lips-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Make room for a new lip favourite",
+            "image_alt": "A richly glossy rose lip-colour texture beside matte berry and satin nude swatches on ivory ceramic, beautiful editorial colour still life."
+          }
+        },
+        "dm_banner_35": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Nail Paints",
+            "collection": "nail-paints",
+            "handle": "nail-paints",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-nail-paints-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Paint Your Mood",
+            "image_alt": "An elegant adult South Asian hand resting on ivory silk, five anatomically correct fingers, short rounded nails with a glossy rich burgundy manicure, soft blush daylight, no bottles."
+          }
+        },
+        "dm_banner_36": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Lip Gloss",
+            "collection": "lip-gloss",
+            "handle": "lip-gloss",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-lip-gloss-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Discover a luminous lip-colour finish",
+            "image_alt": "Ultra-glossy sheer rose and berry cosmetic swatches with beautiful soft highlights on ivory porcelain, luminous premium lip-gloss texture still life."
+          }
+        },
+        "dm_banner_37": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Nail Paints Combo",
+            "collection": "nail-paints-combo",
+            "handle": "nail-paints-combo",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-nail-paints-combo-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Bring more shades into your nail edit",
+            "image_alt": "An elegant adult South Asian hand with five anatomically correct fingers, short rounded nails alternating dusty rose, berry and soft mauve manicure, ivory silk background."
+          }
+        },
+        "dm_banner_38": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Hot Festive Finds Under 999",
+            "collection": "hot-festive-finds-under-999",
+            "handle": "hot-festive-finds-under-999",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-hot-festive-finds-under-999-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Explore the festive favourites collection",
+            "image_alt": "A small ivory gift box with a blush bow beside tasteful rich rose cosmetic textures on a ceramic dish, refined warm festive light, no price text."
+          }
+        },
+        "dm_banner_39": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "New Arrivals",
+            "collection": "new-arrivals",
+            "handle": "new-arrivals",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-new-arrivals-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Meet the newest additions to your routine",
+            "image_alt": "Fresh beauty still life of an ivory skincare cream swirl and luminous water drops beside rose pigment on a pale blush ceramic tray, bright soft morning light."
+          }
+        },
+        "dm_banner_40": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Glow For Less",
+            "collection": "glow-for-less",
+            "handle": "glow-for-less",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-glow-for-less-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Refresh your everyday beauty edit",
+            "image_alt": "Luminous sheer rose pigment with subtle fine shimmer and a clear dew drop on ivory ceramic, understated blush beauty still life, no prices or offers."
+          }
+        },
+        "dm_banner_41": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Eye Balm",
+            "collection": "eye-balm",
+            "handle": "eye-balm",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-eye-balm-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "A dedicated step in your eye-area routine",
+            "image_alt": "An editorial close-up of one adult South Asian woman\u2019s relaxed eye and upper cheek with natural healthy skin texture, gentle neutral makeup, soft ivory and blush studio lighting, no balm or applicator."
+          }
+        },
+        "dm_banner_42": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "The Byob Sale",
+            "collection": "the-byob-sale",
+            "handle": "the-byob-sale",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-the-byob-sale-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Build a beauty bundle of your own",
+            "image_alt": "Three small ivory gift boxes grouped with a loosely draped blush satin ribbon, sophisticated beauty bundle still life, no printed packaging or visible contents."
+          }
+        },
+        "dm_banner_43": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Hair Care",
+            "collection": "hair-care",
+            "handle": "hair-care",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-hair-care-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Find your daily hair-care essentials",
+            "image_alt": "Editorial close-up of long lustrous dark hair flowing over an adult South Asian woman\u2019s ivory-robed shoulder, realistic natural strands, face outside frame, soft blush and ivory daylight."
+          }
+        },
+        "dm_banner_44": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Bath Essentials",
+            "collection": "bath-essentials",
+            "handle": "bath-essentials",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-bath-essentials-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Make your daily shower a quiet ritual",
+            "image_alt": "Soft white cotton towels, a blush mesh bath pouf and realistic clear water and gentle foam on ivory stone, peaceful refined spa still life, no bottles."
+          }
+        },
+        "dm_banner_45": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Supplements",
+            "collection": "supplements",
+            "handle": "supplements",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-supplements-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Sip, Glow & Recharge",
+            "image_alt": "Two clear water glasses with pale orange and pale pink beverages, a sliced orange and two strawberries beside them on ivory stone, fresh understated blush daylight, no pills or supplement bottles."
+          }
+        },
+        "dm_banner_46": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Sunscreen Cream",
+            "collection": "sunscreen-cream",
+            "handle": "sunscreen-cream",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-sunscreen-cream-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Youth Protection Sunscreen",
+            "image_alt": "An ivory cream texture on white ceramic beside clear dew drops and warm sunlight shadows, luminous fresh daytime skincare still life, no bottles or SPF text."
+          }
+        },
+        "dm_banner_47": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "Buy Rakhi Combo Sets Online",
+            "collection": "buy-rakhi-combo-sets-online",
+            "handle": "buy-rakhi-combo-sets-online",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-buy-rakhi-combo-sets-online-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Celebrate Rakhi with a thoughtful beauty gift",
+            "image_alt": "Two small ivory gift boxes with blush satin ribbons and a delicate decorative braided thread beside them on ivory stone, understated Indian festive gifting still life, no printed text."
+          }
+        },
+        "dm_banner_48": {
+          "type": "dm_collection_banner",
+          "settings": {
             "title": "Cream",
             "collection": "cream",
+            "handle": "cream",
             "show_banner": true,
-            "artwork": "skincare",
+            "desktop_image": "shopify://shop_images/dunamiss-banner-cream-v2.webp",
+            "mobile_image": "",
             "heading": "",
             "subtitle": "Day & Night Creams",
-            "image_alt": ""
+            "image_alt": "Two sculptural ivory cream swirls on warm white ceramic, one in gentle sunlight and one in a soft cool shadow, dewy texture and subtle blush silk, no jars."
+          }
+        },
+        "dm_banner_49": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "All",
+            "collection": "",
+            "handle": "all",
+            "show_banner": true,
+            "desktop_image": "shopify://shop_images/dunamiss-banner-all-v2.webp",
+            "mobile_image": "",
+            "heading": "",
+            "subtitle": "Explore the full Dunamiss collection",
+            "image_alt": "An elegant editorial arrangement of soft rose pigment, ivory cream texture, clear dew drops and a small blush satin ribbon on an ivory tray, balanced complete beauty edit."
           }
         }
       },
       "block_order": [
-        "breadcrumb_MJHLQb",
         "dm_banner_1",
         "dm_banner_2",
         "dm_banner_3",
@@ -347,22 +716,33 @@
         "dm_banner_23",
         "dm_banner_24",
         "dm_banner_25",
-        "dm_banner_26"
-      ],
-      "custom_css": [
-        ".overlay-bg {margin-top: 10px;}"
+        "dm_banner_26",
+        "dm_banner_27",
+        "dm_banner_28",
+        "dm_banner_29",
+        "dm_banner_30",
+        "dm_banner_31",
+        "dm_banner_32",
+        "dm_banner_33",
+        "dm_banner_34",
+        "dm_banner_35",
+        "dm_banner_36",
+        "dm_banner_37",
+        "dm_banner_38",
+        "dm_banner_39",
+        "dm_banner_40",
+        "dm_banner_41",
+        "dm_banner_42",
+        "dm_banner_43",
+        "dm_banner_44",
+        "dm_banner_45",
+        "dm_banner_46",
+        "dm_banner_47",
+        "dm_banner_48",
+        "dm_banner_49"
       ],
       "settings": {
-        "section_width": "fluid_container",
-        "color_scheme": "",
-        "alignment": "center",
-        "background_image": "{{ collection.image }}",
-        "show_collection_image": false,
-        "overlay_opacity": 0,
-        "height": "adapt",
-        "padding_top": 60,
-        "padding_bottom": 0,
-        "enable_missing_collection_banners": true
+        "section_width": "fluid_container"
       }
     },
     "subcollection": {
@@ -459,7 +839,8 @@
         "promotion_postion": 6,
         "items_per_row_mobile": "2",
         "padding_top": 0,
-        "padding_bottom": 0
+        "padding_bottom": 0,
+        "show_collection_heading": false
       }
     }
   },

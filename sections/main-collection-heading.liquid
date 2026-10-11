@@ -1,325 +1,53 @@
 {%- liquid
-  assign section_st = section.settings
-  assign section_width = section_st.section_width
-  assign color_scheme = section_st.color_scheme
-  assign background_image = section_st.background_image
-  assign show_collection_image = section_st.show_collection_image
-
-  assign image_bg = background_image
-  if show_collection_image and collection.image != blank
-    assign image_bg = collection.image
-  endif
-  assign alt = image_bg.alt | default: collection.title | escape
-  assign height = section_st.height
-  assign scroll_animation = settings.scroll_animation
--%}
-
-{%- liquid
   assign dm_banner_block = nil
   for block in section.blocks
-    if block.type == 'dm_collection_banner' and block.settings.collection.handle == collection.handle
-      assign dm_banner_block = block
+    if block.type == 'dm_collection_banner'
+      assign banner_handle = block.settings.collection.handle | default: block.settings.handle
+      if banner_handle == collection.handle
+        assign dm_banner_block = block
+      endif
     endif
   endfor
-  assign dm_show_fallback_banner = false
-  if section_st.enable_missing_collection_banners and image_bg == blank
-    assign dm_show_fallback_banner = true
-  endif
-  if dm_banner_block != nil
-    if dm_banner_block.settings.show_banner == false
-      assign dm_show_fallback_banner = false
-    elsif section_st.enable_missing_collection_banners and dm_banner_block.settings.desktop_image != blank
-      assign dm_show_fallback_banner = true
-    endif
-  endif
 -%}
-{%- if dm_show_fallback_banner -%}
-  {{ 'dunamiss-collection-banner.css' | asset_url | stylesheet_tag }}
-  {% render 'dunamiss-collection-banner', collection: collection, section: section, banner_block: dm_banner_block %}
-{%- elsif dm_banner_block != nil and dm_banner_block.settings.show_banner == false -%}
-{%- else -%}
-{%- capture style -%}
-  --section-pt: {{ section_st.padding_top }}; --section-pb: {{ section_st.padding_bottom }};{%- if image_bg != blank and height == 'adapt' -%}--aspect-ratio: {{ image_bg.aspect_ratio }}{% endif %};--overlay-opacity: {{ section_st.overlay_opacity }}%;
-{%- endcapture -%}
-{% if image_bg != blank or show_collection_image %}
-  {% style %}
-    @media screen and (max-width: 767px) {
-      #shopify-section-{{ section.id }} .sec__page-heading {
-        min-height: 180px;
-      }
-    }
-  {% endstyle %}
-{% endif %}
-{%- if section.blocks.size > 0 -%}
-  <div
-    class="section remove_spacing sec__page-heading color-{{ color_scheme }} gradient{% if image_bg != blank %} bg-transparent relative mb-60{% else %} mb-60{% endif %} flex align-center justify-content-{{ section_st.alignment }}"
-    style="{{ style | strip | strip_newlines }}"
-  >
-    {% if show_collection_image or background_image != blank %}
-      <div class="overlay-bg">
-        {%- if image_bg != blank -%}
-          {% render 'responsive-image',
-            type: 'banner',
-            container: section_width,
-            image: image_bg,
-            image_alt: alt,
-            class: 'background-heading absolute inset-0 z--1 pointer-none w-full h-full object-position-center object-fit-cover'
-          %}
-        {%- else -%}
-          {% render 'placeholder-render', type: "collection", class: 'background-heading absolute inset-0 z--1 pointer-none w-full h-full object-position-center object-fit-cover' %}
-        {% endif %}
-      </div>
-    {% endif %}
-    <div class="{{ section_width }}">
-      <div class="heading-content relative text-{{ section_st.alignment }}">
-        {%- for block in section.blocks -%}
-          {% comment %}Keep banner titles and breadcrumbs hidden from the first paint, without waiting for custom CSS.{% endcomment %}
-          {%- if block.type == 'heading' or block.type == 'breadcrumb' -%}
-            {%- continue -%}
-          {%- endif -%}
-          {%- liquid
-            assign block_st = block.settings
-            assign header_size = ''
-            if block_st.header_size == 'small'
-              assign header_size = 'h3'
-            elsif block_st.header_size == 'large'
-              assign header_size = 'h1-size'
-            endif
-          -%}
-          {%- case block.type -%}
-            {%- when 'heading' -%}
-              <motion-element
-                data-motion="fade-up-lg"
-                {% if scroll_animation != 'slide_in' %}
-                  hold
-                {% endif %}
-                data-motion-delay="{{ forloop.index0 | times: 50 }}"
-                class=" {% if scroll_animation == 'slide_in' %} opacity-0 {% endif %} block"
-              >
-              <h2 class="heading-title heading-letter-spacing h2 mt-8 mb-0 {{ header_size }}">
-                {%- if block_st.page_title != blank -%}
-                  {{ block_st.page_title }}
-                {%- else -%}
-                  {{ collection.title }}
-                {% endif %}
-              </h2>
-            </motion-element>
-            {%- when 'description' -%}
-              {% if collection.description != blank %}
-                <motion-element
-                  data-motion="fade-up-lg"
-                  {% if scroll_animation != 'slide_in' %}
-                    hold
-                  {% endif %}
-                  data-motion-delay="{{ forloop.index0 | times: 50   }}"                             
-                  class="heading-description mt-10 block {% if scroll_animation == 'slide_in' %} opacity-0 {% endif %} rich__text-m0">
-                  {{ collection.description }}
-                </motion-element>
-              {% endif %}
-            {%- when 'breadcrumb' -%}
-              <motion-element
-                data-motion="fade-up-lg"
-                {% if scroll_animation != 'slide_in' %}
-                  hold
-                {% endif %}
-                data-motion-delay="{{ forloop.index0 | times: 50   }}"
-                class="{% if scroll_animation == 'slide_in' %} opacity-0 {% endif %} block"
-               >
-              <div class="page-title-breadcrumb">
-                {%- render 'breadcrumbs' -%}
-              </div>
-            </motion-element>
-          {%- endcase -%}
-        {%- endfor -%}
-      </div>
-    </div>
-  </div>
-{% endif %}
-{%- endif -%}
+{{ 'dunamiss-collection-banner.css' | asset_url | stylesheet_tag }}
+{% render 'dunamiss-collection-banner', collection: collection, section: section, banner_block: dm_banner_block %}
 {% schema %}
 {
-  "name": "t:sections.collection_banner.name",
+  "name": "Collection banner",
   "tag": "section",
   "class": "page-title",
   "settings": [
     {
-      "type": "checkbox",
-      "id": "enable_missing_collection_banners",
-      "label": "Show banners for collections without images",
-      "default": true,
-      "info": "Uses collection-specific artwork below. Existing collection images are preserved."
-    },
-    {
       "type": "select",
       "id": "section_width",
+      "label": "Section width",
+      "default": "fluid_container",
       "options": [
         {
           "value": "container",
-          "label": "t:sections.all.section_width.container.label"
+          "label": "Container"
         },
         {
           "value": "fluid_container",
-          "label": "t:sections.all.section_width.fluid_container.label"
+          "label": "Fluid container"
         },
         {
           "value": "stretch_width",
-          "label": "t:sections.all.section_width.stretch_width.label"
+          "label": "Stretch width"
         },
         {
           "value": "full_width",
-          "label": "t:sections.all.section_width.full_width.label"
-        }
-      ],
-      "default": "stretch_width",
-      "label": "t:sections.all.section_width.label"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:sections.all.color_scheme.label",
-      "default": "default-color-scheme"
-    },
-    {
-      "type": "select",
-      "id": "alignment",
-      "label": "t:sections.all.section_header.alignment.label",
-      "default": "center",
-      "options": [
-        {
-          "value": "left",
-          "label": "t:sections.all.content_settings.content_alignment.left.label"
-        },
-        {
-          "value": "center",
-          "label": "t:sections.all.content_settings.content_alignment.center.label"
-        },
-        {
-          "value": "right",
-          "label": "t:sections.all.content_settings.content_alignment.right.label"
+          "label": "Full width"
         }
       ]
     },
     {
-      "type": "header",
-      "content": "t:sections.all.section_padding.label"
-    },
-    {
-      "type": "image_picker",
-      "id": "background_image",
-      "label": "t:sections.all.image.background_image.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_collection_image",
-      "label": "t:sections.all.page_heading.use_collection_image",
-      "info": "t:sections.all.page_heading.info",
-      "default": false
-    },
-    {
-      "type": "range",
-      "id": "overlay_opacity",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "label": "t:sections.all.image.overlay_opacity.label",
-      "default": 0
-    },
-    {
-      "type": "select",
-      "id": "height",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.all.page_heading.height.option__1"
-        },
-        {
-          "value": "based_on_content",
-          "label": "t:sections.all.page_heading.height.option__2"
-        }
-      ],
-      "default": "adapt",
-      "label": "t:sections.all.page_heading.height.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.section_padding.label"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "t:sections.all.section_padding.top.label",
-      "default": 40,
-      "min": 0,
-      "max": 100,
-      "step": 2,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "t:sections.all.section_padding.bottom.label",
-      "default": 40,
-      "min": 0,
-      "max": 100,
-      "step": 2,
-      "unit": "px"
+      "type": "paragraph",
+      "content": "All collection pages share this layout. Choose the collection block to edit its heading, subtitle or image. Images are stored in Shopify Files, outside the theme. The heading is the page\u2019s single H1."
     }
   ],
   "max_blocks": 50,
   "blocks": [
-    {
-      "type": "breadcrumb",
-      "name": "t:sections.all.page_heading.breadcrumb.label",
-      "limit": 1
-    },
-    {
-      "type": "heading",
-      "name": "t:sections.all.page_heading.heading.label",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "paragraph",
-          "content": "t:sections.all.page_heading.heading.info"
-        },
-        {
-          "type": "text",
-          "id": "page_title",
-          "label": "t:sections.all.page_heading.heading.label"
-        },
-        {
-          "type": "select",
-          "id": "header_size",
-          "label": "t:sections.all.content_settings.font_size.label",
-          "default": "default",
-          "options": [
-            {
-              "value": "default",
-              "label": "t:sections.all.content_settings.font_size.default.label"
-            },
-            {
-              "value": "small",
-              "label": "t:sections.all.content_settings.font_size.small.label"
-            },
-            {
-              "value": "large",
-              "label": "t:sections.all.content_settings.font_size.large.label"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "description",
-      "name": "t:sections.all.page_heading.description.label",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "paragraph",
-          "content": "t:sections.all.page_heading.description.info"
-        }
-      ]
-    },
     {
       "type": "dm_collection_banner",
       "name": "Collection banner",
@@ -336,65 +64,29 @@
           "label": "Collection"
         },
         {
-          "type": "checkbox",
-          "id": "show_banner",
-          "label": "Show banner",
-          "default": true
+          "type": "text",
+          "id": "handle",
+          "label": "Collection handle",
+          "info": "Optional fallback for system collections such as all. A selected collection takes priority."
         },
         {
-          "type": "select",
-          "id": "artwork",
-          "label": "Built-in artwork",
-          "options": [
-            {
-              "value": "lips",
-              "label": "Lips"
-            },
-            {
-              "value": "beauty",
-              "label": "Beauty"
-            },
-            {
-              "value": "gifting",
-              "label": "Gifting"
-            },
-            {
-              "value": "eyes",
-              "label": "Eyes"
-            },
-            {
-              "value": "nails",
-              "label": "Nails"
-            },
-            {
-              "value": "hair",
-              "label": "Hair"
-            },
-            {
-              "value": "bath",
-              "label": "Bath"
-            },
-            {
-              "value": "wellness",
-              "label": "Wellness"
-            },
-            {
-              "value": "skincare",
-              "label": "Skincare"
-            }
-          ],
-          "default": "beauty"
+          "type": "checkbox",
+          "id": "show_banner",
+          "label": "Show banner image",
+          "default": true,
+          "info": "Turning off the image keeps the collection heading visible."
         },
         {
           "type": "image_picker",
           "id": "desktop_image",
-          "label": "Custom desktop image",
-          "info": "Optional. Replaces the built-in artwork for this collection."
+          "label": "Desktop image",
+          "info": "Choose an image from Shopify Files. A wide 3:1 image works best."
         },
         {
           "type": "image_picker",
           "id": "mobile_image",
-          "label": "Custom mobile image"
+          "label": "Mobile image",
+          "info": "Optional. Defaults to the desktop image with a responsive Shopify CDN size."
         },
         {
           "type": "text",
@@ -410,8 +102,7 @@
         {
           "type": "text",
           "id": "image_alt",
-          "label": "Image description",
-          "info": "Leave blank for the artwork description."
+          "label": "Image description"
         }
       ]
     }

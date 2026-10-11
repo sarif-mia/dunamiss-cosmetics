@@ -79,12 +79,14 @@
       collection_url: collection.url
     -%}
   {% endif %}
+  {% if section_st.show_collection_heading %}
   <div class="{{ section_width }} storefront-collection-heading{% if collection_display_subheading != blank %} storefront-collection-heading--with-subheading{% endif %}">
     <h1>{{ collection_display_heading | escape }}</h1>
     {%- if collection_display_subheading != blank -%}
       <p class="storefront-collection-heading__subtitle">{{ collection_display_subheading | escape }}</p>
     {%- endif -%}
   </div>
+  {% endif %}
   <grid-list
     {% if scroll_animation != 'slide_in' %}
       hold
@@ -318,6 +320,13 @@
   "class": "section",
   "settings": [
     {
+      "type": "checkbox",
+      "id": "show_collection_heading",
+      "label": "Show separate collection heading",
+      "default": true,
+      "info": "Turn off while the Collection banner section displays the heading, to avoid duplicate headings and subtitles."
+    },
+    {
       "type": "select",
       "id": "section_width",
       "options": [
@@ -349,7 +358,7 @@
       "type": "text",
       "id": "heading_override_handle",
       "label": "Collection handle",
-      "info": "Optional override for this collection handle. Otherwise use Theme settings → Dunamiss categories."
+      "info": "Optional override for this collection handle. Otherwise use Theme settings \u2192 Dunamiss categories."
     },
     {
       "type": "text",
