@@ -61,6 +61,30 @@ body .section-header-custom-floating .dm-shop-menu > summary {
   .dm-shop-heading { font-size: 13px; line-height: 1.5; }
 }
 
+/* Style the label itself so theme span rules cannot flatten the Shop hierarchy. */
+@media (min-width: 1025px) {
+  body .section-header-custom-floating .header__menu .dm-shop-menu .dm-menu-title {
+    display: block;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  body .section-header-custom-floating .header__menu .dm-shop-menu .dm-shop-heading > .dm-menu-title {
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 700;
+    color: var(--brand-heading, #1a1a1a);
+  }
+  body .section-header-custom-floating .header__menu .dm-shop-menu .dm-category-subtitle {
+    display: block;
+    margin-top: 2px;
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 400;
+    color: #71666b;
+  }
+}
+
 @media (min-width: 1025px) and (prefers-reduced-motion: no-preference) {
   .dm-shop-menu[open] > .dm-shop-panel { animation: dm-shop-dropdown-in .25s ease; }
 }

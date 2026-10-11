@@ -1,5 +1,5 @@
 {% assign item_title = display_title | default: menu_link.title %}
-<span>{% render 'dunamiss-category-copy', url: menu_link.url, fallback: item_title %}</span>
+<span class="dm-menu-title">{% render 'dunamiss-category-copy', url: menu_link.url, fallback: item_title %}</span>
 {%- capture item_subtitle -%}{% render 'dunamiss-menu-subtitle', url: menu_link.url, section: section %}{%- endcapture -%}
 {%- assign item_subtitle = item_subtitle | strip -%}
 {%- if item_subtitle != blank -%}<span class="dm-category-subtitle">{{ item_subtitle | escape }}</span>{%- endif -%}
