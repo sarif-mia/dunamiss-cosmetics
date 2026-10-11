@@ -1,6 +1,18 @@
 {%- liquid
   assign section_st = section.settings
   assign section_width = section_st.section_width
+  assign rendered_page_content = page.content
+  if page.handle == 'coming-soon'
+    assign sunscreen_destination = settings.dm_seo_sunscreen_link | default: collections['sunscreen-cream'].url
+    if sunscreen_destination != blank
+      capture sunscreen_link
+        echo 'href="'
+        echo sunscreen_destination | escape
+        echo '"'
+      endcapture
+      assign rendered_page_content = rendered_page_content | replace: 'href="/buy-now"', sunscreen_link
+    endif
+  endif
 -%}
 {%- capture style -%}
   --section-pt: {{ section_st.padding_top }}; --section-pb: {{ section_st.padding_bottom }};--max-width: 50rem;
@@ -11,10 +23,10 @@
 >
   <div class="{{ section_width }}">
     <div class="page-title text-center">
-      <h2>{{ page.title | escape }}</h2>
+      <h1 class="h2">{{ page.title | escape }}</h1>
     </div>
     <div class="rte">
-      {{ page.content }}
+      {{ rendered_page_content }}
     </div>
   </div>
 </div>

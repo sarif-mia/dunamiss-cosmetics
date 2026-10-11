@@ -2120,5 +2120,39 @@
         "default": "Free gift"
       }
     ]
+  },
+  {
+    "name": "Dunamiss search identity",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Structured identity uses the store name, logo and social links already set in this theme. Keep contact details consistent with the Contact page."
+      },
+      {
+        "type": "text",
+        "id": "dm_seo_support_email",
+        "label": "Published support email",
+        "default": "care@dunamiss.in"
+      },
+      {
+        "type": "url",
+        "id": "dm_seo_contact_url",
+        "label": "Contact page override",
+        "info": "Leave empty to use /pages/contact."
+      },
+      {
+        "type": "text",
+        "id": "dm_seo_noindex_pages",
+        "label": "Utility page handles to exclude from search",
+        "default": "wishlist,compare,recently-viewed-products",
+        "info": "Comma-separated page handles. Add unpublished or placeholder pages here until they are ready for search."
+      },
+      {
+        "type": "url",
+        "id": "dm_seo_sunscreen_link",
+        "label": "Coming-soon page sunscreen link",
+        "info": "Leave empty to use the Sunscreen collection. Replaces the old /buy-now link on that page."
+      }
+    ]
   }
 ]

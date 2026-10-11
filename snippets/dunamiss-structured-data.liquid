@@ -1,0 +1,143 @@
+{%- comment -%}
+  One store identity connects public pages, products and articles. All facts come
+  from Shopify or published contact settings; no ratings or policy terms are invented.
+{%- endcomment -%}
+{%- liquid
+  assign schema_public_page = false
+  if request.page_type == 'index' or request.page_type == 'product' or request.page_type == 'collection' or request.page_type == 'blog' or request.page_type == 'article' or request.page_type == 'page' or request.page_type == 'policy' or request.page_type == 'metaobject'
+    assign schema_public_page = true
+  endif
+  assign schema_organization_id = shop.secure_url | append: '#organization'
+  assign schema_website_id = shop.secure_url | append: '#website'
+  assign schema_page_url = storefront_canonical_url | default: canonical_url
+  assign schema_page_id = schema_page_url | append: '#webpage'
+  assign schema_breadcrumb_id = schema_page_url | append: '#breadcrumb'
+  assign schema_page_type = 'WebPage'
+  assign schema_page_name = storefront_title | default: page_title | remove: 'SEO Optimized Title: '
+  assign schema_breadcrumb_name = page_title
+  case request.page_type
+    when 'product'
+      assign schema_page_type = 'ItemPage'
+      assign schema_breadcrumb_name = product.title
+    when 'collection'
+      assign schema_page_type = 'CollectionPage'
+      assign schema_breadcrumb_name = collection.title
+    when 'blog'
+      assign schema_page_type = 'CollectionPage'
+      assign schema_breadcrumb_name = blog.title
+    when 'article'
+      assign schema_breadcrumb_name = article.title
+    when 'page'
+      assign schema_breadcrumb_name = page.title
+      if page.handle == 'about-us' or page.handle == 'about'
+        assign schema_page_type = 'AboutPage'
+      elsif page.handle == 'contact' or page.handle == 'contact-us'
+        assign schema_page_type = 'ContactPage'
+      endif
+  endcase
+  assign schema_has_breadcrumbs = false
+  if request.page_type != 'index' and page_layout contains 'breadcrumb-list'
+    assign schema_has_breadcrumbs = true
+  endif
+  assign schema_parent_url = blank
+  assign schema_parent_name = blank
+  if request.page_type == 'article'
+    assign schema_parent_url = shop.secure_url | append: blog.url
+    assign schema_parent_name = blog.title
+  elsif request.page_type == 'product' and collection.url != blank
+    assign schema_parent_url = shop.secure_url | append: collection.url
+    assign schema_parent_name = collection.title
+  elsif current_tags != blank and request.page_type == 'collection'
+    assign schema_parent_url = shop.secure_url | append: collection.url
+    assign schema_parent_name = collection.title
+    assign schema_breadcrumb_name = current_tags | join: ' + '
+  elsif current_tags != blank and request.page_type == 'blog'
+    assign schema_parent_url = shop.secure_url | append: blog.url
+    assign schema_parent_name = blog.title
+    assign schema_breadcrumb_name = current_tags | join: ' + '
+  endif
+  assign schema_social_keys = 'facebook,instagram,twitter,youtube,tiktok,pinterest,vimeo,linkedin,tumblr,snapchat' | split: ','
+  assign schema_social_links = ''
+  for key in schema_social_keys
+    assign social_url = settings[key] | strip
+    assign social_protocol = social_url | slice: 0, 8
+    assign social_protocol_short = social_url | slice: 0, 7
+    if social_protocol == 'https://' or social_protocol_short == 'http://'
+      capture encoded_social_url
+        echo social_url | json
+      endcapture
+      if schema_social_links != blank
+        assign schema_social_links = schema_social_links | append: ','
+      endif
+      assign schema_social_links = schema_social_links | append: encoded_social_url
+    endif
+  endfor
+  assign schema_contact_url = settings.dm_seo_contact_url
+  if schema_contact_url == blank
+    assign schema_contact_url = shop.secure_url | append: routes.root_url | append: 'pages/contact'
+  elsif schema_contact_url contains '://'
+    assign schema_contact_url = settings.dm_seo_contact_url
+  else
+    assign schema_contact_url = shop.secure_url | append: schema_contact_url
+  endif
+-%}
+{%- if schema_public_page -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "OnlineStore",
+      "@id": {{ schema_organization_id | json }},
+      "name": {{ shop.name | json }},
+      "url": {{ shop.secure_url | json }},
+      {% if settings.logo != blank %}"logo": {{ settings.logo | image_url: width: 512 | prepend: 'https:' | json }},{% endif %}
+      {% if shop.description != blank %}"description": {{ shop.description | strip_html | strip | json }},{% endif %}
+      {% if schema_social_links != blank %}"sameAs": [{{ schema_social_links }}],{% endif %}
+      {% if shop.refund_policy.body != blank and shop.refund_policy.url != blank %}
+        "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "merchantReturnLink": {{ shop.secure_url | append: shop.refund_policy.url | json }} },
+      {% endif %}
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        {% if settings.dm_seo_support_email != blank %}"email": {{ settings.dm_seo_support_email | strip | json }},{% endif %}
+        "url": {{ schema_contact_url | json }}
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": {{ schema_website_id | json }},
+      "url": {{ shop.secure_url | append: routes.root_url | json }},
+      "name": {{ shop.name | json }},
+      "inLanguage": {{ request.locale.iso_code | json }},
+      "publisher": { "@id": {{ schema_organization_id | json }} }
+    },
+    {
+      "@type": {{ schema_page_type | json }},
+      "@id": {{ schema_page_id | json }},
+      "url": {{ schema_page_url | json }},
+      "name": {{ schema_page_name | json }},
+      "description": {{ storefront_description | strip | json }},
+      "inLanguage": {{ request.locale.iso_code | json }},
+      {% if schema_has_breadcrumbs %}"breadcrumb": { "@id": {{ schema_breadcrumb_id | json }} },{% endif %}
+      {% if request.page_type == 'product' %}"mainEntity": { "@id": {{ request.origin | append: product.url | append: '#product' | json }} },{% endif %}
+      {% if request.page_type == 'article' %}"mainEntity": { "@id": {{ canonical_url | append: '#article' | json }} },{% endif %}
+      "isPartOf": { "@id": {{ schema_website_id | json }} }
+    }
+    {% if schema_has_breadcrumbs %},
+    {
+      "@type": "BreadcrumbList",
+      "@id": {{ schema_breadcrumb_id | json }},
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": {{ 'general.breadcrumb.home' | t | json }}, "item": {{ shop.secure_url | append: routes.root_url | json }} },
+        {% if schema_parent_url != blank %}
+          { "@type": "ListItem", "position": 2, "name": {{ schema_parent_name | json }}, "item": {{ schema_parent_url | json }} },
+        {% endif %}
+        { "@type": "ListItem", "position": {% if schema_parent_url != blank %}3{% else %}2{% endif %}, "name": {{ schema_breadcrumb_name | json }}, "item": {{ schema_page_url | json }} }
+      ]
+    }
+    {% endif %}
+  ]
+}
+</script>
+{%- endif -%}

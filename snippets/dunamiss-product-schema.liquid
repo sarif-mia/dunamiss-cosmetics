@@ -1,0 +1,40 @@
+{%- liquid
+  assign product_schema_url = request.origin | append: product.url
+  assign product_schema_id = product_schema_url | append: '#product'
+  assign product_schema_description = product.description | replace: '</p>', '</p> ' | replace: '</li>', '</li> ' | replace: '</h2>', '</h2> ' | replace: '</h3>', '</h3> ' | replace: '</h4>', '</h4> ' | replace: '<br>', ' ' | replace: '<br />', ' ' | strip_html | strip
+  assign product_schema_currency = cart.currency.iso_code | default: shop.currency
+  assign product_seller_id = shop.secure_url | append: '#organization'
+-%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": {{ product_schema_id | json }},
+  "name": {{ product.title | json }},
+  "url": {{ product_schema_url | json }},
+  "mainEntityOfPage": { "@id": {{ canonical_url | append: '#webpage' | json }} },
+  {% if product.images.size > 0 %}
+    "image": [{% for image in product.images limit: 6 %}{{ image | image_url: width: 1920 | prepend: 'https:' | json }}{% unless forloop.last %},{% endunless %}{% endfor %}],
+  {% endif %}
+  "description": {{ product_schema_description | json }},
+  {% if product.selected_or_first_available_variant.sku != blank %}"sku": {{ product.selected_or_first_available_variant.sku | json }},{% endif %}
+  {% if product.type != blank %}"category": {{ product.type | json }},{% endif %}
+  {% if product.vendor != blank %}"brand": { "@type": "Brand", "name": {{ product.vendor | json }} },{% endif %}
+  "offers": [
+    {% for variant in product.variants %}
+      {%- assign offer_url = request.origin | append: variant.url -%}
+      {
+        "@type": "Offer",
+        "@id": {{ offer_url | append: '#offer' | json }},
+        {% if variant.sku != blank %}"sku": {{ variant.sku | json }},{% endif %}
+        {% render 'product-gtin', variant: variant %}
+        "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+        "price": {{ variant.price | divided_by: 100.0 | json }},
+        "priceCurrency": {{ product_schema_currency | json }},
+        "seller": { "@id": {{ product_seller_id | json }} },
+        "url": {{ offer_url | json }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}
+</script>

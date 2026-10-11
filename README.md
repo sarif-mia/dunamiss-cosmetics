@@ -95,6 +95,29 @@ Validate editor schema and template connections after changing controls:
 python3 scripts/validate-customize.py
 ```
 
+## Search and AI discovery
+
+`snippets/dunamiss-structured-data.liquid` connects the published store identity,
+website, pages and visible breadcrumb trails. Store name, logo and social profiles
+come from existing Shopify/theme values. **Theme settings → Dunamiss search
+identity** controls the published support email, contact URL override and the list
+of utility page handles excluded from search.
+
+Both product layouts use `snippets/dunamiss-product-schema.liquid`. Prices,
+currencies, stock, SKUs and validated GTINs come from the actual variants. Reviews
+remain controlled by the review app. FAQ sections use
+`snippets/dunamiss-faq-schema.liquid`, which serializes only complete visible Q&A
+blocks and safely handles quotation marks and rich-text links.
+
+There is no custom robots template: Shopify manages its current crawl policy,
+sitemap and agentic-commerce discovery rules. This avoids freezing an older set
+of robots rules into the theme. Page/collection/product SEO titles and descriptions
+remain editable in Shopify admin. Generic page templates have a primary heading;
+existing custom page headings are preserved.
+
+Product consolidation, video-app metadata, Merchant Center feeds and Search Console
+or Bing visibility settings are managed in their corresponding admin tools.
+
 ## Cart
 
 The storefront uses the theme-owned drawer in `snippets/minicart.liquid`. Keep

@@ -58,7 +58,7 @@
     {%- assign storefront_title = page_title | replace: '&amp;', '&' | replace: '&quot;', '"' | replace: '&#39;', "'" | replace: '&lt;', '<' | replace: '&gt;', '>' -%}
     <title>
       {{ storefront_title | remove: 'SEO Optimized Title: ' | escape }}
-      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' | escape }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
       {%- assign title_brand_check = storefront_title | downcase -%}
       {%- assign storefront_brand = shop.name | split: ' ' | first | downcase -%}
@@ -66,6 +66,9 @@
     </title>
     {%- liquid
       assign storefront_description = page_description
+      if request.page_type == 'blog' and storefront_description == shop.description
+        assign storefront_description = blank
+      endif
       if storefront_description == blank
         case request.page_type
           when 'collection'
@@ -76,6 +79,17 @@
               echo shop.name
               echo '. Discover beauty and everyday care, with product details to help you choose.'
             endcapture
+          when 'blog'
+            capture storefront_description
+              echo blog.title
+              echo ' — Beauty articles, product guides and everyday care from '
+              echo shop.name
+              echo '.'
+            endcapture
+          when 'article'
+            assign storefront_description = article.excerpt_or_content | replace: '</p>', '</p> ' | strip_html | strip | truncate: 155
+          when 'product'
+            assign storefront_description = product.description | replace: '</p>', '</p> ' | replace: '</li>', '</li> ' | strip_html | strip | truncate: 155
           when 'page'
             assign storefront_description = page.content | strip_html | strip_newlines | truncate: 155
             if storefront_description == blank
@@ -108,8 +122,23 @@
     {% if storefront_description != blank %}
       <meta name="description" content="{{ storefront_description | strip | escape }}">
     {% endif %}
-    {% render 'meta-tags', storefront_title: storefront_title, storefront_description: storefront_description %}
-    {% render 'merchant-return-policy' %}
+    {% render 'meta-tags', storefront_title: storefront_title, storefront_description: storefront_description, storefront_canonical_url: storefront_canonical_url %}
+    {% render 'dunamiss-structured-data', storefront_title: storefront_title, storefront_description: storefront_description, storefront_canonical_url: storefront_canonical_url, page_layout: content_for_layout %}
+    {%- liquid
+      assign dm_noindex_page = false
+      assign dm_noindex_handles = settings.dm_seo_noindex_pages | split: ','
+      if request.page_type == 'page'
+        for handle in dm_noindex_handles
+          assign excluded_handle = handle | strip
+          if excluded_handle != blank and excluded_handle == page.handle
+            assign dm_noindex_page = true
+          endif
+        endfor
+      endif
+    -%}
+    {% if request.page_type == 'search' or request.page_type == 'cart' or request.page_type == '404' or request.page_type contains 'customers/' or dm_noindex_page %}
+      <meta name="robots" content="noindex,follow">
+    {% endif %}
     {{ content_for_header }}
     {{ 'critical.s.min.css' | asset_url | stylesheet_tag }}
     {% if settings.scroll_animation != 'none' %}
@@ -311,6 +340,9 @@
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {% if request.page_type == 'index' %}
         <h1 class="visually-hidden">{{ shop.name | escape }} — Beauty and everyday care</h1>
+      {% endif %}
+      {% if request.page_type == 'page' or request.page_type == 'metaobject' %}
+        {% unless content_for_layout contains '<h1' %}<h1 class="visually-hidden">{{ page.title | default: page_title | escape }}</h1>{% endunless %}
       {% endif %}
       {{ content_for_layout }}
     </main>

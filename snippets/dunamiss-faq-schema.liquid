@@ -1,0 +1,27 @@
+{%- liquid
+  assign faq_items = ''
+  for block in blocks
+    if block.type == 'faq' and block.settings.question != blank and block.settings.answer != blank
+      assign faq_question = block.settings.question | strip_html | strip
+      assign faq_answer = block.settings.answer | replace: '</p>', '</p> ' | replace: '</li>', '</li> ' | strip_html | strip
+      if faq_question != blank and faq_answer != blank
+        capture faq_item
+          echo '{"@type":"Question","name":'
+          echo faq_question | json
+          echo ',"acceptedAnswer":{"@type":"Answer","text":'
+          echo faq_answer | json
+          echo '}}'
+        endcapture
+        if faq_items != blank
+          assign faq_items = faq_items | append: ','
+        endif
+        assign faq_items = faq_items | append: faq_item
+      endif
+    endif
+  endfor
+-%}
+{%- if faq_items != blank -%}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","@id":{{ canonical_url | append: '#webpage' | json }},"mainEntity":[{{ faq_items }}]}
+</script>
+{%- endif -%}

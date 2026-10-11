@@ -132,35 +132,7 @@
     </div>
   </div>
 </section>
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {%- for block in section.blocks -%}
-        {%- case block.type -%}
-          {%- when 'faq' -%}
-            {%- liquid
-              assign block_st = block.settings
-              assign question = block_st.question
-              assign answer = block_st.answer
-            -%}
-            {%- if answer != blank or question != blank -%}
-              {
-                "@type": "Question",
-                "name": "{{ question }}",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "{{ answer | replace: '<p>', '' | replace: '</p>', '' }}"
-                }
-              }
-            {% endif %}
-            {%- unless forloop.last -%},{%- endunless -%}
-        {%- endcase -%}
-      {%- endfor -%}
-    ]
-  }
-</script>
+{% render 'dunamiss-faq-schema', blocks: section.blocks %}
 {% schema %}
 {
   "name": "t:sections.help-center.name",

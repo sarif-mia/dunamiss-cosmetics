@@ -164,7 +164,7 @@
                     {% else %}
                       {%- liquid
                         if block.settings.image.alt == blank
-                          assign image_alt = block.settings.heading
+                          assign image_alt = block.settings.heading | default: block.settings.first_button_label | default: shop.name
                         else
                           assign image_alt = block.settings.image.alt
                         endif
