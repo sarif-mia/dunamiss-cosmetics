@@ -28,7 +28,9 @@
         menuOpener = document.activeElement;
         menu.querySelector('close-menu')?.focus({ preventScroll: true });
       } else if (!open && menuWasOpen && menuOpener?.isConnected) {
-        menuOpener.focus({ preventScroll: true });
+        const focusTarget = mobile.matches ? menuOpener :
+          (header.querySelector('.dm-shop-menu > summary') || header.querySelector('.header__logo a[href]'));
+        focusTarget?.focus({ preventScroll: true });
       }
     }
     menuWasOpen = open;
@@ -87,7 +89,19 @@
   });
   const menuStateObserver = new MutationObserver(syncMenu);
   menuStateObserver.observe(root, { attributes: true, attributeFilter: ['class'] });
-  mobile.addEventListener('change', syncMenu);
+  mobile.addEventListener('change', () => {
+    if (!mobile.matches && root.classList.contains('nav-open')) {
+      root.classList.remove('nav-open', 'nav-verticalmenu');
+      header?.querySelectorAll('.nav-toggle.open, menu-item.is-open').forEach((item) => {
+        item.classList.remove('open', 'is-open');
+      });
+      if (!root.matches('.open-minicart, .open-search, .open-sidebar, .open-byl')) {
+        root.classList.remove('open-drawer');
+        root.style.removeProperty('padding-right');
+      }
+    }
+    syncMenu();
+  });
 
   const measure = () => {
     if (!header?.isConnected) return;

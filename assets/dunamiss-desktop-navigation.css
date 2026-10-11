@@ -93,14 +93,19 @@ body .section-header-custom-floating .dm-shop-menu > summary {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Reserve navigation rows before web fonts arrive; avoid moving the homepage hero. */
+/* Keep type metrics stable and wrap narrow desktop menus within their own column. */
 @media (min-width: 1025px) {
   body .section-header-custom-floating .header__menu .level0 > menu-item > a,
   .dm-shop-menu > summary { font-size: 13px; }
+}
+@media (min-width: 1025px) and (max-width: 1399px) {
   body .section-header-custom-floating .header__menu > nav.navigation:not(.mobile) .horizontal-list {
-    display: grid;
-    grid-template-columns: repeat(6, max-content);
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+  }
+  body .section-header-custom-floating .header__menu > nav.navigation:not(.mobile) .horizontal-list > .level0 {
+    flex: 0 0 auto;
   }
 }
 @media (min-width: 1400px) {
