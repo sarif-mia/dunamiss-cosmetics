@@ -880,13 +880,13 @@
         "default": true
       },
       {
-        "type": "checkbox", 
+        "type": "checkbox",
         "id": "show_variant",
         "default": true,
         "label": "t:settings_schema.product_card.settings.product_actions.show_variant.label"
       },
       {
-        "type": "checkbox", 
+        "type": "checkbox",
         "id": "show_quantity_input",
         "default": true,
         "label": "t:settings_schema.product_card.settings.product_actions.show_quantity.label"
@@ -969,8 +969,7 @@
           }
         ],
         "info": "t:settings_schema.product_card.settings.truncate_product_title.info"
-      }
-      ,
+      },
       {
         "type": "range",
         "id": "price_size",
@@ -1684,7 +1683,7 @@
         "type": "richtext",
         "id": "content_cookies",
         "label": "t:settings_schema.cookies.settings.content_settings.label",
-        "default": "<p>We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffics. By clicking \"<strong>Allow Cookies<\/strong>\" you consent to our use of cookie. <strong>More info<\/strong><\/p>"
+        "default": "<p>We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffics. By clicking \"<strong>Allow Cookies</strong>\" you consent to our use of cookie. <strong>More info</strong></p>"
       },
       {
         "type": "text",
@@ -1724,7 +1723,7 @@
         "type": "richtext",
         "id": "text_terms_conditions",
         "label": "t:settings_schema.terms_conditions.settings.text_terms_conditions.label",
-        "default": "<p> I agree with <a href=''> Terms &amp; Conditions <\/a><\/p>"
+        "default": "<p> I agree with <a href=''> Terms &amp; Conditions </a></p>"
       },
       {
         "type": "page",
@@ -1877,15 +1876,249 @@
       }
     ]
   },
-{
-  "name": "Store locator map",
-  "settings": [
-    {
-      "type": "text",
-      "id": "mapbox_public_token",
-      "label": "Mapbox public access token",
-      "info": "Use a domain-restricted public token starting with pk. Never enter a secret token. Leave blank to show store details without a map."
-    }
-  ]
-}
+  {
+    "name": "Store locator map",
+    "settings": [
+      {
+        "type": "text",
+        "id": "mapbox_public_token",
+        "label": "Mapbox public access token",
+        "info": "Use a domain-restricted public token starting with pk. Never enter a secret token. Leave blank to show store details without a map."
+      }
+    ]
+  },
+  {
+    "name": "Dunamiss categories",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Names and subtitles used in Shop, desktop/mobile menus and collection pages. Menu destinations stay controlled by Shopify Navigation."
+      },
+      {
+        "type": "header",
+        "content": "Mist"
+      },
+      {
+        "type": "text",
+        "id": "dm_face_mist_heading",
+        "label": "Heading",
+        "default": "Mist & Glow"
+      },
+      {
+        "type": "text",
+        "id": "dm_face_mist_subtitle",
+        "label": "Subtitle",
+        "default": "SPF + Anti-Pollution Mist"
+      },
+      {
+        "type": "header",
+        "content": "Sheet masks"
+      },
+      {
+        "type": "text",
+        "id": "dm_sheet_mask_heading",
+        "label": "Heading",
+        "default": "Mask & Chill"
+      },
+      {
+        "type": "text",
+        "id": "dm_sheet_mask_subtitle",
+        "label": "Subtitle",
+        "default": "Hydrating Sheet Masks"
+      },
+      {
+        "type": "header",
+        "content": "Creams"
+      },
+      {
+        "type": "text",
+        "id": "dm_cream_heading",
+        "label": "Heading",
+        "default": "AM to PM Care"
+      },
+      {
+        "type": "text",
+        "id": "dm_cream_subtitle",
+        "label": "Subtitle",
+        "default": "Day & Night Creams"
+      },
+      {
+        "type": "header",
+        "content": "Sunscreen"
+      },
+      {
+        "type": "text",
+        "id": "dm_sunscreen_cream_heading",
+        "label": "Heading",
+        "default": "SPF & Barrier Glow"
+      },
+      {
+        "type": "text",
+        "id": "dm_sunscreen_cream_subtitle",
+        "label": "Subtitle",
+        "default": "Youth Protection Sunscreen"
+      },
+      {
+        "type": "header",
+        "content": "Nails"
+      },
+      {
+        "type": "text",
+        "id": "dm_nail_paints_heading",
+        "label": "Heading",
+        "default": "High-Shine Nails"
+      },
+      {
+        "type": "text",
+        "id": "dm_nail_paints_subtitle",
+        "label": "Subtitle",
+        "default": "Paint Your Mood"
+      },
+      {
+        "type": "header",
+        "content": "Combos"
+      },
+      {
+        "type": "text",
+        "id": "dm_combo_products_heading",
+        "label": "Heading",
+        "default": "Beauty Bundles"
+      },
+      {
+        "type": "text",
+        "id": "dm_combo_products_subtitle",
+        "label": "Subtitle",
+        "default": "Better Together"
+      },
+      {
+        "type": "header",
+        "content": "Supplements"
+      },
+      {
+        "type": "text",
+        "id": "dm_supplements_heading",
+        "label": "Heading",
+        "default": "Beauty from Within"
+      },
+      {
+        "type": "text",
+        "id": "dm_supplements_subtitle",
+        "label": "Subtitle",
+        "default": "Sip, Glow & Recharge"
+      }
+    ]
+  },
+  {
+    "name": "Dunamiss cart text",
+    "settings": [
+      {
+        "type": "text",
+        "id": "dm_cart_empty_heading",
+        "label": "Empty Heading",
+        "default": "Your cart is empty"
+      },
+      {
+        "type": "text",
+        "id": "dm_cart_empty_description",
+        "label": "Empty Description",
+        "default": "Discover something made for your everyday beauty ritual."
+      },
+      {
+        "type": "text",
+        "id": "dm_cart_continue",
+        "label": "Continue",
+        "default": "Continue shopping"
+      },
+      {
+        "type": "text",
+        "id": "dm_cart_recommendations",
+        "label": "Recommendations",
+        "default": "You may also like"
+      },
+      {
+        "type": "text",
+        "id": "dm_cart_discount_code",
+        "label": "Discount Code",
+        "default": "Discount code"
+      },
+      {
+        "type": "text",
+        "id": "dm_cart_discount_placeholder",
+        "label": "Discount Placeholder",
+        "default": "Enter discount code"
+      },
+      {
+        "type": "text",
+        "id": "dm_cart_apply",
+        "label": "Apply",
+        "default": "Apply"
+      },
+      {
+        "type": "text",
+        "id": "dm_cart_shipping",
+        "label": "Shipping",
+        "default": "Shipping"
+      },
+      {
+        "type": "text",
+        "id": "dm_cart_shipping_drawer",
+        "label": "Shipping Drawer",
+        "default": "At checkout"
+      },
+      {
+        "type": "text",
+        "id": "dm_cart_shipping_page",
+        "label": "Shipping Page",
+        "default": "Calculated at checkout"
+      },
+      {
+        "type": "text",
+        "id": "dm_cart_total",
+        "label": "Total",
+        "default": "Estimated total"
+      },
+      {
+        "type": "text",
+        "id": "dm_cart_tax",
+        "label": "Tax",
+        "default": "Tax included. Shipping calculated at checkout."
+      },
+      {
+        "type": "text",
+        "id": "dm_cart_checkout",
+        "label": "Checkout",
+        "default": "Secure checkout"
+      },
+      {
+        "type": "text",
+        "id": "dm_cart_security",
+        "label": "Security",
+        "default": "Secure, protected checkout"
+      },
+      {
+        "type": "text",
+        "id": "dm_cart_view",
+        "label": "View",
+        "default": "View cart"
+      },
+      {
+        "type": "text",
+        "id": "dm_cart_bag",
+        "label": "Bag",
+        "default": "Your bag"
+      },
+      {
+        "type": "text",
+        "id": "dm_cart_summary",
+        "label": "Summary",
+        "default": "Order summary"
+      },
+      {
+        "type": "text",
+        "id": "dm_cart_gift",
+        "label": "Gift",
+        "default": "Free gift"
+      }
+    ]
+  }
 ]

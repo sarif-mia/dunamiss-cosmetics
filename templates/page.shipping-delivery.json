@@ -1,0 +1,155 @@
+{
+  "sections": {
+    "main": {
+      "type": "dunamiss-page-shipping-delivery",
+      "blocks": {
+        "content_1": {
+          "type": "content_1",
+          "settings": {
+            "field_1": "Dunamiss Care",
+            "field_2": "Shipping & Delivery",
+            "field_3": "Fast. Safe. Always with care.",
+            "field_4": "Because your glow deserves a seamless journey from our hands to yours."
+          }
+        },
+        "content_2": {
+          "type": "content_2",
+          "settings": {
+            "field_5": "Fast Dispatch",
+            "field_6": "Usually within 24–48 hours",
+            "field_7": "Safe & Secure",
+            "field_8": "Carefully packed with love",
+            "field_9": "Reliable Delivery",
+            "field_10": "Track your order every step"
+          }
+        },
+        "content_3": {
+          "type": "content_3",
+          "settings": {
+            "field_11": "01",
+            "field_12": "Ordering Policy",
+            "field_13": "A few things to keep in mind before placing your order.",
+            "field_14": "Please ensure your shipping address and contact details are accurate\n        before placing your order.",
+            "field_15": "Orders are intended for personal use only.",
+            "field_16": "All orders are subject to product availability and order confirmation.",
+            "field_17": "Prices, offers, and product availability may change without prior notice.",
+            "field_18": "Once your order is confirmed, we'll prepare it with care and dispatch\n        it as quickly as possible.",
+            "field_19": "Need to make changes? Contact us before your order is dispatched,\n        and we'll do our best to assist you."
+          }
+        },
+        "content_4": {
+          "type": "content_4",
+          "settings": {
+            "field_20": "02",
+            "field_21": "Shipping Charges",
+            "field_22": "Choose the option that works best for you.",
+            "field_23": "Best Value",
+            "field_24": "Prepaid Orders",
+            "field_25": "FREE",
+            "field_26": "Shipping",
+            "field_27": "Enjoy",
+            "field_28": "FREE Shipping",
+            "field_29": "and a",
+            "field_30": "Free Gift",
+            "field_31": "with every prepaid order.\n          Orders above",
+            "field_32": "₹1,199",
+            "field_33": "also receive an exclusive\n          complimentary",
+            "field_34": "Dunamiss Tote Bag",
+            "field_35": "Cash on Delivery",
+            "field_36": "₹49",
+            "field_37": "convenience fee"
+          }
+        },
+        "content_5": {
+          "type": "content_5",
+          "settings": {
+            "field_38": "A ₹49 convenience fee applies to COD orders\n          to help cover shipping and handling costs."
+          }
+        },
+        "content_6": {
+          "type": "content_6",
+          "settings": {
+            "field_39": "03",
+            "field_40": "Delivery Timeline",
+            "field_41": "Here's what happens after you place your order.",
+            "field_42": "Order Confirmed",
+            "field_43": "Your order is received and prepared.",
+            "field_44": "Dispatched",
+            "field_45": "Usually within 24–48 hours.",
+            "field_46": "Delivered",
+            "field_47": "Most orders arrive within 3–7 business days.",
+            "field_48": "Please note:",
+            "field_49": "During sale events, festive seasons, or unforeseen circumstances,\n      deliveries may take up to",
+            "field_50": "15 business days"
+          }
+        },
+        "content_7": {
+          "type": "content_7",
+          "settings": {
+            "field_51": "04",
+            "field_52": "Upon Delivery",
+            "field_53": "A quick check helps us protect your order.",
+            "field_54": "Inspect your package before accepting it.",
+            "field_55": "If your package appears damaged, tampered with, or opened,\n          kindly refuse delivery and contact our support team immediately.\n          We'll investigate the issue and arrange a replacement or\n          resolution wherever applicable."
+          }
+        },
+        "content_8": {
+          "type": "content_8",
+          "settings": {
+            "field_56": "05",
+            "field_57": "Reporting Delivery Issues",
+            "field_58": "We're here to help resolve delivery concerns quickly.",
+            "field_59": "Report within 48 hours",
+            "field_60": "Please report any delivery-related concerns within 48 hours\n          of receiving your order. Early reporting helps us investigate\n          and resolve your request as quickly as possible."
+          }
+        },
+        "content_9": {
+          "type": "content_9",
+          "settings": {
+            "field_61": "06",
+            "field_62": "Invoice Information",
+            "field_63": "Transparent billing with every order.",
+            "field_64": "GST-Compliant Invoice",
+            "field_65": "Every order includes a GST-compliant invoice in accordance\n          with applicable Indian tax regulations."
+          }
+        },
+        "content_10": {
+          "type": "content_10",
+          "settings": {
+            "field_66": "Need Help?",
+            "field_67": "We're always here for you. 💌 Reach out to our support team\n      and we'll be happy to assist.",
+            "field_68": "mailto:care@dunamiss.in",
+            "field_69": "care@dunamiss.in",
+            "field_70": "https://wa.me/919516656907",
+            "field_71": "Message Dunamiss on WhatsApp",
+            "field_72": "WhatsApp: +91 95166 56907",
+            "field_73": "Every day · 10 AM–6 PM IST"
+          }
+        },
+        "content_11": {
+          "type": "content_11",
+          "settings": {
+            "field_74": "Luxury skincare. Reliable delivery. The Dunamiss Promise."
+          }
+        }
+      },
+      "block_order": [
+        "content_1",
+        "content_2",
+        "content_3",
+        "content_4",
+        "content_5",
+        "content_6",
+        "content_7",
+        "content_8",
+        "content_9",
+        "content_10",
+        "content_11"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

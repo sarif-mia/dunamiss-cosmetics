@@ -1,0 +1,511 @@
+<div style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+{% assign dm_content_1 = section.blocks | where: 'type', 'content_1' | first %}
+{% assign dm_content_2 = section.blocks | where: 'type', 'content_2' | first %}
+{% assign dm_content_3 = section.blocks | where: 'type', 'content_3' | first %}
+{% assign dm_content_4 = section.blocks | where: 'type', 'content_4' | first %}
+{{ 'discount-offers-page.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign shipping_threshold = settings.free_shipping_minimum | plus: 0
+  assign shipping_threshold_money = shipping_threshold | times: 100 | money
+  assign gift_threshold = settings.native_cart_gift_threshold | plus: 0
+  assign gift_threshold_money = gift_threshold | times: 100 | money
+  assign gift_product = settings.native_cart_gift_product
+  assign gift_variant = gift_product.selected_or_first_available_variant
+  assign discount_threshold = settings.native_cart_discount_threshold | plus: 0
+  assign discount_threshold_money = discount_threshold | times: 100 | money
+  assign discount_label = settings.native_cart_discount_label | default: 'Cart discount'
+  assign shipping_enabled = false
+  assign gift_enabled = false
+  assign discount_enabled = false
+
+  if settings.show_on_minicart_cart_page and shipping_threshold > 0
+    assign shipping_enabled = true
+  endif
+  if settings.native_cart_auto_gift and gift_product != blank and gift_variant.available and gift_threshold > 0
+    assign gift_enabled = true
+  endif
+  if settings.native_cart_discount_milestone and discount_threshold > 0
+    assign discount_enabled = true
+  endif
+%}
+
+<main class="dm-offers-page">
+  <section class="dm-offers-hero" aria-labelledby="DmOffersTitle">
+    <div class="fluid_container dm-offers-hero__grid">
+      <div class="dm-offers-hero__content">
+        <span class="dm-offers-eyebrow" {{ dm_content_1.shopify_attributes }}>{{ dm_content_1.settings.field_1 | escape }}</span>
+        <h1 id="DmOffersTitle">{{ dm_content_1.settings.field_2 | escape }}</h1>
+        <p>
+          {{ dm_content_1.settings.field_3 | escape }}
+        </p>
+        <div class="dm-offers-actions">
+          <a class="dm-offers-button dm-offers-button--primary" href="{% if dm_content_1.settings.link_override_1 != blank %}{{ dm_content_1.settings.link_override_1 | escape }}{% else %}{{ routes.all_products_collection_url }}{% endif %}">{{ dm_content_1.settings.field_4 | escape }}</a>
+          <a class="dm-offers-button dm-offers-button--secondary" href="{% if dm_content_1.settings.field_5 != blank %}{{ dm_content_1.settings.field_5 | escape }}{% else %}#current-offers{% endif %}">{{ dm_content_1.settings.field_6 | escape }}</a>
+        </div>
+      </div>
+
+      <div class="dm-offers-ladder" aria-label="{{ dm_content_1.settings.field_7 | escape }}">
+        <div class="dm-offers-ladder__heading">
+          <span>{{ dm_content_1.settings.field_8 | escape }}</span>
+          <small>{{ dm_content_1.settings.field_9 | escape }}</small>
+        </div>
+        <ol>
+          {%- if shipping_enabled -%}
+            <li>
+              <span class="dm-offers-ladder__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3.5 6.5h10v10h-10zM13.5 10h3.2l3.8 3.7v2.8h-7zM7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span><small>{{ dm_content_1.settings.field_10 | escape }}</small><strong>{{ shipping_threshold_money }}</strong></span>
+              <span>{{ dm_content_1.settings.field_11 | escape }}</span>
+            </li>
+          {%- endif -%}
+          {%- if gift_enabled -%}
+            <li>
+              <span class="dm-offers-ladder__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 10h16v10H4zM3 6.5h18V10H3zM12 6.5V20M12 6.5H8.4a2.2 2.2 0 1 1 2.2-2.2c0 1.2 1.4 2.2 1.4 2.2Zm0 0h3.6a2.2 2.2 0 1 0-2.2-2.2c0 1.2-1.4 2.2-1.4 2.2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span><small>{{ dm_content_1.settings.field_12 | escape }}</small><strong>{{ gift_threshold_money }}</strong></span>
+              <span>{{ dm_content_1.settings.field_13 | escape }}</span>
+            </li>
+          {%- endif -%}
+          {%- if discount_enabled -%}
+            <li>
+              <span class="dm-offers-ladder__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="m4.5 12 7.5-7.5h6.5a1 1 0 0 1 1 1V12L12 19.5 4.5 12Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M15.8 8.2h.01M9.2 14.8l5.6-5.6M10 10.2h.01M14 13.8h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </span>
+              <span><small>{{ dm_content_1.settings.field_14 | escape }}</small><strong>{{ discount_threshold_money }}</strong></span>
+              <span>{{ discount_label | escape }}</span>
+            </li>
+          {%- endif -%}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="dm-offers-current" id="current-offers" aria-labelledby="DmCurrentOffersTitle">
+    <div class="fluid_container">
+      <div class="dm-offers-section-heading">
+        <span class="dm-offers-eyebrow" {{ dm_content_2.shopify_attributes }}>{{ dm_content_2.settings.field_15 | escape }}</span>
+        <h2 id="DmCurrentOffersTitle">{{ dm_content_2.settings.field_16 | escape }}</h2>
+        <p>{{ dm_content_2.settings.field_17 | escape }}</p>
+      </div>
+
+      <div class="dm-offers-grid">
+        {%- if shipping_enabled -%}
+          <article class="dm-offers-card">
+            <span class="dm-offers-card__number">{{ dm_content_2.settings.field_18 | escape }}</span>
+            <span class="dm-offers-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3.5 6.5h10v10h-10zM13.5 10h3.2l3.8 3.7v2.8h-7zM7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="dm-offers-card__tag">{{ dm_content_2.settings.field_19 | escape }}</span>
+            <h3>Free shipping from {{ shipping_threshold_money }}</h3>
+            <p>Reach {{ shipping_threshold_money }} in qualifying products and free shipping unlocks for your order.</p>
+            <div class="dm-offers-card__footer"><span>{{ dm_content_2.settings.field_20 | escape }}</span><strong>{{ shipping_threshold_money }}</strong></div>
+          </article>
+        {%- endif -%}
+
+        {%- if gift_enabled -%}
+          <article class="dm-offers-card dm-offers-card--gift">
+            <span class="dm-offers-card__number">{{ dm_content_2.settings.field_21 | escape }}</span>
+            <div class="dm-offers-card__gift-row">
+              <span class="dm-offers-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 10h16v10H4zM3 6.5h18V10H3zM12 6.5V20M12 6.5H8.4a2.2 2.2 0 1 1 2.2-2.2c0 1.2 1.4 2.2 1.4 2.2Zm0 0h3.6a2.2 2.2 0 1 0-2.2-2.2c0 1.2-1.4 2.2-1.4 2.2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              {%- if gift_product.featured_image -%}
+                <a class="dm-offers-card__gift-image" href="{{ gift_product.url }}" aria-label="View {{ gift_product.title | escape }}">
+                  {{ gift_product.featured_image | image_url: width: 240 | image_tag: loading: 'lazy', widths: '120, 180, 240', sizes: '74px', alt: gift_product.title }}
+                </a>
+              {%- endif -%}
+            </div>
+            <span class="dm-offers-card__tag">{{ dm_content_2.settings.field_22 | escape }}</span>
+            <h3>A complimentary gift from {{ gift_threshold_money }}</h3>
+            <p>{{ gift_product.title | escape }} is added automatically when your qualifying cart reaches {{ gift_threshold_money }}.</p>
+            <div class="dm-offers-card__footer"><span>{{ dm_content_2.settings.field_23 | escape }}</span><strong>{{ gift_threshold_money }}</strong></div>
+          </article>
+        {%- endif -%}
+
+        {%- if discount_enabled -%}
+          <article class="dm-offers-card">
+            <span class="dm-offers-card__number">{{ dm_content_2.settings.field_24 | escape }}</span>
+            <span class="dm-offers-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="m4.5 12 7.5-7.5h6.5a1 1 0 0 1 1 1V12L12 19.5 4.5 12Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M15.8 8.2h.01M9.2 14.8l5.6-5.6M10 10.2h.01M14 13.8h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <span class="dm-offers-card__tag">{{ dm_content_2.settings.field_25 | escape }}</span>
+            <h3>{{ discount_label | escape }} from {{ discount_threshold_money }}</h3>
+            <p>Reach {{ discount_threshold_money }} in qualifying products to unlock {{ discount_label | escape }} on your order.</p>
+            <div class="dm-offers-card__footer"><span>{{ dm_content_2.settings.field_26 | escape }}</span><strong>{{ discount_threshold_money }}</strong></div>
+          </article>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  <section class="dm-offers-info" aria-labelledby="DmOfferDetailsTitle">
+    <div class="fluid_container dm-offers-info__grid">
+      <div>
+        <span class="dm-offers-eyebrow" {{ dm_content_3.shopify_attributes }}>{{ dm_content_3.settings.field_27 | escape }}</span>
+        <h2 id="DmOfferDetailsTitle">{{ dm_content_3.settings.field_28 | escape }}</h2>
+      </div>
+      <ul>
+        <li>{{ dm_content_3.settings.field_29 | escape }}</li>
+        <li>{{ dm_content_3.settings.field_30 | escape }}</li>
+        <li>{{ dm_content_3.settings.field_31 | escape }}</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="dm-offers-cta">
+    <div class="fluid_container">
+      <div class="dm-offers-cta__inner">
+        <div><span {{ dm_content_4.shopify_attributes }}>{{ dm_content_4.settings.field_32 | escape }}</span><h2>{{ dm_content_4.settings.field_33 | escape }}</h2></div>
+        <a class="dm-offers-button dm-offers-button--light" href="{% if dm_content_4.settings.link_override_2 != blank %}{{ dm_content_4.settings.link_override_2 | escape }}{% else %}{{ routes.all_products_collection_url }}{% endif %}">{{ dm_content_4.settings.field_34 | escape }}</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+</div>
+{% schema %}
+{
+  "name": "Dunamiss offers",
+  "tag": "section",
+  "class": "dm-editable-page",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Edit the content groups below. Their positions follow this page’s fixed layout. Additional sections can be added below the page."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content_1",
+      "name": "Current cart rewards",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_1",
+          "label": "Current cart rewards",
+          "default": "Current cart rewards"
+        },
+        {
+          "type": "text",
+          "id": "field_2",
+          "label": "More beauty, more rewards.",
+          "default": "More beauty, more rewards."
+        },
+        {
+          "type": "textarea",
+          "id": "field_3",
+          "label": "Unlock the offers below as your qualifying cart value grows. Your",
+          "default": "Unlock the offers below as your qualifying cart value grows. Your progress updates automatically in the cart, so there is no code to remember."
+        },
+        {
+          "type": "text",
+          "id": "field_4",
+          "label": "Shop all products",
+          "default": "Shop all products"
+        },
+        {
+          "type": "url",
+          "id": "field_5",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "field_6",
+          "label": "See current offers",
+          "default": "See current offers"
+        },
+        {
+          "type": "text",
+          "id": "field_7",
+          "label": "Aria Label",
+          "default": "Current reward thresholds"
+        },
+        {
+          "type": "text",
+          "id": "field_8",
+          "label": "Reward ladder",
+          "default": "Reward ladder"
+        },
+        {
+          "type": "text",
+          "id": "field_9",
+          "label": "Unlocked automatically",
+          "default": "Unlocked automatically"
+        },
+        {
+          "type": "text",
+          "id": "field_10",
+          "label": "Spend",
+          "default": "Spend"
+        },
+        {
+          "type": "text",
+          "id": "field_11",
+          "label": "Free shipping",
+          "default": "Free shipping"
+        },
+        {
+          "type": "text",
+          "id": "field_12",
+          "label": "Spend",
+          "default": "Spend"
+        },
+        {
+          "type": "text",
+          "id": "field_13",
+          "label": "Free gift",
+          "default": "Free gift"
+        },
+        {
+          "type": "text",
+          "id": "field_14",
+          "label": "Spend",
+          "default": "Spend"
+        },
+        {
+          "type": "url",
+          "id": "link_override_1",
+          "label": "Button / card link 1",
+          "info": "Leave empty to keep the current destination."
+        }
+      ]
+    },
+    {
+      "type": "content_2",
+      "name": "Available now",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_15",
+          "label": "Available now",
+          "default": "Available now"
+        },
+        {
+          "type": "text",
+          "id": "field_16",
+          "label": "Offers that match your cart",
+          "default": "Offers that match your cart"
+        },
+        {
+          "type": "text",
+          "id": "field_17",
+          "label": "Shop normally and watch each reward unlock in your cart.",
+          "default": "Shop normally and watch each reward unlock in your cart."
+        },
+        {
+          "type": "text",
+          "id": "field_18",
+          "label": "01",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "field_19",
+          "label": "Shipping reward",
+          "default": "Shipping reward"
+        },
+        {
+          "type": "text",
+          "id": "field_20",
+          "label": "No code required",
+          "default": "No code required"
+        },
+        {
+          "type": "text",
+          "id": "field_21",
+          "label": "02",
+          "default": "02"
+        },
+        {
+          "type": "text",
+          "id": "field_22",
+          "label": "Free gift",
+          "default": "Free gift"
+        },
+        {
+          "type": "text",
+          "id": "field_23",
+          "label": "While stocks last",
+          "default": "While stocks last"
+        },
+        {
+          "type": "text",
+          "id": "field_24",
+          "label": "03",
+          "default": "03"
+        },
+        {
+          "type": "text",
+          "id": "field_25",
+          "label": "Cart saving",
+          "default": "Cart saving"
+        },
+        {
+          "type": "text",
+          "id": "field_26",
+          "label": "Applied when eligible",
+          "default": "Applied when eligible"
+        }
+      ]
+    },
+    {
+      "type": "content_3",
+      "name": "Good to know",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_27",
+          "label": "Good to know",
+          "default": "Good to know"
+        },
+        {
+          "type": "text",
+          "id": "field_28",
+          "label": "Simple rewards, clearly shown.",
+          "default": "Simple rewards, clearly shown."
+        },
+        {
+          "type": "text",
+          "id": "field_29",
+          "label": "Progress is based on the qualifying cart subtotal after product d",
+          "default": "Progress is based on the qualifying cart subtotal after product discounts."
+        },
+        {
+          "type": "text",
+          "id": "field_30",
+          "label": "The free gift is limited to one per eligible cart and depends on ",
+          "default": "The free gift is limited to one per eligible cart and depends on availability."
+        },
+        {
+          "type": "text",
+          "id": "field_31",
+          "label": "Final eligibility, savings and shipping are confirmed in the cart",
+          "default": "Final eligibility, savings and shipping are confirmed in the cart and at checkout."
+        }
+      ]
+    },
+    {
+      "type": "content_4",
+      "name": "Ready to unlock your rewa",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_32",
+          "label": "Ready to unlock your rewards?",
+          "default": "Ready to unlock your rewards?"
+        },
+        {
+          "type": "text",
+          "id": "field_33",
+          "label": "Build your beauty cart.",
+          "default": "Build your beauty cart."
+        },
+        {
+          "type": "text",
+          "id": "field_34",
+          "label": "Start shopping",
+          "default": "Start shopping"
+        },
+        {
+          "type": "url",
+          "id": "link_override_2",
+          "label": "Button / card link 2",
+          "info": "Leave empty to keep the current destination."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Dunamiss offers",
+      "blocks": [
+        {
+          "type": "content_1",
+          "settings": {
+            "field_1": "Current cart rewards",
+            "field_2": "More beauty, more rewards.",
+            "field_3": "Unlock the offers below as your qualifying cart value grows. Your progress updates automatically in the cart, so there is no code to remember.",
+            "field_4": "Shop all products",
+            "field_5": "#current-offers",
+            "field_6": "See current offers",
+            "field_7": "Current reward thresholds",
+            "field_8": "Reward ladder",
+            "field_9": "Unlocked automatically",
+            "field_10": "Spend",
+            "field_11": "Free shipping",
+            "field_12": "Spend",
+            "field_13": "Free gift",
+            "field_14": "Spend"
+          }
+        },
+        {
+          "type": "content_2",
+          "settings": {
+            "field_15": "Available now",
+            "field_16": "Offers that match your cart",
+            "field_17": "Shop normally and watch each reward unlock in your cart.",
+            "field_18": "01",
+            "field_19": "Shipping reward",
+            "field_20": "No code required",
+            "field_21": "02",
+            "field_22": "Free gift",
+            "field_23": "While stocks last",
+            "field_24": "03",
+            "field_25": "Cart saving",
+            "field_26": "Applied when eligible"
+          }
+        },
+        {
+          "type": "content_3",
+          "settings": {
+            "field_27": "Good to know",
+            "field_28": "Simple rewards, clearly shown.",
+            "field_29": "Progress is based on the qualifying cart subtotal after product discounts.",
+            "field_30": "The free gift is limited to one per eligible cart and depends on availability.",
+            "field_31": "Final eligibility, savings and shipping are confirmed in the cart and at checkout."
+          }
+        },
+        {
+          "type": "content_4",
+          "settings": {
+            "field_32": "Ready to unlock your rewards?",
+            "field_33": "Build your beauty cart.",
+            "field_34": "Start shopping"
+          }
+        }
+      ]
+    }
+  ],
+  "limit": 1
+}
+{% endschema %}

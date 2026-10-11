@@ -1,0 +1,123 @@
+{
+  "sections": {
+    "main": {
+      "type": "dunamiss-page-our-certifications",
+      "blocks": {
+        "content_1": {
+          "type": "content_1",
+          "settings": {
+            "field_1": "Certifications",
+            "field_2": "Dunamiss Cosmetics is absolutely natural and committed to eco-friendly practices. We've voluntarily taken steps to ensure that our products are third-party certified for purity, safety, and ethical standards."
+          }
+        },
+        "content_2": {
+          "type": "content_2",
+          "settings": {
+            "field_3": "Learn More About Our Certifications",
+            "field_4": "ECOCERT",
+            "field_5": "Dunamiss Cosmetics holds Ecocert certification through rigorous inspections that verify our trustworthy standards and maintain consistent quality records across all production.",
+            "field_6": "PETA | Beauty Without Bunnies",
+            "field_7": "Dunamiss Cosmetics is PETA certified cruelty-free — no animal testing is conducted at any stage of our product development, keeping everything humane and ethical.",
+            "field_8": "BRMED Sustainability Council",
+            "field_9": "Dunamiss Cosmetics is certified by the BRMED Sustainability Council for our commitment to sustainable sourcing and eco-friendly manufacturing practices. Our products meet rigorous environmental standards ensuring minimal impact on our planet.",
+            "field_10": "Superfood Vegetation Association",
+            "field_11": "Dunamiss Cosmetics products contain certified superfood ingredients sourced from verified sustainable farms. Every ingredient is carefully selected for its nutritional and therapeutic benefits, backed by the Superfood Vegetation Association standards.",
+            "field_12": "shopify://shop_images/Certificate_Page_-_right-side.png",
+            "field_13": "Certifications"
+          }
+        },
+        "content_3": {
+          "type": "content_3",
+          "settings": {
+            "field_14": "Certified Quality Assurance",
+            "field_15": "All Dunamiss Cosmetics products are tested, on time, and certified to ensure the highest quality and safety standards.",
+            "field_16": "Certificate carousel controls",
+            "field_17": "Previous certificates",
+            "field_18": "Next certificates",
+            "field_19": "shopify://shop_images/LIP_BALM_CERTIFICATE.jpg",
+            "field_20": "Lip Balm Certification",
+            "field_21": "Lip Balm Certification",
+            "field_22": "shopify://shop_images/CERTIFICATE_SHEET_MASK.jpg",
+            "field_23": "Sheet Mask Certification",
+            "field_24": "Sheet Mask Certification",
+            "field_25": "shopify://shop_images/TESTED_IN_INDIA.jpg",
+            "field_26": "Production Certification",
+            "field_27": "Production Certification",
+            "field_28": "shopify://shop_images/On-Site_Inspection_Zurko.jpg",
+            "field_29": "On-Site Inspection",
+            "field_30": "On-Site Inspection",
+            "field_31": "shopify://shop_images/Hazel_Glitter_Certification.png"
+          }
+        },
+        "content_4": {
+          "type": "content_4",
+          "settings": {
+            "field_32": "Hazel Glitter Certification",
+            "field_33": "Hazel Glitter",
+            "field_34": "shopify://shop_images/Eye_Balm_Certification.png",
+            "field_35": "Eye Balm Certification",
+            "field_36": "Eye Balm",
+            "field_37": "shopify://shop_images/Sunscreen_Certification.png",
+            "field_38": "Sunscreen Certification",
+            "field_39": "Sunscreen",
+            "field_40": "shopify://shop_images/Lip_Oil_Certification.png",
+            "field_41": "Lip Oil",
+            "field_42": "Lip Oil",
+            "field_43": "shopify://shop_images/Am_Cream__Certification.png",
+            "field_44": "AM Cream Certification",
+            "field_45": "AM Cream",
+            "field_46": "shopify://shop_images/Mocka_Kiss_Certification.png",
+            "field_47": "Mocha Kiss",
+            "field_48": "Mocha Kiss"
+          }
+        },
+        "content_5": {
+          "type": "content_5",
+          "settings": {
+            "field_49": "Our Commitment to Excellence",
+            "field_50": "Quality is not just a promise — it is Dunamiss Cosmetics' foundation. Every product goes through strict testing, verification, and certification processes to ensure safety, performance, and reliability.",
+            "field_51": "Dunamiss Cosmetics' commitment to purity ensures that every ingredient is carefully chosen to nourish and protect your skin. We exclude harsh chemicals entirely, using only components that either directly benefit skin health or amplify the cream's natural effectiveness.",
+            "field_52": "shopify://shop_images/GMP_LOGO.png",
+            "field_53": "GMP Certified",
+            "field_54": "shopify://shop_images/SALFATE_PARABEN_FREE.png",
+            "field_55": "Paraben Free",
+            "field_56": "shopify://shop_images/VEGAN.png",
+            "field_57": "100% Vegan",
+            "field_58": "shopify://shop_images/CLINICALLY_TESTED.png",
+            "field_59": "Clinically Tested",
+            "field_60": "shopify://shop_images/MADE_IN_INDIA_LOGO.png",
+            "field_61": "Made In India",
+            "field_62": "shopify://shop_images/tested_in_spain.png",
+            "field_63": "Tested In Spain",
+            "field_64": "shopify://shop_images/CRUELTY_FREE.png",
+            "field_65": "Cruelty Free",
+            "field_66": "Dunamiss Cosmetics is committed to transparency, consistency, and delivering only premium-standard products you can trust. Your confidence drives us to maintain excellence in every detail."
+          }
+        },
+        "content_6": {
+          "type": "content_6",
+          "settings": {
+            "field_67": "Our Promise",
+            "field_68": "Dunamiss Cosmetics certifications are not just a standard – they're a promise of authentic, safe, and ethical skincare. From ingredient sourcing to formulation and packaging, every step reflects our passion for clean beauty and your well-being.",
+            "field_69": "shopify://shop_images/our_ceritification-01.png",
+            "field_70": "Our Promise"
+          }
+        }
+      },
+      "block_order": [
+        "content_1",
+        "content_2",
+        "content_3",
+        "content_4",
+        "content_5",
+        "content_6"
+      ],
+      "settings": {
+        "background_1": "shopify://shop_images/certification-page-banner-image.png"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

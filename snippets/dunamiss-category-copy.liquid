@@ -1,0 +1,40 @@
+{%- comment -%}Shared category copy from Heading.docx. Match destinations so duplicate menu names stay unambiguous.{%- endcomment -%}
+{%- liquid
+  assign category_handle = url | split: '?' | first | split: '#' | first | split: '/collections/' | last | split: '/' | first
+  assign category_heading = blank
+  assign category_subheading = blank
+  if url contains '/collections/'
+    case category_handle
+      when 'face-mist'
+        assign category_heading = settings.dm_face_mist_heading
+        assign category_subheading = settings.dm_face_mist_subtitle
+      when 'sheet-mask'
+        assign category_heading = settings.dm_sheet_mask_heading
+        assign category_subheading = settings.dm_sheet_mask_subtitle
+      when 'cream'
+        assign category_heading = settings.dm_cream_heading
+        assign category_subheading = settings.dm_cream_subtitle
+      when 'sunscreen-cream'
+        assign category_heading = settings.dm_sunscreen_cream_heading
+        assign category_subheading = settings.dm_sunscreen_cream_subtitle
+      when 'nail-paints'
+        assign category_heading = settings.dm_nail_paints_heading
+        assign category_subheading = settings.dm_nail_paints_subtitle
+      when 'combo-products'
+        assign category_heading = settings.dm_combo_products_heading
+        assign category_subheading = settings.dm_combo_products_subtitle
+      when 'supplements'
+        assign category_heading = settings.dm_supplements_heading
+        assign category_subheading = settings.dm_supplements_subtitle
+    endcase
+  endif
+  if field == 'subtitle'
+    echo category_subheading
+  elsif field == 'heading'
+    echo category_heading | default: fallback
+  elsif category_heading != blank
+    echo category_heading | escape
+  else
+    echo fallback | escape
+  endif
+-%}

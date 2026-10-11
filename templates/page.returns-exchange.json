@@ -1,0 +1,66 @@
+{
+  "sections": {
+    "main": {
+      "type": "dunamiss-page-returns-exchange",
+      "blocks": {
+        "content_1": {
+          "type": "content_1",
+          "settings": {
+            "field_1": "Dunamiss Care",
+            "field_2": "Returns & Exchanges",
+            "field_3": "Shopping should feel effortless. We've made returns and exchanges\n      just as smooth. Because your experience matters as much as\n      your skincare."
+          }
+        },
+        "content_2": {
+          "type": "content_2",
+          "settings": {
+            "field_4": "Easy Resolution",
+            "field_5": "We're here to help",
+            "field_6": "Quick Reporting",
+            "field_7": "Report issues promptly",
+            "field_8": "Quality Verified",
+            "field_9": "Every request is reviewed"
+          }
+        },
+        "content_3": {
+          "type": "content_3",
+          "settings": {
+            "field_10": "Return & Exchange Policy",
+            "field_11": "View our return and refund policy",
+            "field_12": "Contact our support team for return and exchange eligibility."
+          }
+        },
+        "content_4": {
+          "type": "content_4",
+          "settings": {
+            "field_13": "Need Help?",
+            "field_14": "We're always here for you. Reach out to our support team\n      and we'll be happy to assist with your request.",
+            "field_15": "mailto:care@dunamiss.in",
+            "field_16": "care@dunamiss.in",
+            "field_17": "https://wa.me/919516656907",
+            "field_18": "Message Dunamiss on WhatsApp",
+            "field_19": "WhatsApp: +91 95166 56907",
+            "field_20": "Every day · 10 AM–6 PM IST"
+          }
+        },
+        "content_5": {
+          "type": "content_5",
+          "settings": {
+            "field_21": "Because luxury isn't just about great skincare — it's about great service too."
+          }
+        }
+      },
+      "block_order": [
+        "content_1",
+        "content_2",
+        "content_3",
+        "content_4",
+        "content_5"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

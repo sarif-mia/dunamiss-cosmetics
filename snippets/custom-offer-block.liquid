@@ -267,30 +267,30 @@
     <div class="available-offer-box">
         <details class="available-offer-details" open>
             <summary class="available-offer-header">
-                <h2>Available Offers</h2>
+                <h2>{% if content_settings != blank %}{{ content_settings.field_1 | escape }}{% else %}Available Offers{% endif %}</h2>
                 <span class="available-offer-toggle"></span>
             </summary>
             <div class="available-offer-content">
                 <div class="available-offer-grid">
                     <div class="available-offer-card pink">
                         <div class="available-offer-icon">💄</div>
-                        <h3>Prepaid Free Shipping</h3>
-                        <p>Free shipping on prepaid orders. COD convenience fee: ₹49.</p>
-                        <a href="https://dunamiss.in/collections/shop-all">Shop Now</a>
+                        <h3>{% if content_settings != blank %}{{ content_settings.field_2 | escape }}{% else %}Prepaid Free Shipping{% endif %}</h3>
+                        <p>{% if content_settings != blank %}{{ content_settings.field_3 | escape }}{% else %}Free shipping on prepaid orders. COD convenience fee: ₹49.{% endif %}</p>
+                        <a href="{% if content_settings.field_4 != blank %}{{ content_settings.field_4 | escape }}{% else %}https://dunamiss.in/collections/shop-all{% endif %}">{% if content_settings != blank %}{{ content_settings.field_5 | escape }}{% else %}Shop Now{% endif %}</a>
                     </div>
 
                     <div class="available-offer-card yellow">
                         <div class="available-offer-icon">💄</div>
-                        <h3>Free Lip Balm</h3>
-                        <p>Shop for ₹1050 and get a free lip balm.</p>
-                        <a href="https://dunamiss.in/collections/shop-all">Shop Now</a>
+                        <h3>{% if content_settings != blank %}{{ content_settings.field_6 | escape }}{% else %}Free Lip Balm{% endif %}</h3>
+                        <p>{% if content_settings != blank %}{{ content_settings.field_7 | escape }}{% else %}Shop for ₹1050 and get a free lip balm.{% endif %}</p>
+                        <a href="{% if content_settings.field_8 != blank %}{{ content_settings.field_8 | escape }}{% else %}https://dunamiss.in/collections/shop-all{% endif %}">{% if content_settings != blank %}{{ content_settings.field_9 | escape }}{% else %}Shop Now{% endif %}</a>
                     </div>
 
                     <div class="available-offer-card pink">
                         <div class="available-offer-icon">🔥</div>
-                        <h3>Flat ₹250 OFF</h3>
-                        <p>Shop for ₹1599 and get a flat ₹250 OFF.</p>
-                        <a href="https://dunamiss.in/collections/shop-all">Shop Now</a>
+                        <h3>{% if content_settings != blank %}{{ content_settings.field_10 | escape }}{% else %}Flat ₹250 OFF{% endif %}</h3>
+                        <p>{% if content_settings != blank %}{{ content_settings.field_11 | escape }}{% else %}Shop for ₹1599 and get a flat ₹250 OFF.{% endif %}</p>
+                        <a href="{% if content_settings.field_12 != blank %}{{ content_settings.field_12 | escape }}{% else %}https://dunamiss.in/collections/shop-all{% endif %}">{% if content_settings != blank %}{{ content_settings.field_13 | escape }}{% else %}Shop Now{% endif %}</a>
                     </div>
                 </div>
             </div>

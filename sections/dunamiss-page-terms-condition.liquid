@@ -1,0 +1,1543 @@
+<div style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+{% assign dm_content_1 = section.blocks | where: 'type', 'content_1' | first %}
+{% assign dm_content_2 = section.blocks | where: 'type', 'content_2' | first %}
+{% assign dm_content_3 = section.blocks | where: 'type', 'content_3' | first %}
+{% assign dm_content_4 = section.blocks | where: 'type', 'content_4' | first %}
+{% assign dm_content_5 = section.blocks | where: 'type', 'content_5' | first %}
+{% assign dm_content_6 = section.blocks | where: 'type', 'content_6' | first %}
+{% assign dm_content_7 = section.blocks | where: 'type', 'content_7' | first %}
+{% assign dm_content_8 = section.blocks | where: 'type', 'content_8' | first %}
+{% assign dm_content_9 = section.blocks | where: 'type', 'content_9' | first %}
+{% assign dm_content_10 = section.blocks | where: 'type', 'content_10' | first %}
+<!-- =========================
+     DUNAMISS TERMS & CONDITIONS
+========================= -->
+
+<style>
+  .dm-terms {
+    --dm-bg: var(--brand-ivory);
+    --dm-card: var(--color-white);
+    --dm-text: var(--brand-ink);
+    --dm-muted: var(--brand-muted);
+    --dm-accent: var(--brand-rose);
+    --dm-accent-light: var(--brand-blush);
+    --dm-border: var(--color-border);
+    --dm-green: #667d63;
+
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 0 20px;
+    font-family: var(--body-font);
+    color: var(--dm-text);
+  }
+
+  .dm-terms *,
+  .dm-terms *::before,
+  .dm-terms *::after {
+    box-sizing: border-box;
+  }
+
+  /* HERO */
+  .dm-terms .dm-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 55px 45px;
+    margin-bottom: 24px;
+    border-radius: 24px;
+    background:
+      radial-gradient(circle at 90% 10%, rgba(155,115,88,.16), transparent 30%),
+      radial-gradient(circle at 10% 90%, rgba(155,115,88,.09), transparent 35%),
+      var(--brand-blush);
+    border: 1px solid var(--dm-border);
+  }
+
+  .dm-terms .dm-hero::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -70px;
+    bottom: -80px;
+    border: 1px solid rgba(155,115,88,.18);
+    border-radius: 50%;
+  }
+
+  .dm-terms .dm-hero::after {
+    content: "";
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    right: 20px;
+    bottom: -55px;
+    border: 1px solid rgba(155,115,88,.12);
+    border-radius: 50%;
+  }
+
+  .dm-terms .dm-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    color: var(--dm-accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+  }
+
+  .dm-terms .dm-eyebrow svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .dm-terms .dm-hero h1 {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 12px;
+    font-family: var(--body-font);
+    font-size: clamp(34px, 5vw, 52px);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: 0.01em;
+  }
+
+  .dm-terms .dm-hero p {
+    position: relative;
+    z-index: 1;
+    max-width: 650px;
+    margin: 0;
+    color: var(--dm-muted);
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  /* QUICK BENEFITS */
+  .dm-terms .dm-benefits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .dm-terms .dm-benefit {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 19px;
+    background: var(--dm-card);
+    border: 1px solid var(--dm-border);
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(50,35,25,.04);
+  }
+
+  .dm-terms .dm-icon {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--dm-accent);
+    background: var(--dm-accent-light);
+  }
+
+  .dm-terms .dm-icon svg {
+    width: 21px;
+    height: 21px;
+    stroke: currentColor;
+  }
+
+  .dm-terms .dm-benefit strong {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 14px;
+  }
+
+  .dm-terms .dm-benefit span {
+    color: var(--dm-muted);
+    font-size: 12px;
+  }
+
+  /* CONTENT CARD */
+  .dm-terms .dm-section {
+    margin-bottom: 18px;
+    padding: 28px;
+    background: var(--dm-card);
+    border: 1px solid var(--dm-border);
+    border-radius: 20px;
+    box-shadow: 0 5px 22px rgba(50,35,25,.035);
+  }
+
+  .dm-terms .dm-section-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .dm-terms .dm-section-number {
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: var(--dm-accent-light);
+    color: var(--dm-accent);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .dm-terms .dm-section h2 {
+    margin: 0 0 5px;
+    font-family: var(--body-font);
+    font-size: 23px;
+    font-weight: 500;
+  }
+
+  .dm-terms .dm-section-intro {
+    margin: 0;
+    color: var(--dm-muted);
+    font-size: 13px;
+  }
+
+  /* POLICY LIST */
+  .dm-terms .dm-list {
+    display: grid;
+    gap: 11px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .dm-terms .dm-list li {
+    position: relative;
+    padding-left: 25px;
+    color: var(--dm-text);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .dm-terms .dm-list li::before {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: 4px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--dm-accent);
+  }
+
+  /* CONTENT GRID */
+  .dm-terms .dm-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .dm-terms .dm-card {
+    padding: 22px;
+    border-radius: 16px;
+    border: 1px solid var(--dm-border);
+    background: var(--brand-ivory);
+  }
+
+  .dm-terms .dm-card.accent {
+    border-color: var(--dm-border);
+    background: linear-gradient(145deg, var(--brand-blush), var(--color-white));
+  }
+
+  .dm-terms .dm-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0 0 10px;
+    font-size: 15px;
+  }
+
+  .dm-terms .dm-card h3 svg {
+    width: 18px;
+    height: 18px;
+    color: var(--dm-accent);
+    stroke: currentColor;
+  }
+
+  .dm-terms .dm-card p {
+    margin: 0;
+    color: var(--dm-muted);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* NOTICE */
+  .dm-terms .dm-notice {
+    display: flex;
+    gap: 14px;
+    padding: 18px;
+    border-radius: 14px;
+    background: #f7f3ee;
+  }
+
+  .dm-terms .dm-notice-icon {
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--dm-accent);
+  }
+
+  .dm-terms .dm-notice-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+  }
+
+  .dm-terms .dm-notice strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+
+  .dm-terms .dm-notice p {
+    margin: 0;
+    color: var(--dm-muted);
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  /* PRIVACY BOX */
+  .dm-terms .dm-privacy {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid var(--dm-border);
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--brand-blush), var(--brand-ivory));
+  }
+
+  .dm-terms .dm-privacy-icon {
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: var(--color-white);
+    color: var(--dm-accent);
+  }
+
+  .dm-terms .dm-privacy-icon svg {
+    width: 21px;
+    height: 21px;
+    stroke: currentColor;
+  }
+
+  .dm-terms .dm-privacy h3 {
+    margin: 0 0 5px;
+    font-size: 14px;
+  }
+
+  .dm-terms .dm-privacy p {
+    margin: 0;
+    color: var(--dm-muted);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* SUPPORT */
+  .dm-terms .dm-support {
+    position: relative;
+    overflow: hidden;
+    margin-top: 24px;
+    padding: 38px 35px;
+    border-radius: 22px;
+    color: var(--color-white);
+    background:
+      radial-gradient(circle at 90% 20%, rgba(255,255,255,.12), transparent 30%),
+      linear-gradient(135deg, var(--brand-ink), var(--brand-rose));
+  }
+
+
+  .dm-terms .dm-support h2 {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 8px;
+    font-family: var(--body-font);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--color-white);
+  }
+
+  .dm-terms .dm-support > p {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 22px;
+    color: color-mix(in srgb, var(--color-white) 78%, transparent);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .dm-terms .dm-contact {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .dm-terms .dm-contact a,
+  .dm-terms .dm-contact span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 30px;
+    color: var(--color-white);
+    text-decoration: none;
+    background: color-mix(in srgb, var(--color-white) 9%, transparent);
+    font-size: 12px;
+  }
+
+  .dm-terms .dm-contact svg {
+    width: 15px;
+    height: 15px;
+    stroke: currentColor;
+  }
+
+  /* FOOTER */
+  .dm-terms .dm-footer {
+    padding: 22px 10px 5px;
+    text-align: center;
+    color: var(--dm-muted);
+    font-family: var(--body-font);
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+
+    .dm-terms {
+      margin: 25px auto;
+      padding: 0 14px;
+    }
+
+    .dm-terms .dm-hero {
+      padding: 35px 25px;
+      border-radius: 20px;
+    }
+
+    .dm-terms .dm-benefits {
+      grid-template-columns: 1fr;
+    }
+
+    .dm-terms .dm-section {
+      padding: 22px 18px;
+      border-radius: 17px;
+    }
+
+    .dm-terms .dm-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .dm-terms .dm-support {
+      padding: 30px 22px;
+    }
+
+    .dm-terms .dm-contact {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .dm-terms .dm-contact a,
+    .dm-terms .dm-contact span {
+      justify-content: flex-start;
+    }
+
+    .dm-terms .dm-privacy {
+      flex-direction: column;
+    }
+  }
+</style>
+
+
+<div class="dm-terms">
+
+  <!-- HERO -->
+  <section class="dm-hero">
+
+    <div class="dm-eyebrow" {{ dm_content_1.shopify_attributes }}>
+      <svg viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.8">
+        <path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3z"/>
+        <path d="M9 8h6M9 12h6M9 16h3"/>
+      </svg>
+
+      {{ dm_content_1.settings.field_1 | escape }}
+    </div>
+
+    <h1>{{ dm_content_1.settings.field_2 | escape }}</h1>
+
+    <p>
+      {{ dm_content_1.settings.field_3 | escape }}<br>
+      {{ dm_content_1.settings.field_4 | escape }}
+    </p>
+
+  </section>
+
+
+  <!-- QUICK BENEFITS -->
+  <div class="dm-benefits">
+
+    <div class="dm-benefit">
+
+      <div class="dm-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.7">
+          <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/>
+          <path d="M8.5 12l2.2 2.2 4.8-5"/>
+        </svg>
+      </div>
+
+      <div {{ dm_content_2.shopify_attributes }}>
+        <strong>{{ dm_content_2.settings.field_5 | escape }}</strong>
+        <span>{{ dm_content_2.settings.field_6 | escape }}</span>
+      </div>
+
+    </div>
+
+
+    <div class="dm-benefit">
+
+      <div class="dm-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.7">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 7v5l3 2"/>
+        </svg>
+      </div>
+
+      <div>
+        <strong>{{ dm_content_2.settings.field_7 | escape }}</strong>
+        <span>{{ dm_content_2.settings.field_8 | escape }}</span>
+      </div>
+
+    </div>
+
+
+    <div class="dm-benefit">
+
+      <div class="dm-icon">
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.7">
+          <path d="M4 12a8 8 0 0 1 14.9-4"/>
+          <path d="M20 4v6h-6"/>
+          <path d="M20 12a8 8 0 0 1-14.9 4"/>
+          <path d="M4 20v-6h6"/>
+        </svg>
+      </div>
+
+      <div>
+        <strong>{{ dm_content_2.settings.field_9 | escape }}</strong>
+        <span>{{ dm_content_2.settings.field_10 | escape }}</span>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- 01 GENERAL TERMS -->
+  <section class="dm-section">
+
+    <div class="dm-section-head">
+
+      <div class="dm-section-number" {{ dm_content_3.shopify_attributes }}>{{ dm_content_3.settings.field_11 | escape }}</div>
+
+      <div>
+        <h2>{{ dm_content_3.settings.field_12 | escape }}</h2>
+        <p class="dm-section-intro">
+          {{ dm_content_3.settings.field_13 | escape }}
+        </p>
+      </div>
+
+    </div>
+
+
+    <ul class="dm-list">
+
+      <li>
+        {{ dm_content_3.settings.field_14 | escape }}
+      </li>
+
+      <li>
+        {{ dm_content_3.settings.field_15 | escape }}
+      </li>
+
+      <li>
+        {{ dm_content_3.settings.field_16 | escape }}
+      </li>
+
+      <li>
+        {{ dm_content_3.settings.field_17 | escape }}
+      </li>
+
+    </ul>
+
+  </section>
+
+
+  <!-- 02 ORDERS & PAYMENTS -->
+  <section class="dm-section">
+
+    <div class="dm-section-head">
+
+      <div class="dm-section-number" {{ dm_content_4.shopify_attributes }}>{{ dm_content_4.settings.field_18 | escape }}</div>
+
+      <div>
+        <h2>{{ dm_content_4.settings.field_19 | escape }}</h2>
+        <p class="dm-section-intro">
+          {{ dm_content_4.settings.field_20 | escape }}
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="dm-grid">
+
+      <div class="dm-card accent">
+
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7">
+            <rect x="3" y="5" width="18" height="14" rx="2"/>
+            <path d="M3 10h18"/>
+          </svg>
+          {{ dm_content_4.settings.field_21 | escape }}
+        </h3>
+
+        <p>
+          {{ dm_content_4.settings.field_22 | escape }}
+        </p>
+
+      </div>
+
+
+      <div class="dm-card">
+
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7">
+            <path d="M4 6h16v13H4z"/>
+            <path d="M8 3v6M16 3v6"/>
+            <path d="M8 13h8"/>
+          </svg>
+          {{ dm_content_4.settings.field_23 | escape }}
+        </h3>
+
+        <p>
+          {{ dm_content_4.settings.field_24 | escape }}
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="dm-notice" style="margin-top:15px;">
+
+      <div class="dm-notice-icon">
+
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.7">
+          <path d="M12 3v18"/>
+          <path d="M5 8h14M5 16h14"/>
+        </svg>
+
+      </div>
+
+      <div>
+
+        <strong>{{ dm_content_4.settings.field_25 | escape }}</strong>
+
+        <p>
+          {{ dm_content_4.settings.field_26 | escape }}
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- 03 SHIPPING & DELIVERY -->
+  <section class="dm-section">
+
+    <div class="dm-section-head">
+
+      <div class="dm-section-number" {{ dm_content_5.shopify_attributes }}>{{ dm_content_5.settings.field_27 | escape }}</div>
+
+      <div>
+        <h2>{{ dm_content_5.settings.field_28 | escape }}</h2>
+        <p class="dm-section-intro">
+          {{ dm_content_5.settings.field_29 | escape }}
+        </p>
+      </div>
+
+    </div>
+
+
+    <ul class="dm-list">
+
+      <li>
+        {{ dm_content_5.settings.field_30 | escape }}
+      </li>
+
+      <li>
+        {{ dm_content_5.settings.field_31 | escape }}
+      </li>
+
+      <li>
+        {{ dm_content_5.settings.field_32 | escape }}
+      </li>
+
+      <li>
+        {{ dm_content_5.settings.field_33 | escape }}
+      </li>
+
+    </ul>
+
+  </section>
+
+
+  <!-- 04 RETURNS & REFUNDS -->
+  <section class="dm-section">
+
+    <div class="dm-section-head">
+
+      <div class="dm-section-number" {{ dm_content_6.shopify_attributes }}>{{ dm_content_6.settings.field_34 | escape }}</div>
+
+      <div>
+        <h2>{{ dm_content_6.settings.field_35 | escape }}</h2>
+        <p class="dm-section-intro">
+          {{ dm_content_6.settings.field_36 | escape }}
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="dm-grid">
+
+      <div class="dm-card">
+
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7">
+            <path d="M20 12a8 8 0 1 1-2.3-5.7"/>
+            <path d="M20 4v8h-8"/>
+          </svg>
+          {{ dm_content_6.settings.field_37 | escape }}
+        </h3>
+
+        <p>
+          {{ dm_content_6.settings.field_38 | escape }}
+        </p>
+
+      </div>
+
+
+      <div class="dm-card">
+
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.7">
+            <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/>
+            <path d="M8.5 12l2.2 2.2 4.8-5"/>
+          </svg>
+          {{ dm_content_6.settings.field_39 | escape }}
+        </h3>
+
+        <p>
+          {{ dm_content_6.settings.field_40 | escape }}
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="dm-notice" style="margin-top:15px;">
+
+      <div class="dm-notice-icon">
+
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.7">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 8v5"/>
+          <circle cx="12" cy="16.5" r=".7" fill="currentColor"/>
+        </svg>
+
+      </div>
+
+      <div>
+
+        <strong>{{ dm_content_6.settings.field_41 | escape }}</strong>
+
+        <p>
+          {{ dm_content_6.settings.field_42 | escape }}
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- 05 PRIVACY -->
+  <section class="dm-section">
+
+    <div class="dm-section-head">
+
+      <div class="dm-section-number" {{ dm_content_7.shopify_attributes }}>{{ dm_content_7.settings.field_43 | escape }}</div>
+
+      <div>
+        <h2>{{ dm_content_7.settings.field_44 | escape }}</h2>
+        <p class="dm-section-intro">
+          {{ dm_content_7.settings.field_45 | escape }}
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="dm-privacy">
+
+      <div class="dm-privacy-icon">
+
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.7">
+          <path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/>
+          <rect x="9" y="10" width="6" height="5" rx="1"/>
+          <path d="M10 10V8a2 2 0 0 1 4 0v2"/>
+        </svg>
+
+      </div>
+
+      <div>
+
+        <h3>{{ dm_content_7.settings.field_46 | escape }}</h3>
+
+        <p>
+          {{ dm_content_7.settings.field_47 | escape }}
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- 06 POLICY UPDATES -->
+  <section class="dm-section">
+
+    <div class="dm-section-head">
+
+      <div class="dm-section-number" {{ dm_content_8.shopify_attributes }}>{{ dm_content_8.settings.field_48 | escape }}</div>
+
+      <div>
+        <h2>{{ dm_content_8.settings.field_49 | escape }}</h2>
+        <p class="dm-section-intro">
+          {{ dm_content_8.settings.field_50 | escape }}
+        </p>
+      </div>
+
+    </div>
+
+
+    <ul class="dm-list">
+
+      <li>
+        {{ dm_content_8.settings.field_51 | escape }}
+      </li>
+
+      <li>
+        {{ dm_content_8.settings.field_52 | escape }}
+      </li>
+
+      <li>
+        {{ dm_content_8.settings.field_53 | escape }}
+      </li>
+
+    </ul>
+
+  </section>
+
+
+  <!-- SUPPORT -->
+  <section class="dm-support">
+
+    <h2 {{ dm_content_9.shopify_attributes }}>{{ dm_content_9.settings.field_54 | escape }}</h2>
+
+    <p>
+      {{ dm_content_9.settings.field_55 | escape }}
+    </p>
+
+
+    <div class="dm-contact">
+
+      <a href="{% if dm_content_9.settings.field_56 != blank %}{{ dm_content_9.settings.field_56 | escape }}{% else %}mailto:care@dunamiss.in{% endif %}">
+
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.7">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <path d="M3 7l9 6 9-6"/>
+        </svg>
+
+        {{ dm_content_9.settings.field_57 | escape }}
+
+      </a>
+
+
+      <a href="{% if dm_content_9.settings.field_58 != blank %}{{ dm_content_9.settings.field_58 | escape }}{% else %}https://wa.me/919516656907{% endif %}" aria-label="{{ dm_content_9.settings.field_59 | escape }}">
+
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.7">
+          <path d="M6 3l4 2-2 4c1.3 2.7 3.3 4.7 6 6l4-2 2 4-2 3c-7 1-14-6-13-13L6 3z"/>
+        </svg>
+
+        {{ dm_content_9.settings.field_60 | escape }}
+
+      </a>
+
+
+      <span>
+
+        <svg viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="1.7">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 7v5l3 2"/>
+        </svg>
+
+        {{ dm_content_9.settings.field_61 | escape }}
+
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <div class="dm-footer" {{ dm_content_10.shopify_attributes }}>
+    {{ dm_content_10.settings.field_62 | escape }}
+  </div>
+
+</div>
+
+</div>
+{% schema %}
+{
+  "name": "Dunamiss terms",
+  "tag": "section",
+  "class": "dm-editable-page",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Edit the content groups below. Their positions follow this page’s fixed layout. Additional sections can be added below the page."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content_1",
+      "name": "Dunamiss · Legal",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_1",
+          "label": "Dunamiss · Legal",
+          "default": "Dunamiss · Legal"
+        },
+        {
+          "type": "text",
+          "id": "field_2",
+          "label": "Terms & Conditions",
+          "default": "Terms & Conditions"
+        },
+        {
+          "type": "text",
+          "id": "field_3",
+          "label": "Simple. Transparent. Designed with you in mind. ✨",
+          "default": "Simple. Transparent. Designed with you in mind. ✨"
+        },
+        {
+          "type": "text",
+          "id": "field_4",
+          "label": "Because great skincare deserves an even better experience.",
+          "default": "Because great skincare deserves an even better experience."
+        }
+      ]
+    },
+    {
+      "type": "content_2",
+      "name": "Transparent Policies",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_5",
+          "label": "Transparent Policies",
+          "default": "Transparent Policies"
+        },
+        {
+          "type": "text",
+          "id": "field_6",
+          "label": "Clear & straightforward",
+          "default": "Clear & straightforward"
+        },
+        {
+          "type": "text",
+          "id": "field_7",
+          "label": "Fair Experience",
+          "default": "Fair Experience"
+        },
+        {
+          "type": "text",
+          "id": "field_8",
+          "label": "Terms designed for you",
+          "default": "Terms designed for you"
+        },
+        {
+          "type": "text",
+          "id": "field_9",
+          "label": "Policy Updates",
+          "default": "Policy Updates"
+        },
+        {
+          "type": "text",
+          "id": "field_10",
+          "label": "Always kept up to date",
+          "default": "Always kept up to date"
+        }
+      ]
+    },
+    {
+      "type": "content_3",
+      "name": "General Terms",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_11",
+          "label": "01",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "field_12",
+          "label": "General Terms",
+          "default": "General Terms"
+        },
+        {
+          "type": "text",
+          "id": "field_13",
+          "label": "The essentials of using the Dunamiss website.",
+          "default": "The essentials of using the Dunamiss website."
+        },
+        {
+          "type": "text",
+          "id": "field_14",
+          "label": "By using the Dunamiss website, you agree to these Terms & Conditi",
+          "default": "By using the Dunamiss website, you agree to these\n        Terms & Conditions."
+        },
+        {
+          "type": "text",
+          "id": "field_15",
+          "label": "Please ensure all information provided is accurate and up to date",
+          "default": "Please ensure all information provided is accurate\n        and up to date."
+        },
+        {
+          "type": "text",
+          "id": "field_16",
+          "label": "Product availability, pricing, offers, and policies may change wi",
+          "default": "Product availability, pricing, offers, and policies\n        may change without prior notice."
+        },
+        {
+          "type": "textarea",
+          "id": "field_17",
+          "label": "Any misuse, fraudulent activity, or abuse of our platform may res",
+          "default": "Any misuse, fraudulent activity, or abuse of our platform\n        may result in order cancellation or account restrictions."
+        }
+      ]
+    },
+    {
+      "type": "content_4",
+      "name": "Orders & Payments",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_18",
+          "label": "02",
+          "default": "02"
+        },
+        {
+          "type": "text",
+          "id": "field_19",
+          "label": "Orders & Payments",
+          "default": "Orders & Payments"
+        },
+        {
+          "type": "text",
+          "id": "field_20",
+          "label": "Everything you need to know about placing an order.",
+          "default": "Everything you need to know about placing an order."
+        },
+        {
+          "type": "text",
+          "id": "field_21",
+          "label": "Payment",
+          "default": "Payment"
+        },
+        {
+          "type": "text",
+          "id": "field_22",
+          "label": "Payments must be made using valid and authorized payment methods.",
+          "default": "Payments must be made using valid and authorized\n          payment methods."
+        },
+        {
+          "type": "text",
+          "id": "field_23",
+          "label": "Order Confirmation",
+          "default": "Order Confirmation"
+        },
+        {
+          "type": "text",
+          "id": "field_24",
+          "label": "All orders are subject to product availability and confirmation.",
+          "default": "All orders are subject to product availability\n          and confirmation."
+        },
+        {
+          "type": "text",
+          "id": "field_25",
+          "label": "Order changes & cancellations",
+          "default": "Order changes & cancellations"
+        },
+        {
+          "type": "textarea",
+          "id": "field_26",
+          "label": "Once an order is dispatched, modifications or cancellations may n",
+          "default": "Once an order is dispatched, modifications or cancellations\n          may no longer be possible. Dunamiss reserves the right to\n          cancel orders in case of pricing errors, stock issues,\n          or suspected fraudulent activity."
+        }
+      ]
+    },
+    {
+      "type": "content_5",
+      "name": "Shipping & Delivery",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_27",
+          "label": "03",
+          "default": "03"
+        },
+        {
+          "type": "text",
+          "id": "field_28",
+          "label": "Shipping & Delivery",
+          "default": "Shipping & Delivery"
+        },
+        {
+          "type": "text",
+          "id": "field_29",
+          "label": "Your order's journey from us to you.",
+          "default": "Your order's journey from us to you."
+        },
+        {
+          "type": "text",
+          "id": "field_30",
+          "label": "Delivery timelines are estimated and may vary based on your locat",
+          "default": "Delivery timelines are estimated and may vary based\n        on your location."
+        },
+        {
+          "type": "text",
+          "id": "field_31",
+          "label": "You'll receive tracking details via SMS and email once your order",
+          "default": "You'll receive tracking details via SMS and email\n        once your order is shipped."
+        },
+        {
+          "type": "textarea",
+          "id": "field_32",
+          "label": "While we work with trusted delivery partners, delays caused by un",
+          "default": "While we work with trusted delivery partners, delays\n        caused by unforeseen circumstances are beyond our control."
+        },
+        {
+          "type": "textarea",
+          "id": "field_33",
+          "label": "Please ensure that your shipping address and contact information ",
+          "default": "Please ensure that your shipping address and contact\n        information are accurate before placing your order."
+        }
+      ]
+    },
+    {
+      "type": "content_6",
+      "name": "Returns & Refunds",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_34",
+          "label": "04",
+          "default": "04"
+        },
+        {
+          "type": "text",
+          "id": "field_35",
+          "label": "Returns & Refunds",
+          "default": "Returns & Refunds"
+        },
+        {
+          "type": "text",
+          "id": "field_36",
+          "label": "Our approach to returns, exchanges, and refunds.",
+          "default": "Our approach to returns, exchanges, and refunds."
+        },
+        {
+          "type": "text",
+          "id": "field_37",
+          "label": "Returns",
+          "default": "Returns"
+        },
+        {
+          "type": "textarea",
+          "id": "field_38",
+          "label": "Return and exchange requests must be submitted within the eligibl",
+          "default": "Return and exchange requests must be submitted within\n          the eligible return period and according to the\n          applicable return policy."
+        },
+        {
+          "type": "text",
+          "id": "field_39",
+          "label": "Quality Verification",
+          "default": "Quality Verification"
+        },
+        {
+          "type": "textarea",
+          "id": "field_40",
+          "label": "Products must be unused, unopened, and returned in their original",
+          "default": "Products must be unused, unopened, and returned in their\n          original packaging. Refunds, where applicable, are processed\n          after successful quality verification."
+        },
+        {
+          "type": "text",
+          "id": "field_41",
+          "label": "Hygiene & safety",
+          "default": "Hygiene & safety"
+        },
+        {
+          "type": "textarea",
+          "id": "field_42",
+          "label": "Eligible return or exchange requests must be reported within 48 h",
+          "default": "Eligible return or exchange requests must be reported within 48 hours of delivery. Products purchased on sale are not eligible for return or exchange. Opened or used products are not eligible for return or exchange for hygiene reasons."
+        }
+      ]
+    },
+    {
+      "type": "content_7",
+      "name": "Privacy & Data Protection",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_43",
+          "label": "05",
+          "default": "05"
+        },
+        {
+          "type": "text",
+          "id": "field_44",
+          "label": "Privacy & Data Protection",
+          "default": "Privacy & Data Protection"
+        },
+        {
+          "type": "text",
+          "id": "field_45",
+          "label": "Your information deserves the same care as your skin.",
+          "default": "Your information deserves the same care as your skin."
+        },
+        {
+          "type": "text",
+          "id": "field_46",
+          "label": "Your privacy matters to us.",
+          "default": "Your privacy matters to us."
+        },
+        {
+          "type": "textarea",
+          "id": "field_47",
+          "label": "We keep your personal information safe, secure, and confidential.",
+          "default": "We keep your personal information safe, secure, and confidential.\n          Your data is used only to process orders, improve your experience,\n          and provide customer support. We never sell or share your personal\n          information with unauthorized third parties."
+        }
+      ]
+    },
+    {
+      "type": "content_8",
+      "name": "Policy Updates",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_48",
+          "label": "06",
+          "default": "06"
+        },
+        {
+          "type": "text",
+          "id": "field_49",
+          "label": "Policy Updates",
+          "default": "Policy Updates"
+        },
+        {
+          "type": "text",
+          "id": "field_50",
+          "label": "Staying transparent as Dunamiss grows.",
+          "default": "Staying transparent as Dunamiss grows."
+        },
+        {
+          "type": "text",
+          "id": "field_51",
+          "label": "We may update these Terms & Conditions from time to time.",
+          "default": "We may update these Terms & Conditions from time to time."
+        },
+        {
+          "type": "text",
+          "id": "field_52",
+          "label": "Continued use of our website means you agree to the latest versio",
+          "default": "Continued use of our website means you agree to the latest version."
+        },
+        {
+          "type": "text",
+          "id": "field_53",
+          "label": "We recommend reviewing this page periodically to stay informed.",
+          "default": "We recommend reviewing this page periodically to stay informed."
+        }
+      ]
+    },
+    {
+      "type": "content_9",
+      "name": "Need Help?",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_54",
+          "label": "Need Help?",
+          "default": "Need Help?"
+        },
+        {
+          "type": "textarea",
+          "id": "field_55",
+          "label": "Our Glow Experts are always here for you. 💌 If you have questions",
+          "default": "Our Glow Experts are always here for you. 💌\n      If you have questions about our terms or policies,\n      we're happy to help."
+        },
+        {
+          "type": "url",
+          "id": "field_56",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "field_57",
+          "label": "care@dunamiss.in",
+          "default": "care@dunamiss.in"
+        },
+        {
+          "type": "url",
+          "id": "field_58",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "field_59",
+          "label": "Aria Label",
+          "default": "Message Dunamiss on WhatsApp"
+        },
+        {
+          "type": "text",
+          "id": "field_60",
+          "label": "WhatsApp: +91 95166 56907",
+          "default": "WhatsApp: +91 95166 56907"
+        },
+        {
+          "type": "text",
+          "id": "field_61",
+          "label": "Every day · 10 AM–6 PM IST",
+          "default": "Every day · 10 AM–6 PM IST"
+        }
+      ]
+    },
+    {
+      "type": "content_10",
+      "name": "Transparency you can trus",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_62",
+          "label": "Transparency you can trust. Luxury you'll love. That's the Dunami",
+          "default": "Transparency you can trust. Luxury you'll love.\n    That's the Dunamiss Promise."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Dunamiss terms",
+      "blocks": [
+        {
+          "type": "content_1",
+          "settings": {
+            "field_1": "Dunamiss · Legal",
+            "field_2": "Terms & Conditions",
+            "field_3": "Simple. Transparent. Designed with you in mind. ✨",
+            "field_4": "Because great skincare deserves an even better experience."
+          }
+        },
+        {
+          "type": "content_2",
+          "settings": {
+            "field_5": "Transparent Policies",
+            "field_6": "Clear & straightforward",
+            "field_7": "Fair Experience",
+            "field_8": "Terms designed for you",
+            "field_9": "Policy Updates",
+            "field_10": "Always kept up to date"
+          }
+        },
+        {
+          "type": "content_3",
+          "settings": {
+            "field_11": "01",
+            "field_12": "General Terms",
+            "field_13": "The essentials of using the Dunamiss website.",
+            "field_14": "By using the Dunamiss website, you agree to these\n        Terms & Conditions.",
+            "field_15": "Please ensure all information provided is accurate\n        and up to date.",
+            "field_16": "Product availability, pricing, offers, and policies\n        may change without prior notice.",
+            "field_17": "Any misuse, fraudulent activity, or abuse of our platform\n        may result in order cancellation or account restrictions."
+          }
+        },
+        {
+          "type": "content_4",
+          "settings": {
+            "field_18": "02",
+            "field_19": "Orders & Payments",
+            "field_20": "Everything you need to know about placing an order.",
+            "field_21": "Payment",
+            "field_22": "Payments must be made using valid and authorized\n          payment methods.",
+            "field_23": "Order Confirmation",
+            "field_24": "All orders are subject to product availability\n          and confirmation.",
+            "field_25": "Order changes & cancellations",
+            "field_26": "Once an order is dispatched, modifications or cancellations\n          may no longer be possible. Dunamiss reserves the right to\n          cancel orders in case of pricing errors, stock issues,\n          or suspected fraudulent activity."
+          }
+        },
+        {
+          "type": "content_5",
+          "settings": {
+            "field_27": "03",
+            "field_28": "Shipping & Delivery",
+            "field_29": "Your order's journey from us to you.",
+            "field_30": "Delivery timelines are estimated and may vary based\n        on your location.",
+            "field_31": "You'll receive tracking details via SMS and email\n        once your order is shipped.",
+            "field_32": "While we work with trusted delivery partners, delays\n        caused by unforeseen circumstances are beyond our control.",
+            "field_33": "Please ensure that your shipping address and contact\n        information are accurate before placing your order."
+          }
+        },
+        {
+          "type": "content_6",
+          "settings": {
+            "field_34": "04",
+            "field_35": "Returns & Refunds",
+            "field_36": "Our approach to returns, exchanges, and refunds.",
+            "field_37": "Returns",
+            "field_38": "Return and exchange requests must be submitted within\n          the eligible return period and according to the\n          applicable return policy.",
+            "field_39": "Quality Verification",
+            "field_40": "Products must be unused, unopened, and returned in their\n          original packaging. Refunds, where applicable, are processed\n          after successful quality verification.",
+            "field_41": "Hygiene & safety",
+            "field_42": "Eligible return or exchange requests must be reported within 48 hours of delivery. Products purchased on sale are not eligible for return or exchange. Opened or used products are not eligible for return or exchange for hygiene reasons."
+          }
+        },
+        {
+          "type": "content_7",
+          "settings": {
+            "field_43": "05",
+            "field_44": "Privacy & Data Protection",
+            "field_45": "Your information deserves the same care as your skin.",
+            "field_46": "Your privacy matters to us.",
+            "field_47": "We keep your personal information safe, secure, and confidential.\n          Your data is used only to process orders, improve your experience,\n          and provide customer support. We never sell or share your personal\n          information with unauthorized third parties."
+          }
+        },
+        {
+          "type": "content_8",
+          "settings": {
+            "field_48": "06",
+            "field_49": "Policy Updates",
+            "field_50": "Staying transparent as Dunamiss grows.",
+            "field_51": "We may update these Terms & Conditions from time to time.",
+            "field_52": "Continued use of our website means you agree to the latest version.",
+            "field_53": "We recommend reviewing this page periodically to stay informed."
+          }
+        },
+        {
+          "type": "content_9",
+          "settings": {
+            "field_54": "Need Help?",
+            "field_55": "Our Glow Experts are always here for you. 💌\n      If you have questions about our terms or policies,\n      we're happy to help.",
+            "field_56": "mailto:care@dunamiss.in",
+            "field_57": "care@dunamiss.in",
+            "field_58": "https://wa.me/919516656907",
+            "field_59": "Message Dunamiss on WhatsApp",
+            "field_60": "WhatsApp: +91 95166 56907",
+            "field_61": "Every day · 10 AM–6 PM IST"
+          }
+        },
+        {
+          "type": "content_10",
+          "settings": {
+            "field_62": "Transparency you can trust. Luxury you'll love.\n    That's the Dunamiss Promise."
+          }
+        }
+      ]
+    }
+  ],
+  "limit": 1
+}
+{% endschema %}

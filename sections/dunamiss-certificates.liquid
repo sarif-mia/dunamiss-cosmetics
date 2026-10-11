@@ -1,0 +1,237 @@
+<div style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+{% render 'custom-clinically-tested', section: section %}
+</div>
+{% schema %}
+{
+  "name": "Dunamiss certificates",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Edit text, links and images in the content groups below. Their positions follow the section’s fixed layout."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content_1",
+      "name": "Clinically tested",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_1",
+          "label": "Clinically tested",
+          "default": "Clinically tested"
+        },
+        {
+          "type": "text",
+          "id": "field_2",
+          "label": "Aria Label",
+          "default": "Certificate carousel controls"
+        },
+        {
+          "type": "text",
+          "id": "field_3",
+          "label": "Aria Label",
+          "default": "Previous certificates"
+        },
+        {
+          "type": "text",
+          "id": "field_4",
+          "label": "Aria Label",
+          "default": "Next certificates"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_5",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_6",
+          "label": "Alt",
+          "default": "Lip Balm Certification"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_7",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_8",
+          "label": "Alt",
+          "default": "Sheet Mask Certification"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_9",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_10",
+          "label": "Alt",
+          "default": "Production Certification"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_11",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_12",
+          "label": "Alt",
+          "default": "On-Site Inspection"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_13",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_14",
+          "label": "Alt",
+          "default": "Hazel Glitter Certification"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_15",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_16",
+          "label": "Alt",
+          "default": "Eye Balm Certification"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_17",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_18",
+          "label": "Alt",
+          "default": "Sunscreen Certification"
+        }
+      ]
+    },
+    {
+      "type": "content_2",
+      "name": "Content 2",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "field_19",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_20",
+          "label": "Alt",
+          "default": "Lip Oil"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_21",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_22",
+          "label": "Alt",
+          "default": "AM Cream Certification"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_23",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_24",
+          "label": "Alt",
+          "default": "Mocha Kiss"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 2,
+  "presets": [
+    {
+      "name": "Dunamiss certificates",
+      "blocks": [
+        {
+          "type": "content_1",
+          "settings": {
+            "field_1": "Clinically tested",
+            "field_2": "Certificate carousel controls",
+            "field_3": "Previous certificates",
+            "field_4": "Next certificates",
+            "field_5": "shopify://shop_images/LIP_BALM_CERTIFICATE.jpg",
+            "field_6": "Lip Balm Certification",
+            "field_7": "shopify://shop_images/CERTIFICATE_SHEET_MASK.jpg",
+            "field_8": "Sheet Mask Certification",
+            "field_9": "shopify://shop_images/TESTED_IN_INDIA.jpg",
+            "field_10": "Production Certification",
+            "field_11": "shopify://shop_images/On-Site_Inspection_Zurko.jpg",
+            "field_12": "On-Site Inspection",
+            "field_13": "shopify://shop_images/Hazel_Glitter_Certification.png",
+            "field_14": "Hazel Glitter Certification",
+            "field_15": "shopify://shop_images/Eye_Balm_Certification.png",
+            "field_16": "Eye Balm Certification",
+            "field_17": "shopify://shop_images/Sunscreen_Certification.png",
+            "field_18": "Sunscreen Certification"
+          }
+        },
+        {
+          "type": "content_2",
+          "settings": {
+            "field_19": "shopify://shop_images/Lip_Oil_Certification.png",
+            "field_20": "Lip Oil",
+            "field_21": "shopify://shop_images/Am_Cream__Certification.png",
+            "field_22": "AM Cream Certification",
+            "field_23": "shopify://shop_images/Mocka_Kiss_Certification.png",
+            "field_24": "Mocha Kiss"
+          }
+        }
+      ]
+    }
+  ],
+  "limit": 1
+}
+{% endschema %}

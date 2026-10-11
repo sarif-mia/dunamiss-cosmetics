@@ -1,0 +1,103 @@
+{
+  "sections": {
+    "main": {
+      "type": "dunamiss-page-contact-us",
+      "blocks": {
+        "content_1": {
+          "type": "content_1",
+          "settings": {
+            "field_1": "Have a question?",
+            "field_2": "Please contact us using the customer support channels below. Please drop us a text on our WhatsApp and we'd get back to you. Not available on calls."
+          }
+        },
+        "content_2": {
+          "type": "content_2",
+          "settings": {
+            "field_3": "Customer Support",
+            "field_4": "Have a question? Please contact us using the customer support channels.",
+            "field_5": "7207, Bougainvillea St,\n                        Block C2,\n                        DLF Phase IV,\n                        Sector 43,\n                        Gurugram,\n                        Haryana 122009",
+            "field_6": "Opening hours:\n                        Every day\n                        10 AM–6 PM IST",
+            "field_7": "https://wa.me/919516656907",
+            "field_8": "WhatsApp: +91 95166 56907",
+            "field_9": "Email:",
+            "field_10": "mailto:care@dunamiss.in",
+            "field_11": "care@dunamiss.in",
+            "field_12": "https://www.facebook.com/profile.php?id=61552254965408",
+            "field_13": "https://www.youtube.com/@dunamisscosmetics/",
+            "field_14": "https://www.instagram.com/dunamisscosmetics",
+            "field_15": "Get in touch",
+            "field_16": "Please submit all general enquiries in the contact form below and we look forward to hearing from you soon.",
+            "field_17": "Thanks for contacting us. We will get back to you shortly.",
+            "field_18": "Your Email",
+            "field_19": "Email address",
+            "field_20": "Your name"
+          }
+        },
+        "content_3": {
+          "type": "content_3",
+          "settings": {
+            "field_21": "Your name",
+            "field_22": "Your message",
+            "field_23": "Your message",
+            "field_24": "I agree to the",
+            "field_25": "/pages/privacy-policy",
+            "field_26": "Privacy Policy",
+            "field_27": "of the website.",
+            "field_28": "SUBMIT"
+          }
+        },
+        "content_4": {
+          "type": "content_4",
+          "settings": {
+            "field_29": "Our Office Location",
+            "field_30": "Gurugram, Haryana",
+            "field_31": "7207, Bougainvillea St, Block C2, DLF Phase IV, Sector 43, Gurugram, Haryana 122009",
+            "field_32": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.627551472567!2d77.08400447549445!3d28.46064177575905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18c4a21e4983%3A0xaf7aeda1533b4cb0!2s7207%2C%20Bougainvillea%20St%2C%20Block%20C2%2C%20DLF%20Phase%20IV%2C%20Sector%2043%2C%20Gurugram%2C%20Haryana%20122009%2C%20India!5e0!3m2!1sen!2sbd!4v1784715856462!5m2!1sen!2sbd"
+          }
+        },
+        "content_5": {
+          "type": "content_5",
+          "settings": {
+            "field_33": "Frequently Asked Questions",
+            "field_34": "How long does delivery take?",
+            "field_35": "Orders are usually delivered within 3–7 business days.",
+            "field_36": "Can I return a product for a refund?",
+            "field_37": "Yes. Returns are accepted within the return period if the product meets the return policy.",
+            "field_38": "How do exchanges work?",
+            "field_39": "Contact support and we'll guide you through the exchange process.",
+            "field_40": "Can I cancel or change my order after placing it?",
+            "field_41": "Orders can only be modified before shipment."
+          }
+        },
+        "content_6": {
+          "type": "content_6",
+          "settings": {
+            "field_42": "We're clean, we're green,\n                we're sustainable,\n                we're all that you need!",
+            "field_43": "shopify://shop_images/CLINICALLY_TESTED.png",
+            "field_44": "1",
+            "field_45": "shopify://shop_images/SALFATE_PARABEN_FREE.png",
+            "field_46": "2",
+            "field_47": "shopify://shop_images/MADE_IN_INDIA_LOGO.png",
+            "field_48": "3",
+            "field_49": "shopify://shop_images/GMP_LOGO.png",
+            "field_50": "4",
+            "field_51": "shopify://shop_images/VEGAN.png",
+            "field_52": "5"
+          }
+        }
+      },
+      "block_order": [
+        "content_1",
+        "content_2",
+        "content_3",
+        "content_4",
+        "content_5",
+        "content_6"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

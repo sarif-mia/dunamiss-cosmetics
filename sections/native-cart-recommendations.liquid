@@ -1,6 +1,6 @@
 {% if recommendations.products_count > 0 %}
   <div data-native-cart-recommendation-content>
-    <h3>You may also like</h3>
+    <h3>{{ settings.dm_cart_recommendations | escape }}</h3>
     <div class="dm-cart-recommendation-track">
       {% for product in recommendations.products %}
         {% assign in_cart = false %}

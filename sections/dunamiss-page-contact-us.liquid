@@ -1,0 +1,1435 @@
+<div style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+<script src="{{ 'dunamiss-content-editor.js' | asset_url }}" defer></script>
+{% assign dm_content_1 = section.blocks | where: 'type', 'content_1' | first %}
+{% assign dm_content_2 = section.blocks | where: 'type', 'content_2' | first %}
+{% assign dm_content_3 = section.blocks | where: 'type', 'content_3' | first %}
+{% assign dm_content_4 = section.blocks | where: 'type', 'content_4' | first %}
+{% assign dm_content_5 = section.blocks | where: 'type', 'content_5' | first %}
+{% assign dm_content_6 = section.blocks | where: 'type', 'content_6' | first %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    .dunamiss-contact-container{
+        width:90%;
+        max-width:1350px;
+        margin:auto;
+    }
+
+
+    /*==============================
+        HERO
+    ==============================*/
+
+    .dunamiss-contact-hero{
+        background:var(--brand-ivory);
+        padding:90px 0;
+        text-align:center;
+    }
+
+    .dunamiss-contact-hero h1{
+        font-family: var(--body-font);
+        font-size:72px;
+        font-weight:400;
+        margin-bottom:10px;
+        color:var(--brand-ink);
+    }
+
+    .dunamiss-contact-hero p{
+        max-width:760px;
+        margin:auto;
+        font-size:19px;
+        color:var(--brand-muted);
+        line-height:1.9;
+    }
+
+
+    /*==============================
+        CONTACT
+    ==============================*/
+
+    .dunamiss-contact-contact-section{
+        padding:80px 0;
+    }
+
+    .dunamiss-contact-contact-grid{
+        display:grid;
+        grid-template-columns:360px 1fr;
+        gap:40px;
+        align-items:start;
+    }
+
+
+    /*==============================
+        SUPPORT CARD
+    ==============================*/
+
+    .dunamiss-contact-support-card{
+        background:var(--brand-rose);
+        color:var(--color-white);
+        padding:40px 35px;
+        border-radius:8px;
+    }
+
+    .dunamiss-contact-support-card h2{
+        font-family: var(--body-font);
+        font-size: 33px;
+        font-weight:400;
+        margin-bottom:15px;
+        margin-top: 0;
+        color:var(--color-white);
+    }
+
+    .dunamiss-contact-support-card p{
+        font-size:14px;
+        opacity:.95;
+        margin-bottom:20px;
+        line-height:1.8;
+    }
+
+    .dunamiss-contact-support-item{
+        display:flex;
+        align-items:flex-start;
+        gap:18px;
+        margin-bottom:20px;
+    }
+
+    .dunamiss-contact-support-item i{
+        width:22px;
+        font-size:18px;
+        margin-top:4px;
+    }
+
+    .dunamiss-contact-support-item span{
+        font-size:14px;
+        line-height:1.8;
+    }
+
+    .dunamiss-contact-support-item a{
+        color:var(--color-white);
+        font-weight:600;
+        text-decoration:underline;
+        text-underline-offset:3px;
+    }
+
+    .dunamiss-contact-social-icons{
+        margin-top:35px;
+        display:flex;
+        gap:15px;
+    }
+
+    .dunamiss-contact-social-icons a{
+        width:50px;
+        height:50px;
+        border:1px solid rgba(255,255,255,.5);
+        border-radius:50%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        transition:.3s;
+        text-decoration:none;
+    }
+
+    .dunamiss-contact-social-icons a i{
+        font-size:22px;
+    }
+
+    .dunamiss-contact-social-icons a:hover{
+        background:var(--color-white);
+        color:var(--brand-rose);
+    }
+
+
+    /*==============================
+        FORM
+    ==============================*/
+
+    .dunamiss-contact-contact-form h2{
+        font-family: var(--body-font);
+        font-size:56px;
+        font-weight:400;
+        margin-bottom:12px;
+        margin-top:10px;
+    }
+
+    .dunamiss-contact-contact-form p{
+        color:var(--brand-muted);
+        margin-bottom:30px;
+        line-height:1.8;
+        font-size:14px;
+    }
+
+    .dunamiss-contact-row{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:25px;
+        margin-bottom:25px;
+    }
+
+    .dunamiss-contact-contact-form input{
+        width:100%;
+        height:60px;
+        border:1px solid var(--brand-rose);
+        padding:0 18px;
+        font-size:14px;
+        transition:.3s;
+        border-radius: 5px;
+    }
+
+    .dunamiss-contact-contact-form textarea{
+        width:100%;
+        height:140px;
+        border:1px solid var(--brand-rose);
+        padding:18px;
+        font-size:14px;
+        margin-bottom:22px;
+        transition:.3s;
+        border-radius: 5px;
+    }
+
+    .dunamiss-contact-contact-form input:focus,
+    .dunamiss-contact-contact-form textarea:focus{
+        border-color:var(--brand-blush);
+    }
+
+    .dunamiss-contact-checkbox{
+        display:flex;
+        align-items:center;
+        gap:10px;
+        margin-bottom:28px;
+        font-size:14px;
+        color:var(--brand-muted);
+    }
+
+    .dunamiss-contact-checkbox input{
+        width:16px;
+        height:16px;
+    }
+
+    .dunamiss-contact-checkbox a{
+        color:var(--brand-rose);
+    }
+
+    .dunamiss-contact-contact-form button{
+        width:100%;
+        height:60px;
+        border:none;
+        background:var(--brand-rose);
+        color:var(--color-white);
+        letter-spacing:2px;
+        font-size:14px;
+        cursor:pointer;
+        transition:.3s;
+        border-radius: 5px;
+    }
+
+    .dunamiss-contact-contact-form button:hover{
+        background:var(--brand-ink);
+    }
+    /*====================================
+        LOCATION SECTION
+    ====================================*/
+
+    .dunamiss-contact-location{
+        padding:80px 0;
+    }
+
+    .dunamiss-contact-location-grid{
+        display:grid;
+        grid-template-columns:480px 1fr;
+        gap:40px;
+        align-items:center;
+        background:var(--brand-blush);
+        border-radius:8px;
+        overflow:hidden;
+    }
+
+    .dunamiss-contact-location-content{
+        padding:60px 35px;
+    }
+
+    .dunamiss-contact-location-content h2{
+        font-family: var(--body-font);
+        font-size:45px;
+        line-height:1.1;
+        font-weight:400;
+        margin-bottom:35px;
+        color:var(--brand-ink);
+    }
+
+    .dunamiss-contact-location-content h4{
+        font-size:32px;
+        font-family: var(--body-font);
+        font-weight:500;
+        margin-bottom:18px;
+        color:var(--brand-ink);
+    }
+
+    .dunamiss-contact-location-content p{
+        color:var(--brand-muted);
+        font-size:14px;
+        line-height:1.8;
+    }
+
+    .dunamiss-contact-map{
+        width:100%;
+        height:100%;
+    }
+
+    .dunamiss-contact-map img{
+        width:100%;
+        height:100%;
+        min-height:420px;
+        object-fit:cover;
+    }
+
+
+    /*====================================
+        FAQ
+    ====================================*/
+
+    .dunamiss-contact-faq{
+        padding:110px 0;
+    }
+
+    .dunamiss-contact-faq h2{
+        font-family: var(--body-font);
+        font-size:64px;
+        text-align:center;
+        font-weight:400;
+        margin-bottom:70px;
+        color:var(--brand-ink);
+    }
+
+    .dunamiss-contact-faq-item{
+        border-bottom:1px solid var(--color-border);
+        margin-bottom: 25px;
+    }
+
+    .dunamiss-contact-faq-question{
+        width:100%;
+        background:var(--brand-blush);
+        border:none;
+        padding:22px 35px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        text-align: left;
+        cursor:pointer;
+        font-size:26px;
+        font-family: var(--body-font);
+        color:var(--brand-ink);
+        transition:.3s;
+    }
+
+    .dunamiss-contact-faq-question:hover{
+        background:var(--brand-ivory);
+    }
+
+    .dunamiss-contact-faq-question i{
+        font-size:22px;
+        color:var(--brand-muted);
+        transition:.35s ease;
+    }
+
+    .dunamiss-contact-faq-answer{
+        max-height:0;
+        overflow:hidden;
+        transition:max-height .35s ease;
+        background:var(--color-white);
+    }
+
+    .dunamiss-contact-faq-answer p{
+        padding:30px;
+        font-size:14px;
+        color:var(--brand-muted);
+        line-height:1.8;
+    }
+
+
+    /* Accordion Active */
+
+    .dunamiss-contact-faq-item.active .dunamiss-contact-faq-question i{
+        transform:rotate(45deg);
+        color:var(--brand-rose);
+    }
+
+    .dunamiss-contact-faq-item.active .dunamiss-contact-faq-question{
+        color:var(--brand-rose);
+    }
+    /*====================================
+        BADGES SECTION
+    ====================================*/
+
+    .dunamiss-contact-badges{
+        padding:100px 0;
+        background:var(--brand-ivory);
+    }
+
+    .dunamiss-contact-badges h2{
+        max-width:900px;
+        margin:0 auto 70px;
+        text-align:center;
+        font-family: var(--body-font);
+        font-size:58px;
+        font-weight:400;
+        line-height:1.25;
+        color:var(--brand-ink);
+    }
+
+    .dunamiss-contact-badge-wrapper{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:35px;
+        flex-wrap:wrap;
+    }
+
+    .dunamiss-contact-badge-wrapper img{
+        width:140px;
+        height:140px;
+        object-fit:contain;
+        transition:.3s ease;
+    }
+
+    .dunamiss-contact-badge-wrapper img:hover{
+        transform:translateY(-8px);
+    }
+
+
+    /*====================================
+        RESPONSIVE
+    ====================================*/
+
+    /* Large Devices */
+
+    @media (max-width:1200px){
+
+        .dunamiss-contact-hero h1{
+            font-size:60px;
+        }
+
+        .dunamiss-contact-contact-form h2{
+            font-size:48px;
+        }
+
+        .dunamiss-contact-faq h2{
+            font-size:54px;
+        }
+
+        .dunamiss-contact-badges h2{
+            font-size:48px;
+        }
+
+        .dunamiss-contact-location-content h2{
+            font-size:48px;
+        }
+
+    }
+
+
+    /* Tablet */
+
+    @media (max-width:992px){
+
+        .dunamiss-contact-hero{
+            padding:70px 0;
+        }
+
+        .dunamiss-contact-hero h1{
+            font-size:52px;
+        }
+
+        .dunamiss-contact-hero p{
+            font-size:17px;
+        }
+
+        .dunamiss-contact-contact-grid{
+            grid-template-columns:1fr;
+        }
+
+        .dunamiss-contact-support-card{
+            order:2;
+        }
+
+        .dunamiss-contact-contact-form{
+            order:1;
+        }
+
+        .dunamiss-contact-location-grid{
+            grid-template-columns:1fr;
+        }
+
+        .dunamiss-contact-location-content{
+            padding:50px 35px;
+        }
+
+        .dunamiss-contact-map img{
+            min-height:350px;
+        }
+
+        .dunamiss-contact-faq h2{
+            font-size:48px;
+        }
+
+        .dunamiss-contact-faq-question{
+            font-size:22px;
+            padding:24px 25px;
+        }
+
+        .dunamiss-contact-faq-answer p{
+            padding:0 25px 25px;
+        }
+
+        .dunamiss-contact-badges h2{
+            font-size:42px;
+        }
+
+    }
+
+
+    /* Mobile */
+
+    @media (max-width:768px){
+
+        .dunamiss-contact-container{
+            width:92%;
+        }
+
+        .dunamiss-contact-hero{
+            padding:60px 0;
+        }
+
+        .dunamiss-contact-hero h1{
+            font-size:42px;
+        }
+
+        .dunamiss-contact-hero p{
+            font-size:16px;
+        }
+
+        .dunamiss-contact-contact-section,
+        .dunamiss-contact-location,
+        .dunamiss-contact-faq,
+        .dunamiss-contact-badges{
+            padding:70px 0;
+        }
+
+        .dunamiss-contact-contact-form h2{
+            font-size:40px;
+        }
+
+        .dunamiss-contact-row{
+            grid-template-columns:1fr;
+            gap:20px;
+        }
+
+        .dunamiss-contact-contact-form input{
+            height:55px;
+        }
+
+        .dunamiss-contact-contact-form textarea{
+            height:150px;
+        }
+
+        .dunamiss-contact-support-card{
+            padding:35px 25px;
+        }
+
+        .dunamiss-contact-support-card h2{
+            font-size:34px;
+        }
+
+        .dunamiss-contact-location-content{
+            padding:40px 25px;
+        }
+
+        .dunamiss-contact-location-content h2{
+            font-size:42px;
+        }
+
+        .dunamiss-contact-location-content h4{
+            font-size:26px;
+        }
+
+        .dunamiss-contact-faq h2{
+            font-size:38px;
+            margin-bottom:45px;
+        }
+
+        .dunamiss-contact-faq-question{
+            font-size:18px;
+            padding:22px 20px;
+        }
+
+        .dunamiss-contact-faq-question i{
+            font-size:18px;
+        }
+
+        .dunamiss-contact-faq-answer p{
+            padding:0 20px 22px;
+            font-size:15px;
+        }
+
+        .dunamiss-contact-badges h2{
+            font-size:34px;
+            margin-bottom:45px;
+        }
+
+        .dunamiss-contact-badge-wrapper{
+            gap:20px;
+        }
+
+        .dunamiss-contact-badge-wrapper img{
+            width:100px;
+            height:100px;
+        }
+
+    }
+
+
+    /* Small Mobile */
+
+    @media (max-width:480px){
+
+        .dunamiss-contact-hero h1{
+            font-size:34px;
+        }
+
+        .dunamiss-contact-hero p{
+            font-size:15px;
+        }
+
+        .dunamiss-contact-contact-form h2{
+            font-size:34px;
+        }
+
+        .dunamiss-contact-support-card h2{
+            font-size:30px;
+        }
+
+        .dunamiss-contact-location-content h2{
+            font-size:34px;
+        }
+
+        .dunamiss-contact-location-content h4{
+            font-size:22px;
+        }
+
+        .dunamiss-contact-faq h2{
+            font-size:30px;
+        }
+
+        .dunamiss-contact-faq-question{
+            font-size:16px;
+            padding:18px;
+        }
+
+        .dunamiss-contact-faq-answer p{
+            font-size:14px;
+        }
+
+        .dunamiss-contact-badges h2{
+            font-size:28px;
+            line-height:1.4;
+        }
+
+        .dunamiss-contact-badge-wrapper img{
+            width:80px;
+            height:80px;
+        }
+
+        .dunamiss-contact-social-icons{
+            justify-content:flex-start;
+            flex-wrap:wrap;
+        }
+
+    }
+</style>
+
+
+<!-- =========================
+            HERO SECTION
+    ========================== -->
+
+<section class="dunamiss-contact-hero">
+
+    <div class="dunamiss-contact-container">
+
+        <h1 {{ dm_content_1.shopify_attributes }}>{{ dm_content_1.settings.field_1 | escape }}</h1>
+
+        <p>
+            {{ dm_content_1.settings.field_2 | escape }}
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+        CONTACT SECTION
+    ========================== -->
+
+<section class="dunamiss-contact-contact-section">
+
+    <div class="dunamiss-contact-container dunamiss-contact-contact-grid">
+
+        <!-- Left -->
+
+        <div class="dunamiss-contact-support-card">
+
+            <h2 {{ dm_content_2.shopify_attributes }}>{{ dm_content_2.settings.field_3 | escape }}</h2>
+
+            <p>
+                {{ dm_content_2.settings.field_4 | escape }}
+            </p>
+
+
+            <div class="dunamiss-contact-support-item">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <span>
+                        {{ dm_content_2.settings.field_5 | escape }}
+                    </span>
+
+            </div>
+
+
+
+            <div class="dunamiss-contact-support-item">
+
+                <i class="fa-regular fa-clock"></i>
+
+                <span>
+                        {{ dm_content_2.settings.field_6 | escape }}
+                    </span>
+
+            </div>
+
+
+
+            <div class="dunamiss-contact-support-item">
+
+                <i class="fa-solid fa-phone"></i>
+
+                <span>
+                        <a href="{% if dm_content_2.settings.field_7 != blank %}{{ dm_content_2.settings.field_7 | escape }}{% else %}https://wa.me/919516656907{% endif %}">{{ dm_content_2.settings.field_8 | escape }}</a>
+                    </span>
+
+            </div>
+            <div class="dunamiss-contact-support-item">
+
+                <i class="fa-regular fa-envelope"></i>
+
+                <span>
+                        {{ dm_content_2.settings.field_9 | escape }}
+                        <a href="{% if dm_content_2.settings.field_10 != blank %}{{ dm_content_2.settings.field_10 | escape }}{% else %}mailto:care@dunamiss.in{% endif %}">{{ dm_content_2.settings.field_11 | escape }}</a>
+                    </span>
+
+            </div>
+
+            <div class="dunamiss-contact-social-icons">
+
+                <a href="{% if dm_content_2.settings.field_12 != blank %}{{ dm_content_2.settings.field_12 | escape }}{% else %}https://www.facebook.com/profile.php?id=61552254965408{% endif %}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="{% if dm_content_2.settings.field_13 != blank %}{{ dm_content_2.settings.field_13 | escape }}{% else %}https://www.youtube.com/@dunamisscosmetics/{% endif %}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-youtube"></i>
+                </a>
+
+                <a href="{% if dm_content_2.settings.field_14 != blank %}{{ dm_content_2.settings.field_14 | escape }}{% else %}https://www.instagram.com/dunamisscosmetics{% endif %}" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Right -->
+
+        <div class="dunamiss-contact-contact-form">
+
+            <h2>{{ dm_content_2.settings.field_15 | escape }}</h2>
+            <p>
+                {{ dm_content_2.settings.field_16 | escape }}
+            </p>
+
+            {% form 'contact', id: 'dunamiss-contact-form', class: 'dunamiss-contact-contact-form' %}
+
+                {% if form.posted_successfully? %}
+                    <p class="success" style="margin-bottom: 20px; color: #137f24;">{{ dm_content_2.settings.field_17 | escape }}</p>
+                {% else %}
+                    {{ form.errors | default_errors }}
+                {% endif %}
+
+                <div class="dunamiss-contact-row" {{ dm_content_3.shopify_attributes }}>
+
+                    <input type="email" name="contact[email]" value="{{ form.email | escape }}" placeholder="{{ dm_content_2.settings.field_18 | escape }}" aria-label="{{ dm_content_2.settings.field_19 | escape }}" autocomplete="email" required>
+
+                    <input type="text" name="contact[name]" value="{{ form.name | escape }}" placeholder="{{ dm_content_2.settings.field_20 | escape }}" aria-label="{{ dm_content_3.settings.field_21 | escape }}" autocomplete="name" required>
+                </div>
+                <textarea name="contact[body]" placeholder="{{ dm_content_3.settings.field_22 | escape }}" aria-label="{{ dm_content_3.settings.field_23 | escape }}" required>{{ form.body | escape }}</textarea>
+
+                <label class="dunamiss-contact-checkbox">
+
+                    <input type="checkbox" name="contact[agree]" required>
+
+                    <span>
+                            {{ dm_content_3.settings.field_24 | escape }}
+                            <a href="{% if dm_content_3.settings.field_25 != blank %}{{ dm_content_3.settings.field_25 | escape }}{% else %}/pages/privacy-policy{% endif %}">{{ dm_content_3.settings.field_26 | escape }}</a>
+                            {{ dm_content_3.settings.field_27 | escape }}
+                        </span>
+
+                </label>
+
+                <div id="shopify-captcha" data-captcha-sitekey="{{ 'Shopify.Captcha.siteKey' | t }}" style="margin-bottom: 22px;"></div>
+
+                <button type="submit">
+                    {{ dm_content_3.settings.field_28 | escape }}
+                </button>
+            {% endform %}
+
+            <script src="https://cdn.shopify.com/shopifycloud/storefront-common/js/storefront-common.js" defer></script>
+        </div>
+    </div>
+</section>
+<!-- =========================
+        LOCATION
+    ========================== -->
+
+<section class="dunamiss-contact-location">
+
+    <div class="dunamiss-contact-container dunamiss-contact-location-grid">
+
+        <div class="dunamiss-contact-location-content">
+
+            <h2 {{ dm_content_4.shopify_attributes }}>
+                    {{ dm_content_4.settings.field_29 | escape }}
+                </h2>
+
+            <h4>{{ dm_content_4.settings.field_30 | escape }}</h4>
+
+            <p>
+                {{ dm_content_4.settings.field_31 | escape }}
+            </p>
+
+        </div>
+
+        <div class="map">
+            <iframe src="{% if dm_content_4.settings.field_32 != blank %}{{ dm_content_4.settings.field_32 | escape }}{% else %}https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.627551472567!2d77.08400447549445!3d28.46064177575905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18c4a21e4983%3A0xaf7aeda1533b4cb0!2s7207%2C%20Bougainvillea%20St%2C%20Block%20C2%2C%20DLF%20Phase%20IV%2C%20Sector%2043%2C%20Gurugram%2C%20Haryana%20122009%2C%20India!5e0!3m2!1sen!2sbd!4v1784715856462!5m2!1sen!2sbd{% endif %}"
+            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================
+            FAQ
+    ========================== -->
+
+<section class="dunamiss-contact-faq">
+
+    <div class="dunamiss-contact-container">
+
+        <h2 {{ dm_content_5.shopify_attributes }}>
+                {{ dm_content_5.settings.field_33 | escape }}
+            </h2>
+
+        <div class="dunamiss-contact-faq-item">
+
+            <button class="dunamiss-contact-faq-question">
+
+                {{ dm_content_5.settings.field_34 | escape }}
+
+                <i class="fa-solid fa-plus"></i>
+
+            </button>
+
+            <div class="dunamiss-contact-faq-answer">
+
+                <p>
+                    {{ dm_content_5.settings.field_35 | escape }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="dunamiss-contact-faq-item">
+
+            <button class="dunamiss-contact-faq-question">
+
+                {{ dm_content_5.settings.field_36 | escape }}
+
+                <i class="fa-solid fa-plus"></i>
+
+            </button>
+
+            <div class="dunamiss-contact-faq-answer">
+
+                <p>
+                    {{ dm_content_5.settings.field_37 | escape }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="dunamiss-contact-faq-item">
+
+            <button class="dunamiss-contact-faq-question">
+
+                {{ dm_content_5.settings.field_38 | escape }}
+
+                <i class="fa-solid fa-plus"></i>
+
+            </button>
+
+            <div class="dunamiss-contact-faq-answer">
+
+                <p>
+                    {{ dm_content_5.settings.field_39 | escape }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="dunamiss-contact-faq-item">
+
+            <button class="dunamiss-contact-faq-question">
+
+                {{ dm_content_5.settings.field_40 | escape }}
+
+                <i class="fa-solid fa-plus"></i>
+
+            </button>
+
+            <div class="dunamiss-contact-faq-answer">
+
+                <p>
+                    {{ dm_content_5.settings.field_41 | escape }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================
+        BADGES
+    ========================== -->
+
+<section class="dunamiss-contact-badges">
+
+    <div class="dunamiss-contact-container">
+
+        <h2 {{ dm_content_6.shopify_attributes }}>
+
+                {{ dm_content_6.settings.field_42 | escape }}
+
+            </h2>
+
+        <div class="dunamiss-contact-badge-wrapper">
+
+            <img src="{% if dm_content_6.settings.field_43 != blank %}{{ dm_content_6.settings.field_43 | image_url: width: 1920 }}{% else %}{{ 'CLINICALLY_TESTED.png' | file_url }}{% endif %}" alt="{{ dm_content_6.settings.field_44 | escape }}" width="140" height="140">
+            <img src="{% if dm_content_6.settings.field_45 != blank %}{{ dm_content_6.settings.field_45 | image_url: width: 1920 }}{% else %}{{ 'SALFATE_PARABEN_FREE.png' | file_url }}{% endif %}" alt="{{ dm_content_6.settings.field_46 | escape }}" width="140" height="140">
+            <img src="{% if dm_content_6.settings.field_47 != blank %}{{ dm_content_6.settings.field_47 | image_url: width: 1920 }}{% else %}{{ 'MADE_IN_INDIA_LOGO.png' | file_url }}{% endif %}" alt="{{ dm_content_6.settings.field_48 | escape }}" width="140" height="140">
+            <img src="{% if dm_content_6.settings.field_49 != blank %}{{ dm_content_6.settings.field_49 | image_url: width: 1920 }}{% else %}{{ 'GMP_LOGO.png' | file_url }}{% endif %}" alt="{{ dm_content_6.settings.field_50 | escape }}" width="140" height="140">
+            <img src="{% if dm_content_6.settings.field_51 != blank %}{{ dm_content_6.settings.field_51 | image_url: width: 1920 }}{% else %}{{ 'VEGAN.png' | file_url }}{% endif %}" alt="{{ dm_content_6.settings.field_52 | escape }}" width="140" height="140">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+</div>
+{% schema %}
+{
+  "name": "Dunamiss contact",
+  "tag": "section",
+  "class": "dm-editable-page",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Edit the content groups below. Their positions follow this page’s fixed layout. Additional sections can be added below the page."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content_1",
+      "name": "Have a question?",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_1",
+          "label": "Have a question?",
+          "default": "Have a question?"
+        },
+        {
+          "type": "textarea",
+          "id": "field_2",
+          "label": "Please contact us using the customer support channels below. Plea",
+          "default": "Please contact us using the customer support channels below. Please drop us a text on our WhatsApp and we'd get back to you. Not available on calls."
+        }
+      ]
+    },
+    {
+      "type": "content_2",
+      "name": "Customer Support",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_3",
+          "label": "Customer Support",
+          "default": "Customer Support"
+        },
+        {
+          "type": "text",
+          "id": "field_4",
+          "label": "Have a question? Please contact us using the customer support cha",
+          "default": "Have a question? Please contact us using the customer support channels."
+        },
+        {
+          "type": "textarea",
+          "id": "field_5",
+          "label": "7207, Bougainvillea St, Block C2, DLF Phase IV, Sector 43, Gurugr",
+          "default": "7207, Bougainvillea St,\n                        Block C2,\n                        DLF Phase IV,\n                        Sector 43,\n                        Gurugram,\n                        Haryana 122009"
+        },
+        {
+          "type": "text",
+          "id": "field_6",
+          "label": "Opening hours: Every day 10 AM–6 PM IST",
+          "default": "Opening hours:\n                        Every day\n                        10 AM–6 PM IST"
+        },
+        {
+          "type": "url",
+          "id": "field_7",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "field_8",
+          "label": "WhatsApp: +91 95166 56907",
+          "default": "WhatsApp: +91 95166 56907"
+        },
+        {
+          "type": "text",
+          "id": "field_9",
+          "label": "Email:",
+          "default": "Email:"
+        },
+        {
+          "type": "url",
+          "id": "field_10",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "field_11",
+          "label": "care@dunamiss.in",
+          "default": "care@dunamiss.in"
+        },
+        {
+          "type": "url",
+          "id": "field_12",
+          "label": "Link"
+        },
+        {
+          "type": "url",
+          "id": "field_13",
+          "label": "Link"
+        },
+        {
+          "type": "url",
+          "id": "field_14",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "field_15",
+          "label": "Get in touch",
+          "default": "Get in touch"
+        },
+        {
+          "type": "textarea",
+          "id": "field_16",
+          "label": "Please submit all general enquiries in the contact form below and",
+          "default": "Please submit all general enquiries in the contact form below and we look forward to hearing from you soon."
+        },
+        {
+          "type": "text",
+          "id": "field_17",
+          "label": "Thanks for contacting us. We will get back to you shortly.",
+          "default": "Thanks for contacting us. We will get back to you shortly."
+        },
+        {
+          "type": "text",
+          "id": "field_18",
+          "label": "Placeholder",
+          "default": "Your Email"
+        },
+        {
+          "type": "text",
+          "id": "field_19",
+          "label": "Aria Label",
+          "default": "Email address"
+        },
+        {
+          "type": "text",
+          "id": "field_20",
+          "label": "Placeholder",
+          "default": "Your name"
+        }
+      ]
+    },
+    {
+      "type": "content_3",
+      "name": "I agree to the",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_21",
+          "label": "Aria Label",
+          "default": "Your name"
+        },
+        {
+          "type": "text",
+          "id": "field_22",
+          "label": "Placeholder",
+          "default": "Your message"
+        },
+        {
+          "type": "text",
+          "id": "field_23",
+          "label": "Aria Label",
+          "default": "Your message"
+        },
+        {
+          "type": "text",
+          "id": "field_24",
+          "label": "I agree to the",
+          "default": "I agree to the"
+        },
+        {
+          "type": "url",
+          "id": "field_25",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "field_26",
+          "label": "Privacy Policy",
+          "default": "Privacy Policy"
+        },
+        {
+          "type": "text",
+          "id": "field_27",
+          "label": "of the website.",
+          "default": "of the website."
+        },
+        {
+          "type": "text",
+          "id": "field_28",
+          "label": "SUBMIT",
+          "default": "SUBMIT"
+        }
+      ]
+    },
+    {
+      "type": "content_4",
+      "name": "Our Office Location",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_29",
+          "label": "Our Office Location",
+          "default": "Our Office Location"
+        },
+        {
+          "type": "text",
+          "id": "field_30",
+          "label": "Gurugram, Haryana",
+          "default": "Gurugram, Haryana"
+        },
+        {
+          "type": "text",
+          "id": "field_31",
+          "label": "7207, Bougainvillea St, Block C2, DLF Phase IV, Sector 43, Gurugr",
+          "default": "7207, Bougainvillea St, Block C2, DLF Phase IV, Sector 43, Gurugram, Haryana 122009"
+        },
+        {
+          "type": "url",
+          "id": "field_32",
+          "label": "Map URL"
+        }
+      ]
+    },
+    {
+      "type": "content_5",
+      "name": "Frequently Asked Question",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_33",
+          "label": "Frequently Asked Questions",
+          "default": "Frequently Asked Questions"
+        },
+        {
+          "type": "text",
+          "id": "field_34",
+          "label": "How long does delivery take?",
+          "default": "How long does delivery take?"
+        },
+        {
+          "type": "text",
+          "id": "field_35",
+          "label": "Orders are usually delivered within 3–7 business days.",
+          "default": "Orders are usually delivered within 3–7 business days."
+        },
+        {
+          "type": "text",
+          "id": "field_36",
+          "label": "Can I return a product for a refund?",
+          "default": "Can I return a product for a refund?"
+        },
+        {
+          "type": "text",
+          "id": "field_37",
+          "label": "Yes. Returns are accepted within the return period if the product",
+          "default": "Yes. Returns are accepted within the return period if the product meets the return policy."
+        },
+        {
+          "type": "text",
+          "id": "field_38",
+          "label": "How do exchanges work?",
+          "default": "How do exchanges work?"
+        },
+        {
+          "type": "text",
+          "id": "field_39",
+          "label": "Contact support and we'll guide you through the exchange process.",
+          "default": "Contact support and we'll guide you through the exchange process."
+        },
+        {
+          "type": "text",
+          "id": "field_40",
+          "label": "Can I cancel or change my order after placing it?",
+          "default": "Can I cancel or change my order after placing it?"
+        },
+        {
+          "type": "text",
+          "id": "field_41",
+          "label": "Orders can only be modified before shipment.",
+          "default": "Orders can only be modified before shipment."
+        }
+      ]
+    },
+    {
+      "type": "content_6",
+      "name": "We're clean, we're green,",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "field_42",
+          "label": "We're clean, we're green, we're sustainable, we're all that you n",
+          "default": "We're clean, we're green,\n                we're sustainable,\n                we're all that you need!"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_43",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_44",
+          "label": "Alt",
+          "default": "1"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_45",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_46",
+          "label": "Alt",
+          "default": "2"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_47",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_48",
+          "label": "Alt",
+          "default": "3"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_49",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_50",
+          "label": "Alt",
+          "default": "4"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_51",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_52",
+          "label": "Alt",
+          "default": "5"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Dunamiss contact",
+      "blocks": [
+        {
+          "type": "content_1",
+          "settings": {
+            "field_1": "Have a question?",
+            "field_2": "Please contact us using the customer support channels below. Please drop us a text on our WhatsApp and we'd get back to you. Not available on calls."
+          }
+        },
+        {
+          "type": "content_2",
+          "settings": {
+            "field_3": "Customer Support",
+            "field_4": "Have a question? Please contact us using the customer support channels.",
+            "field_5": "7207, Bougainvillea St,\n                        Block C2,\n                        DLF Phase IV,\n                        Sector 43,\n                        Gurugram,\n                        Haryana 122009",
+            "field_6": "Opening hours:\n                        Every day\n                        10 AM–6 PM IST",
+            "field_7": "https://wa.me/919516656907",
+            "field_8": "WhatsApp: +91 95166 56907",
+            "field_9": "Email:",
+            "field_10": "mailto:care@dunamiss.in",
+            "field_11": "care@dunamiss.in",
+            "field_12": "https://www.facebook.com/profile.php?id=61552254965408",
+            "field_13": "https://www.youtube.com/@dunamisscosmetics/",
+            "field_14": "https://www.instagram.com/dunamisscosmetics",
+            "field_15": "Get in touch",
+            "field_16": "Please submit all general enquiries in the contact form below and we look forward to hearing from you soon.",
+            "field_17": "Thanks for contacting us. We will get back to you shortly.",
+            "field_18": "Your Email",
+            "field_19": "Email address",
+            "field_20": "Your name"
+          }
+        },
+        {
+          "type": "content_3",
+          "settings": {
+            "field_21": "Your name",
+            "field_22": "Your message",
+            "field_23": "Your message",
+            "field_24": "I agree to the",
+            "field_25": "/pages/privacy-policy",
+            "field_26": "Privacy Policy",
+            "field_27": "of the website.",
+            "field_28": "SUBMIT"
+          }
+        },
+        {
+          "type": "content_4",
+          "settings": {
+            "field_29": "Our Office Location",
+            "field_30": "Gurugram, Haryana",
+            "field_31": "7207, Bougainvillea St, Block C2, DLF Phase IV, Sector 43, Gurugram, Haryana 122009",
+            "field_32": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.627551472567!2d77.08400447549445!3d28.46064177575905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18c4a21e4983%3A0xaf7aeda1533b4cb0!2s7207%2C%20Bougainvillea%20St%2C%20Block%20C2%2C%20DLF%20Phase%20IV%2C%20Sector%2043%2C%20Gurugram%2C%20Haryana%20122009%2C%20India!5e0!3m2!1sen!2sbd!4v1784715856462!5m2!1sen!2sbd"
+          }
+        },
+        {
+          "type": "content_5",
+          "settings": {
+            "field_33": "Frequently Asked Questions",
+            "field_34": "How long does delivery take?",
+            "field_35": "Orders are usually delivered within 3–7 business days.",
+            "field_36": "Can I return a product for a refund?",
+            "field_37": "Yes. Returns are accepted within the return period if the product meets the return policy.",
+            "field_38": "How do exchanges work?",
+            "field_39": "Contact support and we'll guide you through the exchange process.",
+            "field_40": "Can I cancel or change my order after placing it?",
+            "field_41": "Orders can only be modified before shipment."
+          }
+        },
+        {
+          "type": "content_6",
+          "settings": {
+            "field_42": "We're clean, we're green,\n                we're sustainable,\n                we're all that you need!",
+            "field_43": "shopify://shop_images/CLINICALLY_TESTED.png",
+            "field_44": "1",
+            "field_45": "shopify://shop_images/SALFATE_PARABEN_FREE.png",
+            "field_46": "2",
+            "field_47": "shopify://shop_images/MADE_IN_INDIA_LOGO.png",
+            "field_48": "3",
+            "field_49": "shopify://shop_images/GMP_LOGO.png",
+            "field_50": "4",
+            "field_51": "shopify://shop_images/VEGAN.png",
+            "field_52": "5"
+          }
+        }
+      ]
+    }
+  ],
+  "limit": 1
+}
+{% endschema %}

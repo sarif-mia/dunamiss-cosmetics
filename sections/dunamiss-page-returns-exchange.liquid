@@ -1,3 +1,9 @@
+<div style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+{% assign dm_content_1 = section.blocks | where: 'type', 'content_1' | first %}
+{% assign dm_content_2 = section.blocks | where: 'type', 'content_2' | first %}
+{% assign dm_content_3 = section.blocks | where: 'type', 'content_3' | first %}
+{% assign dm_content_4 = section.blocks | where: 'type', 'content_4' | first %}
+{% assign dm_content_5 = section.blocks | where: 'type', 'content_5' | first %}
 <!-- =========================
      DUNAMISS RETURNS & EXCHANGES
 ========================= -->
@@ -764,22 +770,20 @@
   <!-- HERO -->
   <section class="dm-return-hero">
 
-    <div class="dm-return-eyebrow">
+    <div class="dm-return-eyebrow" {{ dm_content_1.shopify_attributes }}>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
         <path d="M4 7h16"/>
         <path d="M6 7l1 14h10l1-14"/>
         <path d="M9 7V4h6v3"/>
         <path d="M9 11v6M15 11v6"/>
       </svg>
-      Dunamiss Care
+      {{ dm_content_1.settings.field_1 | escape }}
     </div>
 
-    <h1>Returns &amp; Exchanges</h1>
+    <h1>{{ dm_content_1.settings.field_2 | escape }}</h1>
 
     <p>
-      Shopping should feel effortless. We've made returns and exchanges
-      just as smooth. Because your experience matters as much as
-      your skincare.
+      {{ dm_content_1.settings.field_3 | escape }}
     </p>
 
   </section>
@@ -797,9 +801,9 @@
         </svg>
       </div>
 
-      <div>
-        <strong>Easy Resolution</strong>
-        <span>We're here to help</span>
+      <div {{ dm_content_2.shopify_attributes }}>
+        <strong>{{ dm_content_2.settings.field_4 | escape }}</strong>
+        <span>{{ dm_content_2.settings.field_5 | escape }}</span>
       </div>
 
     </div>
@@ -815,8 +819,8 @@
       </div>
 
       <div>
-        <strong>Quick Reporting</strong>
-        <span>Report issues promptly</span>
+        <strong>{{ dm_content_2.settings.field_6 | escape }}</strong>
+        <span>{{ dm_content_2.settings.field_7 | escape }}</span>
       </div>
 
     </div>
@@ -832,8 +836,8 @@
       </div>
 
       <div>
-        <strong>Quality Verified</strong>
-        <span>Every request is reviewed</span>
+        <strong>{{ dm_content_2.settings.field_8 | escape }}</strong>
+        <span>{{ dm_content_2.settings.field_9 | escape }}</span>
       </div>
 
     </div>
@@ -845,7 +849,7 @@
   <section class="dm-return-section">
     <div class="dm-return-section-head">
       <div>
-        <h2>Return &amp; Exchange Policy</h2>
+        <h2 {{ dm_content_3.shopify_attributes }}>{{ dm_content_3.settings.field_10 | escape }}</h2>
       </div>
     </div>
     {% if shop.refund_policy.body != blank %}
@@ -853,10 +857,10 @@
         {{ shop.refund_policy.body }}
       </div>
       <p>
-        <a href="{{ shop.refund_policy.url | escape }}">View our return and refund policy</a>
+        <a href="{{ shop.refund_policy.url | escape }}">{{ dm_content_3.settings.field_11 | escape }}</a>
       </p>
     {% else %}
-      <p>Contact our support team for return and exchange eligibility.</p>
+      <p>{{ dm_content_3.settings.field_12 | escape }}</p>
     {% endif %}
   </section>
 
@@ -864,35 +868,34 @@
   <!-- SUPPORT -->
   <section class="dm-return-support">
 
-    <h2>Need Help?</h2>
+    <h2 {{ dm_content_4.shopify_attributes }}>{{ dm_content_4.settings.field_13 | escape }}</h2>
 
     <p>
-      We're always here for you. Reach out to our support team
-      and we'll be happy to assist with your request.
+      {{ dm_content_4.settings.field_14 | escape }}
     </p>
 
 
     <div class="dm-return-contact">
 
-      <a href="mailto:care@dunamiss.in">
+      <a href="{% if dm_content_4.settings.field_15 != blank %}{{ dm_content_4.settings.field_15 | escape }}{% else %}mailto:care@dunamiss.in{% endif %}">
 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
           <rect x="3" y="5" width="18" height="14" rx="2"/>
           <path d="M3 7l9 6 9-6"/>
         </svg>
 
-        care@dunamiss.in
+        {{ dm_content_4.settings.field_16 | escape }}
 
       </a>
 
 
-      <a href="https://wa.me/919516656907" aria-label="Message Dunamiss on WhatsApp">
+      <a href="{% if dm_content_4.settings.field_17 != blank %}{{ dm_content_4.settings.field_17 | escape }}{% else %}https://wa.me/919516656907{% endif %}" aria-label="{{ dm_content_4.settings.field_18 | escape }}">
 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
           <path d="M6 3l4 2-2 4c1.3 2.7 3.3 4.7 6 6l4-2 2 4-2 3c-7 1-14-6-13-13L6 3z"/>
         </svg>
 
-        WhatsApp: +91 95166 56907
+        {{ dm_content_4.settings.field_19 | escape }}
 
       </a>
 
@@ -904,7 +907,7 @@
           <path d="M12 7v5l3 2"/>
         </svg>
 
-        Every day · 10 AM–6 PM IST
+        {{ dm_content_4.settings.field_20 | escape }}
 
       </span>
 
@@ -913,8 +916,259 @@
   </section>
 
 
-  <div class="dm-return-footer">
-    Because luxury isn't just about great skincare — it's about great service too.
+  <div class="dm-return-footer" {{ dm_content_5.shopify_attributes }}>
+    {{ dm_content_5.settings.field_21 | escape }}
   </div>
 
 </div>
+
+</div>
+{% schema %}
+{
+  "name": "Dunamiss returns",
+  "tag": "section",
+  "class": "dm-editable-page",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Edit the content groups below. Their positions follow this page’s fixed layout. Additional sections can be added below the page."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content_1",
+      "name": "Dunamiss Care",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_1",
+          "label": "Dunamiss Care",
+          "default": "Dunamiss Care"
+        },
+        {
+          "type": "text",
+          "id": "field_2",
+          "label": "Returns & Exchanges",
+          "default": "Returns & Exchanges"
+        },
+        {
+          "type": "textarea",
+          "id": "field_3",
+          "label": "Shopping should feel effortless. We've made returns and exchanges",
+          "default": "Shopping should feel effortless. We've made returns and exchanges\n      just as smooth. Because your experience matters as much as\n      your skincare."
+        }
+      ]
+    },
+    {
+      "type": "content_2",
+      "name": "Easy Resolution",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_4",
+          "label": "Easy Resolution",
+          "default": "Easy Resolution"
+        },
+        {
+          "type": "text",
+          "id": "field_5",
+          "label": "We're here to help",
+          "default": "We're here to help"
+        },
+        {
+          "type": "text",
+          "id": "field_6",
+          "label": "Quick Reporting",
+          "default": "Quick Reporting"
+        },
+        {
+          "type": "text",
+          "id": "field_7",
+          "label": "Report issues promptly",
+          "default": "Report issues promptly"
+        },
+        {
+          "type": "text",
+          "id": "field_8",
+          "label": "Quality Verified",
+          "default": "Quality Verified"
+        },
+        {
+          "type": "text",
+          "id": "field_9",
+          "label": "Every request is reviewed",
+          "default": "Every request is reviewed"
+        }
+      ]
+    },
+    {
+      "type": "content_3",
+      "name": "Return & Exchange Policy",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_10",
+          "label": "Return & Exchange Policy",
+          "default": "Return & Exchange Policy"
+        },
+        {
+          "type": "text",
+          "id": "field_11",
+          "label": "View our return and refund policy",
+          "default": "View our return and refund policy"
+        },
+        {
+          "type": "text",
+          "id": "field_12",
+          "label": "Contact our support team for return and exchange eligibility.",
+          "default": "Contact our support team for return and exchange eligibility."
+        }
+      ]
+    },
+    {
+      "type": "content_4",
+      "name": "Need Help?",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_13",
+          "label": "Need Help?",
+          "default": "Need Help?"
+        },
+        {
+          "type": "textarea",
+          "id": "field_14",
+          "label": "We're always here for you. Reach out to our support team and we'l",
+          "default": "We're always here for you. Reach out to our support team\n      and we'll be happy to assist with your request."
+        },
+        {
+          "type": "url",
+          "id": "field_15",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "field_16",
+          "label": "care@dunamiss.in",
+          "default": "care@dunamiss.in"
+        },
+        {
+          "type": "url",
+          "id": "field_17",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "field_18",
+          "label": "Aria Label",
+          "default": "Message Dunamiss on WhatsApp"
+        },
+        {
+          "type": "text",
+          "id": "field_19",
+          "label": "WhatsApp: +91 95166 56907",
+          "default": "WhatsApp: +91 95166 56907"
+        },
+        {
+          "type": "text",
+          "id": "field_20",
+          "label": "Every day · 10 AM–6 PM IST",
+          "default": "Every day · 10 AM–6 PM IST"
+        }
+      ]
+    },
+    {
+      "type": "content_5",
+      "name": "Because luxury isn't just",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_21",
+          "label": "Because luxury isn't just about great skincare — it's about great",
+          "default": "Because luxury isn't just about great skincare — it's about great service too."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Dunamiss returns",
+      "blocks": [
+        {
+          "type": "content_1",
+          "settings": {
+            "field_1": "Dunamiss Care",
+            "field_2": "Returns & Exchanges",
+            "field_3": "Shopping should feel effortless. We've made returns and exchanges\n      just as smooth. Because your experience matters as much as\n      your skincare."
+          }
+        },
+        {
+          "type": "content_2",
+          "settings": {
+            "field_4": "Easy Resolution",
+            "field_5": "We're here to help",
+            "field_6": "Quick Reporting",
+            "field_7": "Report issues promptly",
+            "field_8": "Quality Verified",
+            "field_9": "Every request is reviewed"
+          }
+        },
+        {
+          "type": "content_3",
+          "settings": {
+            "field_10": "Return & Exchange Policy",
+            "field_11": "View our return and refund policy",
+            "field_12": "Contact our support team for return and exchange eligibility."
+          }
+        },
+        {
+          "type": "content_4",
+          "settings": {
+            "field_13": "Need Help?",
+            "field_14": "We're always here for you. Reach out to our support team\n      and we'll be happy to assist with your request.",
+            "field_15": "mailto:care@dunamiss.in",
+            "field_16": "care@dunamiss.in",
+            "field_17": "https://wa.me/919516656907",
+            "field_18": "Message Dunamiss on WhatsApp",
+            "field_19": "WhatsApp: +91 95166 56907",
+            "field_20": "Every day · 10 AM–6 PM IST"
+          }
+        },
+        {
+          "type": "content_5",
+          "settings": {
+            "field_21": "Because luxury isn't just about great skincare — it's about great service too."
+          }
+        }
+      ]
+    }
+  ],
+  "limit": 1
+}
+{% endschema %}

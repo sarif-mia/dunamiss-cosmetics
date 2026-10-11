@@ -1,0 +1,137 @@
+{
+  "sections": {
+    "main": {
+      "type": "dunamiss-page-terms-condition",
+      "blocks": {
+        "content_1": {
+          "type": "content_1",
+          "settings": {
+            "field_1": "Dunamiss · Legal",
+            "field_2": "Terms & Conditions",
+            "field_3": "Simple. Transparent. Designed with you in mind. ✨",
+            "field_4": "Because great skincare deserves an even better experience."
+          }
+        },
+        "content_2": {
+          "type": "content_2",
+          "settings": {
+            "field_5": "Transparent Policies",
+            "field_6": "Clear & straightforward",
+            "field_7": "Fair Experience",
+            "field_8": "Terms designed for you",
+            "field_9": "Policy Updates",
+            "field_10": "Always kept up to date"
+          }
+        },
+        "content_3": {
+          "type": "content_3",
+          "settings": {
+            "field_11": "01",
+            "field_12": "General Terms",
+            "field_13": "The essentials of using the Dunamiss website.",
+            "field_14": "By using the Dunamiss website, you agree to these\n        Terms & Conditions.",
+            "field_15": "Please ensure all information provided is accurate\n        and up to date.",
+            "field_16": "Product availability, pricing, offers, and policies\n        may change without prior notice.",
+            "field_17": "Any misuse, fraudulent activity, or abuse of our platform\n        may result in order cancellation or account restrictions."
+          }
+        },
+        "content_4": {
+          "type": "content_4",
+          "settings": {
+            "field_18": "02",
+            "field_19": "Orders & Payments",
+            "field_20": "Everything you need to know about placing an order.",
+            "field_21": "Payment",
+            "field_22": "Payments must be made using valid and authorized\n          payment methods.",
+            "field_23": "Order Confirmation",
+            "field_24": "All orders are subject to product availability\n          and confirmation.",
+            "field_25": "Order changes & cancellations",
+            "field_26": "Once an order is dispatched, modifications or cancellations\n          may no longer be possible. Dunamiss reserves the right to\n          cancel orders in case of pricing errors, stock issues,\n          or suspected fraudulent activity."
+          }
+        },
+        "content_5": {
+          "type": "content_5",
+          "settings": {
+            "field_27": "03",
+            "field_28": "Shipping & Delivery",
+            "field_29": "Your order's journey from us to you.",
+            "field_30": "Delivery timelines are estimated and may vary based\n        on your location.",
+            "field_31": "You'll receive tracking details via SMS and email\n        once your order is shipped.",
+            "field_32": "While we work with trusted delivery partners, delays\n        caused by unforeseen circumstances are beyond our control.",
+            "field_33": "Please ensure that your shipping address and contact\n        information are accurate before placing your order."
+          }
+        },
+        "content_6": {
+          "type": "content_6",
+          "settings": {
+            "field_34": "04",
+            "field_35": "Returns & Refunds",
+            "field_36": "Our approach to returns, exchanges, and refunds.",
+            "field_37": "Returns",
+            "field_38": "Return and exchange requests must be submitted within\n          the eligible return period and according to the\n          applicable return policy.",
+            "field_39": "Quality Verification",
+            "field_40": "Products must be unused, unopened, and returned in their\n          original packaging. Refunds, where applicable, are processed\n          after successful quality verification.",
+            "field_41": "Hygiene & safety",
+            "field_42": "Eligible return or exchange requests must be reported within 48 hours of delivery. Products purchased on sale are not eligible for return or exchange. Opened or used products are not eligible for return or exchange for hygiene reasons."
+          }
+        },
+        "content_7": {
+          "type": "content_7",
+          "settings": {
+            "field_43": "05",
+            "field_44": "Privacy & Data Protection",
+            "field_45": "Your information deserves the same care as your skin.",
+            "field_46": "Your privacy matters to us.",
+            "field_47": "We keep your personal information safe, secure, and confidential.\n          Your data is used only to process orders, improve your experience,\n          and provide customer support. We never sell or share your personal\n          information with unauthorized third parties."
+          }
+        },
+        "content_8": {
+          "type": "content_8",
+          "settings": {
+            "field_48": "06",
+            "field_49": "Policy Updates",
+            "field_50": "Staying transparent as Dunamiss grows.",
+            "field_51": "We may update these Terms & Conditions from time to time.",
+            "field_52": "Continued use of our website means you agree to the latest version.",
+            "field_53": "We recommend reviewing this page periodically to stay informed."
+          }
+        },
+        "content_9": {
+          "type": "content_9",
+          "settings": {
+            "field_54": "Need Help?",
+            "field_55": "Our Glow Experts are always here for you. 💌\n      If you have questions about our terms or policies,\n      we're happy to help.",
+            "field_56": "mailto:care@dunamiss.in",
+            "field_57": "care@dunamiss.in",
+            "field_58": "https://wa.me/919516656907",
+            "field_59": "Message Dunamiss on WhatsApp",
+            "field_60": "WhatsApp: +91 95166 56907",
+            "field_61": "Every day · 10 AM–6 PM IST"
+          }
+        },
+        "content_10": {
+          "type": "content_10",
+          "settings": {
+            "field_62": "Transparency you can trust. Luxury you'll love.\n    That's the Dunamiss Promise."
+          }
+        }
+      },
+      "block_order": [
+        "content_1",
+        "content_2",
+        "content_3",
+        "content_4",
+        "content_5",
+        "content_6",
+        "content_7",
+        "content_8",
+        "content_9",
+        "content_10"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,3 +1,6 @@
+<script src="{{ 'dunamiss-content-editor.js' | asset_url }}" defer></script>
+{% assign dm_content_1 = section.blocks | where: 'type', 'content_1' | first %}
+{% assign dm_content_2 = section.blocks | where: 'type', 'content_2' | first %}
 <style>
 /* ========== CERTIFIED QUALITY ASSURANCE SECTION ========== */
 .clinically-tested-certified-quality-section {
@@ -111,87 +114,50 @@
         <div class="clinically-tested-content">
             <div class="clinically-tested-certificates-carousel">
                 <div class="clinically-tested-title-arrow" >
-                    <h2 class="clinically-badge">
-                    Clinically tested
+                    <h2 class="clinically-badge" {{ dm_content_1.shopify_attributes }}>
+                    {{ dm_content_1.settings.field_1 | escape }}
                     </h2>
-                    <div class="clinically-tested-carousel-controls" aria-label="Certificate carousel controls">
-                        <button type="button" class="clinically-tested-carousel-btn prev-btn" aria-label="Previous certificates">
+                    <div class="clinically-tested-carousel-controls" aria-label="{{ dm_content_1.settings.field_2 | escape }}">
+                        <button type="button" class="clinically-tested-carousel-btn prev-btn" aria-label="{{ dm_content_1.settings.field_3 | escape }}">
                             <svg class="icon icon-prev" width="16" height="16" aria-hidden="true"><use href="#icon-back"></use></svg>
                         </button>
-                        <button type="button" class="clinically-tested-carousel-btn next-btn" aria-label="Next certificates">
+                        <button type="button" class="clinically-tested-carousel-btn next-btn" aria-label="{{ dm_content_1.settings.field_4 | escape }}">
                             <svg class="icon icon-next" width="16" height="16" aria-hidden="true"><use href="#icon-next"></use></svg>
                         </button>
                     </div>                   
                 </div>    
                 <div class="clinically-tested-certificates-grid" id="clinically-tested-certificatesGrid">
                     <div class="clinically-tested-certificate-item">
-                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/LIP_BALM_CERTIFICATE.jpg?v=1748238114" alt="Lip Balm Certification" width="250" height="350">
+                        <img src="{% if dm_content_1.settings.field_5 != blank %}{{ dm_content_1.settings.field_5 | image_url: width: 1920 }}{% else %}{{ 'LIP_BALM_CERTIFICATE.jpg' | file_url }}{% endif %}" alt="{{ dm_content_1.settings.field_6 | escape }}" width="250" height="350">
                     </div>
                     <div class="clinically-tested-certificate-item">
-                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/CERTIFICATE_SHEET_MASK.jpg?v=1750227236" alt="Sheet Mask Certification" width="250" height="350">
+                        <img src="{% if dm_content_1.settings.field_7 != blank %}{{ dm_content_1.settings.field_7 | image_url: width: 1920 }}{% else %}{{ 'CERTIFICATE_SHEET_MASK.jpg' | file_url }}{% endif %}" alt="{{ dm_content_1.settings.field_8 | escape }}" width="250" height="350">
                     </div>
                     <div class="clinically-tested-certificate-item">
-                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/TESTED_IN_INDIA.jpg?v=1784529809" alt="Production Certification" width="250" height="350">
+                        <img src="{% if dm_content_1.settings.field_9 != blank %}{{ dm_content_1.settings.field_9 | image_url: width: 1920 }}{% else %}{{ 'TESTED_IN_INDIA.jpg' | file_url }}{% endif %}" alt="{{ dm_content_1.settings.field_10 | escape }}" width="250" height="350">
                     </div>
                     <div class="clinically-tested-certificate-item">
-                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/On-Site_Inspection_Zurko.jpg?v=1784529846" alt="On-Site Inspection" width="250" height="350">
+                        <img src="{% if dm_content_1.settings.field_11 != blank %}{{ dm_content_1.settings.field_11 | image_url: width: 1920 }}{% else %}{{ 'On-Site_Inspection_Zurko.jpg' | file_url }}{% endif %}" alt="{{ dm_content_1.settings.field_12 | escape }}" width="250" height="350">
                     </div>
                     <div class="clinically-tested-certificate-item">
-                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Hazel_Glitter_Certification.png?v=1784537161" alt="Hazel Glitter Certification" width="250" height="350">
+                        <img src="{% if dm_content_1.settings.field_13 != blank %}{{ dm_content_1.settings.field_13 | image_url: width: 1920 }}{% else %}{{ 'Hazel_Glitter_Certification.png' | file_url }}{% endif %}" alt="{{ dm_content_1.settings.field_14 | escape }}" width="250" height="350">
                     </div>
                     <div class="clinically-tested-certificate-item">
-                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Eye_Balm_Certification.png?v=1784537161" alt="Eye Balm Certification" width="250" height="350">
+                        <img src="{% if dm_content_1.settings.field_15 != blank %}{{ dm_content_1.settings.field_15 | image_url: width: 1920 }}{% else %}{{ 'Eye_Balm_Certification.png' | file_url }}{% endif %}" alt="{{ dm_content_1.settings.field_16 | escape }}" width="250" height="350">
                     </div>
                      <div class="clinically-tested-certificate-item">
-                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Sunscreen_Certification.png?v=1784537160" alt="Sunscreen Certification" width="250" height="350">
+                        <img src="{% if dm_content_1.settings.field_17 != blank %}{{ dm_content_1.settings.field_17 | image_url: width: 1920 }}{% else %}{{ 'Sunscreen_Certification.png' | file_url }}{% endif %}" alt="{{ dm_content_1.settings.field_18 | escape }}" width="250" height="350">
                     </div>
                     <div class="clinically-tested-certificate-item">
-                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Lip_Oil_Certification.png?v=1784537159" alt="Lip Oil" width="250" height="350">
+                        <img src="{% if dm_content_2.settings.field_19 != blank %}{{ dm_content_2.settings.field_19 | image_url: width: 1920 }}{% else %}{{ 'Lip_Oil_Certification.png' | file_url }}{% endif %}" alt="{{ dm_content_2.settings.field_20 | escape }}" width="250" height="350" {{ dm_content_2.shopify_attributes }}>
                     </div>
                     <div class="clinically-tested-certificate-item">
-                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Am_Cream__Certification.png?v=1784537160" alt="AM Cream Certification" width="250" height="350">
+                        <img src="{% if dm_content_2.settings.field_21 != blank %}{{ dm_content_2.settings.field_21 | image_url: width: 1920 }}{% else %}{{ 'Am_Cream__Certification.png' | file_url }}{% endif %}" alt="{{ dm_content_2.settings.field_22 | escape }}" width="250" height="350">
                     </div>
                     <div class="clinically-tested-certificate-item">
-                        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Mocka_Kiss_Certification.png?v=1784537160" alt="Mocha Kiss" width="250" height="350">
+                        <img src="{% if dm_content_2.settings.field_23 != blank %}{{ dm_content_2.settings.field_23 | image_url: width: 1920 }}{% else %}{{ 'Mocka_Kiss_Certification.png' | file_url }}{% endif %}" alt="{{ dm_content_2.settings.field_24 | escape }}" width="250" height="350">
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-
-<script>
-/* certificate Sections Dunamiss */
-document.addEventListener('DOMContentLoaded', function () {
-    const grid = document.getElementById('clinically-tested-certificatesGrid');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-
-    if (!grid || !prevBtn || !nextBtn) return;
-
-    const getScrollAmount = () => {
-        const firstCard = grid.querySelector('.clinically-tested-certificate-item');
-        if (!firstCard) return 0;
-        // add gap value consistent with CSS gap
-        return Math.round(firstCard.getBoundingClientRect().width + 24);
-    };
-
-    const scrollCards = (direction) => {
-        const amount = getScrollAmount();
-        const currentLeft = grid.scrollLeft;
-        const targetLeft = direction === 'next'
-            ? currentLeft + amount
-            : currentLeft - amount;
-
-        grid.scrollTo({ left: targetLeft, behavior: 'smooth' });
-    };
-
-    prevBtn.addEventListener('click', function () {
-        scrollCards('prev');
-    });
-
-    nextBtn.addEventListener('click', function () {
-        scrollCards('next');
-    });
-});
-</script>

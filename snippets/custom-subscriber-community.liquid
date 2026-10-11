@@ -1,3 +1,4 @@
+{% assign dm_content_1 = section.blocks | where: 'type', 'content_1' | first %}
 <style>
 .discounts-subscribers-section {
   padding: 0;
@@ -106,23 +107,23 @@
   <div class="container-fluid">
     <div class="discounts-subscribers-grid">
       <div class="discounts-subscribers-gallery">
-        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/EYE_BALM_COMMING_SOON_image_6_jpg.jpg?v=1774847153" alt="image 1" width="800" height="800" loading="lazy" />
-        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/6FABC92F-7444-435E-B092-8DF126D5B0CD.jpg?v=1750091894" alt="image 2" width="800" height="800" loading="lazy" />
-        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Untitled_design_7_56f11543-a563-441b-b425-14e63e3a235a.png?v=1706867912" alt="image 3" width="800" height="800" loading="lazy" />
-        <img src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/Untitled_design_-_2026-06-02T134928.959.jpg?v=1780388593" alt="image 4" width="800" height="800" loading="lazy" />
+        <img src="{% if dm_content_1.settings.field_1 != blank %}{{ dm_content_1.settings.field_1 | image_url: width: 1920 }}{% else %}{{ 'EYE_BALM_COMMING_SOON_image_6_jpg.jpg' | file_url }}{% endif %}" alt="{{ dm_content_1.settings.field_2 | escape }}" width="800" height="800" loading="lazy" / {{ dm_content_1.shopify_attributes }}>
+        <img src="{% if dm_content_1.settings.field_3 != blank %}{{ dm_content_1.settings.field_3 | image_url: width: 1920 }}{% else %}{{ '6FABC92F-7444-435E-B092-8DF126D5B0CD.jpg' | file_url }}{% endif %}" alt="{{ dm_content_1.settings.field_4 | escape }}" width="800" height="800" loading="lazy" />
+        <img src="{% if dm_content_1.settings.field_5 != blank %}{{ dm_content_1.settings.field_5 | image_url: width: 1920 }}{% else %}{{ 'Untitled_design_7_56f11543-a563-441b-b425-14e63e3a235a.png' | file_url }}{% endif %}" alt="{{ dm_content_1.settings.field_6 | escape }}" width="800" height="800" loading="lazy" />
+        <img src="{% if dm_content_1.settings.field_7 != blank %}{{ dm_content_1.settings.field_7 | image_url: width: 1920 }}{% else %}{{ 'Untitled_design_-_2026-06-02T134928.959.jpg' | file_url }}{% endif %}" alt="{{ dm_content_1.settings.field_8 | escape }}" width="800" height="800" loading="lazy" />
       </div>
 
       <div class="discounts-subscribers-card">
-        <h3 class="community-header">Join our community, we have lots to offer</h3>
-        <p>Get the latest scoop straight from our brand. New launches, discounts, exclusive access & more. You’ll get first dibs on everything fresh and fun.</p>
+        <h3 class="community-header">{{ dm_content_1.settings.field_9 | escape }}</h3>
+        <p>{{ dm_content_1.settings.field_10 | escape }} & {{ dm_content_1.settings.field_11 | escape }}</p>
         <form class="discounts-subscribers-form" method="post" action="/contact#contact_form" accept-charset="UTF-8">
           <input type="hidden" name="form_type" value="customer" />
           <input type="hidden" name="utf8" value="✓" />
           <input type="hidden" name="contact[tags]" value="newsletter" />
-          <input type="email" name="contact[email]" placeholder="Enter Your Email" required />
-          <button type="submit">Subscribe</button>
+          <input type="email" name="contact[email]" placeholder="{{ dm_content_1.settings.field_12 | escape }}" required />
+          <button type="submit">{{ dm_content_1.settings.field_13 | escape }}</button>
         </form>
-        <p class="discounts-subscribers-note">You can unsubscribe anytime. For more details review our <a href="https://dunamiss.in/pages/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</p>
+        <p class="discounts-subscribers-note">{{ dm_content_1.settings.field_14 | escape }} <a href="{% if dm_content_1.settings.field_15 != blank %}{{ dm_content_1.settings.field_15 | escape }}{% else %}https://dunamiss.in/pages/privacy-policy{% endif %}" target="_blank" rel="noopener noreferrer">{{ dm_content_1.settings.field_16 | escape }}</a>.</p>
       </div>
     </div>
   </div>

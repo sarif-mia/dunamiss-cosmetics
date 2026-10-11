@@ -1,4 +1,4 @@
-{%- if legacy_hero != blank -%}
+{%- if science_legacy_layout -%}
 {{ 'dunamiss-inside-science.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'dunamiss-inside-science.js' | asset_url }}" defer></script>
 <div class="dunamiss-inside-science dunamiss-inside-science--{{ science_category | escape }}">
@@ -15,7 +15,7 @@ Reuse the established Inside Science classes and four numbered sections.
 Only published product information is supplied by dunamiss-inside-science-data.
 The decorative divider does not represent a measured performance score.
 {% endcomment %}
-{%- if science_details != blank -%}
+{%- if science_details != blank or legacy_hero != blank or legacy_science != blank or legacy_active != blank or legacy_rating != blank or legacy_love != blank or legacy_feature != blank -%}
   {{ 'dunamiss-inside-science.css' | asset_url | stylesheet_tag }}
   {%- assign details = science_details | split: '<li>' -%}
   {%- assign ingredient_text = blank -%}
@@ -32,13 +32,13 @@ The decorative divider does not represent a measured performance score.
   {%- assign ingredients = ingredient_text | split: ', ' -%}
   {%- assign icon_base = 'https://cdn.shopify.com/s/files/1/0686/9680/1515/files/' -%}
   <div class="dunamiss-inside-science">
-    <div class="custom-inside-hero-section">
+    {% if legacy_hero != blank %}<div class="custom-inside-hero-section">{{ legacy_hero }}</div>{% else %}<div class="custom-inside-hero-section">
       <h3 class="custom-inside-hero-subtitle">The Science Inside</h3>
       <h2 class="custom-inside-hero-title">{{ product.title | escape }}</h2>
-      <p class="custom-inside-hero-text">{{ science_overview }}</p>
-    </div>
+      <div class="custom-inside-hero-text">{{ science_overview }}</div>
+    </div>{% endif %}
 
-    <div class="custom-inside-science-card">
+    {% if legacy_science != blank %}<div class="custom-inside-science-card">{{ legacy_science }}</div>{% else %}<div class="custom-inside-science-card">
       <h2><span class="custom-inside-science-number">1</span> SCIENCE BREAKDOWN</h2>
       <div class="custom-inside-science-item">
         <div class="custom-inside-science-icon-image">
@@ -59,9 +59,9 @@ The decorative divider does not represent a measured performance score.
           </div>
         </div>
       </div>
-    </div>
+    </div>{% endif %}
 
-    <div class="custom-inside-active-section">
+    {% if legacy_active != blank %}<div class="custom-inside-active-section">{{ legacy_active }}</div>{% else %}<div class="custom-inside-active-section">
       <div class="custom-inside-active-heading"><span class="custom-inside-active-number">2</span><h2>FORMULA &amp; PRODUCT DETAILS</h2></div>
       <div class="custom-inside-active-grid">
         {% for detail in details offset: 1 %}
@@ -76,19 +76,19 @@ The decorative divider does not represent a measured performance score.
           </div>
         {% endfor %}
       </div>
-    </div>
+    </div>{% endif %}
 
-    <div class="custom-inside-rating-section">
+    {% if legacy_rating != blank %}<div class="custom-inside-rating-section">{{ legacy_rating }}</div>{% else %}<div class="custom-inside-rating-section">
       <div class="custom-inside-rating-heading"><span class="custom-inside-rating-number">3</span><h2>HOW TO USE</h2></div>
       <div class="custom-inside-rating-grid">
         <div class="custom-inside-rating-card dunamiss-science-use">
           <div class="custom-inside-rating-icon"><img class="brand-feature-icon" src="{{ icon_base }}simple_pink_outline_droplet.png?v=1785134524" alt="" width="45" height="45" loading="lazy"></div>
-          <h4>APPLICATION</h4><p>{{ science_directions }}</p>
+          <h4>APPLICATION</h4><div class="rte">{{ science_directions }}</div>
         </div>
       </div>
-    </div>
+    </div>{% endif %}
 
-    <div class="custom-inside-love-section">
+    {% if legacy_love != blank %}<div class="custom-inside-love-section">{{ legacy_love }}</div>{% else %}<div class="custom-inside-love-section">
       <div class="custom-inside-love-heading"><span class="custom-inside-love-number">4</span><h2>WHY YOU'LL LOVE IT</h2></div>
       <div class="custom-inside-love-grid">
         {% for detail in details offset: 1 %}
@@ -101,8 +101,9 @@ The decorative divider does not represent a measured performance score.
           </div>
         {% endfor %}
       </div>
-    </div>
-  </div>
+    </div>{% endif %}
+  {% if legacy_feature != blank %}<div class="dunamiss-feature-bar">{{ legacy_feature }}</div>{% endif %}
+</div>
 {%- endif -%}
 
 {%- endif -%}

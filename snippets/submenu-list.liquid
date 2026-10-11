@@ -66,7 +66,7 @@
                   assign clean_title = clean_title | strip
                 %}
                 <span class="{% if child_link.links.size == 0 %}smooth-padding-hover transition{% endif %}">
-                  {{- clean_title -}}
+                  {% render 'dunamiss-category-copy', url: grandchild_link.url, fallback: clean_title %}
                 </span>
                 {% if show_label %}
                   <span class="menu_label rounded-2 text-center heading_weight relative absolute-1025 whitespace-nowrap uppercase  {{ label_setting }}">
@@ -130,7 +130,7 @@
               assign clean_title = clean_title | strip
             %}
             <span class="{% if child_link.links.size == 0 %}reversed-links transition{% endif %}">
-              {{- clean_title -}}
+              {% render 'dunamiss-category-copy', url: child_link.url, fallback: clean_title %}
             </span>
             {% if show_label %}
               <span class="menu_label rounded-2 text-center heading_weight relative absolute-1025 whitespace-nowrap uppercase  {{ label_setting }}">
@@ -182,7 +182,7 @@
                   assign clean_title = clean_title | replace: '[coming soon]', ''
                   assign clean_title = clean_title | strip
                 %}
-                {{ clean_title }}
+                {% render 'dunamiss-category-copy', url: child_link.url, fallback: clean_title %}
               </back-menu>
               <close-menu class="close-menu lh-1 ms-10">
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
@@ -234,9 +234,9 @@
                   <a
                     class="menu_item-link no-underline py-10 py-1025-5 min-h-55 min-h-1025-unset inline-flex align-center"
                     href="{{ grandchild_link.url }}"
-                    aria-label="{{ clean_title }}"
+                    aria-label="{% render 'dunamiss-category-copy', url: grandchild_link.url, fallback: clean_title %}"
                   >
-                    <span class="reversed-links transition">{{- clean_title -}}</span>
+                    <span class="reversed-links transition">{% render 'dunamiss-category-copy', url: grandchild_link.url, fallback: clean_title %}</span>
                     {% if show_label %}
                       <span class="menu_label rounded-2 text-center heading_weight relative absolute-1025 whitespace-nowrap uppercase  {{ label_setting }}">
                         {% if label_setting == 'coming_soon' and only_for_domain == true %}

@@ -57,14 +57,14 @@
 </style>
 
 <div class="tested-trusted-button-wrap">
-  <h2 class="tested-trusted-button">Tested and Trusted</h2>
+  <h2 class="tested-trusted-button">{% if content_settings != blank %}{{ content_settings.field_1 | escape }}{% else %}Tested and Trusted{% endif %}</h2>
 </div>
 
 <div class="custom-icon-blocks">
   <div class="custom-icon-block">
     <img
-      src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/CLINICALLY_TESTED.png?v=1751015670"
-      alt="Clinically Tested"
+      src="{% if content_settings.field_2 != blank %}{{ content_settings.field_2 | image_url: width: 1920 }}{% else %}{{ 'CLINICALLY_TESTED.png' | file_url }}{% endif %}"
+      alt="{% if content_settings != blank %}{{ content_settings.field_3 | escape }}{% else %}Clinically Tested{% endif %}"
       width="70"
       height="70"
       loading="lazy"
@@ -72,8 +72,8 @@
   </div>
   <div class="custom-icon-block">
     <img
-      src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/SALFATE_PARABEN_FREE.png?v=1751015669"
-      alt="Paraben Free"
+      src="{% if content_settings.field_4 != blank %}{{ content_settings.field_4 | image_url: width: 1920 }}{% else %}{{ 'SALFATE_PARABEN_FREE.png' | file_url }}{% endif %}"
+      alt="{% if content_settings != blank %}{{ content_settings.field_5 | escape }}{% else %}Paraben Free{% endif %}"
       width="70"
       height="70"
       loading="lazy"
@@ -81,8 +81,8 @@
   </div>
   <div class="custom-icon-block">
     <img
-      src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/CRUELTY_FREE.png?v=1751015670"
-      alt="Cruelty Free & Vegan"
+      src="{% if content_settings.field_6 != blank %}{{ content_settings.field_6 | image_url: width: 1920 }}{% else %}{{ 'CRUELTY_FREE.png' | file_url }}{% endif %}"
+      alt="{% if content_settings != blank %}{{ content_settings.field_7 | escape }}{% else %}Cruelty Free & Vegan{% endif %}"
       width="70"
       height="70"
       loading="lazy"
@@ -90,8 +90,8 @@
   </div>
   <div class="custom-icon-block">
     <img
-      src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/MADE_IN_INDIA_LOGO.png?v=1752050225"
-      alt="Made In India"
+      src="{% if content_settings.field_8 != blank %}{{ content_settings.field_8 | image_url: width: 1920 }}{% else %}{{ 'MADE_IN_INDIA_LOGO.png' | file_url }}{% endif %}"
+      alt="{% if content_settings != blank %}{{ content_settings.field_9 | escape }}{% else %}Made In India{% endif %}"
       width="70"
       height="70"
       loading="lazy"
@@ -99,8 +99,8 @@
   </div>
   <div class="custom-icon-block">
     <img
-      src="https://cdn.shopify.com/s/files/1/0686/9680/1515/files/GMP_LOGO.png?v=1751015670"
-      alt="GMP Certified"
+      src="{% if content_settings.field_10 != blank %}{{ content_settings.field_10 | image_url: width: 1920 }}{% else %}{{ 'GMP_LOGO.png' | file_url }}{% endif %}"
+      alt="{% if content_settings != blank %}{{ content_settings.field_11 | escape }}{% else %}GMP Certified{% endif %}"
       width="70"
       height="70"
       loading="lazy"
@@ -108,8 +108,8 @@
   </div>
    <div class="custom-icon-block">
     <img
-      src="https://dunamiss.in/cdn/shop/files/VEGAN.png?v=1751015669&width=550"
-      alt="GMP Certified"
+      src="{% if content_settings.field_12 != blank %}{{ content_settings.field_12 | image_url: width: 1920 }}{% else %}{{ 'VEGAN.png' | file_url }}{% endif %}"
+      alt="{% if content_settings != blank %}{{ content_settings.field_13 | escape }}{% else %}GMP Certified{% endif %}"
       width="70"
       height="70"
       loading="lazy"
@@ -117,8 +117,8 @@
   </div>
    <div class="custom-icon-block">
     <img
-      src="https://dunamiss.in/cdn/shop/files/tested_in_spain.png?v=1741773083&width=660"
-      alt="GMP Certified"
+      src="{% if content_settings.field_14 != blank %}{{ content_settings.field_14 | image_url: width: 1920 }}{% else %}{{ 'tested_in_spain.png' | file_url }}{% endif %}"
+      alt="{% if content_settings != blank %}{{ content_settings.field_15 | escape }}{% else %}GMP Certified{% endif %}"
       width="70"
       height="70"
       loading="lazy"

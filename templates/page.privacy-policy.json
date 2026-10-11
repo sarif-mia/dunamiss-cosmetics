@@ -1,0 +1,117 @@
+{
+  "sections": {
+    "main": {
+      "type": "dunamiss-page-privacy-policy",
+      "blocks": {
+        "content_1": {
+          "type": "content_1",
+          "settings": {
+            "field_1": "Dunamiss · Privacy",
+            "field_2": "Privacy Protection Policy",
+            "field_3": "Your privacy deserves thoughtful care. Here's how we collect,\n        protect, use, and manage your personal information while you\n        enjoy the Dunamiss experience.",
+            "field_4": "Secure Information",
+            "field_5": "Responsible Data Use",
+            "field_6": "Transparent Policies"
+          }
+        },
+        "content_2": {
+          "type": "content_2",
+          "settings": {
+            "field_7": "01",
+            "field_8": "Information We Collect",
+            "field_9": "We collect personal information such as name,\n              email address, phone number, and payment details\n              when you place an order or create an account.",
+            "field_10": "Your information is collected only for order\n              processing, customer support, and improving our services.",
+            "field_11": "We do not collect unnecessary personal data."
+          }
+        },
+        "content_3": {
+          "type": "content_3",
+          "settings": {
+            "field_12": "02",
+            "field_13": "Data Protection & Security",
+            "field_14": "We use secure encryption technologies to protect\n              your personal information.",
+            "field_15": "All customer data is stored safely and protected\n              from unauthorized access.",
+            "field_16": "Regular security checks are performed to maintain\n              system safety and reliability.",
+            "field_17": "Your information is protected.",
+            "field_18": "We take reasonable measures to keep your personal\n                information safe from unauthorized access."
+          }
+        },
+        "content_4": {
+          "type": "content_4",
+          "settings": {
+            "field_19": "03",
+            "field_20": "Use of Personal Information",
+            "field_21": "Your information is used only for processing orders,\n              delivery updates, and customer communication.",
+            "field_22": "We never sell, rent, or share your personal data\n              with unauthorized third parties.",
+            "field_23": "Marketing emails or promotional messages are sent\n              only with your consent."
+          }
+        },
+        "content_5": {
+          "type": "content_5",
+          "settings": {
+            "field_24": "04",
+            "field_25": "Your Rights",
+            "field_26": "You may request access to the personal information\n              we store about you.",
+            "field_27": "You can request correction or update of inaccurate\n              information.",
+            "field_28": "You have the right to request deletion of your\n              personal data.",
+            "field_29": "You may opt out of promotional communications\n              at any time."
+          }
+        },
+        "content_6": {
+          "type": "content_6",
+          "settings": {
+            "field_30": "05",
+            "field_31": "Cookies & Website Usage",
+            "field_32": "Our website may use cookies to improve browsing\n              experience and website performance.",
+            "field_33": "Cookies help us understand customer preferences\n              and enhance our services.",
+            "field_34": "You can disable cookies through your browser settings\n              if preferred."
+          }
+        },
+        "content_7": {
+          "type": "content_7",
+          "settings": {
+            "field_35": "06",
+            "field_36": "Policy Updates",
+            "field_37": "We may update this Privacy Policy from time to time.",
+            "field_38": "Changes will be posted on this page with immediate effect.",
+            "field_39": "Continued use of our website indicates acceptance\n              of the updated policy."
+          }
+        },
+        "content_8": {
+          "type": "content_8",
+          "settings": {
+            "field_40": "Privacy Questions?",
+            "field_41": "Your privacy and data security are important to us.\n        For any privacy-related questions, our support team\n        is always happy to help.",
+            "field_42": "mailto:care@dunamiss.in",
+            "field_43": "care@dunamiss.in",
+            "field_44": "https://wa.me/919516656907",
+            "field_45": "Message Dunamiss on WhatsApp",
+            "field_46": "WhatsApp: +91 95166 56907",
+            "field_47": "Every day · 10 AM–6 PM IST"
+          }
+        },
+        "content_9": {
+          "type": "content_9",
+          "settings": {
+            "field_48": "Your privacy. Your trust. Our responsibility."
+          }
+        }
+      },
+      "block_order": [
+        "content_1",
+        "content_2",
+        "content_3",
+        "content_4",
+        "content_5",
+        "content_6",
+        "content_7",
+        "content_8",
+        "content_9"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

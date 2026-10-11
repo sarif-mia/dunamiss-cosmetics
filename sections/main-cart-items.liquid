@@ -104,10 +104,10 @@
           {% if cart != empty %}
             <div class="dm-cart-page-list-heading">
               <div>
-                <h2>Your bag</h2>
+                <h2>{{ settings.dm_cart_bag | escape }}</h2>
                 <p>{{ cart.item_count }} {% if cart.item_count == 1 %}item{% else %}items{% endif %}</p>
               </div>
-              <a href="{{ routes.all_products_collection_url }}">Continue shopping</a>
+              <a href="{{ routes.all_products_collection_url }}">{{ settings.dm_cart_continue | escape }}</a>
             </div>
           {% endif %}
           <cart-items class="js-contents{% if cart == empty %} is-empty{% endif %}">
@@ -215,7 +215,7 @@
                             >
                               {{- item.product.title | escape -}}
                             </a>
-                            {% if is_auto_gift %}<span class="dm-cart-gift-badge">Free gift</span>{% endif %}
+                            {% if is_auto_gift %}<span class="dm-cart-gift-badge">{{ settings.dm_cart_gift | escape }}</span>{% endif %}
 
                             {%- if item.product.has_only_default_variant == false
                               or item.properties.size != 0
@@ -622,7 +622,7 @@
           <div class="sticky-1025 top-30">
             <div class="cart-info grey-bg p-30 rounded">
               <div class="dm-cart-page-summary-title">
-                <span>Order summary</span>
+                <span>{{ settings.dm_cart_summary | escape }}</span>
                 <span>{{ cart.item_count }} {% if cart.item_count == 1 %}item{% else %}items{% endif %}</span>
               </div>
               {% render 'cart-offer-progress' %}
@@ -780,8 +780,8 @@
                 </cart-discount>
               {% endif %}
               <div class="dm-cart-page-summary-row">
-                <span>Shipping</span>
-                <span>Calculated at checkout</span>
+                <span>{{ settings.dm_cart_shipping | escape }}</span>
+                <span>{{ settings.dm_cart_shipping_page | escape }}</span>
               </div>
               <div class="totals flex flex-wrap gap-5 align-center justify-between mb-10 h5 mt-20 pt-25 border-top">
                 <span class="totals__subtotal"> {{ 'general.cart.subtotal' | t }}:</span>

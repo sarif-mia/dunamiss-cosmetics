@@ -115,7 +115,9 @@
   "class": "section-header section-header-custom-floating",
   "limit": 1,
   "enabled_on": {
-    "groups": ["header"]
+    "groups": [
+      "header"
+    ]
   },
   "presets": [
     {
@@ -124,40 +126,182 @@
     }
   ],
   "settings": [
-    { "type": "link_list", "id": "shop_menu", "label": "Shop mega menu", "info": "Leave empty to use the main menu. Categories are arranged in three columns." },
-    { "type": "image_picker", "id": "shop_menu_image", "label": "Shop mega menu image" },
-    { "type": "url", "id": "shop_menu_image_link", "label": "Shop image link" },
-    { "type": "text", "id": "shop_menu_image_heading", "label": "Shop image caption", "default": "Discover your next favourite" },
-    { "type": "text", "id": "shop_menu_title", "label": "Shop menu heading", "default": "Explore Dunamiss" },
-    { "type": "text", "id": "shop_menu_subheading", "label": "Shop menu subheading", "default": "Beauty essentials for every routine" },
-    { "type": "image_picker", "id": "lip_menu_image", "label": "Lip Care mega menu image" },
-    { "type": "url", "id": "lip_menu_image_link", "label": "Lip Care image link" },
-    { "type": "text", "id": "lip_menu_image_heading", "label": "Lip Care image caption", "default": "Find your perfect lip ritual" },
-    { "type": "text", "id": "lip_menu_title", "label": "Lip Care menu heading", "default": "Explore Lip Care" },
-    { "type": "text", "id": "lip_menu_subheading", "label": "Lip Care menu subheading", "default": "Colour, care & shine for every look" },
-    { "type": "text", "id": "lip_menu_oil_subtitle", "label": "Lip Oil subtitle", "default": "Hydrate, soften & shine" },
-    { "type": "text", "id": "lip_menu_gloss_subtitle", "label": "Lip Gloss subtitle", "default": "High-shine colour for every mood" },
-    { "type": "text", "id": "lip_menu_satin_subtitle", "label": "Satin Lipstick subtitle", "default": "Smooth colour with a satin finish" },
-    { "type": "text", "id": "lip_menu_tinted_balm_subtitle", "label": "Tinted Lip Balm subtitle", "default": "Everyday moisture with a hint of tint" },
-    { "type": "text", "id": "lip_menu_glimmer_balm_subtitle", "label": "Glimmer Lip Balm subtitle", "default": "Nourishing care with a luminous touch" },
-    { "type": "text", "id": "lip_menu_liquid_subtitle", "label": "Liquid Lipsticks subtitle", "default": "Bold colour with a weightless feel" },
-    { "type": "image_picker", "id": "eye_menu_image", "label": "Eye Care mega menu image" },
-    { "type": "url", "id": "eye_menu_image_link", "label": "Eye Care image link" },
-    { "type": "text", "id": "eye_menu_image_heading", "label": "Eye Care image caption", "default": "Discover your perfect eye essentials" },
-    { "type": "text", "id": "eye_menu_title", "label": "Eye Care menu heading", "default": "Explore Eye Care" },
-    { "type": "text", "id": "eye_menu_subheading", "label": "Eye Care menu subheading", "default": "Define, nourish & enhance every look" },
-    { "type": "text", "id": "eye_menu_kajal_subtitle", "label": "Kajal subtitle", "default": "Rich pigment, effortless definition" },
-    { "type": "text", "id": "eye_menu_eyeliner_subtitle", "label": "Eyeliner subtitle", "default": "Precise lines with lasting impact" },
-    { "type": "text", "id": "eye_menu_balm_subtitle", "label": "Eye Balm subtitle", "default": "Nourish, smooth & refresh" },
-    { "type": "image_picker", "id": "skin_menu_image", "label": "Skin Care mega menu image" },
-    { "type": "url", "id": "skin_menu_image_link", "label": "Skin Care image link" },
-    { "type": "text", "id": "skin_menu_image_heading", "label": "Skin Care image caption", "default": "Build your perfect skin ritual" },
-    { "type": "text", "id": "skin_menu_title", "label": "Skin Care menu heading", "default": "Explore Skin Care" },
-    { "type": "text", "id": "skin_menu_subheading", "label": "Skin Care menu subheading", "default": "Hydrate, protect & glow every day" },
-    { "type": "text", "id": "skin_menu_mist_subtitle", "label": "Mist subtitle", "default": "Lightweight hydration, anytime refresh" },
-    { "type": "text", "id": "skin_menu_creams_subtitle", "label": "Creams subtitle", "default": "Daily moisture for soft, nourished skin" },
-    { "type": "text", "id": "skin_menu_mask_subtitle", "label": "Sheet Mask subtitle", "default": "Instant hydration, effortless self-care" },
-    { "type": "text", "id": "skin_menu_sunscreen_subtitle", "label": "Sun Perfect Sunscreen subtitle", "default": "Everyday protection with a radiant finish" },
+    {
+      "type": "paragraph",
+      "content": "Edit category names and subtitles under Theme settings → Dunamiss categories. Choose menu links in Shopify Navigation."
+    },
+    {
+      "type": "link_list",
+      "id": "shop_menu",
+      "label": "Shop mega menu",
+      "info": "Leave empty to use the main menu. Categories are arranged in three columns."
+    },
+    {
+      "type": "image_picker",
+      "id": "shop_menu_image",
+      "label": "Shop mega menu image"
+    },
+    {
+      "type": "url",
+      "id": "shop_menu_image_link",
+      "label": "Shop image link"
+    },
+    {
+      "type": "text",
+      "id": "shop_menu_image_heading",
+      "label": "Shop image caption",
+      "default": "Discover your next favourite"
+    },
+    {
+      "type": "text",
+      "id": "shop_menu_title",
+      "label": "Shop menu heading",
+      "default": "Explore Dunamiss"
+    },
+    {
+      "type": "text",
+      "id": "shop_menu_subheading",
+      "label": "Shop menu subheading",
+      "default": "Beauty essentials for every routine"
+    },
+    {
+      "type": "image_picker",
+      "id": "lip_menu_image",
+      "label": "Lip Care mega menu image"
+    },
+    {
+      "type": "url",
+      "id": "lip_menu_image_link",
+      "label": "Lip Care image link"
+    },
+    {
+      "type": "text",
+      "id": "lip_menu_image_heading",
+      "label": "Lip Care image caption",
+      "default": "Find your perfect lip ritual"
+    },
+    {
+      "type": "text",
+      "id": "lip_menu_title",
+      "label": "Lip Care menu heading",
+      "default": "Explore Lip Care"
+    },
+    {
+      "type": "text",
+      "id": "lip_menu_subheading",
+      "label": "Lip Care menu subheading",
+      "default": "Colour, care & shine for every look"
+    },
+    {
+      "type": "text",
+      "id": "lip_menu_oil_subtitle",
+      "label": "Lip Oil subtitle",
+      "default": "Hydrate, soften & shine"
+    },
+    {
+      "type": "text",
+      "id": "lip_menu_gloss_subtitle",
+      "label": "Lip Gloss subtitle",
+      "default": "High-shine colour for every mood"
+    },
+    {
+      "type": "text",
+      "id": "lip_menu_satin_subtitle",
+      "label": "Satin Lipstick subtitle",
+      "default": "Smooth colour with a satin finish"
+    },
+    {
+      "type": "text",
+      "id": "lip_menu_tinted_balm_subtitle",
+      "label": "Tinted Lip Balm subtitle",
+      "default": "Everyday moisture with a hint of tint"
+    },
+    {
+      "type": "text",
+      "id": "lip_menu_glimmer_balm_subtitle",
+      "label": "Glimmer Lip Balm subtitle",
+      "default": "Nourishing care with a luminous touch"
+    },
+    {
+      "type": "text",
+      "id": "lip_menu_liquid_subtitle",
+      "label": "Liquid Lipsticks subtitle",
+      "default": "Bold colour with a weightless feel"
+    },
+    {
+      "type": "image_picker",
+      "id": "eye_menu_image",
+      "label": "Eye Care mega menu image"
+    },
+    {
+      "type": "url",
+      "id": "eye_menu_image_link",
+      "label": "Eye Care image link"
+    },
+    {
+      "type": "text",
+      "id": "eye_menu_image_heading",
+      "label": "Eye Care image caption",
+      "default": "Discover your perfect eye essentials"
+    },
+    {
+      "type": "text",
+      "id": "eye_menu_title",
+      "label": "Eye Care menu heading",
+      "default": "Explore Eye Care"
+    },
+    {
+      "type": "text",
+      "id": "eye_menu_subheading",
+      "label": "Eye Care menu subheading",
+      "default": "Define, nourish & enhance every look"
+    },
+    {
+      "type": "text",
+      "id": "eye_menu_kajal_subtitle",
+      "label": "Kajal subtitle",
+      "default": "Rich pigment, effortless definition"
+    },
+    {
+      "type": "text",
+      "id": "eye_menu_eyeliner_subtitle",
+      "label": "Eyeliner subtitle",
+      "default": "Precise lines with lasting impact"
+    },
+    {
+      "type": "text",
+      "id": "eye_menu_balm_subtitle",
+      "label": "Eye Balm subtitle",
+      "default": "Nourish, smooth & refresh"
+    },
+    {
+      "type": "image_picker",
+      "id": "skin_menu_image",
+      "label": "Skin Care mega menu image"
+    },
+    {
+      "type": "url",
+      "id": "skin_menu_image_link",
+      "label": "Skin Care image link"
+    },
+    {
+      "type": "text",
+      "id": "skin_menu_image_heading",
+      "label": "Skin Care image caption",
+      "default": "Build your perfect skin ritual"
+    },
+    {
+      "type": "text",
+      "id": "skin_menu_title",
+      "label": "Skin Care menu heading",
+      "default": "Explore Skin Care"
+    },
+    {
+      "type": "text",
+      "id": "skin_menu_subheading",
+      "label": "Skin Care menu subheading",
+      "default": "Hydrate, protect & glow every day"
+    },
     {
       "type": "color",
       "id": "header_background",
@@ -168,10 +312,22 @@
       "type": "select",
       "id": "section_width",
       "options": [
-        {"value": "container", "label": "Container"},
-        {"value": "fluid_container", "label": "Fluid container"},
-        {"value": "stretch_width", "label": "Stretch width"},
-        {"value": "full_width", "label": "Full width"}
+        {
+          "value": "container",
+          "label": "Container"
+        },
+        {
+          "value": "fluid_container",
+          "label": "Fluid container"
+        },
+        {
+          "value": "stretch_width",
+          "label": "Stretch width"
+        },
+        {
+          "value": "full_width",
+          "label": "Full width"
+        }
       ],
       "default": "stretch_width",
       "label": "Section width"
@@ -186,8 +342,14 @@
       "type": "select",
       "id": "logo_position",
       "options": [
-        {"value": "left", "label": "Left"},
-        {"value": "center", "label": "Center"}
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
       ],
       "default": "left",
       "label": "Logo position"

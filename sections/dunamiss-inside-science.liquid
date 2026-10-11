@@ -1,0 +1,240 @@
+{% render 'dunamiss-inside-science', product: product, science_settings: section.settings, science_blocks: section.blocks %}
+{% schema %}
+{
+  "name": "Dunamiss Inside Science",
+  "limit": 1,
+  "enabled_on": {
+    "templates": [
+      "product"
+    ]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Existing product science content stays in place until you enter an override. Connect product metafields using dynamic sources to keep different copy for each product."
+    },
+    {
+      "type": "richtext",
+      "id": "overview",
+      "label": "Product overview override"
+    },
+    {
+      "type": "richtext",
+      "id": "details",
+      "label": "Product facts override",
+      "info": "Enter a bullet list of formula and product facts."
+    },
+    {
+      "type": "richtext",
+      "id": "directions",
+      "label": "Directions override"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hero",
+      "name": "Overview",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Override heading",
+          "default": "The Science Inside",
+          "info": "Shown with the override content or image below."
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content override",
+          "info": "Leave empty to keep existing product content. Connect a product metafield for a product-specific override."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Override image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image description"
+        }
+      ]
+    },
+    {
+      "type": "science",
+      "name": "Science breakdown",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Override heading",
+          "default": "Science Breakdown",
+          "info": "Shown with the override content or image below."
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content override",
+          "info": "Leave empty to keep existing product content. Connect a product metafield for a product-specific override."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Override image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image description"
+        }
+      ]
+    },
+    {
+      "type": "active",
+      "name": "Formula details",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Override heading",
+          "default": "Formula & Product Details",
+          "info": "Shown with the override content or image below."
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content override",
+          "info": "Leave empty to keep existing product content. Connect a product metafield for a product-specific override."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Override image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image description"
+        }
+      ]
+    },
+    {
+      "type": "rating",
+      "name": "How to use",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Override heading",
+          "default": "How to Use",
+          "info": "Shown with the override content or image below."
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content override",
+          "info": "Leave empty to keep existing product content. Connect a product metafield for a product-specific override."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Override image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image description"
+        }
+      ]
+    },
+    {
+      "type": "love",
+      "name": "Why you will love it",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Override heading",
+          "default": "Why You’ll Love It",
+          "info": "Shown with the override content or image below."
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content override",
+          "info": "Leave empty to keep existing product content. Connect a product metafield for a product-specific override."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Override image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image description"
+        }
+      ]
+    },
+    {
+      "type": "feature",
+      "name": "Feature bar",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Override heading",
+          "info": "Shown with the override content or image below."
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content override",
+          "info": "Leave empty to keep existing product content. Connect a product metafield for a product-specific override."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Override image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dunamiss Inside Science",
+      "blocks": [
+        {
+          "type": "hero"
+        },
+        {
+          "type": "science"
+        },
+        {
+          "type": "active"
+        },
+        {
+          "type": "rating"
+        },
+        {
+          "type": "love"
+        },
+        {
+          "type": "feature"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

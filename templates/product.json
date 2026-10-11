@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "breadcrumb": {
@@ -46,10 +37,8 @@
           }
         },
         "custom_liquid_8rKT7x": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% render 'custom-key-benefits' %}"
-          }
+          "type": "dm_benefits",
+          "settings": {}
         },
         "variant_picker_tcCihG": {
           "type": "variant_picker",
@@ -81,9 +70,21 @@
           }
         },
         "custom_liquid_tNaaJj": {
-          "type": "custom_liquid",
+          "type": "dm_offers",
           "settings": {
-            "custom_liquid": "{% render 'custom-offer-block' %}"
+            "field_1": "Available Offers",
+            "field_2": "Prepaid Free Shipping",
+            "field_3": "Free shipping on prepaid orders. COD convenience fee: ₹49.",
+            "field_4": "https://dunamiss.in/collections/shop-all",
+            "field_5": "Shop Now",
+            "field_6": "Free Lip Balm",
+            "field_7": "Shop for ₹1050 and get a free lip balm.",
+            "field_8": "https://dunamiss.in/collections/shop-all",
+            "field_9": "Shop Now",
+            "field_10": "Flat ₹250 OFF",
+            "field_11": "Shop for ₹1599 and get a flat ₹250 OFF.",
+            "field_12": "https://dunamiss.in/collections/shop-all",
+            "field_13": "Shop Now"
           }
         },
         "collapsible_row_m3g6f8": {
@@ -134,9 +135,23 @@
           }
         },
         "custom_liquid_3iHhWi": {
-          "type": "custom_liquid",
+          "type": "dm_trust",
           "settings": {
-            "custom_liquid": "{% render 'custom-icon-features' %}"
+            "field_1": "Tested and Trusted",
+            "field_2": "shopify://shop_images/CLINICALLY_TESTED.png",
+            "field_3": "Clinically Tested",
+            "field_4": "shopify://shop_images/SALFATE_PARABEN_FREE.png",
+            "field_5": "Paraben Free",
+            "field_6": "shopify://shop_images/CRUELTY_FREE.png",
+            "field_7": "Cruelty Free & Vegan",
+            "field_8": "shopify://shop_images/MADE_IN_INDIA_LOGO.png",
+            "field_9": "Made In India",
+            "field_10": "shopify://shop_images/GMP_LOGO.png",
+            "field_11": "GMP Certified",
+            "field_12": "shopify://shop_images/VEGAN.png",
+            "field_13": "GMP Certified",
+            "field_14": "shopify://shop_images/tested_in_spain.png",
+            "field_15": "GMP Certified"
           }
         },
         "judge_me_reviews_store_summary_waPN9f": {
@@ -235,28 +250,86 @@
       }
     },
     "custom_liquid_gwJkEU": {
-      "type": "custom-liquid",
-      "name": "Inside Science",
-      "settings": {
-        "section_width": "fluid_container",
-        "color_scheme": "",
-        "custom_liquid": "{% render 'dunamiss-inside-science', product: product %}",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "reset_spacing": false
-      }
+      "type": "dunamiss-inside-science",
+      "blocks": {
+        "hero": {
+          "type": "hero",
+          "settings": {}
+        },
+        "science": {
+          "type": "science",
+          "settings": {}
+        },
+        "active": {
+          "type": "active",
+          "settings": {}
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
+        "love": {
+          "type": "love",
+          "settings": {}
+        },
+        "feature": {
+          "type": "feature",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "hero",
+        "science",
+        "active",
+        "rating",
+        "love",
+        "feature"
+      ],
+      "settings": {}
     },
     "custom_liquid_PURh7m": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom_liquid.name",
-      "settings": {
-        "section_width": "fluid_container",
-        "color_scheme": "",
-        "custom_liquid": "{% render 'custom-clinically-tested' %}",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "reset_spacing": false
-      }
+      "type": "dunamiss-certificates",
+      "blocks": {
+        "content_1": {
+          "type": "content_1",
+          "settings": {
+            "field_1": "Clinically tested",
+            "field_2": "Certificate carousel controls",
+            "field_3": "Previous certificates",
+            "field_4": "Next certificates",
+            "field_5": "shopify://shop_images/LIP_BALM_CERTIFICATE.jpg",
+            "field_6": "Lip Balm Certification",
+            "field_7": "shopify://shop_images/CERTIFICATE_SHEET_MASK.jpg",
+            "field_8": "Sheet Mask Certification",
+            "field_9": "shopify://shop_images/TESTED_IN_INDIA.jpg",
+            "field_10": "Production Certification",
+            "field_11": "shopify://shop_images/On-Site_Inspection_Zurko.jpg",
+            "field_12": "On-Site Inspection",
+            "field_13": "shopify://shop_images/Hazel_Glitter_Certification.png",
+            "field_14": "Hazel Glitter Certification",
+            "field_15": "shopify://shop_images/Eye_Balm_Certification.png",
+            "field_16": "Eye Balm Certification",
+            "field_17": "shopify://shop_images/Sunscreen_Certification.png",
+            "field_18": "Sunscreen Certification"
+          }
+        },
+        "content_2": {
+          "type": "content_2",
+          "settings": {
+            "field_19": "shopify://shop_images/Lip_Oil_Certification.png",
+            "field_20": "Lip Oil",
+            "field_21": "shopify://shop_images/Am_Cream__Certification.png",
+            "field_22": "AM Cream Certification",
+            "field_23": "shopify://shop_images/Mocka_Kiss_Certification.png",
+            "field_24": "Mocha Kiss"
+          }
+        }
+      },
+      "block_order": [
+        "content_1",
+        "content_2"
+      ],
+      "settings": {}
     },
     "1716793714ce89e457": {
       "type": "apps",
@@ -364,16 +437,34 @@
       }
     },
     "custom_liquid_rAwaf3": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom_liquid.name",
-      "settings": {
-        "section_width": "fluid_container",
-        "color_scheme": "",
-        "custom_liquid": "{% render 'custom-subscriber-community' %}",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "reset_spacing": false
-      }
+      "type": "dunamiss-community",
+      "blocks": {
+        "content_1": {
+          "type": "content_1",
+          "settings": {
+            "field_1": "shopify://shop_images/EYE_BALM_COMMING_SOON_image_6_jpg.jpg",
+            "field_2": "image 1",
+            "field_3": "shopify://shop_images/6FABC92F-7444-435E-B092-8DF126D5B0CD.jpg",
+            "field_4": "image 2",
+            "field_5": "shopify://shop_images/Untitled_design_7_56f11543-a563-441b-b425-14e63e3a235a.png",
+            "field_6": "image 3",
+            "field_7": "shopify://shop_images/Untitled_design_-_2026-06-02T134928.959.jpg",
+            "field_8": "image 4",
+            "field_9": "Join our community, we have lots to offer",
+            "field_10": "Get the latest scoop straight from our brand. New launches, discounts, exclusive access",
+            "field_11": "more. You’ll get first dibs on everything fresh and fun.",
+            "field_12": "Enter Your Email",
+            "field_13": "Subscribe",
+            "field_14": "You can unsubscribe anytime. For more details review our",
+            "field_15": "https://dunamiss.in/pages/privacy-policy",
+            "field_16": "Privacy Policy"
+          }
+        }
+      },
+      "block_order": [
+        "content_1"
+      ],
+      "settings": {}
     }
   },
   "order": [

@@ -33,6 +33,14 @@
   assign column = section_st.items_per_row
   assign collection_display_heading = collection.title
   assign collection_display_subheading = blank
+  capture category_heading
+    render 'dunamiss-category-copy', url: collection.url, fallback: collection.title, field: 'heading'
+  endcapture
+  assign collection_display_heading = category_heading | strip
+  capture category_subheading
+    render 'dunamiss-category-copy', url: collection.url, field: 'subtitle'
+  endcapture
+  assign collection_display_subheading = category_subheading | strip
   assign heading_override_handle = section_st.heading_override_handle | strip
   if heading_override_handle != blank and heading_override_handle == collection.handle
     if section_st.heading_override != blank
@@ -341,20 +349,17 @@
       "type": "text",
       "id": "heading_override_handle",
       "label": "Collection handle",
-      "info": "The override is shown only on this collection.",
-      "default": "sheet-mask"
+      "info": "Optional override for this collection handle. Otherwise use Theme settings → Dunamiss categories."
     },
     {
       "type": "text",
       "id": "heading_override",
-      "label": "Heading",
-      "default": "Mask & Chill"
+      "label": "Heading"
     },
     {
       "type": "text",
       "id": "subheading_override",
-      "label": "Subheading",
-      "default": "Hydrating Sheet Mask"
+      "label": "Subheading"
     },
     {
       "type": "header",

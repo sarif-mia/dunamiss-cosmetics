@@ -4673,4 +4673,80 @@ Layout: dunamiss-inside-science-layout. Styles: assets/dunamiss-inside-science.c
 </ul>{%- endcapture -%}
     {%- capture science_directions -%}Apply and reapply according to the sun-protection directions on the packaging. Use as the final step of your daytime skincare routine before makeup.{%- endcapture -%}
 {%- endcase -%}
-{% render 'dunamiss-inside-science-layout', product: product, science_overview: science_overview, science_details: science_details, science_directions: science_directions, science_category: science_category, legacy_hero: legacy_hero, legacy_science: legacy_science, legacy_active: legacy_active, legacy_rating: legacy_rating, legacy_love: legacy_love, legacy_feature: legacy_feature %}
+{% assign science_legacy_layout = false %}
+{% if legacy_hero != blank %}{% assign science_legacy_layout = true %}{% endif %}
+{% if science_settings.overview != blank %}{% assign science_overview = science_settings.overview %}{% endif %}
+{% if science_settings.details != blank %}{% assign science_details = science_settings.details %}{% endif %}
+{% if science_settings.directions != blank %}{% assign science_directions = science_settings.directions %}{% endif %}
+{% if science_legacy_layout %}
+  {% if science_settings.overview != blank %}
+    {% capture legacy_hero %}<h3 class="custom-inside-hero-subtitle">The Science Inside</h3><h2 class="custom-inside-hero-title">{{ product.title | escape }}</h2><div class="rte">{{ science_settings.overview }}</div>{% endcapture %}
+  {% endif %}
+  {% if science_settings.details != blank %}
+    {% capture legacy_active %}<h2>Formula &amp; Product Details</h2><div class="rte">{{ science_settings.details }}</div>{% endcapture %}
+  {% endif %}
+  {% if science_settings.directions != blank %}
+    {% capture legacy_rating %}<h2>How to Use</h2><div class="rte">{{ science_settings.directions }}</div>{% endcapture %}
+  {% endif %}
+{% endif %}
+{% assign science_hero_block = science_blocks | where: 'type', 'hero' | first %}
+{% if science_hero_block.settings.content != blank or science_hero_block.settings.image != blank %}
+{% capture legacy_hero %}
+<div {{ science_hero_block.shopify_attributes }}>
+{% if science_hero_block.settings.heading != blank %}<h2>{{ science_hero_block.settings.heading | escape }}</h2>{% endif %}
+{% if science_hero_block.settings.image != blank %}{{ science_hero_block.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', alt: science_hero_block.settings.image_alt }}{% endif %}
+{{ science_hero_block.settings.content }}
+</div>
+{% endcapture %}
+{% endif %}
+{% assign science_science_block = science_blocks | where: 'type', 'science' | first %}
+{% if science_science_block.settings.content != blank or science_science_block.settings.image != blank %}
+{% capture legacy_science %}
+<div {{ science_science_block.shopify_attributes }}>
+{% if science_science_block.settings.heading != blank %}<h2>{{ science_science_block.settings.heading | escape }}</h2>{% endif %}
+{% if science_science_block.settings.image != blank %}{{ science_science_block.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', alt: science_science_block.settings.image_alt }}{% endif %}
+{{ science_science_block.settings.content }}
+</div>
+{% endcapture %}
+{% endif %}
+{% assign science_active_block = science_blocks | where: 'type', 'active' | first %}
+{% if science_active_block.settings.content != blank or science_active_block.settings.image != blank %}
+{% capture legacy_active %}
+<div {{ science_active_block.shopify_attributes }}>
+{% if science_active_block.settings.heading != blank %}<h2>{{ science_active_block.settings.heading | escape }}</h2>{% endif %}
+{% if science_active_block.settings.image != blank %}{{ science_active_block.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', alt: science_active_block.settings.image_alt }}{% endif %}
+{{ science_active_block.settings.content }}
+</div>
+{% endcapture %}
+{% endif %}
+{% assign science_rating_block = science_blocks | where: 'type', 'rating' | first %}
+{% if science_rating_block.settings.content != blank or science_rating_block.settings.image != blank %}
+{% capture legacy_rating %}
+<div {{ science_rating_block.shopify_attributes }}>
+{% if science_rating_block.settings.heading != blank %}<h2>{{ science_rating_block.settings.heading | escape }}</h2>{% endif %}
+{% if science_rating_block.settings.image != blank %}{{ science_rating_block.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', alt: science_rating_block.settings.image_alt }}{% endif %}
+{{ science_rating_block.settings.content }}
+</div>
+{% endcapture %}
+{% endif %}
+{% assign science_love_block = science_blocks | where: 'type', 'love' | first %}
+{% if science_love_block.settings.content != blank or science_love_block.settings.image != blank %}
+{% capture legacy_love %}
+<div {{ science_love_block.shopify_attributes }}>
+{% if science_love_block.settings.heading != blank %}<h2>{{ science_love_block.settings.heading | escape }}</h2>{% endif %}
+{% if science_love_block.settings.image != blank %}{{ science_love_block.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', alt: science_love_block.settings.image_alt }}{% endif %}
+{{ science_love_block.settings.content }}
+</div>
+{% endcapture %}
+{% endif %}
+{% assign science_feature_block = science_blocks | where: 'type', 'feature' | first %}
+{% if science_feature_block.settings.content != blank or science_feature_block.settings.image != blank %}
+{% capture legacy_feature %}
+<div {{ science_feature_block.shopify_attributes }}>
+{% if science_feature_block.settings.heading != blank %}<h2>{{ science_feature_block.settings.heading | escape }}</h2>{% endif %}
+{% if science_feature_block.settings.image != blank %}{{ science_feature_block.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', alt: science_feature_block.settings.image_alt }}{% endif %}
+{{ science_feature_block.settings.content }}
+</div>
+{% endcapture %}
+{% endif %}
+{% render 'dunamiss-inside-science-layout', product: product, science_overview: science_overview, science_details: science_details, science_directions: science_directions, science_category: science_category, legacy_hero: legacy_hero, legacy_science: legacy_science, legacy_active: legacy_active, legacy_rating: legacy_rating, legacy_love: legacy_love, legacy_feature: legacy_feature, science_legacy_layout: science_legacy_layout %}

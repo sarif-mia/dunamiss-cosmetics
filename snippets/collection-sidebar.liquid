@@ -98,10 +98,10 @@
                           <li class="pb-8">
                             <a
                               href="{{ link.url }}"
-                              aria-label="{{ link.title }}"
+                              aria-label="{% render 'dunamiss-category-copy', url: link.url, fallback: link.title %}"
                               class="no-underline word-break"
                             >
-                              {{ link.title }}
+                              {% render 'dunamiss-category-copy', url: link.url, fallback: link.title %}
                             </a>
                           </li>
                         {%- endfor -%}

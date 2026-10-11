@@ -1,0 +1,140 @@
+<div class="{{ section.settings.section_width }}" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+{% assign dm_content_1 = section.blocks | where: 'type', 'content_1' | first %}
+<div class="text-center"><h1>{{ dm_content_1.settings.field_1 | escape }}</h1><p>{{ dm_content_1.settings.field_2 | escape }}</p><a class="btn-primary inline-flex" href="{% if dm_content_1.settings.link_override_1 != blank %}{{ dm_content_1.settings.link_override_1 | escape }}{% else %}{{ routes.all_products_collection_url }}{% endif %}">{{ dm_content_1.settings.field_3 | escape }}</a><p>{{ dm_content_1.settings.field_4 | escape }} <a href="{% if dm_content_1.settings.field_5 != blank %}{{ dm_content_1.settings.field_5 | escape }}{% else %}https://wa.me/919516656907{% endif %}">{{ dm_content_1.settings.field_6 | escape }}</a> {{ dm_content_1.settings.field_7 | escape }} <a href="{% if dm_content_1.settings.field_8 != blank %}{{ dm_content_1.settings.field_8 | escape }}{% else %}mailto:care@dunamiss.in{% endif %}">{{ dm_content_1.settings.field_9 | escape }}</a>.</p></div>
+</div>
+{% schema %}
+{
+  "name": "Dunamiss store info",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Width",
+      "options": [
+        {
+          "value": "container",
+          "label": "Container"
+        },
+        {
+          "value": "fluid_container",
+          "label": "Fluid container"
+        },
+        {
+          "value": "w-full",
+          "label": "Full width"
+        }
+      ],
+      "default": "container"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content_1",
+      "name": "Shop Dunamiss Online",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_1",
+          "label": "Shop Dunamiss Online",
+          "default": "Shop Dunamiss Online"
+        },
+        {
+          "type": "text",
+          "id": "field_2",
+          "label": "We do not currently have a physical retail store. Explore our pro",
+          "default": "We do not currently have a physical retail store. Explore our products online."
+        },
+        {
+          "type": "text",
+          "id": "field_3",
+          "label": "Shop all products",
+          "default": "Shop all products"
+        },
+        {
+          "type": "text",
+          "id": "field_4",
+          "label": "Need help?",
+          "default": "Need help?"
+        },
+        {
+          "type": "url",
+          "id": "field_5",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "field_6",
+          "label": "Message us on WhatsApp",
+          "default": "Message us on WhatsApp"
+        },
+        {
+          "type": "text",
+          "id": "field_7",
+          "label": "or email",
+          "default": "or email"
+        },
+        {
+          "type": "url",
+          "id": "field_8",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "field_9",
+          "label": "care@dunamiss.in",
+          "default": "care@dunamiss.in"
+        },
+        {
+          "type": "url",
+          "id": "link_override_1",
+          "label": "Button / card link 1",
+          "info": "Leave empty to keep the current destination."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dunamiss store info",
+      "blocks": [
+        {
+          "type": "content_1",
+          "settings": {
+            "field_1": "Shop Dunamiss Online",
+            "field_2": "We do not currently have a physical retail store. Explore our products online.",
+            "field_3": "Shop all products",
+            "field_4": "Need help?",
+            "field_5": "https://wa.me/919516656907",
+            "field_6": "Message us on WhatsApp",
+            "field_7": "or email",
+            "field_8": "mailto:care@dunamiss.in",
+            "field_9": "care@dunamiss.in"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

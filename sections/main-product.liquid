@@ -986,6 +986,18 @@
                 {{ 'onboarding.default_description' | t }}
               </div>
             {% endif %}
+          {%- when 'dm_offers' -%}
+            <div class="product-detail__custom-liquid" {{ block.shopify_attributes }}>
+              {% render 'custom-offer-block', content_settings: block.settings, product: product %}
+            </div>
+          {%- when 'dm_trust' -%}
+            <div class="product-detail__custom-liquid" {{ block.shopify_attributes }}>
+              {% render 'custom-icon-features', content_settings: block.settings, product: product %}
+            </div>
+          {%- when 'dm_benefits' -%}
+            <div class="product-detail__custom-liquid" {{ block.shopify_attributes }}>
+              {% render 'custom-key-benefits', content_settings: block.settings, product: product %}
+            </div>
           {%- when 'custom_liquid' -%}
             {% comment %} Custom liquid {% endcomment %}
             <div
@@ -2238,6 +2250,236 @@
           "id": "show_collections",
           "label": "t:sections.main-product.blocks.product_meta.settings.show_collections",
           "default": true
+        }
+      ]
+    },
+    {
+      "type": "dm_offers",
+      "name": "Dunamiss offers",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_1",
+          "label": "Available Offers",
+          "default": "Available Offers"
+        },
+        {
+          "type": "text",
+          "id": "field_2",
+          "label": "Prepaid Free Shipping",
+          "default": "Prepaid Free Shipping"
+        },
+        {
+          "type": "text",
+          "id": "field_3",
+          "label": "Free shipping on prepaid orders. COD convenience fee: ₹49.",
+          "default": "Free shipping on prepaid orders. COD convenience fee: ₹49."
+        },
+        {
+          "type": "url",
+          "id": "field_4",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "field_5",
+          "label": "Shop Now",
+          "default": "Shop Now"
+        },
+        {
+          "type": "text",
+          "id": "field_6",
+          "label": "Free Lip Balm",
+          "default": "Free Lip Balm"
+        },
+        {
+          "type": "text",
+          "id": "field_7",
+          "label": "Shop for ₹1050 and get a free lip balm.",
+          "default": "Shop for ₹1050 and get a free lip balm."
+        },
+        {
+          "type": "url",
+          "id": "field_8",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "field_9",
+          "label": "Shop Now",
+          "default": "Shop Now"
+        },
+        {
+          "type": "text",
+          "id": "field_10",
+          "label": "Flat ₹250 OFF",
+          "default": "Flat ₹250 OFF"
+        },
+        {
+          "type": "text",
+          "id": "field_11",
+          "label": "Shop for ₹1599 and get a flat ₹250 OFF.",
+          "default": "Shop for ₹1599 and get a flat ₹250 OFF."
+        },
+        {
+          "type": "url",
+          "id": "field_12",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "field_13",
+          "label": "Shop Now",
+          "default": "Shop Now"
+        }
+      ]
+    },
+    {
+      "type": "dm_trust",
+      "name": "Dunamiss trust badges",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_1",
+          "label": "Tested and Trusted",
+          "default": "Tested and Trusted"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_2",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_3",
+          "label": "Alt",
+          "default": "Clinically Tested"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_4",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_5",
+          "label": "Alt",
+          "default": "Paraben Free"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_6",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_7",
+          "label": "Alt",
+          "default": "Cruelty Free & Vegan"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_8",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_9",
+          "label": "Alt",
+          "default": "Made In India"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_10",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_11",
+          "label": "Alt",
+          "default": "GMP Certified"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_12",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_13",
+          "label": "Alt",
+          "default": "GMP Certified"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_14",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_15",
+          "label": "Alt",
+          "default": "GMP Certified"
+        }
+      ]
+    },
+    {
+      "type": "dm_benefits",
+      "name": "Dunamiss benefits",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Leave these fields empty to use the current product’s custom.benefit_1…4_text/image metafields. Connect dynamic sources for product-specific content."
+        },
+        {
+          "type": "text",
+          "id": "benefit_1_text",
+          "label": "Benefit 1 text"
+        },
+        {
+          "type": "image_picker",
+          "id": "benefit_1_image",
+          "label": "Benefit 1 image"
+        },
+        {
+          "type": "text",
+          "id": "benefit_2_text",
+          "label": "Benefit 2 text"
+        },
+        {
+          "type": "image_picker",
+          "id": "benefit_2_image",
+          "label": "Benefit 2 image"
+        },
+        {
+          "type": "text",
+          "id": "benefit_3_text",
+          "label": "Benefit 3 text"
+        },
+        {
+          "type": "image_picker",
+          "id": "benefit_3_image",
+          "label": "Benefit 3 image"
+        },
+        {
+          "type": "text",
+          "id": "benefit_4_text",
+          "label": "Benefit 4 text"
+        },
+        {
+          "type": "image_picker",
+          "id": "benefit_4_image",
+          "label": "Benefit 4 image"
         }
       ]
     }

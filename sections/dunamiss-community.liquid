@@ -1,0 +1,168 @@
+<div style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+{% render 'custom-subscriber-community', section: section %}
+</div>
+{% schema %}
+{
+  "name": "Dunamiss community",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Edit text, links and images in the content groups below. Their positions follow the section’s fixed layout."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content_1",
+      "name": "Join our community, we ha",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "field_1",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_2",
+          "label": "Alt",
+          "default": "image 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_3",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_4",
+          "label": "Alt",
+          "default": "image 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_5",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_6",
+          "label": "Alt",
+          "default": "image 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_7",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_8",
+          "label": "Alt",
+          "default": "image 4"
+        },
+        {
+          "type": "text",
+          "id": "field_9",
+          "label": "Join our community, we have lots to offer",
+          "default": "Join our community, we have lots to offer"
+        },
+        {
+          "type": "text",
+          "id": "field_10",
+          "label": "Get the latest scoop straight from our brand. New launches, disco",
+          "default": "Get the latest scoop straight from our brand. New launches, discounts, exclusive access"
+        },
+        {
+          "type": "text",
+          "id": "field_11",
+          "label": "more. You’ll get first dibs on everything fresh and fun.",
+          "default": "more. You’ll get first dibs on everything fresh and fun."
+        },
+        {
+          "type": "text",
+          "id": "field_12",
+          "label": "Placeholder",
+          "default": "Enter Your Email"
+        },
+        {
+          "type": "text",
+          "id": "field_13",
+          "label": "Subscribe",
+          "default": "Subscribe"
+        },
+        {
+          "type": "text",
+          "id": "field_14",
+          "label": "You can unsubscribe anytime. For more details review our",
+          "default": "You can unsubscribe anytime. For more details review our"
+        },
+        {
+          "type": "url",
+          "id": "field_15",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "field_16",
+          "label": "Privacy Policy",
+          "default": "Privacy Policy"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 1,
+  "presets": [
+    {
+      "name": "Dunamiss community",
+      "blocks": [
+        {
+          "type": "content_1",
+          "settings": {
+            "field_1": "shopify://shop_images/EYE_BALM_COMMING_SOON_image_6_jpg.jpg",
+            "field_2": "image 1",
+            "field_3": "shopify://shop_images/6FABC92F-7444-435E-B092-8DF126D5B0CD.jpg",
+            "field_4": "image 2",
+            "field_5": "shopify://shop_images/Untitled_design_7_56f11543-a563-441b-b425-14e63e3a235a.png",
+            "field_6": "image 3",
+            "field_7": "shopify://shop_images/Untitled_design_-_2026-06-02T134928.959.jpg",
+            "field_8": "image 4",
+            "field_9": "Join our community, we have lots to offer",
+            "field_10": "Get the latest scoop straight from our brand. New launches, discounts, exclusive access",
+            "field_11": "more. You’ll get first dibs on everything fresh and fun.",
+            "field_12": "Enter Your Email",
+            "field_13": "Subscribe",
+            "field_14": "You can unsubscribe anytime. For more details review our",
+            "field_15": "https://dunamiss.in/pages/privacy-policy",
+            "field_16": "Privacy Policy"
+          }
+        }
+      ]
+    }
+  ],
+  "limit": 1
+}
+{% endschema %}

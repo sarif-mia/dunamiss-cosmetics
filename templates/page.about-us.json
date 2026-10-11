@@ -1,0 +1,183 @@
+{
+  "sections": {
+    "main": {
+      "type": "dunamiss-page-about-us",
+      "blocks": {
+        "content_1": {
+          "type": "content_1",
+          "settings": {
+            "field_1": "The Dunamiss Story",
+            "field_2": "Indian beauty. A personal point of view.",
+            "field_3": "Beauty with power.",
+            "field_4": "Care with purpose.",
+            "field_5": "We believe beauty is personal. Dunamiss brings together everyday care and expressive colour, so you can build a routine that feels like you.",
+            "field_6": "Explore our products",
+            "field_7": "shopify://shop_images/about-us-two.png",
+            "field_8": "About Dunamiss"
+          }
+        },
+        "content_2": {
+          "type": "content_2",
+          "settings": {
+            "field_9": "About page sections",
+            "field_10": "#our-story",
+            "field_11": "Our Story",
+            "field_12": "#leadership",
+            "field_13": "Our Founders",
+            "field_14": "#our-values",
+            "field_15": "Our Values",
+            "field_16": "#philosophy",
+            "field_17": "Our Philosophy",
+            "field_18": "#care",
+            "field_19": "Care",
+            "field_20": "#beyond-beauty",
+            "field_21": "Beyond Beauty"
+          }
+        },
+        "content_3": {
+          "type": "content_3",
+          "settings": {
+            "field_22": "shopify://shop_images/about-us-story-01.png",
+            "field_23": "Dunamiss Our Story",
+            "field_24": "Our",
+            "field_25": "Story",
+            "field_26": "Where Beauty Meets Purpose",
+            "field_27": "Dunamiss Cosmetics is an Indian beauty brand built around a simple\n            idea: beauty should help you feel confident in your own skin.\n            From everyday care to expressive colour, we create products that\n            bring together thoughtful formulas and the joy of getting ready.",
+            "field_28": "Our approach starts with the person behind the routine: what you enjoy, how you express yourself, and the care you make time for. We want choosing beauty to feel considered, comfortable, and entirely your own.",
+            "field_29": "Created by women. Inspired by everyday beauty."
+          }
+        },
+        "content_4": {
+          "type": "content_4",
+          "settings": {
+            "field_30": "What matters to us",
+            "field_31": "Our values, in everyday practice.",
+            "field_32": "Three ideas shape how we think about beauty and the experience we want to create.",
+            "field_33": "01",
+            "field_34": "Care comes first",
+            "field_35": "A beauty routine should be a moment of attention to yourself. We value thoughtful choices and clear information that help you find what works for you.",
+            "field_36": "02",
+            "field_37": "Confidence is personal",
+            "field_38": "A subtle finish or a bold lip: there is room for both. We celebrate self-expression without asking everyone to follow the same idea of beauty.",
+            "field_39": "03",
+            "field_40": "Make room for curiosity",
+            "field_41": "Understanding your products is part of enjoying them. We encourage you to explore ingredients, application tips, and the details behind each formula."
+          }
+        },
+        "content_5": {
+          "type": "content_5",
+          "settings": {
+            "field_42": "Meet Our",
+            "field_43": "Founders",
+            "field_44": "Dunamiss was founded by Mrs. Meenakshi Chauhan and Dr. Abhilasha S. Rathore. Their shared vision brings science, care, and an understanding of Indian beauty routines into the same conversation.",
+            "field_45": "shopify://shop_images/meenakshi.png",
+            "field_46": "Dunamiss co-founder portrait",
+            "field_47": "Mrs. Meenakshi Chauhan",
+            "field_48": "Co-founder · Microbiologist",
+            "field_49": "With a background in microbiology, Mrs. Meenakshi Chauhan brings a scientific perspective to Dunamiss and its focus on thoughtful beauty.",
+            "field_50": "shopify://shop_images/abhilasha.png",
+            "field_51": "Dunamiss founder portrait",
+            "field_52": "Dr. Abhilasha S. Rathore",
+            "field_53": "Co-founder",
+            "field_54": "Dr. Abhilasha S. Rathore co-founded Dunamiss with Mrs. Meenakshi Chauhan. Together, they lead a brand centred on care, confidence, and self-expression, with a shared ambition to make everyday beauty feel more personal."
+          }
+        },
+        "content_6": {
+          "type": "content_6",
+          "settings": {
+            "field_55": "shopify://shop_images/about-us-lipstic-shade.png",
+            "field_56": "Dunamiss Philosophy",
+            "field_57": "Our",
+            "field_58": "Philosophy",
+            "field_59": "Beauty With Conscious Care",
+            "field_60": "We bring science and nature together to create beauty products\n            for everyday routines. Explore the ingredients and directions on\n            each product page to find the right fit for you.",
+            "field_61": "We believe an informed choice is a confident choice. Take time to understand a formula, how to use it, and where it fits into your routine. Our product information and beauty journal are there to help you explore.",
+            "field_62": "Discover the ingredients behind your favourites.",
+            "field_63": "Find application guidance for everyday use.",
+            "field_64": "Explore the product testing documents available on our certifications page.",
+            "field_65": "/pages/certifications",
+            "field_66": "Explore our certifications"
+          }
+        },
+        "content_7": {
+          "type": "content_7",
+          "settings": {
+            "field_67": "Find your everyday favourites",
+            "field_68": "A little colour. A moment of care.",
+            "field_69": "Explore beauty through the routines and finishes you enjoy most.",
+            "field_70": "Colour & care",
+            "field_71": "For your lips",
+            "field_72": "Explore lip oils, balms, glosses, and lipsticks for your everyday mood.",
+            "field_73": "Explore lip care →",
+            "field_74": "Your daily ritual",
+            "field_75": "For your skin",
+            "field_76": "Make time for care with products that fit into your daily routine.",
+            "field_77": "Explore skin care →",
+            "field_78": "Learn & explore",
+            "field_79": "For your inspiration",
+            "field_80": "Discover beauty tips, product guides, and ideas to try in your own way.",
+            "field_81": "Read the journal →"
+          }
+        },
+        "content_8": {
+          "type": "content_8",
+          "settings": {
+            "field_82": "Care",
+            "field_83": "For All",
+            "field_84": "We believe beauty should extend beyond the self — to the people,\n          animals, communities, and causes we care about most.",
+            "field_85": "shopify://shop_images/5_d448eaca-9fdb-40bc-9032-2b6512b50460.jpg",
+            "field_86": "Animal Care",
+            "field_87": "Animal Care",
+            "field_88": "Compassion for animals and the importance of safe,\n            caring environments.",
+            "field_89": "shopify://shop_images/1_8cf00c26-0646-4654-ae6b-a2851680e41d.jpg",
+            "field_90": "Children Care",
+            "field_91": "Children’s Care",
+            "field_92": "Care, dignity, and opportunity for the next generation.",
+            "field_93": "shopify://shop_images/12_9da8487b-61f2-486e-85b8-0894d839ae4d.jpg",
+            "field_94": "Women Empowerment",
+            "field_95": "Women’s Empowerment",
+            "field_96": "Celebrating women’s voices, choices, and the confidence\n            to shape their own paths.",
+            "field_97": "shopify://shop_images/10_469069ac-50e2-4a68-a28c-80e5e00dbcdb.jpg",
+            "field_98": "Community Care",
+            "field_99": "Community Care"
+          }
+        },
+        "content_9": {
+          "type": "content_9",
+          "settings": {
+            "field_100": "Connection, kindness, and a sense of belonging in\n            the communities around us."
+          }
+        },
+        "content_10": {
+          "type": "content_10",
+          "settings": {
+            "field_101": "Beyond",
+            "field_102": "Beauty",
+            "field_103": "Let’s make beauty personal.",
+            "field_104": "Whether you are discovering your first Dunamiss favourite or trying\n          something new, we are glad you are here. Explore the collection,\n          get to know the formulas, and make your routine your own.",
+            "field_105": "Beauty with confidence. Care with purpose.",
+            "field_106": "Discover Dunamiss",
+            "field_107": "/pages/contact",
+            "field_108": "Get in touch"
+          }
+        }
+      },
+      "block_order": [
+        "content_1",
+        "content_2",
+        "content_3",
+        "content_4",
+        "content_5",
+        "content_6",
+        "content_7",
+        "content_8",
+        "content_9",
+        "content_10"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

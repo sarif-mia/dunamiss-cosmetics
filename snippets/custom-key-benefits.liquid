@@ -93,6 +93,11 @@
 
 {% assign benefit_keys = '1,2,3,4' | split: ',' %}
 {% assign show_benefits = false %}
+{% for i in benefit_keys %}
+  {% assign text_key = 'benefit_' | append: i | append: '_text' %}
+  {% assign image_key = 'benefit_' | append: i | append: '_image' %}
+  {% if content_settings[text_key] != blank or content_settings[image_key] != blank %}{% assign show_benefits = true %}{% endif %}
+{% endfor %}
 {% if product != nil and product.metafields.custom != blank %}
   {% for i in benefit_keys %}
     {% assign image_key = 'benefit_' | append: i | append: '_image' %}
@@ -113,6 +118,8 @@
           <div class="dunamiss-benefits-grid">
 
             {% for i in benefit_keys %}
+                {% assign image_key = 'benefit_' | append: i | append: '_image' %}
+                {% assign text_key = 'benefit_' | append: i | append: '_text' %}
                 {% assign benefit_image = blank %}
                 {% assign benefit_text = blank %}
 
@@ -123,6 +130,8 @@
                     {% assign benefit_text = product.metafields.custom[text_key] %}
                 {% endif %}
 
+                {% if content_settings[text_key] != blank %}{% assign benefit_text = content_settings[text_key] %}{% endif %}
+                {% if content_settings[image_key] != blank %}{% assign benefit_image = content_settings[image_key] %}{% endif %}
                 {% if benefit_image != blank or benefit_text != blank %}
                   <div class="dunamiss-benefits-item">
 

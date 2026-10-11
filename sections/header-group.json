@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "name": "t:sections.header.name",
   "type": "header",
@@ -73,6 +64,33 @@
       "type": "dunamiss-floating-header",
       "name": "Custom floating header",
       "settings": {
+        "shop_menu": "",
+        "shop_menu_image_link": "",
+        "shop_menu_image_heading": "Discover your next favourite",
+        "shop_menu_title": "Explore Dunamiss",
+        "shop_menu_subheading": "Beauty essentials for every routine",
+        "lip_menu_image_link": "",
+        "lip_menu_image_heading": "Find your perfect lip ritual",
+        "lip_menu_title": "Explore Lip Care",
+        "lip_menu_subheading": "Colour, care & shine for every look",
+        "lip_menu_oil_subtitle": "Hydrate, soften & shine",
+        "lip_menu_gloss_subtitle": "High-shine colour for every mood",
+        "lip_menu_satin_subtitle": "Smooth colour with a satin finish",
+        "lip_menu_tinted_balm_subtitle": "Everyday moisture with a hint of tint",
+        "lip_menu_glimmer_balm_subtitle": "Nourishing care with a luminous touch",
+        "lip_menu_liquid_subtitle": "Bold colour with a weightless feel",
+        "eye_menu_image_link": "",
+        "eye_menu_image_heading": "Discover your perfect eye essentials",
+        "eye_menu_title": "Explore Eye Care",
+        "eye_menu_subheading": "Define, nourish & enhance every look",
+        "eye_menu_kajal_subtitle": "Rich pigment, effortless definition",
+        "eye_menu_eyeliner_subtitle": "Precise lines with lasting impact",
+        "eye_menu_balm_subtitle": "Nourish, smooth & refresh",
+        "skin_menu_image_link": "",
+        "skin_menu_image_heading": "Build your perfect skin ritual",
+        "skin_menu_title": "Explore Skin Care",
+        "skin_menu_subheading": "Hydrate, protect & glow every day",
+        "header_background": "#f8f5f0",
         "section_width": "fluid_container",
         "color_scheme": "",
         "logo_position": "left",

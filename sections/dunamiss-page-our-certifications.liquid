@@ -1,0 +1,1328 @@
+<div style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+<script src="{{ 'dunamiss-content-editor.js' | asset_url }}" defer></script>
+{% assign dm_content_1 = section.blocks | where: 'type', 'content_1' | first %}
+{% assign dm_content_2 = section.blocks | where: 'type', 'content_2' | first %}
+{% assign dm_content_3 = section.blocks | where: 'type', 'content_3' | first %}
+{% assign dm_content_4 = section.blocks | where: 'type', 'content_4' | first %}
+{% assign dm_content_5 = section.blocks | where: 'type', 'content_5' | first %}
+{% assign dm_content_6 = section.blocks | where: 'type', 'content_6' | first %}
+<style>
+/* ========== GLOBAL SECTION WRAPPER ========== */
+
+
+/* ========== BANNER SECTION ========== */
+.certifications-banner {
+    background-image: url('{% if section.settings.background_1 != blank %}{{ section.settings.background_1 | image_url: width: 2400 }}{% else %}{{ 'certification-page-banner-image.png' | file_url }}{% endif %}');
+    background-size: cover;
+    background-position: center;
+    padding: 120px 20px;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.certifications-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(18, 24, 20, 0.42);
+    z-index: 1;
+}
+
+.banner-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.38);
+}
+
+.banner-title {
+    font-size: 60px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    color: white;
+    font-family: var(--body-font);
+}
+
+.banner-subtitle {
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 300;
+    margin: 0;
+}
+
+/* ========== CERTIFICATION LIST SECTION ========== */
+.certification-list-section {
+    padding: 84px 20px;
+    background-color: #f6f7f3;
+}
+
+.certification-intro-title {
+    max-width: 1350px;
+    margin: 0 auto 42px;
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-family: var(--body-font);
+    color: #111;
+}
+
+.certification-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    max-width: 1350px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.certification-text {
+    padding: 8px 0;
+}
+
+.certification-text h3 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: #000;
+}
+
+.certification-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+details.cert-item {
+    border-bottom: 1px solid #d8ddd3;
+    margin-bottom: 0;
+    padding: 15px 0;
+}
+
+details.cert-item:first-child {
+    border-top: 1px solid #d8ddd3;
+}
+
+details.cert-item:last-child {
+    border-bottom: none;
+}
+
+summary.cert-header {
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    background-color: transparent;
+    transition: color 0.3s ease;
+    user-select: none;
+    list-style: none;
+}
+
+summary.cert-header:hover {
+    color: var(--brand-heading);
+}
+
+summary.cert-header::marker {
+    display: none;
+}
+
+summary.cert-header::before {
+    content: '+';
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: auto;
+    transition: transform 0.3s ease;
+    padding-left: 15px;
+    margin-right: 4px;
+}
+
+details.cert-item[open] summary.cert-header::before {
+    content: '−';
+}
+
+.cert-content {
+    padding: 15px 0 0 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.cert-content p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+    margin: 0;
+}
+
+.certification-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 2px;
+    display: block;
+    box-shadow: 18px 18px 0 #e3e8df;
+}
+
+/* ========== CERTIFIED QUALITY ASSURANCE SECTION ========== */
+.certified-quality-section {
+    padding: 60px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: 300;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    color: #000;
+    font-family: var(--body-font);
+}
+
+.section-subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.certificates-carousel {
+    max-width: 1350px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.carousel-controls {
+    display: none;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.carousel-btn {
+    width: 42px;
+    height: 42px;
+    border: 1px solid #d6d6d6;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    color: #1a1a1a;
+    transition: all 0.2s ease;
+}
+
+.carousel-btn:hover {
+    background: #f3f3f3;
+}
+
+.certificates-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 24px;
+    align-items: stretch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 8px;
+}
+
+.certificates-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.certificate-item {
+    text-align: center;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    padding-bottom: 16px;
+    flex: 0 0 calc(33.333% - 16px);
+    scroll-snap-align: start;
+}
+
+.certificate-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.certificate-item h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+    padding: 0 8px;
+}
+
+/* ========== COMMITMENT EXCELLENCE SECTION ========== */
+.commitment-section {
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.commitment-content {
+    max-width: 1350px;
+    margin: 0 auto;
+}
+
+.commitment-text {
+    margin-bottom: 60px;
+}
+
+.commitment-text p:first-child {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #000;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.commitment-text p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.certification-badges {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 20px;
+    margin: 50px 0;
+    align-items: center;
+    justify-items: center;
+}
+
+.badge {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+.badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.transparency-statement {
+    text-align: left;
+    max-width: 100%;
+    margin: 50px 0 0 0;
+    padding: 30px 0;
+    background-color: transparent;
+    border-radius: 0;
+    border-left: none;
+}
+
+.transparency-statement p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #000;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* ========== OUR PROMISE SECTION ========== */
+.our-promise-section {
+    background-color: #fff;
+    padding: 60px 20px;
+    margin-top: 30px;
+}
+
+.promise-content {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 0;
+    max-width: 1350px;
+    margin: 0 auto;
+    align-items: center;
+    background-color: #f8f8f8;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.promise-text {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.promise-text h2 {
+    font-size: 32px;
+    font-weight: 300;
+    margin-bottom: 14px;
+    letter-spacing: 2px;
+    color: #111;
+    font-family: var(--body-font);
+}
+
+.promise-text p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #444;
+    margin: 0;
+    max-width: 520px;
+}
+
+.promise-image {
+    overflow: hidden;
+    min-height: 320px;
+}
+
+.promise-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 900px) {
+    .certification-badges {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .badge {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+@media (min-width: 769px) {
+    .carousel-controls {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .certifications-banner {
+        padding: 70px 16px;
+    }
+
+    .certification-list-section {
+        padding: 40px 16px;
+    }
+
+    .certified-quality-section {
+        padding: 48px 16px;
+    }
+
+    .commitment-section {
+        padding: 48px 16px;
+    }
+
+    .our-promise-section {
+        padding: 48px 16px;
+        margin-top: 24px;
+    }
+
+    .banner-title {
+        font-size: 36px;
+        margin-bottom: 12px;
+    }
+
+    .banner-subtitle {
+        font-size: 15px;
+    }
+
+    .section-title {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+        margin-bottom: 30px;
+        font-size: 13px;
+    }
+
+    .carousel-controls {
+        display: flex;
+    }
+
+    .certificates-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 16px;
+        padding-bottom: 8px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .certificates-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .certificate-item {
+        flex: 0 0 calc(50% - 8px);
+        max-width: calc(50% - 8px);
+        scroll-snap-align: start;
+    }
+
+    .certificate-item:nth-child(5) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .certification-content {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .certification-text h3 {
+        margin-bottom: 20px;
+    }
+
+    .certification-image img {
+        border-radius: 6px;
+    }
+
+    .certification-badges {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin: 24px 0 0;
+    }
+
+    .promise-content {
+        grid-template-columns: 1fr;
+        border-radius: 12px;
+    }
+
+    .promise-text {
+        padding: 24px 16px;
+    }
+
+    .promise-text h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .promise-text p {
+        font-size: 14px;
+    }
+
+    .promise-image {
+        min-height: 220px;
+    }
+
+    .badge {
+        width: 76px;
+        height: 76px;
+    }
+
+    .transparency-statement {
+        margin: 24px 0 0;
+        padding: 16px 0 0;
+    }
+
+    .transparency-statement p {
+        font-size: 14px;
+    }
+}
+</style>
+
+    <!-- BANNER SECTION -->
+    <section class="certifications-banner">
+        <div class="banner-content">
+            <h1 class="banner-title" {{ dm_content_1.shopify_attributes }}>{{ dm_content_1.settings.field_1 | escape }}</h1>
+            <p class="banner-subtitle">{{ dm_content_1.settings.field_2 | escape }}</p>
+        </div>
+    </section>
+
+    <!-- CERTIFICATION LIST SECTION -->
+    <section class="certification-list-section">
+        <div class="fluid_container">
+            <h2 class="certification-intro-title" {{ dm_content_2.shopify_attributes }}>{{ dm_content_2.settings.field_3 | escape }}</h2>
+            <div class="certification-content">
+                <div class="certification-text">
+                    <div class="certification-list">
+                        <details class="cert-item" open>
+                            <summary class="cert-header">{{ dm_content_2.settings.field_4 | escape }}</summary>
+                            <div class="cert-content">
+                                <p>{{ dm_content_2.settings.field_5 | escape }}</p>
+                            </div>
+                        </details>
+                        <details class="cert-item">
+                            <summary class="cert-header">{{ dm_content_2.settings.field_6 | escape }}</summary>
+                            <div class="cert-content">
+                                <p>{{ dm_content_2.settings.field_7 | escape }}</p>
+                            </div>
+                        </details>
+                        <details class="cert-item">
+                            <summary class="cert-header">{{ dm_content_2.settings.field_8 | escape }}</summary>
+                            <div class="cert-content">
+<p>{{ dm_content_2.settings.field_9 | escape }}</p>
+                            </div>
+                        </details>
+                        <details class="cert-item">
+                            <summary class="cert-header">{{ dm_content_2.settings.field_10 | escape }}</summary>
+                            <div class="cert-content">
+<p>{{ dm_content_2.settings.field_11 | escape }}</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <div class="certification-image">
+                    <img src="{% if dm_content_2.settings.field_12 != blank %}{{ dm_content_2.settings.field_12 | image_url: width: 1920 }}{% else %}{{ 'Certificate_Page_-_right-side.png' | file_url }}{% endif %}" alt="{{ dm_content_2.settings.field_13 | escape }}" width="600" height="400">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFIED QUALITY ASSURANCE SECTION -->
+    <section class="certified-quality-section">
+        <div class="fluid_container">
+            <h2 class="section-title" {{ dm_content_3.shopify_attributes }}>{{ dm_content_3.settings.field_14 | escape }}</h2>
+            <p class="section-subtitle">{{ dm_content_3.settings.field_15 | escape }}</p>
+
+            <div class="certificates-carousel">
+                <div class="carousel-controls" aria-label="{{ dm_content_3.settings.field_16 | escape }}">
+                    <button type="button" class="carousel-btn prev-btn" aria-label="{{ dm_content_3.settings.field_17 | escape }}">←</button>
+                    <button type="button" class="carousel-btn next-btn" aria-label="{{ dm_content_3.settings.field_18 | escape }}">→</button>
+                </div>
+                <div class="certificates-grid" id="certificatesGrid">
+                    <div class="certificate-item">
+                        <img src="{% if dm_content_3.settings.field_19 != blank %}{{ dm_content_3.settings.field_19 | image_url: width: 1920 }}{% else %}{{ 'LIP_BALM_CERTIFICATE.jpg' | file_url }}{% endif %}" alt="{{ dm_content_3.settings.field_20 | escape }}" width="250" height="350">
+                        <h3>{{ dm_content_3.settings.field_21 | escape }}</h3>
+                    </div>
+                    <div class="certificate-item">
+                        <img src="{% if dm_content_3.settings.field_22 != blank %}{{ dm_content_3.settings.field_22 | image_url: width: 1920 }}{% else %}{{ 'CERTIFICATE_SHEET_MASK.jpg' | file_url }}{% endif %}" alt="{{ dm_content_3.settings.field_23 | escape }}" width="250" height="350">
+                        <h3>{{ dm_content_3.settings.field_24 | escape }}</h3>
+                    </div>
+                    <div class="certificate-item">
+                        <img src="{% if dm_content_3.settings.field_25 != blank %}{{ dm_content_3.settings.field_25 | image_url: width: 1920 }}{% else %}{{ 'TESTED_IN_INDIA.jpg' | file_url }}{% endif %}" alt="{{ dm_content_3.settings.field_26 | escape }}" width="250" height="350">
+                        <h3>{{ dm_content_3.settings.field_27 | escape }}</h3>
+                    </div>
+                    <div class="certificate-item">
+                        <img src="{% if dm_content_3.settings.field_28 != blank %}{{ dm_content_3.settings.field_28 | image_url: width: 1920 }}{% else %}{{ 'On-Site_Inspection_Zurko.jpg' | file_url }}{% endif %}" alt="{{ dm_content_3.settings.field_29 | escape }}" width="250" height="350">
+                        <h3>{{ dm_content_3.settings.field_30 | escape }}</h3>
+                    </div>
+                    <div class="certificate-item">
+                        <img src="{% if dm_content_3.settings.field_31 != blank %}{{ dm_content_3.settings.field_31 | image_url: width: 1920 }}{% else %}{{ 'Hazel_Glitter_Certification.png' | file_url }}{% endif %}" alt="{{ dm_content_4.settings.field_32 | escape }}" width="250" height="350" {{ dm_content_4.shopify_attributes }}>
+                        <h3>{{ dm_content_4.settings.field_33 | escape }}</h3>
+                    </div>
+                    <div class="certificate-item">
+                        <img src="{% if dm_content_4.settings.field_34 != blank %}{{ dm_content_4.settings.field_34 | image_url: width: 1920 }}{% else %}{{ 'Eye_Balm_Certification.png' | file_url }}{% endif %}" alt="{{ dm_content_4.settings.field_35 | escape }}" width="250" height="350">
+                        <h3>{{ dm_content_4.settings.field_36 | escape }}</h3>
+                    </div>
+                     <div class="certificate-item">
+                        <img src="{% if dm_content_4.settings.field_37 != blank %}{{ dm_content_4.settings.field_37 | image_url: width: 1920 }}{% else %}{{ 'Sunscreen_Certification.png' | file_url }}{% endif %}" alt="{{ dm_content_4.settings.field_38 | escape }}" width="250" height="350">
+                        <h3>{{ dm_content_4.settings.field_39 | escape }}</h3>
+                    </div>
+                    <div class="certificate-item">
+                        <img src="{% if dm_content_4.settings.field_40 != blank %}{{ dm_content_4.settings.field_40 | image_url: width: 1920 }}{% else %}{{ 'Lip_Oil_Certification.png' | file_url }}{% endif %}" alt="{{ dm_content_4.settings.field_41 | escape }}" width="250" height="350">
+                        <h3>{{ dm_content_4.settings.field_42 | escape }}</h3>
+                    </div>
+                    <div class="certificate-item">
+                        <img src="{% if dm_content_4.settings.field_43 != blank %}{{ dm_content_4.settings.field_43 | image_url: width: 1920 }}{% else %}{{ 'Am_Cream__Certification.png' | file_url }}{% endif %}" alt="{{ dm_content_4.settings.field_44 | escape }}" width="250" height="350">
+                        <h3>{{ dm_content_4.settings.field_45 | escape }}</h3>
+                    </div>
+                    <div class="certificate-item">
+                        <img src="{% if dm_content_4.settings.field_46 != blank %}{{ dm_content_4.settings.field_46 | image_url: width: 1920 }}{% else %}{{ 'Mocka_Kiss_Certification.png' | file_url }}{% endif %}" alt="{{ dm_content_4.settings.field_47 | escape }}" width="250" height="350">
+                        <h3>{{ dm_content_4.settings.field_48 | escape }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMITMENT TO EXCELLENCE SECTION -->
+    <section class="commitment-section">
+        <div class="fluid_container">
+            <h2 class="section-title" {{ dm_content_5.shopify_attributes }}>{{ dm_content_5.settings.field_49 | escape }}</h2>
+
+            <div class="commitment-content">
+                <div class="commitment-text">
+                    <p>{{ dm_content_5.settings.field_50 | escape }}</p>
+
+<p>{{ dm_content_5.settings.field_51 | escape }}</p>
+
+                    <div class="certification-badges">
+                        <div class="badge">
+                            <img src="{% if dm_content_5.settings.field_52 != blank %}{{ dm_content_5.settings.field_52 | image_url: width: 1920 }}{% else %}{{ 'GMP_LOGO.png' | file_url }}{% endif %}" alt="{{ dm_content_5.settings.field_53 | escape }}" width="100" height="100">
+                        </div>
+                        <div class="badge">
+                            <img src="{% if dm_content_5.settings.field_54 != blank %}{{ dm_content_5.settings.field_54 | image_url: width: 1920 }}{% else %}{{ 'SALFATE_PARABEN_FREE.png' | file_url }}{% endif %}" alt="{{ dm_content_5.settings.field_55 | escape }}" width="100" height="100">
+                        </div>
+                        <div class="badge">
+                            <img src="{% if dm_content_5.settings.field_56 != blank %}{{ dm_content_5.settings.field_56 | image_url: width: 1920 }}{% else %}{{ 'VEGAN.png' | file_url }}{% endif %}" alt="{{ dm_content_5.settings.field_57 | escape }}" width="100" height="100">
+                        </div>
+                        <div class="badge">
+                            <img src="{% if dm_content_5.settings.field_58 != blank %}{{ dm_content_5.settings.field_58 | image_url: width: 1920 }}{% else %}{{ 'CLINICALLY_TESTED.png' | file_url }}{% endif %}" alt="{{ dm_content_5.settings.field_59 | escape }}" width="100" height="100">
+                        </div>
+                        <div class="badge">
+                            <img src="{% if dm_content_5.settings.field_60 != blank %}{{ dm_content_5.settings.field_60 | image_url: width: 1920 }}{% else %}{{ 'MADE_IN_INDIA_LOGO.png' | file_url }}{% endif %}" alt="{{ dm_content_5.settings.field_61 | escape }}" width="100" height="100">
+                        </div>
+                        <div class="badge">
+                            <img src="{% if dm_content_5.settings.field_62 != blank %}{{ dm_content_5.settings.field_62 | image_url: width: 1920 }}{% else %}{{ 'tested_in_spain.png' | file_url }}{% endif %}" alt="{{ dm_content_5.settings.field_63 | escape }}" width="100" height="100">
+                        </div>
+                        <div class="badge">
+                            <img src="{% if dm_content_5.settings.field_64 != blank %}{{ dm_content_5.settings.field_64 | image_url: width: 1920 }}{% else %}{{ 'CRUELTY_FREE.png' | file_url }}{% endif %}" alt="{{ dm_content_5.settings.field_65 | escape }}" width="100" height="100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="transparency-statement">
+            <p>{{ dm_content_5.settings.field_66 | escape }}</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR PROMISE SECTION -->
+    <section class="our-promise-section">
+        <div class="fluid_container">
+            <div class="promise-content">
+                <div class="promise-text">
+                    <h2 {{ dm_content_6.shopify_attributes }}>{{ dm_content_6.settings.field_67 | escape }}</h2>
+                    <p>{{ dm_content_6.settings.field_68 | escape }}</p>
+                </div>
+                <div class="promise-image">
+                    <img src="{% if dm_content_6.settings.field_69 != blank %}{{ dm_content_6.settings.field_69 | image_url: width: 1920 }}{% else %}{{ 'our_ceritification-01.png' | file_url }}{% endif %}" alt="{{ dm_content_6.settings.field_70 | escape }}" width="600" height="400">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+</div>
+{% schema %}
+{
+  "name": "Dunamiss certifications",
+  "tag": "section",
+  "class": "dm-editable-page",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Edit the content groups below. Their positions follow this page’s fixed layout. Additional sections can be added below the page."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "image_picker",
+      "id": "background_1",
+      "label": "Background image 1",
+      "info": "Choose a replacement for the existing page background."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content_1",
+      "name": "Certifications",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_1",
+          "label": "Certifications",
+          "default": "Certifications"
+        },
+        {
+          "type": "textarea",
+          "id": "field_2",
+          "label": "Dunamiss Cosmetics is absolutely natural and committed to eco-fri",
+          "default": "Dunamiss Cosmetics is absolutely natural and committed to eco-friendly practices. We've voluntarily taken steps to ensure that our products are third-party certified for purity, safety, and ethical standards."
+        }
+      ]
+    },
+    {
+      "type": "content_2",
+      "name": "Learn More About Our Cert",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_3",
+          "label": "Learn More About Our Certifications",
+          "default": "Learn More About Our Certifications"
+        },
+        {
+          "type": "text",
+          "id": "field_4",
+          "label": "ECOCERT",
+          "default": "ECOCERT"
+        },
+        {
+          "type": "textarea",
+          "id": "field_5",
+          "label": "Dunamiss Cosmetics holds Ecocert certification through rigorous i",
+          "default": "Dunamiss Cosmetics holds Ecocert certification through rigorous inspections that verify our trustworthy standards and maintain consistent quality records across all production."
+        },
+        {
+          "type": "text",
+          "id": "field_6",
+          "label": "PETA | Beauty Without Bunnies",
+          "default": "PETA | Beauty Without Bunnies"
+        },
+        {
+          "type": "textarea",
+          "id": "field_7",
+          "label": "Dunamiss Cosmetics is PETA certified cruelty-free — no animal tes",
+          "default": "Dunamiss Cosmetics is PETA certified cruelty-free — no animal testing is conducted at any stage of our product development, keeping everything humane and ethical."
+        },
+        {
+          "type": "text",
+          "id": "field_8",
+          "label": "BRMED Sustainability Council",
+          "default": "BRMED Sustainability Council"
+        },
+        {
+          "type": "textarea",
+          "id": "field_9",
+          "label": "Dunamiss Cosmetics is certified by the BRMED Sustainability Counc",
+          "default": "Dunamiss Cosmetics is certified by the BRMED Sustainability Council for our commitment to sustainable sourcing and eco-friendly manufacturing practices. Our products meet rigorous environmental standards ensuring minimal impact on our planet."
+        },
+        {
+          "type": "text",
+          "id": "field_10",
+          "label": "Superfood Vegetation Association",
+          "default": "Superfood Vegetation Association"
+        },
+        {
+          "type": "textarea",
+          "id": "field_11",
+          "label": "Dunamiss Cosmetics products contain certified superfood ingredien",
+          "default": "Dunamiss Cosmetics products contain certified superfood ingredients sourced from verified sustainable farms. Every ingredient is carefully selected for its nutritional and therapeutic benefits, backed by the Superfood Vegetation Association standards."
+        },
+        {
+          "type": "image_picker",
+          "id": "field_12",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_13",
+          "label": "Alt",
+          "default": "Certifications"
+        }
+      ]
+    },
+    {
+      "type": "content_3",
+      "name": "Certified Quality Assuran",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_14",
+          "label": "Certified Quality Assurance",
+          "default": "Certified Quality Assurance"
+        },
+        {
+          "type": "textarea",
+          "id": "field_15",
+          "label": "All Dunamiss Cosmetics products are tested, on time, and certifie",
+          "default": "All Dunamiss Cosmetics products are tested, on time, and certified to ensure the highest quality and safety standards."
+        },
+        {
+          "type": "text",
+          "id": "field_16",
+          "label": "Aria Label",
+          "default": "Certificate carousel controls"
+        },
+        {
+          "type": "text",
+          "id": "field_17",
+          "label": "Aria Label",
+          "default": "Previous certificates"
+        },
+        {
+          "type": "text",
+          "id": "field_18",
+          "label": "Aria Label",
+          "default": "Next certificates"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_19",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_20",
+          "label": "Alt",
+          "default": "Lip Balm Certification"
+        },
+        {
+          "type": "text",
+          "id": "field_21",
+          "label": "Lip Balm Certification",
+          "default": "Lip Balm Certification"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_22",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_23",
+          "label": "Alt",
+          "default": "Sheet Mask Certification"
+        },
+        {
+          "type": "text",
+          "id": "field_24",
+          "label": "Sheet Mask Certification",
+          "default": "Sheet Mask Certification"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_25",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_26",
+          "label": "Alt",
+          "default": "Production Certification"
+        },
+        {
+          "type": "text",
+          "id": "field_27",
+          "label": "Production Certification",
+          "default": "Production Certification"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_28",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_29",
+          "label": "Alt",
+          "default": "On-Site Inspection"
+        },
+        {
+          "type": "text",
+          "id": "field_30",
+          "label": "On-Site Inspection",
+          "default": "On-Site Inspection"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_31",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        }
+      ]
+    },
+    {
+      "type": "content_4",
+      "name": "Hazel Glitter",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_32",
+          "label": "Alt",
+          "default": "Hazel Glitter Certification"
+        },
+        {
+          "type": "text",
+          "id": "field_33",
+          "label": "Hazel Glitter",
+          "default": "Hazel Glitter"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_34",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_35",
+          "label": "Alt",
+          "default": "Eye Balm Certification"
+        },
+        {
+          "type": "text",
+          "id": "field_36",
+          "label": "Eye Balm",
+          "default": "Eye Balm"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_37",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_38",
+          "label": "Alt",
+          "default": "Sunscreen Certification"
+        },
+        {
+          "type": "text",
+          "id": "field_39",
+          "label": "Sunscreen",
+          "default": "Sunscreen"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_40",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_41",
+          "label": "Alt",
+          "default": "Lip Oil"
+        },
+        {
+          "type": "text",
+          "id": "field_42",
+          "label": "Lip Oil",
+          "default": "Lip Oil"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_43",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_44",
+          "label": "Alt",
+          "default": "AM Cream Certification"
+        },
+        {
+          "type": "text",
+          "id": "field_45",
+          "label": "AM Cream",
+          "default": "AM Cream"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_46",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_47",
+          "label": "Alt",
+          "default": "Mocha Kiss"
+        },
+        {
+          "type": "text",
+          "id": "field_48",
+          "label": "Mocha Kiss",
+          "default": "Mocha Kiss"
+        }
+      ]
+    },
+    {
+      "type": "content_5",
+      "name": "Our Commitment to Excelle",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_49",
+          "label": "Our Commitment to Excellence",
+          "default": "Our Commitment to Excellence"
+        },
+        {
+          "type": "textarea",
+          "id": "field_50",
+          "label": "Quality is not just a promise — it is Dunamiss Cosmetics' foundat",
+          "default": "Quality is not just a promise — it is Dunamiss Cosmetics' foundation. Every product goes through strict testing, verification, and certification processes to ensure safety, performance, and reliability."
+        },
+        {
+          "type": "textarea",
+          "id": "field_51",
+          "label": "Dunamiss Cosmetics' commitment to purity ensures that every ingre",
+          "default": "Dunamiss Cosmetics' commitment to purity ensures that every ingredient is carefully chosen to nourish and protect your skin. We exclude harsh chemicals entirely, using only components that either directly benefit skin health or amplify the cream's natural effectiveness."
+        },
+        {
+          "type": "image_picker",
+          "id": "field_52",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_53",
+          "label": "Alt",
+          "default": "GMP Certified"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_54",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_55",
+          "label": "Alt",
+          "default": "Paraben Free"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_56",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_57",
+          "label": "Alt",
+          "default": "100% Vegan"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_58",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_59",
+          "label": "Alt",
+          "default": "Clinically Tested"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_60",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_61",
+          "label": "Alt",
+          "default": "Made In India"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_62",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_63",
+          "label": "Alt",
+          "default": "Tested In Spain"
+        },
+        {
+          "type": "image_picker",
+          "id": "field_64",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_65",
+          "label": "Alt",
+          "default": "Cruelty Free"
+        },
+        {
+          "type": "textarea",
+          "id": "field_66",
+          "label": "Dunamiss Cosmetics is committed to transparency, consistency, and",
+          "default": "Dunamiss Cosmetics is committed to transparency, consistency, and delivering only premium-standard products you can trust. Your confidence drives us to maintain excellence in every detail."
+        }
+      ]
+    },
+    {
+      "type": "content_6",
+      "name": "Our Promise",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "field_67",
+          "label": "Our Promise",
+          "default": "Our Promise"
+        },
+        {
+          "type": "textarea",
+          "id": "field_68",
+          "label": "Dunamiss Cosmetics certifications are not just a standard – they'",
+          "default": "Dunamiss Cosmetics certifications are not just a standard – they're a promise of authentic, safe, and ethical skincare. From ingredient sourcing to formulation and packaging, every step reflects our passion for clean beauty and your well-being."
+        },
+        {
+          "type": "image_picker",
+          "id": "field_69",
+          "label": "Image",
+          "info": "Choose a replacement image. The existing image remains if the selection is cleared."
+        },
+        {
+          "type": "text",
+          "id": "field_70",
+          "label": "Alt",
+          "default": "Our Promise"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Dunamiss certifications",
+      "blocks": [
+        {
+          "type": "content_1",
+          "settings": {
+            "field_1": "Certifications",
+            "field_2": "Dunamiss Cosmetics is absolutely natural and committed to eco-friendly practices. We've voluntarily taken steps to ensure that our products are third-party certified for purity, safety, and ethical standards."
+          }
+        },
+        {
+          "type": "content_2",
+          "settings": {
+            "field_3": "Learn More About Our Certifications",
+            "field_4": "ECOCERT",
+            "field_5": "Dunamiss Cosmetics holds Ecocert certification through rigorous inspections that verify our trustworthy standards and maintain consistent quality records across all production.",
+            "field_6": "PETA | Beauty Without Bunnies",
+            "field_7": "Dunamiss Cosmetics is PETA certified cruelty-free — no animal testing is conducted at any stage of our product development, keeping everything humane and ethical.",
+            "field_8": "BRMED Sustainability Council",
+            "field_9": "Dunamiss Cosmetics is certified by the BRMED Sustainability Council for our commitment to sustainable sourcing and eco-friendly manufacturing practices. Our products meet rigorous environmental standards ensuring minimal impact on our planet.",
+            "field_10": "Superfood Vegetation Association",
+            "field_11": "Dunamiss Cosmetics products contain certified superfood ingredients sourced from verified sustainable farms. Every ingredient is carefully selected for its nutritional and therapeutic benefits, backed by the Superfood Vegetation Association standards.",
+            "field_12": "shopify://shop_images/Certificate_Page_-_right-side.png",
+            "field_13": "Certifications"
+          }
+        },
+        {
+          "type": "content_3",
+          "settings": {
+            "field_14": "Certified Quality Assurance",
+            "field_15": "All Dunamiss Cosmetics products are tested, on time, and certified to ensure the highest quality and safety standards.",
+            "field_16": "Certificate carousel controls",
+            "field_17": "Previous certificates",
+            "field_18": "Next certificates",
+            "field_19": "shopify://shop_images/LIP_BALM_CERTIFICATE.jpg",
+            "field_20": "Lip Balm Certification",
+            "field_21": "Lip Balm Certification",
+            "field_22": "shopify://shop_images/CERTIFICATE_SHEET_MASK.jpg",
+            "field_23": "Sheet Mask Certification",
+            "field_24": "Sheet Mask Certification",
+            "field_25": "shopify://shop_images/TESTED_IN_INDIA.jpg",
+            "field_26": "Production Certification",
+            "field_27": "Production Certification",
+            "field_28": "shopify://shop_images/On-Site_Inspection_Zurko.jpg",
+            "field_29": "On-Site Inspection",
+            "field_30": "On-Site Inspection",
+            "field_31": "shopify://shop_images/Hazel_Glitter_Certification.png"
+          }
+        },
+        {
+          "type": "content_4",
+          "settings": {
+            "field_32": "Hazel Glitter Certification",
+            "field_33": "Hazel Glitter",
+            "field_34": "shopify://shop_images/Eye_Balm_Certification.png",
+            "field_35": "Eye Balm Certification",
+            "field_36": "Eye Balm",
+            "field_37": "shopify://shop_images/Sunscreen_Certification.png",
+            "field_38": "Sunscreen Certification",
+            "field_39": "Sunscreen",
+            "field_40": "shopify://shop_images/Lip_Oil_Certification.png",
+            "field_41": "Lip Oil",
+            "field_42": "Lip Oil",
+            "field_43": "shopify://shop_images/Am_Cream__Certification.png",
+            "field_44": "AM Cream Certification",
+            "field_45": "AM Cream",
+            "field_46": "shopify://shop_images/Mocka_Kiss_Certification.png",
+            "field_47": "Mocha Kiss",
+            "field_48": "Mocha Kiss"
+          }
+        },
+        {
+          "type": "content_5",
+          "settings": {
+            "field_49": "Our Commitment to Excellence",
+            "field_50": "Quality is not just a promise — it is Dunamiss Cosmetics' foundation. Every product goes through strict testing, verification, and certification processes to ensure safety, performance, and reliability.",
+            "field_51": "Dunamiss Cosmetics' commitment to purity ensures that every ingredient is carefully chosen to nourish and protect your skin. We exclude harsh chemicals entirely, using only components that either directly benefit skin health or amplify the cream's natural effectiveness.",
+            "field_52": "shopify://shop_images/GMP_LOGO.png",
+            "field_53": "GMP Certified",
+            "field_54": "shopify://shop_images/SALFATE_PARABEN_FREE.png",
+            "field_55": "Paraben Free",
+            "field_56": "shopify://shop_images/VEGAN.png",
+            "field_57": "100% Vegan",
+            "field_58": "shopify://shop_images/CLINICALLY_TESTED.png",
+            "field_59": "Clinically Tested",
+            "field_60": "shopify://shop_images/MADE_IN_INDIA_LOGO.png",
+            "field_61": "Made In India",
+            "field_62": "shopify://shop_images/tested_in_spain.png",
+            "field_63": "Tested In Spain",
+            "field_64": "shopify://shop_images/CRUELTY_FREE.png",
+            "field_65": "Cruelty Free",
+            "field_66": "Dunamiss Cosmetics is committed to transparency, consistency, and delivering only premium-standard products you can trust. Your confidence drives us to maintain excellence in every detail."
+          }
+        },
+        {
+          "type": "content_6",
+          "settings": {
+            "field_67": "Our Promise",
+            "field_68": "Dunamiss Cosmetics certifications are not just a standard – they're a promise of authentic, safe, and ethical skincare. From ingredient sourcing to formulation and packaging, every step reflects our passion for clean beauty and your well-being.",
+            "field_69": "shopify://shop_images/our_ceritification-01.png",
+            "field_70": "Our Promise"
+          }
+        }
+      ]
+    }
+  ],
+  "limit": 1
+}
+{% endschema %}

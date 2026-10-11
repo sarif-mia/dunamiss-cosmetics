@@ -1,0 +1,73 @@
+{
+  "sections": {
+    "main": {
+      "type": "dunamiss-page-discount-offer",
+      "blocks": {
+        "content_1": {
+          "type": "content_1",
+          "settings": {
+            "field_1": "Current cart rewards",
+            "field_2": "More beauty, more rewards.",
+            "field_3": "Unlock the offers below as your qualifying cart value grows. Your progress updates automatically in the cart, so there is no code to remember.",
+            "field_4": "Shop all products",
+            "field_5": "#current-offers",
+            "field_6": "See current offers",
+            "field_7": "Current reward thresholds",
+            "field_8": "Reward ladder",
+            "field_9": "Unlocked automatically",
+            "field_10": "Spend",
+            "field_11": "Free shipping",
+            "field_12": "Spend",
+            "field_13": "Free gift",
+            "field_14": "Spend"
+          }
+        },
+        "content_2": {
+          "type": "content_2",
+          "settings": {
+            "field_15": "Available now",
+            "field_16": "Offers that match your cart",
+            "field_17": "Shop normally and watch each reward unlock in your cart.",
+            "field_18": "01",
+            "field_19": "Shipping reward",
+            "field_20": "No code required",
+            "field_21": "02",
+            "field_22": "Free gift",
+            "field_23": "While stocks last",
+            "field_24": "03",
+            "field_25": "Cart saving",
+            "field_26": "Applied when eligible"
+          }
+        },
+        "content_3": {
+          "type": "content_3",
+          "settings": {
+            "field_27": "Good to know",
+            "field_28": "Simple rewards, clearly shown.",
+            "field_29": "Progress is based on the qualifying cart subtotal after product discounts.",
+            "field_30": "The free gift is limited to one per eligible cart and depends on availability.",
+            "field_31": "Final eligibility, savings and shipping are confirmed in the cart and at checkout."
+          }
+        },
+        "content_4": {
+          "type": "content_4",
+          "settings": {
+            "field_32": "Ready to unlock your rewards?",
+            "field_33": "Build your beauty cart.",
+            "field_34": "Start shopping"
+          }
+        }
+      },
+      "block_order": [
+        "content_1",
+        "content_2",
+        "content_3",
+        "content_4"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
