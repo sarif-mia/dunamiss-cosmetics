@@ -63,10 +63,18 @@ The active header is `sections/dunamiss-floating-header.liquid`. Shop navigation
 `snippets/dunamiss-category-mega-menu.liquid`. Menu headings, subtitles and promo images
 remain editable in the floating-header section settings.
 
-Category names and subtitles have one shared source under **Customize → Theme
-settings → Dunamiss categories**. These settings apply to desktop/mobile navigation,
-the Shop menu and collection headings. Link destinations remain in Shopify Navigation.
-The collection product section can optionally override a single collection handle.
+Category names and collection-page subtitle defaults are under **Customize → Theme
+settings → Dunamiss categories**. Mega-menu item subtitles are edited in one place:
+**Header → Custom floating header → Menu subtitle blocks**. Choose the named block,
+edit **Subtitle**, and save. The same text appears in Shop and category menus.
+Clearing the text or turning off **Show subtitle** hides it. New items can be added
+with **Add block → Menu subtitle**, selecting their collection or custom link.
+Use one block per destination. Matching uses the destination rather than Navigation
+labels, so links can be renamed without losing their subtitles.
+
+The panel introduction lines remain in the floating-header section’s **Shop / Lip
+Care / Eye Care / Skin Care menu subheading** settings. Link destinations remain in
+Shopify Navigation. Collection product sections can override one collection handle.
 
 ## Editing custom content in Shopify
 

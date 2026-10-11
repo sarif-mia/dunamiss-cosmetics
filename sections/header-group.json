@@ -73,19 +73,10 @@
         "lip_menu_image_heading": "Find your perfect lip ritual",
         "lip_menu_title": "Explore Lip Care",
         "lip_menu_subheading": "Colour, care & shine for every look",
-        "lip_menu_oil_subtitle": "Hydrate, soften & shine",
-        "lip_menu_gloss_subtitle": "High-shine colour for every mood",
-        "lip_menu_satin_subtitle": "Smooth colour with a satin finish",
-        "lip_menu_tinted_balm_subtitle": "Everyday moisture with a hint of tint",
-        "lip_menu_glimmer_balm_subtitle": "Nourishing care with a luminous touch",
-        "lip_menu_liquid_subtitle": "Bold colour with a weightless feel",
         "eye_menu_image_link": "",
         "eye_menu_image_heading": "Discover your perfect eye essentials",
         "eye_menu_title": "Explore Eye Care",
         "eye_menu_subheading": "Define, nourish & enhance every look",
-        "eye_menu_kajal_subtitle": "Rich pigment, effortless definition",
-        "eye_menu_eyeliner_subtitle": "Precise lines with lasting impact",
-        "eye_menu_balm_subtitle": "Nourish, smooth & refresh",
         "skin_menu_image_link": "",
         "skin_menu_image_heading": "Build your perfect skin ritual",
         "skin_menu_title": "Explore Skin Care",
@@ -103,7 +94,187 @@
         "show_shopping_cart": true,
         "show_currency": false,
         "show_language": false
-      }
+      },
+      "blocks": {
+        "subtitle_lip_oil": {
+          "type": "menu_subtitle",
+          "settings": {
+            "title": "Lip Oil",
+            "collection": "lip-oil",
+            "link": "",
+            "subtitle": "Hydrate, soften & shine",
+            "show_subtitle": true
+          }
+        },
+        "subtitle_lip_gloss": {
+          "type": "menu_subtitle",
+          "settings": {
+            "title": "Lip Gloss",
+            "collection": "lip-gloss",
+            "link": "",
+            "subtitle": "High-shine colour for every mood",
+            "show_subtitle": true
+          }
+        },
+        "subtitle_satin_lipstick": {
+          "type": "menu_subtitle",
+          "settings": {
+            "title": "Satin Lipstick",
+            "collection": "satin-lipstick",
+            "link": "",
+            "subtitle": "Smooth colour with a satin finish",
+            "show_subtitle": true
+          }
+        },
+        "subtitle_tinted_lip_balm": {
+          "type": "menu_subtitle",
+          "settings": {
+            "title": "Tinted Lip Balm",
+            "collection": "tinted-lip-balm",
+            "link": "",
+            "subtitle": "Everyday moisture with a hint of tint",
+            "show_subtitle": true
+          }
+        },
+        "subtitle_glimmer_lip_balm": {
+          "type": "menu_subtitle",
+          "settings": {
+            "title": "Glimmer Lip Balm",
+            "collection": "glimmer-lip-balm",
+            "link": "",
+            "subtitle": "Nourishing care with a luminous touch",
+            "show_subtitle": true
+          }
+        },
+        "subtitle_liquid_lipsticks": {
+          "type": "menu_subtitle",
+          "settings": {
+            "title": "Liquid Lipsticks",
+            "collection": "liquid-lipsticks",
+            "link": "",
+            "subtitle": "Bold colour with a weightless feel",
+            "show_subtitle": true
+          }
+        },
+        "subtitle_kajal": {
+          "type": "menu_subtitle",
+          "settings": {
+            "title": "Kajal",
+            "collection": "kajal",
+            "link": "",
+            "subtitle": "Rich pigment, effortless definition",
+            "show_subtitle": true
+          }
+        },
+        "subtitle_eyeliner": {
+          "type": "menu_subtitle",
+          "settings": {
+            "title": "Eyeliner",
+            "collection": "eyeliner",
+            "link": "",
+            "subtitle": "Precise lines with lasting impact",
+            "show_subtitle": true
+          }
+        },
+        "subtitle_eye_balm": {
+          "type": "menu_subtitle",
+          "settings": {
+            "title": "Eye Balm",
+            "collection": "eye-balm",
+            "link": "",
+            "subtitle": "Nourish, smooth & refresh",
+            "show_subtitle": true
+          }
+        },
+        "subtitle_face_mist": {
+          "type": "menu_subtitle",
+          "settings": {
+            "title": "Mist & Glow",
+            "collection": "face-mist",
+            "link": "",
+            "subtitle": "SPF + Anti-Pollution Mist",
+            "show_subtitle": true
+          }
+        },
+        "subtitle_sheet_mask": {
+          "type": "menu_subtitle",
+          "settings": {
+            "title": "Mask & Chill",
+            "collection": "sheet-mask",
+            "link": "",
+            "subtitle": "Hydrating Sheet Masks",
+            "show_subtitle": true
+          }
+        },
+        "subtitle_cream": {
+          "type": "menu_subtitle",
+          "settings": {
+            "title": "AM to PM Care",
+            "collection": "cream",
+            "link": "",
+            "subtitle": "Day & Night Creams",
+            "show_subtitle": true
+          }
+        },
+        "subtitle_sunscreen_cream": {
+          "type": "menu_subtitle",
+          "settings": {
+            "title": "SPF & Barrier Glow",
+            "collection": "sunscreen-cream",
+            "link": "",
+            "subtitle": "Youth Protection Sunscreen",
+            "show_subtitle": true
+          }
+        },
+        "subtitle_nail_paints": {
+          "type": "menu_subtitle",
+          "settings": {
+            "title": "High-Shine Nails",
+            "collection": "nail-paints",
+            "link": "",
+            "subtitle": "Paint Your Mood",
+            "show_subtitle": true
+          }
+        },
+        "subtitle_combo_products": {
+          "type": "menu_subtitle",
+          "settings": {
+            "title": "Beauty Bundles",
+            "collection": "combo-products",
+            "link": "",
+            "subtitle": "Better Together",
+            "show_subtitle": true
+          }
+        },
+        "subtitle_supplements": {
+          "type": "menu_subtitle",
+          "settings": {
+            "title": "Beauty from Within",
+            "collection": "supplements",
+            "link": "",
+            "subtitle": "Sip, Glow & Recharge",
+            "show_subtitle": true
+          }
+        }
+      },
+      "block_order": [
+        "subtitle_lip_oil",
+        "subtitle_lip_gloss",
+        "subtitle_satin_lipstick",
+        "subtitle_tinted_lip_balm",
+        "subtitle_glimmer_lip_balm",
+        "subtitle_liquid_lipsticks",
+        "subtitle_kajal",
+        "subtitle_eyeliner",
+        "subtitle_eye_balm",
+        "subtitle_face_mist",
+        "subtitle_sheet_mask",
+        "subtitle_cream",
+        "subtitle_sunscreen_cream",
+        "subtitle_nail_paints",
+        "subtitle_combo_products",
+        "subtitle_supplements"
+      ]
     }
   },
   "order": [

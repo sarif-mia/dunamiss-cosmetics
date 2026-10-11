@@ -1,0 +1,36 @@
+{%- liquid
+  assign target_path = url | split: '?' | first | split: '#' | first | remove_first: request.origin | remove_first: shop.secure_url
+  assign target_collection_handle = blank
+  if target_path contains '/collections/'
+    assign target_collection_handle = target_path | split: '/collections/' | last | split: '/' | first
+  endif
+  assign subtitle_matched = false
+  assign selected_subtitle = blank
+  for subtitle_block in section.blocks
+    if subtitle_block.type == 'menu_subtitle'
+      assign destination_matches = false
+      if subtitle_block.settings.collection != blank and target_collection_handle != blank
+        if subtitle_block.settings.collection.handle == target_collection_handle
+          assign destination_matches = true
+        endif
+      elsif subtitle_block.settings.link != blank
+        assign configured_path = subtitle_block.settings.link | split: '?' | first | split: '#' | first | remove_first: request.origin | remove_first: shop.secure_url
+        if configured_path == target_path
+          assign destination_matches = true
+        endif
+      endif
+      if destination_matches
+        assign subtitle_matched = true
+        assign selected_subtitle = blank
+        if subtitle_block.settings.show_subtitle
+          assign selected_subtitle = subtitle_block.settings.subtitle
+        endif
+      endif
+    endif
+  endfor
+  if subtitle_matched
+    echo selected_subtitle
+  else
+    render 'dunamiss-category-copy', url: url, field: 'subtitle'
+  endif
+-%}

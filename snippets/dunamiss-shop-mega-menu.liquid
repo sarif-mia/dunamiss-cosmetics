@@ -62,16 +62,16 @@
               {% assign token = forloop.index0 | prepend: '|' | append: '|' %}
               {% if column_items contains token %}
                 <div class="dm-shop-group">
-                  <a class="dm-shop-heading" href="{{ link.url }}">{% render 'dunamiss-category-copy', url: link.url, fallback: link.title %}</a>
+                  <a class="dm-shop-heading" href="{{ link.url }}">{% render 'dunamiss-menu-label', menu_link: link, section: section %}</a>
                   {% if link.links != blank %}
                     <ul role="list">
                       {% for child in link.links %}
                         <li>
-                          <a href="{{ child.url }}">{% render 'dunamiss-category-copy', url: child.url, fallback: child.title %}</a>
+                          <a href="{{ child.url }}">{% render 'dunamiss-menu-label', menu_link: child, section: section %}</a>
                           {% if child.links != blank %}
                             <ul role="list">
                               {% for grandchild in child.links %}
-                                <li><a href="{{ grandchild.url }}">{% render 'dunamiss-category-copy', url: grandchild.url, fallback: grandchild.title %}</a></li>
+                                <li><a href="{{ grandchild.url }}">{% render 'dunamiss-menu-label', menu_link: grandchild, section: section %}</a></li>
                               {% endfor %}
                             </ul>
                           {% endif %}

@@ -1892,7 +1892,7 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "Names and subtitles used in Shop, desktop/mobile menus and collection pages. Menu destinations stay controlled by Shopify Navigation."
+        "content": "Category names used in navigation and collection headings. These subtitles are collection-page defaults; edit mega-menu item subtitles in Header → Custom floating header → Menu subtitle blocks."
       },
       {
         "type": "header",
@@ -1907,8 +1907,9 @@
       {
         "type": "text",
         "id": "dm_face_mist_subtitle",
-        "label": "Subtitle",
-        "default": "SPF + Anti-Pollution Mist"
+        "label": "Collection subtitle",
+        "default": "SPF + Anti-Pollution Mist",
+        "info": "Mega-menu subtitle overrides are in the floating-header Menu subtitle blocks."
       },
       {
         "type": "header",
@@ -1923,8 +1924,9 @@
       {
         "type": "text",
         "id": "dm_sheet_mask_subtitle",
-        "label": "Subtitle",
-        "default": "Hydrating Sheet Masks"
+        "label": "Collection subtitle",
+        "default": "Hydrating Sheet Masks",
+        "info": "Mega-menu subtitle overrides are in the floating-header Menu subtitle blocks."
       },
       {
         "type": "header",
@@ -1939,8 +1941,9 @@
       {
         "type": "text",
         "id": "dm_cream_subtitle",
-        "label": "Subtitle",
-        "default": "Day & Night Creams"
+        "label": "Collection subtitle",
+        "default": "Day & Night Creams",
+        "info": "Mega-menu subtitle overrides are in the floating-header Menu subtitle blocks."
       },
       {
         "type": "header",
@@ -1955,8 +1958,9 @@
       {
         "type": "text",
         "id": "dm_sunscreen_cream_subtitle",
-        "label": "Subtitle",
-        "default": "Youth Protection Sunscreen"
+        "label": "Collection subtitle",
+        "default": "Youth Protection Sunscreen",
+        "info": "Mega-menu subtitle overrides are in the floating-header Menu subtitle blocks."
       },
       {
         "type": "header",
@@ -1971,8 +1975,9 @@
       {
         "type": "text",
         "id": "dm_nail_paints_subtitle",
-        "label": "Subtitle",
-        "default": "Paint Your Mood"
+        "label": "Collection subtitle",
+        "default": "Paint Your Mood",
+        "info": "Mega-menu subtitle overrides are in the floating-header Menu subtitle blocks."
       },
       {
         "type": "header",
@@ -1987,8 +1992,9 @@
       {
         "type": "text",
         "id": "dm_combo_products_subtitle",
-        "label": "Subtitle",
-        "default": "Better Together"
+        "label": "Collection subtitle",
+        "default": "Better Together",
+        "info": "Mega-menu subtitle overrides are in the floating-header Menu subtitle blocks."
       },
       {
         "type": "header",
@@ -2003,8 +2009,9 @@
       {
         "type": "text",
         "id": "dm_supplements_subtitle",
-        "label": "Subtitle",
-        "default": "Sip, Glow & Recharge"
+        "label": "Collection subtitle",
+        "default": "Sip, Glow & Recharge",
+        "info": "Mega-menu subtitle overrides are in the floating-header Menu subtitle blocks."
       }
     ]
   },

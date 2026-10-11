@@ -446,3 +446,13 @@ body:has(.section-header-custom-floating)
     --mobile-header-icon-size: 32px;
   }
 }
+
+/* Item subtitles share one presentation in desktop and mobile category menus. */
+.section-header-custom-floating .dm-category-subtitle {
+  display: block;
+  margin-top: 2px;
+  color: var(--color-text, #5f5a5c);
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 400;
+}

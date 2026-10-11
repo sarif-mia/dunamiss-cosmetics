@@ -73,6 +73,10 @@
           {%- liquid
             assign last_block = null
             assign title = link.title | downcase
+            assign menu_collection_handle = blank
+            if link.url contains '/collections/'
+              assign menu_collection_handle = link.url | split: '?' | first | split: '#' | first | split: '/collections/' | last | split: '/' | first
+            endif
             for block in section.blocks
               assign text = block.settings.text | downcase
               if text == title
@@ -80,15 +84,15 @@
               endif
             endfor
           -%}
-          {%- if custom_lip_menu and title == 'lip care' -%}
+          {%- if custom_lip_menu and menu_collection_handle == 'lip-care' -%}
             {% render 'dunamiss-category-mega-menu', menu_link: link, category_type: 'lip', section: section, theme_st: theme_st %}
             {% continue %}
           {%- endif -%}
-          {%- if custom_eye_menu and title == 'eye care' -%}
+          {%- if custom_eye_menu and menu_collection_handle == 'eye-care' -%}
             {% render 'dunamiss-category-mega-menu', menu_link: link, category_type: 'eye', section: section, theme_st: theme_st %}
             {% continue %}
           {%- endif -%}
-          {%- if custom_skin_menu and title == 'skin care' -%}
+          {%- if custom_skin_menu and menu_collection_handle == 'skin-care' -%}
             {% render 'dunamiss-category-mega-menu', menu_link: link, category_type: 'skin', section: section, theme_st: theme_st %}
             {% continue %}
           {%- endif -%}
