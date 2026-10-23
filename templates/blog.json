@@ -97,7 +97,7 @@
         "button_show_more": "Load more",
         "promotion_link": "",
         "promotion_postion": 3,
-        "image_ratio": "landscape",
+        "image_ratio": "adapt",
         "custom_ratio": "",
         "content_alignment": "left",
         "show_category": false,

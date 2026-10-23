@@ -1,9 +1,19 @@
 {%- liquid
   assign desktop_image = banner_block.settings.desktop_image | default: collection.image
+  assign bb_banner_asset_url = blank
+  if collection.handle == 'skincare-bb-bb-creams' and desktop_image == blank
+    assign bb_banner_asset_url = 'dunamiss-bb-cream-banner.jpg' | asset_url
+  endif
   assign mobile_image = banner_block.settings.mobile_image | default: desktop_image
   assign show_image = true
   if banner_block != nil and banner_block.settings.show_banner == false
     assign show_image = false
+  endif
+  assign banner_image_available = false
+  if show_image and desktop_image != blank
+    assign banner_image_available = true
+  elsif show_image and bb_banner_asset_url != blank
+    assign banner_image_available = true
   endif
   assign banner_heading = banner_block.settings.heading
   assign banner_subtitle = banner_block.settings.subtitle
@@ -15,12 +25,16 @@
   {%- assign banner_subtitle = default_subtitle | strip -%}
 {% endif %}
 <div class="dm-collection-banner-wrap {{ section.settings.section_width }}">
-  <div class="dm-collection-banner{% unless desktop_image != blank and show_image %} dm-collection-banner--text-only{% endunless %}" {% if banner_block != nil %}{{ banner_block.shopify_attributes }}{% endif %}>
+  <div class="dm-collection-banner{% if collection.handle == 'skincare-bb-bb-creams' %} dm-collection-banner--bb-cream{% endif %}{% unless banner_image_available %} dm-collection-banner--text-only{% endunless %}" {% if banner_block != nil %}{{ banner_block.shopify_attributes }}{% endif %}>
     <div class="dm-collection-banner__copy">
       <h1 class="dm-collection-banner__title">{% if banner_heading != blank %}{{ banner_heading | escape }}{% else %}{{ default_heading | strip }}{% endif %}</h1>
       {% if banner_subtitle != blank %}<p class="dm-collection-banner__subtitle">{{ banner_subtitle | escape }}</p>{% endif %}
     </div>
-    {% if desktop_image != blank and show_image %}
+    {% if bb_banner_asset_url != blank and show_image %}
+      <picture class="dm-collection-banner__visual">
+        <img src="{{ bb_banner_asset_url }}" alt="{{ image_description | escape }}" loading="eager" fetchpriority="high" class="dm-collection-banner__image">
+      </picture>
+    {% elsif desktop_image != blank and show_image %}
       <picture class="dm-collection-banner__visual">
         <source media="(max-width: 767px)" srcset="{{ mobile_image | image_url: width: 480 }} 480w, {{ mobile_image | image_url: width: 800 }} 800w" sizes="calc(100vw - 30px)">
         {{ desktop_image | image_url: width: 1920 | image_tag: widths: '800, 1200, 1600, 1920', sizes: '(min-width: 768px) 62vw, calc(100vw - 30px)', loading: 'eager', fetchpriority: 'high', alt: image_description, class: 'dm-collection-banner__image' }}

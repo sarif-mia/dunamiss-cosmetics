@@ -50,6 +50,8 @@
   object-fit: cover;
   object-position: center;
 }
+.dm-collection-banner--bb-cream .dm-collection-banner__visual { background: #fbf7f4; }
+.dm-collection-banner--bb-cream .dm-collection-banner__image { object-fit: contain; }
 @media (max-width: 767px) {
   .dm-collection-banner-wrap { margin-block: 12px 24px; }
   .dm-collection-banner { grid-template-columns: minmax(0, 1fr); min-height: 0; }

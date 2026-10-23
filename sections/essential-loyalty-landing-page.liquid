@@ -86,14 +86,29 @@ Please exercise caution as any changes made to this file may be overwritten.
   /* Skip Alpine injection if the host theme already ships it (e.g. Pixel Union
    * Empire family). A second Alpine triggers Alpine.start() twice and renders
    * every x-for list as duplicate sibling DOM (3 rewards displayed as 6). */
+  /* ⚠️ Pinned version + Subresource Integrity (#1762). This section is written into every
+   * merchant's live theme, so an unpinned "latest" from a public CDN was the one place a
+   * compromised package release or CDN could run script on every storefront at once (the
+   * October 2026 checkout-hijack wave abused exactly that kind of channel). Bumping Alpine
+   * means a new version AND a new hash, computed from the exact file:
+   *   curl -sL <url> | openssl dgst -sha384 -binary | openssl base64 -A
+   * The same version is bundled by the theme extension (package.json `alpinejs`). */
   window.addEventListener('load', function () {
     if (window.Alpine || window.deferLoadingAlpine) return;
     [
-      "https://unpkg.com/alpinejs",
-      "https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.x.x/dist/cdn.min.js"
-    ].forEach(function (src) {
+      {
+        src: "https://cdn.jsdelivr.net/npm/alpinejs@3.17.4/dist/cdn.min.js",
+        integrity: "sha384-5/joNqFnRyVWzXp99bHot6RHG+EksGp+USSgZwPar7T9SD9PKKER37n/8bXBAZGd"
+      },
+      {
+        src: "https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.17.4/dist/cdn.min.js",
+        integrity: "sha384-/KspnSacpGaqcz8joSHdVfpHZ88hbPkiK9WAHDalFjff9wBO4VQWravNauBX2g88"
+      }
+    ].forEach(function (lib) {
       var script = document.createElement('script');
-      script.src = src;
+      script.src = lib.src;
+      script.integrity = lib.integrity;
+      script.crossOrigin = 'anonymous';
       script.defer = true;
       document.body.appendChild(script);
     });
@@ -108,6 +123,11 @@ Please exercise caution as any changes made to this file may be overwritten.
         var translatedText = text[this.locale] || text[this.fallback] || text['en'];
 
         if (properties) {
+          // #1623: one name per meaning — a history entry's reward and tier read as
+          // `{reward_title}` / `{tier_title}`, the older `{title}` / `{tier_name}` still fill.
+          properties = Object.assign({}, properties);
+          if (properties.reward_title == null && properties.title != null) properties.reward_title = properties.title;
+          if (properties.tier_title == null && properties.tier_name != null) properties.tier_title = properties.tier_name;
           Object.keys(properties).forEach(function(key) {
             var searchStr = '{' + key + '}';
             var value = properties[key];
@@ -115,6 +135,18 @@ Please exercise caution as any changes made to this file may be overwritten.
               translatedText = translatedText.replace(searchStr, value);
             }
           });
+          // #1623 §11: the program-wide points name, agreeing with the text's own number.
+          if (translatedText.indexOf('{points_name}') !== -1) {
+            var names = ({{ metafield.shop.points_name | json }}) || {};
+            var count = properties.points != null ? properties.points : properties.customPoints;
+            var form = Number(count) === 1 ? 'singular' : 'plural';
+            var map = names[form] || {};
+            var name = map[this.locale] || map[this.fallback] || map['en'] || (form === 'singular' ? 'point' : 'points');
+            translatedText = translatedText.split('{points_name}').join(name);
+          }
+          // #1623: a history entry built before order names were stored has none until the
+          // customer's metafield is rebuilt — it reads without the reference, never "{order_name}".
+          translatedText = translatedText.split('{order_name}').join('').replace(/\s+$/, '');
         }
 
         return translatedText;

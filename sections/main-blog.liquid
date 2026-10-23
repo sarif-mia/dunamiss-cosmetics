@@ -62,7 +62,7 @@
     {% if section_st.featured_article != blank and current_tags == blank %}
       <section class="dm-blog-featured" aria-label="Featured article">
         <p class="subheading_weight">Editor's pick</p>
-        {% render 'article-card', article: section_st.featured_article, image_ratio: 'landscape', show_date: true, show_excerpt: true, show_readmore: true, readmore_type: 'link', items_per_row: 2, items_per_row_mobile: 1, section_width: section_width %}
+        {% render 'article-card', article: section_st.featured_article, image_ratio: image_ratio, custom_ratio: section_st.custom_ratio, show_date: true, show_excerpt: true, show_readmore: true, readmore_type: 'link', items_per_row: 2, items_per_row_mobile: 1, section_width: section_width %}
       </section>
     {% endif %}
     <grid-list class="block">

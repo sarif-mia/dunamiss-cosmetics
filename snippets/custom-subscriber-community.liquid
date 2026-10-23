@@ -104,7 +104,7 @@
 </style>
 
 <section class="discounts-subscribers-section">
-  <div class="container-fluid">
+  <div class="fluid_container">
     <div class="discounts-subscribers-grid">
       <div class="discounts-subscribers-gallery">
         <img src="{% if dm_content_1.settings.field_1 != blank %}{{ dm_content_1.settings.field_1 | image_url: width: 1920 }}{% else %}{{ 'EYE_BALM_COMMING_SOON_image_6_jpg.jpg' | file_url }}{% endif %}" alt="{{ dm_content_1.settings.field_2 | escape }}" width="800" height="800" loading="lazy" / {{ dm_content_1.shopify_attributes }}>

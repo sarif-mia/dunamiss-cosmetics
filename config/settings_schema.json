@@ -1947,6 +1947,22 @@
       },
       {
         "type": "header",
+        "content": "BB Cream"
+      },
+      {
+        "type": "text",
+        "id": "dm_bb_cream_heading",
+        "label": "Heading",
+        "default": "BB+ Perfect"
+      },
+      {
+        "type": "text",
+        "id": "dm_bb_cream_subtitle",
+        "label": "Fallback collection subtitle",
+        "default": "Blur, Hydrate & Protect"
+      },
+      {
+        "type": "header",
         "content": "Sunscreen"
       },
       {

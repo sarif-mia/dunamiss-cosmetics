@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
   text-wrap: balance;
 }
-.brand-feature-icon { filter: grayscale(1); }
+/* .brand-feature-icon { filter: grayscale(1); } */
 
 /* Keep the sticky purchase bar's price selector and controls aligned. */
 body sticky-add-cart .sticky__item-info {

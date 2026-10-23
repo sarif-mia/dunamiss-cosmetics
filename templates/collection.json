@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "banner": {
@@ -688,6 +697,20 @@
             "subtitle": "Explore the full Dunamiss collection",
             "image_alt": "An elegant editorial arrangement of soft rose pigment, ivory cream texture, clear dew drops and a small blush satin ribbon on an ivory tray, balanced complete beauty edit."
           }
+        },
+        "dm_banner_50": {
+          "type": "dm_collection_banner",
+          "settings": {
+            "title": "BB+ Perfect",
+            "collection": "skincare-bb-bb-creams",
+            "handle": "skincare-bb-bb-creams",
+            "show_banner": true,
+            "desktop_image": "",
+            "mobile_image": "",
+            "heading": "BB+ Perfect",
+            "subtitle": "Blur, Hydrate & Protect",
+            "image_alt": "Dunamiss Cloud Blur BB+ Cream tube with a Deep Cookie shade swatch."
+          }
         }
       },
       "block_order": [
@@ -739,7 +762,8 @@
         "dm_banner_46",
         "dm_banner_47",
         "dm_banner_48",
-        "dm_banner_49"
+        "dm_banner_49",
+        "dm_banner_50"
       ],
       "settings": {
         "section_width": "fluid_container"

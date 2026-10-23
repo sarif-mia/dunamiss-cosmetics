@@ -304,12 +304,13 @@
 
 .custom-inside-active-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(3,minmax(0,1fr));
     gap:18px;
 }
 
 .custom-inside-active-card{
     display:flex;
+    min-width:0;
     gap:15px;
     padding:18px;
     border:1px solid var(--brand-border);
@@ -384,7 +385,7 @@
 @media(max-width:991px){
 
 .custom-inside-active-grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(2,minmax(0,1fr));
 }
 
 }
@@ -741,8 +742,8 @@
 @media (max-width: 768px) { .dunamiss-inside-science--lipgloss .custom-inside-love-grid { grid-template-columns: repeat(2, 1fr); } }
 
 /* Existing lipoil category variations. */
-.dunamiss-inside-science--lipoil .custom-inside-active-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-@media (max-width: 991px) { .dunamiss-inside-science--lipoil .custom-inside-active-grid { grid-template-columns: repeat(2, 1fr); } }
+.dunamiss-inside-science--lipoil .custom-inside-active-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 991px) { .dunamiss-inside-science--lipoil .custom-inside-active-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .dunamiss-inside-science--lipoil .dunamiss-feature-bar { max-width: 100%; margin: 40px auto; display: grid; grid-template-columns: repeat(5, 1fr); background: var(--brand-background); border-radius: 18px; padding: 15px 0px; overflow: hidden; }
 .dunamiss-inside-science--lipoil .dunamiss-feature-item { display: flex; align-items: center; gap: 18px; padding: 18px 22px; border-right: 1px solid var(--brand-border); }
 .dunamiss-inside-science--lipoil .dunamiss-feature-item:last-child { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; }
@@ -778,3 +779,14 @@
 .dunamiss-inside-science--satin .custom-inside-love-grid { display: grid; grid-template-columns: repeat(6, 1fr); border-radius: 16px; overflow: hidden; }
 @media (max-width: 1100px) { .dunamiss-inside-science--satin .custom-inside-love-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 768px) { .dunamiss-inside-science--satin .custom-inside-love-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* Ingredient names must not widen their grid tracks on small phones. */
+.dunamiss-inside-science .custom-inside-active-content {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 380px) {
+  .dunamiss-inside-science .custom-inside-active-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -101,16 +101,27 @@ body .section-header-custom-floating .dm-shop-menu > summary {
 /* Keep type metrics stable and wrap narrow desktop menus within their own column. */
 @media (min-width: 1025px) {
   body .section-header-custom-floating .header__menu .level0 > menu-item > a,
-  .dm-shop-menu > summary { font-size: 13px; }
+  .dm-shop-menu > summary { font-size: 13px; white-space: nowrap; }
+  body .section-header-custom-floating .header__menu > nav.navigation:not(.mobile) .horizontal-list {
+    column-gap: 4px;
+    row-gap: 0;
+  }
+  body .section-header-custom-floating .header__menu > nav.navigation:not(.mobile) .horizontal-list > .level0 {
+    flex: 0 0 auto;
+  }
+  /* Keep a clear 20px separation between adjacent plain-text labels. */
+  body .section-header-custom-floating .header__menu .level0 > menu-item {
+    padding-inline: 0;
+  }
+  body .section-header-custom-floating .header__menu .level0 > menu-item > a {
+    padding-inline: 8px;
+  }
 }
 @media (min-width: 1025px) and (max-width: 1399px) {
   body .section-header-custom-floating .header__menu > nav.navigation:not(.mobile) .horizontal-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-  }
-  body .section-header-custom-floating .header__menu > nav.navigation:not(.mobile) .horizontal-list > .level0 {
-    flex: 0 0 auto;
   }
 }
 @media (min-width: 1400px) {

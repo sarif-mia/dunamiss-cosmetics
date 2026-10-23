@@ -63,19 +63,7 @@
               {% endif %}
             </div>
           {%- when 'featured_image' -%}
-            {% liquid
-              assign aspect_ratio = '1/1'
-              case block_st.aspect_ratio
-                when 'adapt'
-                  assign aspect_ratio = 'adapt'
-                when 'square'
-                  assign aspect_ratio = '1/1'
-                when 'portrait'
-                  assign aspect_ratio = '3/4'
-                else
-                  assign aspect_ratio = '4/3'
-              endcase
-            %}
+            {%- assign aspect_ratio = article.image.aspect_ratio | default: 1.777777 -%}
             {%- if article.image -%}
               <div
                 class="rounded rounded-corner-item text-center mt-30 mb-40"
@@ -200,7 +188,7 @@
                   {% if candidate.tags contains tag %}{% assign matches_topic = true %}{% break %}{% endif %}
                 {% endfor %}
                 {% if matches_topic %}
-                  {% render 'article-card', article: candidate, image_ratio: 'landscape', show_date: true, show_excerpt: true, show_readmore: true, readmore_type: 'link', items_per_row: 3, items_per_row_mobile: 1, section_width: section_width %}
+                  {% render 'article-card', article: candidate, image_ratio: block_st.image_ratio, custom_ratio: block_st.custom_ratio, show_date: true, show_excerpt: true, show_readmore: true, readmore_type: 'link', items_per_row: 3, items_per_row_mobile: 1, section_width: section_width %}
                   {% assign related_count = related_count | plus: 1 %}
                   {% if related_count == 3 %}{% break %}{% endif %}
                 {% endif %}

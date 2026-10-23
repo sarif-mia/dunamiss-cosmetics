@@ -1,7 +1,7 @@
 {%- if science_legacy_layout -%}
 {{ 'dunamiss-inside-science.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'dunamiss-inside-science.js' | asset_url }}" defer></script>
-<div class="dunamiss-inside-science dunamiss-inside-science--{{ science_category | escape }}">
+<div class="dunamiss-inside-science fluid_container dunamiss-inside-science--{{ science_category | escape }}">
 {% if legacy_hero != blank %}<div class="custom-inside-hero-section">{{ legacy_hero }}</div>{% endif %}
 {% if legacy_science != blank %}<div class="custom-inside-science-card">{{ legacy_science }}</div>{% endif %}
 {% if legacy_active != blank %}<div class="custom-inside-active-section">{{ legacy_active }}</div>{% endif %}
@@ -31,7 +31,7 @@ The decorative divider does not represent a measured performance score.
   {%- endfor -%}
   {%- assign ingredients = ingredient_text | split: ', ' -%}
   {%- assign icon_base = 'https://cdn.shopify.com/s/files/1/0686/9680/1515/files/' -%}
-  <div class="dunamiss-inside-science">
+  <div class="dunamiss-inside-science fluid_container">
     {% if legacy_hero != blank %}<div class="custom-inside-hero-section">{{ legacy_hero }}</div>{% else %}<div class="custom-inside-hero-section">
       <h3 class="custom-inside-hero-subtitle">The Science Inside</h3>
       <h2 class="custom-inside-hero-title">{{ product.title | escape }}</h2>
