@@ -6,7 +6,7 @@
     <div class="minicart__header dm-cart-header">
       <h2 id="NativeCartHeading"><span>Your Cart</span><span class="cart-count cart-count-drawer">({{ cart.item_count }})</span></h2>
       <div class="dm-cart-header-actions">
-        <a class="dm-cart-view" href="{{ routes.cart_url }}">{{ settings.dm_cart_view | escape }} <span aria-hidden="true">↗</span></a>
+        <a class="dm-cart-view" href="{{ routes.cart_url }}">{{ settings.dm_cart_view | escape }}</a>
         <button type="button" class="btn-reset close-cart-button dm-cart-close" aria-label="Close cart">{% render 'icon-close' %}</button>
       </div>
     </div>
