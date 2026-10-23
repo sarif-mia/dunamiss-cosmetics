@@ -2145,6 +2145,18 @@
     ]
   },
   {
+    "name": "Dunamiss floating buttons",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "dm_whatsapp_enabled",
+        "label": "Show WhatsApp button",
+        "default": false,
+        "info": "Show the floating WhatsApp chat button on the right side of the storefront."
+      }
+    ]
+  },
+  {
     "name": "Dunamiss search identity",
     "settings": [
       {

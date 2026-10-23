@@ -464,7 +464,8 @@ body .product-item__wrapper.product-grid .product-item__information > product-fo
     overflow-wrap: normal;
   }
   body .whatsapp-float {
-    left: 12px;
+    left: auto;
+    right: 12px;
     bottom: calc(12px + env(safe-area-inset-bottom));
   }
   body .whatsapp-float .wa-button {
