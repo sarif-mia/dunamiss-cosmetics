@@ -32,7 +32,7 @@
   };
   const busy = (value) => {
     panel.setAttribute('aria-busy', String(value));
-    panel.querySelectorAll('.quantity__button, input[name="updates[]"], .cart-remove, .dm-cart-coupon button, .dm-cart-checkout, .dm-cart-recommendation button[name="add"]').forEach((node) => { node.disabled = value; });
+    panel.querySelectorAll('.quantity__button, input[name="updates[]"], .cart-remove, .dm-cart-coupon button, .dm-cart-discount-remove, .dm-cart-checkout, .dm-cart-recommendation button[name="add"]').forEach((node) => { node.disabled = value; });
   };
   const render = (html) => {
     const node = new DOMParser().parseFromString(html, 'text/html').querySelector('#minicart-form');
@@ -274,6 +274,15 @@
     cart.refreshNativeCart().catch((failure) => error(failure.message));
   });
   cart.addEventListener('click', (event) => {
+    const removeDiscount = event.target.closest('[data-native-cart-discount-remove]');
+    if (removeDiscount && content.contains(removeDiscount)) {
+      event.preventDefault();
+      if (removeDiscount.disabled || panel.getAttribute('aria-busy') === 'true') return;
+      const removedCode = removeDiscount.dataset.nativeCartDiscountRemove;
+      const remainingCodes = (state.discountCodes || []).filter((code) => code.toLowerCase() !== removedCode.toLowerCase());
+      mutate('cart/update.js', { discount: remainingCodes.join(',') }, 'Discount removed.');
+      return;
+    }
     const terms = content.querySelector('[data-native-cart-terms]');
     if (event.target.closest('.dm-cart-checkout')) { if (terms && !terms.checked) { event.preventDefault(); event.stopImmediatePropagation(); error('Please accept the terms before checkout.'); terms.focus(); } else queueMicrotask(() => cart.close()); }
   }, { capture: true });

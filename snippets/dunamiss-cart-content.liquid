@@ -64,10 +64,16 @@
         </form>
       {% endif %}
       <p class="dm-cart-feedback" data-native-cart-feedback role="status" aria-live="polite"></p>
-      {% if cart.cart_level_discount_applications.size > 0 %}
+      {% if cart.cart_level_discount_applications.size > 0 or native_discount_codes.size > 0 %}
+        {% assign cart_discount_titles = cart.cart_level_discount_applications | map: 'title' %}
         <ul class="dm-cart-discounts">
           {% for discount in cart.cart_level_discount_applications %}
-            <li>{{ discount.title | escape }} <span>−{{ discount.total_allocated_amount | money }}</span></li>
+            <li><span class="dm-cart-discount-title">{{ discount.title | escape }}</span><span>−{{ discount.total_allocated_amount | money }}</span>{% if discount.type == 'discount_code' %}{% render 'dunamiss-cart-discount-remove', code: discount.title %}{% endif %}</li>
+          {% endfor %}
+          {% for code in native_discount_codes %}
+            {% unless cart_discount_titles contains code %}
+              <li><span class="dm-cart-discount-title">{{ code | escape }}</span>{% render 'dunamiss-cart-discount-remove', code: code %}</li>
+            {% endunless %}
           {% endfor %}
         </ul>
       {% endif %}
@@ -82,7 +88,6 @@
       {% else %}
         <button type="submit" form="minicart" name="checkout" class="btn-primary dm-cart-checkout">{{ settings.dm_cart_checkout | escape }}</button>
       {% endif %}
-      <div class="dm-cart-payment" aria-label="{{ settings.dm_cart_checkout | escape }}"><span aria-hidden="true">&#128274;</span> {{ settings.dm_cart_security | escape }}</div>
       <a class="dm-cart-view" href="{{ routes.cart_url }}">{{ settings.dm_cart_view | escape }}</a>
     </div>
   {% endif %}
