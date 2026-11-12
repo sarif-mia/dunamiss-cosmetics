@@ -23,9 +23,15 @@
     top: auto;
     bottom: 9%;
   }
-  .slideshow .slideshow-button-only .sec__content-btn :is(a, button) {
-    min-height: 0;
-    padding: clamp(7px, 1vw, 11px) clamp(18px, 2.6vw, 30px);
-    font-size: clamp(11px, 1.25vw, 14px);
-  }
+}
+
+/* The theme's default button padding (55px a side on desktop) made the hero CTA
+   overpower the banner; keep it compact and scale it gently with the screen. */
+.slideshow .sec__content-btn :is(.btn-primary, .btn-outline) {
+  min-width: 0;
+  min-height: 0;
+  padding: clamp(8px, 0.75vw, 11px) clamp(20px, 2vw, 30px);
+  font-size: clamp(11.5px, 0.9vw, 13px);
+  line-height: 1.2;
+  letter-spacing: 0.06em;
 }
