@@ -14,3 +14,18 @@
 
 /* Keep collection labels comfortable to activate on touch screens. */
 .collection-item__name { display: inline-flex; align-items: center; min-height: 24px; }
+
+/* Tablets show the wide desktop banner at a small height, while the CTA keeps its
+   full size and rode up into the tagline baked into the artwork. Anchor it near the
+   bottom edge and scale it with the banner until the desktop layout takes over. */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .slideshow .sec__content.slideshow-button-only {
+    top: auto;
+    bottom: 9%;
+  }
+  .slideshow .slideshow-button-only .sec__content-btn :is(a, button) {
+    min-height: 0;
+    padding: clamp(7px, 1vw, 11px) clamp(18px, 2.6vw, 30px);
+    font-size: clamp(11px, 1.25vw, 14px);
+  }
+}

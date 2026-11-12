@@ -130,3 +130,33 @@ body .section-header-custom-floating .dm-shop-menu > summary {
     flex-wrap: nowrap;
   }
 }
+
+/* Laptop widths (1280px and 1366px are the most common): slightly tighter links let
+   the whole menu share one row with the logo and icons instead of wrapping. */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  body .section-header-custom-floating .header__menu .level0 > menu-item > a {
+    padding-inline: 5px;
+    font-size: 12.5px;
+  }
+  body .section-header-custom-floating .dm-shop-menu > summary {
+    font-size: 12.5px;
+  }
+  body .section-header-custom-floating .header__menu > nav.navigation:not(.mobile) .horizontal-list {
+    flex-wrap: nowrap;
+  }
+}
+/* Below 1280px the menu cannot fit beside the logo and icons, so it takes its own
+   centred row under them rather than breaking into an uneven two-line block. */
+@media (min-width: 1025px) and (max-width: 1279.98px) {
+  /* body prefix: dunamiss-floating-header.css loads later and sets nowrap. */
+  body .section-header-custom-floating .header__top-row {
+    flex-wrap: wrap;
+    row-gap: 4px;
+  }
+  body .section-header-custom-floating .header__menu {
+    order: 4;
+    flex: 0 0 100%;
+    width: 100%;
+    justify-content: center;
+  }
+}
