@@ -1,0 +1,7 @@
+# Theme editor settings change constantly in the Shopify admin and contain a
+# Mapbox access token that GitHub push protection rejects. Pull it from the
+# store with `shopify theme pull` instead of versioning it here.
+config/settings_data.json
+
+# OS and editor clutter
+.DS_Store
