@@ -33,6 +33,9 @@
   assign wishlist = pages.wishlist
   assign action_when_click_added_wishlist = theme_st.action_when_click_added_wishlist
 -%}
+{%- if enable_sticky_content_on_desktop -%}
+  <script src="{{ 'dunamiss-product-sticky.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
 {%- capture style -%}
   --section-pt: {{ section_st.padding_top }}; --section-pb: {{ section_st.padding_bottom }};--speed: {{ section_st.speed }}s; --font-size: {{ section_st.font_size }};
 {%- endcapture -%}
