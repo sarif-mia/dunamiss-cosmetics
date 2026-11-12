@@ -143,9 +143,6 @@
             {% if more_info != blank %}
               <div class="dm-newsletter__note">{{ more_info }}</div>
             {% endif %}
-            <button type="button" class="newsletter-popup__dont-show dm-newsletter__dismiss">
-              {{- section_st.dismiss_label | default: 'No thanks' | escape -}}
-            </button>
           </div>
         </div>
       {% endif %}
@@ -241,13 +238,6 @@
       "type": "richtext",
       "id": "more_info",
       "label": "t:sections.newsletter_popup.settings.more_info"
-    },
-    {
-      "type": "text",
-      "id": "dismiss_label",
-      "label": "Dismiss link label",
-      "default": "No thanks",
-      "info": "Hides the popup for 30 days."
     },
     {
       "type": "header",
