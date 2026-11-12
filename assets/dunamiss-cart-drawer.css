@@ -187,3 +187,7 @@
   :root body .dm-native-cart .minicart__product__image { width: 64px; flex-basis: 64px; }
 }
 @media (prefers-reduced-motion: reduce) { .dm-cart-drawer, .dm-cart-progress span { transition: none !important; } }
+
+/* Price with the shade/option that the + button adds. */
+:root body .dm-cart-recommendation-meta { min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+:root body .dm-cart-recommendation-variant { overflow: hidden; color: #8a7f85; font-size: 10.5px; line-height: 1.3; white-space: nowrap; text-overflow: ellipsis; }

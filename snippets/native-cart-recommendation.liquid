@@ -1,29 +1,39 @@
+{%- liquid
+  # Products with options (shades, sizes) add straight from the drawer too: prefer the
+  # in-stock variant pictured on the card so the shopper gets the shade they see.
+  assign rec_variant = product.selected_or_first_available_variant
+  for pictured_variant in product.featured_image.variants
+    if pictured_variant.available
+      assign rec_variant = pictured_variant
+      break
+    endif
+  endfor
+  assign rec_image = rec_variant.featured_image | default: product.featured_image
+-%}
 <article class="dm-cart-recommendation product-item">
-  <a href="{{ product.url }}" class="dm-cart-recommendation-image product-item__media">
-    {% if product.featured_image %}
-      {{ product.featured_image | image_url: width: 260 | image_tag: loading: 'lazy', widths: '130,260', sizes: '130px', alt: product.title }}
+  <a href="{{ rec_variant.url | default: product.url }}" class="dm-cart-recommendation-image product-item__media">
+    {% if rec_image %}
+      {{ rec_image | image_url: width: 260 | image_tag: loading: 'lazy', widths: '130,260', sizes: '130px', alt: product.title }}
     {% endif %}
   </a>
-  <a href="{{ product.url }}" class="dm-cart-recommendation-title">{{ product.title | escape }}</a>
-  <div class="dm-cart-recommendation-bottom"><strong>{{ product.price | money }}</strong>
-    {% if product.available %}
-      {% if product.has_only_default_variant %}
-        <product-form><form method="post" action="{{ routes.cart_add_url }}">
-          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-          <input type="hidden" name="quantity" value="1">
-          <button type="submit" name="add" class="dm-cart-recommendation-action" aria-label="Add {{ product.title | escape }} to cart">
-            <svg aria-hidden="true" viewBox="0 0 14 14" focusable="false">
-              <path d="M7 2v10M2 7h10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </button>
-        </form></product-form>
-      {% else %}
-        <a class="dm-cart-recommendation-options" href="{{ product.url }}" aria-label="Choose options for {{ product.title | escape }}">
+  <a href="{{ rec_variant.url | default: product.url }}" class="dm-cart-recommendation-title">{{ product.title | escape }}</a>
+  <div class="dm-cart-recommendation-bottom">
+    <span class="dm-cart-recommendation-meta">
+      <strong>{{ rec_variant.price | money }}</strong>
+      {%- unless product.has_only_default_variant -%}
+        <small class="dm-cart-recommendation-variant">{{ rec_variant.title | escape }}</small>
+      {%- endunless -%}
+    </span>
+    {% if product.available and rec_variant.available %}
+      <product-form><form method="post" action="{{ routes.cart_add_url }}">
+        <input type="hidden" name="id" value="{{ rec_variant.id }}">
+        <input type="hidden" name="quantity" value="1">
+        <button type="submit" name="add" class="dm-cart-recommendation-action" aria-label="Add {{ product.title | escape }}{% unless product.has_only_default_variant %} – {{ rec_variant.title | escape }}{% endunless %} to cart">
           <svg aria-hidden="true" viewBox="0 0 14 14" focusable="false">
             <path d="M7 2v10M2 7h10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
-        </a>
-      {% endif %}
+        </button>
+      </form></product-form>
     {% endif %}
   </div>
 </article>

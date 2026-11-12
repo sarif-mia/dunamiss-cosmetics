@@ -3202,7 +3202,7 @@ class NewsletterPopup extends HTMLElement {
     // Wait while the shopper is busy in the cart, menu, search or another modal.
     if (
       document.documentElement.matches('.open-drawer, .open-minicart, .nav-open, .open-search, .open-byl') ||
-      document.querySelector('.tingle-modal--visible')
+      document.querySelector('.tingle-modal--visible, .dm-cart-drawer[aria-hidden="false"]')
     ) {
       setTimeout(() => this.initPopup(), 10000);
       return;
