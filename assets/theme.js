@@ -3168,86 +3168,73 @@ class NewsletterPopup extends HTMLElement {
       this.init();
     }, 12000);
   }
+
+  isSuppressed() {
+    // The cookie records a close (12 hours), "No thanks" (30 days) or a subscription (1 year).
+    return getCookie('newsletter_popup') !== '';
+  }
+
   init() {
+    if (Shopify.designMode || this.isSuppressed()) return;
+    const isMobile = window.innerWidth < 768;
+    if (isMobile && this.dataset.showMb !== 'true') return;
     const sectionId = this.dataset.sectionId;
     const url = `${window.location.pathname}?section_id=${sectionId}&ajax=1`;
-    fetch(`${url}`)
+    fetch(url)
       .then((response) => {
-        if (!response.ok) {
-          var error = new Error(response.status);
-          throw error;
-        }
+        if (!response.ok) throw new Error(response.status);
         return response.text();
       })
       .then((responseText) => {
-        const newSection = new DOMParser()
+        const popup = new DOMParser()
           .parseFromString(responseText, 'text/html')
-          .querySelector('newsletter-popup').innerHTML;
-        document.querySelector('newsletter-popup').innerHTML = newSection;
-      })
-      .catch((error) => {
-        throw error;
-      })
-      .finally(() => {
+          .querySelector('newsletter-popup');
+        if (popup) this.innerHTML = popup.innerHTML;
         this.initPopup();
-      });
+      })
+      .catch(() => {});
   }
 
   initPopup() {
-    const _this = this;
-    const s = _this?.dataset.show;
-    const m = _this?.dataset.showMb === 'true';
-    if (!Shopify.designMode) {
-      const cookie = getCookie('newsletter_popup');
-      const width = window.innerWidth;
-      if (!m && width < 768) {
-        return false;
-      }
-      if ((s == 'show_homepage' || s == 'show_all_page') && cookie === '') {
-        const modal = new tingle.modal({
-          footer: false,
-          stickyFooter: false,
-          closeMethods: ['overlay', 'button', 'escape'],
-          closeLabel: 'Close',
-          beforeOpen: function () {
-            CloseAllPopup();
-          },
-          cssClass: [
-            `newsletter-popup-modal`,
-            `${m ? 'show-all' : 'disable-on-mobile'}`,
-          ],
-        });
-        modal.setContent(_this.innerHTML);
-        modal.open();
-        _this.onShowNewletter();
-      }
+    const show = this.dataset.show;
+    if (show !== 'show_homepage' && show !== 'show_all_page') return;
+    if (this.isSuppressed() || !this.querySelector('.newsletter-popup')) return;
+    // Wait while the shopper is busy in the cart, menu, search or another modal.
+    if (
+      document.documentElement.matches('.open-drawer, .open-minicart, .nav-open, .open-search, .open-byl') ||
+      document.querySelector('.tingle-modal--visible')
+    ) {
+      setTimeout(() => this.initPopup(), 10000);
+      return;
     }
+    const modal = new tingle.modal({
+      footer: false,
+      stickyFooter: false,
+      closeMethods: ['overlay', 'escape'],
+      closeLabel: 'Close',
+      cssClass: ['newsletter-popup-modal', this.dataset.showMb === 'true' ? 'show-all' : 'disable-on-mobile'],
+      // This tingle build only runs beforeClose, which must return true to close.
+      beforeClose: () => {
+        if (!this.isSuppressed()) setCookie('newsletter_popup', 'closed', 0.5);
+        return true;
+      },
+    });
+    this.modal = modal;
+    modal.setContent(this.innerHTML);
+    modal.open();
+    this.onShowNewletter();
   }
 
   onShowNewletter() {
-    const _this = this;
-    const setC = document.querySelector(
-      '.newsletter-popup-modal .newsletter-popup__dont-show'
-    );
-    if (!setC) return;
-    setC.addEventListener('click', _this.notShow.bind(_this));
-    setC.addEventListener(
-      'keypress',
-      function (event) {
-        if (event.key === 'Enter') {
-          _this.notShow.bind(_this)(event);
-        }
-      }.bind(_this),
-      false
-    );
+    const box = this.modal.modalBox;
+    box.querySelector('[data-dm-newsletter-close]')?.addEventListener('click', () => this.modal.close());
+    box.querySelector('.newsletter-popup__dont-show')?.addEventListener('click', (event) => this.notShow(event));
   }
 
-  notShow(e) {
-    e.preventDefault();
-    setCookie('newsletter_popup', 30, 1);
-    document
-      .querySelector('.newsletter-popup-modal .tingle-modal__close')
-      .click();
+  notShow(event) {
+    event.preventDefault();
+    setCookie('newsletter_popup', 'dismissed', 30);
+    this.modal.close();
   }
 }
 customElements.define('newsletter-popup', NewsletterPopup);
@@ -3318,7 +3305,8 @@ var returnMessageWhenSubmit = (function () {
         getUrl.indexOf('customer_posted=true') >= 1
       ) {
         this.handleMessageSuccessPopup();
-        setCookie('newsletter_popup', 30, 1);
+        // Subscribers never see the newsletter popup again (1 year).
+        setCookie('newsletter_popup', 'subscribed', 365);
         const newURL = location.href.split('?')[0];
         window.history.pushState('object', document.title, newURL);
       }

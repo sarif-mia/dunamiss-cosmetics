@@ -52,6 +52,7 @@
   endif
 %}
 {%- if show != blank -%}
+  <link rel="stylesheet" href="{{ 'dunamiss-newsletter-popup.css' | asset_url }}" media="print" onload="this.media='all'">
   {%- capture style -%}
 --popup-max-width: {{ width }}px;
 {%- endcapture -%}
@@ -65,108 +66,87 @@
       {% endif %}
     >
       {%- if page_query_string contains 'ajax=1' -%}
+        {%- comment -%}
+          The script copies this markup into a tingle modal, so every hook below
+          (.newsletter-popup__dont-show, [data-dm-newsletter-close], #newsletter-form)
+          is looked up inside .newsletter-popup-modal rather than this section.
+        {%- endcomment -%}
         <div
-          class="newsletter-popup popup-content flex{% if enable_rtl %} flex-row{% else %} flex-row-reverse{% endif %}"
-          style="{{ style | strip | strip_newlines }}"
+          class="newsletter-popup popup-content dm-newsletter{% if newsletter_banner != blank %} dm-newsletter--has-media{% endif %}"
+          style="{{ style | strip | strip_newlines }} --dm-newsletter-media: {{ banner_width }}%;"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="DmNewsletterHeading-{{ section.id }}"
         >
-          <div class="newsletter-popup__content flex-1 relative">
-            <div class="{% if newsletter_banner != blank %}absolute-md inset-0{% endif %} overflow-y-auto custom-scrollbar p-1025-40 p-30 p-25 pt-1025-35 flex flex-column h-full w-full">
-              <div class="my-auto">
-                {%- if newsletter_heading != blank -%}
-                  <h2 class="heading-letter-spacing fs-22 newsletter-popup__heading mt-0 mb-10 lh-normal">
-                    {{ newsletter_heading }}
-                  </h2>
-                {% endif %}
-                {%- if short_description != blank -%}
-                  <div class="newsletter-popup-des mb-25 word-break rich__text-m0 lh-small">
-                    {{ short_description }}
-                  </div>
-                {% endif %}
-                {% form 'customer', class: 'newsletter-form', id: 'newsletter-form' %}
-                  <input type="hidden" name="contact[tags]" value="newsletter">
-                  <div class="section-newsletter-form">
-                    <div class="field gap-10 justify-content-center btn-large">
-                      <input
-                        id="NewsletterEmail--{{ section.id }}"
-                        type="email"
-                        name="contact[email]"
-                        class="flex-1 w-full mb-10"
-                        value="{{ form.email }}"
-                        aria-required="true"
-                        autocorrect="off"
-                        autocapitalize="off"
-                        autocomplete="email"
-                        {% if form.errors %}
-                          autofocus
-                          aria-invalid="true"
-                          aria-describedby="Newsletter-error--{{ section.id }}"
-                        {% elsif form.posted_successfully? %}
-                          aria-describedby="Newsletter-success--{{ section.id }}"
-                        {% endif %}
-                        placeholder="{% if newsletter_email_placeholder != blank %}{{ newsletter_email_placeholder }}{% else %}{{ 'newsletter.label' | t }}{% endif %}"
-                        required
-                      >
-                      <label class="visually-hidden" for="NewsletterEmail--{{ section.id }}">
-                        {{ 'newsletter.label' | t -}}
-                      </label>
-                      <button
-                        type="submit"
-                        class="button btn-primary section-newsletter-form__button nowrap w-full"
-                        name="commit"
-                        aria-label="{{ 'subscribe.button_label' | t }}"
-                      >
-                        {% if newsletter_button_label != blank -%}
-                          {{- newsletter_button_label -}}
-                        {%- else -%}
-                          {{- 'subscribe.button_label' | t -}}
-                        {%- endif %}
-                      </button>
-                    </div>
-                    {%- if form.errors -%}
-                      <small class="visually-hidden" id="Newsletter-error--{{ section.id }}">
-                        {{- form.errors.translated_fields.email | capitalize }}
-                        {{ form.errors.messages.email -}}
-                      </small>
-                    {% endif %}
-                    {%- if form.posted_successfully? -%}
-                      <div
-                        class="visually-hidden"
-                        id="Newsletter-success--{{ section.id }}"
-                        tabindex="-1"
-                      >
-                        {{- 'newsletter.success' | t }}
-                      </div>
-                    {% endif %}
-                  </div>
-                {% endform %}
-                <div
-                  class="newsletter-popup__dont-show dont-show mt-10 fs-small pointer rich__text-mt-0 light-dark-grey lh-small"
-                  tabindex="0"
-                >
-                  {% if more_info != blank %}
-                    {{ more_info }}
-                  {% endif %}
-                  <span class="text-color hover-heading-color border-bottom inline-block mt-10">
-                    {{- 'newsletter_popup.do_not_show_again' | t -}}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <button type="button" class="dm-newsletter__close" data-dm-newsletter-close aria-label="Close">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </button>
           {% if newsletter_banner != blank %}
-            <div
-              class="newsletter-popup__banner relative hidden block-md col-w-custom"
-              style="--col-width: {{ banner_width }}%;--aspect-ratio: {{ newsletter_banner.aspect_ratio }}"
-            >
-              {%- assign image_alt = newsletter_banner.alt | default: 'banner_image' | escape -%}
-              {% render 'responsive-image',
-                type: 'other',
-                image: newsletter_banner,
-                image_alt: image_alt,
-                class: 'absolute inset-0 w-full h-full object-fit-cover'
-              %}
+            <div class="dm-newsletter__media">
+              {%- assign banner_alt = newsletter_banner.alt | default: '' | escape -%}
+              {{
+                newsletter_banner
+                | image_url: width: 900
+                | image_tag:
+                  widths: '360, 540, 720, 900',
+                  sizes: '(min-width: 768px) 300px, 100vw',
+                  loading: 'lazy',
+                  alt: banner_alt,
+                  class: 'dm-newsletter__image'
+              }}
             </div>
           {% endif %}
+          <div class="dm-newsletter__content">
+            {%- if section_st.eyebrow != blank -%}
+              <p class="dm-newsletter__eyebrow">{{ section_st.eyebrow | escape }}</p>
+            {%- endif -%}
+            {%- if newsletter_heading != blank -%}
+              <h2 class="dm-newsletter__heading" id="DmNewsletterHeading-{{ section.id }}">
+                {{ newsletter_heading }}
+              </h2>
+            {% endif %}
+            {%- if short_description != blank -%}
+              <div class="dm-newsletter__text">
+                {{ short_description }}
+              </div>
+            {% endif %}
+            {% form 'customer', class: 'newsletter-form dm-newsletter__form', id: 'newsletter-form' %}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <label class="visually-hidden" for="NewsletterEmail--{{ section.id }}">
+                {{ 'newsletter.label' | t -}}
+              </label>
+              <div class="dm-newsletter__field">
+                <input
+                  id="NewsletterEmail--{{ section.id }}"
+                  type="email"
+                  name="contact[email]"
+                  class="dm-newsletter__input"
+                  value="{{ form.email }}"
+                  aria-required="true"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  autocomplete="email"
+                  placeholder="{% if newsletter_email_placeholder != blank %}{{ newsletter_email_placeholder }}{% else %}{{ 'newsletter.label' | t }}{% endif %}"
+                  required
+                >
+                <button type="submit" class="dm-newsletter__submit" name="commit">
+                  {% if newsletter_button_label != blank -%}
+                    {{- newsletter_button_label -}}
+                  {%- else -%}
+                    {{- 'subscribe.button_label' | t -}}
+                  {%- endif %}
+                </button>
+              </div>
+            {% endform %}
+            {% if more_info != blank %}
+              <div class="dm-newsletter__note">{{ more_info }}</div>
+            {% endif %}
+            <button type="button" class="newsletter-popup__dont-show dm-newsletter__dismiss">
+              {{- section_st.dismiss_label | default: 'No thanks' | escape -}}
+            </button>
+          </div>
         </div>
       {% endif %}
     </newsletter-popup>
@@ -229,6 +209,12 @@
     },
     {
       "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Dunamiss Beauty Club"
+    },
+    {
+      "type": "text",
       "id": "newsletter_heading",
       "label": "t:sections.newsletter_popup.settings.heading",
       "default": "Subscribe Our Newsletter"
@@ -255,6 +241,13 @@
       "type": "richtext",
       "id": "more_info",
       "label": "t:sections.newsletter_popup.settings.more_info"
+    },
+    {
+      "type": "text",
+      "id": "dismiss_label",
+      "label": "Dismiss link label",
+      "default": "No thanks",
+      "info": "Hides the popup for 30 days."
     },
     {
       "type": "header",

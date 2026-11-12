@@ -25,10 +25,29 @@
         "recommended_heading": "You may also like...",
         "collection": "combo-products",
         "recommended_button_label": "SHOP NOW"
+      },
+      "disabled": true
+    },
+    "newsletter_popup_dm": {
+      "type": "newsletter-popup",
+      "settings": {
+        "show": "show_all_page",
+        "show_on_mobile": true,
+        "width": 700,
+        "eyebrow": "Dunamiss Beauty Club",
+        "newsletter_heading": "Be the first to know",
+        "short_description": "<p>Join our list for early access and little beauty perks.</p><ul><li>First look at new launches</li><li>Members-only offers and festive sales</li><li>Simple tips for skin, lips and eyes</li></ul>",
+        "newsletter_email_placeholder": "Enter your email",
+        "newsletter_button_label": "Join now",
+        "more_info": "<p>No spam, ever. Unsubscribe anytime.</p>",
+        "dismiss_label": "No thanks",
+        "newsletter_banner": "shopify://shop_images/6FABC92F-7444-435E-B092-8DF126D5B0CD.jpg",
+        "banner_width": 42
       }
     }
   },
   "order": [
-    "before_you_leave_NddErH"
+    "before_you_leave_NddErH",
+    "newsletter_popup_dm"
   ]
 }
