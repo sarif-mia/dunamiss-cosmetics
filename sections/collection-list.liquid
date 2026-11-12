@@ -106,10 +106,10 @@
         {% if show_view_all_button == true and section_st.header_alignment != 'center' %}
           <a
             class="btn_view-all no-underline inline-flex btn-link"
-            href="{{ section_st.collection.url }}"
-            aria-label="{{- 'general.view_all' | t -}}"
+            href="{{ section_st.view_all_link | default: routes.all_products_collection_url }}"
+            aria-label="{{ section_st.view_all_text | default: 'View All' | escape }}"
           >
-            {{- 'general.view_all' | t -}}
+            {{ section_st.view_all_text | default: 'View All' | escape }}
           </a>
         {% endif %}
       </div>
@@ -230,10 +230,10 @@
       <div class="text-center mt-30">
         <a
           class="inline-flex btn-primary load-more no-underline relative"
-          href="{{ section_st.collection.url }}"
-          aria-label="{{- 'general.view_all' | t -}}"
+          href="{{ section_st.view_all_link | default: routes.all_products_collection_url }}"
+          aria-label="{{ section_st.view_all_text | default: 'View All' | escape }}"
         >
-          {{- 'general.view_all' | t -}}
+          {{ section_st.view_all_text | default: 'View All' | escape }}
         </a>
       </div>
     {% endif %}
@@ -296,7 +296,19 @@
     {
       "type": "checkbox",
       "id": "show_view_all_button",
-      "label": "t:sections.all.section_header.show_view_all_button.label"
+      "label": "t:sections.all.section_header.show_view_all_button.label",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All Button Text",
+      "default": "View All"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View All Button Link"
     },
     {
       "type": "select",

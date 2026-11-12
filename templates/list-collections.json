@@ -43,124 +43,228 @@
     "main": {
       "type": "main-list-collections",
       "blocks": {
+        "collection_JMeikM": {
+          "type": "collection",
+          "settings": {
+            "collection": "lips",
+            "collection_title": ""
+          }
+        },
+        "collection_QVmfU3": {
+          "type": "collection",
+          "settings": {
+            "collection": "bestsellers",
+            "collection_image": "shopify://shop_images/dunamiss-banner-bestsellers-v2.webp",
+            "collection_title": "Bestsellers"
+          }
+        },
         "collection_GawBmm": {
           "type": "collection",
           "settings": {
-            "collection": "sweaters",
+            "collection": "lip-care",
+            "collection_image": "shopify://shop_images/hazel_glimmer_lip_blam_4_jpg.jpg",
             "collection_title": ""
           }
         },
         "collection_k6UJWD": {
           "type": "collection",
           "settings": {
-            "collection": "t-shirts",
-            "collection_title": ""
-          }
-        },
-        "collection_Dh49Wa": {
-          "type": "collection",
-          "settings": {
-            "collection": "tops",
-            "collection_title": ""
-          }
-        },
-        "collection_qag64J": {
-          "type": "collection",
-          "settings": {
-            "collection": "activewear",
-            "collection_title": ""
-          }
-        },
-        "collection_Kk8pDP": {
-          "type": "collection",
-          "settings": {
-            "collection": "best-seller",
-            "collection_image": "shopify://shop_images/coat.jpg",
+            "collection": "skin-care",
+            "collection_image": "shopify://shop_images/SKIN_CARE_WEBSITE_PAGE.jpg",
             "collection_title": ""
           }
         },
         "collection_ACrmpU": {
           "type": "collection",
           "settings": {
-            "collection": "blazers",
-            "collection_image": "shopify://shop_images/bazzer.jpg",
+            "collection": "nail-paints",
+            "collection_image": "shopify://shop_images/dunamiss-banner-nail-paints-v2.webp",
             "collection_title": ""
+          }
+        },
+        "collection_qag64J": {
+          "type": "collection",
+          "settings": {
+            "collection": "hair-care",
+            "collection_title": "Hair Care"
+          }
+        },
+        "collection_Kk8pDP": {
+          "type": "collection",
+          "settings": {
+            "collection": "bath-essentials",
+            "collection_title": "Bath & Body"
           }
         },
         "collection_zpFtkQ": {
           "type": "collection",
           "settings": {
-            "collection": "demin",
-            "collection_image": "shopify://shop_images/Denim_Shirt.jpg",
+            "collection": "combo-products",
+            "collection_image": "shopify://shop_images/COMBO10.jpg",
             "collection_title": ""
+          }
+        },
+        "collection_KmcWKe": {
+          "type": "collection",
+          "settings": {
+            "collection": "supplements",
+            "collection_title": "Beauty from Within"
+          }
+        },
+        "collection_p3a8Fx": {
+          "type": "collection",
+          "settings": {
+            "collection": "skincare-bb-bb-creams",
+            "collection_title": "BB+ Perfect"
+          }
+        },
+        "collection_QU7ACM": {
+          "type": "collection",
+          "settings": {
+            "collection": "sunscreen-cream",
+            "collection_title": "SPF & Barrier Glow"
+          }
+        },
+        "collection_M3Dtdd": {
+          "type": "collection",
+          "settings": {
+            "collection": "cream",
+            "collection_title": "AM to PM Care"
+          }
+        },
+        "collection_QQE7k9": {
+          "type": "collection",
+          "settings": {
+            "collection": "sheet-mask",
+            "collection_image": "shopify://shop_images/Dunamiss_Sheet_Mask_Feed__16.png",
+            "collection_title": "Mask & Chill"
+          }
+        },
+        "collection_cNQJqx": {
+          "type": "collection",
+          "settings": {
+            "collection": "face-mist",
+            "collection_image": "shopify://shop_images/6FABC92F-7444-435E-B092-8DF126D5B0CD.jpg",
+            "collection_title": "Mist & Glow"
+          }
+        },
+        "collection_Mnpckt": {
+          "type": "collection",
+          "settings": {
+            "collection": "eyeliner",
+            "collection_image": "shopify://shop_images/eyeliner.jpg",
+            "collection_title": "Eyeliner"
+          }
+        },
+        "collection_QpRBWH": {
+          "type": "collection",
+          "settings": {
+            "collection": "eye-care",
+            "collection_image": "shopify://shop_images/dunamiss-banner-eye-balm-v2.webp",
+            "collection_title": "Eye Balm"
+          }
+        },
+        "collection_ALyj6g": {
+          "type": "collection",
+          "settings": {
+            "collection": "kajal",
+            "collection_image": "shopify://shop_images/WEBSITE1_jpg.jpg",
+            "collection_title": "Kajal"
+          }
+        },
+        "collection_gYyb6K": {
+          "type": "collection",
+          "settings": {
+            "collection": "lip-oil",
+            "collection_image": "shopify://shop_images/1_874cfb2c-6d33-44b3-8d6a-ba4caba4e103.jpg",
+            "collection_title": ""
+          }
+        },
+        "collection_LQpmww": {
+          "type": "collection",
+          "settings": {
+            "collection": "lip-gloss",
+            "collection_image": "shopify://shop_images/rosewoodnudeswatch_jpg_b34fbc50-58de-4795-904f-c3da97ca1867.jpg",
+            "collection_title": ""
+          }
+        },
+        "collection_6gGLYC": {
+          "type": "collection",
+          "settings": {
+            "collection": "tinted-lip-balm",
+            "collection_image": "shopify://shop_images/TINTED_LIP_BALM_WEBSITE_1ST_IMAGE_800x800_GIMME_RED.jpg",
+            "collection_title": ""
+          }
+        },
+        "collection_Dh49Wa": {
+          "type": "collection",
+          "settings": {
+            "collection": "eye-care",
+            "collection_image": "shopify://shop_images/EYE_CARE_WEBSITE_PAGE.jpg",
+            "collection_title": "Eye Care"
           }
         },
         "collection_Lb3mRX": {
           "type": "collection",
           "settings": {
-            "collection": "handbags",
-            "collection_image": "shopify://shop_images/handbag.jpg",
-            "collection_title": ""
+            "collection": "creamy-matte-lipstick",
+            "collection_image": "shopify://shop_images/LuciaSoftRoseSatinLipstick.webp",
+            "collection_title": "Satin Lipstick"
           }
         },
         "collection_qirikr": {
           "type": "collection",
           "settings": {
-            "collection": "crop-top",
-            "collection_image": "shopify://shop_images/collection-1.jpg",
+            "collection": "liquid-lipsticks",
             "collection_title": ""
           }
         },
         "collection_HLUY4E": {
           "type": "collection",
           "settings": {
-            "collection": "dress",
-            "collection_image": "shopify://shop_images/collection-2.jpg",
-            "collection_title": ""
-          }
-        },
-        "collection_dHMiiC": {
-          "type": "collection",
-          "settings": {
-            "collection": "trending",
-            "collection_image": "shopify://shop_images/collection-3.jpg",
-            "collection_title": ""
-          }
-        },
-        "collection_pip9Fw": {
-          "type": "collection",
-          "settings": {
-            "collection": "shorts-1",
-            "collection_image": "shopify://shop_images/collection-14.jpg",
+            "collection": "glimmer-lip-balm",
+            "collection_image": "shopify://shop_images/GLIMMER_LIP_BALM_WEBSITE_PAGE.jpg",
             "collection_title": ""
           }
         }
       },
       "block_order": [
+        "collection_JMeikM",
+        "collection_QVmfU3",
         "collection_GawBmm",
         "collection_k6UJWD",
-        "collection_Dh49Wa",
+        "collection_ACrmpU",
         "collection_qag64J",
         "collection_Kk8pDP",
-        "collection_ACrmpU",
         "collection_zpFtkQ",
+        "collection_KmcWKe",
+        "collection_p3a8Fx",
+        "collection_QU7ACM",
+        "collection_M3Dtdd",
+        "collection_QQE7k9",
+        "collection_cNQJqx",
+        "collection_Mnpckt",
+        "collection_QpRBWH",
+        "collection_ALyj6g",
+        "collection_gYyb6K",
+        "collection_LQpmww",
+        "collection_6gGLYC",
+        "collection_Dh49Wa",
         "collection_Lb3mRX",
         "collection_qirikr",
-        "collection_HLUY4E",
-        "collection_dHMiiC",
-        "collection_pip9Fw"
+        "collection_HLUY4E"
       ],
       "settings": {
         "section_width": "fluid_container",
         "color_scheme": "default",
         "type": "selected",
         "sort_collections": "alphabetical",
-        "image_ratio": "adapt",
+        "image_ratio": "square",
         "show_product_count": false,
         "design": "default",
         "text_alignment": "center",
         "font_size": 16,
-        "items_to_show": 8,
+        "items_to_show": 12,
         "items_per_row": 4,
         "column_gap": 30,
         "pagination": "load_more_button",

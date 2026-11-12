@@ -19,8 +19,8 @@ Please exercise caution as any changes made to this file may be overwritten.
     schema default, so only these can be blank; the rest always carry a value.
   {%- endcomment -%}
   :root {
-    {%- if s.heading_font_family != blank %}--essential-heading-font-family: {{ s.heading_font_family }};{% endif -%}
-    {%- if s.text_font_family != blank %}--essential-text-font-family: {{ s.text_font_family }};{% endif -%}
+    {%- if s.heading_font_family != blank %}--essential-heading-font-family: {{ s.heading_font_family | remove: '<' }};{% endif -%}
+    {%- if s.text_font_family != blank %}--essential-text-font-family: {{ s.text_font_family | remove: '<' }};{% endif -%}
     --essential-heading-color: {{ s.heading_color }};
     --essential-text-color: {{ s.text_color }};
     {%- if s.page_background_color != blank %}--essential-page-background-color: {{ s.page_background_color }};{% endif -%}
