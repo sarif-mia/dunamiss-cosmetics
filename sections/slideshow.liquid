@@ -85,6 +85,7 @@
               assign local_video = block_st.local_video
               assign lazy_load = false
               assign fetchpriority = 'auto'
+              assign preload_lcp = false
               assign no_animate = false
               assign ratio_dk = ''
               assign ratio_mb = ''
@@ -113,6 +114,9 @@
                 assign lazy_load = true
                 assign fetchpriority = 'high'
                 assign no_animate = true
+                if section.index == 1
+                  assign preload_lcp = true
+                endif
               endif
             %}
             <div {{ block.shopify_attributes }} class="swiper-slide">
@@ -177,6 +181,7 @@
                         image_alt: image_alt,
                         lazy_load: lazy_load,
                         fetchpriority: fetchpriority,
+                        preload_lcp: preload_lcp,
                         no_animate: no_animate
                       %}
                     {% endif %}

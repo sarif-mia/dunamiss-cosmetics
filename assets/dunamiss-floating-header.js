@@ -103,18 +103,38 @@
     syncMenu();
   });
 
+  // Heights come from ResizeObserver entries, which the browser computes during its
+  // own layout pass. Reading geometry here would force a full-page layout instead.
+  const heights = new Map();
+  const setHeight = (name, height) => {
+    const value = `${height}px`;
+    // Root custom property writes restyle the whole document, so skip unchanged values.
+    if (root.style.getPropertyValue(name) !== value) root.style.setProperty(name, value);
+  };
+  const apply = () => {
+    if (!header?.isConnected || !heights.has(header)) return;
+    const announcementHeight = announcementBars.reduce((height, bar) => {
+      return height + (bar.isConnected ? heights.get(bar) ?? 0 : 0);
+    }, 0);
+    setHeight('--announcement-bar-height', announcementHeight);
+    setHeight('--floating-header-height', heights.get(header));
+  };
   const measure = () => {
     if (!header?.isConnected) return;
-    const announcementHeight = announcementBars.reduce((height, bar) => {
-      return height + (bar.isConnected ? bar.getBoundingClientRect().height : 0);
-    }, 0);
-    root.style.setProperty('--announcement-bar-height', `${announcementHeight}px`);
-    root.style.setProperty('--floating-header-height', `${header.getBoundingClientRect().height}px`);
+    heights.set(header, header.getBoundingClientRect().height);
+    announcementBars.forEach((bar) => heights.set(bar, bar.getBoundingClientRect().height));
+    apply();
   };
 
-  const observer = window.ResizeObserver ? new ResizeObserver(measure) : null;
+  const observer = window.ResizeObserver ? new ResizeObserver((entries) => {
+    entries.forEach((entry) => {
+      heights.set(entry.target, entry.borderBoxSize?.[0]?.blockSize ?? entry.target.getBoundingClientRect().height);
+    });
+    apply();
+  }) : null;
   const refresh = () => {
     observer?.disconnect();
+    heights.clear();
     header = document.querySelector('.section-header-custom-floating');
     announcementBars = [...document.querySelectorAll('.section-announcement-bar')];
     if (!header) {
@@ -124,18 +144,25 @@
     }
     // This section manages its own fixed positioning, independent of theme sticky classes.
     header.classList.remove('shopify-section-header-sticky', 'shopify-section-header-hidden', 'animate');
-    observer?.observe(header);
-    announcementBars.forEach(bar => observer?.observe(bar));
-    measure();
+    if (observer) {
+      // Observing reports each element's current size after the next layout,
+      // and again on every resize, font swap or content change.
+      observer.observe(header);
+      announcementBars.forEach(bar => observer.observe(bar));
+    } else {
+      measure();
+    }
     syncMenu();
   };
 
   window.dunamissFloatingHeader = { refresh };
-  window.addEventListener('resize', measure, { passive: true });
+  if (!observer) {
+    window.addEventListener('resize', measure, { passive: true });
+    document.fonts?.ready.then(measure);
+  }
   window.addEventListener('pageshow', refresh);
   document.addEventListener('shopify:section:load', refresh);
   document.addEventListener('shopify:section:reorder', refresh);
   document.addEventListener('shopify:section:unload', () => requestAnimationFrame(refresh));
-  document.fonts?.ready.then(measure);
   refresh();
 })();

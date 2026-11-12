@@ -1030,3 +1030,14 @@ media-gallery [data-shade-hidden] { display: none !important; }
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* Idle loaders stay hidden in every card and button, so their infinite spin
+   only runs while the owning control or search form is in a loading state. */
+.spin.icon-load,
+.loading-icon .spin {
+  animation-play-state: paused;
+}
+.loading .spin.icon-load,
+.loading .loading-icon .spin {
+  animation-play-state: running;
+}

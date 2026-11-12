@@ -126,20 +126,41 @@
 {% if image_mobile != blank %}
   <picture class="image-picture ">
     {%- assign mobile_widths = '180,360,480,660,720,900,1080,1500' | split: ',' -%}
+    {%- capture mobile_srcset -%}{%- for mobile_width in mobile_widths -%}{%- assign candidate_width = mobile_width | plus: 0 -%}{%- if candidate_width < image_mobile.width -%}{{ image_mobile | image_url: width: candidate_width }} {{ candidate_width }}w, {%- endif -%}{%- endfor -%}{{ image_mobile | image_url: width: image_mobile.width }} {{ image_mobile.width }}w{%- endcapture -%}
     <source
       media="(max-width: 767px)"
       sizes="{{ sizes | escape }}"
       width="{{ image_mobile.width }}"
       height="{{ image_mobile.height }}"
-      srcset="{%- for mobile_width in mobile_widths -%}{%- assign candidate_width = mobile_width | plus: 0 -%}{%- if candidate_width < image_mobile.width -%}{{ image_mobile | image_url: width: candidate_width }} {{ candidate_width }}w, {%- endif -%}{%- endfor -%}{{ image_mobile | image_url: width: image_mobile.width }} {{ image_mobile.width }}w"
+      srcset="{{ mobile_srcset }}"
     >
     {%- assign image = image | default: image_mobile -%}
+    {%- capture image_markup -%}
+      {{-
+        image
+        | image_url: width: image.width
+        | image_tag:
+          loading: loading,
+          width: image.width,
+          height: image.height,
+          sizes: sizes,
+          class: class,
+          widths: widths,
+          alt: image_alt,
+          fetchpriority: image_fetchpriority
+      -}}
+    {%- endcapture -%}
+    {{- image_markup -}}
+  </picture>
+{% else %}
+  {% assign width = width | default: image.width %}
+  {%- capture image_markup -%}
     {{-
       image
       | image_url: width: image.width
       | image_tag:
         loading: loading,
-        width: image.width,
+        width: width,
         height: image.height,
         sizes: sizes,
         class: class,
@@ -147,23 +168,28 @@
         alt: image_alt,
         fetchpriority: image_fetchpriority
     -}}
-  </picture>
-{% else %}
-  {% assign width = width | default: image.width %}
-  {{-
-    image
-    | image_url: width: image.width
-    | image_tag:
-      loading: loading,
-      width: width,
-      height: image.height,
-      sizes: sizes,
-      class: class,
-      widths: widths,
-      alt: image_alt,
-      fetchpriority: image_fetchpriority
-  -}}
+  {%- endcapture -%}
+  {{- image_markup -}}
 {% endif %}
+{%- if preload_lcp == true and image_markup contains 'srcset="' -%}
+  {%- comment -%}
+    The layout moves this marker into <head>, so the browser requests the hero image
+    before the app scripts in content_for_header. Each preload copies the srcset and
+    sizes rendered above, so it resolves to the same file the picture displays.
+  {%- endcomment -%}
+  {%- liquid
+    assign preload_srcset = image_markup | split: 'srcset="' | last | split: '"' | first
+    assign preload_sizes = image_markup | split: ' sizes="' | last | split: '"' | first
+    assign desktop_media = ''
+    if image_mobile != blank
+      assign desktop_media = ' media="(min-width: 768px)"'
+    endif
+  -%}
+  <!--dm-lcp-preload
+  {%- if image_mobile != blank %}<link rel="preload" as="image" fetchpriority="high" media="(max-width: 767px)" imagesrcset="{{ mobile_srcset }}" imagesizes="{{ sizes | escape }}">{% endif -%}
+  <link rel="preload" as="image" fetchpriority="high"{{ desktop_media }} imagesrcset="{{ preload_srcset }}" imagesizes="{{ preload_sizes }}">
+  dm-lcp-preload-->
+{%- endif -%}
 {% if no_animate == blank and secondary_image == false and scroll_animation == 'slide_in' and settings.zoom_image == true %}
   </motion-element>
 {% endif %}

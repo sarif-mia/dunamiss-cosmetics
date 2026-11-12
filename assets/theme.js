@@ -5228,7 +5228,13 @@ class BeforeYouLeave extends HTMLElement {
   constructor() {
     super();
     setTimeout(() => {
-      this.init();
+      // Copying the popup template is a long task; run it when the page is idle
+      // so it does not delay a tap or keypress that arrives at the same moment.
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => this.init(), { timeout: 2000 });
+      } else {
+        this.init();
+      }
     }, 10000);
   }
   init() {

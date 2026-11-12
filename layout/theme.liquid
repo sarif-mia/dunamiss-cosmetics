@@ -14,6 +14,14 @@
 <!DOCTYPE html>
 <html class="no-js" lang="{{ request.locale.iso_code }}">
    <head>
+    {%- comment -%}
+      Templates render before this layout, so the hero image's preload (left as a marker
+      by snippets/responsive-image) can be requested ahead of the app scripts below.
+    {%- endcomment -%}
+    {%- if content_for_layout contains '<!--dm-lcp-preload' -%}
+      {%- assign lcp_preload_parts = content_for_layout | split: '<!--dm-lcp-preload' -%}
+      {{ lcp_preload_parts[1] | split: 'dm-lcp-preload-->' | first }}
+    {%- endif -%}
 
     <script>
       window.dunamissOpenCart = function (trigger) {
