@@ -16,6 +16,8 @@
       '.section-header-custom-floating .header_account .header__icon-account'
     );
     if (!accountLink) return;
+    // Until Kwikpass has loaded, the plain /account link is the working route to log in.
+    if (!window.dmKwikpassReady) { window.dmLoadKwikpass?.(); return; }
 
     const loginButton = document.getElementById('kp-login-button-header-logo');
     const accountButton = document.getElementById('icon-kwikpass');
@@ -95,6 +97,7 @@
     const elementsWithAccount = document.querySelectorAll('a[href="/account"]');
     elementsWithAccount.forEach((element) => {
         element.addEventListener('click', async (e) => {
+          if (!window.dmKwikpassReady) { window.dmLoadKwikpass?.(); return; }
           e.preventDefault();
          const customerId = getCustomerId()
          token = getValueFromCookiesOrLocalStorage(XGokwikCoreToken(window.merchantInfo.environment));
@@ -127,9 +130,46 @@
   });
 
 
-  document.addEventListener('DOMContentLoaded', function() {
-    updateDOM();
-  });
+  // Kwikpass's main script (~250KB) used to run during page load as one of the longest
+  // main-thread tasks. It now loads once the page is idle (or as soon as the shopper
+  // reaches for the account icon); it initialises itself when loaded late, after which
+  // updateDOM() runs exactly as it did on DOMContentLoaded.
+  (() => {
+    let requested = false;
+    window.dmKwikpassReady = false;
+    window.dmLoadKwikpass = () => {
+      if (requested) return;
+      requested = true;
+      const script = document.createElement('script');
+      script.src = 'https://pdp.gokwik.co/kwikpass/plugin/build/kp-merchant-v2.js';
+      script.async = true;
+      script.onload = () => {
+        window.dmKwikpassReady = true;
+        try { updateDOM(); } catch (error) { console.error('Kwikpass:', error); }
+      };
+      document.head.appendChild(script);
+    };
+    const accountControls = '#kp-login-button-header-logo, #kp-login-button-header-logo-mobile, #icon-kwikpass, .header__icon-account, a[href="/account"]';
+    // Hover or focus on an account control usually comes just before a click.
+    ['pointerover', 'focusin'].forEach((type) => {
+      document.addEventListener(type, (event) => {
+        if (event.target.closest?.(accountControls)) window.dmLoadKwikpass();
+      }, { passive: true });
+    });
+    // A tap on the Kwikpass login icon before it is wired up still reaches the login page.
+    document.addEventListener('click', (event) => {
+      if (window.dmKwikpassReady) return;
+      if (!event.target.closest('#kp-login-button-header-logo, #kp-login-button-header-logo-mobile')) return;
+      window.dmLoadKwikpass();
+      window.location.href = '{{ routes.account_url }}';
+    }, true);
+    const whenIdle = () => {
+      if ('requestIdleCallback' in window) requestIdleCallback(window.dmLoadKwikpass, { timeout: 4000 });
+      else setTimeout(window.dmLoadKwikpass, 2000);
+    };
+    if (document.readyState === 'complete') whenIdle();
+    else window.addEventListener('load', whenIdle, { once: true });
+  })();
   
   window.addEventListener('update-dom', function() {
     const kwikpassLoggedInElement = document.getElementById("icon-kwikpass");
@@ -143,7 +183,6 @@
 </script>
 
 <script defer src="https://pdp.gokwik.co/kwikpass/kwikpass-core-functions-min.js"></script>
-<script defer src="https://pdp.gokwik.co/kwikpass/plugin/build/kp-merchant-v2.js"></script>
 
 
 
