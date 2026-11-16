@@ -110,12 +110,18 @@
       background: #fff;
       overflow: hidden;
       cursor: pointer;
+      height: 26px;
+      min-height: 0;
+      max-height: none;
+      box-sizing: border-box;
       font: inherit;
       font-size: 1.2rem;
-      line-height: 1.2;
+      line-height: 1;
     }
     .dm-coupon-offer__code {
-      padding: 5px 8px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 8px;
       white-space: nowrap;
       color: var(--brand-heading, #1a1a1a);
       font-weight: 700;
@@ -126,7 +132,7 @@
       align-items: center;
       justify-content: center;
       min-width: 6.4em;
-      padding: 5px 8px;
+      padding: 0 8px;
       white-space: nowrap;
       background: var(--brand-accent, #75465c);
       color: #fff;
@@ -157,16 +163,16 @@
         font-size: 1rem;
       }
       .dm-coupon-offer__copy {
+        height: 22px;
         border-radius: 4px;
-        font-size: 1rem;
-        line-height: 1.1;
+        font-size: 1.05rem;
       }
       .dm-coupon-offer__code {
         display: none;
       }
       .dm-coupon-offer__action {
         min-width: 4.8em;
-        padding: 4px 6px;
+        padding: 0 6px;
         font-weight: 600;
         letter-spacing: 0.02em;
       }
