@@ -83,6 +83,13 @@ Please exercise caution as any changes made to this file may be overwritten.
 
 <script>
   window.HoneyProxyPrefix = "{{ metafield.proxy_prefix }}";
+  /* #1928: this section may appear more than once on a page, so a merchant can put a theme
+   * section between our blocks. Only the first copy may load Alpine and register the stores.
+   * Without this flag every copy adds a load listener, they all run before Alpine has arrived,
+   * the window.Alpine check below passes in each, and two Alpines render every x-for list twice.
+   * Each copy would also register the customer store again and fetch the customer twice. */
+  if (!window.EssentialLoyaltyLandingBooted) {
+  window.EssentialLoyaltyLandingBooted = true;
   /* Skip Alpine injection if the host theme already ships it (e.g. Pixel Union
    * Empire family). A second Alpine triggers Alpine.start() twice and renders
    * every x-for list as duplicate sibling DOM (3 rewards displayed as 6). */
@@ -276,6 +283,7 @@ Please exercise caution as any changes made to this file may be overwritten.
       },
     })
   })
+  }
 </script>
 
 <div id="essential-loyalty-landing-page" style="max-width: var(--essential-page-max-width); margin: 0 auto;">
