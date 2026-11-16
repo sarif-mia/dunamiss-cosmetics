@@ -1,0 +1,206 @@
+{%- comment -%}
+  Coupon offer under the product price. Shows only when the product carries the offer tag
+  (matched case-insensitively), with the price after the coupon and a button that copies the code.
+
+  Params:
+    product          - product object
+    section_id       - section id, used to find the product form for variant changes
+    tag              - product tag that turns the offer on
+    code             - coupon code shown and copied
+    percent          - discount percentage the coupon gives
+{%- endcomment -%}
+
+{%- assign offer_tag = tag | default: 'blackfriday60' | strip | downcase -%}
+{%- assign offer_code = code | default: 'BlackFriday60' | strip -%}
+{%- assign offer_percent = percent | default: 60 | plus: 0 -%}
+
+{%- assign has_offer = false -%}
+{%- for product_tag in product.tags -%}
+  {%- assign t = product_tag | strip | downcase -%}
+  {%- if t == offer_tag -%}
+    {%- assign has_offer = true -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if has_offer and offer_code != blank and offer_percent > 0 and offer_percent < 100 -%}
+  {%- assign keep_percent = 100 | minus: offer_percent -%}
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign offer_price = current_variant.price | times: keep_percent | divided_by: 100 -%}
+
+  <div
+    class="dm-coupon-offer"
+    id="CouponOffer-{{ section_id }}"
+    data-section="{{ section_id }}"
+    data-keep="{{ keep_percent }}"
+  >
+    <script type="application/json" data-coupon-prices>
+      {
+        {%- for variant in product.variants -%}
+          "{{ variant.id }}": {{ variant.price }}{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      }
+    </script>
+    <div class="dm-coupon-offer__text">
+      <span class="dm-coupon-offer__badge">{{ offer_percent }}% OFF</span>
+      <span>
+        Get it for
+        <strong class="dm-coupon-offer__price" data-coupon-price>
+          {{- offer_price | money -}}
+        </strong>
+        with code <strong>{{ offer_code }}</strong>
+      </span>
+    </div>
+    <button
+      type="button"
+      class="dm-coupon-offer__copy"
+      data-coupon-copy="{{ offer_code | escape }}"
+      aria-label="Copy coupon code {{ offer_code | escape }}"
+    >
+      <span class="dm-coupon-offer__code">{{ offer_code }}</span>
+      <span class="dm-coupon-offer__action" data-coupon-label>Copy</span>
+    </button>
+  </div>
+
+  {%- style -%}
+    .dm-coupon-offer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px 16px;
+      margin-top: 12px;
+      padding: 12px 14px;
+      border: 1.5px dashed var(--brand-accent, #75465c);
+      border-radius: 10px;
+      background: var(--brand-surface, #f8f5f0);
+      color: var(--brand-text, #333);
+      font-size: 1.5rem;
+      line-height: 1.4;
+    }
+    .dm-coupon-offer__text {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 10px;
+      min-width: 0;
+    }
+    .dm-coupon-offer__badge {
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--brand-accent, #75465c);
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .dm-coupon-offer__price {
+      color: var(--brand-accent, #75465c);
+      font-weight: 700;
+    }
+    .dm-coupon-offer__copy {
+      display: inline-flex;
+      align-items: stretch;
+      flex-shrink: 0;
+      padding: 0;
+      border: 1px solid var(--brand-accent, #75465c);
+      border-radius: 6px;
+      background: #fff;
+      overflow: hidden;
+      cursor: pointer;
+      font: inherit;
+      font-size: 1.3rem;
+    }
+    .dm-coupon-offer__code {
+      padding: 7px 10px;
+      color: var(--brand-heading, #1a1a1a);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .dm-coupon-offer__action {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 12px;
+      background: var(--brand-accent, #75465c);
+      color: #fff;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .dm-coupon-offer__copy:hover .dm-coupon-offer__action,
+    .dm-coupon-offer__copy:focus-visible .dm-coupon-offer__action {
+      background: var(--brand-accent-hover, #593347);
+    }
+    .dm-coupon-offer__copy.is-copied .dm-coupon-offer__action {
+      background: #2e7d4f;
+    }
+    @media screen and (max-width: 600px) {
+      .dm-coupon-offer {
+        font-size: 1.35rem;
+        padding: 10px 12px;
+      }
+    }
+  {%- endstyle -%}
+
+  <script>
+    (function () {
+      var box = document.getElementById('CouponOffer-{{ section_id }}');
+      if (!box || box.dataset.ready) return;
+      box.dataset.ready = '1';
+
+      var button = box.querySelector('[data-coupon-copy]');
+      var label = box.querySelector('[data-coupon-label]');
+      var resetTimer;
+
+      function fallbackCopy(text) {
+        var field = document.createElement('textarea');
+        field.value = text;
+        field.setAttribute('readonly', '');
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(field);
+      }
+
+      button.addEventListener('click', function () {
+        var code = button.dataset.couponCopy;
+        var done = function () {
+          button.classList.add('is-copied');
+          label.textContent = 'Copied!';
+          clearTimeout(resetTimer);
+          resetTimer = setTimeout(function () {
+            button.classList.remove('is-copied');
+            label.textContent = 'Copy';
+          }, 2000);
+        };
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(code).then(done, function () { fallbackCopy(code); done(); });
+        } else {
+          fallbackCopy(code);
+          done();
+        }
+      });
+
+      var prices = {};
+      try { prices = JSON.parse(box.querySelector('[data-coupon-prices]').textContent); } catch (e) {}
+      var priceEl = box.querySelector('[data-coupon-price]');
+      var keep = parseInt(box.dataset.keep, 10);
+      var form = document.getElementById('product-form-' + box.dataset.section);
+
+      if (form && priceEl) {
+        form.addEventListener('change', function (event) {
+          if (!event.target || event.target.name !== 'id') return;
+          var price = prices[event.target.value];
+          if (typeof price !== 'number') return;
+          var offer = Math.floor((price * keep) / 100);
+          var settings = window.themeGlobalVariables && themeGlobalVariables.settings;
+          if (settings && settings.money_format && window.Shopify && typeof Shopify.formatMoney === 'function') {
+            priceEl.textContent = Shopify.formatMoney(offer, settings.money_format);
+          }
+        });
+      }
+    })();
+  </script>
+{%- endif -%}

@@ -311,6 +311,13 @@
                 </div>
               {% comment %} End Price Inclusive Tax {% endcomment %}
             </div>
+            {%- render 'dunamiss-coupon-offer',
+              product: product,
+              section_id: section.id,
+              tag: block_st.coupon_tag,
+              code: block_st.coupon_code,
+              percent: block_st.coupon_percent
+            -%}
           {%- when 'buy_buttons' -%}
             {% comment %} Buy button {% endcomment %}
             {%- if product.metafields.custom.external_affiliate == blank -%}
@@ -1571,7 +1578,36 @@
     {
       "type": "price",
       "name": "t:sections.main-product.blocks.price.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Coupon offer"
+        },
+        {
+          "type": "text",
+          "id": "coupon_tag",
+          "label": "Product tag that shows the coupon",
+          "default": "blackfriday60",
+          "info": "Matched without regard to upper or lower case."
+        },
+        {
+          "type": "text",
+          "id": "coupon_code",
+          "label": "Coupon code",
+          "default": "BlackFriday60"
+        },
+        {
+          "type": "range",
+          "id": "coupon_percent",
+          "label": "Coupon discount",
+          "min": 5,
+          "max": 95,
+          "step": 5,
+          "unit": "%",
+          "default": 60
+        }
+      ]
     },
     {
       "type": "buy_buttons",
